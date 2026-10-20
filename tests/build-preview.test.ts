@@ -1,4 +1,4 @@
-import { existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync } from 'node:fs'
+import { copyFileSync, existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync } from 'node:fs'
 import { dirname, join, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { afterEach, beforeEach, expect, test } from 'vitest'
@@ -53,4 +53,19 @@ test('missing icons dir yields an empty but valid preview', () => {
   buildPreview({ iconsDir: join(out, 'nope'), outDir: join(out, 'dist') })
   expect(existsSync(join(out, 'dist/index.html'))).toBe(true)
   expect(existsSync(join(out, 'dist/regression.html'))).toBe(true)
+})
+
+test('renders the status overlay section when charging-station and status-* exist', () => {
+  const dir = join(out, 'icons')
+  mkdirSync(dir)
+  const names = ['charging-station', 'status-available', 'status-faulted']
+  for (const n of names) {
+    const src = n === 'charging-station' ? 'test-ring' : 'test-bolt'
+    for (const ext of ['svg', 'json']) copyFileSync(join(VALID, `${src}.${ext}`), join(dir, `${n}.${ext}`))
+  }
+  buildPreview({ iconsDir: dir, outDir: join(out, 'dist') })
+  const html = readFileSync(join(out, 'dist/index.html'), 'utf8')
+  expect(html).toContain('Status overlay')
+  expect(count(html, 'data-variant="overlay-badge"')).toBe(2)
+  expect(count(html, 'data-variant="overlay-base"')).toBe(2)
 })

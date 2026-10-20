@@ -45,20 +45,22 @@ h1{font-size:20px;margin:0 0 12px}h2{font-size:16px;margin:32px 0 12px}
 .toolbar{display:flex;gap:8px;align-items:center;margin-bottom:16px}
 .toolbar button{font:inherit;padding:4px 12px;border:1px solid var(--line);border-radius:6px;background:var(--card);color:var(--fg);cursor:pointer}
 .toolbar button[aria-pressed=true]{background:var(--fg);color:var(--bg)}
-.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(360px,1fr));gap:16px}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(520px,1fr));gap:16px}
 .card{border:1px solid var(--line);border-radius:10px;padding:16px;background:var(--card)}
 .card h3{margin:0;font-size:15px}.meta{color:var(--muted);font-size:12px;margin:2px 0}
 .big{position:relative;width:192px;height:192px;margin:12px 0;border:1px solid var(--line);background:#fff;color:#16181d}
 .big .ev,.big .grid{position:absolute;inset:0;width:100%;height:100%}
 .rows{display:grid;grid-template-columns:auto 1fr 1fr;gap:6px 12px;align-items:center}
 .rows .label{color:var(--muted);font-size:12px}
-.pane{display:flex;gap:10px;align-items:center;padding:8px;border-radius:6px;min-height:40px}
+.pane{display:flex;gap:14px;align-items:center;padding:8px;border-radius:6px;min-height:40px}
+.refs{display:flex;gap:6px;flex-wrap:nowrap;align-items:center;padding-left:14px;border-left:1px solid currentColor;border-left-color:rgba(128,128,128,.5)}
 .light{background:#fff;color:#16181d;border:1px solid var(--line)}
 .dark{background:#16181d;color:#f2f4f8;border:1px solid #16181d}
 .ctx{display:inline-flex;gap:6px;align-items:center;margin-top:10px}
 .overlay{display:flex;gap:16px;flex-wrap:wrap}
-.ovitem{position:relative;width:24px;height:24px}
-.ovitem .badge{position:absolute;right:-4px;bottom:-4px}
+.ovitem{position:relative;width:24px;height:24px;color:var(--fg)}
+.ovitem .badge{position:absolute;right:-4px;bottom:-4px;display:block;line-height:0}
+.ovitem>.ev{display:block}
 .ovwrap{text-align:center;font-size:12px;color:var(--muted)}
 `
 
@@ -82,7 +84,7 @@ function card(icon: Icon, root: string): string {
   const rows = SIZES.map((s) => {
     const lucide = LUCIDE.map((l) => lucideSvg(l, s, root))
     const pane = (theme: string) =>
-      `<div class="pane ${theme}">${evSvg(node, name, `${s}-${theme}`, s)}<span>${lucide.join('')}</span></div>`
+      `<div class="pane ${theme}">${evSvg(node, name, `${s}-${theme}`, s)}<span class="refs">${lucide.join('')}</span></div>`
     return `<div class="label">${s} px</div>${pane('light')}${pane('dark')}`
   }).join('')
   return `<article class="card"><h3>${esc(name)}</h3>
