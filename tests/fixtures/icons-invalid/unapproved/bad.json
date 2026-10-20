@@ -1,0 +1,25 @@
+{
+  "category": "status",
+  "meaning": {
+    "en": "Test ring",
+    "de": "Testring"
+  },
+  "tags": {
+    "en": [
+      "ring"
+    ],
+    "de": [
+      "ring"
+    ],
+    "fr": [
+      "anneau"
+    ]
+  },
+  "since": "0.1.0",
+  "aliases": [],
+  "provenance": {
+    "createdBy": "ai",
+    "approvedBy": null,
+    "approvedOn": null
+  }
+}

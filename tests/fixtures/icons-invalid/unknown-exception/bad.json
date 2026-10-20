@@ -1,0 +1,28 @@
+{
+  "category": "status",
+  "meaning": {
+    "en": "Test ring",
+    "de": "Testring"
+  },
+  "tags": {
+    "en": [
+      "ring"
+    ],
+    "de": [
+      "ring"
+    ],
+    "fr": [
+      "anneau"
+    ]
+  },
+  "since": "0.1.0",
+  "aliases": [],
+  "provenance": {
+    "createdBy": "ai",
+    "approvedBy": "Test Reviewer",
+    "approvedOn": "2026-10-20"
+  },
+  "exceptions": [
+    "wobbly-lines"
+  ]
+}
