@@ -111,9 +111,9 @@ describe('validateMeta', () => {
 
 test('loadIcons returns name, svg, node and meta', () => {
   const icons = loadIcons(VALID)
-  expect(icons).toHaveLength(1)
-  expect(icons[0].name).toBe('test-ring')
-  expect(icons[0].node).toEqual([['circle', { cx: '12', cy: '12', r: '9' }]])
-  expect(icons[0].meta.category).toBe('status')
-  expect(icons[0].svg).toContain('<circle')
+  expect(icons.map((i) => i.name)).toEqual(['test-bolt', 'test-ring'])
+  const ring = icons[1]
+  expect(ring.node).toEqual([['circle', { cx: '12', cy: '12', r: '9' }]])
+  expect(ring.meta.category).toBe('status')
+  expect(ring.svg).toContain('<circle')
 })

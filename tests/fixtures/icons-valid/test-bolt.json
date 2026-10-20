@@ -1,0 +1,30 @@
+{
+  "category": "status",
+  "meaning": {
+    "en": "Test bolt",
+    "de": "Testblitz"
+  },
+  "tags": {
+    "en": [
+      "bolt"
+    ],
+    "de": [
+      "blitz"
+    ],
+    "fr": [
+      "éclair"
+    ]
+  },
+  "since": "0.1.0",
+  "aliases": [
+    "test-flash"
+  ],
+  "provenance": {
+    "createdBy": "ai",
+    "approvedBy": "Test Reviewer",
+    "approvedOn": "2026-10-20"
+  },
+  "deprecated": {
+    "since": "0.2.0"
+  }
+}
