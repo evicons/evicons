@@ -299,25 +299,31 @@
         "available",
         "free",
         "ready",
-        "vacant"
+        "vacant",
+        "hand",
+        "plug"
       ],
       "de": [
         "frei",
         "verfügbar",
-        "betriebsbereit"
+        "betriebsbereit",
+        "hand",
+        "stecker"
       ],
       "fr": [
         "disponible",
         "libre",
-        "prêt"
+        "prêt",
+        "main",
+        "prise"
       ]
     },
     "since": "0.1.0",
     "aliases": [],
     "provenance": {
       "createdBy": "ai",
-      "approvedBy": "lotfi",
-      "approvedOn": "2026-10-21"
+      "approvedBy": null,
+      "approvedOn": null
     },
     "pascal": "StatusAvailable"
   },
@@ -436,6 +442,41 @@
     },
     "pascal": "StatusOutOfService"
   },
+  "status-queue": {
+    "category": "status",
+    "meaning": {
+      "en": "Queue: cars are queuing at this station; you would have to wait",
+      "de": "Warteschlange: an dieser Station warten bereits Autos; du müsstest warten"
+    },
+    "tags": {
+      "en": [
+        "queue",
+        "waiting",
+        "waiting time",
+        "line",
+        "cars waiting"
+      ],
+      "de": [
+        "warteschlange",
+        "warten",
+        "wartezeit",
+        "autos warten"
+      ],
+      "fr": [
+        "file d'attente",
+        "attente",
+        "temps d'attente"
+      ]
+    },
+    "since": "0.1.0",
+    "aliases": [],
+    "provenance": {
+      "createdBy": "ai",
+      "approvedBy": null,
+      "approvedOn": null
+    },
+    "pascal": "StatusQueue"
+  },
   "status-reserved": {
     "category": "status",
     "meaning": {
@@ -447,24 +488,27 @@
         "reserved",
         "booked",
         "reservation",
-        "calendar",
-        "booking"
+        "booking",
+        "letter r"
       ],
       "de": [
         "reserviert",
         "gebucht",
         "reservierung",
-        "kalender",
-        "buchung"
+        "buchung",
+        "buchstabe r"
       ],
       "fr": [
         "réservé",
         "réservation",
-        "calendrier"
+        "lettre r"
       ]
     },
     "since": "0.1.0",
     "aliases": [],
+    "exceptions": [
+      "letters"
+    ],
     "provenance": {
       "createdBy": "ai",
       "approvedBy": null,

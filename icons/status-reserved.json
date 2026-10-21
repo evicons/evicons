@@ -9,24 +9,27 @@
       "reserved",
       "booked",
       "reservation",
-      "calendar",
-      "booking"
+      "booking",
+      "letter r"
     ],
     "de": [
       "reserviert",
       "gebucht",
       "reservierung",
-      "kalender",
-      "buchung"
+      "buchung",
+      "buchstabe r"
     ],
     "fr": [
       "réservé",
       "réservation",
-      "calendrier"
+      "lettre r"
     ]
   },
   "since": "0.1.0",
   "aliases": [],
+  "exceptions": [
+    "letters"
+  ],
   "provenance": {
     "createdBy": "ai",
     "approvedBy": null,

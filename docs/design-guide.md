@@ -31,7 +31,7 @@ Exceptions do not relax any lint rule. They mark a deliberate deviation for revi
 
 | Id | Use | Why |
 |---|---|---|
-| `letters` | Icon contains letters from the EVicons stroke alphabet (AC, DC, kW). | Text glyphs are denser than pictograms and need their own construction rules (section 6) so that all lettered icons match. |
+| `letters` | Icon contains letters from the EVicons stroke alphabet (AC, DC, R, kW). | Text glyphs are denser than pictograms and need their own construction rules (section 6) so that all lettered icons match. |
 | `dense-connector` | Connector faces with many contacts (Type 2, CCS2, ...). | The norm fixes the number and position of the contacts, so spacing falls below the usual 2.5 units. At 16 px some faces are not distinguishable from each other; the app must show the connector name next to the icon. |
 | `sharp-corner` | A corner is intentionally sharp despite round joins (lightning bolt tips in `fast-charging`). | The sharp corner carries meaning; rounding it would blur the symbol. |
 
@@ -70,7 +70,7 @@ The Type 2 part reuses the Type 2 construction above, scaled so that the Type 2 
 Letters are drawn as strokes with the regular stroke width (1.5), round caps and joins. Coordinates are relative to the letter's top-left corner; to place a letter, add the origin `(X, Y)` to every coordinate.
 
 - **Cap height:** 8 units (baseline at `Y + 8`).
-- **Widths (centre line):** A = 6, C = 5.5, D = 5.5.
+- **Widths (centre line):** A = 6, C = 5.5, D = 5.5, R = 5.
 - **Spacing:** 2 units between the boxes of two letters (the next letter starts at `X + width + 2`).
 - **Crossbar of A:** at `Y + 5`, from `X + 1.13` to `X + 4.87` (on the legs).
 
@@ -79,19 +79,23 @@ Letters are drawn as strokes with the regular stroke width (1.5), round caps and
 | A | `M0 8L3 0L6 8M1.13 5H4.87` |
 | C | `M5.5 1.6C4.8 .6 3.9 0 2.9 0C1.2 0 0 1.8 0 4S1.2 8 2.9 8C3.9 8 4.8 7.4 5.5 6.4` |
 | D | `M0 0V8H2C4.2 8 5.5 6.2 5.5 4S4.2 0 2 0Z` |
+| R | `M0 8V0H2.5A2.25 2.25 0 0 1 2.5 4.5H0M2.5 4.5 5 8` |
 
 Example: `current-ac` places A at origin `(5.25, 3.75)` and C at `(13.25, 3.75)`, which gives `m5.25 11.75 3-8 3 8m-4.87-3h3.74` and `M18.75 5.35c-.7-1-1.6-1.6-2.6-1.6-1.7 0-2.9 1.8-2.9 4s1.2 4 2.9 4c1 0 1.9-.6 2.6-1.6` after SVGO.
 
-A and C are tested at 16 px in `current-ac`; D is tested at 16 px in `current-dc` (D at origin (5.5, 3.75), C at (13, 3.75)): readable, its counter stays open. More letters (k, W) are added to this table when an icon needs them.
+A and C are tested at 16 px in `current-ac`; D is tested at 16 px in `current-dc` (D at origin (5.5, 3.75), C at (13, 3.75)): readable, its counter stays open. R is used alone in `status-reserved` at origin (9.5, 8): stem from the baseline to the cap line, bowl a half circle r 2.25 from y 0 to y 4.5 (slightly above the middle, counter 3.0 high, 1.5 visible), leg from the bowl's end at (2.5, 4.5) to (5, 8). Tested at 16 px: readable, counter open. More letters (k, W) are added to this table when an icon needs them.
 
 ## 7. Status icons
 
 - Every `status-*` icon uses the same frame: `<circle cx="12" cy="12" r="9"/>`.
-- The inner sign carries the meaning (check = available, clock = occupied, exclamation mark = faulted, crossed-out plug = out of service, calendar sheet = reserved, question mark = unknown). Shape alone must identify the status, because the app may render all of them in the same colour.
+- The inner sign carries the meaning (hand holding a plug = available, clock = occupied, two cars one behind the other = queue, letter R = reserved, exclamation mark = faulted, crossed-out plug = out of service, question mark = unknown). Shape alone must identify the status, because the app may render all of them in the same colour.
 - Keep the inner sign inside a radius of about 5.5 around the centre, so that at least 2.5 units remain to the frame.
-- Check mark block (used by `status-available`, reuse it wherever EVicons needs a check): `M7.75 12.5 10.5 15l5.75-6.25`. It has a short leg of 2.75 × 2.5 and a long, steep leg of 5.75 × 6.25, drawn for EVicons and not taken from Lucide.
+- Check mark block (no longer used by a status icon since `status-available` became the hand with plug on 2026-10-21; reuse it wherever EVicons needs a check): `M7.75 12.5 10.5 15l5.75-6.25`. It has a short leg of 2.75 × 2.5 and a long, steep leg of 5.75 × 6.25, drawn for EVicons and not taken from Lucide.
 - Question mark and exclamation mark are a pair (`status-unknown`, `status-faulted`): both reach from y 6.75 down to a stroke end at (12, 13.75) and share the same dot `<path d="M12 16.5h.01"/>`, 2.5 below that stroke end. Exclamation mark block: `M12 6.75v7` plus the dot. Question mark block: `M9.5 9.25a2.5 2.5 0 1 1 3.75 2.165c-.75.43-1.25.95-1.25 1.835v.5` plus the dot.
-- Calendar sheet block (`status-reserved`): `<rect x="8" y="9" width="8" height="7.5" rx="1.25"/>`, two binding tabs `M10 7.25V9` and `M14 7.25V9` that end on the top edge, header line `M8 11.5h8` (2.5 below the top edge). No inner mark: a day dot was tried and does not read at 16 px.
+- Upright plug block (`status-available`; same prong length 1.75 and prong spacing 2.5 as the crossed-out plug): prongs `M12.75 6.5v1.75m2.5-1.75v1.75`, body `<rect x="11.25" y="8.25" width="5.5" height="3.75" rx="1.25"/>`. Prongs are short lines, not dots, so they do not read as eyes.
+- Holding hand block (`status-available`): one stroke `M8.75 13v-2.25a1.25 1.25 0 0 0-2.5 0V13c0 2.5 2.5 4.25 5.25 4.25 2.5 0 4.5-1 5.5-3`, a thumb drawn as an outline (2.5 wide, round tip r 1.25) on the left that turns into the cupped palm and ends in the fingertips at the lower right. The hand is asymmetric on purpose: a symmetric cup under the plug reads as a smiling face. Thumb to plug 2.5, fingertips to plug ≥ 2.5.
+- Car front block (`status-queue`): front car body `<rect x="7" y="13" width="10" height="3.25" rx="1.25"/>`, greenhouse `M9 13 10 10.75h4l1 2.25`, wheels `M8.75 16.25v1m6.5-1v1`. The car behind is the same car shifted up and partly hidden: only its roof and shoulders show, `M7 11v-1a1.25 1.25 0 0 1 1.25-1.25L9.5 6.5h5l1.25 2.25A1.25 1.25 0 0 1 17 10v1`. Gaps: rear shoulders to front body 2.23, rear outline to front greenhouse 2.64.
+- Letter R (`status-reserved`): the R of the letter set (section 6) at origin (9.5, 8), cap height 8, no further detail. Exception `letters`.
 - Crossed-out sign: the diagonal runs from top left to bottom right through the centre (`M7.934 7.934 16.066 16.066`, 5.75 from the centre). Every stroke of the crossed-out pictogram is cut so that its end points stay at least 2.5 from the diagonal's centre line (1.0 visible gap with round caps). Pictograms that are crossed out are drawn on the other diagonal (axis from bottom left to top right), so that the diagonal cuts across them instead of running along them.
 - Colour is applied by the app through CSS (for example green for available). The SVG never contains colour.
 

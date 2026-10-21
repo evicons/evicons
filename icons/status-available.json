@@ -9,24 +9,30 @@
       "available",
       "free",
       "ready",
-      "vacant"
+      "vacant",
+      "hand",
+      "plug"
     ],
     "de": [
       "frei",
       "verfügbar",
-      "betriebsbereit"
+      "betriebsbereit",
+      "hand",
+      "stecker"
     ],
     "fr": [
       "disponible",
       "libre",
-      "prêt"
+      "prêt",
+      "main",
+      "prise"
     ]
   },
   "since": "0.1.0",
   "aliases": [],
   "provenance": {
     "createdBy": "ai",
-    "approvedBy": "lotfi",
-    "approvedOn": "2026-10-21"
+    "approvedBy": null,
+    "approvedOn": null
   }
 }

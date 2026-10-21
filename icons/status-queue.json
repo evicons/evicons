@@ -1,0 +1,34 @@
+{
+  "category": "status",
+  "meaning": {
+    "en": "Queue: cars are queuing at this station; you would have to wait",
+    "de": "Warteschlange: an dieser Station warten bereits Autos; du müsstest warten"
+  },
+  "tags": {
+    "en": [
+      "queue",
+      "waiting",
+      "waiting time",
+      "line",
+      "cars waiting"
+    ],
+    "de": [
+      "warteschlange",
+      "warten",
+      "wartezeit",
+      "autos warten"
+    ],
+    "fr": [
+      "file d'attente",
+      "attente",
+      "temps d'attente"
+    ]
+  },
+  "since": "0.1.0",
+  "aliases": [],
+  "provenance": {
+    "createdBy": "ai",
+    "approvedBy": null,
+    "approvedOn": null
+  }
+}
