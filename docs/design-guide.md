@@ -15,7 +15,7 @@ EVicons only covers e-mobility and EV charging. General UI icons (arrows, close,
 - **Soft shapes:** outer corners use radii ≥ 1.25 where possible. Sharp corners only where the subject needs them (lightning bolt, letter apexes); a deliberately sharp corner is declared with the `sharp-corner` exception.
 - **Detail:** more inner detail than Lucide, but every icon must stay readable at **16 px**. Check 16, 20 and 24 px, light and dark, in the preview.
 - **Optical size:** next to Lucide `Car` or `MapPin` at 20 px an EVicon must not look bigger or smaller. Wide subjects use most of the width (about 19–21 units); round and square subjects stay around 18 units.
-- **Spacing:** keep at least 2.5 units between the centre lines of parallel strokes so that a visible gap remains (2.5 − 1.75 = 0.75). Where a subject needs it (connector faces, a symbol inside a window), go down to about 2.25 and check 16 px.
+- **Spacing:** keep at least 2.5 units between the centre lines of parallel strokes so that a visible gap remains (2.5 − 1.75 = 0.75). Where a subject needs it (connector faces, a symbol inside a window), go down to 2.0 at the very least (0.25 visible gap) and check 16 px.
 - **Clean markup:** only flat `path`, `circle`, `rect`, `line`, `polyline` and `ellipse` children; no transforms, ids, classes, inline styles or groups. Files are SVGO-normalised (`npm run lint:icons -- --fix`).
 - **Direction:** vehicles face right. Icons are not mirrored for RTL; mirroring is up to the app. Letters and connector faces never mirror.
 - **Meaning:** icons complement text, they do not replace it. Every icon documents its precise meaning in its metadata (`meaning.en` / `meaning.de`).
@@ -76,6 +76,7 @@ A and C are tested at 16 px in `current-ac`. D is defined here for `current-dc` 
 - Every `status-*` icon uses the same frame: `<circle cx="12" cy="12" r="9"/>`.
 - The inner sign carries the meaning (check = available, clock = occupied, wrench = faulted, diagonal bar = out of service, bookmark = reserved, question mark = unknown). Shape alone must identify the status, because the app may render all of them in the same colour.
 - Keep the inner sign inside a radius of about 5.5 around the centre, so that at least 2.5 units remain to the frame.
+- Check mark block (used by `status-available`, reuse it wherever EVicons needs a check): `M7.75 12.5 10.5 15l5.75-6.25`. It has a short leg of 2.75 × 2.5 and a long, steep leg of 5.75 × 6.25, drawn for EVicons and not taken from Lucide.
 - Colour is applied by the app through CSS (for example green for available). The SVG never contains colour.
 
 ### Overlay pattern
@@ -91,6 +92,8 @@ export function StationWithStatus() {
       <ChargingStation size={24} />
       <StatusAvailable
         size={12}
+        absoluteStrokeWidth
+        strokeWidth={1.5}
         title="Available"
         style={{ position: 'absolute', right: -4, bottom: -4, color: 'green' }}
       />
@@ -99,7 +102,7 @@ export function StationWithStatus() {
 }
 ```
 
-Use a badge size of half the base icon. If the badge sits on a busy background, give it a background circle in the app (for example a `span` with `border-radius: 50%` and the page background colour).
+Use a badge size of half the base icon. At 12 px the default stroke scales down to 0.875 px and looks faint, so give badges a fixed screen stroke: `absoluteStrokeWidth` with `strokeWidth={1.5}` (or `strokeWidth={2}` without `absoluteStrokeWidth`). The bottom-right badge covers part of the base icon (on `charging-station` the hanging plug); that is accepted for the overlay pattern. If the badge sits on a busy background, give it a background circle in the app (for example a `span` with `border-radius: 50%` and the page background colour).
 
 ## 8. Metadata and provenance
 
