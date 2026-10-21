@@ -1,0 +1,34 @@
+{
+  "category": "status",
+  "meaning": {
+    "en": "Out of service: taken out of service by the operator (for example maintenance or closure), not an error report",
+    "de": "Außer Betrieb: vom Betreiber außer Betrieb genommen (z. B. Wartung oder Schließung), keine Fehlermeldung"
+  },
+  "tags": {
+    "en": [
+      "out of service",
+      "unavailable",
+      "inoperative",
+      "maintenance",
+      "closed"
+    ],
+    "de": [
+      "außer betrieb",
+      "nicht verfügbar",
+      "wartung",
+      "gesperrt"
+    ],
+    "fr": [
+      "hors service",
+      "indisponible",
+      "maintenance"
+    ]
+  },
+  "since": "0.1.0",
+  "aliases": [],
+  "provenance": {
+    "createdBy": "ai",
+    "approvedBy": null,
+    "approvedOn": null
+  }
+}

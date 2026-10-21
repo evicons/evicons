@@ -1,0 +1,37 @@
+{
+  "category": "power",
+  "meaning": {
+    "en": "Direct current (DC) charging",
+    "de": "Laden mit Gleichstrom (DC)"
+  },
+  "tags": {
+    "en": [
+      "dc",
+      "direct current",
+      "dc charging",
+      "fast charging"
+    ],
+    "de": [
+      "dc",
+      "gleichstrom",
+      "dc-laden",
+      "schnellladen"
+    ],
+    "fr": [
+      "dc",
+      "courant continu",
+      "recharge dc",
+      "recharge rapide"
+    ]
+  },
+  "since": "0.1.0",
+  "aliases": [],
+  "exceptions": [
+    "letters"
+  ],
+  "provenance": {
+    "createdBy": "ai",
+    "approvedBy": null,
+    "approvedOn": null
+  }
+}

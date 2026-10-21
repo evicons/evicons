@@ -1,0 +1,31 @@
+{
+  "category": "status",
+  "meaning": {
+    "en": "Occupied: the charge point is in use by another vehicle",
+    "de": "Belegt: der Ladepunkt wird gerade von einem anderen Fahrzeug genutzt"
+  },
+  "tags": {
+    "en": [
+      "occupied",
+      "in use",
+      "busy",
+      "charging"
+    ],
+    "de": [
+      "belegt",
+      "in benutzung",
+      "besetzt"
+    ],
+    "fr": [
+      "occupé",
+      "en cours d'utilisation"
+    ]
+  },
+  "since": "0.1.0",
+  "aliases": [],
+  "provenance": {
+    "createdBy": "ai",
+    "approvedBy": null,
+    "approvedOn": null
+  }
+}

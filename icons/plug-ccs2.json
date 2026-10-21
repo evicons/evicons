@@ -1,0 +1,51 @@
+{
+  "category": "connector",
+  "meaning": {
+    "en": "CCS Combo 2 connector (IEC 62196-3, Type 2 with two DC contacts), shown as the vehicle inlet face",
+    "de": "CCS-Combo-2-Stecker (IEC 62196-3, Typ 2 mit zwei DC-Kontakten), dargestellt als Fahrzeug-Ladebuchse in Draufsicht"
+  },
+  "tags": {
+    "en": [
+      "ccs",
+      "ccs2",
+      "combo 2",
+      "iec 62196-3",
+      "dc connector",
+      "fast charging",
+      "plug",
+      "inlet"
+    ],
+    "de": [
+      "ccs",
+      "ccs2",
+      "combo 2",
+      "iec 62196-3",
+      "dc-stecker",
+      "schnellladen",
+      "stecker",
+      "ladebuchse"
+    ],
+    "fr": [
+      "ccs",
+      "ccs2",
+      "combo 2",
+      "iec 62196-3",
+      "connecteur dc",
+      "recharge rapide"
+    ]
+  },
+  "since": "0.1.0",
+  "aliases": [],
+  "standard": {
+    "norm": "IEC 62196-3 (Combo 2)",
+    "source": "IEC 62196-3 itself not consulted (paywalled). Layout checked against two public drawings on Wikimedia Commons, retrieved 2026-10-21: \"File:IEC 62196 Type 2 (M, DC, CCS Combo 2).svg\" by Mliu92 (CC BY-SA 4.0; male CCS Combo 2 face: Type 2 part with 7 contacts on top, separate stadium-shaped DC part below with DC+ and DC- concentric with its round ends), https://commons.wikimedia.org/wiki/File:IEC_62196_Type_2_(M,_DC,_CCS_Combo_2).svg, and \"File:Combo-ccs-eu.svg\" by GreatDrok (CC BY-SA 4.0; Type 2 CCS (Europe) connector: same arrangement, DC part about as wide as the Type 2 part), https://commons.wikimedia.org/wiki/File:Combo-ccs-eu.svg. The Type 2 part follows the plug-type-2 geometry (row ratios 0.70 and 0.869 of the pitch, flat top at 0.778 R), scaled to R 6.65; contacts are drawn smaller than in the drawings so the strokes do not merge."
+  },
+  "exceptions": [
+    "dense-connector"
+  ],
+  "provenance": {
+    "createdBy": "ai",
+    "approvedBy": null,
+    "approvedOn": null
+  }
+}

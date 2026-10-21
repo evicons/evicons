@@ -1,0 +1,33 @@
+{
+  "category": "status",
+  "meaning": {
+    "en": "Reserved: the charge point is reserved for a booking",
+    "de": "Reserviert: der Ladepunkt ist für eine Buchung reserviert"
+  },
+  "tags": {
+    "en": [
+      "reserved",
+      "booked",
+      "reservation"
+    ],
+    "de": [
+      "reserviert",
+      "gebucht",
+      "reservierung"
+    ],
+    "fr": [
+      "réservé",
+      "réservation"
+    ]
+  },
+  "since": "0.1.0",
+  "aliases": [],
+  "exceptions": [
+    "sharp-corner"
+  ],
+  "provenance": {
+    "createdBy": "ai",
+    "approvedBy": null,
+    "approvedOn": null
+  }
+}

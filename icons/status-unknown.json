@@ -1,0 +1,32 @@
+{
+  "category": "status",
+  "meaning": {
+    "en": "Unknown: no current status is available for the charge point",
+    "de": "Unbekannt: für den Ladepunkt liegt kein aktueller Status vor"
+  },
+  "tags": {
+    "en": [
+      "unknown",
+      "no data",
+      "status unknown",
+      "offline"
+    ],
+    "de": [
+      "unbekannt",
+      "keine daten",
+      "status unbekannt"
+    ],
+    "fr": [
+      "inconnu",
+      "statut inconnu",
+      "pas de données"
+    ]
+  },
+  "since": "0.1.0",
+  "aliases": [],
+  "provenance": {
+    "createdBy": "ai",
+    "approvedBy": null,
+    "approvedOn": null
+  }
+}

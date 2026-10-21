@@ -1,0 +1,35 @@
+{
+  "category": "status",
+  "meaning": {
+    "en": "Faulted: the station reports an error and cannot charge",
+    "de": "Defekt: die Station meldet einen Fehler und kann nicht laden"
+  },
+  "tags": {
+    "en": [
+      "faulted",
+      "fault",
+      "error",
+      "broken",
+      "defective"
+    ],
+    "de": [
+      "defekt",
+      "fehler",
+      "störung",
+      "kaputt"
+    ],
+    "fr": [
+      "en panne",
+      "défaut",
+      "erreur",
+      "hors d'usage"
+    ]
+  },
+  "since": "0.1.0",
+  "aliases": [],
+  "provenance": {
+    "createdBy": "ai",
+    "approvedBy": null,
+    "approvedOn": null
+  }
+}

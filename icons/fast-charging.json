@@ -1,0 +1,37 @@
+{
+  "category": "power",
+  "meaning": {
+    "en": "Fast charging: high charging power, typically DC fast or high-power charging",
+    "de": "Schnellladen: hohe Ladeleistung, typischerweise DC-Schnellladen oder HPC"
+  },
+  "tags": {
+    "en": [
+      "fast charging",
+      "rapid charging",
+      "hpc",
+      "high power",
+      "quick charge"
+    ],
+    "de": [
+      "schnellladen",
+      "schnelllader",
+      "hpc",
+      "hohe ladeleistung"
+    ],
+    "fr": [
+      "recharge rapide",
+      "charge rapide",
+      "haute puissance"
+    ]
+  },
+  "since": "0.1.0",
+  "aliases": [],
+  "exceptions": [
+    "sharp-corner"
+  ],
+  "provenance": {
+    "createdBy": "ai",
+    "approvedBy": null,
+    "approvedOn": null
+  }
+}

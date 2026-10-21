@@ -113,6 +113,134 @@
     },
     "pascal": "CurrentAc"
   },
+  "current-dc": {
+    "category": "power",
+    "meaning": {
+      "en": "Direct current (DC) charging",
+      "de": "Laden mit Gleichstrom (DC)"
+    },
+    "tags": {
+      "en": [
+        "dc",
+        "direct current",
+        "dc charging",
+        "fast charging"
+      ],
+      "de": [
+        "dc",
+        "gleichstrom",
+        "dc-laden",
+        "schnellladen"
+      ],
+      "fr": [
+        "dc",
+        "courant continu",
+        "recharge dc",
+        "recharge rapide"
+      ]
+    },
+    "since": "0.1.0",
+    "aliases": [],
+    "exceptions": [
+      "letters"
+    ],
+    "provenance": {
+      "createdBy": "ai",
+      "approvedBy": null,
+      "approvedOn": null
+    },
+    "pascal": "CurrentDc"
+  },
+  "fast-charging": {
+    "category": "power",
+    "meaning": {
+      "en": "Fast charging: high charging power, typically DC fast or high-power charging",
+      "de": "Schnellladen: hohe Ladeleistung, typischerweise DC-Schnellladen oder HPC"
+    },
+    "tags": {
+      "en": [
+        "fast charging",
+        "rapid charging",
+        "hpc",
+        "high power",
+        "quick charge"
+      ],
+      "de": [
+        "schnellladen",
+        "schnelllader",
+        "hpc",
+        "hohe ladeleistung"
+      ],
+      "fr": [
+        "recharge rapide",
+        "charge rapide",
+        "haute puissance"
+      ]
+    },
+    "since": "0.1.0",
+    "aliases": [],
+    "exceptions": [
+      "sharp-corner"
+    ],
+    "provenance": {
+      "createdBy": "ai",
+      "approvedBy": null,
+      "approvedOn": null
+    },
+    "pascal": "FastCharging"
+  },
+  "plug-ccs2": {
+    "category": "connector",
+    "meaning": {
+      "en": "CCS Combo 2 connector (IEC 62196-3, Type 2 with two DC contacts), shown as the vehicle inlet face",
+      "de": "CCS-Combo-2-Stecker (IEC 62196-3, Typ 2 mit zwei DC-Kontakten), dargestellt als Fahrzeug-Ladebuchse in Draufsicht"
+    },
+    "tags": {
+      "en": [
+        "ccs",
+        "ccs2",
+        "combo 2",
+        "iec 62196-3",
+        "dc connector",
+        "fast charging",
+        "plug",
+        "inlet"
+      ],
+      "de": [
+        "ccs",
+        "ccs2",
+        "combo 2",
+        "iec 62196-3",
+        "dc-stecker",
+        "schnellladen",
+        "stecker",
+        "ladebuchse"
+      ],
+      "fr": [
+        "ccs",
+        "ccs2",
+        "combo 2",
+        "iec 62196-3",
+        "connecteur dc",
+        "recharge rapide"
+      ]
+    },
+    "since": "0.1.0",
+    "aliases": [],
+    "standard": {
+      "norm": "IEC 62196-3 (Combo 2)",
+      "source": "IEC 62196-3 itself not consulted (paywalled). Layout checked against two public drawings on Wikimedia Commons, retrieved 2026-10-21: \"File:IEC 62196 Type 2 (M, DC, CCS Combo 2).svg\" by Mliu92 (CC BY-SA 4.0; male CCS Combo 2 face: Type 2 part with 7 contacts on top, separate stadium-shaped DC part below with DC+ and DC- concentric with its round ends), https://commons.wikimedia.org/wiki/File:IEC_62196_Type_2_(M,_DC,_CCS_Combo_2).svg, and \"File:Combo-ccs-eu.svg\" by GreatDrok (CC BY-SA 4.0; Type 2 CCS (Europe) connector: same arrangement, DC part about as wide as the Type 2 part), https://commons.wikimedia.org/wiki/File:Combo-ccs-eu.svg. The Type 2 part follows the plug-type-2 geometry (row ratios 0.70 and 0.869 of the pitch, flat top at 0.778 R), scaled to R 6.65; contacts are drawn smaller than in the drawings so the strokes do not merge."
+    },
+    "exceptions": [
+      "dense-connector"
+    ],
+    "provenance": {
+      "createdBy": "ai",
+      "approvedBy": null,
+      "approvedOn": null
+    },
+    "pascal": "PlugCcs2"
+  },
   "plug-type-2": {
     "category": "connector",
     "meaning": {
@@ -192,5 +320,175 @@
       "approvedOn": "2026-10-21"
     },
     "pascal": "StatusAvailable"
+  },
+  "status-faulted": {
+    "category": "status",
+    "meaning": {
+      "en": "Faulted: the station reports an error and cannot charge",
+      "de": "Defekt: die Station meldet einen Fehler und kann nicht laden"
+    },
+    "tags": {
+      "en": [
+        "faulted",
+        "fault",
+        "error",
+        "broken",
+        "defective"
+      ],
+      "de": [
+        "defekt",
+        "fehler",
+        "störung",
+        "kaputt"
+      ],
+      "fr": [
+        "en panne",
+        "défaut",
+        "erreur",
+        "hors d'usage"
+      ]
+    },
+    "since": "0.1.0",
+    "aliases": [],
+    "provenance": {
+      "createdBy": "ai",
+      "approvedBy": null,
+      "approvedOn": null
+    },
+    "pascal": "StatusFaulted"
+  },
+  "status-occupied": {
+    "category": "status",
+    "meaning": {
+      "en": "Occupied: the charge point is in use by another vehicle",
+      "de": "Belegt: der Ladepunkt wird gerade von einem anderen Fahrzeug genutzt"
+    },
+    "tags": {
+      "en": [
+        "occupied",
+        "in use",
+        "busy",
+        "charging"
+      ],
+      "de": [
+        "belegt",
+        "in benutzung",
+        "besetzt"
+      ],
+      "fr": [
+        "occupé",
+        "en cours d'utilisation"
+      ]
+    },
+    "since": "0.1.0",
+    "aliases": [],
+    "provenance": {
+      "createdBy": "ai",
+      "approvedBy": null,
+      "approvedOn": null
+    },
+    "pascal": "StatusOccupied"
+  },
+  "status-out-of-service": {
+    "category": "status",
+    "meaning": {
+      "en": "Out of service: taken out of service by the operator (for example maintenance or closure), not an error report",
+      "de": "Außer Betrieb: vom Betreiber außer Betrieb genommen (z. B. Wartung oder Schließung), keine Fehlermeldung"
+    },
+    "tags": {
+      "en": [
+        "out of service",
+        "unavailable",
+        "inoperative",
+        "maintenance",
+        "closed"
+      ],
+      "de": [
+        "außer betrieb",
+        "nicht verfügbar",
+        "wartung",
+        "gesperrt"
+      ],
+      "fr": [
+        "hors service",
+        "indisponible",
+        "maintenance"
+      ]
+    },
+    "since": "0.1.0",
+    "aliases": [],
+    "provenance": {
+      "createdBy": "ai",
+      "approvedBy": null,
+      "approvedOn": null
+    },
+    "pascal": "StatusOutOfService"
+  },
+  "status-reserved": {
+    "category": "status",
+    "meaning": {
+      "en": "Reserved: the charge point is reserved for a booking",
+      "de": "Reserviert: der Ladepunkt ist für eine Buchung reserviert"
+    },
+    "tags": {
+      "en": [
+        "reserved",
+        "booked",
+        "reservation"
+      ],
+      "de": [
+        "reserviert",
+        "gebucht",
+        "reservierung"
+      ],
+      "fr": [
+        "réservé",
+        "réservation"
+      ]
+    },
+    "since": "0.1.0",
+    "aliases": [],
+    "exceptions": [
+      "sharp-corner"
+    ],
+    "provenance": {
+      "createdBy": "ai",
+      "approvedBy": null,
+      "approvedOn": null
+    },
+    "pascal": "StatusReserved"
+  },
+  "status-unknown": {
+    "category": "status",
+    "meaning": {
+      "en": "Unknown: no current status is available for the charge point",
+      "de": "Unbekannt: für den Ladepunkt liegt kein aktueller Status vor"
+    },
+    "tags": {
+      "en": [
+        "unknown",
+        "no data",
+        "status unknown",
+        "offline"
+      ],
+      "de": [
+        "unbekannt",
+        "keine daten",
+        "status unbekannt"
+      ],
+      "fr": [
+        "inconnu",
+        "statut inconnu",
+        "pas de données"
+      ]
+    },
+    "since": "0.1.0",
+    "aliases": [],
+    "provenance": {
+      "createdBy": "ai",
+      "approvedBy": null,
+      "approvedOn": null
+    },
+    "pascal": "StatusUnknown"
   }
 }
