@@ -18,6 +18,7 @@ const CASES: Array<[string, Record<string, unknown>, boolean]> = [
   [invalid('disallowed-tag'), { file: 'bad.svg', element: 'text' }, true],
   [invalid('text-content'), { file: 'bad.svg', message: expect.stringMatching(/text content/i) }, true],
   [OUT_OF_BOUNDS, { file: 'bad.svg', element: 'circle', message: expect.stringMatching(/live area/i) }, true],
+  [invalid('tiny-circle'), { file: 'bad.svg', element: 'circle', attribute: 'r', message: expect.stringMatching(/ring/i) }, true],
   [invalid('not-optimized'), { file: 'bad.svg', message: expect.stringMatching(/svgo/i) }, true],
   [invalid('missing-meta'), { file: 'bad.svg', message: expect.stringMatching(/missing metadata/i) }, true],
   [invalid('orphan-meta'), { file: 'bad.json', message: expect.stringMatching(/missing svg/i) }, true],
@@ -51,6 +52,10 @@ test('reports file, element and attribute', () => {
   expect(errs).toContainEqual(expect.objectContaining({ file: 'bad.svg', element: 'g' }))
   expect(errs).toContainEqual(expect.objectContaining({ file: 'bad.svg', attribute: 'id' }))
   expect(errs).toContainEqual(expect.objectContaining({ file: 'bad.svg', element: 'path', attribute: 'style' }))
+})
+
+test('dots drawn as zero-length or arc paths and circles with r >= 1 pass', () => {
+  expect(lintIcons(join(FIXTURES, 'icons-dots'), { release: false })).toEqual([])
 })
 
 test('unapproved passes without release flag', () => expect(lintIcons(UNAPPROVED, { release: false })).toEqual([]))

@@ -1,0 +1,25 @@
+{
+  "category": "status",
+  "meaning": {
+    "en": "Test dots",
+    "de": "Testpunkte"
+  },
+  "tags": {
+    "en": [
+      "dot"
+    ],
+    "de": [
+      "dot"
+    ],
+    "fr": [
+      "point"
+    ]
+  },
+  "since": "0.1.0",
+  "aliases": [],
+  "provenance": {
+    "createdBy": "ai",
+    "approvedBy": "Test Reviewer",
+    "approvedOn": "2026-10-20"
+  }
+}

@@ -25,6 +25,12 @@ export const ROOT_ATTRIBUTES: Readonly<Record<string, string>> = {
 const STROKE_WIDTH = 1.5
 const LIVE_AREA = { min: 1, max: 23 }
 const EPSILON = 1e-9
+/**
+ * Smallest radius for <circle>/<ellipse>. Chromium strokes a circle whose radius is below half
+ * the stroke width as a ring with a hole instead of a solid disc. 1 is half of stroke width 2,
+ * the largest stroke the design guide recommends (badges), so circles stay solid up to there.
+ */
+export const MIN_CIRCLE_RADIUS = 1
 
 /** Allowed attributes per element; `required` must be present, `optional` may be. */
 const ELEMENT_ATTRIBUTES: Record<AllowedTag, { required: string[]; optional: string[] }> = {
@@ -140,6 +146,18 @@ function lintElement(file: string, el: INode, errors: LintError[], nested = fals
   }
   // Nested geometry may be transformed by its parent, so its bbox is not meaningful.
   if (!geometryOk || nested) return
+
+  const radii = element === 'circle' ? ['r'] : element === 'ellipse' ? ['rx', 'ry'] : []
+  for (const attribute of radii) {
+    if (Number(el.attributes[attribute]) < MIN_CIRCLE_RADIUS - EPSILON) {
+      errors.push({
+        file,
+        element,
+        attribute,
+        message: `radius below ${MIN_CIRCLE_RADIUS} renders as a ring in Chromium; draw a dot as a zero-length path ("M x yh.01") or a small disc as an arc path`,
+      })
+    }
+  }
 
   let box: BBox | null
   try {
