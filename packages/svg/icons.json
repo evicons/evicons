@@ -32,8 +32,8 @@
     "aliases": [],
     "provenance": {
       "createdBy": "ai",
-      "approvedBy": "lotfi",
-      "approvedOn": "2026-10-21"
+      "approvedBy": null,
+      "approvedOn": null
     },
     "pascal": "CarPlugged"
   },

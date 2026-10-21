@@ -1,7 +1,7 @@
 # Acceptance: first five icons
 
 Icons: `charging-station`, `plug-type-2`, `current-ac`, `status-available`, `car-plugged`.
-All five are `createdBy: "ai"`, `since: "0.1.0"`. The owner approved all five on 2026-10-21 after one correction round (see "Owner decisions"); `provenance.approvedBy` is `"lotfi"` and `approvedOn` is `"2026-10-21"` in each icon's metadata.
+All five are `createdBy: "ai"`, `since: "0.1.0"`. The owner approved all five on 2026-10-21 after one correction round (see "Owner decisions"); `provenance.approvedBy` is `"lotfi"` and `approvedOn` is `"2026-10-21"` in each icon's metadata, except `car-plugged`, whose approval was superseded by the option B change (see "Owner approval").
 
 ## Technical checks
 
@@ -125,3 +125,5 @@ Decided by Lotfi on 2026-10-21 in the preview.
 ## Owner approval
 
 Approved by Lotfi on 2026-10-21: `charging-station`, `plug-type-2`, `current-ac`, `status-available`, `car-plugged`, with the decisions listed under "Owner decisions" (I3 option A, O1 wider car, O2 signal contacts r 1.0, M4 flat top at y 5, O3 keep the two-prong plug, N1 option (a), N4 accept the bolt, in-window spacing 2.0 confirmed, stroke 1.75 and radius 1.25 unchanged).
+
+Superseded for `car-plugged` (2026-10-21): the approval above covered the option A shape (decision I3). The owner then changed I3 to option B (see "Owner decisions"), so the changed shape is not approved yet; `car-plugged.json` has `approvedBy`/`approvedOn` set back to `null` until the re-approval recorded in `docs/acceptance/v0.1.md`.

@@ -12,7 +12,7 @@ EVicons only covers e-mobility and EV charging. General UI icons (arrows, close,
 - **Root attributes:** exactly `width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"`.
 - **Stroke:** 1.75 by default (Lucide uses 2). Consumers can change it through the `strokeWidth` prop.
 - **Outline only:** no fills, no colours, no opacity. Colour comes from CSS via `currentColor`. A circle with `r` below half the stroke (0.875) renders as a dot; that is allowed for small contacts, it is still a stroke.
-- **Soft shapes:** outer corners use radii ≥ 1.25 where possible. Sharp corners only where the subject needs them (lightning bolt, letter apexes); a deliberately sharp corner is declared with the `sharp-corner` exception.
+- **Soft shapes:** outer corners use radii ≥ 1.25 where possible. Sharp corners only where the subject needs them (lightning bolt, letter apexes, bookmark tails); a deliberately sharp corner is declared with the `sharp-corner` exception.
 - **Detail:** more inner detail than Lucide, but every icon must stay readable at **16 px**. Check 16, 20 and 24 px, light and dark, in the preview.
 - **Optical size:** next to Lucide `Car` or `MapPin` at 20 px an EVicon must not look bigger or smaller. Wide subjects use most of the width (about 19–21 units); round and square subjects stay around 18 units.
 - **Spacing:** keep at least 2.5 units between the centre lines of parallel strokes so that a visible gap remains (2.5 − 1.75 = 0.75). Where a subject needs it (connector faces, a symbol inside a window), go down to 2.0 at the very least (0.25 visible gap) and check 16 px. The minimum of 2.0 for a symbol inside a window (for example the bolt in the `charging-station` display) was confirmed by the owner on 2026-10-21.
@@ -32,7 +32,7 @@ Exceptions do not relax any lint rule. They mark a deliberate deviation for revi
 |---|---|---|
 | `letters` | Icon contains letters from the EVicons stroke alphabet (AC, DC, kW). | Text glyphs are denser than pictograms and need their own construction rules (section 6) so that all lettered icons match. |
 | `dense-connector` | Connector faces with many contacts (Type 2, CCS2, ...). | The norm fixes the number and position of the contacts, so spacing falls below the usual 2.5 units. At 16 px some faces are not distinguishable from each other; the app must show the connector name next to the icon. |
-| `sharp-corner` | A corner is intentionally sharp despite round joins (lightning bolt tips). | The sharp corner carries meaning; rounding it would blur the symbol. |
+| `sharp-corner` | A corner is intentionally sharp despite round joins (lightning bolt tips in `fast-charging`, bookmark tails in `status-reserved`). | The sharp corner carries meaning; rounding it would blur the symbol. |
 
 ## 5. Connector convention (vehicle inlet)
 
@@ -54,6 +54,16 @@ Reuse it for CCS2, whose upper part is the Type 2 face.
 - Smallest gaps (centre lines minus radii): signal contact to flat edge 2.29, signal to power contact 2.31, power contact to outline 2.44.
 - At 16–24 px all seven contacts render as similar dots (the hole of a r 1.0 ring is 0.25 units, of a r 1.25 ring 0.75 units). Small and large contacts are only distinguishable in large sizes, so the app must always show the text "Type 2" next to the icon.
 
+### CCS2 reference geometry (from `plug-ccs2`)
+
+The Type 2 part reuses the Type 2 construction above, scaled so that the Type 2 part and the DC part fit one above the other in the live area.
+
+- Type 2 outline: circle `C = (12, 7.1)`, `R = 6.65`, flattened by a horizontal edge at `y = 1.925` (0.778 R above the centre) with fillets of radius 1.5; it spans y 1.925–13.75.
+- Contact pitch `s = 3.8` (row ratios 0.70 and 0.869 as for Type 2): top row `y = 4.44` (PP, CP at x 10.1 and 13.9), middle row `y = 7.1` (L1, PE, N at x 8.2, 12, 15.8), bottom row `y = 10.402` (L2, L3 at x 10.1 and 13.9).
+- Contact sizes: signal r 0.5, power r 0.75. Both are below half the stroke, so all seven Type 2 contacts render as **dots**, not rings (rings would need a pitch of at least 4.0 and R ≥ 7.0, which does not fit together with the DC part). Whether this is accepted is an open owner decision (D1 in `docs/acceptance/v0.1.md`).
+- DC part: stadium `rect x=5.35 y=15.75 width=13.3 height=6.35 rx=3.175`, 2.0 below the Type 2 outline. DC+ and DC− are r 1.15 at `(8.525, 18.925)` and `(15.475, 18.925)`, concentric with the stadium's round ends (rings).
+- Smallest gaps (centre lines minus radii): Type 2 outline to DC part 2.0, signal contact to flat edge 2.015, signal to power contact 2.019, DC contact to stadium 2.025, power contact to outline 2.06; all at or above the connector minimum of 2.0.
+
 ## 6. Letter set
 
 Letters are drawn as strokes with the regular stroke width (1.75), round caps and joins. Coordinates are relative to the letter's top-left corner; to place a letter, add the origin `(X, Y)` to every coordinate.
@@ -71,7 +81,7 @@ Letters are drawn as strokes with the regular stroke width (1.75), round caps an
 
 Example: `current-ac` places A at origin `(5.25, 3.75)` and C at `(13.25, 3.75)`, which gives `m5.25 11.75 3-8 3 8m-4.87-3h3.74` and `M18.75 5.35c-.7-1-1.6-1.6-2.6-1.6-1.7 0-2.9 1.8-2.9 4s1.2 4 2.9 4c1 0 1.9-.6 2.6-1.6` after SVGO.
 
-A and C are tested at 16 px in `current-ac`. D is defined here for `current-dc` and has not been tested in an icon yet; check it at 16 px when it is first used. More letters (k, W) are added to this table when an icon needs them.
+A and C are tested at 16 px in `current-ac`; D is tested at 16 px in `current-dc` (D at origin (5.5, 3.75), C at (13, 3.75)): readable, its counter stays open. More letters (k, W) are added to this table when an icon needs them.
 
 ## 7. Status icons
 
