@@ -64,7 +64,7 @@ test('sprite has one symbol per icon', () => {
   expect(sprite).toContain('id="evicon-test-ring"')
   expect(sprite).toContain('id="evicon-test-bolt"')
   expect(sprite).toContain('viewBox="0 0 24 24"')
-  expect(sprite).toContain('stroke-width="1.75"')
+  expect(sprite).toContain('stroke-width="1.5"')
   expect(sprite.match(/<symbol /g)).toHaveLength(2)
   expect(sprite).toContain('<circle cx="12" cy="12" r="9"/>')
 })

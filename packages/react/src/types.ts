@@ -8,7 +8,7 @@ export type IconNode = Array<
 export interface EvIconProps extends Omit<SVGProps<SVGSVGElement>, 'ref'> {
   /** Width and height. Default 24. */
   size?: number | string
-  /** Stroke width. Default 1.75. */
+  /** Stroke width. Default 1.5. */
   strokeWidth?: number | string
   /** Keep the stroke at `strokeWidth` screen pixels regardless of icon size. Default false. */
   absoluteStrokeWidth?: boolean

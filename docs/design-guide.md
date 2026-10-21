@@ -9,13 +9,13 @@ EVicons only covers e-mobility and EV charging. General UI icons (arrows, close,
 ## 2. Style rules
 
 - **Grid:** 24 × 24, `viewBox="0 0 24 24"`. Keep at least 1 px to the edge: everything, including half the stroke, stays inside the live area `[1, 23]`.
-- **Root attributes:** exactly `width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"`.
-- **Stroke:** 1.75 by default (Lucide uses 2). Consumers can change it through the `strokeWidth` prop.
+- **Root attributes:** exactly `width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"`.
+- **Stroke:** 1.5 by default (Lucide uses 2). Changed from 1.75 on 2026-10-21 (owner decision). Consumers can change it through the `strokeWidth` prop.
 - **Outline only:** no fills, no colours, no opacity. Colour comes from CSS via `currentColor`. A circle with `r` below half the stroke (0.875) renders as a dot; that is allowed for small contacts, it is still a stroke.
 - **Soft shapes:** outer corners use radii ≥ 1.25 where possible. Sharp corners only where the subject needs them (lightning bolt, letter apexes, bookmark tails); a deliberately sharp corner is declared with the `sharp-corner` exception.
 - **Detail:** more inner detail than Lucide, but every icon must stay readable at **16 px**. Check 16, 20 and 24 px, light and dark, in the preview.
 - **Optical size:** next to Lucide `Car` or `MapPin` at 20 px an EVicon must not look bigger or smaller. Wide subjects use most of the width (about 19–21 units); round and square subjects stay around 18 units.
-- **Spacing:** keep at least 2.5 units between the centre lines of parallel strokes so that a visible gap remains (2.5 − 1.75 = 0.75). Where a subject needs it (connector faces, a symbol inside a window), go down to 2.0 at the very least (0.25 visible gap) and check 16 px. The minimum of 2.0 for a symbol inside a window (for example the bolt in the `charging-station` display) was confirmed by the owner on 2026-10-21.
+- **Spacing:** keep at least 2.5 units between the centre lines of parallel strokes so that a visible gap remains (2.5 − 1.5 = 1.0). Where a subject needs it (connector faces, a symbol inside a window), go down to 2.0 at the very least (0.5 visible gap) and check 16 px. The minimum of 2.0 for a symbol inside a window (for example the bolt in the `charging-station` display) was confirmed by the owner on 2026-10-21.
 - **Clean markup:** only flat `path`, `circle`, `rect`, `line`, `polyline` and `ellipse` children; no transforms, ids, classes, inline styles or groups. Files are SVGO-normalised (`npm run lint:icons -- --fix`).
 - **Direction:** vehicles face right. Icons are not mirrored for RTL; mirroring is up to the app. Letters and connector faces never mirror.
 - **Meaning:** icons complement text, they do not replace it. Every icon documents its precise meaning in its metadata (`meaning.en` / `meaning.de`).
@@ -66,7 +66,7 @@ The Type 2 part reuses the Type 2 construction above, scaled so that the Type 2 
 
 ## 6. Letter set
 
-Letters are drawn as strokes with the regular stroke width (1.75), round caps and joins. Coordinates are relative to the letter's top-left corner; to place a letter, add the origin `(X, Y)` to every coordinate.
+Letters are drawn as strokes with the regular stroke width (1.5), round caps and joins. Coordinates are relative to the letter's top-left corner; to place a letter, add the origin `(X, Y)` to every coordinate.
 
 - **Cap height:** 8 units (baseline at `Y + 8`).
 - **Widths (centre line):** A = 6, C = 5.5, D = 5.5.

@@ -24,7 +24,7 @@ All results are from the final state after the owner's corrections (2026-10-21).
 
 ## Stroke width and radius
 
-Stroke width 1.75 and the minimum corner radius 1.25 were reviewed with the preview's stroke switcher (1.5 / 1.75 / 2) and confirmed unchanged by the owner. No global change: Global Constraints, linter rule 1, the `createEvIcon` default and spec §6/§11 stay as they are.
+Superseded on 2026-10-21: the default stroke width is now 1.5 (see `docs/acceptance/v0.1.md`, "Owner decisions"); visible gaps are 0.25 larger than the figures in this document. Historical text: stroke width 1.75 and the minimum corner radius 1.25 were reviewed with the preview's stroke switcher (1.5 / 1.75 / 2) and confirmed unchanged by the owner. No global change: Global Constraints, linter rule 1, the `createEvIcon` default and spec §6/§11 stay as they are.
 
 ## Norm check: `plug-type-2`
 
@@ -47,7 +47,7 @@ The two drawings are mirror images of each other, as expected for the male and t
 
 Row ratios re-checked after the M4/O2 change: top row 3.71 = 0.70 × 5.3 above the middle row, bottom row 4.606 = 0.869 × 5.3 below it, unchanged. Smallest gaps (centre lines minus radii): PP/CP to the flat edge 2.29, PP/CP to L1/PE/N 2.31, power contacts to the outline 2.44, power to power 2.8, signal to signal 3.3; all at or above the connector minimum of 2.0.
 
-Deviations, deliberate: the contacts are drawn smaller relative to the outline than in the drawings (otherwise the 1.75 strokes would merge), and PE is drawn the same size as the other power contacts, as in both drawings. The contact labels are not part of the icon.
+Deviations, deliberate: the contacts are drawn smaller relative to the outline than in the drawings (otherwise the strokes would merge), and PE is drawn the same size as the other power contacts, as in both drawings. The contact labels are not part of the icon.
 
 Open: a check against the actual standard sheet of IEC 62196-2 (vehicle inlet) is still outstanding.
 

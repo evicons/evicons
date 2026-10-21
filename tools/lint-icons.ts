@@ -17,12 +17,12 @@ export const ROOT_ATTRIBUTES: Readonly<Record<string, string>> = {
   viewBox: '0 0 24 24',
   fill: 'none',
   stroke: 'currentColor',
-  'stroke-width': '1.75',
+  'stroke-width': '1.5',
   'stroke-linecap': 'round',
   'stroke-linejoin': 'round',
 }
 
-const STROKE_WIDTH = 1.75
+const STROKE_WIDTH = 1.5
 const LIVE_AREA = { min: 1, max: 23 }
 const EPSILON = 1e-9
 

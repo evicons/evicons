@@ -32,7 +32,7 @@ export function createEvIcon(displayName: string, fileName: string, node: IconNo
         viewBox: '0 0 24 24',
         fill: 'none',
         stroke: 'currentColor',
-        strokeWidth: strokeWidth ?? 1.75,
+        strokeWidth: strokeWidth ?? 1.5,
         strokeLinecap: 'round',
         strokeLinejoin: 'round',
         ref,

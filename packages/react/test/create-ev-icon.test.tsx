@@ -13,7 +13,7 @@ test('defaults', () => {
   expect(svg).toHaveAttribute('width', '24')
   expect(svg).toHaveAttribute('height', '24')
   expect(svg).toHaveAttribute('viewBox', '0 0 24 24')
-  expect(svg).toHaveAttribute('stroke-width', '1.75')
+  expect(svg).toHaveAttribute('stroke-width', '1.5')
   expect(svg).toHaveAttribute('stroke', 'currentColor')
   expect(svg).toHaveAttribute('fill', 'none')
   expect(svg).toHaveAttribute('aria-hidden', 'true')
@@ -94,7 +94,7 @@ test('children come after node', () => {
 test('absolute stroke works without numeric size', () => {
   const svg = render(<TestRing size="1em" absoluteStrokeWidth />).querySelector('svg')!
   expect(svg).toHaveAttribute('width', '1em')
-  expect(svg).toHaveAttribute('stroke-width', '1.75')
+  expect(svg).toHaveAttribute('stroke-width', '1.5')
   const kids = [...svg.children]
   expect(kids.length).toBeGreaterThan(0)
   for (const c of kids) expect(c).toHaveAttribute('vector-effect', 'non-scaling-stroke')

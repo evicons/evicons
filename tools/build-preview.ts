@@ -20,7 +20,7 @@ function nodeToMarkup(node: IconNode): string {
 
 /** EVicon inline SVG. Stroke width comes from CSS (`.ev`), so the switcher can override it. */
 function evSvg(node: IconNode, name: string, variant: string, size: number): string {
-  return `<svg class="ev" data-icon="${esc(name)}" data-variant="${variant}" width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${nodeToMarkup(node)}</svg>`
+  return `<svg class="ev" data-icon="${esc(name)}" data-variant="${variant}" width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${nodeToMarkup(node)}</svg>`
 }
 
 /** Lucide reference inline SVG, read from lucide-static at build time (never stored in the repo). */
@@ -37,7 +37,7 @@ const GRID_PATH = Array.from({ length: 25 }, (_, i) => `M${i} 0V24M0 ${i}H24`).j
 const GRID = `<svg class="grid" viewBox="0 0 24 24" aria-hidden="true"><path d="${GRID_PATH}" fill="none" stroke="currentColor" stroke-width="0.04" opacity="0.25"/><rect x="1" y="1" width="22" height="22" fill="none" stroke="#e5484d" stroke-width="0.08"/></svg>`
 
 const CSS = `
-:root{--ev-stroke:1.75;--bg:#fff;--fg:#16181d;--muted:#5d6370;--line:#dfe2e8;--card:#fafbfc}
+:root{--ev-stroke:1.5;--bg:#fff;--fg:#16181d;--muted:#5d6370;--line:#dfe2e8;--card:#fafbfc}
 *{box-sizing:border-box}
 body{margin:0;padding:24px;font:14px/1.4 system-ui,sans-serif;background:var(--bg);color:var(--fg)}
 h1{font-size:20px;margin:0 0 12px}h2{font-size:16px;margin:32px 0 12px}
@@ -113,13 +113,13 @@ export function buildPreview({ iconsDir, outDir }: PreviewOptions): void {
   const root = resolve(dirname(fileURLToPath(import.meta.url)), '..')
   const icons = existsSync(iconsDir) ? loadIcons(iconsDir) : []
 
-  const toolbar = `<div class="toolbar"><span>Stroke width</span>${STROKES.map((w) => `<button type="button" data-stroke="${w}" aria-pressed="${w === '1.75'}">${w}</button>`).join('')}</div>`
+  const toolbar = `<div class="toolbar"><span>Stroke width</span>${STROKES.map((w) => `<button type="button" data-stroke="${w}" aria-pressed="${w === '1.5'}">${w}</button>`).join('')}</div>`
   const body = `<h1>EVicons preview (${icons.length} icons)</h1>${toolbar}<div class="cards">${icons.map((i) => card(i, root)).join('')}</div>${overlaySection(icons)}`
 
   const regRows = icons
     .map((i) => `<div class="row">${[16, 24, 48].map((s) => evSvg(i.node, i.name, String(s), s)).join('')}</div>`)
     .join('')
-  const regCss = `body{margin:0;padding:16px;background:#fff;color:#000}.row{display:flex;gap:16px;align-items:center;margin-bottom:16px}svg{stroke-width:1.75}`
+  const regCss = `body{margin:0;padding:16px;background:#fff;color:#000}.row{display:flex;gap:16px;align-items:center;margin-bottom:16px}svg{stroke-width:1.5}`
 
   mkdirSync(outDir, { recursive: true })
   writeFileSync(join(outDir, 'index.html'), page('EVicons preview', body, CSS, SCRIPT))

@@ -63,7 +63,7 @@ export function buildIcons({ iconsDir, reactDir, svgDir }: BuildOptions): void {
     svgs.set(`${name}.svg`, svg)
     meta[name] = { ...m, pascal }
     symbols.push(
-      `  <symbol id="evicon-${name}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">${nodeToMarkup(node)}</symbol>\n`,
+      `  <symbol id="evicon-${name}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">${nodeToMarkup(node)}</symbol>\n`,
     )
   }
 
