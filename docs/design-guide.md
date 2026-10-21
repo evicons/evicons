@@ -15,7 +15,7 @@ EVicons only covers e-mobility and EV charging. General UI icons (arrows, close,
 - **Soft shapes:** outer corners use radii ≥ 1.25 where possible. Sharp corners only where the subject needs them (lightning bolt, letter apexes); a deliberately sharp corner is declared with the `sharp-corner` exception.
 - **Detail:** more inner detail than Lucide, but every icon must stay readable at **16 px**. Check 16, 20 and 24 px, light and dark, in the preview.
 - **Optical size:** next to Lucide `Car` or `MapPin` at 20 px an EVicon must not look bigger or smaller. Wide subjects use most of the width (about 19–21 units); round and square subjects stay around 18 units.
-- **Spacing:** keep at least 2.5 units between the centre lines of parallel strokes so that a visible gap remains (2.5 − 1.75 = 0.75). Where a subject needs it (connector faces, a symbol inside a window), go down to 2.0 at the very least (0.25 visible gap) and check 16 px.
+- **Spacing:** keep at least 2.5 units between the centre lines of parallel strokes so that a visible gap remains (2.5 − 1.75 = 0.75). Where a subject needs it (connector faces, a symbol inside a window), go down to 2.0 at the very least (0.25 visible gap) and check 16 px. The minimum of 2.0 for a symbol inside a window (for example the bolt in the `charging-station` display) was confirmed by the owner on 2026-10-21.
 - **Clean markup:** only flat `path`, `circle`, `rect`, `line`, `polyline` and `ellipse` children; no transforms, ids, classes, inline styles or groups. Files are SVGO-normalised (`npm run lint:icons -- --fix`).
 - **Direction:** vehicles face right. Icons are not mirrored for RTL; mirroring is up to the app. Letters and connector faces never mirror.
 - **Meaning:** icons complement text, they do not replace it. Every icon documents its precise meaning in its metadata (`meaning.en` / `meaning.de`).
@@ -45,12 +45,14 @@ Exceptions do not relax any lint rule. They mark a deliberate deviation for revi
 
 Reuse it for CCS2, whose upper part is the Type 2 face.
 
-- Outline: circle `C = (12, 11.5)`, `R = 9`, flattened by a horizontal edge at `y = 4.25` with fillets of radius 2.
-- Contact pitch `s = 5.3`; power contacts `r = 1.25`, signal contacts `r = 0.75`.
-- Rows (inlet, seen from the front):
-  - top, `y = 7.79`: PP at `x = 9.35`, CP at `x = 14.65` (signal, small)
-  - middle, `y = 11.5`: L1 at `x = 6.7`, PE at `x = 12`, N at `x = 17.3`
-  - bottom, `y = 16.106`: L2 at `x = 9.35`, L3 at `x = 14.65`
+- Outline: circle `C = (12, 12)`, `R = 9`, flattened by a horizontal edge at `y = 5` (0.778 R above the centre) with fillets of radius 2. The outline spans y 5–21, so the face sits 1 unit below the optical centre; that is accepted to make the flat top visible at 16 px.
+- Contact pitch `s = 5.3`; power contacts `r = 1.25`, signal contacts `r = 1.0`.
+- Rows (inlet, seen from the front), row spacing 0.70 s above and 0.869 s below the middle row:
+  - top, `y = 8.29`: PP at `x = 9.35`, CP at `x = 14.65` (signal, small)
+  - middle, `y = 12`: L1 at `x = 6.7`, PE at `x = 12`, N at `x = 17.3`
+  - bottom, `y = 16.606`: L2 at `x = 9.35`, L3 at `x = 14.65`
+- Smallest gaps (centre lines minus radii): signal contact to flat edge 2.29, signal to power contact 2.31, power contact to outline 2.44.
+- At 16–24 px all seven contacts render as similar dots (the hole of a r 1.0 ring is 0.25 units, of a r 1.25 ring 0.75 units). Small and large contacts are only distinguishable in large sizes, so the app must always show the text "Type 2" next to the icon.
 
 ## 6. Letter set
 

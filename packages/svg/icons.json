@@ -32,8 +32,8 @@
     "aliases": [],
     "provenance": {
       "createdBy": "ai",
-      "approvedBy": null,
-      "approvedOn": null
+      "approvedBy": "lotfi",
+      "approvedOn": "2026-10-21"
     },
     "pascal": "CarPlugged"
   },
@@ -70,8 +70,8 @@
     "aliases": [],
     "provenance": {
       "createdBy": "ai",
-      "approvedBy": null,
-      "approvedOn": null
+      "approvedBy": "lotfi",
+      "approvedOn": "2026-10-21"
     },
     "pascal": "ChargingStation"
   },
@@ -108,8 +108,8 @@
     ],
     "provenance": {
       "createdBy": "ai",
-      "approvedBy": null,
-      "approvedOn": null
+      "approvedBy": "lotfi",
+      "approvedOn": "2026-10-21"
     },
     "pascal": "CurrentAc"
   },
@@ -155,8 +155,8 @@
     ],
     "provenance": {
       "createdBy": "ai",
-      "approvedBy": null,
-      "approvedOn": null
+      "approvedBy": "lotfi",
+      "approvedOn": "2026-10-21"
     },
     "pascal": "PlugType2"
   },
@@ -188,8 +188,8 @@
     "aliases": [],
     "provenance": {
       "createdBy": "ai",
-      "approvedBy": null,
-      "approvedOn": null
+      "approvedBy": "lotfi",
+      "approvedOn": "2026-10-21"
     },
     "pascal": "StatusAvailable"
   }
