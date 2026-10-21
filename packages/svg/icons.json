@@ -1,1 +1,196 @@
-{}
+{
+  "car-plugged": {
+    "category": "vehicle",
+    "meaning": {
+      "en": "Electric car connected to a charging cable",
+      "de": "E-Auto am Ladekabel (angeschlossen)"
+    },
+    "tags": {
+      "en": [
+        "electric car",
+        "ev",
+        "plugged in",
+        "charging",
+        "car charging",
+        "cable"
+      ],
+      "de": [
+        "e-auto",
+        "elektroauto",
+        "angeschlossen",
+        "laden",
+        "ladekabel"
+      ],
+      "fr": [
+        "voiture électrique",
+        "branchée",
+        "en charge",
+        "câble de recharge"
+      ]
+    },
+    "since": "0.1.0",
+    "aliases": [],
+    "provenance": {
+      "createdBy": "ai",
+      "approvedBy": null,
+      "approvedOn": null
+    },
+    "pascal": "CarPlugged"
+  },
+  "charging-station": {
+    "category": "station",
+    "meaning": {
+      "en": "Charging station: a public or private charge point for electric vehicles",
+      "de": "Ladesäule: öffentlicher oder privater Ladepunkt für Elektrofahrzeuge"
+    },
+    "tags": {
+      "en": [
+        "charging station",
+        "charge point",
+        "charger",
+        "ev station",
+        "evse",
+        "charging pole"
+      ],
+      "de": [
+        "ladesäule",
+        "ladestation",
+        "ladepunkt",
+        "stromtankstelle",
+        "e-tankstelle"
+      ],
+      "fr": [
+        "borne de recharge",
+        "station de recharge",
+        "point de charge",
+        "borne électrique"
+      ]
+    },
+    "since": "0.1.0",
+    "aliases": [],
+    "provenance": {
+      "createdBy": "ai",
+      "approvedBy": null,
+      "approvedOn": null
+    },
+    "pascal": "ChargingStation"
+  },
+  "current-ac": {
+    "category": "power",
+    "meaning": {
+      "en": "Alternating current (AC) charging",
+      "de": "Laden mit Wechselstrom (AC)"
+    },
+    "tags": {
+      "en": [
+        "ac",
+        "alternating current",
+        "ac charging",
+        "normal charging"
+      ],
+      "de": [
+        "ac",
+        "wechselstrom",
+        "ac-laden",
+        "normalladen"
+      ],
+      "fr": [
+        "ac",
+        "courant alternatif",
+        "recharge ac",
+        "recharge normale"
+      ]
+    },
+    "since": "0.1.0",
+    "aliases": [],
+    "exceptions": [
+      "letters"
+    ],
+    "provenance": {
+      "createdBy": "ai",
+      "approvedBy": null,
+      "approvedOn": null
+    },
+    "pascal": "CurrentAc"
+  },
+  "plug-type-2": {
+    "category": "connector",
+    "meaning": {
+      "en": "Type 2 connector (IEC 62196-2, \"Mennekes\"), shown as the vehicle inlet face",
+      "de": "Typ-2-Stecker (IEC 62196-2, „Mennekes“), dargestellt als Fahrzeug-Ladebuchse in Draufsicht"
+    },
+    "tags": {
+      "en": [
+        "type 2",
+        "mennekes",
+        "iec 62196-2",
+        "ac connector",
+        "plug",
+        "inlet"
+      ],
+      "de": [
+        "typ 2",
+        "mennekes",
+        "iec 62196-2",
+        "ac-stecker",
+        "stecker",
+        "ladebuchse"
+      ],
+      "fr": [
+        "type 2",
+        "mennekes",
+        "iec 62196-2",
+        "prise type 2",
+        "connecteur ac"
+      ]
+    },
+    "since": "0.1.0",
+    "aliases": [],
+    "standard": {
+      "norm": "IEC 62196-2 (Type 2)",
+      "source": "IEC 62196-2 itself not consulted (paywalled). Contact layout checked against two public drawings: Wikimedia Commons \"File:Stecker-Typ 2 Belegung.svg\" (public domain; Type 2 plug \"bei Sicht auf die Steckkontakte\", male contact face: top PP, CP; middle L1, PE, N; bottom L2, L3), https://commons.wikimedia.org/wiki/File:Stecker-Typ_2_Belegung.svg, and \"File:IEC 62196-2 Type 2 (plug).svg\" by Mliu92 (CC BY-SA 4.0; end view of the female connector: top CP, PP; middle N, PE, L1; bottom L3, L2, i.e. the mirror image), https://commons.wikimedia.org/wiki/File:IEC_62196-2_Type_2_(plug).svg. Both retrieved 2026-10-21. The icon shows the male vehicle inlet seen from the front, which matches the male contact face."
+    },
+    "exceptions": [
+      "dense-connector"
+    ],
+    "provenance": {
+      "createdBy": "ai",
+      "approvedBy": null,
+      "approvedOn": null
+    },
+    "pascal": "PlugType2"
+  },
+  "status-available": {
+    "category": "status",
+    "meaning": {
+      "en": "Available: the charge point is free and ready to charge",
+      "de": "Frei: der Ladepunkt ist frei und betriebsbereit"
+    },
+    "tags": {
+      "en": [
+        "available",
+        "free",
+        "ready",
+        "vacant"
+      ],
+      "de": [
+        "frei",
+        "verfügbar",
+        "betriebsbereit"
+      ],
+      "fr": [
+        "disponible",
+        "libre",
+        "prêt"
+      ]
+    },
+    "since": "0.1.0",
+    "aliases": [],
+    "provenance": {
+      "createdBy": "ai",
+      "approvedBy": null,
+      "approvedOn": null
+    },
+    "pascal": "StatusAvailable"
+  }
+}

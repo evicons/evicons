@@ -1,0 +1,37 @@
+{
+  "category": "power",
+  "meaning": {
+    "en": "Alternating current (AC) charging",
+    "de": "Laden mit Wechselstrom (AC)"
+  },
+  "tags": {
+    "en": [
+      "ac",
+      "alternating current",
+      "ac charging",
+      "normal charging"
+    ],
+    "de": [
+      "ac",
+      "wechselstrom",
+      "ac-laden",
+      "normalladen"
+    ],
+    "fr": [
+      "ac",
+      "courant alternatif",
+      "recharge ac",
+      "recharge normale"
+    ]
+  },
+  "since": "0.1.0",
+  "aliases": [],
+  "exceptions": [
+    "letters"
+  ],
+  "provenance": {
+    "createdBy": "ai",
+    "approvedBy": null,
+    "approvedOn": null
+  }
+}

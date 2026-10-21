@@ -1,0 +1,37 @@
+{
+  "category": "station",
+  "meaning": {
+    "en": "Charging station: a public or private charge point for electric vehicles",
+    "de": "Ladesäule: öffentlicher oder privater Ladepunkt für Elektrofahrzeuge"
+  },
+  "tags": {
+    "en": [
+      "charging station",
+      "charge point",
+      "charger",
+      "ev station",
+      "evse",
+      "charging pole"
+    ],
+    "de": [
+      "ladesäule",
+      "ladestation",
+      "ladepunkt",
+      "stromtankstelle",
+      "e-tankstelle"
+    ],
+    "fr": [
+      "borne de recharge",
+      "station de recharge",
+      "point de charge",
+      "borne électrique"
+    ]
+  },
+  "since": "0.1.0",
+  "aliases": [],
+  "provenance": {
+    "createdBy": "ai",
+    "approvedBy": null,
+    "approvedOn": null
+  }
+}

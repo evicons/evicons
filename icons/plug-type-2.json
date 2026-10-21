@@ -1,0 +1,46 @@
+{
+  "category": "connector",
+  "meaning": {
+    "en": "Type 2 connector (IEC 62196-2, \"Mennekes\"), shown as the vehicle inlet face",
+    "de": "Typ-2-Stecker (IEC 62196-2, „Mennekes“), dargestellt als Fahrzeug-Ladebuchse in Draufsicht"
+  },
+  "tags": {
+    "en": [
+      "type 2",
+      "mennekes",
+      "iec 62196-2",
+      "ac connector",
+      "plug",
+      "inlet"
+    ],
+    "de": [
+      "typ 2",
+      "mennekes",
+      "iec 62196-2",
+      "ac-stecker",
+      "stecker",
+      "ladebuchse"
+    ],
+    "fr": [
+      "type 2",
+      "mennekes",
+      "iec 62196-2",
+      "prise type 2",
+      "connecteur ac"
+    ]
+  },
+  "since": "0.1.0",
+  "aliases": [],
+  "standard": {
+    "norm": "IEC 62196-2 (Type 2)",
+    "source": "IEC 62196-2 itself not consulted (paywalled). Contact layout checked against two public drawings: Wikimedia Commons \"File:Stecker-Typ 2 Belegung.svg\" (public domain; Type 2 plug \"bei Sicht auf die Steckkontakte\", male contact face: top PP, CP; middle L1, PE, N; bottom L2, L3), https://commons.wikimedia.org/wiki/File:Stecker-Typ_2_Belegung.svg, and \"File:IEC 62196-2 Type 2 (plug).svg\" by Mliu92 (CC BY-SA 4.0; end view of the female connector: top CP, PP; middle N, PE, L1; bottom L3, L2, i.e. the mirror image), https://commons.wikimedia.org/wiki/File:IEC_62196-2_Type_2_(plug).svg. Both retrieved 2026-10-21. The icon shows the male vehicle inlet seen from the front, which matches the male contact face."
+  },
+  "exceptions": [
+    "dense-connector"
+  ],
+  "provenance": {
+    "createdBy": "ai",
+    "approvedBy": null,
+    "approvedOn": null
+  }
+}

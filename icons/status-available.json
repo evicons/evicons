@@ -1,0 +1,32 @@
+{
+  "category": "status",
+  "meaning": {
+    "en": "Available: the charge point is free and ready to charge",
+    "de": "Frei: der Ladepunkt ist frei und betriebsbereit"
+  },
+  "tags": {
+    "en": [
+      "available",
+      "free",
+      "ready",
+      "vacant"
+    ],
+    "de": [
+      "frei",
+      "verfügbar",
+      "betriebsbereit"
+    ],
+    "fr": [
+      "disponible",
+      "libre",
+      "prêt"
+    ]
+  },
+  "since": "0.1.0",
+  "aliases": [],
+  "provenance": {
+    "createdBy": "ai",
+    "approvedBy": null,
+    "approvedOn": null
+  }
+}

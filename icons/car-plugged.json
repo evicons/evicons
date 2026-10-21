@@ -1,0 +1,37 @@
+{
+  "category": "vehicle",
+  "meaning": {
+    "en": "Electric car connected to a charging cable",
+    "de": "E-Auto am Ladekabel (angeschlossen)"
+  },
+  "tags": {
+    "en": [
+      "electric car",
+      "ev",
+      "plugged in",
+      "charging",
+      "car charging",
+      "cable"
+    ],
+    "de": [
+      "e-auto",
+      "elektroauto",
+      "angeschlossen",
+      "laden",
+      "ladekabel"
+    ],
+    "fr": [
+      "voiture électrique",
+      "branchée",
+      "en charge",
+      "câble de recharge"
+    ]
+  },
+  "since": "0.1.0",
+  "aliases": [],
+  "provenance": {
+    "createdBy": "ai",
+    "approvedBy": null,
+    "approvedOn": null
+  }
+}
