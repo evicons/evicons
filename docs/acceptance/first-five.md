@@ -120,6 +120,7 @@ Decided by Lotfi on 2026-10-21 in the preview.
 | N4 | `charging-station`: accept the small bolt as is. | None. |
 | Spacing rule | Minimum spacing for symbols inside windows is 2.0 (0.25 visible gap): confirmed. | Recorded in the design guide, section 2. |
 | Stroke / radius | Stroke width 1.75 and minimum radius 1.25 unchanged. | None (no global change). |
+| I3 (2026-10-21, later) | `car-plugged`: the owner changed I3 to option B after the re-review (at 16 px the L-shaped cable and the plug still merged into a "J"-like stem, and the stem was 1.75 from the body rear). The plug docks at the rear and the cable drops in one soft arc. Approval of the final shape is pending in the v0.1 acceptance (`docs/acceptance/v0.1.md`). | Plug head `M5.594 12.75H3.25A1.25 1.25 0 0 0 2 14v.5a1.25 1.25 0 0 0 1.25 1.25H5.5` (y 12.75–15.75; the top edge ends on the body's rear corner arc), cable `M3.5 15.75v1.75A1.5 1.5 0 0 1 2 19`. The reviewer's starting point (head y 10.5–13.5, cable `M4.75 13.5v3.5a2 2 0 0 1-2 2H2`) does not fit the widened body: the head's top edge would be 1.0 from the belt line, and the cable at x 3.75 would be 1.75 from the body rear and its arc would end at x 1.75, outside the live area. Gaps now: head top edge to belt line 2.07, cable to body rear 2.0. |
 
 ## Owner approval
 
