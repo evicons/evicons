@@ -10,19 +10,25 @@
       "fault",
       "error",
       "broken",
-      "defective"
+      "defective",
+      "exclamation mark",
+      "alert"
     ],
     "de": [
       "defekt",
       "fehler",
       "störung",
-      "kaputt"
+      "kaputt",
+      "ausrufezeichen",
+      "warnung"
     ],
     "fr": [
       "en panne",
       "défaut",
       "erreur",
-      "hors d'usage"
+      "hors d'usage",
+      "point d’exclamation",
+      "alerte"
     ]
   },
   "since": "0.1.0",

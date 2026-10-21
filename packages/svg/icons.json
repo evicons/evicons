@@ -333,19 +333,25 @@
         "fault",
         "error",
         "broken",
-        "defective"
+        "defective",
+        "exclamation mark",
+        "alert"
       ],
       "de": [
         "defekt",
         "fehler",
         "störung",
-        "kaputt"
+        "kaputt",
+        "ausrufezeichen",
+        "warnung"
       ],
       "fr": [
         "en panne",
         "défaut",
         "erreur",
-        "hors d'usage"
+        "hors d'usage",
+        "point d’exclamation",
+        "alerte"
       ]
     },
     "since": "0.1.0",
@@ -401,18 +407,24 @@
         "unavailable",
         "inoperative",
         "maintenance",
-        "closed"
+        "closed",
+        "decommissioned",
+        "plug crossed out"
       ],
       "de": [
         "außer betrieb",
         "nicht verfügbar",
         "wartung",
-        "gesperrt"
+        "gesperrt",
+        "stillgelegt",
+        "stecker durchgestrichen"
       ],
       "fr": [
         "hors service",
         "indisponible",
-        "maintenance"
+        "maintenance",
+        "fermé",
+        "prise barrée"
       ]
     },
     "since": "0.1.0",
@@ -434,23 +446,25 @@
       "en": [
         "reserved",
         "booked",
-        "reservation"
+        "reservation",
+        "calendar",
+        "booking"
       ],
       "de": [
         "reserviert",
         "gebucht",
-        "reservierung"
+        "reservierung",
+        "kalender",
+        "buchung"
       ],
       "fr": [
         "réservé",
-        "réservation"
+        "réservation",
+        "calendrier"
       ]
     },
     "since": "0.1.0",
     "aliases": [],
-    "exceptions": [
-      "sharp-corner"
-    ],
     "provenance": {
       "createdBy": "ai",
       "approvedBy": null,

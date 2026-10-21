@@ -8,23 +8,25 @@
     "en": [
       "reserved",
       "booked",
-      "reservation"
+      "reservation",
+      "calendar",
+      "booking"
     ],
     "de": [
       "reserviert",
       "gebucht",
-      "reservierung"
+      "reservierung",
+      "kalender",
+      "buchung"
     ],
     "fr": [
       "réservé",
-      "réservation"
+      "réservation",
+      "calendrier"
     ]
   },
   "since": "0.1.0",
   "aliases": [],
-  "exceptions": [
-    "sharp-corner"
-  ],
   "provenance": {
     "createdBy": "ai",
     "approvedBy": null,

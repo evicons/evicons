@@ -10,18 +10,24 @@
       "unavailable",
       "inoperative",
       "maintenance",
-      "closed"
+      "closed",
+      "decommissioned",
+      "plug crossed out"
     ],
     "de": [
       "außer betrieb",
       "nicht verfügbar",
       "wartung",
-      "gesperrt"
+      "gesperrt",
+      "stillgelegt",
+      "stecker durchgestrichen"
     ],
     "fr": [
       "hors service",
       "indisponible",
-      "maintenance"
+      "maintenance",
+      "fermé",
+      "prise barrée"
     ]
   },
   "since": "0.1.0",
