@@ -73,6 +73,9 @@ An independent reviewer (2026-10-21) checked range `90187b0..baafada`. Spec comp
 | M6 | Outline deviation from the reference not recorded. | Fixed: row added to the norm table. |
 | M7 | Badge stroke too faint at 12 px. | Fixed: the design guide recommends `absoluteStrokeWidth` with 1.5 (or `strokeWidth` 2). |
 | O1–O3 | Car optical size, Type 2 contact sizes, generic plug on the station. | Owner decisions, see open questions. |
+| N1, N4 | Re-review: station column reads as a terminal at 16 px; bolt small. | Owner decisions, see open questions. |
+| N2 | Re-review: SVGO left an empty subpath `M7.75 17z` in `car-plugged`. | Fixed: the path starts directly with the corner arc; verified in the generated React, SVG and sprite output. |
+| N3 | Re-review: station plug prongs merge at 16 px (0.25 gap). | Fixed: prongs at x 18 and 20.5 (0.75 gap, 1.0 inside the plug body). |
 
 ## Open questions for the owner
 
@@ -87,6 +90,9 @@ An independent reviewer (2026-10-21) checked range `90187b0..baafada`. Spec comp
   - Is it acceptable that power and signal contacts look alike at 16 px? If not: power r 1.5 with the pitch reduced to 5.0 (L1 x 7, N x 17), then re-check the gaps.
 - **M4 – `plug-type-2`: the flat top is hard to see at 16 px.** Option: move the outline centre to (12, 12) and the flat edge to y 5, and shift the contacts by +0.5. That is closer to the reference flattening, at the cost of vertical balance (the bottom edge goes to 21.875).
 - **O3 – `charging-station`: the hanging plug has two prongs (household-plug metaphor).** Keep it (clearer at 16 px), or use a rounded connector head without prongs?
+- **N1 – `charging-station`: the closed column floating above a separate base line can read as a device or terminal at 16 px rather than a pillar standing on the ground.** Options: (a) bring the base closer so the column stands on it, e.g. column `rect x=3.25 y=2.5 w=11.25 h=17.25 rx=2.75` (bottom 19.75) and base `M2 21.75h14.25` (2.0 gap); (b) drop the base line and accept a free-standing column; (c) give the column a narrower foot. Decide in the preview.
+- **N4 – `charging-station`: the bolt is small (2.25 wide) and reads as a slash at 16 px.** Options: accept it (window and plug carry the meaning); drop the window frame and draw a larger bolt (about 4 wide) directly on the column face; or turn the window into a short screen strip at the top with a larger bolt below. Related to N1 and O3.
+- **Design guide: minimum spacing for symbols inside windows lowered to 2.0** (0.25 visible gap; previously about 2.25), needed by the station bolt and connector faces. Confirm or reject this rule change.
 
 ## Owner approval
 
