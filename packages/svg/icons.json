@@ -1,4 +1,49 @@
 {
+  "app-charging": {
+    "category": "payment",
+    "meaning": {
+      "en": "Charging by app: start and pay a charging session with a smartphone app",
+      "de": "Laden per App: Ladevorgang mit einer Smartphone-App starten und bezahlen"
+    },
+    "tags": {
+      "en": [
+        "app charging",
+        "app",
+        "smartphone",
+        "phone",
+        "mobile",
+        "payment"
+      ],
+      "de": [
+        "laden per app",
+        "app",
+        "smartphone",
+        "handy",
+        "mobil",
+        "bezahlen"
+      ],
+      "fr": [
+        "recharge par application",
+        "application",
+        "smartphone",
+        "téléphone",
+        "mobile",
+        "paiement"
+      ]
+    },
+    "since": "0.2.0",
+    "aliases": [],
+    "exceptions": [
+      "solid-sign",
+      "sharp-corner"
+    ],
+    "provenance": {
+      "createdBy": "ai",
+      "approvedBy": null,
+      "approvedOn": null
+    },
+    "pascal": "AppCharging"
+  },
   "battery-charging": {
     "category": "energy",
     "meaning": {
@@ -161,6 +206,49 @@
     },
     "pascal": "CarPlugged"
   },
+  "card-terminal": {
+    "category": "payment",
+    "meaning": {
+      "en": "Card terminal: ad hoc payment by debit or credit card, contactless",
+      "de": "Kartenterminal: Ad-hoc-Zahlung mit Debit- oder Kreditkarte, kontaktlos"
+    },
+    "tags": {
+      "en": [
+        "card terminal",
+        "payment terminal",
+        "ad hoc",
+        "contactless",
+        "debit card",
+        "credit card",
+        "afir"
+      ],
+      "de": [
+        "kartenterminal",
+        "bezahlterminal",
+        "ad hoc",
+        "kontaktlos",
+        "girokarte",
+        "kreditkarte",
+        "afir"
+      ],
+      "fr": [
+        "terminal de paiement",
+        "terminal carte",
+        "ad hoc",
+        "sans contact",
+        "carte bancaire",
+        "afir"
+      ]
+    },
+    "since": "0.2.0",
+    "aliases": [],
+    "provenance": {
+      "createdBy": "ai",
+      "approvedBy": null,
+      "approvedOn": null
+    },
+    "pascal": "CardTerminal"
+  },
   "charging-bolt": {
     "category": "power",
     "meaning": {
@@ -243,6 +331,97 @@
     },
     "pascal": "ChargingCable"
   },
+  "charging-card": {
+    "category": "payment",
+    "meaning": {
+      "en": "Charging card: an RFID card that starts a charging session",
+      "de": "Ladekarte: RFID-Karte, die einen Ladevorgang startet"
+    },
+    "tags": {
+      "en": [
+        "charging card",
+        "rfid",
+        "rfid card",
+        "card",
+        "contactless",
+        "roaming card",
+        "payment"
+      ],
+      "de": [
+        "ladekarte",
+        "rfid",
+        "rfid-karte",
+        "karte",
+        "kontaktlos",
+        "roaming-karte",
+        "bezahlen"
+      ],
+      "fr": [
+        "carte de recharge",
+        "rfid",
+        "carte rfid",
+        "carte",
+        "sans contact",
+        "paiement"
+      ]
+    },
+    "since": "0.2.0",
+    "aliases": [],
+    "exceptions": [
+      "solid-sign",
+      "sharp-corner"
+    ],
+    "provenance": {
+      "createdBy": "ai",
+      "approvedBy": null,
+      "approvedOn": null
+    },
+    "pascal": "ChargingCard"
+  },
+  "charging-log": {
+    "category": "payment",
+    "meaning": {
+      "en": "Charging log: a record of charging sessions, for example a log book or receipt",
+      "de": "Ladetagebuch: Aufzeichnung der Ladevorgänge, zum Beispiel Fahrtenbuch oder Beleg"
+    },
+    "tags": {
+      "en": [
+        "charging log",
+        "log",
+        "charging history",
+        "session",
+        "receipt",
+        "record"
+      ],
+      "de": [
+        "ladetagebuch",
+        "protokoll",
+        "ladehistorie",
+        "ladevorgang",
+        "beleg",
+        "nachweis"
+      ],
+      "fr": [
+        "journal de recharge",
+        "historique",
+        "session de recharge",
+        "reçu",
+        "relevé"
+      ]
+    },
+    "since": "0.2.0",
+    "aliases": [],
+    "exceptions": [
+      "solid-sign",
+      "sharp-corner"
+    ],
+    "provenance": {
+      "createdBy": "ai",
+      "approvedBy": null,
+      "approvedOn": null
+    },
+    "pascal": "ChargingLog"
+  },
   "charging-plug": {
     "category": "station",
     "meaning": {
@@ -318,6 +497,50 @@
       "approvedOn": "2026-10-21"
     },
     "pascal": "ChargingStation"
+  },
+  "charging-tariff": {
+    "category": "payment",
+    "meaning": {
+      "en": "Charging tariff: the price of charging, for example per kWh",
+      "de": "Ladetarif: der Preis fürs Laden, zum Beispiel je kWh"
+    },
+    "tags": {
+      "en": [
+        "charging tariff",
+        "tariff",
+        "price",
+        "price per kwh",
+        "cost",
+        "rate"
+      ],
+      "de": [
+        "ladetarif",
+        "tarif",
+        "preis",
+        "preis je kwh",
+        "kosten",
+        "strompreis"
+      ],
+      "fr": [
+        "tarif de recharge",
+        "tarif",
+        "prix",
+        "prix par kwh",
+        "coût"
+      ]
+    },
+    "since": "0.2.0",
+    "aliases": [],
+    "exceptions": [
+      "solid-sign",
+      "sharp-corner"
+    ],
+    "provenance": {
+      "createdBy": "ai",
+      "approvedBy": null,
+      "approvedOn": null
+    },
+    "pascal": "ChargingTariff"
   },
   "current-ac": {
     "category": "power",
@@ -839,6 +1062,51 @@
       "approvedOn": null
     },
     "pascal": "Range"
+  },
+  "roaming": {
+    "category": "payment",
+    "meaning": {
+      "en": "Roaming: charging with a contract from another provider",
+      "de": "Roaming: Laden mit dem Vertrag eines anderen Anbieters"
+    },
+    "tags": {
+      "en": [
+        "roaming",
+        "provider",
+        "operator",
+        "network",
+        "interoperability",
+        "global"
+      ],
+      "de": [
+        "roaming",
+        "anbieter",
+        "betreiber",
+        "netz",
+        "interoperabilität",
+        "weltweit"
+      ],
+      "fr": [
+        "itinérance",
+        "roaming",
+        "fournisseur",
+        "opérateur",
+        "réseau",
+        "interopérabilité"
+      ]
+    },
+    "since": "0.2.0",
+    "aliases": [],
+    "exceptions": [
+      "solid-sign",
+      "sharp-corner"
+    ],
+    "provenance": {
+      "createdBy": "ai",
+      "approvedBy": null,
+      "approvedOn": null
+    },
+    "pascal": "Roaming"
   },
   "solar-charging": {
     "category": "energy",

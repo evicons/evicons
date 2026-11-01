@@ -1,0 +1,43 @@
+{
+  "category": "payment",
+  "meaning": {
+    "en": "Charging log: a record of charging sessions, for example a log book or receipt",
+    "de": "Ladetagebuch: Aufzeichnung der Ladevorgänge, zum Beispiel Fahrtenbuch oder Beleg"
+  },
+  "tags": {
+    "en": [
+      "charging log",
+      "log",
+      "charging history",
+      "session",
+      "receipt",
+      "record"
+    ],
+    "de": [
+      "ladetagebuch",
+      "protokoll",
+      "ladehistorie",
+      "ladevorgang",
+      "beleg",
+      "nachweis"
+    ],
+    "fr": [
+      "journal de recharge",
+      "historique",
+      "session de recharge",
+      "reçu",
+      "relevé"
+    ]
+  },
+  "since": "0.2.0",
+  "aliases": [],
+  "exceptions": [
+    "solid-sign",
+    "sharp-corner"
+  ],
+  "provenance": {
+    "createdBy": "ai",
+    "approvedBy": null,
+    "approvedOn": null
+  }
+}

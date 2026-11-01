@@ -1,0 +1,46 @@
+{
+  "category": "payment",
+  "meaning": {
+    "en": "Charging card: an RFID card that starts a charging session",
+    "de": "Ladekarte: RFID-Karte, die einen Ladevorgang startet"
+  },
+  "tags": {
+    "en": [
+      "charging card",
+      "rfid",
+      "rfid card",
+      "card",
+      "contactless",
+      "roaming card",
+      "payment"
+    ],
+    "de": [
+      "ladekarte",
+      "rfid",
+      "rfid-karte",
+      "karte",
+      "kontaktlos",
+      "roaming-karte",
+      "bezahlen"
+    ],
+    "fr": [
+      "carte de recharge",
+      "rfid",
+      "carte rfid",
+      "carte",
+      "sans contact",
+      "paiement"
+    ]
+  },
+  "since": "0.2.0",
+  "aliases": [],
+  "exceptions": [
+    "solid-sign",
+    "sharp-corner"
+  ],
+  "provenance": {
+    "createdBy": "ai",
+    "approvedBy": null,
+    "approvedOn": null
+  }
+}

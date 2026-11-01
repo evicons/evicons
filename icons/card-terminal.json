@@ -1,0 +1,42 @@
+{
+  "category": "payment",
+  "meaning": {
+    "en": "Card terminal: ad hoc payment by debit or credit card, contactless",
+    "de": "Kartenterminal: Ad-hoc-Zahlung mit Debit- oder Kreditkarte, kontaktlos"
+  },
+  "tags": {
+    "en": [
+      "card terminal",
+      "payment terminal",
+      "ad hoc",
+      "contactless",
+      "debit card",
+      "credit card",
+      "afir"
+    ],
+    "de": [
+      "kartenterminal",
+      "bezahlterminal",
+      "ad hoc",
+      "kontaktlos",
+      "girokarte",
+      "kreditkarte",
+      "afir"
+    ],
+    "fr": [
+      "terminal de paiement",
+      "terminal carte",
+      "ad hoc",
+      "sans contact",
+      "carte bancaire",
+      "afir"
+    ]
+  },
+  "since": "0.2.0",
+  "aliases": [],
+  "provenance": {
+    "createdBy": "ai",
+    "approvedBy": null,
+    "approvedOn": null
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "category": "payment",
+  "meaning": {
+    "en": "Charging by app: start and pay a charging session with a smartphone app",
+    "de": "Laden per App: Ladevorgang mit einer Smartphone-App starten und bezahlen"
+  },
+  "tags": {
+    "en": [
+      "app charging",
+      "app",
+      "smartphone",
+      "phone",
+      "mobile",
+      "payment"
+    ],
+    "de": [
+      "laden per app",
+      "app",
+      "smartphone",
+      "handy",
+      "mobil",
+      "bezahlen"
+    ],
+    "fr": [
+      "recharge par application",
+      "application",
+      "smartphone",
+      "téléphone",
+      "mobile",
+      "paiement"
+    ]
+  },
+  "since": "0.2.0",
+  "aliases": [],
+  "exceptions": [
+    "solid-sign",
+    "sharp-corner"
+  ],
+  "provenance": {
+    "createdBy": "ai",
+    "approvedBy": null,
+    "approvedOn": null
+  }
+}

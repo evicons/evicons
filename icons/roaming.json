@@ -1,0 +1,44 @@
+{
+  "category": "payment",
+  "meaning": {
+    "en": "Roaming: charging with a contract from another provider",
+    "de": "Roaming: Laden mit dem Vertrag eines anderen Anbieters"
+  },
+  "tags": {
+    "en": [
+      "roaming",
+      "provider",
+      "operator",
+      "network",
+      "interoperability",
+      "global"
+    ],
+    "de": [
+      "roaming",
+      "anbieter",
+      "betreiber",
+      "netz",
+      "interoperabilität",
+      "weltweit"
+    ],
+    "fr": [
+      "itinérance",
+      "roaming",
+      "fournisseur",
+      "opérateur",
+      "réseau",
+      "interopérabilité"
+    ]
+  },
+  "since": "0.2.0",
+  "aliases": [],
+  "exceptions": [
+    "solid-sign",
+    "sharp-corner"
+  ],
+  "provenance": {
+    "createdBy": "ai",
+    "approvedBy": null,
+    "approvedOn": null
+  }
+}

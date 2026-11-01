@@ -1,0 +1,43 @@
+{
+  "category": "payment",
+  "meaning": {
+    "en": "Charging tariff: the price of charging, for example per kWh",
+    "de": "Ladetarif: der Preis fürs Laden, zum Beispiel je kWh"
+  },
+  "tags": {
+    "en": [
+      "charging tariff",
+      "tariff",
+      "price",
+      "price per kwh",
+      "cost",
+      "rate"
+    ],
+    "de": [
+      "ladetarif",
+      "tarif",
+      "preis",
+      "preis je kwh",
+      "kosten",
+      "strompreis"
+    ],
+    "fr": [
+      "tarif de recharge",
+      "tarif",
+      "prix",
+      "prix par kwh",
+      "coût"
+    ]
+  },
+  "since": "0.2.0",
+  "aliases": [],
+  "exceptions": [
+    "solid-sign",
+    "sharp-corner"
+  ],
+  "provenance": {
+    "createdBy": "ai",
+    "approvedBy": null,
+    "approvedOn": null
+  }
+}
