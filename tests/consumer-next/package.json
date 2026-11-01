@@ -1,0 +1,20 @@
+{
+  "name": "evicons-consumer-next",
+  "private": true,
+  "description": "Smoke test: a real Next 16 app that consumes the packed @evicons/react tarball (run `npm run test:consumer-next` from the repo root)",
+  "scripts": {
+    "build": "next build"
+  },
+  "dependencies": {
+    "@evicons/react": "file:evicons-react.tgz",
+    "next": "16.4.3",
+    "react": "19.3.1",
+    "react-dom": "19.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "24.19.2",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "typescript": "5.9.3"
+  }
+}

@@ -1,0 +1,89 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    name: Lint, build, test, typecheck
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npm run lint:icons
+      - run: npm run build
+      - name: Generated files are checked in and reproducible
+        run: git diff --exit-code
+      - run: npm test
+      - run: npm run typecheck
+
+  smoke:
+    name: Smoke (Node ${{ matrix.node }}, React ${{ matrix.react }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        node: [20, 24]
+        react: [18, 19]
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: ${{ matrix.node }}
+          cache: npm
+      - run: npm ci
+      - name: Install React ${{ matrix.react }}
+        env:
+          V: ${{ matrix.react }}
+        run: npm i -D react@$V react-dom@$V @types/react@$V --no-save
+      # The generated sources are checked in (verified by the check job), so only the
+      # package itself is compiled here; tools/*.ts needs Node 24.
+      - run: npm run build -w @evicons/react
+      - run: npm run test:smoke
+
+  consumer-next:
+    name: Consumer Next.js app (Server Component)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      - run: npm run test:consumer-next
+
+  visual:
+    name: Visual regression
+    runs-on: ubuntu-latest
+    # Keep the tag equal to the installed @playwright/test version; snapshots are generated in this image.
+    container:
+      image: mcr.microsoft.com/playwright:v1.64.1-noble
+      options: --ipc=host
+    steps:
+      - uses: actions/checkout@v5
+      - run: npm ci
+      - run: npx playwright test
+        env:
+          HOME: /root
+      - if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-results
+          path: |
+            test-results/
+            playwright-report/
+          retention-days: 7

@@ -14,10 +14,12 @@
     "build:icons": "node tools/build-icons.ts",
     "build": "npm run build:icons && npm run build -w @evicons/react",
     "preview": "node tools/build-preview.ts",
-    "typecheck": "tsc -p tools/tsconfig.json && tsc -p packages/react/tsconfig.build.json --noEmit"
+    "typecheck": "tsc -p tools/tsconfig.json && tsc -p packages/react/tsconfig.build.json --noEmit",
+    "test:smoke": "vitest run --config vitest.consumer.config.ts",
+    "test:consumer-next": "node tools/test-consumer-next.ts"
   },
   "devDependencies": {
-    "@playwright/test": "^1.64.1",
+    "@playwright/test": "1.64.1",
     "@testing-library/jest-dom": "^7.0.1",
     "@testing-library/react": "^16.3.3",
     "@types/node": "^26.6.5",
