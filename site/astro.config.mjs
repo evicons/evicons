@@ -15,5 +15,9 @@ export default defineConfig({
     // Code blocks in the docs and the changelog: light and dark theme, switched by data-theme (global.css).
     shikiConfig: { themes: { light: 'github-light-default', dark: 'github-dark-default' } },
   },
-  vite: { plugins: [tailwindcss()] },
+  vite: {
+    plugins: [tailwindcss()],
+    // MapLibre GL (about 1 MB) is a lazy chunk loaded only by the /map page.
+    build: { chunkSizeWarningLimit: 1100 },
+  },
 })
