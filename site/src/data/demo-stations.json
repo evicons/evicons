@@ -1,0 +1,14 @@
+[
+  { "id": "demo-01", "demo": true, "name": "Riverside Car Park", "lat": 47.8584, "lng": 12.1312, "status": "available", "current": "ac", "connectors": ["Type 2", "Type 2"], "kW": 22 },
+  { "id": "demo-02", "demo": true, "name": "Old Town North", "lat": 47.8611, "lng": 12.1205, "status": "occupied", "current": "ac", "connectors": ["Type 2"], "kW": 11 },
+  { "id": "demo-03", "demo": true, "name": "Market Hall", "lat": 47.8538, "lng": 12.1248, "status": "available", "current": "dc", "connectors": ["CCS2", "CHAdeMO"], "kW": 150 },
+  { "id": "demo-04", "demo": true, "name": "Station Forecourt", "lat": 47.8497, "lng": 12.1179, "status": "faulted", "current": "dc", "connectors": ["CCS2"], "kW": 50 },
+  { "id": "demo-05", "demo": true, "name": "Business Park East", "lat": 47.8566, "lng": 12.1478, "status": "available", "current": "dc", "connectors": ["CCS2", "CCS2"], "kW": 300 },
+  { "id": "demo-06", "demo": true, "name": "Hospital Visitor Parking", "lat": 47.8667, "lng": 12.1082, "status": "occupied", "current": "ac", "connectors": ["Type 2", "Type 2"], "kW": 22 },
+  { "id": "demo-07", "demo": true, "name": "Lakeside Garage", "lat": 47.8432, "lng": 12.1352, "status": "unknown", "current": "ac", "connectors": ["Type 2"], "kW": 11 },
+  { "id": "demo-08", "demo": true, "name": "Retail Park South", "lat": 47.8401, "lng": 12.1121, "status": "available", "current": "dc", "connectors": ["CCS2", "CHAdeMO", "Type 2"], "kW": 150 },
+  { "id": "demo-09", "demo": true, "name": "Sports Centre", "lat": 47.8712, "lng": 12.1301, "status": "out-of-service", "current": "ac", "connectors": ["Type 2"], "kW": 22 },
+  { "id": "demo-10", "demo": true, "name": "Town Hall Square", "lat": 47.8560, "lng": 12.1150, "status": "occupied", "current": "ac", "connectors": ["Type 2", "Schuko"], "kW": 11 },
+  { "id": "demo-11", "demo": true, "name": "Motorway Link West", "lat": 47.8489, "lng": 12.0958, "status": "faulted", "current": "dc", "connectors": ["CCS2"], "kW": 150 },
+  { "id": "demo-12", "demo": true, "name": "University Campus", "lat": 47.8636, "lng": 12.1420, "status": "unknown", "current": "ac", "connectors": ["Type 2", "Type 2"], "kW": 22 }
+]

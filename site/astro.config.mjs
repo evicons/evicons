@@ -10,5 +10,9 @@ export default defineConfig({
   // One URL form everywhere: no trailing slash (nginx redirects /path/ to /path).
   trailingSlash: 'never',
   integrations: [react()],
-  vite: { plugins: [tailwindcss()] },
+  vite: {
+    plugins: [tailwindcss()],
+    // MapLibre GL (about 1 MB) is a lazy chunk loaded only by the /map page.
+    build: { chunkSizeWarningLimit: 1100 },
+  },
 })
