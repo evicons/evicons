@@ -1,0 +1,45 @@
+{
+  "category": "marker",
+  "meaning": {
+    "en": "Map marker: the charging point is occupied",
+    "de": "Kartenmarker: der Ladepunkt ist belegt"
+  },
+  "tags": {
+    "en": [
+      "marker",
+      "map pin",
+      "occupied",
+      "in use",
+      "busy",
+      "clock",
+      "status"
+    ],
+    "de": [
+      "marker",
+      "kartenpin",
+      "belegt",
+      "besetzt",
+      "in benutzung",
+      "uhr",
+      "status"
+    ],
+    "fr": [
+      "marqueur",
+      "épingle",
+      "occupé",
+      "en cours d’utilisation",
+      "horloge",
+      "statut"
+    ]
+  },
+  "since": "0.2.0",
+  "aliases": [],
+  "exceptions": [
+    "sharp-corner"
+  ],
+  "provenance": {
+    "createdBy": "ai",
+    "approvedBy": null,
+    "approvedOn": null
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "category": "marker",
+  "meaning": {
+    "en": "Map marker: the charging point is available",
+    "de": "Kartenmarker: der Ladepunkt ist frei"
+  },
+  "tags": {
+    "en": [
+      "marker",
+      "map pin",
+      "available",
+      "free",
+      "check mark",
+      "status"
+    ],
+    "de": [
+      "marker",
+      "kartenpin",
+      "frei",
+      "verfügbar",
+      "haken",
+      "status"
+    ],
+    "fr": [
+      "marqueur",
+      "épingle",
+      "disponible",
+      "libre",
+      "coche",
+      "statut"
+    ]
+  },
+  "since": "0.2.0",
+  "aliases": [],
+  "exceptions": [
+    "sharp-corner"
+  ],
+  "provenance": {
+    "createdBy": "ai",
+    "approvedBy": null,
+    "approvedOn": null
+  }
+}

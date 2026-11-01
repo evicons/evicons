@@ -784,6 +784,381 @@
     },
     "pascal": "HomeCharging"
   },
+  "marker": {
+    "category": "marker",
+    "meaning": {
+      "en": "Map marker for a charging point",
+      "de": "Kartenmarker für einen Ladepunkt"
+    },
+    "tags": {
+      "en": [
+        "marker",
+        "map pin",
+        "charging point",
+        "charging station",
+        "location",
+        "map",
+        "lightning bolt"
+      ],
+      "de": [
+        "marker",
+        "kartenpin",
+        "ladepunkt",
+        "ladestation",
+        "standort",
+        "karte",
+        "blitz"
+      ],
+      "fr": [
+        "marqueur",
+        "épingle",
+        "point de recharge",
+        "borne de recharge",
+        "emplacement",
+        "carte",
+        "éclair"
+      ]
+    },
+    "since": "0.2.0",
+    "aliases": [],
+    "exceptions": [
+      "sharp-corner"
+    ],
+    "provenance": {
+      "createdBy": "ai",
+      "approvedBy": null,
+      "approvedOn": null
+    },
+    "pascal": "Marker"
+  },
+  "marker-ac": {
+    "category": "marker",
+    "meaning": {
+      "en": "Map marker for an AC charging point",
+      "de": "Kartenmarker für einen AC-Ladepunkt"
+    },
+    "tags": {
+      "en": [
+        "marker",
+        "map pin",
+        "ac",
+        "alternating current",
+        "ac charging",
+        "normal charging",
+        "location"
+      ],
+      "de": [
+        "marker",
+        "kartenpin",
+        "ac",
+        "wechselstrom",
+        "ac-laden",
+        "normalladen",
+        "standort"
+      ],
+      "fr": [
+        "marqueur",
+        "épingle",
+        "ac",
+        "courant alternatif",
+        "recharge ac",
+        "recharge normale",
+        "emplacement"
+      ]
+    },
+    "since": "0.2.0",
+    "aliases": [],
+    "exceptions": [
+      "letters",
+      "sharp-corner"
+    ],
+    "provenance": {
+      "createdBy": "ai",
+      "approvedBy": null,
+      "approvedOn": null
+    },
+    "pascal": "MarkerAc"
+  },
+  "marker-available": {
+    "category": "marker",
+    "meaning": {
+      "en": "Map marker: the charging point is available",
+      "de": "Kartenmarker: der Ladepunkt ist frei"
+    },
+    "tags": {
+      "en": [
+        "marker",
+        "map pin",
+        "available",
+        "free",
+        "check mark",
+        "status"
+      ],
+      "de": [
+        "marker",
+        "kartenpin",
+        "frei",
+        "verfügbar",
+        "haken",
+        "status"
+      ],
+      "fr": [
+        "marqueur",
+        "épingle",
+        "disponible",
+        "libre",
+        "coche",
+        "statut"
+      ]
+    },
+    "since": "0.2.0",
+    "aliases": [],
+    "exceptions": [
+      "sharp-corner"
+    ],
+    "provenance": {
+      "createdBy": "ai",
+      "approvedBy": null,
+      "approvedOn": null
+    },
+    "pascal": "MarkerAvailable"
+  },
+  "marker-dc": {
+    "category": "marker",
+    "meaning": {
+      "en": "Map marker for a DC charging point",
+      "de": "Kartenmarker für einen DC-Ladepunkt"
+    },
+    "tags": {
+      "en": [
+        "marker",
+        "map pin",
+        "dc",
+        "direct current",
+        "dc charging",
+        "fast charging",
+        "location"
+      ],
+      "de": [
+        "marker",
+        "kartenpin",
+        "dc",
+        "gleichstrom",
+        "dc-laden",
+        "schnellladen",
+        "standort"
+      ],
+      "fr": [
+        "marqueur",
+        "épingle",
+        "dc",
+        "courant continu",
+        "recharge dc",
+        "recharge rapide",
+        "emplacement"
+      ]
+    },
+    "since": "0.2.0",
+    "aliases": [],
+    "exceptions": [
+      "letters",
+      "sharp-corner"
+    ],
+    "provenance": {
+      "createdBy": "ai",
+      "approvedBy": null,
+      "approvedOn": null
+    },
+    "pascal": "MarkerDc"
+  },
+  "marker-faulted": {
+    "category": "marker",
+    "meaning": {
+      "en": "Map marker: the charging point reports an error and cannot charge",
+      "de": "Kartenmarker: der Ladepunkt meldet einen Fehler und kann nicht laden"
+    },
+    "tags": {
+      "en": [
+        "marker",
+        "map pin",
+        "faulted",
+        "fault",
+        "error",
+        "defective",
+        "exclamation mark",
+        "status"
+      ],
+      "de": [
+        "marker",
+        "kartenpin",
+        "defekt",
+        "fehler",
+        "störung",
+        "ausrufezeichen",
+        "status"
+      ],
+      "fr": [
+        "marqueur",
+        "épingle",
+        "en panne",
+        "défaut",
+        "erreur",
+        "point d’exclamation",
+        "statut"
+      ]
+    },
+    "since": "0.2.0",
+    "aliases": [],
+    "exceptions": [
+      "sharp-corner"
+    ],
+    "provenance": {
+      "createdBy": "ai",
+      "approvedBy": null,
+      "approvedOn": null
+    },
+    "pascal": "MarkerFaulted"
+  },
+  "marker-occupied": {
+    "category": "marker",
+    "meaning": {
+      "en": "Map marker: the charging point is occupied",
+      "de": "Kartenmarker: der Ladepunkt ist belegt"
+    },
+    "tags": {
+      "en": [
+        "marker",
+        "map pin",
+        "occupied",
+        "in use",
+        "busy",
+        "clock",
+        "status"
+      ],
+      "de": [
+        "marker",
+        "kartenpin",
+        "belegt",
+        "besetzt",
+        "in benutzung",
+        "uhr",
+        "status"
+      ],
+      "fr": [
+        "marqueur",
+        "épingle",
+        "occupé",
+        "en cours d’utilisation",
+        "horloge",
+        "statut"
+      ]
+    },
+    "since": "0.2.0",
+    "aliases": [],
+    "exceptions": [
+      "sharp-corner"
+    ],
+    "provenance": {
+      "createdBy": "ai",
+      "approvedBy": null,
+      "approvedOn": null
+    },
+    "pascal": "MarkerOccupied"
+  },
+  "marker-out-of-service": {
+    "category": "marker",
+    "meaning": {
+      "en": "Map marker: the charging point is out of service",
+      "de": "Kartenmarker: der Ladepunkt ist außer Betrieb"
+    },
+    "tags": {
+      "en": [
+        "marker",
+        "map pin",
+        "out of service",
+        "unavailable",
+        "maintenance",
+        "disabled",
+        "status"
+      ],
+      "de": [
+        "marker",
+        "kartenpin",
+        "außer betrieb",
+        "nicht verfügbar",
+        "wartung",
+        "abgeschaltet",
+        "status"
+      ],
+      "fr": [
+        "marqueur",
+        "épingle",
+        "hors service",
+        "indisponible",
+        "maintenance",
+        "désactivé",
+        "statut"
+      ]
+    },
+    "since": "0.2.0",
+    "aliases": [],
+    "exceptions": [
+      "sharp-corner"
+    ],
+    "provenance": {
+      "createdBy": "ai",
+      "approvedBy": null,
+      "approvedOn": null
+    },
+    "pascal": "MarkerOutOfService"
+  },
+  "marker-unknown": {
+    "category": "marker",
+    "meaning": {
+      "en": "Map marker: the status of the charging point is unknown",
+      "de": "Kartenmarker: der Status des Ladepunkts ist unbekannt"
+    },
+    "tags": {
+      "en": [
+        "marker",
+        "map pin",
+        "unknown",
+        "no data",
+        "offline",
+        "question mark",
+        "status"
+      ],
+      "de": [
+        "marker",
+        "kartenpin",
+        "unbekannt",
+        "keine daten",
+        "offline",
+        "fragezeichen",
+        "status"
+      ],
+      "fr": [
+        "marqueur",
+        "épingle",
+        "inconnu",
+        "pas de données",
+        "hors ligne",
+        "point d’interrogation",
+        "statut"
+      ]
+    },
+    "since": "0.2.0",
+    "aliases": [],
+    "exceptions": [
+      "sharp-corner"
+    ],
+    "provenance": {
+      "createdBy": "ai",
+      "approvedBy": null,
+      "approvedOn": null
+    },
+    "pascal": "MarkerUnknown"
+  },
   "parking-charging": {
     "category": "station",
     "meaning": {

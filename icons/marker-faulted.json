@@ -1,0 +1,47 @@
+{
+  "category": "marker",
+  "meaning": {
+    "en": "Map marker: the charging point reports an error and cannot charge",
+    "de": "Kartenmarker: der Ladepunkt meldet einen Fehler und kann nicht laden"
+  },
+  "tags": {
+    "en": [
+      "marker",
+      "map pin",
+      "faulted",
+      "fault",
+      "error",
+      "defective",
+      "exclamation mark",
+      "status"
+    ],
+    "de": [
+      "marker",
+      "kartenpin",
+      "defekt",
+      "fehler",
+      "störung",
+      "ausrufezeichen",
+      "status"
+    ],
+    "fr": [
+      "marqueur",
+      "épingle",
+      "en panne",
+      "défaut",
+      "erreur",
+      "point d’exclamation",
+      "statut"
+    ]
+  },
+  "since": "0.2.0",
+  "aliases": [],
+  "exceptions": [
+    "sharp-corner"
+  ],
+  "provenance": {
+    "createdBy": "ai",
+    "approvedBy": null,
+    "approvedOn": null
+  }
+}

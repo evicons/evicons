@@ -1,0 +1,46 @@
+{
+  "category": "marker",
+  "meaning": {
+    "en": "Map marker: the status of the charging point is unknown",
+    "de": "Kartenmarker: der Status des Ladepunkts ist unbekannt"
+  },
+  "tags": {
+    "en": [
+      "marker",
+      "map pin",
+      "unknown",
+      "no data",
+      "offline",
+      "question mark",
+      "status"
+    ],
+    "de": [
+      "marker",
+      "kartenpin",
+      "unbekannt",
+      "keine daten",
+      "offline",
+      "fragezeichen",
+      "status"
+    ],
+    "fr": [
+      "marqueur",
+      "épingle",
+      "inconnu",
+      "pas de données",
+      "hors ligne",
+      "point d’interrogation",
+      "statut"
+    ]
+  },
+  "since": "0.2.0",
+  "aliases": [],
+  "exceptions": [
+    "sharp-corner"
+  ],
+  "provenance": {
+    "createdBy": "ai",
+    "approvedBy": null,
+    "approvedOn": null
+  }
+}

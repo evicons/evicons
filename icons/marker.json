@@ -1,0 +1,46 @@
+{
+  "category": "marker",
+  "meaning": {
+    "en": "Map marker for a charging point",
+    "de": "Kartenmarker für einen Ladepunkt"
+  },
+  "tags": {
+    "en": [
+      "marker",
+      "map pin",
+      "charging point",
+      "charging station",
+      "location",
+      "map",
+      "lightning bolt"
+    ],
+    "de": [
+      "marker",
+      "kartenpin",
+      "ladepunkt",
+      "ladestation",
+      "standort",
+      "karte",
+      "blitz"
+    ],
+    "fr": [
+      "marqueur",
+      "épingle",
+      "point de recharge",
+      "borne de recharge",
+      "emplacement",
+      "carte",
+      "éclair"
+    ]
+  },
+  "since": "0.2.0",
+  "aliases": [],
+  "exceptions": [
+    "sharp-corner"
+  ],
+  "provenance": {
+    "createdBy": "ai",
+    "approvedBy": null,
+    "approvedOn": null
+  }
+}

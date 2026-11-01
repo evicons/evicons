@@ -1,0 +1,46 @@
+{
+  "category": "marker",
+  "meaning": {
+    "en": "Map marker: the charging point is out of service",
+    "de": "Kartenmarker: der Ladepunkt ist außer Betrieb"
+  },
+  "tags": {
+    "en": [
+      "marker",
+      "map pin",
+      "out of service",
+      "unavailable",
+      "maintenance",
+      "disabled",
+      "status"
+    ],
+    "de": [
+      "marker",
+      "kartenpin",
+      "außer betrieb",
+      "nicht verfügbar",
+      "wartung",
+      "abgeschaltet",
+      "status"
+    ],
+    "fr": [
+      "marqueur",
+      "épingle",
+      "hors service",
+      "indisponible",
+      "maintenance",
+      "désactivé",
+      "statut"
+    ]
+  },
+  "since": "0.2.0",
+  "aliases": [],
+  "exceptions": [
+    "sharp-corner"
+  ],
+  "provenance": {
+    "createdBy": "ai",
+    "approvedBy": null,
+    "approvedOn": null
+  }
+}

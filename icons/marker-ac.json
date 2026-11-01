@@ -1,0 +1,47 @@
+{
+  "category": "marker",
+  "meaning": {
+    "en": "Map marker for an AC charging point",
+    "de": "Kartenmarker für einen AC-Ladepunkt"
+  },
+  "tags": {
+    "en": [
+      "marker",
+      "map pin",
+      "ac",
+      "alternating current",
+      "ac charging",
+      "normal charging",
+      "location"
+    ],
+    "de": [
+      "marker",
+      "kartenpin",
+      "ac",
+      "wechselstrom",
+      "ac-laden",
+      "normalladen",
+      "standort"
+    ],
+    "fr": [
+      "marqueur",
+      "épingle",
+      "ac",
+      "courant alternatif",
+      "recharge ac",
+      "recharge normale",
+      "emplacement"
+    ]
+  },
+  "since": "0.2.0",
+  "aliases": [],
+  "exceptions": [
+    "letters",
+    "sharp-corner"
+  ],
+  "provenance": {
+    "createdBy": "ai",
+    "approvedBy": null,
+    "approvedOn": null
+  }
+}

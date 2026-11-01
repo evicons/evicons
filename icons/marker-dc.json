@@ -1,0 +1,47 @@
+{
+  "category": "marker",
+  "meaning": {
+    "en": "Map marker for a DC charging point",
+    "de": "Kartenmarker für einen DC-Ladepunkt"
+  },
+  "tags": {
+    "en": [
+      "marker",
+      "map pin",
+      "dc",
+      "direct current",
+      "dc charging",
+      "fast charging",
+      "location"
+    ],
+    "de": [
+      "marker",
+      "kartenpin",
+      "dc",
+      "gleichstrom",
+      "dc-laden",
+      "schnellladen",
+      "standort"
+    ],
+    "fr": [
+      "marqueur",
+      "épingle",
+      "dc",
+      "courant continu",
+      "recharge dc",
+      "recharge rapide",
+      "emplacement"
+    ]
+  },
+  "since": "0.2.0",
+  "aliases": [],
+  "exceptions": [
+    "letters",
+    "sharp-corner"
+  ],
+  "provenance": {
+    "createdBy": "ai",
+    "approvedBy": null,
+    "approvedOn": null
+  }
+}
