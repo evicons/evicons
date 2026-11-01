@@ -32,7 +32,14 @@ function collectErrors(page: Page) {
   return errors
 }
 
+// The test hook exists only under automation (navigator.webdriver).
 const markerImages = (page: Page) => page.evaluate(() => window.__evMap?.listImages().sort() ?? [])
+const renderedStations = (page: Page) => page.evaluate(() => window.__evMap?.renderedStations() ?? 0)
+
+async function clickPin(page: Page, id: string) {
+  const point = await page.evaluate((id) => window.__evMap!.pinPoint(id), id)
+  await page.mouse.click(point!.x, point!.y)
+}
 const expectedImages = [
   'ev-ac',
   'ev-available',
@@ -58,6 +65,8 @@ test('map page loads with canvas, 12 marker images and the legend', async ({ pag
   expect((await canvas.boundingBox())!.height).toBeGreaterThan(300)
   await expect.poll(() => markerImages(page)).toEqual(expectedImages)
   await expect(page.locator('[data-map]')).toHaveAttribute('data-map-state', 'ready')
+  // Drawn, not only registered: all 12 pins are rendered once the map is idle.
+  await expect.poll(() => renderedStations(page)).toBe(12)
   await expect(page.locator('[data-legend-entry]')).toHaveCount(7)
   await expect(page.locator('[data-station]')).toHaveCount(12)
   await expect(page.getByText('Demo data — fictional charge points', { exact: true })).toBeVisible()
@@ -95,6 +104,31 @@ test('the station list opens the popup with status, connectors and power; Escape
   await expect(button).toHaveAttribute('aria-pressed', 'false')
 })
 
+test('clicking pin A, then pin B opens B; empty space and Escape close the popup', async ({ page }) => {
+  await stubTiles(page)
+  await page.goto('/map')
+  await expect.poll(() => renderedStations(page)).toBe(12)
+  const popup = page.locator('.maplibregl-popup')
+  await clickPin(page, 'demo-03')
+  await expect(popup.getByRole('heading', { level: 3 })).toHaveText('Market Hall')
+  // A click inside the popup keeps it open.
+  await popup.locator('[data-station-status]').click()
+  await expect(popup).toHaveCount(1)
+  await clickPin(page, 'demo-08')
+  await expect(popup.getByRole('heading', { level: 3 })).toHaveText('Retail Park South')
+  await expect(page.locator('[data-station="demo-08"]')).toHaveAttribute('aria-pressed', 'true')
+  // Escape works with focus on the map (a pin click), not only inside the popup.
+  await page.keyboard.press('Escape')
+  await expect(popup).toHaveCount(0)
+  await clickPin(page, 'demo-01')
+  await expect(popup.getByRole('heading', { level: 3 })).toHaveText('Riverside Car Park')
+  // Empty space (bottom-left corner of the map) clears the selection.
+  const box = (await page.locator('canvas.maplibregl-canvas').boundingBox())!
+  await page.mouse.click(box.x + 12, box.y + box.height - 40)
+  await expect(popup).toHaveCount(0)
+  await expect(page.locator('[data-station][aria-pressed="true"]')).toHaveCount(0)
+})
+
 test('blocked tiles: notice instead of a blank map, markers, legend and stations stay', async ({ page }) => {
   const errors = collectErrors(page)
   await page.route(TILES, (route) => route.abort())
@@ -105,11 +139,41 @@ test('blocked tiles: notice instead of a blank map, markers, legend and stations
   await expect(page.locator('[data-station]')).toHaveCount(12)
   // The markers are drawn on a plain background instead of the tiles.
   await expect.poll(() => markerImages(page)).toEqual(expectedImages)
+  await expect.poll(() => renderedStations(page)).toBe(12)
   await page.locator('[data-station="demo-01"]').click()
-  await expect(page.locator('.maplibregl-popup')).toContainText('Riverside Car Park')
+  const popup = page.locator('.maplibregl-popup')
+  await expect(popup).toContainText('Riverside Car Park')
+  // The notice sits above the map frame, so it never covers the popup.
+  const notice = (await page.locator('[data-map-notice="offline"]').boundingBox())!
+  const frame = (await page.locator('canvas.maplibregl-canvas').boundingBox())!
+  expect(notice.y + notice.height).toBeLessThanOrEqual(frame.y)
   // The only console errors are the blocked requests themselves.
   expect(errors.length).toBeGreaterThan(0)
   for (const error of errors) expect(error).toMatch(/Failed to load resource: net::ERR_FAILED/)
+})
+
+test('MapLibre blocked: "The map could not be loaded", legend and stations stay', async ({ page }) => {
+  const errors = collectErrors(page)
+  await page.route('**/_astro/maplibre-gl.*.js', (route) => route.abort())
+  await page.goto('/map')
+  await expect(page.getByText('The map could not be loaded')).toBeVisible()
+  await expect(page.locator('[data-map]')).toHaveAttribute('data-map-state', 'failed')
+  await expect(page.getByText('Map tiles could not be loaded')).toHaveCount(0)
+  await expect(page.locator('[data-legend-entry]')).toHaveCount(7)
+  await expect(page.locator('[data-station]')).toHaveCount(12)
+  for (const error of errors) expect(error).toMatch(/Failed to load resource: net::ERR_FAILED/)
+})
+
+test('the test hook is absent without automation', async ({ browser }) => {
+  const context = await browser.newContext()
+  const page = await context.newPage()
+  // Playwright sets navigator.webdriver; simulate a normal browser.
+  await page.addInitScript(() => Object.defineProperty(Navigator.prototype, 'webdriver', { get: () => false }))
+  await stubTiles(page)
+  await page.goto('/map')
+  await expect(page.locator('[data-map]')).toHaveAttribute('data-map-state', 'ready')
+  expect(await page.evaluate(() => 'window.__evMap' in window || window.__evMap !== undefined)).toBe(false)
+  await context.close()
 })
 
 test('MapLibre and the tiles load only on /map', async ({ page }) => {
@@ -133,6 +197,7 @@ test('live tiles from OpenFreeMap', async ({ page }) => {
   await page.goto('/map')
   await expect.poll(() => markerImages(page), { timeout: 20_000 }).toEqual(expectedImages)
   await expect(page.locator('[data-map]')).toHaveAttribute('data-map-state', 'ready')
+  await expect.poll(() => renderedStations(page), { timeout: 20_000 }).toBe(12)
   await expect(page.locator('.maplibregl-ctrl-attrib')).toContainText('OpenStreetMap')
   expect(errors).toEqual([])
 })

@@ -27,6 +27,9 @@ const BOUNDS: [[number, number], [number, number]] = [
 ]
 /** Give up on the tile style after this long and draw the markers on a plain background. */
 const STYLE_TIMEOUT = 15_000
+/** Tile or source errors before the first tile arrives that count as "no tiles" (not one stray tile). */
+const TILE_ERRORS_OFFLINE = 3
+const STATION_LAYERS = ['ev-stations', 'ev-current']
 
 // Marker sizes in CSS px (README: 24 to 40). The selected pin gets its own, larger image
 // rather than `icon-size`, so it stays sharp.
@@ -34,14 +37,22 @@ const PIN = 32
 const PIN_SELECTED = 40
 const BADGE = 24
 
-type Phase = 'loading' | 'ready' | 'offline'
+/** `offline`: no tiles, markers on a plain background. `failed`: MapLibre itself did not load. */
+type Phase = 'loading' | 'ready' | 'offline' | 'failed'
 type MapLibre = typeof import('maplibre-gl')
 type Origin = 'map' | 'list'
 
 declare global {
   interface Window {
-    /** Debug hook for the tests: the marker images registered on the map. */
-    __evMap?: { listImages: () => string[] }
+    /** Test hook, only under automation (`navigator.webdriver`). */
+    __evMap?: {
+      /** The `ev-*` marker images registered on the map. */
+      listImages: () => string[]
+      /** After the map is idle: the number of distinct stations drawn by the pin layer. */
+      renderedStations: () => Promise<number>
+      /** Page coordinates of a station's pin head, for clicking it. */
+      pinPoint: (id: string) => { x: number; y: number } | null
+    }
   }
 }
 
@@ -144,6 +155,32 @@ function StationCard({ station, headingRef }: { station: Station; headingRef: Re
   )
 }
 
+function testHook(map: MapLibreMap): NonNullable<Window['__evMap']> {
+  return {
+    listImages: () => {
+      try {
+        return map.listImages().filter((id) => id.startsWith('ev-'))
+      } catch {
+        return [] // the style is still loading
+      }
+    },
+    renderedStations: async () => {
+      if (!map.getLayer('ev-stations')) return 0
+      if (!map.loaded() || map.isMoving()) await map.once('idle')
+      const ids = map.queryRenderedFeatures({ layers: ['ev-stations'] }).map((f) => f.properties?.id)
+      return new Set(ids).size
+    },
+    pinPoint: (id) => {
+      const station = stations.find((s) => s.id === id)
+      if (!station) return null
+      const point = map.project([station.lng, station.lat])
+      const rect = map.getCanvas().getBoundingClientRect()
+      // The head of a 32 px pin is 12/24 of its size above the tip (which sits on the point).
+      return { x: rect.left + point.x, y: rect.top + point.y - (PIN * 12) / 24 }
+    },
+  }
+}
+
 function stationSummary(station: Station) {
   return `${statusInfo[station.status].label} · ${currentInfo[station.current].label} ${station.kW} kW`
 }
@@ -171,6 +208,7 @@ export default function ChargingMap({ children }: { children?: ReactNode }) {
     let cancelled = false
     let map: MapLibreMap | undefined
     let timer: ReturnType<typeof setTimeout> | undefined
+    let themeObserver: MutationObserver | undefined
     const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches
     setPopupNode(document.createElement('div'))
 
@@ -200,19 +238,12 @@ export default function ChargingMap({ children }: { children?: ReactNode }) {
       map.touchZoomRotate.disableRotation()
       map.keyboard.disableRotation()
       map.addControl(new maplibre.NavigationControl({ showCompass: false }), 'top-right')
-      window.__evMap = {
-        listImages: () => {
-          try {
-            return map ? map.listImages().filter((id) => id.startsWith('ev-')) : []
-          } catch {
-            return [] // the style is still loading
-          }
-        },
-      }
+      if (navigator.webdriver) window.__evMap = testHook(map)
 
       const images = markerImages()
       let styleLoaded = false
       let tilesLoaded = false
+      let tileErrors = 0
       let offline = false
 
       const goOffline = () => {
@@ -228,10 +259,19 @@ export default function ChargingMap({ children }: { children?: ReactNode }) {
       }, STYLE_TIMEOUT)
 
       map.on('error', (event) => {
-        // Before the style has loaded, or before any tile has arrived, an error means no map.
+        // The style failed, or several tiles failed before any arrived: no tiles.
+        if (!styleLoaded) return goOffline()
         const sourceError = 'sourceId' in event || 'tile' in event
-        if (!styleLoaded || (sourceError && !tilesLoaded)) goOffline()
+        if (sourceError && !tilesLoaded && ++tileErrors >= TILE_ERRORS_OFFLINE) goOffline()
       })
+
+      // The plain background follows the site theme.
+      themeObserver = new MutationObserver(() => {
+        if (offline && map?.getLayer('background')) {
+          map.setPaintProperty('background', 'background-color', cssVar('--surface') || '#fafafa')
+        }
+      })
+      themeObserver.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] })
       map.on('sourcedata', (event) => {
         if (event.sourceId === 'openmaptiles' && event.tile) tilesLoaded = true
       })
@@ -291,14 +331,16 @@ export default function ChargingMap({ children }: { children?: ReactNode }) {
         setStyleVersion((v) => v + 1)
       })
 
-      for (const layer of ['ev-stations', 'ev-current']) {
-        map.on('click', layer, (event) => {
-          const id = event.features?.[0]?.properties?.id
-          if (typeof id === 'string') {
-            originRef.current = 'map'
-            setSelected(id)
-          }
-        })
+      // One click handler for the whole map: a pin selects its station, empty space clears the
+      // selection. (The popup's own closeOnClick is off: it would undo a click on another pin.)
+      map.on('click', (event) => {
+        if (!map?.getLayer('ev-stations')) return
+        const hit = map.queryRenderedFeatures(event.point, { layers: STATION_LAYERS })[0]
+        const id = hit?.properties?.id
+        originRef.current = 'map'
+        setSelected(typeof id === 'string' ? id : null)
+      })
+      for (const layer of STATION_LAYERS) {
         map.on('mouseenter', layer, () => {
           if (map) map.getCanvas().style.cursor = 'pointer'
         })
@@ -307,12 +349,25 @@ export default function ChargingMap({ children }: { children?: ReactNode }) {
         })
       }
     })().catch(() => {
-      if (!cancelled) setPhase('offline')
+      // MapLibre itself did not load (chunk blocked or failed): no map at all.
+      if (!cancelled) setPhase('failed')
     })
+
+    // Escape closes the popup, also when it was opened by clicking a pin (focus is then on the map).
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key !== 'Escape' || !popupRef.current?.isOpen()) return
+      event.preventDefault()
+      popupRef.current.remove()
+    }
+    document.addEventListener('keydown', onKeyDown)
 
     return () => {
       cancelled = true
       clearTimeout(timer)
+      themeObserver?.disconnect()
+      document.removeEventListener('keydown', onKeyDown)
+      popupRef.current?.remove()
+      popupRef.current = null
       map?.remove()
       mapRef.current = null
       delete window.__evMap
@@ -337,25 +392,24 @@ export default function ChargingMap({ children }: { children?: ReactNode }) {
     {
       let popup = popupRef.current
       if (!popup) {
-        popup = new maplibre.Popup({ offset: popupOffset, maxWidth: '18rem', focusAfterOpen: false })
+        popup = new maplibre.Popup({
+          offset: popupOffset,
+          maxWidth: '18rem',
+          focusAfterOpen: false,
+          closeOnClick: false,
+        })
         popup.setDOMContent(popupNode)
         popup.on('close', () => {
           setSelected(null)
           if (originRef.current === 'list') openerRef.current?.focus()
+          // Focus was in the removed popup (its close button): keep it on the map.
+          else if (!document.activeElement || document.activeElement === document.body) map.getCanvas().focus()
         })
         popupRef.current = popup
       }
       const center: [number, number] = [station.lng, station.lat]
       popup.setLngLat(center)
-      if (!popup.isOpen()) {
-        popup.addTo(map)
-        popup.getElement()?.addEventListener('keydown', (event) => {
-          if (event.key === 'Escape') {
-            event.stopPropagation()
-            popupRef.current?.remove()
-          }
-        })
-      }
+      if (!popup.isOpen()) popup.addTo(map)
       if (originRef.current === 'list') {
         const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches
         if (reduceMotion) map.jumpTo({ center })
@@ -378,24 +432,34 @@ export default function ChargingMap({ children }: { children?: ReactNode }) {
 
   return (
     <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_18rem]" data-map data-map-state={phase}>
-      <div className="relative h-[60vh] min-h-[22rem] max-h-[40rem] overflow-hidden rounded-lg border border-border bg-surface">
-        {/* Not `absolute`: MapLibre sets `position: relative` on its container. */}
-        <div ref={containerRef} className="h-full w-full" />
-        {phase === 'loading' && (
-          <p className="pointer-events-none absolute inset-0 flex items-center justify-center text-sm text-muted">
-            Loading map…
-          </p>
-        )}
-        {phase === 'offline' && (
-          <div
-            role="status"
-            className="absolute left-3 right-14 top-3 z-10 rounded-md border border-border bg-bg/95 px-3 py-2 text-sm shadow-sm sm:right-auto sm:max-w-sm"
-            data-map-notice
-          >
-            <p className="font-medium">Map tiles could not be loaded</p>
-            <p className="text-muted">The markers, the legend and the station list still work.</p>
-          </div>
-        )}
+      <div className="lg:col-start-1">
+        {/* Above the map frame, not over it, so it never hides a popup or a pin. */}
+        <div role="status">
+          {(phase === 'offline' || phase === 'failed') && (
+            <div className="mb-3 rounded-md border border-border bg-surface px-3 py-2 text-sm" data-map-notice={phase}>
+              {phase === 'offline' ? (
+                <>
+                  <p className="font-medium">Map tiles could not be loaded</p>
+                  <p className="text-muted">The markers, the legend and the station list still work.</p>
+                </>
+              ) : (
+                <>
+                  <p className="font-medium">The map could not be loaded</p>
+                  <p className="text-muted">The legend and the station list still work.</p>
+                </>
+              )}
+            </div>
+          )}
+        </div>
+        <div className="relative h-[60vh] min-h-[22rem] max-h-[40rem] overflow-hidden rounded-lg border border-border bg-surface">
+          {/* Not `absolute`: MapLibre sets `position: relative` on its container. */}
+          <div ref={containerRef} className="h-full w-full" />
+          {phase === 'loading' && (
+            <p className="pointer-events-none absolute inset-0 flex items-center justify-center text-sm text-muted">
+              Loading map…
+            </p>
+          )}
+        </div>
       </div>
 
       <div className="lg:col-start-1">{children}</div>
