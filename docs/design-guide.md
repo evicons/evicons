@@ -87,12 +87,11 @@ Socket face seen from the front (exception above).
 
 ### Side-view plug block (from `charging-plug`)
 
-Reuse it wherever a plug is shown from the side (`charging-cable`, `bidirectional-charging`); the plug points right.
+Reuse it wherever a plug is shown from the side (`charging-cable`, `bidirectional-charging`); the plug points right. The head is a plain rounded box: a collar line inside it closes up with the front face at 16 px, so there is none.
 
-- Head `<rect x="9.75" y="6" width="7.5" height="9" rx="2"/>`, collar line `M14.75 6v9` (front insert 2.5 wide), prongs `M17.25 8.75H21m-3.75 3.5H21` (3.5 apart, 3.75 long).
-- Strain relief `M9.75 8.5H8a1.25 1.25 0 0 0-1.25 1.25v1.5A1.25 1.25 0 0 0 8 12.5h1.75` (3 × 4); the cable leaves its left side at `(6.75, 10.5)`.
-- Small variant (`charging-cable`, about 2/3): head `<rect x="14" y="3" width="5" height="6" rx="1.25"/>`, prongs `M19 4.75h2.5M19 7.25h2.5` (2.5 apart), strain relief `M14 4.75h-.75a1.25 1.25 0 0 0 0 2.5H14`, cable from `(12, 6)`. No collar line: it would sit closer than 2.0 to the front face.
-- Move the block, do not rescale it beyond these two sizes.
+- Full size (`charging-plug`): head `<rect x="8.5" y="5.5" width="9" height="11" rx="2.5"/>` (9 × 11, axis at y 11), prongs `M17.5 9h4m-4 4h4` (4.0 apart, 4.0 long), strain relief `M8.5 9H7a1.25 1.25 0 0 0-1.25 1.25v1.5A1.25 1.25 0 0 0 7 13h1.5` (2.75 × 4, r 1.25); the cable leaves its left side at `(5.75, 11)` with a bend r 2.75 (`M5.75 11a2.75 2.75 0 0 0-2.75 2.75V20`). Cable to strain relief 2.75.
+- Small variant (`charging-cable`, about 0.73): head `<rect x="13" y="3.5" width="6.5" height="8" rx="2"/>` (axis at y 7.5), prongs `M19.5 6H22m-2.5 3H22` (3.0 apart, 2.5 long), strain relief `M13 6.25h-.75a1.25 1.25 0 0 0 0 2.5H13` (half round r 1.25); the cable leaves at `(11, 7.5)`.
+- Move the block, do not rescale it beyond these two sizes. Keep at least 2.5 between the head and any cable run.
 
 ## 6. Letter set
 

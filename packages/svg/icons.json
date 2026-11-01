@@ -359,9 +359,6 @@
       "norm": "IEC 62196-3 configuration AA (CHAdeMO, JEVS G105)",
       "source": "IEC 62196-3 / JEVS G105 not consulted; layout checked against public drawings on Wikimedia Commons, retrieved 2026-11-01: \"File:CHAdeMO connector.svg\" by Mliu92 (CC BY-SA 4.0; connector face with 10 contacts: DC+ and DC- left and right on the centre line at 0.46 R, two round signal bosses above and below at 0.57 R, each with four signal contacts in a diamond, pitch 0.18 R from the boss centre), https://commons.wikimedia.org/wiki/File:CHAdeMO_connector.svg, and \"File:CHAdeMO socket.svg\" by Mliu92 (CC BY-SA 4.0; socket face with the same arrangement: DC at 0.45 R, signal bosses at 0.55 R, signal contacts at 0.20 R from the boss centre), https://commons.wikimedia.org/wiki/File:CHAdeMO_socket.svg. Drawn: outline, both DC contacts, and per signal boss the horizontal pair at the boss centre (upper boss: the two side contacts, labelled N/C and SS1 in the connector drawing; lower boss: C-L and C-H). Omitted: the upper and lower contact of each boss (FG, DCP, PP, SS2), the boss rims and the keyway, because they would merge at 16 px. Left and right are not distinguished (DC+ and DC- look alike)."
     },
-    "exceptions": [
-      "dense-connector"
-    ],
     "provenance": {
       "createdBy": "ai",
       "approvedBy": null,
