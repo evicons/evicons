@@ -2,7 +2,8 @@ import { defineConfig, devices } from '@playwright/test'
 
 // Smoke tests for the evicons.dev site against the static build served by `astro preview`.
 // Run from the repo root: `npm run test:site` (after `npm run build:site`).
-const port = 4321
+// SITE_PORT picks another port, e.g. when a stale server from another checkout holds 4321.
+const port = Number(process.env.SITE_PORT ?? 4321)
 
 export default defineConfig({
   testDir: 'tests',

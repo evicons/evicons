@@ -3,8 +3,10 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "predev": "node scripts/copy-brand.mjs",
     "dev": "ASTRO_TELEMETRY_DISABLED=1 astro dev",
     "check": "ASTRO_TELEMETRY_DISABLED=1 astro check",
+    "prebuild": "node scripts/copy-brand.mjs",
     "build": "ASTRO_TELEMETRY_DISABLED=1 astro check && ASTRO_TELEMETRY_DISABLED=1 astro build",
     "preview": "ASTRO_TELEMETRY_DISABLED=1 astro preview",
     "test": "playwright test -c playwright.config.ts"

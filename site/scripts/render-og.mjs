@@ -1,12 +1,13 @@
 // Renders the checked-in raster images of the brand and the site:
 //   site/public/og.png               1200 × 630, from the page src/pages/og.astro
 //   site/public/favicon-32.png       32 × 32, from public/favicon.svg (light variant, transparent)
+//   site/public/favicon.ico          the same 32 × 32 PNG in an ICO container (for clients that ask for /favicon.ico)
 //   site/public/apple-touch-icon.png 180 × 180, the mark on white
 //   brand/logo-on-light.png          1600 px wide, dark lockup on transparent
 //   brand/logo-on-dark.png           1600 px wide, light lockup on transparent
 // Run from the repository root after `npm run build:icons && npm run build -w @evicons/react`:
 //   node site/scripts/render-og.mjs
-import { readFile } from 'node:fs/promises'
+import { readFile, writeFile } from 'node:fs/promises'
 import { fileURLToPath } from 'node:url'
 import { chromium } from '@playwright/test'
 import { dev } from 'astro'
@@ -42,6 +43,23 @@ await shoot(svgPage(favicon, { width: 32, height: 32, color: ink.accent }), `${s
   width: 32,
   height: 32,
 })
+// ICO with one PNG image: 6-byte header, one 16-byte directory entry, then the PNG data.
+const png = await readFile(`${site}public/favicon-32.png`)
+const ico = Buffer.alloc(22)
+ico.writeUInt16LE(0, 0) // reserved
+ico.writeUInt16LE(1, 2) // type: icon
+ico.writeUInt16LE(1, 4) // one image
+ico.writeUInt8(32, 6) // width
+ico.writeUInt8(32, 7) // height
+ico.writeUInt8(0, 8) // no palette
+ico.writeUInt8(0, 9) // reserved
+ico.writeUInt16LE(1, 10) // colour planes
+ico.writeUInt16LE(32, 12) // bits per pixel
+ico.writeUInt32LE(png.length, 14) // image size
+ico.writeUInt32LE(22, 18) // image offset
+await writeFile(`${site}public/favicon.ico`, Buffer.concat([ico, png]))
+console.log('wrote /site/public/favicon.ico')
+
 const mark = await readFile(`${repo}brand/logo-mark.svg`, 'utf8')
 await shoot(
   svgPage(mark, { width: 180, height: 180, color: ink.accent, background: '#ffffff', padding: 18 }),

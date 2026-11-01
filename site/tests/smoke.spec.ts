@@ -123,9 +123,12 @@ test('brand page offers the logo as SVG and PNG downloads', async ({ page, reque
 })
 
 test('favicons and the social image are served', async ({ request }) => {
-  for (const path of ['/favicon.svg', '/favicon-32.png', '/apple-touch-icon.png', '/og.png']) {
+  for (const path of ['/favicon.svg', '/favicon-32.png', '/favicon.ico', '/apple-touch-icon.png', '/og.png']) {
     expect((await request.get(path)).status(), path).toBe(200)
   }
+  // ICO header: reserved 0, type 1 (icon), one image.
+  const ico = await (await request.get('/favicon.ico')).body()
+  expect([...ico.subarray(0, 6)]).toEqual([0, 0, 1, 0, 1, 0])
 })
 
 test('head has icons and an absolute social image', async ({ page }) => {
@@ -134,6 +137,9 @@ test('head has icons and an absolute social image', async ({ page }) => {
   await expect(page.locator('link[rel="apple-touch-icon"]')).toHaveAttribute('href', '/apple-touch-icon.png')
   await expect(page.locator('meta[property="og:image"]')).toHaveAttribute('content', 'https://evicons.dev/og.png')
   await expect(page.locator('meta[name="twitter:card"]')).toHaveAttribute('content', 'summary_large_image')
+  for (const alt of ['meta[property="og:image:alt"]', 'meta[name="twitter:image:alt"]']) {
+    await expect(page.locator(alt)).toHaveAttribute('content', 'EVicons: outline icons for EV charging')
+  }
 })
 
 test('header shows the logo linking home', async ({ page }) => {

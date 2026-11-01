@@ -108,6 +108,15 @@ jobs:
       - run: npm run test:site:unit
       - run: npx playwright install chromium --with-deps
       - run: npm run test:site
+      # The production image (Coolify) builds from an allow-listed context; check that it builds and serves.
+      - name: Docker image builds and serves the site
+        run: |
+          docker build -f site/Dockerfile -t evicons-site .
+          docker run -d --rm --name evicons-site -p 8080:80 evicons-site
+          for path in / /icons /brand /brand/logo.svg /brand/logo-on-light.png /favicon.ico; do
+            curl -fsS --retry 10 --retry-all-errors --retry-delay 1 -o /dev/null "http://localhost:8080$path"
+          done
+          docker stop evicons-site
       - if: failure()
         uses: actions/upload-artifact@v4
         with:

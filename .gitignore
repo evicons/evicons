@@ -8,3 +8,5 @@ playwright-report/
 .tmp-tests/
 site/dist/
 site/.astro/
+# Copied from brand/ by site/scripts/copy-brand.mjs
+site/public/brand/

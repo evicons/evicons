@@ -7,16 +7,19 @@ interface Props {
   title: string
   description: string
   ogImage?: string
+  /** Text alternative for the social image; required with a custom `ogImage`. */
+  ogImageAlt?: string
   /** Error pages: no canonical/og:url, not indexed. */
   noindex?: boolean
 }
 
-const { title, description, ogImage, noindex = false } = Astro.props
+const { title, description, ogImage, ogImageAlt, noindex = false } = Astro.props
 // One URL form everywhere: no trailing slash (except the root).
 const path = Astro.url.pathname.length > 1 ? Astro.url.pathname.replace(/\/+$/, '') : '/'
 const canonical = new URL(path, Astro.site)
 // Default social image: public/og.png (1200 × 630), rendered by scripts/render-og.mjs.
 const image = new URL(ogImage ?? '/og.png', Astro.site).href
+const imageAlt = ogImageAlt ?? (ogImage ? title : 'EVicons: outline icons for EV charging')
 ---
 
 <!doctype html>
@@ -36,12 +39,12 @@ const image = new URL(ogImage ?? '/og.png', Astro.site).href
     <meta property="og:description" content={description} />
     {!noindex && <meta property="og:url" content={canonical.href} />}
     <meta property="og:image" content={image} />
+    <meta property="og:image:alt" content={imageAlt} />
     {
       !ogImage && (
         <>
           <meta property="og:image:width" content="1200" />
           <meta property="og:image:height" content="630" />
-          <meta property="og:image:alt" content="EVicons: outline icons for EV charging" />
         </>
       )
     }
@@ -49,6 +52,7 @@ const image = new URL(ogImage ?? '/og.png', Astro.site).href
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={image} />
+    <meta name="twitter:image:alt" content={imageAlt} />
     <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
     <meta name="theme-color" content="#09090b" media="(prefers-color-scheme: dark)" />
     <script is:inline>
