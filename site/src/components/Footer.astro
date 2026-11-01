@@ -1,0 +1,25 @@
+---
+const links = [
+  { href: 'https://github.com/evicons/evicons', label: 'GitHub' },
+  { href: 'https://www.npmjs.com/package/@evicons/react', label: 'npm' },
+  { href: '/changelog', label: 'Changelog' },
+  { href: '/imprint', label: 'Imprint' },
+]
+---
+
+<footer class="border-t border-border">
+  <div
+    class="mx-auto flex max-w-6xl flex-col gap-3 px-4 py-6 text-sm text-muted sm:flex-row sm:items-center sm:justify-between sm:px-6"
+  >
+    <p>MIT licence · © 2026 Landolsi Digital</p>
+    <nav aria-label="Footer" class="flex flex-wrap gap-x-5 gap-y-1">
+      {
+        links.map((link) => (
+          <a href={link.href} class="text-muted no-underline hover:text-fg">
+            {link.label}
+          </a>
+        ))
+      }
+    </nav>
+  </div>
+</footer>

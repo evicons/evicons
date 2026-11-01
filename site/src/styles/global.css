@@ -1,0 +1,102 @@
+@import 'tailwindcss';
+@import '@fontsource-variable/inter';
+
+/* Dark mode follows data-theme on <html> (set before first paint by the inline script in Base.astro). */
+@custom-variant dark (&:where([data-theme='dark'], [data-theme='dark'] *));
+
+:root {
+  color-scheme: light;
+
+  /* Accent: EV blue */
+  --accent: #2563eb;
+  --accent-fg: #ffffff;
+  --link: #2563eb;
+
+  /* Status demo colours (the icons themselves carry no colour) */
+  --status-available: #16a34a;
+  --status-occupied: #f59e0b;
+  --status-faulted: #dc2626;
+  --status-out-of-service: #71717a;
+  --status-unknown: #0891b2;
+  --status-reserved: #7c3aed;
+  --status-queue: #d97706;
+
+  /* Neutrals: zinc scale */
+  --bg: #ffffff;
+  --surface: #fafafa;
+  --fg: #18181b;
+  --muted: #52525b;
+  --border: #e4e4e7;
+}
+
+[data-theme='dark'] {
+  color-scheme: dark;
+  --bg: #09090b;
+  --surface: #18181b;
+  --fg: #f4f4f5;
+  --muted: #a1a1aa;
+  --border: #27272a;
+  /* Lighter link tone keeps text contrast on the dark background; buttons keep EV blue. */
+  --link: #60a5fa;
+}
+
+/* Without JavaScript the inline theme script does not run: fall back to the system setting. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    color-scheme: dark;
+    --bg: #09090b;
+    --surface: #18181b;
+    --fg: #f4f4f5;
+    --muted: #a1a1aa;
+    --border: #27272a;
+    --link: #60a5fa;
+  }
+}
+
+@theme inline {
+  --font-sans: 'Inter Variable', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', monospace;
+  --color-accent: var(--accent);
+  --color-accent-fg: var(--accent-fg);
+  --color-link: var(--link);
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-fg: var(--fg);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --color-status-available: var(--status-available);
+  --color-status-occupied: var(--status-occupied);
+  --color-status-faulted: var(--status-faulted);
+  --color-status-out-of-service: var(--status-out-of-service);
+  --color-status-unknown: var(--status-unknown);
+  --color-status-reserved: var(--status-reserved);
+  --color-status-queue: var(--status-queue);
+}
+
+@layer base {
+  html {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+  body {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+  }
+  a {
+    color: var(--link);
+  }
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+}

@@ -3,7 +3,8 @@
   "private": true,
   "type": "module",
   "workspaces": [
-    "packages/*"
+    "packages/*",
+    "site"
   ],
   "engines": {
     "node": ">=24"
@@ -17,7 +18,10 @@
     "typecheck": "tsc -p tools/tsconfig.json && tsc -p packages/react/tsconfig.build.json --noEmit",
     "test:smoke": "vitest run --config vitest.consumer.config.ts",
     "test:consumer-next": "node tools/test-consumer-next.ts",
-    "snap": "node tools/snap-icons.ts"
+    "snap": "node tools/snap-icons.ts",
+    "dev:site": "npm run dev -w site",
+    "build:site": "npm run build -w site",
+    "test:site": "playwright test -c site/playwright.config.ts"
   },
   "devDependencies": {
     "@playwright/test": "1.64.1",

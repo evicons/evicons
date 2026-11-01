@@ -1,0 +1,20 @@
+---
+import Base from '../layouts/Base.astro'
+
+interface Props {
+  title: string
+  heading: string
+  description: string
+}
+
+const { title, heading, description } = Astro.props
+---
+
+<Base title={title} description={description}>
+  <section class="mx-auto max-w-6xl px-4 py-16 sm:px-6">
+    <h1 class="text-3xl">{heading}</h1>
+    <slot>
+      <p class="mt-4 text-muted">This page is coming soon.</p>
+    </slot>
+  </section>
+</Base>

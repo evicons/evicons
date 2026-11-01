@@ -6,3 +6,5 @@ preview/dist/
 test-results/
 playwright-report/
 .tmp-tests/
+site/dist/
+site/.astro/

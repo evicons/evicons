@@ -1,0 +1,33 @@
+---
+import ThemeToggle from './ThemeToggle'
+
+const nav = [
+  { href: '/icons', label: 'Icons' },
+  { href: '/docs', label: 'Docs' },
+  { href: '/map', label: 'Map' },
+  { href: '/brand', label: 'Brand' },
+]
+const path = Astro.url.pathname.replace(/\/$/, '')
+---
+
+<header class="border-b border-border">
+  <div class="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-x-6 gap-y-2 px-4 py-3 sm:px-6">
+    <!-- Logo placeholder: replaced by the logo lockup once the brand assets exist. -->
+    <a href="/" class="text-lg font-semibold tracking-tight text-fg no-underline">EVicons</a>
+    <nav aria-label="Main" class="flex flex-wrap items-center gap-x-5 gap-y-1 text-sm">
+      {
+        nav.map((item) => (
+          <a
+            href={item.href}
+            class:list={['no-underline hover:text-fg', path === item.href ? 'font-medium text-fg' : 'text-muted']}
+            aria-current={path === item.href ? 'page' : undefined}
+          >
+            {item.label}
+          </a>
+        ))
+      }
+      <a href="https://github.com/evicons/evicons" class="text-muted no-underline hover:text-fg">GitHub</a>
+      <ThemeToggle client:load />
+    </nav>
+  </div>
+</header>
