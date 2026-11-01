@@ -107,3 +107,38 @@ test('status demo icons take their colour from CSS', async ({ page }) => {
   expect(await colour('status-occupied')).toBe('rgb(245, 158, 11)')
   expect(await colour('status-faulted')).toBe('rgb(220, 38, 38)')
 })
+
+test('brand page offers the logo as SVG and PNG downloads', async ({ page, request }) => {
+  await page.goto('/brand')
+  const downloads = page.locator('main a[download]')
+  await expect(downloads.filter({ hasText: 'SVG' }).first()).toBeVisible()
+  await expect(downloads.filter({ hasText: 'PNG' }).first()).toBeVisible()
+  const hrefs = await downloads.evaluateAll((links) => links.map((a) => a.getAttribute('href')!))
+  expect(hrefs).toEqual(expect.arrayContaining(['/brand/logo.svg', '/brand/logo-on-light.png']))
+  for (const href of hrefs) {
+    const response = await request.get(href)
+    expect(response.status(), href).toBe(200)
+    expect((await response.body()).length, href).toBeGreaterThan(100)
+  }
+})
+
+test('favicons and the social image are served', async ({ request }) => {
+  for (const path of ['/favicon.svg', '/favicon-32.png', '/apple-touch-icon.png', '/og.png']) {
+    expect((await request.get(path)).status(), path).toBe(200)
+  }
+})
+
+test('head has icons and an absolute social image', async ({ page }) => {
+  await page.goto('/')
+  await expect(page.locator('link[rel="icon"][type="image/svg+xml"]')).toHaveAttribute('href', '/favicon.svg')
+  await expect(page.locator('link[rel="apple-touch-icon"]')).toHaveAttribute('href', '/apple-touch-icon.png')
+  await expect(page.locator('meta[property="og:image"]')).toHaveAttribute('content', 'https://evicons.dev/og.png')
+  await expect(page.locator('meta[name="twitter:card"]')).toHaveAttribute('content', 'summary_large_image')
+})
+
+test('header shows the logo linking home', async ({ page }) => {
+  await page.goto('/brand')
+  const home = page.locator('header a[href="/"]')
+  await expect(home).toHaveAccessibleName('EVicons')
+  await expect(home.locator('svg')).toBeVisible()
+})

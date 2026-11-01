@@ -1,4 +1,8 @@
+<p><a href="https://evicons.dev"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/evicons/evicons/main/brand/logo-on-dark.png"><img src="https://raw.githubusercontent.com/evicons/evicons/main/brand/logo.svg" width="320" alt="EVicons"></picture></a></p>
+
 # @evicons/react
+
+Website: [evicons.dev](https://evicons.dev)
 
 React components for [EVicons](https://github.com/evicons/evicons), MIT-licensed outline icons for e-mobility and EV charging: charging stations, connector faces, AC/DC and power, energy, vehicles, payment, charge point status and map markers.
 

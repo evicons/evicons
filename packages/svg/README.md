@@ -1,4 +1,8 @@
+<p><a href="https://evicons.dev"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/evicons/evicons/main/brand/logo-on-dark.png"><img src="https://raw.githubusercontent.com/evicons/evicons/main/brand/logo.svg" width="320" alt="EVicons"></picture></a></p>
+
 # @evicons/svg
+
+Website: [evicons.dev](https://evicons.dev)
 
 Raw SVG files, an SVG sprite and metadata for [EVicons](https://github.com/evicons/evicons), an MIT-licensed icon library for e-mobility and EV charging.
 
