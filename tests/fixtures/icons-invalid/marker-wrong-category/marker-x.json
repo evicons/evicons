@@ -1,0 +1,25 @@
+{
+  "category": "station",
+  "meaning": {
+    "en": "Test marker",
+    "de": "Testmarker"
+  },
+  "tags": {
+    "en": [
+      "marker"
+    ],
+    "de": [
+      "markierung"
+    ],
+    "fr": [
+      "marqueur"
+    ]
+  },
+  "since": "0.2.0",
+  "aliases": [],
+  "provenance": {
+    "createdBy": "ai",
+    "approvedBy": null,
+    "approvedOn": null
+  }
+}

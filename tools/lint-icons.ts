@@ -217,34 +217,44 @@ function lintSvg(file: string, source: string, errors: LintError[]): void {
   }
 }
 
-export const MARKER_PIN_ERROR = 'marker: first element must be a single closed <path> (the pin)'
+/** The standard pin (design guide section 9), as SVGO writes it. Every marker starts with it. */
+export const MARKER_PIN = 'm12 22-5.855-7.312a7.5 7.5 0 1 1 11.71 0Z'
+/** Region the sign must stay inside: the pin head and its flanks (geometry, without stroke). */
+export const MARKER_SIGN_AREA = { minX: 6.5, minY: 4.5, maxX: 17.5, maxY: 18 }
+
+export const MARKER_PIN_ERROR = 'marker: first element must be the standard pin path (design guide section 9)'
+export const MARKER_SIGN_ERROR = `marker: sign elements must lie inside the pin head (x ${MARKER_SIGN_AREA.minX}–${MARKER_SIGN_AREA.maxX}, y ${MARKER_SIGN_AREA.minY}–${MARKER_SIGN_AREA.maxY})`
+export const MARKER_NAME_ERROR = 'marker: an icon is named "marker" or "marker-…" if and only if its category is "marker"'
+
+/** True for the file names reserved for map markers. */
+export const isMarkerName = (name: string) => name === 'marker' || name.startsWith('marker-')
 
 /**
- * Marker contract (design guide section 9): the first child element of <svg> is the pin, one
- * closed subpath that encloses every other element. So the first <path> is always the pin (also
- * when React adds a <title> before it), and apps can fill it with
+ * Marker contract (design guide section 9): the first child element of <svg> is the standard
+ * pin, one closed subpath that encloses every other element. So the first <path> is always the
+ * pin (also when React adds a <title> before it), and apps can fill it with
  * `svg > path:first-of-type { fill: currentColor }` and draw the sign on top.
  */
 function lintMarker(file: string, source: string, errors: LintError[]): void {
   let root: INode
   try {
-    root = parseSvg(source)
+    root = parseSvg(optimize(source, svgoConfig).data)
   } catch {
     return // reported by lintSvg
   }
   const [first, ...rest] = root.children.filter((c) => c.type === 'element')
   const d = first?.name === 'path' ? (first.attributes.d ?? '').trim() : ''
   const count = (re: RegExp) => (d.match(re) ?? []).length
-  let ok = /[Zz]$/.test(d) && count(/[Mm]/g) === 1 && count(/[Zz]/g) === 1
-  if (ok) {
-    // A sign drawn first can be a closed path too (a bolt); the pin is the one that encloses the rest.
-    const bbox = (el: INode) => {
-      try {
-        return isAllowedTag(el.name) ? elementBBox(el.name, el.attributes) : null
-      } catch {
-        return null
-      }
+  const bbox = (el: INode) => {
+    try {
+      return isAllowedTag(el.name) ? elementBBox(el.name, el.attributes) : null
+    } catch {
+      return null
     }
+  }
+  // The exact pin implies a single closed subpath; the closed-path and enclosure checks stay as guards.
+  let ok = d === MARKER_PIN && /[Zz]$/.test(d) && count(/[Mm]/g) === 1 && count(/[Zz]/g) === 1
+  if (ok) {
     const pin = bbox(first)
     ok =
       pin !== null &&
@@ -253,7 +263,17 @@ function lintMarker(file: string, source: string, errors: LintError[]): void {
         return b === null || (b[0] >= pin[0] - EPSILON && b[1] >= pin[1] - EPSILON && b[2] <= pin[2] + EPSILON && b[3] <= pin[3] + EPSILON)
       })
   }
-  if (!ok) errors.push({ file, element: first?.name, message: MARKER_PIN_ERROR })
+  if (!ok) {
+    errors.push({ file, element: first?.name, message: MARKER_PIN_ERROR })
+    return
+  }
+  const a = MARKER_SIGN_AREA
+  for (const el of rest) {
+    const b = bbox(el)
+    if (b !== null && (b[0] < a.minX - EPSILON || b[1] < a.minY - EPSILON || b[2] > a.maxX + EPSILON || b[3] > a.maxY + EPSILON)) {
+      errors.push({ file, element: el.name, message: MARKER_SIGN_ERROR })
+    }
+  }
 }
 
 function listIconFiles(dir: string): { svgs: Set<string>; jsons: Set<string> } {
@@ -300,6 +320,9 @@ export function lintIcons(dir: string, opts: { release: boolean }): LintError[] 
     if (metaErrors.length > 0) continue
     const meta = raw as IconMeta
 
+    if ((meta.category === 'marker') !== isMarkerName(name)) {
+      errors.push({ file: jsonFile, message: MARKER_NAME_ERROR })
+    }
     if (meta.category === 'marker' && svgs.has(name)) {
       lintMarker(svgFile, readFileSync(join(dir, svgFile), 'utf8'), errors)
     }

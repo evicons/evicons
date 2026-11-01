@@ -1,8 +1,8 @@
-import { copyFileSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs'
+import { copyFileSync, mkdirSync, mkdtempSync, readdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { describe, expect, test } from 'vitest'
-import { lintIcons, loadIcons } from '../tools/lint-icons.ts'
+import { lintIcons, loadIcons, MARKER_NAME_ERROR, MARKER_PIN_ERROR, MARKER_SIGN_ERROR } from '../tools/lint-icons.ts'
 import { validateMeta } from '../tools/lib/meta.ts'
 import { parseIcon } from '../tools/lib/svg.ts'
 
@@ -102,17 +102,35 @@ test('bbox counts half stroke', () => {
   expect(lintIcons(OUT_OF_BOUNDS, { release: false })[0].message).toMatch(/live area/i)
 })
 
-const MARKER_PIN_ERROR = 'marker: first element must be a single closed <path> (the pin)'
+test('marker category requires the standard pin path as first element', () => {
+  expect(MARKER_PIN_ERROR).toBe('marker: first element must be the standard pin path (design guide section 9)')
+  // bolt drawn before the pin; pin path without Z; bolt only, no pin
+  for (const fixture of ['marker-wrong-order', 'marker-open', 'marker-no-pin']) {
+    const errors = lintIcons(invalid(fixture), { release: false })
+    expect(errors).toEqual([expect.objectContaining({ file: 'marker-bad.svg', element: 'path', message: MARKER_PIN_ERROR })])
+  }
+})
 
-test('marker category requires a closed pin path as first element', () => {
-  // bolt drawn before the pin
-  const errors = lintIcons(invalid('marker-wrong-order'), { release: false })
-  expect(errors.map((e) => e.message)).toContain(MARKER_PIN_ERROR)
-  expect(errors).toHaveLength(1)
-  // pin path without Z
-  const open = lintIcons(invalid('marker-open'), { release: false })
-  expect(open.map((e) => e.message)).toContain(MARKER_PIN_ERROR)
-  expect(open).toHaveLength(1)
+test('marker sign elements must lie inside the pin head', () => {
+  // a dot at (5, 21): inside the pin's bounding box, but outside the head
+  const errors = lintIcons(invalid('marker-sign-outside'), { release: false })
+  expect(errors).toEqual([expect.objectContaining({ file: 'marker-bad.svg', element: 'path', message: MARKER_SIGN_ERROR })])
+})
+
+test('marker file names and category marker go together', () => {
+  // marker-x.svg with category station, pin-x.svg with category marker
+  const errors = lintIcons(invalid('marker-wrong-category'), { release: false })
+  expect(errors).toEqual([
+    expect.objectContaining({ file: 'marker-x.json', message: MARKER_NAME_ERROR }),
+    expect.objectContaining({ file: 'pin-x.json', message: MARKER_NAME_ERROR }),
+  ])
+})
+
+test('the eight real markers pass the marker rules', () => {
+  const markers = readdirSync(join(import.meta.dirname, '..', 'icons')).filter((f) => /^marker(-.*)?\.svg$/.test(f))
+  expect(markers).toHaveLength(8)
+  const errors = lintIcons(join(import.meta.dirname, '..', 'icons'), { release: true })
+  expect(errors.filter((e) => e.message.startsWith('marker:'))).toEqual([])
 })
 
 test('valid marker passes', () => {
@@ -129,8 +147,8 @@ test('marker rule only applies to category marker', () => {
   const dir = mkdtempSync(join(TMP_BASE, 'lint-'))
   try {
     const wrong = invalid('marker-wrong-order')
-    copyFileSync(join(wrong, 'bad.svg'), join(dir, 'bad.svg'))
-    const meta = JSON.parse(readFileSync(join(wrong, 'bad.json'), 'utf8'))
+    copyFileSync(join(wrong, 'marker-bad.svg'), join(dir, 'bad.svg'))
+    const meta = JSON.parse(readFileSync(join(wrong, 'marker-bad.json'), 'utf8'))
     writeFileSync(join(dir, 'bad.json'), JSON.stringify({ ...meta, category: 'energy' }))
     expect(lintIcons(dir, { release: false })).toEqual([])
   } finally {

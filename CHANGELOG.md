@@ -21,7 +21,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 ### Changed
 
 - New categories `energy` and `marker` in the icon metadata (`icons.json`).
-- The icon linter checks markers: the first element of a `marker` icon must be a single closed `<path>` (the pin) that encloses the sign.
+- The icon linter checks markers: the first element of a `marker` icon must be the standard pin path, the sign must lie inside the pin head, and an icon is named `marker-…` if and only if its category is `marker`.
 - New documented exception `solid-sign` for the small lightning bolt used inside other icons (design guide sections 2 and 4).
 - The stroke alphabet gains the letters k, W and P, and a lone letter that is the main subject of an icon may use cap height 11 (design guide section 6).
 
