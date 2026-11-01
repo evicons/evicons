@@ -171,7 +171,7 @@ Map markers (category `marker`) are pins with a sign inside. They are drawn like
 
 - **Pin geometry:** a drop. Head circle centre `(12, 10)`, `r = 7.5`; straight flanks tangent to the head run to the tip `(12, 22)`. The tangent points are `(6.145, 14.688)` and `(17.855, 14.688)`, so the pin is `M12 22 6.145 14.688A7.5 7.5 0 1 1 17.855 14.688Z` (after SVGO `m12 22-5.855-7.312a7.5 7.5 0 1 1 11.71 0Z`). It spans x 4.5–19.5 and y 2.5–22.
 - **Pin tip:** the tip at `(12, 22)` is a deliberate sharp corner (it marks the exact point on the map), so every marker declares `sharp-corner`.
-- **Element order is a contract:** the pin is the **first** child element of `<svg>`, one `<path>` with a single closed subpath (one `M`, one `Z` at the end) that encloses every other element. The sign follows after it. The linter enforces this for category `marker` (`marker: first element must be a single closed <path> (the pin)`). Never reorder the elements of a released marker; apps rely on `:first-child`.
+- **Element order is a contract:** the pin is the **first** child element of `<svg>`, one `<path>` with a single closed subpath (one `M`, one `Z` at the end) that encloses every other element. The sign follows after it. The linter enforces this for category `marker` (`marker: first element must be a single closed <path> (the pin)`). Never reorder the elements of a released marker; apps rely on **the first `<path>`** being the pin. Apps select it with `path:first-of-type`, not `:first-child`: the React components render a `<title>` as the first child when `title` is set, and an SVG string may carry a `<title>` or `<desc>` too.
 - **Sign:** inside the head, at least 2.0 between the sign's centre lines and the pin outline. The sign in a marker head is larger than the small-bolt block of section 2: a bolt about 10 high, hollow, with inner spacing of at least 2.0 (exact path below). The small-bolt block is for signs inside other icons, not for markers. Signs are simplified, not thinned: the stroke stays 1.5 and no exception relaxes it. Letters (`marker-ac`, `marker-dc`) use cap height 5.25 and declare `letters`; `!`, `?` and `x` are signs, not letters.
 - **Sign placements** (all centred on the head centre `(12, 10)`; clearance = smallest distance between the sign's centre lines and the pin outline; inner spacing = smallest centre-line distance between parts of the sign, junctions excluded):
 
@@ -187,12 +187,14 @@ Map markers (category `marker`) are pins with a sign inside. They are drawn like
 | `marker-unknown` | question mark block of section 7, moved up 1.625 | `M9.5 7.625a2.5 2.5 0 1 1 3.75 2.165c-.75.43-1.25.95-1.25 1.835v.5` and `M12 14.875h.01` | x 9.5–14.5, y 5.125–14.875 | 2.62 (top of the hook) | 2.75 (stem to dot) |
 
   The marker bolt is not the small-bolt block and not a scaled copy of the `fast-charging` bolt: scaled uniformly to 10 high (or widened by 1.1, as on the comparison page) its arms are only 1.75–1.87 apart, below the 2.0 minimum. Its tips are sharp like every bolt. The letter gap stays 2 (not scaled with the cap height): a scaled gap (1.31) would put D and C closer than the 2.0 minimum. At 24 px the counter of the small A closes; "AC" stays readable from the letter shapes, and the app shows the text next to the marker. The clock's tick dots are zero-length paths (section 2); in filled mode they are drawn in white like the rest of the sign.
-- **Filled mode (CSS only):** the SVG never contains a fill or a colour. Apps fill the pin and draw the sign in white:
+- **Filled mode (CSS only):** the SVG never contains a fill or a colour. Apps fill the first `<path>` (the pin) and draw everything else in white:
 
 ```css
-.marker svg > path:first-child { fill: currentColor; }
-.marker svg > :not(:first-child) { stroke: #fff; }
+.marker svg > path:first-of-type { fill: currentColor; }
+.marker svg > :not(path:first-of-type) { stroke: #fff; }
 ```
+
+  The rule works for inline SVG and the React components (with or without `title`), not inside a sprite `<use>` (the symbol's children are not children of the page's `<svg>`). For map libraries that take images, pre-fill the SVG string instead (README, "Map markers").
 
   The pin keeps its `currentColor` stroke, so a filled pin looks 0.75 larger than its outline; that is intended.
 - **Check sizes:** 24, 32 and 40 px (not 16), light and dark, outline and filled. The preview shows markers in their own section and on a map mock in both modes; `npm run snap -- <out.png> <name>...` renders the same grid to a PNG.

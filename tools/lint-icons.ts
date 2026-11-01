@@ -221,8 +221,9 @@ export const MARKER_PIN_ERROR = 'marker: first element must be a single closed <
 
 /**
  * Marker contract (design guide section 9): the first child element of <svg> is the pin, one
- * closed subpath that encloses every other element, so apps can fill it with
- * `svg > path:first-child { fill: currentColor }` and draw the sign on top.
+ * closed subpath that encloses every other element. So the first <path> is always the pin (also
+ * when React adds a <title> before it), and apps can fill it with
+ * `svg > path:first-of-type { fill: currentColor }` and draw the sign on top.
  */
 function lintMarker(file: string, source: string, errors: LintError[]): void {
   let root: INode

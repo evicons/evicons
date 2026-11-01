@@ -94,7 +94,8 @@ test('renders markers in their own section at 24/32/40 px with a map mock in out
   expect(section).toContain('class="map-mock filled"')
   expect(count(section, 'data-icon="test-marker" data-variant="map-outline"')).toBe(1)
   expect(count(section, 'data-icon="test-marker" data-variant="map-filled"')).toBe(1)
-  expect(html).toContain('.filled svg>path:first-child{fill:currentColor}')
+  expect(html).toContain('.filled svg>path:first-of-type{fill:currentColor}.filled svg>:not(path:first-of-type){stroke:#fff}')
+  expect(html).not.toContain(':first-child')
 
   const reg = readFileSync(join(out, 'dist/regression.html'), 'utf8')
   for (const size of [24, 32, 40]) expect(reg).toContain(`data-icon="test-marker" data-variant="${size}"`)
