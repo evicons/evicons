@@ -2,7 +2,7 @@
   "category": "payment",
   "meaning": {
     "en": "Charging log: a record of charging sessions, for example a log book or receipt",
-    "de": "Ladetagebuch: Aufzeichnung der Ladevorgänge, zum Beispiel Fahrtenbuch oder Beleg"
+    "de": "Ladetagebuch: Aufzeichnung der Ladevorgänge, zum Beispiel Ladeprotokoll oder Beleg"
   },
   "tags": {
     "en": [
@@ -37,7 +37,7 @@
   ],
   "provenance": {
     "createdBy": "ai",
-    "approvedBy": null,
-    "approvedOn": null
+    "approvedBy": "Landolsi Digital",
+    "approvedOn": "2026-11-01"
   }
 }
