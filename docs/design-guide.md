@@ -20,6 +20,8 @@ EVicons only covers e-mobility and EV charging. General UI icons (arrows, close,
 - **Clean markup:** only flat `path`, `circle`, `rect`, `line`, `polyline` and `ellipse` children; no transforms, ids, classes, inline styles or groups. Files are SVGO-normalised (`npm run lint:icons -- --fix`).
 - **Direction:** vehicles face right. Icons are not mirrored for RTL; mirroring is up to the app. Letters and connector faces never mirror.
 - **Meaning:** icons complement text, they do not replace it. Every icon documents its precise meaning in its metadata (`meaning.en` / `meaning.de`).
+- **Small bolt:** where a small lightning bolt is the EV cue inside another icon (home, card, phone, leaf, marker), it is always the same block: height 6.5, width 4, the vertex layout of the `fast-charging` bolt (top tip right of centre, step to the left, lower tip left of centre) scaled to that box. Relative to its top-left corner `(X, Y)`: `M2.75 0 0 3.5h1.5L1 6.5l3-4H2.25Z` (for example at origin (10, 6.75): `M12.75 6.75 10 10.25h1.5l-.5 3 3-4h-1.75Z`). Its tips are sharp like the `fast-charging` bolt; declare `sharp-corner`. At stroke 1.5 the bolt's counter nearly closes (only a thin slit remains at 96 px), so it reads as an almost solid bolt; that is intended for a secondary sign. Never scale it per icon; move it.
+- **Overlay cut-out:** when the small bolt (or another secondary sign) overlaps an outer contour, the contour is interrupted around it: a real gap in the stroke, not a sign drawn on top. Keep at least 2.0 between the bolt's centre lines and the cut ends of the contour (0.5 visible gap with round caps), and check 16 px.
 
 ## 3. Lucide is a visual reference only
 
@@ -40,6 +42,7 @@ Exceptions do not relax any lint rule. They mark a deliberate deviation for revi
 - A connector icon always shows the **vehicle inlet seen from the front**, the way the driver sees the charging socket on the car.
 - The outline follows the inlet's shape, with keying and flattening in their standard position (Type 2: flat side on top).
 - Contacts are outline circles in their standard positions. Power contacts are larger than signal contacts.
+- **Exception, socket face seen from the front:** a connector that exists only as a socket and never as a vehicle inlet (Schuko, CEE 7/3) shows the socket face as seen from the front, the way the user sees it on the wall. Its metadata still has `standard`.
 - Each connector icon has `standard: { norm, source }` in its metadata. The source must name the figure the layout was checked against. Before approval the contact count, sizes and positions are checked against that source, not only visually (see `docs/acceptance/`).
 
 ### Type 2 reference geometry (from `plug-type-2`)
@@ -80,10 +83,13 @@ Letters are drawn as strokes with the regular stroke width (1.5), round caps and
 | C | `M5.5 1.6C4.8 .6 3.9 0 2.9 0C1.2 0 0 1.8 0 4S1.2 8 2.9 8C3.9 8 4.8 7.4 5.5 6.4` |
 | D | `M0 0V8H2C4.2 8 5.5 6.2 5.5 4S4.2 0 2 0Z` |
 | R | `M0 8V0H2.5A2.25 2.25 0 0 1 2.5 4.5H0M2.5 4.5 5 8` |
+| k | added in Tasks 3/4 |
+| W | added in Tasks 3/4 |
+| P | added in Tasks 3/4 |
 
 Example: `current-ac` places A at origin `(5.25, 3.75)` and C at `(13.25, 3.75)`, which gives `m5.25 11.75 3-8 3 8m-4.87-3h3.74` and `M18.75 5.35c-.7-1-1.6-1.6-2.6-1.6-1.7 0-2.9 1.8-2.9 4s1.2 4 2.9 4c1 0 1.9-.6 2.6-1.6` after SVGO.
 
-A and C are tested at 16 px in `current-ac`; D is tested at 16 px in `current-dc` (D at origin (5.5, 3.75), C at (13, 3.75)): readable, its counter stays open. R is used alone in `status-reserved` at origin (9.5, 8): stem from the baseline to the cap line, bowl a half circle r 2.25 from y 0 to y 4.5 (slightly above the middle, counter 3.0 high, 1.5 visible), leg from the bowl's end at (2.5, 4.5) to (5, 8). Tested at 16 px: readable, counter open. More letters (k, W) are added to this table when an icon needs them.
+A and C are tested at 16 px in `current-ac`; D is tested at 16 px in `current-dc` (D at origin (5.5, 3.75), C at (13, 3.75)): readable, its counter stays open. R is used alone in `status-reserved` at origin (9.5, 8): stem from the baseline to the cap line, bowl a half circle r 2.25 from y 0 to y 4.5 (slightly above the middle, counter 3.0 high, 1.5 visible), leg from the bowl's end at (2.5, 4.5) to (5, 8). Tested at 16 px: readable, counter open. k, W and P are added to this table together with the icons that need them (`parking-charging`, `power-kw`).
 
 ## 7. Status icons
 
@@ -130,3 +136,20 @@ Each icon has `<name>.json` next to `<name>.svg` (schema in `tools/lib/meta.ts`)
 
 - `createdBy`: `"ai"` or `"human"`, without product names.
 - `approvedBy` / `approvedOn`: `null` until the owner (Landolsi Digital) approves the icon in the preview; `approvedBy` holds the company name, never a person; a release (`npm run lint:icons -- --release`) requires both.
+
+## 9. Markers
+
+Map markers (category `marker`) are pins with a sign inside. They are drawn like every other icon (outline only, stroke 1.5, `currentColor`), but apps also render them filled.
+
+- **Pin geometry:** a drop. Head circle centre `(12, 10)`, `r = 7.5`; straight flanks tangent to the head run to the tip `(12, 22)`. The tangent points are `(6.145, 14.688)` and `(17.855, 14.688)`, so the pin is `M12 22 6.145 14.688A7.5 7.5 0 1 1 17.855 14.688Z` (after SVGO `m12 22-5.855-7.312a7.5 7.5 0 1 1 11.71 0Z`). It spans x 4.5–19.5 and y 2.5–22.
+- **Element order is a contract:** the pin is the **first** child element of `<svg>`, one `<path>` with a single closed subpath (one `M`, one `Z` at the end) that encloses every other element. The sign follows after it. The linter enforces this for category `marker` (`marker: first element must be a single closed <path> (the pin)`). Never reorder the elements of a released marker; apps rely on `:first-child`.
+- **Sign:** inside the head, at least 2.0 between the sign's centre lines and the pin outline. Signs are simplified, not thinned: the stroke stays 1.5 and no exception relaxes it. Letters (`marker-ac`, `marker-dc`) use cap height 5.25 and declare `letters`; `!`, `?` and `x` are signs, not letters.
+- **Filled mode (CSS only):** the SVG never contains a fill or a colour. Apps fill the pin and draw the sign in white:
+
+```css
+.marker svg > path:first-child { fill: currentColor; }
+.marker svg > :not(:first-child) { stroke: #fff; }
+```
+
+  The pin keeps its `currentColor` stroke, so a filled pin looks 0.75 larger than its outline; that is intended.
+- **Check sizes:** 24, 32 and 40 px (not 16), light and dark, outline and filled. The preview shows markers in their own section and on a map mock in both modes; `npm run snap -- <out.png> <name>...` renders the same grid to a PNG.

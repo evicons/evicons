@@ -1,4 +1,4 @@
-import { copyFileSync, mkdtempSync, rmSync, writeFileSync } from 'node:fs'
+import { copyFileSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { describe, expect, test } from 'vitest'
@@ -8,6 +8,7 @@ import { parseIcon } from '../tools/lib/svg.ts'
 
 const FIXTURES = join(import.meta.dirname, 'fixtures')
 const VALID = join(FIXTURES, 'icons-valid')
+const TMP_BASE = join(import.meta.dirname, '..', '.tmp-tests')
 const invalid = (name: string) => join(FIXTURES, 'icons-invalid', name)
 const FOREIGN = invalid('foreign-attrs')
 const OUT_OF_BOUNDS = invalid('out-of-bounds')
@@ -99,6 +100,42 @@ test('rect with zero corner radius passes the size rule', () => {
 test('bbox counts half stroke', () => {
   // r=10.5 -> edge at 1.5, minus 0.875 stroke half -> 0.625 < 1 -> error
   expect(lintIcons(OUT_OF_BOUNDS, { release: false })[0].message).toMatch(/live area/i)
+})
+
+const MARKER_PIN_ERROR = 'marker: first element must be a single closed <path> (the pin)'
+
+test('marker category requires a closed pin path as first element', () => {
+  // bolt drawn before the pin
+  const errors = lintIcons(invalid('marker-wrong-order'), { release: false })
+  expect(errors.map((e) => e.message)).toContain(MARKER_PIN_ERROR)
+  expect(errors).toHaveLength(1)
+  // pin path without Z
+  const open = lintIcons(invalid('marker-open'), { release: false })
+  expect(open.map((e) => e.message)).toContain(MARKER_PIN_ERROR)
+  expect(open).toHaveLength(1)
+})
+
+test('valid marker passes', () => {
+  expect(lintIcons(join(VALID, 'marker-ok'), { release: false })).toEqual([])
+})
+
+test('category energy is accepted', () => {
+  expect(lintIcons(join(VALID, 'energy-ok'), { release: false })).toEqual([])
+})
+
+test('marker rule only applies to category marker', () => {
+  // the same bolt-before-pin drawing is fine for any other category
+  mkdirSync(TMP_BASE, { recursive: true })
+  const dir = mkdtempSync(join(TMP_BASE, 'lint-'))
+  try {
+    const wrong = invalid('marker-wrong-order')
+    copyFileSync(join(wrong, 'bad.svg'), join(dir, 'bad.svg'))
+    const meta = JSON.parse(readFileSync(join(wrong, 'bad.json'), 'utf8'))
+    writeFileSync(join(dir, 'bad.json'), JSON.stringify({ ...meta, category: 'energy' }))
+    expect(lintIcons(dir, { release: false })).toEqual([])
+  } finally {
+    rmSync(dir, { recursive: true, force: true })
+  }
 })
 
 describe('parseIcon', () => {

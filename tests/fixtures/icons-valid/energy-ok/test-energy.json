@@ -1,0 +1,25 @@
+{
+  "category": "energy",
+  "meaning": {
+    "en": "Test energy",
+    "de": "Testenergie"
+  },
+  "tags": {
+    "en": [
+      "energy"
+    ],
+    "de": [
+      "energie"
+    ],
+    "fr": [
+      "énergie"
+    ]
+  },
+  "since": "0.2.0",
+  "aliases": [],
+  "provenance": {
+    "createdBy": "ai",
+    "approvedBy": null,
+    "approvedOn": null
+  }
+}

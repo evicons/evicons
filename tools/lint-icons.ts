@@ -217,6 +217,44 @@ function lintSvg(file: string, source: string, errors: LintError[]): void {
   }
 }
 
+export const MARKER_PIN_ERROR = 'marker: first element must be a single closed <path> (the pin)'
+
+/**
+ * Marker contract (design guide section 9): the first child element of <svg> is the pin, one
+ * closed subpath that encloses every other element, so apps can fill it with
+ * `svg > path:first-child { fill: currentColor }` and draw the sign on top.
+ */
+function lintMarker(file: string, source: string, errors: LintError[]): void {
+  let root: INode
+  try {
+    root = parseSvg(source)
+  } catch {
+    return // reported by lintSvg
+  }
+  const [first, ...rest] = root.children.filter((c) => c.type === 'element')
+  const d = first?.name === 'path' ? (first.attributes.d ?? '').trim() : ''
+  const count = (re: RegExp) => (d.match(re) ?? []).length
+  let ok = /[Zz]$/.test(d) && count(/[Mm]/g) === 1 && count(/[Zz]/g) === 1
+  if (ok) {
+    // A sign drawn first can be a closed path too (a bolt); the pin is the one that encloses the rest.
+    const bbox = (el: INode) => {
+      try {
+        return isAllowedTag(el.name) ? elementBBox(el.name, el.attributes) : null
+      } catch {
+        return null
+      }
+    }
+    const pin = bbox(first)
+    ok =
+      pin !== null &&
+      rest.every((el) => {
+        const b = bbox(el)
+        return b === null || (b[0] >= pin[0] - EPSILON && b[1] >= pin[1] - EPSILON && b[2] <= pin[2] + EPSILON && b[3] <= pin[3] + EPSILON)
+      })
+  }
+  if (!ok) errors.push({ file, element: first?.name, message: MARKER_PIN_ERROR })
+}
+
 function listIconFiles(dir: string): { svgs: Set<string>; jsons: Set<string> } {
   const svgs = new Set<string>()
   const jsons = new Set<string>()
@@ -260,6 +298,10 @@ export function lintIcons(dir: string, opts: { release: boolean }): LintError[] 
     for (const message of metaErrors) errors.push({ file: jsonFile, message })
     if (metaErrors.length > 0) continue
     const meta = raw as IconMeta
+
+    if (meta.category === 'marker' && svgs.has(name)) {
+      lintMarker(svgFile, readFileSync(join(dir, svgFile), 'utf8'), errors)
+    }
 
     const claims: Array<[string, string]> = [[toPascalCase(name), `icon "${name}"`]]
     for (const alias of meta.aliases) claims.push([toPascalCase(alias), `alias "${alias}" of icon "${name}"`])

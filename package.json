@@ -16,7 +16,8 @@
     "preview": "node tools/build-preview.ts",
     "typecheck": "tsc -p tools/tsconfig.json && tsc -p packages/react/tsconfig.build.json --noEmit",
     "test:smoke": "vitest run --config vitest.consumer.config.ts",
-    "test:consumer-next": "node tools/test-consumer-next.ts"
+    "test:consumer-next": "node tools/test-consumer-next.ts",
+    "snap": "node tools/snap-icons.ts"
   },
   "devDependencies": {
     "@playwright/test": "1.64.1",

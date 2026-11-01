@@ -1,7 +1,7 @@
 import { KNOWN_EXCEPTIONS, isKnownException } from './exceptions.ts'
 import { isKebabCase } from './names.ts'
 
-export const CATEGORIES = ['connector', 'station', 'power', 'vehicle', 'status', 'payment'] as const
+export const CATEGORIES = ['connector', 'station', 'power', 'vehicle', 'status', 'payment', 'energy', 'marker'] as const
 
 export type IconCategory = (typeof CATEGORIES)[number]
 

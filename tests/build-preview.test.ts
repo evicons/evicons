@@ -69,3 +69,40 @@ test('renders the status overlay section when charging-station and status-* exis
   expect(count(html, 'data-variant="overlay-badge"')).toBe(2)
   expect(count(html, 'data-variant="overlay-base"')).toBe(2)
 })
+
+test('renders markers in their own section at 24/32/40 px with a map mock in outline and filled mode', () => {
+  const dir = join(out, 'icons')
+  mkdirSync(dir)
+  for (const ext of ['svg', 'json']) {
+    copyFileSync(join(VALID, `test-ring.${ext}`), join(dir, `test-ring.${ext}`))
+    copyFileSync(join(VALID, `marker-ok/test-marker.${ext}`), join(dir, `test-marker.${ext}`))
+  }
+  buildPreview({ iconsDir: dir, outDir: join(out, 'dist') })
+  const html = readFileSync(join(out, 'dist/index.html'), 'utf8')
+  expect(count(html, 'id="markers"')).toBe(1)
+  const section = html.slice(html.indexOf('id="markers"'))
+  for (const size of [24, 32, 40]) {
+    for (const theme of ['light', 'dark']) {
+      expect(count(section, `data-icon="test-marker" data-variant="${size}-${theme}"`)).toBe(1)
+      expect(count(section, `data-icon="test-marker" data-variant="${size}-${theme}-filled"`)).toBe(1)
+    }
+  }
+  // not in the 16/20/24 cards of the other icons
+  for (const size of [16, 20]) expect(html).not.toContain(`data-icon="test-marker" data-variant="${size}-light"`)
+  expect(count(html, 'data-icon="test-ring" data-variant="16-light"')).toBe(1)
+  expect(section).toContain('class="map-mock outline"')
+  expect(section).toContain('class="map-mock filled"')
+  expect(count(section, 'data-icon="test-marker" data-variant="map-outline"')).toBe(1)
+  expect(count(section, 'data-icon="test-marker" data-variant="map-filled"')).toBe(1)
+  expect(html).toContain('.filled svg>path:first-child{fill:currentColor}')
+
+  const reg = readFileSync(join(out, 'dist/regression.html'), 'utf8')
+  for (const size of [24, 32, 40]) expect(reg).toContain(`data-icon="test-marker" data-variant="${size}"`)
+  expect(reg).not.toContain('data-icon="test-marker" data-variant="16"')
+  expect(reg).toContain('data-icon="test-ring" data-variant="16"')
+})
+
+test('no markers section without marker icons', () => {
+  buildPreview({ iconsDir: VALID, outDir: out })
+  expect(readFileSync(join(out, 'index.html'), 'utf8')).not.toContain('id="markers"')
+})
