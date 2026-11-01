@@ -6,7 +6,7 @@ EVicons covers **only** e-mobility. General UI icons (arrows, menu, search, clos
 
 - Outline style on a 24 × 24 grid, stroke width 1.5, round caps and joins.
 - `currentColor` only: the SVGs contain no colours, colour comes from your CSS.
-- Connector icons show the vehicle inlet seen from the front, checked against the relevant standard.
+- Connector icons show the vehicle inlet seen from the front, with the contact layout checked against public drawings of the connector standards (see each icon's `standard.source`).
 - Every icon has a documented meaning (see [Icons](#icons)).
 
 | Package | Contents |
@@ -93,7 +93,7 @@ An explicit `role` or `aria-hidden` that you pass always wins over the defaults.
 
 ### Icons complement text
 
-Do not use an icon as the only carrier of information. At 16 px some connector faces cannot be told apart reliably (for example CCS1 and CCS2, or GB/T AC and Type 2), and at small sizes the contacts of Type 2 and CCS2 render as similar dots. Always show the connector name next to the icon, for example "Type 2 · 22 kW". The same applies to status icons: show the status as text or at least as an accessible name.
+Do not use an icon as the only carrier of information. At 16 px the contacts of a connector face render as similar dots, so faces that share a part are hard to tell apart: `plug-type-2` and `plug-ccs2` differ only in the DC part below the Type 2 contacts. Always show the connector name next to the icon, for example "Type 2 · 22 kW". The same applies to status icons: show the status as text or at least as an accessible name.
 
 ### Status overlay pattern
 
@@ -166,7 +166,7 @@ Status icons share a round frame; the sign inside carries the meaning.
 |---|---|
 | React | 18 and 19 (peer dependency `^18.0.0 \|\| ^19.0.0`) |
 | Server rendering | Node.js 20 or later (tested on 20 and 24); works in React Server Components, no `'use client'` needed |
-| Module format | ESM only, no CommonJS build |
+| Module format | ESM only, no CommonJS build; `require()` works on Node.js versions with `require(esm)` (20.19+, 22.12+) |
 | TypeScript | Types included |
 
 ## Contributing

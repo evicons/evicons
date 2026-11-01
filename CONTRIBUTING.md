@@ -90,9 +90,9 @@ All geometry is drawn from scratch. Never copy, trace or adapt paths from Lucide
 
 ## Releasing (maintainers)
 
-1. Set the new version in `packages/react/package.json` and `packages/svg/package.json` (both packages share one version) and run `npm install` to update the lockfile.
-2. Move the `Unreleased` entries in `CHANGELOG.md` to a section `## [X.Y.Z] - YYYY-MM-DD`.
-3. Check: `npm run lint:icons -- --release && npm run build && npm test`.
+1. Set the date of the release section in `CHANGELOG.md` to the tag date: move the `Unreleased` entries to a section `## [X.Y.Z] - YYYY-MM-DD`, where the date is the day the tag is pushed. The section is copied verbatim into the GitHub release.
+2. Set the new version in `packages/react/package.json` and `packages/svg/package.json` (both packages share one version) and run `npm install` to update the lockfile.
+3. Check: `npm run lint:icons -- --release && npm run build && npm test`, then `npm pack --dry-run -w @evicons/react -w @evicons/svg` to review the package contents. `npm pack` and `npm publish` rebuild `@evicons/react` through its `prepack` script, and its build clears `dist/` first, so no stale modules are shipped.
 4. Commit, then push a tag `vX.Y.Z`. The release workflow runs all checks, publishes both packages to npm with provenance and creates the GitHub release from the changelog section.
 
 ## License

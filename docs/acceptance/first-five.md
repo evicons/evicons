@@ -1,5 +1,7 @@
 # Acceptance: first five icons
 
+Historical acceptance record of the first five icons (October 2026): the checks, findings and owner decisions as they were made. Later changes are noted where they supersede an entry.
+
 Icons: `charging-station`, `plug-type-2`, `current-ac`, `status-available`, `car-plugged`.
 All five are `createdBy: "ai"`, `since: "0.1.0"`. The owner approved all five on 2026-10-21 after one correction round (see "Owner decisions"); `provenance.approvedBy` is `"Landolsi Digital"` and `approvedOn` is `"2026-10-21"` in each icon's metadata, except `car-plugged`, whose approval was superseded by the option B change (see "Owner approval").
 
@@ -24,7 +26,7 @@ All results are from the final state after the owner's corrections (2026-10-21).
 
 ## Stroke width and radius
 
-Superseded on 2026-10-21: the default stroke width is now 1.5 (see `docs/acceptance/v0.1.md`, "Owner decisions"); visible gaps are 0.25 larger than the figures in this document. Historical text: stroke width 1.75 and the minimum corner radius 1.25 were reviewed with the preview's stroke switcher (1.5 / 1.75 / 2) and confirmed unchanged by the owner. No global change: Global Constraints, linter rule 1, the `createEvIcon` default and spec §6/§11 stay as they are.
+Superseded on 2026-10-21: the default stroke width is now 1.5 (see `docs/acceptance/v0.1.md`, "Owner decisions"); visible gaps are 0.25 larger than the figures in this document. Historical text: stroke width 1.75 and the minimum corner radius 1.25 were reviewed with the preview's stroke switcher (1.5 / 1.75 / 2) and confirmed unchanged by the owner. No global change at that time: the default stroke, the linter and the design guide stayed unchanged.
 
 ## Norm check: `plug-type-2`
 

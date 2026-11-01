@@ -1,6 +1,6 @@
 # @evicons/svg
 
-Raw SVG files, an SVG sprite and metadata for [EVicons](https://evicons.dev), an MIT-licensed icon library for e-mobility and EV charging.
+Raw SVG files, an SVG sprite and metadata for [EVicons](https://github.com/evicons/evicons), an MIT-licensed icon library for e-mobility and EV charging.
 
 All files are generated from the sources in `icons/` of the repository. Do not edit them by hand.
 
