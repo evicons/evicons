@@ -1,11 +1,11 @@
 {
   "name": "@evicons/react",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "EVicons React icon components for e-mobility and EV charging",
   "type": "module",
   "sideEffects": false,
   "license": "MIT",
-  "files": ["dist"],
+  "files": ["dist", "README.md", "LICENSE"],
   "exports": {
     ".": { "types": "./dist/index.d.ts", "import": "./dist/index.js" },
     "./icons/*": { "types": "./dist/icons/*.d.ts", "import": "./dist/icons/*.js" }

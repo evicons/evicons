@@ -1,0 +1,101 @@
+name: Release
+
+on:
+  push:
+    tags: ['v*']
+
+permissions:
+  contents: read
+
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  checks:
+    name: Checks
+    uses: ./.github/workflows/ci.yml
+
+  publish:
+    name: Publish to npm
+    needs: checks
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      # npm Trusted Publishing (OIDC): no npm token is used.
+      id-token: write
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24
+          cache: npm
+      - name: Tag matches package versions
+        env:
+          TAG: ${{ github.ref_name }}
+        run: |
+          for dir in packages/react packages/svg; do
+            version=$(node -p "require('./$dir/package.json').version")
+            if [ "v$version" != "$TAG" ]; then
+              echo "::error::$dir/package.json has version $version, tag is $TAG"
+              exit 1
+            fi
+          done
+      - name: npm >= 11.5.1 (required for Trusted Publishing)
+        run: |
+          current=$(npm --version)
+          if ! node -e '
+            const [a, b, c] = process.argv[1].split(".").map(Number)
+            process.exit(a > 11 || (a === 11 && (b > 5 || (b === 5 && c >= 1))) ? 0 : 1)
+          ' "$current"; then
+            echo "npm $current is too old, installing the latest npm"
+            npm install -g npm@latest
+          fi
+          npm --version
+      - run: npm ci
+      - run: npm run lint:icons -- --release
+      - run: npm run build
+      - name: Publish packages (skip versions already on npm)
+        run: |
+          for dir in packages/svg packages/react; do
+            name=$(node -p "require('./$dir/package.json').name")
+            version=$(node -p "require('./$dir/package.json').version")
+            # Prints the version if it exists; prints nothing (or fails for an unknown package) otherwise.
+            published=$(npm view "$name@$version" version 2>/dev/null || true)
+            if [ "$published" = "$version" ]; then
+              echo "$name@$version is already on npm, skipping"
+            else
+              npm publish --workspace "$name" --provenance --access public
+            fi
+          done
+
+  github-release:
+    name: GitHub release
+    needs: publish
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v5
+      - name: Create release from the changelog
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          TAG: ${{ github.ref_name }}
+        run: |
+          if gh release view "$TAG" >/dev/null 2>&1; then
+            echo "Release $TAG already exists, skipping"
+            exit 0
+          fi
+          version="${TAG#v}"
+          # Section between "## [<version>]" and the next "## [" heading (or the link references).
+          awk -v heading="## [$version]" '
+            index($0, "## [") == 1 { if (found) exit; if (index($0, heading) == 1) { found = 1; next } }
+            found && /^\[[^]]+\]: / { exit }
+            found { print }
+          ' CHANGELOG.md | sed -e '/./,$!d' > release-notes.md
+          if [ ! -s release-notes.md ]; then
+            echo "::error::CHANGELOG.md has no section for $version"
+            exit 1
+          fi
+          gh release create "$TAG" --verify-tag --title "$TAG" --notes-file release-notes.md

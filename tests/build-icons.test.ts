@@ -120,3 +120,12 @@ test('refuses to build when lint fails', () => {
   expect(() => buildIcons(opts(INVALID))).toThrow()
   expect(existsSync(join(reactDir, 'index.ts'))).toBe(false)
 })
+
+test('package LICENSE files are byte-identical copies of the root LICENSE', () => {
+  const root = readFileSync(join(ROOT, 'LICENSE'))
+  for (const pkg of ['react', 'svg']) {
+    const file = join(ROOT, 'packages', pkg, 'LICENSE')
+    expect(existsSync(file), `${file} is missing`).toBe(true)
+    expect(readFileSync(file), `${file} differs from the root LICENSE`).toEqual(root)
+  }
+})
