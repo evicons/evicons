@@ -1,0 +1,39 @@
+{
+  "category": "station",
+  "meaning": {
+    "en": "Charging cable attached to the charge point (tethered cable with plug, no own cable needed)",
+    "de": "Am Ladepunkt angeschlagenes Ladekabel (Kabel mit Stecker vorhanden, kein eigenes Kabel nötig)"
+  },
+  "tags": {
+    "en": [
+      "charging cable",
+      "tethered cable",
+      "attached cable",
+      "cable",
+      "plug",
+      "charging"
+    ],
+    "de": [
+      "ladekabel",
+      "angeschlagenes kabel",
+      "festes kabel",
+      "kabel",
+      "stecker",
+      "laden"
+    ],
+    "fr": [
+      "câble de recharge",
+      "câble attaché",
+      "câble",
+      "fiche",
+      "recharge"
+    ]
+  },
+  "since": "0.2.0",
+  "aliases": [],
+  "provenance": {
+    "createdBy": "ai",
+    "approvedBy": null,
+    "approvedOn": null
+  }
+}

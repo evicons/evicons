@@ -69,6 +69,31 @@ The Type 2 part reuses the Type 2 construction above, scaled so that the Type 2 
 - DC part: stadium `rect x=5.35 y=15.75 width=13.3 height=6.35 rx=3.175`, 2.0 below the Type 2 outline. DC+ and DC− are r 1.15 at `(8.525, 18.925)` and `(15.475, 18.925)`, concentric with the stadium's round ends (rings).
 - Smallest gaps (centre lines minus radii): Type 2 outline to DC part 2.0, signal contact to flat edge 2.015, signal to power contact 2.019, DC contact to stadium 2.025, power contact to outline 2.06; all at or above the connector minimum of 2.0.
 
+### CHAdeMO reference geometry (from `plug-chademo`)
+
+- Outline: circle `C = (12, 12)`, `R = 9` (as Type 2), no flat edge; the keyway and the boss rims are omitted (too fine).
+- DC+ and DC−: rings `r = 1.5` at `(7.75, 12)` and `(16.25, 12)`, 0.47 R left and right of the centre (public drawings: 0.45–0.46 R).
+- Signal contacts: dots (zero-length paths) at `(10.25, 6.875)`, `(13.75, 6.875)`, `(10.25, 17.125)`, `(13.75, 17.125)`. The two signal bosses sit 0.57 R above and below the centre; of their four contacts each, only the horizontal pair at ±1.75 from the boss centre is drawn (upper: N/C, SS1; lower: C-L, C-H). The centre stays empty.
+- Smallest gaps (centre lines minus radii): DC ring to outline 3.25, signal pair 3.5 apart, signal dot to outline 3.58, signal dot to DC ring 4.2.
+
+### Schuko reference geometry (from `plug-schuko`)
+
+Socket face seen from the front (exception above).
+
+- Outline: circle `C = (12, 12)`, `R = 9`, standing for the 39 mm recess.
+- Contact holes: solid discs `r = 0.5` (two-arc paths, section 2) at `(7.625, 12)` and `(16.375, 12)`, 8.75 apart (19 mm on 39 mm). Holes are discs, not rings; plain dots are too faint at 16 px.
+- Earthing clips: `M10.75 5.75h2.5` and `M10.75 18.25h2.5`, just inside the rim, not touching it.
+- Smallest gaps: clip end to outline 2.63 (clip middle 2.75), hole to outline 4.125.
+
+### Side-view plug block (from `charging-plug`)
+
+Reuse it wherever a plug is shown from the side (`charging-cable`, `bidirectional-charging`); the plug points right.
+
+- Head `<rect x="9.75" y="6" width="7.5" height="9" rx="2"/>`, collar line `M14.75 6v9` (front insert 2.5 wide), prongs `M17.25 8.75H21m-3.75 3.5H21` (3.5 apart, 3.75 long).
+- Strain relief `M9.75 8.5H8a1.25 1.25 0 0 0-1.25 1.25v1.5A1.25 1.25 0 0 0 8 12.5h1.75` (3 × 4); the cable leaves its left side at `(6.75, 10.5)`.
+- Small variant (`charging-cable`, about 2/3): head `<rect x="14" y="3" width="5" height="6" rx="1.25"/>`, prongs `M19 4.75h2.5M19 7.25h2.5` (2.5 apart), strain relief `M14 4.75h-.75a1.25 1.25 0 0 0 0 2.5H14`, cable from `(12, 6)`. No collar line: it would sit closer than 2.0 to the front face.
+- Move the block, do not rescale it beyond these two sizes.
+
 ## 6. Letter set
 
 Letters are drawn as strokes with the regular stroke width (1.5), round caps and joins. Coordinates are relative to the letter's top-left corner; to place a letter, add the origin `(X, Y)` to every coordinate.

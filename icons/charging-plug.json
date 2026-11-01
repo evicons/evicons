@@ -1,0 +1,37 @@
+{
+  "category": "station",
+  "meaning": {
+    "en": "Charging plug in general, seen from the side with its cable (no specific connector type)",
+    "de": "Ladestecker allgemein, Seitenansicht mit Kabel (kein bestimmter Steckertyp)"
+  },
+  "tags": {
+    "en": [
+      "charging plug",
+      "plug",
+      "connector",
+      "cable",
+      "charging",
+      "ev charging"
+    ],
+    "de": [
+      "ladestecker",
+      "stecker",
+      "kabel",
+      "laden",
+      "e-auto laden"
+    ],
+    "fr": [
+      "fiche de recharge",
+      "fiche",
+      "câble",
+      "recharge"
+    ]
+  },
+  "since": "0.2.0",
+  "aliases": [],
+  "provenance": {
+    "createdBy": "ai",
+    "approvedBy": null,
+    "approvedOn": null
+  }
+}

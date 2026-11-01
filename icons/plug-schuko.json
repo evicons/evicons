@@ -1,0 +1,49 @@
+{
+  "category": "connector",
+  "meaning": {
+    "en": "Schuko socket (CEE 7/3, DIN 49440, household AC), shown as the socket face seen from the front",
+    "de": "Schuko-Steckdose (CEE 7/3, DIN 49440, Haushalt, AC), dargestellt als Steckdosenfläche von vorn"
+  },
+  "tags": {
+    "en": [
+      "schuko",
+      "cee 7/3",
+      "din 49440",
+      "type f",
+      "household socket",
+      "ac",
+      "granny charger",
+      "socket"
+    ],
+    "de": [
+      "schuko",
+      "schukosteckdose",
+      "cee 7/3",
+      "din 49440",
+      "typ f",
+      "haushaltssteckdose",
+      "ac",
+      "notladekabel",
+      "steckdose"
+    ],
+    "fr": [
+      "schuko",
+      "cee 7/3",
+      "type f",
+      "prise domestique",
+      "ac",
+      "prise"
+    ]
+  },
+  "since": "0.2.0",
+  "aliases": [],
+  "standard": {
+    "norm": "CEE 7/3 (DIN 49440)",
+    "source": "CEE 7/3 and DIN 49440 not consulted; layout checked against a public drawing on Wikimedia Commons, retrieved 2026-11-01: \"File:Type F Socket.svg\" by Aeroid (public domain; socket face: round recess 39 mm, two contact holes on the horizontal centre line 19 mm apart, earthing clips at the top and bottom of the recess), https://commons.wikimedia.org/wiki/File:Type_F_Socket.svg. Hole spacing follows that drawing (19/39 = 0.49 of the recess diameter); the holes are drawn as solid discs of diameter 2.5 (two-arc paths r 0.5, design guide section 2; the drawing's 5 mm holes scale to about 2.3) and the earthing clips as short horizontal strokes just inside the rim, not touching it, so they stay separate at 16 px. Socket face exception (design guide section 5): Schuko has no vehicle inlet."
+  },
+  "provenance": {
+    "createdBy": "ai",
+    "approvedBy": null,
+    "approvedOn": null
+  }
+}
