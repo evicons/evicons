@@ -21,7 +21,8 @@
     "snap": "node tools/snap-icons.ts",
     "dev:site": "npm run dev -w site",
     "build:site": "npm run build -w site",
-    "test:site": "playwright test -c site/playwright.config.ts"
+    "test:site": "playwright test -c site/playwright.config.ts",
+    "test:site:unit": "vitest run --config site/vitest.config.ts"
   },
   "devDependencies": {
     "@playwright/test": "1.64.1",

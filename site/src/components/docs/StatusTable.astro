@@ -1,0 +1,74 @@
+---
+// Status → icon → suggested colour → meaning. Meanings come from icons.json; colours are the site's status tokens.
+import * as icons from '@evicons/react'
+import type { EvIconComponent } from '@evicons/react'
+import { loadIcons } from '../../lib/icons'
+
+const rows = [
+  { status: 'available', label: 'Available', colour: '#16a34a' },
+  { status: 'occupied', label: 'Occupied', colour: '#f59e0b' },
+  { status: 'faulted', label: 'Faulted', colour: '#dc2626' },
+  { status: 'out-of-service', label: 'Out of service', colour: '#71717a' },
+  { status: 'reserved', label: 'Reserved', colour: '#7c3aed' },
+  { status: 'unknown', label: 'Unknown', colour: '#0891b2' },
+  { status: 'queue', label: 'Queue', colour: '#d97706' },
+]
+
+const all = loadIcons()
+
+/** WCAG contrast ratio of a colour against white, two decimals. */
+function contrastOnWhite(hex: string): string {
+  const channel = (i: number) => {
+    const v = parseInt(hex.slice(i, i + 2), 16) / 255
+    return v <= 0.04045 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4
+  }
+  const l = 0.2126 * channel(1) + 0.7152 * channel(3) + 0.0722 * channel(5)
+  return (1.05 / (l + 0.05)).toFixed(2)
+}
+
+const data = rows.map((row) => {
+  const name = `status-${row.status}`
+  const icon = all.find((entry) => entry.name === name)
+  if (!icon) throw new Error(`Unknown status icon ${name}`)
+  const Icon = (icons as unknown as Record<string, EvIconComponent>)[icon.pascal]
+  if (!Icon) throw new Error(`No React component ${icon.pascal}`)
+  return { ...row, name, Icon, meaning: icon.meaning.en, contrast: contrastOnWhite(row.colour) }
+})
+---
+
+<div class="table-wrap" tabindex="0">
+  <table class="status-table">
+    <thead>
+      <tr>
+        <th scope="col">Status</th>
+        <th scope="col">Icon</th>
+        <th scope="col">Suggested colour</th>
+        <th scope="col">On white</th>
+        <th scope="col">Meaning</th>
+      </tr>
+    </thead>
+    <tbody>
+      {
+        data.map(({ label, name, Icon, colour, status, contrast, meaning }) => (
+          <tr>
+            <th scope="row">{label}</th>
+            <td>
+              <span class="flex items-center gap-2 whitespace-nowrap">
+                <Icon size={24} style={{ color: `var(--status-${status})` }} />
+                <code>{name}</code>
+              </span>
+            </td>
+            <td>
+              <span class="flex items-center gap-2 whitespace-nowrap">
+                <span class="size-3.5 shrink-0 rounded-sm" style={`background:${colour}`} aria-hidden="true" />
+                <code>{colour}</code>
+              </span>
+            </td>
+            <td class="whitespace-nowrap">{contrast}:1</td>
+            <td>{meaning}</td>
+          </tr>
+        ))
+      }
+    </tbody>
+  </table>
+</div>

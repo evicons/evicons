@@ -11,6 +11,7 @@ import {
   StatusFaulted,
   StatusOccupied,
 } from '@evicons/react'
+import CopyButton from '../components/CopyButton.astro'
 import Base from '../layouts/Base.astro'
 
 const install = 'npm i @evicons/react'
@@ -29,13 +30,7 @@ const button = 'inline-flex items-center rounded-md px-4 py-2 text-sm font-mediu
 
     <div class="mt-8 inline-flex max-w-full items-center gap-3 rounded-lg border border-border bg-surface py-2 pl-4 pr-2">
       <code class="overflow-x-auto font-mono text-sm">{install}</code>
-      <button
-        type="button"
-        data-copy={install}
-        class="min-w-[6.5rem] rounded-md px-2 py-1 text-center text-sm text-muted hover:bg-bg hover:text-fg"
-        aria-label="Copy install command">Copy</button
-      >
-      <span class="sr-only" role="status" aria-live="polite" data-copy-status></span>
+      <CopyButton text={install} label="Copy install command" class="min-w-[6.5rem] hover:bg-bg" />
     </div>
 
     <div class="mt-8 flex flex-wrap gap-3">
@@ -83,24 +78,3 @@ const button = 'inline-flex items-center rounded-md px-4 py-2 text-sm font-mediu
     </div>
   </section>
 </Base>
-
-<script>
-  for (const button of document.querySelectorAll<HTMLButtonElement>('[data-copy]')) {
-    const status = button.parentElement?.querySelector<HTMLElement>('[data-copy-status]')
-    let reset: ReturnType<typeof setTimeout> | undefined
-    const show = (label: string, message: string) => {
-      button.textContent = label
-      if (status) status.textContent = message
-    }
-    button.addEventListener('click', async () => {
-      clearTimeout(reset)
-      try {
-        await navigator.clipboard.writeText(button.dataset.copy ?? '')
-        show('Copied', 'Copied to clipboard')
-      } catch {
-        show('Copy failed', 'Copy failed')
-      }
-      reset = setTimeout(() => show('Copy', ''), 2000)
-    })
-  }
-</script>

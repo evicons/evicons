@@ -10,6 +10,7 @@
     "test": "playwright test -c playwright.config.ts"
   },
   "dependencies": {
+    "@astrojs/mdx": "8.1.2",
     "@astrojs/react": "7.1.2",
     "@evicons/react": "0.2.0",
     "@evicons/svg": "0.2.0",

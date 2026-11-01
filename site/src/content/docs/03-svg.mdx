@@ -1,0 +1,85 @@
+---
+id: svg
+title: SVG & sprite
+---
+
+`@evicons/svg` has the same icons as plain files, for any framework or none.
+
+```text
+@evicons/svg/
+├── svg/<name>.svg   one file per icon, exported as @evicons/svg/<name>.svg
+├── sprite.svg       all icons as <symbol id="evicon-<name>">
+└── icons.json       metadata for every icon
+```
+
+### Inline SVG
+
+The files contain no colours; every stroke is `currentColor`. Inline the markup to colour and size it with CSS. With Vite, for example:
+
+```ts
+import plugType2 from '@evicons/svg/plug-type-2.svg?raw'
+
+document.querySelector('#connector')!.innerHTML = plugType2
+```
+
+As an `<img src>` the icon draws in black: `currentColor` does not reach into an image, so use `<img>` only where black is what you want.
+
+### Sprite
+
+The sprite holds every icon as a `<symbol>` with the id `evicon-<name>`. Copy it into your app's public folder, so that it is served from your own origin (browsers do not load `<use>` references from other origins):
+
+```sh
+cp node_modules/@evicons/svg/sprite.svg public/sprite.svg
+```
+
+```html
+<svg width="24" height="24" aria-hidden="true">
+  <use href="/sprite.svg#evicon-plug-type-2" />
+</svg>
+```
+
+The icon takes the CSS `color` of the `<svg>` or a parent. Page CSS cannot reach the shapes inside a `<use>`, so [filled map markers](#markers) need inline SVG or the React components instead.
+
+### `icons.json`
+
+Metadata for all icons, for pickers, search and legends:
+
+```ts
+import icons from '@evicons/svg/icons.json' with { type: 'json' }
+
+// All connectors with their React component name and English meaning.
+const connectors = Object.entries(icons)
+  .filter(([, icon]) => icon.category === 'connector')
+  .map(([name, icon]) => ({ name, component: icon.pascal, label: icon.meaning.en }))
+```
+
+The file is one object keyed by icon name:
+
+```json
+{
+  "plug-type-2": {
+    "category": "connector",
+    "meaning": { "en": "Type 2 connector (IEC 62196-2, \"Mennekes\"), shown as the vehicle inlet face", "de": "…" },
+    "tags": { "en": ["type 2", "mennekes", "iec 62196-2", "…"], "de": ["…"], "fr": ["…"] },
+    "since": "0.1.0",
+    "aliases": [],
+    "standard": { "norm": "IEC 62196-2 (Type 2)", "source": "…" },
+    "exceptions": ["dense-connector"],
+    "provenance": { "createdBy": "…", "approvedBy": "…", "approvedOn": "…" },
+    "pascal": "PlugType2"
+  }
+}
+```
+
+| Field | Type | Description |
+|---|---|---|
+| `category` | `string` | One of `connector`, `station`, `power`, `vehicle`, `energy`, `status`, `payment`, `marker`. |
+| `meaning` | `{ en, de }` | The precise meaning in English and German. |
+| `tags` | `{ en, de, fr }` | Search terms in English, German and French. |
+| `since` | `string` | The version that first shipped the icon. |
+| `aliases` | `string[]` | Former names. `@evicons/react` also exports the component under these names. |
+| `deprecated` | `{ since, replacement? }` | Only on deprecated icons; `replacement` names the icon to use instead. |
+| `standard` | `{ norm, source }` | Connectors only: the standard and the drawing the contact layout was checked against. |
+| `exceptions` | `string[]` | Optional. Deliberate style deviations from the design guide. |
+| `provenance` | `object` | How the icon was created and when it was approved. |
+| `pascal` | `string` | The React component name. |

@@ -1,0 +1,97 @@
+---
+id: markers
+title: Map markers
+---
+
+import MarkerDemo from '../../components/docs/MarkerDemo.astro'
+
+The `marker-*` icons are map pins with a sign in the head: `marker-charging` is the plain charging point, the others add AC/DC or a status. Use them at **24, 32 or 40 px**; they are not drawn for 16 px. Like all icons they are outlines in `currentColor`, and they can also be drawn filled: the pin in your colour, the sign in white. The SVG files never contain a colour; filling is done by your CSS or your code.
+
+<MarkerDemo />
+
+**Element order is a contract:** in every marker the first `<path>` is the pin, a single closed shape that encloses the sign. Everything after it is the sign. This order never changes in a released marker.
+
+The charging marker is named `marker-charging` (`MarkerCharging`), not `marker`, so that it does not clash with the `Marker` component of map libraries (MapLibre, Mapbox, Leaflet, Google Maps).
+
+### Filled with CSS
+
+For inline SVG and the React components:
+
+```css
+.marker { color: #1f9d55; }
+.marker svg > path:first-of-type { fill: currentColor; }
+.marker svg > :not(path:first-of-type) { stroke: #fff; }
+```
+
+```tsx
+import { MarkerAvailable } from '@evicons/react'
+
+export function AvailablePin() {
+  return (
+    <span className="marker">
+      <MarkerAvailable size={32} title="Available" />
+    </span>
+  )
+}
+```
+
+Select the pin with `path:first-of-type`, not `:first-child`: with `title`, the React component renders a `<title>` as the first child of the `<svg>`. The rule works for inline SVG and the React components. It does not work with the sprite: the shapes of a `<symbol>` shown with `<use>` are not children of your `<svg>`, so page CSS cannot select them. The pin keeps its stroke, so a filled pin is 0.75 units larger than its outline; that is intended.
+
+### MapLibre GL
+
+Map libraries draw markers as images, where page CSS does not apply. Fill the SVG string before you turn it into an image: set the root `stroke="currentColor"` to white (the sign inherits it) and give the first `<path>`, the pin, the fill and stroke colour. Then load it from a data URL and add it with `pixelRatio: 2`, so it stays sharp on high-density screens:
+
+```ts
+import type { Map } from 'maplibre-gl'
+
+// `svg` is the text of a file from @evicons/svg, for example `@evicons/svg/marker-charging.svg`
+// (with Vite: `import svg from '@evicons/svg/marker-charging.svg?raw'`). `size` is the size on the map in px.
+export async function addMarkerImage(map: Map, name: string, svg: string, colour: string, size = 32) {
+  const filled = svg
+    .replace('width="24" height="24"', `width="${size * 2}" height="${size * 2}"`)
+    .replace('stroke="currentColor"', 'stroke="#fff"')
+    .replace('<path ', `<path fill="${colour}" stroke="${colour}" `)
+  const img = new Image()
+  img.src = `data:image/svg+xml;charset=utf-8,${encodeURIComponent(filled)}`
+  await img.decode()
+  map.addImage(name, img, { pixelRatio: 2 })
+}
+```
+
+```ts
+await addMarkerImage(map, 'ev-marker-charging', svg, '#2563eb')
+
+map.addLayer({
+  id: 'charge-points',
+  type: 'symbol',
+  source: 'charge-points',
+  layout: { 'icon-image': 'ev-marker-charging', 'icon-anchor': 'bottom', 'icon-offset': [0, 32 / 12] },
+})
+```
+
+The pin's tip is at y 22 of 24, so with `'icon-anchor': 'bottom'` an offset of `size / 12` px moves the tip onto the point. Use one image per marker and colour. For an outline marker, only set the size and replace the root `stroke="currentColor"` with the colour.
+
+### Leaflet
+
+Leaflet's `L.divIcon` places HTML on the map, so the inline SVG and the CSS rule above work as they are. Size the SVG to the icon box and anchor the tip, which sits at 22/24 of the height:
+
+```ts
+import L from 'leaflet'
+import svg from '@evicons/svg/marker-available.svg?raw'
+
+const size = 32
+const icon = L.divIcon({
+  html: svg,
+  className: 'marker', // replaces Leaflet's default white box; the CSS rule above fills the pin
+  iconSize: [size, size],
+  iconAnchor: [size / 2, (size * 22) / 24],
+})
+
+L.marker([47.856, 12.128], { icon, title: 'Available' }).addTo(map)
+```
+
+```css
+.marker svg { display: block; width: 100%; height: 100%; }
+```
+
+See the [map demo](/map) for markers on a real map.

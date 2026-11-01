@@ -1,0 +1,42 @@
+---
+// Markers at the three supported sizes, outline and filled with the CSS rule from the docs (global.css).
+import { MarkerAvailable, MarkerCharging, MarkerFaulted, MarkerOutOfService } from '@evicons/react'
+
+const markers = [
+  { Icon: MarkerCharging, colour: 'var(--accent)' },
+  { Icon: MarkerAvailable, colour: 'var(--status-available)' },
+  { Icon: MarkerFaulted, colour: 'var(--status-faulted)' },
+  { Icon: MarkerOutOfService, colour: 'var(--status-out-of-service)' },
+]
+const sizes = [24, 32, 40]
+---
+
+<figure class="demo">
+  <div class="grid gap-6 sm:grid-cols-2">
+    {
+      [
+        { label: 'Outline', filled: false },
+        { label: 'Filled', filled: true },
+      ].map(({ label, filled }) => (
+        <div class:list={[filled && 'marker-filled']}>
+          <p class="mt-0 text-sm font-medium">{label}</p>
+          <div class="mt-3 grid grid-cols-[3rem_1fr] items-center gap-y-3">
+            {sizes.map((size) => (
+              <>
+                <span class="text-xs text-muted">{size} px</span>
+                <span class="flex items-end gap-2">
+                  {markers.map(({ Icon, colour }) => (
+                    <span style={{ color: colour }} class="leading-none">
+                      <Icon size={size} />
+                    </span>
+                  ))}
+                </span>
+              </>
+            ))}
+          </div>
+        </div>
+      ))
+    }
+  </div>
+  <figcaption>The same markers as outline and filled with the CSS rule below, at the three supported sizes.</figcaption>
+</figure>

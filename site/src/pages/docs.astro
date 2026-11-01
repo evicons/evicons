@@ -1,5 +1,42 @@
 ---
-import Placeholder from '../components/Placeholder.astro'
+import type { AstroComponentFactory } from 'astro/runtime/server/index.js'
+import Snippet from '../components/docs/Snippet.astro'
+import Table from '../components/docs/Table.astro'
+import Toc from '../components/docs/Toc.astro'
+import Base from '../layouts/Base.astro'
+
+interface Section {
+  frontmatter: { id: string; title: string }
+  Content: AstroComponentFactory
+}
+
+// One MDX file per section, in file name order (01-install.mdx, 02-react.mdx, ...).
+const modules = import.meta.glob<Section>('../content/docs/*.mdx', { eager: true })
+const sections = Object.keys(modules)
+  .sort()
+  .map((path) => modules[path]!)
+const toc = sections.map(({ frontmatter }) => ({ id: frontmatter.id, title: frontmatter.title }))
+const components = { pre: Snippet, table: Table }
 ---
 
-<Placeholder title="Docs – EVicons" heading="Docs" description="How to install and use EVicons in React and plain SVG." />
+<Base title="Docs – EVicons" description="Install EVicons and use the icons in React, as plain SVG and on maps.">
+  <div class="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:grid lg:grid-cols-[minmax(0,1fr)_12rem] lg:gap-x-16 lg:py-16">
+    <header class="doc lg:col-start-1">
+      <h1>Documentation</h1>
+      <p class="lead">Install EVicons and use the icons in React, as plain SVG and on maps.</p>
+    </header>
+    <aside class="mt-8 lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:mt-0">
+      <Toc sections={toc} />
+    </aside>
+    <article class="doc min-w-0 lg:col-start-1">
+      {
+        sections.map(({ frontmatter, Content }) => (
+          <section aria-labelledby={frontmatter.id}>
+            <h2 id={frontmatter.id}>{frontmatter.title}</h2>
+            <Content components={components} />
+          </section>
+        ))
+      }
+    </article>
+  </div>
+</Base>

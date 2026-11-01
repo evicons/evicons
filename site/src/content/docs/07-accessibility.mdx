@@ -1,0 +1,49 @@
+---
+id: accessibility
+title: Accessibility
+---
+
+### Decorative or meaningful
+
+Icons are decorative by default: the `<svg>` gets `aria-hidden="true"` and no role. Icons complement visible text; when an icon stands alone and carries meaning, give it an accessible name. As soon as it has one, `aria-hidden` is dropped and `role="img"` is set.
+
+If several are given, this order applies:
+
+1. **`aria-labelledby`** (yours): kept as is.
+2. **`aria-label`**: used as the name. A `title` is still rendered as `<title>` but not referenced.
+3. **`title`**: rendered as the first child `<title>` with an id from React's `useId` (unique and stable in server rendering) and referenced with `aria-labelledby`.
+4. None of these: decorative (`aria-hidden="true"`).
+
+An explicit `role` or `aria-hidden` that you pass always wins over the defaults.
+
+```tsx
+import { StatusFaulted } from '@evicons/react'
+
+<StatusFaulted title="Faulted" />                    // role="img", named "Faulted"
+<StatusFaulted aria-label="Charge point faulted" />  // role="img", named by aria-label
+<StatusFaulted />                                    // aria-hidden="true"
+```
+
+For inline SVG and the sprite, add the attributes yourself: `aria-hidden="true"` on decorative icons, `role="img"` with `aria-label` on meaningful ones.
+
+### Icons complement text
+
+Do not use an icon as the only carrier of information. At 16 px the contacts of a connector face render as similar dots, so faces that share a part are hard to tell apart: `plug-type-2` and `plug-ccs2` differ only in the DC part below the Type 2 contacts. Likewise `plug-chademo` and `plug-schuko` look alike at 16 px (a round face with two lateral contacts). Always show the connector name next to the icon, for example "Type 2 · 22 kW". The same applies to status icons: show the status as text or at least as an accessible name.
+
+### Focus and controls
+
+Icons are not focusable and have no keyboard behaviour of their own. For an icon-only control, use a real `<button>` or `<a>`, name the control and leave the icon decorative:
+
+```tsx
+import { MarkerCharging } from '@evicons/react'
+
+<button type="button" aria-label="Show charge points on the map">
+  <MarkerCharging size={24} />
+</button>
+```
+
+Keep the focus outline visible and give the control a target of at least 24 × 24 px.
+
+### Not by colour alone
+
+Status icons differ in shape, so "available" and "faulted" stay distinguishable without colour, in greyscale and for colour-blind users. Keep it that way in your app: show the status as text next to the icon, and do not tell states apart only by colouring one icon differently. Coloured icons need a contrast of at least 3:1 against their background; see [Contrast](#contrast).

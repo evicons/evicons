@@ -1,0 +1,27 @@
+---
+// A copy button with its own live region. Without `text` it copies the code block it sits in ([data-snippet]).
+interface Props {
+  /** Text to copy; omit inside a code block. */
+  text?: string
+  /** Accessible name, for example "Copy install command". */
+  label: string
+  class?: string
+}
+
+const { text, label, class: className } = Astro.props
+---
+
+<button
+  type="button"
+  data-copy-button
+  data-copy={text}
+  class:list={['rounded-md px-2 py-1 text-center text-sm text-muted hover:text-fg', className]}
+  aria-label={label}>Copy</button
+>
+<span class="sr-only" role="status" aria-live="polite" data-copy-status></span>
+
+<script>
+  import { wireCopyButtons } from '../lib/copy'
+
+  wireCopyButtons()
+</script>

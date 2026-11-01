@@ -1,0 +1,6 @@
+---
+// Wide tables scroll inside their own box, never the page (MDX `components.table`).
+const props = Astro.props
+---
+
+<div class="table-wrap" tabindex="0"><table {...props}><slot /></table></div>

@@ -1,0 +1,73 @@
+---
+id: react
+title: React
+---
+
+Import an icon by its component name (PascalCase of the file name: `plug-type-2` → `PlugType2`) and put it next to the text it belongs to.
+
+```tsx
+import { PlugType2 } from '@evicons/react'
+
+export function Connector() {
+  return (
+    <span>
+      <PlugType2 size={20} title="Type 2" /> Type 2 · 22 kW
+    </span>
+  )
+}
+```
+
+Every icon is its own module and the package has `sideEffects: false`, so bundlers only include the icons you import. A single icon can also be imported directly, as a named or default export:
+
+```tsx
+import PlugType2 from '@evicons/react/icons/plug-type-2'
+
+<PlugType2 size={20} />
+```
+
+### Props
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `size` | `number \| string` | `24` | Width and height of the `<svg>`. Numbers are pixels; strings are passed as is (for example `"1em"`). |
+| `strokeWidth` | `number \| string` | `1.5` | Stroke width in icon units (the icon is drawn on a 24 × 24 grid). |
+| `absoluteStrokeWidth` | `boolean` | `false` | Keep the stroke at `strokeWidth` screen pixels at every size (see below). |
+| `className` | `string` | | Added after the built-in classes `evicon` and `evicon-<name>` (for example `evicon-plug-type-2`). |
+| `title` | `string` | | Accessible name, rendered as `<title>` (see [Accessibility](#accessibility)). |
+| `ref` | | | Forwarded to the `<svg>` element. |
+| ...all other SVG props | | | Passed through to the `<svg>` element (`style`, `onClick`, `data-*`, `aria-*`, `role`, ...). Children are rendered after the icon's shapes. |
+
+The prop type is exported as `EvIconProps`, the component type as `EvIconComponent`.
+
+Without `title`, `aria-label` or `aria-labelledby` an icon is decorative and gets `aria-hidden="true"`. With a `title` it gets `role="img"` and is named by a `<title>` element. The full rules are under [Accessibility](#accessibility).
+
+### `absoluteStrokeWidth`
+
+By default the stroke scales with the icon: at `size={12}` a stroke of 1.5 is drawn 0.75 px wide. With `absoluteStrokeWidth`, every shape gets `vector-effect="non-scaling-stroke"`, so the stroke is drawn `strokeWidth` screen pixels wide whatever the rendered size.
+
+```tsx
+import { CurrentDc } from '@evicons/react'
+
+<CurrentDc size={16} />                                     // stroke 1 px (1.5 × 16 / 24)
+<CurrentDc size={16} absoluteStrokeWidth />                 // stroke 1.5 px
+<CurrentDc size={48} strokeWidth={1} absoluteStrokeWidth /> // stroke 1 px
+```
+
+Because this is done by the browser and not computed from `size`, it also works when the size comes from CSS (`size="1em"`, `className="size-4"`, non-square sizes). Shapes you pass as children are not changed.
+
+### Server rendering
+
+The components render on the server without `'use client'`: in Next.js Server Components, in static site generators and with `renderToString`. The id that links a `<title>` to its `<svg>` comes from React's `useId`, so it is unique and stable between server and client. Server rendering needs Node.js 20 or later.
+
+```tsx
+// app/stations/page.tsx: a Server Component
+import { PlugCcs2 } from '@evicons/react'
+
+export default function Page() {
+  return (
+    <p>
+      <PlugCcs2 size={20} /> CCS · 150 kW
+    </p>
+  )
+}
+```

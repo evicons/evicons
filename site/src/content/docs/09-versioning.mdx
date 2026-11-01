@@ -1,0 +1,11 @@
+---
+id: versioning
+title: Versioning & changelog
+---
+
+EVicons follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html). `@evicons/react` and `@evicons/svg` share one version, so the same version number always means the same icons in both packages. Every release is listed in the [changelog](/changelog) and as a GitHub release.
+
+- **Names are stable.** Once released, a name is never changed or removed outside a major version. The element order of a released map marker never changes either.
+- **Renaming:** the icon gets its new name and keeps the old one as an alias. `@evicons/react` exports the component under both names, and `icons.json` lists the alias.
+- **Deprecation:** a deprecated icon is marked in `icons.json` (`deprecated: { since, replacement }`), and its React component gets a `@deprecated` JSDoc tag, so editors flag its use.
+- **Removal:** aliases and deprecated icons stay available at least until the next major version. They are removed only in a major release, and the removal is listed in the changelog.

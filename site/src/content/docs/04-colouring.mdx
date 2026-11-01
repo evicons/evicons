@@ -1,0 +1,54 @@
+---
+id: colouring
+title: Colouring
+---
+
+Icons draw with `currentColor` and contain no colours. Set the CSS `color` of the icon or of a parent; the icon follows the text colour, hover states and dark mode of its surroundings.
+
+```tsx
+import { ChargingStation } from '@evicons/react'
+
+<p style={{ color: '#2563eb' }}>
+  <ChargingStation size={20} /> 12 charge points nearby
+</p>
+```
+
+### Tailwind CSS
+
+Text colour utilities colour the icon; size utilities override the `size` attribute.
+
+```tsx
+import { StatusAvailable } from '@evicons/react'
+
+<StatusAvailable className="text-green-600" title="Available" />
+<StatusAvailable className="size-4 text-green-600 dark:text-green-400" title="Available" />
+```
+
+### Status colours as CSS variables
+
+Keep the status colours in one place and refer to them from icons, text and map layers. These are the colours used on this site:
+
+```css
+:root {
+  --status-available: #16a34a;
+  --status-occupied: #f59e0b;
+  --status-faulted: #dc2626;
+  --status-out-of-service: #71717a;
+  --status-unknown: #0891b2;
+  --status-reserved: #7c3aed;
+  --status-queue: #d97706;
+}
+```
+
+```tsx
+import { StatusOccupied } from '@evicons/react'
+
+<StatusOccupied style={{ color: 'var(--status-occupied)' }} title="Occupied" />
+<StatusOccupied className="text-(--status-occupied)" title="Occupied" />
+```
+
+With Tailwind CSS v4, declare them as theme colours (`@theme { --color-status-occupied: #f59e0b; }`) to get utilities such as `text-status-occupied`.
+
+### Contrast
+
+An icon that carries meaning needs a contrast of at least 3:1 against its background (WCAG 1.4.11). Amber `#f59e0b` on white reaches only 2.15:1, and so does a white sign on an amber marker. Use `#d97706` (3.19:1) for amber next to text, on light backgrounds and for [filled map markers](#markers); keep `#f59e0b` for dark backgrounds (9.26:1 on `#09090b`). The table under [Status icons](#status) lists the contrast of every suggested colour on white.

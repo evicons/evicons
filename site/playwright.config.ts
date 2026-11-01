@@ -6,6 +6,8 @@ const port = 4321
 
 export default defineConfig({
   testDir: 'tests',
+  // Playwright specs only; tests/*.test.tsx are Vitest unit tests (vitest.config.ts).
+  testMatch: '*.spec.ts',
   outputDir: '../test-results/site',
   forbidOnly: !!process.env.CI,
   retries: 0,

@@ -1,0 +1,14 @@
+---
+id: contributing
+title: Contributing
+---
+
+EVicons is a small, focused set: icons for e-mobility and EV charging only, no general UI icons and no brand or manufacturer logos. Read [CONTRIBUTING.md](https://github.com/evicons/evicons/blob/main/CONTRIBUTING.md) and the [design guide](https://github.com/evicons/evicons/blob/main/docs/design-guide.md) before you draw. A new icon goes like this:
+
+1. Open an issue with the name, the meaning and, for connectors, the standard, so that these are agreed before drawing.
+2. Draw `icons/<name>.svg` on the 24 × 24 grid and describe it in `icons/<name>.json` (category, meaning, tags).
+3. Run `npm run lint:icons` and `npm run build:icons`; commit the generated files.
+4. Check the icon with `npm run preview` at 16, 20 and 24 px, light and dark, next to Lucide (markers at 24, 32 and 40 px, outline and filled).
+5. Open a pull request with a Conventional Commit message; the icon ships once it is approved after an independent review.
+
+All geometry is drawn from scratch; a test fails if an element is identical to one from Lucide. Changes for users go into the `Unreleased` section of the changelog.

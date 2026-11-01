@@ -1,0 +1,17 @@
+---
+id: design
+title: Design principles
+---
+
+Every icon follows the [design guide](https://github.com/evicons/evicons/blob/main/docs/design-guide.md); the linter enforces its technical rules. In short:
+
+- **Grid and stroke:** 24 × 24 with at least 1 unit to the edge (live area 1–23), stroke width 1.5, round caps and joins.
+- **Outline only:** no fills, no colours, no opacity; colour comes from CSS through `currentColor`.
+- **Soft shapes, more detail:** outer corners round (radius 1.25 or more) where the subject allows; more inner detail than Lucide, but readable at 16 px and matching Lucide's optical size at 20 px.
+- **Spacing:** at least 2.5 units between the centre lines of parallel strokes; 2.0 at the very least where a subject needs it, such as connector faces.
+- **Documented exceptions:** deliberate deviations are declared per icon: `letters`, `dense-connector`, `sharp-corner` (lightning bolt tips, the marker tip) and `solid-sign` (the small bolt inside other icons).
+- **Letters:** AC, DC, kW, P and R come from one stroke alphabet with cap height 8 (5.25 in marker heads) and a gap of 2 units between letters; a lone letter that is the main subject may use cap height 11.
+- **Connectors:** the vehicle inlet seen from the front, with the contact layout checked against a public drawing of the standard. Schuko, which has no vehicle inlet, shows the socket face.
+- **Status:** one round frame (`<circle cx="12" cy="12" r="9"/>`) for every status; the sign inside identifies it without colour.
+- **Markers:** one standard pin, always the first `<path>`; the sign stays inside the pin head.
+- **Drawn from scratch:** no paths copied, traced or adapted from Lucide or any other icon set.

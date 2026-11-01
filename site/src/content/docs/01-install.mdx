@@ -1,0 +1,30 @@
+---
+id: install
+title: Install
+---
+
+EVicons ships as two packages with the same icons and one shared version. Use the React components in React apps and the SVG package everywhere else.
+
+| Package | Contents |
+|---|---|
+| `@evicons/react` | React components, tree-shakable ESM with TypeScript types |
+| `@evicons/svg` | Raw SVG files, an SVG sprite and `icons.json` (names, meanings, tags, aliases) |
+
+```sh
+npm i @evicons/react
+```
+
+```sh
+npm i @evicons/svg
+```
+
+EVicons covers only e-mobility and EV charging. Keep a general icon set such as Lucide for arrows, menus and other UI icons; the two sit side by side.
+
+### Compatibility
+
+| | Supported |
+|---|---|
+| React | 18 and 19 (peer dependency `^18.0.0 \|\| ^19.0.0`) |
+| Server rendering | Node.js 20 or later (tested on 20 and 24); works in React Server Components, no `'use client'` needed |
+| Module format | ESM only, no CommonJS build; `require()` works on Node.js versions with `require(esm)` (20.19+, 22.12+) |
+| TypeScript | Types included |

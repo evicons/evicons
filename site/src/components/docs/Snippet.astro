@@ -1,0 +1,29 @@
+---
+// Replaces the <pre> of every Markdown code block (MDX `components.pre`): language label, copy button and the
+// Shiki-highlighted code. Colours switch with the site theme (global.css, `.astro-code`).
+import CopyButton from '../CopyButton.astro'
+
+const { 'data-language': language, ...pre } = Astro.props as Record<string, unknown> & { 'data-language'?: string }
+
+const labels: Record<string, string> = {
+  tsx: 'TSX',
+  ts: 'TypeScript',
+  js: 'JavaScript',
+  jsx: 'JSX',
+  css: 'CSS',
+  html: 'HTML',
+  sh: 'Shell',
+  json: 'JSON',
+  text: 'Text',
+  plaintext: 'Text',
+}
+const label = language ? (labels[language] ?? language) : 'Text'
+---
+
+<div class="snippet not-prose" data-snippet>
+  <div class="snippet-head">
+    <span class="snippet-lang">{label}</span>
+    <CopyButton label={`Copy ${label} code`} class="min-w-[6.5rem] hover:bg-bg" />
+  </div>
+  <pre {...pre} data-language={language}><slot /></pre>
+</div>

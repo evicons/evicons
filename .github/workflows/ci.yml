@@ -105,6 +105,7 @@ jobs:
       - run: npm run build:icons
       - run: npm run build -w @evicons/react
       - run: npm run build:site
+      - run: npm run test:site:unit
       - run: npx playwright install chromium --with-deps
       - run: npm run test:site
       - if: failure()

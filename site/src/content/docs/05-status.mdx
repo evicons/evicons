@@ -1,0 +1,74 @@
+---
+id: status
+title: Status icons
+---
+
+import StatusTable from '../../components/docs/StatusTable.astro'
+
+The seven status icons share one round frame; the sign inside carries the meaning. **The shape carries the meaning, the colour is yours:** the icons read correctly when your app colours them all the same, or not at all.
+
+<StatusTable />
+
+"Faulted" (the station reports an error) and "out of service" (taken out of service by the operator) are different states; use the one your data actually reports. The colours are suggestions; use your design system's tokens.
+
+```tsx
+import {
+  StatusAvailable,
+  StatusFaulted,
+  StatusOccupied,
+  StatusOutOfService,
+  StatusQueue,
+  StatusReserved,
+  StatusUnknown,
+  type EvIconComponent,
+} from '@evicons/react'
+
+type Status = 'available' | 'occupied' | 'faulted' | 'out-of-service' | 'reserved' | 'unknown' | 'queue'
+
+const status: Record<Status, { Icon: EvIconComponent; label: string }> = {
+  available: { Icon: StatusAvailable, label: 'Available' },
+  occupied: { Icon: StatusOccupied, label: 'Occupied' },
+  faulted: { Icon: StatusFaulted, label: 'Faulted' },
+  'out-of-service': { Icon: StatusOutOfService, label: 'Out of service' },
+  reserved: { Icon: StatusReserved, label: 'Reserved' },
+  unknown: { Icon: StatusUnknown, label: 'Unknown' },
+  queue: { Icon: StatusQueue, label: 'Queue' },
+}
+
+export function StatusLabel({ value }: { value: Status }) {
+  const { Icon, label } = status[value]
+  return (
+    <span style={{ display: 'inline-flex', alignItems: 'center', gap: 6 }}>
+      <Icon size={16} style={{ color: `var(--status-${value})` }} />
+      {label}
+    </span>
+  )
+}
+```
+
+The icon is decorative here because the label is visible text.
+
+### Status on another icon
+
+Status icons are standalone symbols. To combine a status with another icon (charging station, map pin), place a small status icon absolutely in the bottom-right corner:
+
+```tsx
+import { ChargingStation, StatusAvailable } from '@evicons/react'
+
+export function StationWithStatus() {
+  return (
+    <span style={{ position: 'relative', display: 'inline-block', lineHeight: 0 }}>
+      <ChargingStation size={24} />
+      <StatusAvailable
+        size={12}
+        absoluteStrokeWidth
+        strokeWidth={1.5}
+        title="Available"
+        style={{ position: 'absolute', right: -4, bottom: -4, color: 'green' }}
+      />
+    </span>
+  )
+}
+```
+
+Use a badge size of half the base icon and give it a fixed screen stroke (`absoluteStrokeWidth` with `strokeWidth={1.5}`, or `strokeWidth={2}` without it), otherwise the scaled-down stroke looks faint. The badge covers part of the base icon; on a busy background, put it on a circle in your page's background colour. EVicons does not reserve a badge corner in the icons yet.

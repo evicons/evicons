@@ -1,5 +1,13 @@
 ---
-import Placeholder from '../components/Placeholder.astro'
+// The repository's CHANGELOG.md, rendered at build time with the docs typography.
+import { Content } from '../../../CHANGELOG.md'
+import Base from '../layouts/Base.astro'
 ---
 
-<Placeholder title="Changelog – EVicons" heading="Changelog" description="All EVicons releases and changes." />
+<Base title="Changelog – EVicons" description="All EVicons releases and changes.">
+  <div class="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:py-16">
+    <article class="doc changelog max-w-3xl">
+      <Content />
+    </article>
+  </div>
+</Base>
