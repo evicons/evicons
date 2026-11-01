@@ -2,6 +2,9 @@ import 'maplibre-gl/dist/maplibre-gl.css'
 import type { ExpressionSpecification, Map as MapLibreMap, Offset, Popup, StyleSpecification } from 'maplibre-gl'
 import { useEffect, useMemo, useRef, useState, type ReactNode } from 'react'
 import { createPortal } from 'react-dom'
+// MapLibre 6 runs its tile worker from a separate module file next to its own bundle; after bundling
+// that path is gone, so the worker is bundled by Vite (as a hashed .js asset) and its URL set below.
+import workerUrl from 'maplibre-gl/dist/maplibre-gl-worker.mjs?worker&url'
 import { loadMarkerImage, markerImage } from '../../lib/marker-image'
 import {
   connectorIcon,
@@ -177,6 +180,7 @@ export default function ChargingMap({ children }: { children?: ReactNode }) {
       const container = containerRef.current
       if (cancelled || !container) return
       libRef.current = maplibre
+      maplibre.setWorkerUrl(workerUrl)
 
       map = new maplibre.Map({
         container,

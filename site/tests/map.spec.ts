@@ -61,6 +61,7 @@ test('map page loads with canvas, 12 marker images and the legend', async ({ pag
   await expect(page.locator('[data-legend-entry]')).toHaveCount(7)
   await expect(page.locator('[data-station]')).toHaveCount(12)
   await expect(page.getByText('Demo data — fictional charge points', { exact: true })).toBeVisible()
+  await expect(page.locator('[data-map-intro]')).toContainText('drawn with the marker-* icons: one filled pin')
   await expect(page.locator('[data-privacy-note]')).toContainText('Map tiles are loaded from OpenFreeMap when you open this page')
   await expect(page.locator('[data-privacy-note]')).toContainText('map data © OpenStreetMap contributors')
   const attributionControl = page.locator('.maplibregl-ctrl-attrib')
