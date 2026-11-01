@@ -32,12 +32,12 @@ The wordmark is set from the EVicons letter set (see `docs/design-guide.md`, sec
 |---|---|---|
 | EV blue | `#2563eb` | Accent: links, buttons, the mark on evicons.dev |
 | Available | `#16a34a` | Status demo colour |
-| Occupied | `#f59e0b` | Status demo colour |
+| Occupied | `#d97706` | Status demo colour |
 | Faulted | `#dc2626` | Status demo colour |
 | Out of service | `#71717a` | Status demo colour |
 | Unknown | `#0891b2` | Status demo colour |
 | Reserved | `#7c3aed` | Status demo colour |
-| Queue | `#d97706` | Status demo colour |
+| Queue | `#c2410c` | Status demo colour |
 
 The status colours are suggestions for apps; the icons themselves contain no colour. Neutrals come from the Tailwind zinc scale.
 
