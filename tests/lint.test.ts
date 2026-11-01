@@ -1,3 +1,5 @@
+import { copyFileSync, mkdtempSync, rmSync, writeFileSync } from 'node:fs'
+import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { describe, expect, test } from 'vitest'
 import { lintIcons, loadIcons } from '../tools/lint-icons.ts'
@@ -18,6 +20,7 @@ const CASES: Array<[string, Record<string, unknown>, boolean]> = [
   [invalid('disallowed-tag'), { file: 'bad.svg', element: 'text' }, true],
   [invalid('text-content'), { file: 'bad.svg', message: expect.stringMatching(/text content/i) }, true],
   [OUT_OF_BOUNDS, { file: 'bad.svg', element: 'circle', message: expect.stringMatching(/live area/i) }, true],
+  [invalid('negative-size'), { file: 'bad.svg', element: 'rect', attribute: 'width', message: expect.stringMatching(/greater than 0/) }, true],
   [invalid('tiny-circle'), { file: 'bad.svg', element: 'circle', attribute: 'r', message: expect.stringMatching(/ring/i) }, true],
   [invalid('not-optimized'), { file: 'bad.svg', message: expect.stringMatching(/svgo/i) }, true],
   [invalid('missing-meta'), { file: 'bad.svg', message: expect.stringMatching(/missing metadata/i) }, true],
@@ -59,6 +62,39 @@ test('dots drawn as zero-length or arc paths and circles with r >= 1 pass', () =
 })
 
 test('unapproved passes without release flag', () => expect(lintIcons(UNAPPROVED, { release: false })).toEqual([]))
+
+test.each([
+  ['zero width', '<rect width="0" height="12" x="6" y="6"/>', 'width', /greater than 0/],
+  ['zero height', '<rect width="12" height="0" x="6" y="6"/>', 'height', /greater than 0/],
+  ['negative height', '<rect width="12" height="-1" x="6" y="6"/>', 'height', /greater than 0/],
+  ['negative rx', '<rect width="12" height="12" x="6" y="6" rx="-1"/>', 'rx', /negative/],
+  ['negative ry', '<rect width="12" height="12" x="6" y="6" ry="-0.5"/>', 'ry', /negative/],
+])('rect with %s fails', (_, shape, attribute, message) => {
+  const dir = mkdtempSync(join(tmpdir(), 'evicons-lint-'))
+  try {
+    const root = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24">'
+    writeFileSync(join(dir, 'bad.svg'), `${root}\n  ${shape}\n</svg>\n`)
+    copyFileSync(invalid('negative-size/bad.json'), join(dir, 'bad.json'))
+    expect(lintIcons(dir, { release: false })).toContainEqual(
+      expect.objectContaining({ file: 'bad.svg', element: 'rect', attribute, message: expect.stringMatching(message) }),
+    )
+  } finally {
+    rmSync(dir, { recursive: true, force: true })
+  }
+})
+
+test('rect with zero corner radius passes the size rule', () => {
+  const dir = mkdtempSync(join(tmpdir(), 'evicons-lint-'))
+  try {
+    const root = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24">'
+    writeFileSync(join(dir, 'ok.svg'), `${root}\n  <rect width="12" height="12" x="6" y="6" rx="0"/>\n</svg>\n`)
+    copyFileSync(invalid('negative-size/bad.json'), join(dir, 'ok.json'))
+    const errs = lintIcons(dir, { release: false })
+    expect(errs.filter((e) => e.element === 'rect')).toEqual([])
+  } finally {
+    rmSync(dir, { recursive: true, force: true })
+  }
+})
 
 test('bbox counts half stroke', () => {
   // r=10.5 -> edge at 1.5, minus 0.875 stroke half -> 0.625 < 1 -> error

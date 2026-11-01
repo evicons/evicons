@@ -144,6 +144,22 @@ function lintElement(file: string, el: INode, errors: LintError[], nested = fals
       geometryOk = false
     }
   }
+  if (geometryOk && element === 'rect') {
+    // A negative size is an SVG error (the rect is not rendered), a zero size draws nothing.
+    for (const attribute of ['width', 'height']) {
+      if (Number(el.attributes[attribute]) <= 0) {
+        errors.push({ file, element, attribute, message: `must be greater than 0, got "${el.attributes[attribute]}"` })
+        geometryOk = false
+      }
+    }
+    for (const attribute of ['rx', 'ry']) {
+      const value = el.attributes[attribute]
+      if (value !== undefined && Number(value) < 0) {
+        errors.push({ file, element, attribute, message: `must not be negative, got "${value}"` })
+        geometryOk = false
+      }
+    }
+  }
   // Nested geometry may be transformed by its parent, so its bbox is not meaningful.
   if (!geometryOk || nested) return
 

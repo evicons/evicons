@@ -2,13 +2,30 @@
   "name": "@evicons/svg",
   "version": "0.1.0",
   "description": "EVicons raw SVG icons, sprite and metadata for e-mobility and EV charging",
+  "keywords": [
+    "icons",
+    "svg",
+    "svg-icons",
+    "sprite",
+    "ev",
+    "electric-vehicle",
+    "ev-charging",
+    "e-mobility",
+    "charging",
+    "charging-station",
+    "evse",
+    "type2",
+    "ccs"
+  ],
   "license": "MIT",
   "files": ["svg", "sprite.svg", "icons.json", "README.md", "LICENSE"],
   "exports": {
     "./*.svg": "./svg/*.svg",
     "./sprite.svg": "./sprite.svg",
-    "./icons.json": "./icons.json"
+    "./icons.json": "./icons.json",
+    "./package.json": "./package.json"
   },
   "repository": { "type": "git", "url": "git+https://github.com/evicons/evicons.git", "directory": "packages/svg" },
-  "homepage": "https://evicons.dev"
+  "homepage": "https://github.com/evicons/evicons",
+  "bugs": { "url": "https://github.com/evicons/evicons/issues" }
 }

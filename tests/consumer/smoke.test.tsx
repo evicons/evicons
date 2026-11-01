@@ -1,7 +1,8 @@
 // @vitest-environment node
 // Runs against the built package: `npm run build` first. Resolves `@evicons/react`
 // through the workspace link, so the package `exports` map (→ dist) is exercised.
-import { mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs'
+import { execFileSync } from 'node:child_process'
+import { existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs'
 import { dirname, join, resolve } from 'node:path'
 import { fileURLToPath, pathToFileURL } from 'node:url'
 import { build } from 'esbuild'
@@ -65,4 +66,50 @@ test('renders in node without DOM', async () => {
   expect(html).toContain('role="img"')
   expect(html).toContain('evicon-plug-type-2')
   expect(html).toContain('Type 2</title>')
+})
+
+// Resolution outside bundlers is checked in a plain Node process, so Vite's resolver is not involved.
+function nodeEval(code: string, type: 'module' | 'commonjs'): string {
+  return execFileSync(process.execPath, [`--input-type=${type}`, '-e', code], { cwd: ROOT, encoding: 'utf8' }).trim()
+}
+
+test('package.json of both packages is exported (ESM and CJS resolution)', () => {
+  for (const pkg of ['@evicons/react', '@evicons/svg']) {
+    const expected = join(ROOT, 'packages', pkg.split('/')[1]!, 'package.json')
+    expect(nodeEval(`console.log(require.resolve('${pkg}/package.json'))`, 'commonjs')).toBe(expected)
+    const url = nodeEval(`console.log(import.meta.resolve('${pkg}/package.json'))`, 'module')
+    expect(fileURLToPath(url)).toBe(expected)
+  }
+})
+
+// require(esm) exists from Node 20.19 / 22.12; older runtimes cannot load an ESM-only package with require().
+test.skipIf(!(process.features as { require_module?: boolean }).require_module)('require() loads the package and a deep import', () => {
+  const out = nodeEval(
+    "console.log(typeof require('@evicons/react').PlugType2, typeof require('@evicons/react/icons/plug-type-2').PlugType2)",
+    'commonjs',
+  )
+  expect(out).toBe('object object')
+})
+
+// TypeScript 7 no longer ships moduleResolution node10, so this follows node10's lookup rules on the
+// manifest: top-level `types` for the root, `typesVersions` for subpaths, and `exports` ignored.
+test('types resolve under moduleResolution node10 rules', () => {
+  const dir = join(ROOT, 'packages/react')
+  const pkg = JSON.parse(readFileSync(join(dir, 'package.json'), 'utf8')) as {
+    main: string
+    types: string
+    typesVersions: Record<string, Record<string, string[]>>
+    exports: Record<string, string | Record<string, string>>
+  }
+  expect(existsSync(join(dir, pkg.main))).toBe(true)
+  expect(existsSync(join(dir, pkg.types))).toBe(true)
+  const mapping = pkg.typesVersions['*']!['icons/*']!
+  expect(mapping).toHaveLength(1)
+  expect(existsSync(join(dir, mapping[0]!.replace('*', 'plug-type-2')))).toBe(true)
+  // Every conditional export has `types` first and a `default` fallback for non-`import` conditions.
+  for (const [subpath, target] of Object.entries(pkg.exports)) {
+    if (typeof target === 'string') continue
+    expect(Object.keys(target)[0], subpath).toBe('types')
+    expect(target.default, subpath).toBeDefined()
+  }
 })
