@@ -4,9 +4,18 @@ import * as icons from '@evicons/react'
 import type { EvIconComponent } from '@evicons/react'
 import { loadIcons } from '../../lib/icons'
 
-const rows = [
+interface Row {
+  status: string
+  label: string
+  colour: string
+  use?: string
+  alt?: { colour: string; use: string }
+}
+
+const rows: Row[] = [
   { status: 'available', label: 'Available', colour: '#16a34a' },
-  { status: 'occupied', label: 'Occupied', colour: '#f59e0b' },
+  // #f59e0b for fills and markers; next to text on a light background the darker #d97706.
+  { status: 'occupied', label: 'Occupied', colour: '#f59e0b', use: 'fills, markers', alt: { colour: '#d97706', use: 'next to text' } },
   { status: 'faulted', label: 'Faulted', colour: '#dc2626' },
   { status: 'out-of-service', label: 'Out of service', colour: '#71717a' },
   { status: 'reserved', label: 'Reserved', colour: '#7c3aed' },
@@ -34,7 +43,8 @@ const data = rows.map((row) => {
   if (!Icon) throw new Error(`No React component ${icon.pascal}`)
   const contrast = contrastOnWhite(row.colour)
   // Below 3:1 (WCAG 1.4.11, non-text contrast) the colour is not enough for an icon on a light background.
-  return { ...row, name, Icon, meaning: icon.meaning.en, contrast, lowContrast: Number(contrast) < 3 }
+  const alt = row.alt && { ...row.alt, contrast: contrastOnWhite(row.alt.colour) }
+  return { ...row, alt, name, Icon, meaning: icon.meaning.en, contrast, lowContrast: Number(contrast) < 3 }
 })
 ---
 
@@ -51,7 +61,7 @@ const data = rows.map((row) => {
     </thead>
     <tbody>
       {
-        data.map(({ label, name, Icon, colour, status, contrast, lowContrast, meaning }) => (
+        data.map(({ label, name, Icon, colour, use, alt, status, contrast, lowContrast, meaning }) => (
           <tr class:list={{ 'low-contrast': lowContrast }}>
             <th scope="row">{label}</th>
             <td data-label="Icon">
@@ -61,15 +71,23 @@ const data = rows.map((row) => {
               </span>
             </td>
             <td data-label="Colour">
-              <span class="flex items-center gap-2 whitespace-nowrap">
-                <span class="size-3.5 shrink-0 rounded-sm" style={`background:${colour}`} aria-hidden="true" />
-                <code>{colour}</code>
+              <span class="flex flex-col gap-1">
+                {[{ colour, use }, ...(alt ? [alt] : [])].map((entry) => (
+                  <span class="flex items-center gap-2 whitespace-nowrap">
+                    <span class="size-3.5 shrink-0 rounded-sm" style={`background:${entry.colour}`} aria-hidden="true" />
+                    <code>{entry.colour}</code>
+                    {entry.use && <span class="text-xs text-muted">{entry.use}</span>}
+                  </span>
+                ))}
               </span>
             </td>
             <td data-label="On white">
-              <span>
-                <span class="whitespace-nowrap">{contrast}:1</span>
-                {lowContrast && <span class="contrast-flag">Below 3:1: dark backgrounds only</span>}
+              <span class="flex flex-col gap-1">
+                <span>
+                  <span class="whitespace-nowrap">{contrast}:1</span>
+                  {lowContrast && <span class="contrast-flag">Below 3:1: dark backgrounds only</span>}
+                </span>
+                {alt && <span class="whitespace-nowrap">{alt.contrast}:1 ({alt.colour})</span>}
               </span>
             </td>
             <td data-label="Meaning">{meaning}</td>

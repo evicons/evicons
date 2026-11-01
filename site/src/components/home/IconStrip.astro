@@ -1,7 +1,8 @@
 ---
 // A slowly moving strip of every icon, drawn from the SVG sources of @evicons/svg.
 // Each icon is defined once as a <symbol>; the strip shows two copies of the list so the loop is seamless.
-// It pauses on hover and focus and stands still (scrollable by hand) with prefers-reduced-motion.
+// Decorative for assistive technology (one sentence names the count instead). It pauses on hover and with the
+// page's pause button ([data-paused]), and stands still with prefers-reduced-motion.
 import { loadIcons } from '../../lib/icons'
 
 const icons = loadIcons().map((icon) => {
@@ -12,18 +13,13 @@ const icons = loadIcons().map((icon) => {
 const symbols = icons.map(({ id, body }) => `<symbol id="${id}" viewBox="0 0 24 24">${body}</symbol>`).join('')
 ---
 
-<div
-  class="icon-strip"
-  role="region"
-  aria-label={`All ${icons.length} icons`}
-  tabindex="0"
-  data-icon-strip
->
+<p class="sr-only">All {icons.length} icons</p>
+<div class="icon-strip" aria-hidden="true" data-icon-strip>
   <svg width="0" height="0" class="absolute" aria-hidden="true" focusable="false"><defs set:html={symbols} /></svg>
   <div class="icon-strip-track">
     {
       [0, 1].map((copy) => (
-        <ul class="icon-strip-list" aria-hidden={copy === 1 ? 'true' : undefined}>
+        <ul class="icon-strip-list" data-copy={copy}>
           {icons.map(({ name, id }) => (
             <li class="icon-strip-item" title={copy === 0 ? name : undefined}>
               <svg
@@ -35,12 +31,10 @@ const symbols = icons.map(({ id, body }) => `<symbol id="${id}" viewBox="0 0 24 
                 stroke-width="1.5"
                 stroke-linecap="round"
                 stroke-linejoin="round"
-                aria-hidden="true"
                 focusable="false"
               >
                 <use href={`#${id}`} />
               </svg>
-              {copy === 0 && <span class="sr-only">{name}</span>}
             </li>
           ))}
         </ul>
@@ -57,17 +51,13 @@ const symbols = icons.map(({ id, body }) => `<symbol id="${id}" viewBox="0 0 24 
     mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);
     border-radius: 0.5rem;
   }
-  .icon-strip:focus-visible {
-    mask-image: none;
-  }
   .icon-strip-track {
     display: flex;
     width: max-content;
     animation: icon-strip 160s linear infinite;
   }
   .icon-strip:hover .icon-strip-track,
-  .icon-strip:focus .icon-strip-track,
-  .icon-strip:focus-within .icon-strip-track {
+  .icon-strip[data-paused] .icon-strip-track {
     animation-play-state: paused;
   }
   .icon-strip-list {
@@ -95,14 +85,10 @@ const symbols = icons.map(({ id, body }) => `<symbol id="${id}" viewBox="0 0 24 
     }
   }
   @media (prefers-reduced-motion: reduce) {
-    .icon-strip {
-      overflow-x: auto;
-      mask-image: none;
-    }
     .icon-strip-track {
       animation: none;
     }
-    .icon-strip-list[aria-hidden] {
+    .icon-strip-list[data-copy='1'] {
       display: none;
     }
   }

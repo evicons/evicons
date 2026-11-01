@@ -19,7 +19,7 @@ test('no console errors', async ({ page }) => {
 
 test('home renders @evicons/react icons from the workspace package', async ({ page }) => {
   await page.goto('/')
-  await expect(page.locator('svg.evicon.evicon-plug-ccs2')).toHaveCount(1)
+  await expect(page.locator('article.feature svg.evicon.evicon-plug-ccs2')).toHaveCount(1)
   expect(await page.locator('svg.evicon').count()).toBeGreaterThanOrEqual(10)
 })
 

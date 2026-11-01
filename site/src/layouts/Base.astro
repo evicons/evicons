@@ -1,5 +1,8 @@
 ---
 import '../styles/global.css'
+// The Latin subset of Inter, preloaded: it is used on every page, and arriving before first paint it
+// does not swap in later and shift the text.
+import interLatin from '@fontsource-variable/inter/files/inter-latin-wght-normal.woff2?url'
 import Footer from '../components/Footer.astro'
 import Header from '../components/Header.astro'
 
@@ -40,6 +43,7 @@ const jsonLd = JSON.stringify({
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
+    <link rel="preload" href={interLatin} as="font" type="font/woff2" crossorigin />
     <meta name="description" content={description} />
     {noindex ? <meta name="robots" content="noindex" /> : <link rel="canonical" href={canonical.href} />}
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />

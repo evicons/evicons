@@ -33,6 +33,8 @@ for (const scheme of ['light', 'dark'] as const) {
       await page.emulateMedia({ colorScheme: scheme, reducedMotion: 'reduce' })
       await page.goto(path)
       await page.waitForLoadState('networkidle')
+      // The run really tests the theme it names (set before first paint from the system setting).
+      await expect(page.locator('html')).toHaveAttribute('data-theme', scheme)
       await ready(page)
       const results = await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22aa', 'best-practice']).analyze()
       const blocking = results.violations

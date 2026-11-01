@@ -1,23 +1,25 @@
 import { expect, test } from '@playwright/test'
 
-test('the icon strip shows every icon once, with a hidden copy for the loop', async ({ page }) => {
+test('the icon strip shows every icon once, hidden from assistive technology', async ({ page }) => {
   await page.goto('/')
   const strip = page.locator('[data-icon-strip]')
-  await expect(strip).toHaveAttribute('aria-label', 'All 43 icons')
+  await expect(strip).toHaveAttribute('aria-hidden', 'true')
+  await expect(strip.locator('[tabindex], a, button')).toHaveCount(0)
   const lists = strip.locator('ul')
   await expect(lists).toHaveCount(2)
   await expect(lists.nth(0).locator('li')).toHaveCount(43)
   await expect(lists.nth(1).locator('li')).toHaveCount(43)
-  await expect(lists.nth(1)).toHaveAttribute('aria-hidden', 'true')
+  // Screen readers get one sentence instead of 86 icons.
+  await expect(page.locator('section[aria-label="Icon strip"] .sr-only')).toHaveText('All 43 icons')
   // Every <use> points at a symbol defined on the page, drawn from the SVG sources.
   const missing = await strip.evaluate((el) =>
     [...el.querySelectorAll('use')].map((u) => u.getAttribute('href')!).filter((href) => !document.querySelector(href)),
   )
   expect(missing).toEqual([])
-  await expect(lists.nth(0)).toContainText('plug-ccs2')
+  await expect(lists.nth(0).locator('li[title="plug-ccs2"]')).toHaveCount(1)
 })
 
-test('the icon strip moves, pauses on hover and focus, and stops with reduced motion', async ({ page }) => {
+test('the icon strip moves, pauses on hover and with the pause button, and stops with reduced motion', async ({ page }) => {
   await page.emulateMedia({ reducedMotion: 'no-preference' })
   await page.goto('/')
   const track = page.locator('.icon-strip-track')
@@ -28,29 +30,91 @@ test('the icon strip moves, pauses on hover and focus, and stops with reduced mo
   expect(await state()).toBe('paused')
   await page.mouse.move(0, 0)
   expect(await state()).toBe('running')
-  await page.locator('[data-icon-strip]').focus()
+
+  const pause = page.getByRole('button', { name: 'Pause motion' })
+  await expect(pause).toHaveAttribute('aria-pressed', 'false')
+  await pause.click()
+  await expect(pause).toHaveAttribute('aria-pressed', 'true')
+  await page.mouse.move(0, 0)
   expect(await state()).toBe('paused')
+  await pause.press('Enter')
+  await expect(pause).toHaveAttribute('aria-pressed', 'false')
+  expect(await state()).toBe('running')
 
   await page.emulateMedia({ reducedMotion: 'reduce' })
   await expect(track).toHaveCSS('animation-name', 'none')
   await expect(page.locator('[data-icon-strip] ul').nth(1)).toBeHidden()
+  await expect(pause).toBeHidden()
 })
 
-test('the landing page does not shift while loading', async ({ page }) => {
-  await page.emulateMedia({ reducedMotion: 'no-preference' })
-  await page.addInitScript(() => {
-    ;(window as unknown as { cls: number }).cls = 0
-    new PerformanceObserver((list) => {
-      for (const entry of list.getEntries() as unknown as { value: number; hadRecentInput: boolean }[]) {
-        if (!entry.hadRecentInput) (window as unknown as { cls: number }).cls += entry.value
-      }
-    }).observe({ type: 'layout-shift', buffered: true })
-  })
+test('the icon count on the landing page comes from the icon data', async ({ page }) => {
+  await page.goto('/icons')
+  await expect(page.locator('[data-gallery][data-ready]')).toBeAttached()
+  const gallery = await page.locator('[data-icon-card]').count()
   await page.goto('/')
-  await page.waitForLoadState('networkidle')
-  await page.waitForTimeout(500)
-  expect(await page.evaluate(() => (window as unknown as { cls: number }).cls)).toBeLessThan(0.01)
+  expect(Number(await page.locator('[data-tagline] [data-icon-count]').textContent())).toBe(gallery)
+  await expect(page.locator('meta[name="description"]')).toHaveAttribute('content', new RegExp(`— ${gallery} icons,`))
+  await expect(page.locator('[data-strip-caption]')).toContainText(`All ${gallery} icons`)
+  await expect(page.locator('[data-icon-strip] ul').first().locator('li')).toHaveCount(gallery)
 })
+
+test('desktop hero shows the 3 × 3 icon cluster in EV blue, hidden on phones', async ({ page }) => {
+  await page.setViewportSize({ width: 1280, height: 900 })
+  await page.goto('/')
+  const cluster = page.locator('[data-hero-cluster]')
+  await expect(cluster).toBeVisible()
+  await expect(cluster).toHaveAttribute('aria-hidden', 'true')
+  const names = await cluster.locator('svg.evicon').evaluateAll((svgs) =>
+    svgs.map((svg) => [...svg.classList].find((c) => c.startsWith('evicon-'))!.slice(7)),
+  )
+  expect(names).toEqual([
+    'charging-station',
+    'plug-ccs2',
+    'plug-type-2',
+    'status-available',
+    'marker-charging',
+    'car-electric',
+    'power-kw',
+    'charging-card',
+    'fast-charging',
+  ])
+  const first = cluster.locator('svg.evicon').first()
+  await expect(first).toHaveAttribute('width', '48')
+  expect(await first.evaluate((el) => getComputedStyle(el).color)).toBe('rgb(37, 99, 235)')
+  await page.setViewportSize({ width: 1023, height: 900 })
+  await expect(cluster).toBeHidden()
+})
+
+for (const width of [390, 1280]) {
+  test(`the landing page does not shift while loading (${width} px)`, async ({ page }) => {
+    await page.setViewportSize({ width, height: 900 })
+    await page.emulateMedia({ reducedMotion: 'no-preference' })
+    await page.addInitScript(() => {
+      const w = window as unknown as { shifts: { value: number; nodes: string[] }[] }
+      w.shifts = []
+      new PerformanceObserver((list) => {
+        for (const entry of list.getEntries() as unknown as {
+          value: number
+          hadRecentInput: boolean
+          sources: { node?: Node }[]
+        }[]) {
+          if (entry.hadRecentInput) continue
+          const nodes = entry.sources.map((s) => (s.node as Element | undefined)?.outerHTML?.slice(0, 80) ?? s.node?.nodeName ?? '?')
+          w.shifts.push({ value: entry.value, nodes })
+        }
+      }).observe({ type: 'layout-shift', buffered: true })
+    })
+    // Warm the cache first: this test is about the page's own layout (strip, cluster, cards), not about how
+    // fast the font arrives under test load. The cold load is covered by Lighthouse's CLS (lighthouse.spec.ts).
+    await page.goto('/')
+    await page.waitForLoadState('networkidle')
+    await page.reload()
+    await page.waitForLoadState('networkidle')
+    await page.waitForTimeout(500)
+    const shifts = await page.evaluate(() => (window as unknown as { shifts: { value: number; nodes: string[] }[] }).shifts)
+    expect(shifts, JSON.stringify(shifts, null, 1)).toEqual([])
+  })
+}
 
 test('three feature cards with the spec titles, connectors and map markers', async ({ page }) => {
   await page.goto('/')
@@ -68,7 +132,8 @@ test('three feature cards with the spec titles, connectors and map markers', asy
   expect(new Set(heights).size).toBe(1)
 })
 
-test('the market section names both sites as plain text links', async ({ page }) => {
+test('the market section names both sites as plain text links, body text 16 px', async ({ page }) => {
+  await page.setViewportSize({ width: 1280, height: 900 })
   await page.goto('/')
   const section = page.locator('section[aria-labelledby="market"]')
   await expect(section.getByRole('heading', { level: 2 })).toHaveText('Made for the German charging market')
@@ -76,6 +141,9 @@ test('the market section names both sites as plain text links', async ({ page })
   await expect(section.locator('a[href="https://ladejetzt.de"]')).toHaveText('ladejetzt.de')
   await expect(section.locator('a[href="https://charge.tn"]')).toHaveText('charge.tn')
   await expect(section.locator('img')).toHaveCount(0)
+  for (const size of await section.locator('p').evaluateAll((ps) => ps.map((p) => getComputedStyle(p).fontSize))) {
+    expect(size).toBe('16px')
+  }
 })
 
 test('structured data, robots.txt and the sitemap', async ({ page, request }) => {

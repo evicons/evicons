@@ -6,7 +6,8 @@ import { expect, test } from '@playwright/test'
 // static pages with real per-path index.html files, the 404 page and the sitemap. Locally the test is
 // skipped when Docker is not available; in CI it must run.
 const repo = new URL('../..', import.meta.url).pathname
-const image = 'evicons-site:test'
+// One tag per run, removed again in afterAll (the build cache stays, so the next build is quick).
+const image = `evicons-site:test-${process.pid}`
 const dockerAvailable = spawnSync('docker', ['info'], { stdio: 'ignore' }).status === 0
 
 function freePort(): Promise<number> {
@@ -46,7 +47,8 @@ test.describe('docker image', () => {
   })
 
   test.afterAll(() => {
-    if (container) spawnSync('docker', ['stop', container], { stdio: 'ignore' })
+    if (container) spawnSync('docker', ['rm', '-f', container], { stdio: 'ignore' })
+    if (dockerAvailable) spawnSync('docker', ['image', 'rm', '-f', image], { stdio: 'ignore' })
   })
 
   test('deep link to an icon opens the gallery panel', async ({ page }) => {

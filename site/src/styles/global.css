@@ -281,7 +281,10 @@
     font-size: 0.75rem;
     font-weight: 500;
     color: var(--muted);
-    white-space: nowrap;
+    max-width: 10rem;
+  }
+  .doc .status-table td[data-label='Meaning'] {
+    min-width: 14rem;
   }
   /* Phones: one block per status instead of a 650 px wide table. */
   @media (width < 40rem) {
@@ -319,7 +322,7 @@
       gap: 0.75rem;
       padding-block: 0.125rem;
     }
-    .doc .status-table td:is([data-label='Icon'], [data-label='Colour']) {
+    .doc .status-table td[data-label='Icon'] {
       align-items: center;
     }
     .doc .status-table td::before {
@@ -329,7 +332,10 @@
       color: var(--muted);
     }
     .doc .status-table .contrast-flag {
-      white-space: normal;
+      max-width: none;
+    }
+    .doc .status-table td[data-label='Meaning'] {
+      min-width: 0;
     }
   }
   .doc td > code:only-child,
