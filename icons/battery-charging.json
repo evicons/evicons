@@ -1,0 +1,42 @@
+{
+  "category": "energy",
+  "meaning": {
+    "en": "Battery charging: the vehicle battery is being charged",
+    "de": "Akku lädt: die Fahrzeugbatterie wird geladen"
+  },
+  "tags": {
+    "en": [
+      "battery charging",
+      "battery",
+      "charging",
+      "state of charge",
+      "soc",
+      "charge level"
+    ],
+    "de": [
+      "akku lädt",
+      "akku",
+      "batterie",
+      "laden",
+      "ladestand",
+      "soc"
+    ],
+    "fr": [
+      "batterie en charge",
+      "batterie",
+      "recharge",
+      "niveau de charge"
+    ]
+  },
+  "since": "0.2.0",
+  "aliases": [],
+  "exceptions": [
+    "solid-sign",
+    "sharp-corner"
+  ],
+  "provenance": {
+    "createdBy": "ai",
+    "approvedBy": null,
+    "approvedOn": null
+  }
+}

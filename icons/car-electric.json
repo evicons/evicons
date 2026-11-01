@@ -1,0 +1,41 @@
+{
+  "category": "vehicle",
+  "meaning": {
+    "en": "Electric car (battery electric vehicle)",
+    "de": "E-Auto (batterieelektrisches Fahrzeug)"
+  },
+  "tags": {
+    "en": [
+      "electric car",
+      "ev",
+      "bev",
+      "electric vehicle",
+      "my car",
+      "vehicle"
+    ],
+    "de": [
+      "e-auto",
+      "elektroauto",
+      "elektrofahrzeug",
+      "mein auto",
+      "fahrzeug"
+    ],
+    "fr": [
+      "voiture électrique",
+      "ve",
+      "véhicule électrique",
+      "ma voiture"
+    ]
+  },
+  "since": "0.2.0",
+  "aliases": [],
+  "exceptions": [
+    "solid-sign",
+    "sharp-corner"
+  ],
+  "provenance": {
+    "createdBy": "ai",
+    "approvedBy": null,
+    "approvedOn": null
+  }
+}

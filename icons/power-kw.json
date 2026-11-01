@@ -1,0 +1,37 @@
+{
+  "category": "power",
+  "meaning": {
+    "en": "Power in kilowatts (kW), for example the charging power of a charge point",
+    "de": "Leistung in Kilowatt (kW), zum Beispiel die Ladeleistung eines Ladepunkts"
+  },
+  "tags": {
+    "en": [
+      "kw",
+      "kilowatt",
+      "power",
+      "charging power"
+    ],
+    "de": [
+      "kw",
+      "kilowatt",
+      "leistung",
+      "ladeleistung"
+    ],
+    "fr": [
+      "kw",
+      "kilowatt",
+      "puissance",
+      "puissance de charge"
+    ]
+  },
+  "since": "0.2.0",
+  "aliases": [],
+  "exceptions": [
+    "letters"
+  ],
+  "provenance": {
+    "createdBy": "ai",
+    "approvedBy": null,
+    "approvedOn": null
+  }
+}

@@ -1,4 +1,128 @@
 {
+  "battery-charging": {
+    "category": "energy",
+    "meaning": {
+      "en": "Battery charging: the vehicle battery is being charged",
+      "de": "Akku lädt: die Fahrzeugbatterie wird geladen"
+    },
+    "tags": {
+      "en": [
+        "battery charging",
+        "battery",
+        "charging",
+        "state of charge",
+        "soc",
+        "charge level"
+      ],
+      "de": [
+        "akku lädt",
+        "akku",
+        "batterie",
+        "laden",
+        "ladestand",
+        "soc"
+      ],
+      "fr": [
+        "batterie en charge",
+        "batterie",
+        "recharge",
+        "niveau de charge"
+      ]
+    },
+    "since": "0.2.0",
+    "aliases": [],
+    "exceptions": [
+      "solid-sign",
+      "sharp-corner"
+    ],
+    "provenance": {
+      "createdBy": "ai",
+      "approvedBy": null,
+      "approvedOn": null
+    },
+    "pascal": "BatteryCharging"
+  },
+  "bidirectional-charging": {
+    "category": "energy",
+    "meaning": {
+      "en": "Bidirectional charging: energy flows into and out of the vehicle (V2G, V2H)",
+      "de": "Bidirektionales Laden: Energie fließt ins Fahrzeug und zurück (V2G, V2H)"
+    },
+    "tags": {
+      "en": [
+        "bidirectional charging",
+        "bidirectional",
+        "v2g",
+        "v2h",
+        "vehicle to grid",
+        "vehicle to home"
+      ],
+      "de": [
+        "bidirektionales laden",
+        "bidirektional",
+        "v2g",
+        "v2h",
+        "rückspeisung"
+      ],
+      "fr": [
+        "recharge bidirectionnelle",
+        "bidirectionnel",
+        "v2g",
+        "v2h",
+        "véhicule vers réseau"
+      ]
+    },
+    "since": "0.2.0",
+    "aliases": [],
+    "provenance": {
+      "createdBy": "ai",
+      "approvedBy": null,
+      "approvedOn": null
+    },
+    "pascal": "BidirectionalCharging"
+  },
+  "car-electric": {
+    "category": "vehicle",
+    "meaning": {
+      "en": "Electric car (battery electric vehicle)",
+      "de": "E-Auto (batterieelektrisches Fahrzeug)"
+    },
+    "tags": {
+      "en": [
+        "electric car",
+        "ev",
+        "bev",
+        "electric vehicle",
+        "my car",
+        "vehicle"
+      ],
+      "de": [
+        "e-auto",
+        "elektroauto",
+        "elektrofahrzeug",
+        "mein auto",
+        "fahrzeug"
+      ],
+      "fr": [
+        "voiture électrique",
+        "ve",
+        "véhicule électrique",
+        "ma voiture"
+      ]
+    },
+    "since": "0.2.0",
+    "aliases": [],
+    "exceptions": [
+      "solid-sign",
+      "sharp-corner"
+    ],
+    "provenance": {
+      "createdBy": "ai",
+      "approvedBy": null,
+      "approvedOn": null
+    },
+    "pascal": "CarElectric"
+  },
   "car-plugged": {
     "category": "vehicle",
     "meaning": {
@@ -36,6 +160,48 @@
       "approvedOn": "2026-11-01"
     },
     "pascal": "CarPlugged"
+  },
+  "charging-bolt": {
+    "category": "power",
+    "meaning": {
+      "en": "Charging or electricity in general (plain lightning bolt)",
+      "de": "Laden oder Strom allgemein (einfacher Blitz)"
+    },
+    "tags": {
+      "en": [
+        "charging",
+        "bolt",
+        "lightning",
+        "electricity",
+        "power",
+        "energy"
+      ],
+      "de": [
+        "laden",
+        "blitz",
+        "strom",
+        "elektrizität",
+        "energie"
+      ],
+      "fr": [
+        "recharge",
+        "éclair",
+        "électricité",
+        "courant",
+        "énergie"
+      ]
+    },
+    "since": "0.2.0",
+    "aliases": [],
+    "exceptions": [
+      "sharp-corner"
+    ],
+    "provenance": {
+      "createdBy": "ai",
+      "approvedBy": null,
+      "approvedOn": null
+    },
+    "pascal": "ChargingBolt"
   },
   "charging-cable": {
     "category": "station",
@@ -595,6 +761,84 @@
       "approvedOn": "2026-10-21"
     },
     "pascal": "PlugType2"
+  },
+  "power-kw": {
+    "category": "power",
+    "meaning": {
+      "en": "Power in kilowatts (kW), for example the charging power of a charge point",
+      "de": "Leistung in Kilowatt (kW), zum Beispiel die Ladeleistung eines Ladepunkts"
+    },
+    "tags": {
+      "en": [
+        "kw",
+        "kilowatt",
+        "power",
+        "charging power"
+      ],
+      "de": [
+        "kw",
+        "kilowatt",
+        "leistung",
+        "ladeleistung"
+      ],
+      "fr": [
+        "kw",
+        "kilowatt",
+        "puissance",
+        "puissance de charge"
+      ]
+    },
+    "since": "0.2.0",
+    "aliases": [],
+    "exceptions": [
+      "letters"
+    ],
+    "provenance": {
+      "createdBy": "ai",
+      "approvedBy": null,
+      "approvedOn": null
+    },
+    "pascal": "PowerKw"
+  },
+  "range": {
+    "category": "vehicle",
+    "meaning": {
+      "en": "Range: distance the vehicle can drive on its battery charge",
+      "de": "Reichweite: Strecke, die das Fahrzeug mit der Akkuladung fahren kann"
+    },
+    "tags": {
+      "en": [
+        "range",
+        "driving range",
+        "distance",
+        "road",
+        "km"
+      ],
+      "de": [
+        "reichweite",
+        "strecke",
+        "straße",
+        "km"
+      ],
+      "fr": [
+        "autonomie",
+        "distance",
+        "route",
+        "km"
+      ]
+    },
+    "since": "0.2.0",
+    "aliases": [],
+    "exceptions": [
+      "solid-sign",
+      "sharp-corner"
+    ],
+    "provenance": {
+      "createdBy": "ai",
+      "approvedBy": null,
+      "approvedOn": null
+    },
+    "pascal": "Range"
   },
   "solar-charging": {
     "category": "energy",

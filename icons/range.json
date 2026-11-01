@@ -1,0 +1,39 @@
+{
+  "category": "vehicle",
+  "meaning": {
+    "en": "Range: distance the vehicle can drive on its battery charge",
+    "de": "Reichweite: Strecke, die das Fahrzeug mit der Akkuladung fahren kann"
+  },
+  "tags": {
+    "en": [
+      "range",
+      "driving range",
+      "distance",
+      "road",
+      "km"
+    ],
+    "de": [
+      "reichweite",
+      "strecke",
+      "straße",
+      "km"
+    ],
+    "fr": [
+      "autonomie",
+      "distance",
+      "route",
+      "km"
+    ]
+  },
+  "since": "0.2.0",
+  "aliases": [],
+  "exceptions": [
+    "solid-sign",
+    "sharp-corner"
+  ],
+  "provenance": {
+    "createdBy": "ai",
+    "approvedBy": null,
+    "approvedOn": null
+  }
+}

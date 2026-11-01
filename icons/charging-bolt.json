@@ -1,0 +1,41 @@
+{
+  "category": "power",
+  "meaning": {
+    "en": "Charging or electricity in general (plain lightning bolt)",
+    "de": "Laden oder Strom allgemein (einfacher Blitz)"
+  },
+  "tags": {
+    "en": [
+      "charging",
+      "bolt",
+      "lightning",
+      "electricity",
+      "power",
+      "energy"
+    ],
+    "de": [
+      "laden",
+      "blitz",
+      "strom",
+      "elektrizität",
+      "energie"
+    ],
+    "fr": [
+      "recharge",
+      "éclair",
+      "électricité",
+      "courant",
+      "énergie"
+    ]
+  },
+  "since": "0.2.0",
+  "aliases": [],
+  "exceptions": [
+    "sharp-corner"
+  ],
+  "provenance": {
+    "createdBy": "ai",
+    "approvedBy": null,
+    "approvedOn": null
+  }
+}

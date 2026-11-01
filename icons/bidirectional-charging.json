@@ -1,0 +1,38 @@
+{
+  "category": "energy",
+  "meaning": {
+    "en": "Bidirectional charging: energy flows into and out of the vehicle (V2G, V2H)",
+    "de": "Bidirektionales Laden: Energie fließt ins Fahrzeug und zurück (V2G, V2H)"
+  },
+  "tags": {
+    "en": [
+      "bidirectional charging",
+      "bidirectional",
+      "v2g",
+      "v2h",
+      "vehicle to grid",
+      "vehicle to home"
+    ],
+    "de": [
+      "bidirektionales laden",
+      "bidirektional",
+      "v2g",
+      "v2h",
+      "rückspeisung"
+    ],
+    "fr": [
+      "recharge bidirectionnelle",
+      "bidirectionnel",
+      "v2g",
+      "v2h",
+      "véhicule vers réseau"
+    ]
+  },
+  "since": "0.2.0",
+  "aliases": [],
+  "provenance": {
+    "createdBy": "ai",
+    "approvedBy": null,
+    "approvedOn": null
+  }
+}
