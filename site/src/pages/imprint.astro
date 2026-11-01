@@ -1,21 +1,67 @@
 ---
-import Placeholder from '../components/Placeholder.astro'
+import Legal from '../components/Legal.astro'
 ---
 
-<Placeholder title="Imprint – EVicons" heading="Imprint" description="Legal notice and privacy note for evicons.dev.">
-  <div class="mt-6 max-w-2xl space-y-4">
-    <p>
-      evicons.dev and the EVicons packages are published by Landolsi Digital,{' '}
-      <a href="https://landolsi.de">landolsi.de</a>.
-    </p>
-    <p class="text-muted">Imprint text follows.</p>
-  </div>
+<Legal
+  title="Impressum – EVicons"
+  heading="Impressum"
+  summary="Legal notice (German law)"
+  description="Legal notice (Impressum) for evicons.dev and the EVicons packages."
+>
+  <h2>Angaben gemäß § 5 DDG</h2>
+  <address>
+    Abdellatif Landolsi<br />
+    Landolsi Digital<br />
+    Softwareentwicklung, Webanwendungen und digitale Produkte<br />
+    Loisachstraße 7<br />
+    83026 Rosenheim
+  </address>
 
-  <section aria-labelledby="privacy" class="mt-12 max-w-2xl">
-    <h2 id="privacy" class="text-xl">Privacy</h2>
-    <p class="mt-3">
-      This site sets no cookies and uses no tracking; the web server keeps its standard access logs only. The map demo
-      on <a href="/map">/map</a> loads its map tiles from OpenFreeMap when you open it.
-    </p>
-  </section>
-</Placeholder>
+  <h2>Kontakt</h2>
+  <p>
+    Telefon: <a href="tel:+4980312727300">08031 27 27 300</a><br />
+    E-Mail: <a href="mailto:abdellatif@landolsi.de">abdellatif@landolsi.de</a>
+  </p>
+
+  <h2>Umsatzsteuer</h2>
+  <p>Gemäß § 19 UStG wird keine Umsatzsteuer berechnet (Kleinunternehmerregelung).</p>
+
+  <h2>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV</h2>
+  <address>
+    Abdellatif Landolsi<br />
+    Loisachstraße 7<br />
+    83026 Rosenheim
+  </address>
+
+  <h2>Verbraucherstreitbeilegung</h2>
+  <p>
+    Ich bin nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle
+    teilzunehmen.
+  </p>
+
+  <h2>Haftung für Inhalte</h2>
+  <p>
+    Die Inhalte dieser Website werden mit Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der
+    Inhalte kann ich jedoch keine Gewähr übernehmen. Als Diensteanbieter bin ich für eigene Inhalte auf diesen Seiten
+    nach den allgemeinen Gesetzen verantwortlich. Ich bin jedoch nicht verpflichtet, übermittelte oder gespeicherte
+    fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen.
+    Sobald mir eine konkrete Rechtsverletzung bekannt wird, entferne ich die betreffenden Inhalte umgehend.
+  </p>
+
+  <h2>Haftung für Links</h2>
+  <p>
+    Diese Website enthält Links zu externen Websites Dritter, zum Beispiel GitHub und npm, auf deren Inhalte ich keinen
+    Einfluss habe. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber verantwortlich.
+    Zum Zeitpunkt der Verlinkung waren keine Rechtsverstöße erkennbar. Wird mir eine Rechtsverletzung bekannt, entferne
+    ich den betreffenden Link umgehend.
+  </p>
+
+  <h2>Urheberrecht</h2>
+  <p>
+    Die EVicons-Icons, die Pakete <code>@evicons/react</code> und <code>@evicons/svg</code> sowie der Quellcode dieser
+    Website stehen unter der MIT-Lizenz (<a href="https://github.com/evicons/evicons/blob/main/LICENSE">LICENSE</a>)
+    und dürfen im Rahmen dieser Lizenz frei genutzt, verändert und weitergegeben werden. Für das EVicons-Logo gelten
+    zusätzlich die Hinweise auf der Seite <a href="/brand">Brand</a>. Inhalte Dritter, etwa die Kartendaten von
+    OpenStreetMap auf der Seite <a href="/map">Map</a>, sind als solche gekennzeichnet und unterliegen deren Lizenzen.
+  </p>
+</Legal>

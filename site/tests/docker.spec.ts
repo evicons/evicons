@@ -64,7 +64,7 @@ test.describe('docker image', () => {
   })
 
   test('pages, assets, 404 and sitemap', async ({ request }) => {
-    for (const path of ['/', '/docs', '/map', '/brand', '/changelog', '/imprint', '/robots.txt', '/sitemap-index.xml']) {
+    for (const path of ['/', '/docs', '/map', '/brand', '/changelog', '/imprint', '/privacy', '/robots.txt', '/sitemap-index.xml']) {
       expect((await request.get(`${origin}${path}`)).status(), path).toBe(200)
     }
     for (const path of ['/brand/logo.svg', '/brand/logo-on-light.png', '/favicon.ico', '/og.png']) {

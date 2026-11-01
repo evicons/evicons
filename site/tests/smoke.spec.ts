@@ -93,7 +93,7 @@ test('header and footer links have no dead internal targets', async ({ page, req
   const hrefs = await page.locator('header a[href^="/"], footer a[href^="/"]').evaluateAll((links) =>
     links.map((a) => a.getAttribute('href')!),
   )
-  expect(hrefs).toEqual(expect.arrayContaining(['/icons', '/docs', '/map', '/brand', '/changelog', '/imprint']))
+  expect(hrefs).toEqual(expect.arrayContaining(['/icons', '/docs', '/map', '/brand', '/changelog', '/imprint', '/privacy']))
   for (const href of new Set(hrefs)) {
     expect((await request.get(href)).status(), href).toBe(200)
   }
@@ -151,4 +151,25 @@ test('header shows the logo linking home', async ({ page }) => {
   const home = page.locator('header a[href="/"]')
   await expect(home).toHaveAccessibleName('EVicons')
   await expect(home.locator('svg')).toBeVisible()
+})
+
+test('imprint and privacy policy are real legal pages', async ({ page, request }) => {
+  for (const [path, heading] of [
+    ['/imprint', 'Impressum'],
+    ['/privacy', 'Datenschutzerklärung'],
+  ]) {
+    const response = await request.get(path)
+    expect(response.status(), path).toBe(200)
+    expect(await response.text(), path).toContain('Landolsi Digital')
+    await page.goto(path)
+    await expect(page.locator('h1')).toHaveText(heading)
+    await expect(page.locator('article[lang="de"]')).toBeVisible()
+    await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', `https://evicons.dev${path}`)
+  }
+  await page.goto('/imprint')
+  await expect(page.locator('main')).toContainText('Angaben gemäß § 5 DDG')
+  await expect(page.locator('main')).toContainText('§ 19 UStG')
+  await page.goto('/privacy')
+  await expect(page.locator('main')).toContainText('Hyperknot Software Kft.')
+  await expect(page.locator('main')).toContainText('Bayerische Landesamt für Datenschutzaufsicht')
 })

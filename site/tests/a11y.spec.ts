@@ -23,6 +23,7 @@ const pages: { path: string; ready: (page: Page) => Promise<void> }[] = [
   { path: '/brand', ready: async () => {} },
   { path: '/changelog', ready: async () => {} },
   { path: '/imprint', ready: async () => {} },
+  { path: '/privacy', ready: async () => {} },
 ]
 
 for (const scheme of ['light', 'dark'] as const) {
