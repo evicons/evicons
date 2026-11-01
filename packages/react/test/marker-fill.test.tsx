@@ -1,7 +1,7 @@
 // @vitest-environment jsdom
 import { render } from '@testing-library/react'
 import { expect, test } from 'vitest'
-import { Marker } from '../src/icons/marker.js'
+import { MarkerCharging } from '../src/icons/marker-charging.js'
 
 // Filled-mode contract (design guide section 9): the first <path> is the pin.
 const PIN = 'svg > path:first-of-type'
@@ -11,7 +11,7 @@ test.each([
   ['without a title', undefined],
   ['with a title', 'Charging station'],
 ])(`"${PIN}" selects the pin and "${SIGN}" the sign, %s`, (_, title) => {
-  const svg = render(<Marker title={title} />).container.querySelector('svg')!
+  const svg = render(<MarkerCharging title={title} />).container.querySelector('svg')!
   const paths = [...svg.querySelectorAll(':scope > path')]
   expect(paths).toHaveLength(2)
   const [pin, sign] = paths

@@ -177,7 +177,7 @@ Map markers (category `marker`) are pins with a sign inside. They are drawn like
 
 | Icon | Sign | Paths after the pin | Sign box | Clearance | Inner spacing |
 |---|---|---|---|---|---|
-| `marker` | hollow bolt, 10 high, 7 wide; the `fast-charging` vertex layout, widened so that its arms stay open | `M13.25 5 8.5 10.75h2.75L10.5 15l5-5.75h-2.75Z` | x 8.5–15.5, y 5–15 | 2.35 (top tip) | 2.075 (lower right edge to the upper right edge; arm widths 2.32 upper, 2.22 lower; step 2.12) |
+| `marker-charging` | hollow bolt, 10 high, 7 wide; the `fast-charging` vertex layout, widened so that its arms stay open | `M13.25 5 8.5 10.75h2.75L10.5 15l5-5.75h-2.75Z` | x 8.5–15.5, y 5–15 | 2.35 (top tip) | 2.075 (lower right edge to the upper right edge; arm widths 2.32 upper, 2.22 lower; step 2.12) |
 | `marker-ac` | "AC", cap height 5.25 (letters of section 6 scaled by 5.25/8), letter gap 2 | `m7.227 12.625 1.968-5.25 1.969 5.25m-3.196-1.969h2.454` and `M16.773 8.425c-.459-.656-1.05-1.05-1.706-1.05-1.115 0-1.903 1.181-1.903 2.625s.788 2.625 1.903 2.625c.656 0 1.247-.394 1.706-1.05` | x 7.227–16.773, y 7.375–12.625 | 2.05 (left foot of the A) | 2.56 (A to C) |
 | `marker-dc` | "DC", cap height 5.25, letter gap 2 | `M7.391 7.375v5.25h1.312C10.147 12.625 11 11.444 11 10s-.853-2.625-2.297-2.625Z` and `M16.609 8.425c-.459-.656-1.05-1.05-1.706-1.05C13.787 7.375 13 8.556 13 10s.787 2.625 1.903 2.625c.656 0 1.247-.394 1.706-1.05` | x 7.391–16.609, y 7.375–12.625 | 2.20 (top left corner of the D) | 2.0 (D to C) |
 | `marker-available` | check mark block of section 7, moved up 1.875 | `m7.75 10.625 2.75 2.5 5.75-6.25` | x 7.75–16.25, y 6.875–13.125 | 2.23 (end of the long leg) | – (one stroke) |

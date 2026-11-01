@@ -15,13 +15,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
   - Energy: `solar-charging`, `green-power`, `battery-charging`, `bidirectional-charging`
   - Vehicle and power: `car-electric`, `driving-range` (named `driving-range`, not `range`, because a React export `Range` would shadow the DOM global), `power-kw`, `charging-bolt`
   - Payment: `charging-card`, `app-charging`, `card-terminal`, `roaming`, `charging-tariff`, `charging-log`
-  - Map markers: `marker`, `marker-ac`, `marker-dc`, `marker-available`, `marker-occupied`, `marker-faulted`, `marker-out-of-service`, `marker-unknown`
+  - Map markers: `marker-charging` (named `marker-charging`, not `marker`, so that its React export does not clash with the `Marker` component of map libraries), `marker-ac`, `marker-dc`, `marker-available`, `marker-occupied`, `marker-faulted`, `marker-out-of-service`, `marker-unknown`
 - Map markers can be drawn filled: the first `<path>` of every marker is the pin. See "Map markers" in the README for the CSS rule and a MapLibre example.
 
 ### Changed
 
 - New categories `energy` and `marker` in the icon metadata (`icons.json`).
-- The icon linter checks markers: the first element of a `marker` icon must be the standard pin path, the sign must lie inside the pin head, and an icon is named `marker-…` if and only if its category is `marker`.
+- The icon linter checks markers: the first element of a `marker` icon must be the standard pin path, the sign must lie inside the pin head, and an icon is named `marker` or `marker-…` if and only if its category is `marker`.
 - New documented exception `solid-sign` for the small lightning bolt used inside other icons (design guide sections 2 and 4).
 - The stroke alphabet gains the letters k, W and P, and a lone letter that is the main subject of an icon may use cap height 11 (design guide section 6).
 

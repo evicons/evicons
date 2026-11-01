@@ -160,9 +160,11 @@ Status icons share a round frame; the sign inside carries the meaning.
 
 Map pins with a sign in the head, for 24 to 40 px; see [Map markers](#map-markers) for filled mode.
 
+The charging marker is named `marker-charging` (`MarkerCharging`), not `marker`, so that it does not clash with the `Marker` component of map libraries (MapLibre, Mapbox, Leaflet, Google Maps).
+
 | Name | React component | Sign | Meaning |
 |---|---|---|---|
-| `marker` | `Marker` | Lightning bolt | Map marker for a charging point |
+| `marker-charging` | `MarkerCharging` | Lightning bolt | Map marker for a charging point |
 | `marker-ac` | `MarkerAc` | Letters AC | Map marker for an AC charging point |
 | `marker-dc` | `MarkerDc` | Letters DC | Map marker for a DC charging point |
 | `marker-available` | `MarkerAvailable` | Check mark | Map marker: the charging point is available |

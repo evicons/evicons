@@ -209,9 +209,11 @@ Status icons share a round frame; the sign inside carries the meaning.
 
 Map pins with a sign in the head, for 24 to 40 px; see [Map markers](#map-markers) for filled mode.
 
+The charging marker is named `marker-charging` (`MarkerCharging`), not `marker`, so that it does not clash with the `Marker` component of map libraries (MapLibre, Mapbox, Leaflet, Google Maps).
+
 | Name | React component | Sign | Meaning |
 |---|---|---|---|
-| `marker` | `Marker` | Lightning bolt | Map marker for a charging point |
+| `marker-charging` | `MarkerCharging` | Lightning bolt | Map marker for a charging point |
 | `marker-ac` | `MarkerAc` | Letters AC | Map marker for an AC charging point |
 | `marker-dc` | `MarkerDc` | Letters DC | Map marker for a DC charging point |
 | `marker-available` | `MarkerAvailable` | Check mark | Map marker: the charging point is available |
@@ -222,7 +224,7 @@ Map pins with a sign in the head, for 24 to 40 px; see [Map markers](#map-marker
 
 ## Map markers
 
-The `marker-*` icons are map pins with a sign in the head (listed under [Markers](#markers)). Use them at 24, 32 or 40 px; they are not drawn for 16 px. Like all icons they are outlines in `currentColor`, and they can also be drawn filled: the pin in your colour, the sign in white. The SVG files never contain a colour; filling is done by your CSS or your code.
+The `marker-*` icons are map pins with a sign in the head (listed under [Markers](#markers)); `marker-charging` is the plain charging point, the others add AC/DC or a status. Use them at 24, 32 or 40 px; they are not drawn for 16 px. Like all icons they are outlines in `currentColor`, and they can also be drawn filled: the pin in your colour, the sign in white. The SVG files never contain a colour; filling is done by your CSS or your code.
 
 **Element order is a contract:** in every marker the first `<path>` is the pin, a single closed shape that encloses the sign. Everything after it is the sign. This order never changes in a released marker.
 
@@ -255,8 +257,8 @@ Map libraries draw markers as images, where page CSS does not apply. Fill the SV
 ```ts
 import type { Map } from 'maplibre-gl'
 
-// `svg` is the text of a file from @evicons/svg, for example `@evicons/svg/marker-available.svg`
-// (with Vite: `import svg from '@evicons/svg/marker-available.svg?raw'`). `size` is the size on the map in px.
+// `svg` is the text of a file from @evicons/svg, for example `@evicons/svg/marker-charging.svg`
+// (with Vite: `import svg from '@evicons/svg/marker-charging.svg?raw'`). `size` is the size on the map in px.
 export async function addMarkerImage(map: Map, name: string, svg: string, colour: string, size = 32) {
   const filled = svg
     .replace('width="24" height="24"', `width="${size * 2}" height="${size * 2}"`)
@@ -270,13 +272,13 @@ export async function addMarkerImage(map: Map, name: string, svg: string, colour
 ```
 
 ```ts
-await addMarkerImage(map, 'ev-marker-available', svg, '#1f9d55')
+await addMarkerImage(map, 'ev-marker-charging', svg, '#2563eb')
 
 map.addLayer({
   id: 'charge-points',
   type: 'symbol',
   source: 'charge-points',
-  layout: { 'icon-image': 'ev-marker-available', 'icon-anchor': 'bottom', 'icon-offset': [0, 32 / 12] },
+  layout: { 'icon-image': 'ev-marker-charging', 'icon-anchor': 'bottom', 'icon-offset': [0, 32 / 12] },
 })
 ```
 

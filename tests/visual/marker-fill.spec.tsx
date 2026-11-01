@@ -1,7 +1,7 @@
 import { createElement } from 'react'
 import { renderToStaticMarkup } from 'react-dom/server'
 import { expect, test } from '@playwright/test'
-import { Marker } from '../../packages/react/src/icons/marker.ts'
+import { MarkerCharging } from '../../packages/react/src/icons/marker-charging.ts'
 
 // Filled-mode CSS from the README and design guide section 9: the first <path> is the pin.
 const CSS = `.marker { color: #dc2626 }
@@ -13,7 +13,7 @@ const WHITE = 'rgb(255, 255, 255)'
 
 for (const title of [undefined, 'Charging station']) {
   test(`filled marker CSS fills the pin and draws the sign white ${title ? 'with' : 'without'} a <title>`, async ({ page }) => {
-    const markup = renderToStaticMarkup(createElement(Marker, { size: 40, title }))
+    const markup = renderToStaticMarkup(createElement(MarkerCharging, { size: 40, title }))
     await page.setContent(`<style>${CSS}</style><span class="marker">${markup}</span>`)
     const paths = await page.locator('svg > path').evaluateAll((els) =>
       els.map((el) => {
