@@ -100,3 +100,34 @@
     outline-offset: 2px;
   }
 }
+
+/* Icon gallery: preview background, independent of the site theme ("auto" follows it). */
+.preview-auto {
+  --pv-bg: var(--bg);
+  --pv-fg: var(--fg);
+  --pv-muted: var(--muted);
+  --pv-border: var(--border);
+  --pv-hover: var(--surface);
+}
+.preview-light {
+  --pv-bg: #ffffff;
+  --pv-fg: #18181b;
+  --pv-muted: #52525b;
+  --pv-border: #e4e4e7;
+  --pv-hover: #f4f4f5;
+}
+.preview-dark {
+  --pv-bg: #09090b;
+  --pv-fg: #f4f4f5;
+  --pv-muted: #a1a1aa;
+  --pv-border: #27272a;
+  --pv-hover: #18181b;
+}
+
+/* Filled map markers: the CSS contract from the README (first <path> is the pin). */
+.marker-filled svg > path:first-of-type {
+  fill: currentColor;
+}
+.marker-filled svg > :not(path:first-of-type) {
+  stroke: #fff;
+}

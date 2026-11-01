@@ -1,5 +1,23 @@
 ---
-import Placeholder from '../components/Placeholder.astro'
+import Gallery from '../components/gallery/Gallery'
+import Base from '../layouts/Base.astro'
+import { loadIcons } from '../lib/icons'
+
+const icons = loadIcons()
 ---
 
-<Placeholder title="Icons – EVicons" heading="Icons" description="Search and copy all EVicons." />
+<Base
+  title="Icons – EVicons"
+  description={`Search, preview and copy all ${icons.length} EVicons: connectors, stations, charging status, payment and map markers.`}
+>
+  <section class="mx-auto max-w-6xl px-4 py-10 sm:px-6 sm:py-12">
+    <h1 class="text-3xl">Icons</h1>
+    <p class="mt-2 max-w-2xl text-muted">
+      {icons.length} outline icons for EV charging. Search in English, German or French, pick an icon to copy it as
+      React, SVG or sprite.
+    </p>
+    <div class="mt-8">
+      <Gallery client:load icons={icons} />
+    </div>
+  </section>
+</Base>
