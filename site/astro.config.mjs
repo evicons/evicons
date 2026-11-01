@@ -35,7 +35,9 @@ export default defineConfig({
   },
   vite: {
     plugins: [tailwindcss()],
-    // MapLibre GL (about 1 MB) is a lazy chunk loaded only by the /map page.
-    build: { chunkSizeWarningLimit: 1100 },
+    // MapLibre GL (about 1.1 MB) is a lazy chunk loaded only by the /map page.
+    build: { chunkSizeWarningLimit: 1200 },
+    // The MapLibre tile worker is an ES module (loaded as a module worker).
+    worker: { format: 'es' },
   },
 })
