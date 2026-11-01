@@ -129,4 +129,4 @@ Use a badge size of half the base icon. At 12 px the default stroke scales down 
 Each icon has `<name>.json` next to `<name>.svg` (schema in `tools/lib/meta.ts`): category, meaning (en/de), tags (en/de/fr), `since`, aliases, optional `standard` and `exceptions`, and `provenance`:
 
 - `createdBy`: `"ai"` or `"human"`, without product names.
-- `approvedBy` / `approvedOn`: `null` until the owner approves the icon in the preview; a release (`npm run lint:icons -- --release`) requires both.
+- `approvedBy` / `approvedOn`: `null` until the owner (Landolsi Digital) approves the icon in the preview; `approvedBy` holds the company name, never a person; a release (`npm run lint:icons -- --release`) requires both.

@@ -32,7 +32,7 @@
     "aliases": [],
     "provenance": {
       "createdBy": "ai",
-      "approvedBy": "lotfi",
+      "approvedBy": "Landolsi Digital",
       "approvedOn": "2026-11-01"
     },
     "pascal": "CarPlugged"
@@ -70,7 +70,7 @@
     "aliases": [],
     "provenance": {
       "createdBy": "ai",
-      "approvedBy": "lotfi",
+      "approvedBy": "Landolsi Digital",
       "approvedOn": "2026-10-21"
     },
     "pascal": "ChargingStation"
@@ -108,7 +108,7 @@
     ],
     "provenance": {
       "createdBy": "ai",
-      "approvedBy": "lotfi",
+      "approvedBy": "Landolsi Digital",
       "approvedOn": "2026-10-21"
     },
     "pascal": "CurrentAc"
@@ -146,7 +146,7 @@
     ],
     "provenance": {
       "createdBy": "ai",
-      "approvedBy": "lotfi",
+      "approvedBy": "Landolsi Digital",
       "approvedOn": "2026-11-01"
     },
     "pascal": "CurrentDc"
@@ -184,7 +184,7 @@
     ],
     "provenance": {
       "createdBy": "ai",
-      "approvedBy": "lotfi",
+      "approvedBy": "Landolsi Digital",
       "approvedOn": "2026-11-01"
     },
     "pascal": "FastCharging"
@@ -236,7 +236,7 @@
     ],
     "provenance": {
       "createdBy": "ai",
-      "approvedBy": "lotfi",
+      "approvedBy": "Landolsi Digital",
       "approvedOn": "2026-11-01"
     },
     "pascal": "PlugCcs2"
@@ -283,7 +283,7 @@
     ],
     "provenance": {
       "createdBy": "ai",
-      "approvedBy": "lotfi",
+      "approvedBy": "Landolsi Digital",
       "approvedOn": "2026-10-21"
     },
     "pascal": "PlugType2"
@@ -322,7 +322,7 @@
     "aliases": [],
     "provenance": {
       "createdBy": "ai",
-      "approvedBy": "lotfi",
+      "approvedBy": "Landolsi Digital",
       "approvedOn": "2026-10-21"
     },
     "pascal": "StatusAvailable"
@@ -364,7 +364,7 @@
     "aliases": [],
     "provenance": {
       "createdBy": "ai",
-      "approvedBy": "lotfi",
+      "approvedBy": "Landolsi Digital",
       "approvedOn": "2026-11-01"
     },
     "pascal": "StatusFaulted"
@@ -396,7 +396,7 @@
     "aliases": [],
     "provenance": {
       "createdBy": "ai",
-      "approvedBy": "lotfi",
+      "approvedBy": "Landolsi Digital",
       "approvedOn": "2026-11-01"
     },
     "pascal": "StatusOccupied"
@@ -437,7 +437,7 @@
     "aliases": [],
     "provenance": {
       "createdBy": "ai",
-      "approvedBy": "lotfi",
+      "approvedBy": "Landolsi Digital",
       "approvedOn": "2026-11-01"
     },
     "pascal": "StatusOutOfService"
@@ -472,7 +472,7 @@
     "aliases": [],
     "provenance": {
       "createdBy": "ai",
-      "approvedBy": "lotfi",
+      "approvedBy": "Landolsi Digital",
       "approvedOn": "2026-11-01"
     },
     "pascal": "StatusQueue"
@@ -511,7 +511,7 @@
     ],
     "provenance": {
       "createdBy": "ai",
-      "approvedBy": "lotfi",
+      "approvedBy": "Landolsi Digital",
       "approvedOn": "2026-11-01"
     },
     "pascal": "StatusReserved"
@@ -544,7 +544,7 @@
     "aliases": [],
     "provenance": {
       "createdBy": "ai",
-      "approvedBy": "lotfi",
+      "approvedBy": "Landolsi Digital",
       "approvedOn": "2026-11-01"
     },
     "pascal": "StatusUnknown"
