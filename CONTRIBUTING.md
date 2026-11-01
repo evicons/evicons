@@ -36,16 +36,17 @@ Each icon is two files in `icons/`: the SVG and its metadata. Everything in `pac
    }
    ```
 
-   - `category`: one of `connector`, `station`, `power`, `vehicle`, `status`, `payment`.
+   - `category`: one of `connector`, `station`, `power`, `vehicle`, `status`, `payment`, `energy`, `marker`.
    - `meaning`: the precise meaning in English and German. Icons complement text, so say exactly what the icon stands for (for example "faulted" is not "out of service").
    - `since`: the version that first ships the icon.
    - Connector icons also need `standard: { norm, source }`; the source names the drawing the contact layout was checked against.
    - Deliberate style deviations are declared in `exceptions` (see the design guide, section 4).
+   - Map markers have category `marker` and a name `marker-…` (the linter requires both together). Their element order is a contract: the first element is the standard pin path, `m12 22-5.855-7.312a7.5 7.5 0 1 1 11.71 0Z`, and every other element is the sign inside the pin head (design guide section 9). Apps fill the first `<path>`, so never reorder the elements of a released marker.
    - `provenance`: `createdBy` records how the icon was created (allowed values in the schema); leave `approvedBy` and `approvedOn` as `null`.
 3. **Lint:** `npm run lint:icons`. `npm run lint:icons -- --fix` normalises the SVGs with SVGO.
 4. **Build:** `npm run build:icons` generates the React modules (`packages/react/src/icons/`, `packages/react/src/index.ts`) and the SVG package (`packages/svg/svg/`, `sprite.svg`, `icons.json`). Commit the generated files; CI checks that they are reproducible.
-5. **Preview:** `npm run preview` writes `preview/dist/index.html`. Check the icon large and at 16, 20 and 24 px, on light and dark backgrounds, with the stroke variants, and next to the Lucide reference icons for optical size.
-6. **Approval:** icons are reviewed by the maintainers and approved by the owner (Landolsi Digital) in the preview. On approval, `provenance.approvedBy` is set to the company name and `provenance.approvedOn` to the date. A release requires every icon to be approved (`npm run lint:icons -- --release`).
+5. **Preview:** `npm run preview` writes `preview/dist/index.html`. Check the icon large and at 16, 20 and 24 px, on light and dark backgrounds, with the stroke variants, and next to the Lucide reference icons for optical size. Check markers at 24, 32 and 40 px instead, outline and filled. `npm run snap -- <out.png> <name>...` renders the same review grid to a PNG.
+6. **Approval:** the owner (Landolsi Digital) or a maintainer the owner delegated to approves the icon after an independent review of the preview. On approval, `provenance.approvedBy` is set to the company name and `provenance.approvedOn` to the date. A release requires every icon to be approved (`npm run lint:icons -- --release`).
 
 ## Checks
 

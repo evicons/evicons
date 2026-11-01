@@ -79,7 +79,7 @@ An explicit `role` or `aria-hidden` that you pass always wins over the defaults.
 
 ## Icons complement text
 
-Do not use an icon as the only carrier of information. At 16 px the contacts of a connector face render as similar dots, so faces that share a part are hard to tell apart: `plug-type-2` and `plug-ccs2` differ only in the DC part below the Type 2 contacts. Always show the connector name next to the icon, for example "Type 2 · 22 kW". The same applies to status icons: show the status as text or at least as an accessible name.
+Do not use an icon as the only carrier of information. At 16 px the contacts of a connector face render as similar dots, so faces that share a part are hard to tell apart: `plug-type-2` and `plug-ccs2` differ only in the DC part below the Type 2 contacts. Likewise `plug-chademo` and `plug-schuko` look alike at 16 px (a round face with two lateral contacts). Always show the connector name next to the icon, for example "Type 2 · 22 kW". The same applies to status icons: show the status as text or at least as an accessible name.
 
 ## Status overlay pattern
 

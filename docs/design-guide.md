@@ -163,7 +163,7 @@ Use a badge size of half the base icon. At 12 px the default stroke scales down 
 Each icon has `<name>.json` next to `<name>.svg` (schema in `tools/lib/meta.ts`): category, meaning (en/de), tags (en/de/fr), `since`, aliases, optional `standard` and `exceptions`, and `provenance`:
 
 - `createdBy`: `"ai"` or `"human"`, without product names.
-- `approvedBy` / `approvedOn`: `null` until the owner (Landolsi Digital) approves the icon in the preview; `approvedBy` holds the company name, never a person; a release (`npm run lint:icons -- --release`) requires both.
+- `approvedBy` / `approvedOn`: `null` until the owner (Landolsi Digital) or a maintainer the owner delegated to approves the icon after an independent review of the preview; `approvedBy` holds the company name, never a person; a release (`npm run lint:icons -- --release`) requires both.
 
 ## 9. Markers
 
@@ -186,7 +186,7 @@ Map markers (category `marker`) are pins with a sign inside. They are drawn like
 | `marker-out-of-service` | "x": two diagonals, 6 × 6 | `m9 7 6 6m0-6-6 6` | x 9–15, y 7–13 | 3.26 (ends) | – (crossing only) |
 | `marker-unknown` | question mark block of section 7, moved up 1.625 | `M9.5 7.625a2.5 2.5 0 1 1 3.75 2.165c-.75.43-1.25.95-1.25 1.835v.5` and `M12 14.875h.01` | x 9.5–14.5, y 5.125–14.875 | 2.62 (top of the hook) | 2.75 (stem to dot) |
 
-  The marker bolt is not the small-bolt block and not a scaled copy of the `fast-charging` bolt: scaled uniformly to 10 high (or widened by 1.1, as on the comparison page) its arms are only 1.75–1.87 apart, below the 2.0 minimum. Its tips are sharp like every bolt. The letter gap stays 2 (not scaled with the cap height): a scaled gap (1.31) would put D and C closer than the 2.0 minimum. At 24 px the counter of the small A closes; "AC" stays readable from the letter shapes, and the app shows the text next to the marker. The clock's tick dots are zero-length paths (section 2); in filled mode they are drawn in white like the rest of the sign.
+  The marker bolt is not the small-bolt block and not a scaled copy of the `fast-charging` bolt: scaled uniformly to 10 high (or widened by 1.1, as on the candidate sheet used during design) its arms are only 1.75–1.87 apart, below the 2.0 minimum. Its tips are sharp like every bolt. The letter gap stays 2 (not scaled with the cap height): a scaled gap (1.31) would put D and C closer than the 2.0 minimum. At 24 px the counter of the small A closes; "AC" stays readable from the letter shapes, and the app shows the text next to the marker. The clock's tick dots are zero-length paths (section 2); in filled mode they are drawn in white like the rest of the sign.
 - **Filled mode (CSS only):** the SVG never contains a fill or a colour. Apps fill the first `<path>` (the pin) and draw everything else in white:
 
 ```css

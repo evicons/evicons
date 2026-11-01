@@ -6,7 +6,7 @@ EVicons covers **only** e-mobility. General UI icons (arrows, menu, search, clos
 
 - Outline style on a 24 × 24 grid, stroke width 1.5, round caps and joins.
 - `currentColor` only: the SVGs contain no colours, colour comes from your CSS.
-- Connector icons show the vehicle inlet seen from the front, with the contact layout checked against public drawings of the connector standards (see each icon's `standard.source`).
+- Connector icons show the vehicle inlet face, except `plug-schuko` which shows the socket face (there is no Schuko vehicle inlet), with the contact layout checked against public drawings of the connector standards (see each icon's `standard.source`).
 - Every icon has a documented meaning (see [Icons](#icons)).
 
 | Package | Contents |
@@ -93,7 +93,7 @@ An explicit `role` or `aria-hidden` that you pass always wins over the defaults.
 
 ### Icons complement text
 
-Do not use an icon as the only carrier of information. At 16 px the contacts of a connector face render as similar dots, so faces that share a part are hard to tell apart: `plug-type-2` and `plug-ccs2` differ only in the DC part below the Type 2 contacts. Always show the connector name next to the icon, for example "Type 2 · 22 kW". The same applies to status icons: show the status as text or at least as an accessible name.
+Do not use an icon as the only carrier of information. At 16 px the contacts of a connector face render as similar dots, so faces that share a part are hard to tell apart: `plug-type-2` and `plug-ccs2` differ only in the DC part below the Type 2 contacts. Likewise `plug-chademo` and `plug-schuko` look alike at 16 px (a round face with two lateral contacts). Always show the connector name next to the icon, for example "Type 2 · 22 kW". The same applies to status icons: show the status as text or at least as an accessible name.
 
 ### Status overlay pattern
 
