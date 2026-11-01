@@ -79,6 +79,19 @@ test.describe('docker image', () => {
     const slash = await request.get(`${origin}/docs/`, { maxRedirects: 0 })
     expect(slash.status()).toBe(301)
     expect(slash.headers()['location']).toBe('/docs')
+    // Security headers on every response, the 404 and the redirect included.
+    for (const response of [await request.get(`${origin}/`), notFound, slash]) {
+      const headers = response.headers()
+      expect(headers['x-content-type-options'], response.url()).toBe('nosniff')
+      expect(headers['referrer-policy'], response.url()).toBe('strict-origin-when-cross-origin')
+      expect(headers['permissions-policy'], response.url()).toBe('camera=(), microphone=(), geolocation=()')
+      expect(headers['content-security-policy'], response.url()).toBe(
+        "frame-ancestors 'none'; base-uri 'self'; object-src 'none'; form-action 'self'",
+      )
+      expect(headers['x-frame-options'], response.url()).toBe('DENY')
+    }
+    // The 404 page is not cached either.
+    expect(notFound.headers()['cache-control']).toBe('no-cache')
     // Hashed assets are cached for a year.
     const asset = docs.match(/\/_astro\/[\w.-]+\.css/)?.[0]
     expect(asset).toBeTruthy()

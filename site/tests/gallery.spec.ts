@@ -246,6 +246,18 @@ test.describe('mobile', () => {
     await expect(page.locator('[data-icon-card="plug-ccs2"]')).toBeFocused()
   })
 
+  test('card names wrap inside the card at 360 px, also bidirectional-charging', async ({ page }) => {
+    await open(page)
+    const clipped = await page
+      .locator('[data-icon-card] span:last-child')
+      .evaluateAll((spans) => spans.filter((el) => el.scrollWidth > el.clientWidth).map((el) => el.textContent))
+    expect(clipped).toEqual([])
+    // The long name breaks onto the second line and stays within the two-line label.
+    const label = page.locator('[data-icon-card="bidirectional-charging"] span:last-child')
+    await expect(label).toHaveText('bidirectional-charging')
+    expect(await label.evaluate((el) => el.scrollHeight <= el.clientHeight)).toBe(true)
+  })
+
   test('the sheet header stays in view and one-line snippets wrap', async ({ page }) => {
     await open(page, '/icons?icon=marker-out-of-service')
     const sheet = page.getByRole('dialog', { name: 'marker-out-of-service' })

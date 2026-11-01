@@ -104,7 +104,7 @@ test('status demo icons take their colour from CSS', async ({ page }) => {
   const demo = page.locator('[data-status-demo] li')
   const colour = (name: string) => demo.locator(`svg.evicon-${name}`).evaluate((el) => getComputedStyle(el).color)
   expect(await colour('status-available')).toBe('rgb(22, 163, 74)')
-  // The landing page uses the darker amber (#d97706): #f59e0b is below 3:1 on white.
+  // Occupied is #d97706 on the whole site: #f59e0b is below 3:1 on white.
   expect(await colour('status-occupied')).toBe('rgb(217, 119, 6)')
   expect(await colour('status-faulted')).toBe('rgb(220, 38, 38)')
   expect(await colour('status-out-of-service')).toBe('rgb(113, 113, 122)')

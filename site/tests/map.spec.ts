@@ -201,3 +201,15 @@ test('live tiles from OpenFreeMap', async ({ page }) => {
   await expect(page.locator('.maplibregl-ctrl-attrib')).toContainText('OpenStreetMap')
   expect(errors).toEqual([])
 })
+
+test('occupied is the darker amber #d97706 on the light map, also in the dark theme', async ({ page }) => {
+  await stubTiles(page)
+  await page.emulateMedia({ colorScheme: 'dark' })
+  await page.goto('/map')
+  const entry = page.locator('[data-legend-entry="occupied"] > span').first()
+  expect(await entry.evaluate((el) => getComputedStyle(el).color)).toBe('rgb(217, 119, 6)')
+  // The pins are drawn from the same variable on the root element.
+  expect(
+    await page.evaluate(() => getComputedStyle(document.documentElement).getPropertyValue('--status-occupied').trim()),
+  ).toBe('#d97706')
+})

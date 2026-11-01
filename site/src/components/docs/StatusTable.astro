@@ -14,8 +14,8 @@ interface Row {
 
 const rows: Row[] = [
   { status: 'available', label: 'Available', colour: '#16a34a' },
-  // #f59e0b for fills and markers; next to text on a light background the darker #d97706.
-  { status: 'occupied', label: 'Occupied', colour: '#f59e0b', use: 'fills, markers', alt: { colour: '#d97706', use: 'next to text' } },
+  // #d97706 on light backgrounds (text, fills, markers); the lighter #f59e0b only on dark backgrounds.
+  { status: 'occupied', label: 'Occupied', colour: '#d97706', use: 'recommended', alt: { colour: '#f59e0b', use: 'dark backgrounds' } },
   { status: 'faulted', label: 'Faulted', colour: '#dc2626' },
   { status: 'out-of-service', label: 'Out of service', colour: '#71717a' },
   { status: 'reserved', label: 'Reserved', colour: '#7c3aed' },
@@ -43,7 +43,11 @@ const data = rows.map((row) => {
   if (!Icon) throw new Error(`No React component ${icon.pascal}`)
   const contrast = contrastOnWhite(row.colour)
   // Below 3:1 (WCAG 1.4.11, non-text contrast) the colour is not enough for an icon on a light background.
-  const alt = row.alt && { ...row.alt, contrast: contrastOnWhite(row.alt.colour) }
+  const alt = row.alt && {
+    ...row.alt,
+    contrast: contrastOnWhite(row.alt.colour),
+    lowContrast: Number(contrastOnWhite(row.alt.colour)) < 3,
+  }
   return { ...row, alt, name, Icon, meaning: icon.meaning.en, contrast, lowContrast: Number(contrast) < 3 }
 })
 ---
@@ -87,7 +91,14 @@ const data = rows.map((row) => {
                   <span class="whitespace-nowrap">{contrast}:1</span>
                   {lowContrast && <span class="contrast-flag">Below 3:1: dark backgrounds only</span>}
                 </span>
-                {alt && <span class="whitespace-nowrap">{alt.contrast}:1 ({alt.colour})</span>}
+                {alt && (
+                  <span>
+                    <span class="whitespace-nowrap">
+                      {alt.contrast}:1 ({alt.colour})
+                    </span>
+                    {alt.lowContrast && <span class="contrast-flag">Below 3:1: dark backgrounds only</span>}
+                  </span>
+                )}
               </span>
             </td>
             <td data-label="Meaning">{meaning}</td>

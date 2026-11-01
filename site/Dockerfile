@@ -19,5 +19,6 @@ RUN npm run build:icons \
 
 FROM nginx:1.30-alpine
 COPY site/nginx.conf /etc/nginx/conf.d/default.conf
+COPY site/nginx-security-headers.conf /etc/nginx/snippets/security-headers.conf
 COPY --from=build /repo/site/dist /usr/share/nginx/html
 EXPOSE 80

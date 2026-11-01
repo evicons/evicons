@@ -99,9 +99,13 @@ test('status table: stacked and readable at 390 px, low-contrast colour flagged'
   // No sideways scrolling: everything of a row is visible.
   expect(await wrap.evaluate((el) => el.scrollWidth - el.clientWidth)).toBeLessThanOrEqual(0)
   const occupied = page.locator('table.status-table tr', { hasText: 'Occupied' })
+  // #d97706 is the recommended occupied colour; only the dark-background alternative #f59e0b is below 3:1.
+  const first = occupied.locator('td[data-label="Colour"] > span > span').first()
+  await expect(first).toContainText('#d97706')
+  await expect(first).toContainText('recommended')
+  await expect(occupied).toContainText('3.19:1')
   await expect(occupied.locator('.contrast-flag')).toHaveText('Below 3:1: dark backgrounds only')
   await expect(occupied.getByText('Occupied: the charge point is in use')).toBeInViewport({ ratio: 0 })
-  // Only #f59e0b is below 3:1.
   await expect(page.locator('table.status-table .contrast-flag')).toHaveCount(1)
 })
 

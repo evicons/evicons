@@ -46,7 +46,7 @@ function IconCard({ icon, inner, size, stroke, colour, filled, selected, tabbabl
             dangerouslySetInnerHTML={{ __html: inner }}
           />
         </span>
-        <span className="line-clamp-2 h-7 w-full text-center font-mono text-[11px] leading-[14px] text-(--pv-muted)">
+        <span className="line-clamp-2 h-7 w-full text-center font-mono text-[11px] [overflow-wrap:anywhere] leading-[14px] text-(--pv-muted)">
           {icon.name}
         </span>
       </button>

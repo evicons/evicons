@@ -20,7 +20,7 @@ export const presets: { label: string; value: string }[] = [
   { label: 'currentColor', value: 'currentColor' },
   { label: 'EV blue', value: '#2563eb' },
   { label: 'available green', value: '#16a34a' },
-  { label: 'occupied amber', value: '#f59e0b' },
+  { label: 'occupied amber', value: '#d97706' },
   { label: 'faulted red', value: '#dc2626' },
 ]
 

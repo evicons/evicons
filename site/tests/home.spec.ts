@@ -164,20 +164,35 @@ test('structured data, robots.txt and the sitemap', async ({ page, request }) =>
   expect(await index.text()).toContain('https://evicons.dev/sitemap-0.xml')
   const urls = [...(await (await request.get('/sitemap-0.xml')).text()).matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1])
   expect(urls.sort()).toEqual(
-    ['/', '/brand', '/changelog', '/docs', '/icons', '/imprint', '/map'].map((p) => `https://evicons.dev${p}`).sort(),
+    ['/', '/brand', '/changelog', '/docs', '/icons', '/imprint', '/map', '/privacy'].map((p) => `https://evicons.dev${p}`).sort(),
   )
   // Error pages carry no structured data.
   expect(await (await request.get('/nope')).text()).not.toContain('application/ld+json')
 })
 
-test('imprint names the company, links landolsi.de and has the privacy note', async ({ page }) => {
+test('imprint and privacy policy carry the legal content and are linked from the footer', async ({ page }) => {
   await page.goto('/imprint')
   const main = page.locator('main')
+  await expect(main.locator('p.lead')).toHaveText('Legal notice (German law)')
   await expect(main).toContainText('Landolsi Digital')
-  await expect(main.locator('a[href="https://landolsi.de"]')).toBeVisible()
-  await expect(main).toContainText('Imprint text follows.')
-  await expect(main).toContainText('no cookies')
+  await expect(main).toContainText('Loisachstraße 7')
+  await expect(main).toContainText('Kleinunternehmerregelung')
+  await expect(main).toContainText('§ 18 Abs. 2 MStV')
+  await expect(main.locator('a[href="mailto:abdellatif@landolsi.de"]')).toBeVisible()
+  await expect(main.locator('a[href="https://github.com/evicons/evicons/blob/main/LICENSE"]')).toHaveText('LICENSE')
+  await page.goto('/privacy')
+  await expect(main.locator('p.lead')).toHaveText('Privacy policy (German/EU law)')
+  await expect(main).toContainText('keine Cookies')
+  await expect(main).toContainText('14 Tagen')
+  await expect(main).toContainText('localStorage')
   await expect(main).toContainText('OpenFreeMap')
+  await expect(main).toContainText('Stand: 1. November 2026')
+  const footer = page.getByRole('navigation', { name: 'Footer' })
+  await expect(footer.getByRole('link', { name: 'Imprint' })).toHaveAttribute('href', '/imprint')
+  await expect(footer.getByRole('link', { name: 'Privacy' })).toHaveAttribute('href', '/privacy')
+  // /map points to the section about the tiles.
+  await page.goto('/map')
+  await expect(page.locator('[data-privacy-note] a[href="/privacy#kartenkacheln"]')).toBeVisible()
 })
 
 test('the landing page fits a 390 px screen', async ({ page }) => {
