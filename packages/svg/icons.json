@@ -472,8 +472,8 @@
     ],
     "provenance": {
       "createdBy": "ai",
-      "approvedBy": null,
-      "approvedOn": null
+      "approvedBy": "Landolsi Digital",
+      "approvedOn": "2026-11-01"
     },
     "pascal": "GreenPower"
   },
@@ -516,8 +516,8 @@
     ],
     "provenance": {
       "createdBy": "ai",
-      "approvedBy": null,
-      "approvedOn": null
+      "approvedBy": "Landolsi Digital",
+      "approvedOn": "2026-11-01"
     },
     "pascal": "HomeCharging"
   },
@@ -561,8 +561,8 @@
     ],
     "provenance": {
       "createdBy": "ai",
-      "approvedBy": null,
-      "approvedOn": null
+      "approvedBy": "Landolsi Digital",
+      "approvedOn": "2026-11-01"
     },
     "pascal": "ParkingCharging"
   },
@@ -882,8 +882,8 @@
     ],
     "provenance": {
       "createdBy": "ai",
-      "approvedBy": null,
-      "approvedOn": null
+      "approvedBy": "Landolsi Digital",
+      "approvedOn": "2026-11-01"
     },
     "pascal": "SolarCharging"
   },
@@ -1182,8 +1182,8 @@
     "aliases": [],
     "provenance": {
       "createdBy": "ai",
-      "approvedBy": null,
-      "approvedOn": null
+      "approvedBy": "Landolsi Digital",
+      "approvedOn": "2026-11-01"
     },
     "pascal": "Wallbox"
   }
