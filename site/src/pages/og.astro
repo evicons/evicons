@@ -1,0 +1,64 @@
+---
+// Render template for /og.png (1200 × 630). Not linked from the site; rendered by scripts/render-og.mjs.
+import {
+  BatteryCharging,
+  CarPlugged,
+  ChargingStation,
+  CurrentAc,
+  CurrentDc,
+  FastCharging,
+  MarkerCharging,
+  PlugCcs2,
+  PlugChademo,
+  PlugType2,
+  StatusAvailable,
+  Wallbox,
+} from '@evicons/react'
+import Logo from '../../../brand/logo.svg'
+import '../styles/global.css'
+
+const icons = [
+  ChargingStation,
+  Wallbox,
+  PlugType2,
+  PlugCcs2,
+  PlugChademo,
+  CurrentAc,
+  CurrentDc,
+  FastCharging,
+  CarPlugged,
+  BatteryCharging,
+  StatusAvailable,
+  MarkerCharging,
+]
+---
+
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="robots" content="noindex" />
+    <title>EVicons social image</title>
+    <style>
+      html,
+      body {
+        margin: 0;
+        width: 1200px;
+        height: 630px;
+        overflow: hidden;
+      }
+    </style>
+  </head>
+  <body class="bg-bg text-fg">
+    <div class="flex h-[630px] w-[1200px] flex-col justify-between px-[88px] py-[80px]">
+      <div>
+        <Logo width={520} height={124.6} aria-label="EVicons" role="img" />
+        <p class="mt-10 text-[52px] font-semibold leading-tight tracking-[-0.015em]">Outline icons for EV charging.</p>
+      </div>
+      <div class="flex justify-between text-accent" aria-hidden="true">
+        {icons.map((Icon) => <Icon size={60} />)}
+      </div>
+      <p class="text-[28px] font-medium text-muted">evicons.dev</p>
+    </div>
+  </body>
+</html>
