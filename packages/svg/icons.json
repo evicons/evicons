@@ -72,8 +72,8 @@
     "aliases": [],
     "provenance": {
       "createdBy": "ai",
-      "approvedBy": null,
-      "approvedOn": null
+      "approvedBy": "Landolsi Digital",
+      "approvedOn": "2026-11-01"
     },
     "pascal": "ChargingCable"
   },
@@ -110,8 +110,8 @@
     "aliases": [],
     "provenance": {
       "createdBy": "ai",
-      "approvedBy": null,
-      "approvedOn": null
+      "approvedBy": "Landolsi Digital",
+      "approvedOn": "2026-11-01"
     },
     "pascal": "ChargingPlug"
   },
@@ -361,8 +361,8 @@
     },
     "provenance": {
       "createdBy": "ai",
-      "approvedBy": null,
-      "approvedOn": null
+      "approvedBy": "Landolsi Digital",
+      "approvedOn": "2026-11-01"
     },
     "pascal": "PlugChademo"
   },
@@ -411,8 +411,8 @@
     },
     "provenance": {
       "createdBy": "ai",
-      "approvedBy": null,
-      "approvedOn": null
+      "approvedBy": "Landolsi Digital",
+      "approvedOn": "2026-11-01"
     },
     "pascal": "PlugSchuko"
   },
