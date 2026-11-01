@@ -26,7 +26,7 @@ function IconCard({ icon, inner, size, stroke, colour, filled, selected, tabbabl
         onClick={(event) => onOpen(icon.name, event.currentTarget)}
         onKeyDown={onKeyDown}
         className={[
-          'flex h-28 w-full flex-col items-center justify-start gap-2 rounded-lg border px-2 pt-4 text-(--pv-fg) transition-colors hover:bg-(--pv-hover)',
+          'flex h-28 w-full flex-col items-center justify-start gap-2 rounded-lg border px-2 pt-4 text-(--pv-fg) motion-safe:transition-colors hover:bg-(--pv-hover)',
           selected ? 'border-accent ring-1 ring-accent' : 'border-transparent',
         ].join(' ')}
       >

@@ -10,7 +10,8 @@ export interface IconEntry {
   name: string
   pascal: string
   category: Category
-  meaning: { en: string; de: string }
+  /** English only: the gallery island ships these props to the client, and nothing on the site shows `de`. */
+  meaning: { en: string }
   tags: { en: string[]; de: string[]; fr: string[] }
   /** The SVG file content, verbatim. */
   svg: string
@@ -51,7 +52,7 @@ export function loadIcons(): IconEntry[] {
         name,
         pascal: m.pascal,
         category: m.category,
-        meaning: { en: m.meaning.en, de: m.meaning.de },
+        meaning: { en: m.meaning.en },
         tags: { en: m.tags.en, de: m.tags.de, fr: m.tags.fr },
         svg: readFileSync(join(root, 'svg', `${name}.svg`), 'utf8').trim(),
         ...(m.standard ? { standard: { norm: m.standard.norm, source: m.standard.source } } : {}),

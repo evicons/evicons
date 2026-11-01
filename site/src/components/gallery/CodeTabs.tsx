@@ -1,9 +1,11 @@
-import { useId, useRef, useState, type KeyboardEvent } from 'react'
+import { useEffect, useId, useRef, useState, type KeyboardEvent } from 'react'
 
 export interface Snippet {
   id: string
   label: string
   code: string
+  /** Wrap long lines instead of scrolling (one-line snippets). */
+  wrap?: boolean
 }
 
 async function copy(text: string): Promise<boolean> {
@@ -20,6 +22,7 @@ export default function CodeTabs({ snippets }: { snippets: Snippet[] }) {
   const [status, setStatus] = useState('')
   const base = useId()
   const tabs = useRef<(HTMLButtonElement | null)[]>([])
+  const timer = useRef<ReturnType<typeof setTimeout>>(undefined)
   const current = snippets.find((snippet) => snippet.id === active) ?? snippets[0]!
 
   function onKeyDown(event: KeyboardEvent<HTMLButtonElement>, index: number) {
@@ -31,9 +34,13 @@ export default function CodeTabs({ snippets }: { snippets: Snippet[] }) {
     tabs.current[next]?.focus()
   }
 
+  useEffect(() => () => clearTimeout(timer.current), [])
+
   async function onCopy() {
-    setStatus((await copy(current.code)) ? 'Copied' : 'Copy failed')
-    setTimeout(() => setStatus(''), 2000)
+    const ok = await copy(current.code)
+    clearTimeout(timer.current)
+    setStatus(ok ? 'Copied' : 'Copy failed')
+    timer.current = setTimeout(() => setStatus(''), 2000)
   }
 
   return (
@@ -76,7 +83,12 @@ export default function CodeTabs({ snippets }: { snippets: Snippet[] }) {
         tabIndex={0}
         className="max-h-72 overflow-auto bg-surface"
       >
-        <pre className="p-3 font-mono text-xs leading-relaxed text-fg">
+        <pre
+          className={[
+            'p-3 font-mono text-xs leading-relaxed text-fg',
+            current.wrap ? 'whitespace-pre-wrap wrap-anywhere' : '',
+          ].join(' ')}
+        >
           <code>{current.code}</code>
         </pre>
       </div>

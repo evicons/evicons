@@ -107,6 +107,10 @@
   --pv-fg: var(--fg);
   --pv-muted: var(--muted);
   --pv-border: var(--border);
+  /* zinc-100 on white: --surface (#fafafa) would be almost invisible as a hover. */
+  --pv-hover: #f4f4f5;
+}
+[data-theme='dark'] .preview-auto {
   --pv-hover: var(--surface);
 }
 .preview-light {
@@ -134,6 +138,21 @@
 
 /* In the components layer, so that Tailwind utilities on single elements still win. */
 @layer components {
+  /* Icon panel. Its sticky header needs the same opaque background as the panel. */
+  .icon-sheet,
+  .icon-sheet-head {
+    background: var(--sheet-bg, var(--bg));
+  }
+  /* Dark mode, bottom sheet below md: one step lighter than the page so it reads as a layer above it;
+     the surfaces inside the sheet move up one step as well. */
+  @media (width < 48rem) {
+    [data-theme='dark'] .icon-sheet {
+      --sheet-bg: #18181b;
+      --surface: #27272a;
+      --border: #3f3f46;
+    }
+  }
+
   /* Docs and changelog: long-form typography (Markdown/MDX output inside .doc). */
   .doc h1 {
     font-size: 2.25rem;

@@ -1,4 +1,4 @@
-import { useEffect, useId, useState, type Ref } from 'react'
+import { useEffect, useId, useState, type KeyboardEvent, type Ref } from 'react'
 import type { EvIconComponent } from '@evicons/react'
 import type { IconEntry } from '../../lib/icons'
 import CodeTabs, { type Snippet } from './CodeTabs'
@@ -20,6 +20,9 @@ interface Props {
   onFilled: (value: boolean) => void
   onClose: () => void
   headingRef: Ref<HTMLHeadingElement>
+  panelRef: Ref<HTMLDivElement>
+  /** Small screens: a modal bottom sheet. From `md` up: a region beside the grid, focus stays on the cards. */
+  modal: boolean
 }
 
 function snippets(icon: IconEntry, title: string, size: number, stroke: number, colour: string): Snippet[] {
@@ -34,12 +37,17 @@ function snippets(icon: IconEntry, title: string, size: number, stroke: number, 
       id: 'react',
       label: 'React',
       code: `import { ${icon.pascal} } from '@evicons/react'\n\n<${icon.pascal} ${props.join(' ')} />`,
+      wrap: true,
     },
     { id: 'svg', label: 'SVG', code: icon.svg },
     {
       id: 'sprite',
       label: 'Sprite',
-      code: `<svg width="${size}" height="${size}"><use href="/sprite.svg#evicon-${icon.name}" /></svg>`,
+      code: [
+        `<!-- Copy sprite.svg from @evicons/svg to your app's public folder -->`,
+        `<svg width="${size}" height="${size}" aria-hidden="true"><use href="/sprite.svg#evicon-${icon.name}" /></svg>`,
+      ].join('\n'),
+      wrap: true,
     },
   ]
 }
@@ -86,7 +94,30 @@ function Preview({
   )
 }
 
-export default function IconPanel({ icon, title, size, stroke, colour, filled, onFilled, onClose, headingRef }: Props) {
+const focusable = 'a[href], button:not([disabled]), input:not([disabled]), summary, [tabindex]:not([tabindex="-1"])'
+
+/** Keep Tab inside the modal sheet: wrap from the last focusable element to the first and back. */
+function trapTab(event: KeyboardEvent<HTMLDivElement>) {
+  if (event.key !== 'Tab') return
+  const items = Array.from(event.currentTarget.querySelectorAll<HTMLElement>(focusable)).filter(
+    (el) => el.getClientRects().length > 0,
+  )
+  const first = items[0]
+  const last = items[items.length - 1]
+  if (!first || !last) return
+  // The heading (focused when the sheet opens) is not in the list: Shift+Tab from it also wraps to the end.
+  const active = document.activeElement as HTMLElement | null
+  if (event.shiftKey && (active === first || !active || !items.includes(active))) {
+    event.preventDefault()
+    last.focus()
+  } else if (!event.shiftKey && active === last) {
+    event.preventDefault()
+    first.focus()
+  }
+}
+
+export default function IconPanel(props: Props) {
+  const { icon, title, size, stroke, colour, filled, onFilled, onClose, headingRef, panelRef, modal } = props
   const [icons, setIcons] = useState<ReactIcons | null>(null)
   const headingId = useId()
   const marker = isMarker(icon)
@@ -108,12 +139,20 @@ export default function IconPanel({ icon, title, size, stroke, colour, filled, o
 
   return (
     <div
-      role="dialog"
+      ref={panelRef}
+      data-icon-panel
+      role={modal ? 'dialog' : 'region'}
+      aria-modal={modal || undefined}
       aria-labelledby={headingId}
-      className="fixed inset-x-0 bottom-0 z-40 max-h-[85vh] overflow-y-auto rounded-t-2xl border-t border-border bg-bg p-5 pb-[max(1.25rem,env(safe-area-inset-bottom))] shadow-2xl md:pb-5 md:sticky md:inset-auto md:top-4 md:z-auto md:max-h-[calc(100vh-2rem)] md:self-start md:rounded-xl md:border md:shadow-none"
+      onKeyDown={modal ? trapTab : undefined}
+      className="icon-sheet fixed inset-x-0 bottom-0 z-40 max-h-[85vh] overflow-y-auto overscroll-contain rounded-t-2xl border-t border-border px-5 pb-[max(1.25rem,env(safe-area-inset-bottom))] shadow-2xl md:pb-5 md:sticky md:inset-auto md:top-4 md:z-auto md:max-h-[calc(100vh-2rem)] md:self-start md:rounded-xl md:border md:shadow-none"
     >
-      <div className="mx-auto mb-3 h-1 w-10 rounded-full bg-border md:hidden" aria-hidden="true" />
-      <div className="flex items-start justify-between gap-3">
+      {/* Sticky header: the name and Close stay in view while the sheet scrolls. */}
+      <div className="icon-sheet-head sticky top-0 z-10 -mx-5 flex items-start justify-between gap-3 px-5 pb-3 pt-5 md:pb-2">
+        <div
+          className="absolute left-1/2 top-2 h-1 w-10 -translate-x-1/2 rounded-full bg-border md:hidden"
+          aria-hidden="true"
+        />
         <div className="min-w-0">
           <h2 id={headingId} ref={headingRef} tabIndex={-1} className="break-all font-mono text-lg focus:outline-none">
             {icon.name}
@@ -142,7 +181,7 @@ export default function IconPanel({ icon, title, size, stroke, colour, filled, o
         </button>
       </div>
 
-      <div className="mt-4 rounded-lg border border-(--pv-border) bg-(--pv-bg) text-(--pv-fg)">
+      <div className="mt-1 rounded-lg border border-(--pv-border) bg-(--pv-bg) text-(--pv-fg)">
         <div
           data-preview
           className={['flex h-36 items-center justify-center', fill ? 'marker-filled' : ''].join(' ')}
@@ -183,8 +222,8 @@ export default function IconPanel({ icon, title, size, stroke, colour, filled, o
             onClick={() => onFilled(!filled)}
             className="group flex items-center gap-2 text-muted hover:text-fg"
           >
-            <span className="relative h-5 w-9 rounded-full border border-border bg-surface transition-colors group-aria-checked:border-accent group-aria-checked:bg-accent">
-              <span className="absolute left-0.5 top-0.5 size-3.5 rounded-full bg-muted transition-transform group-aria-checked:translate-x-4 group-aria-checked:bg-white" />
+            <span className="relative h-5 w-9 rounded-full border border-border bg-surface motion-safe:transition-colors group-aria-checked:border-accent group-aria-checked:bg-accent">
+              <span className="absolute left-0.5 top-0.5 size-3.5 rounded-full bg-muted motion-safe:transition-transform group-aria-checked:translate-x-4 group-aria-checked:bg-white" />
             </span>
             Filled
           </button>
