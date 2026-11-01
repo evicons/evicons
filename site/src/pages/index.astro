@@ -22,9 +22,9 @@ const button = 'inline-flex items-center rounded-md px-4 py-2 text-sm font-mediu
   description="Connectors, charging status, map markers and the words around them — 43 icons, one stroke, MIT."
 >
   <section class="mx-auto max-w-6xl px-4 pb-16 pt-16 sm:px-6 sm:pt-24">
-    <h1 class="max-w-3xl text-4xl sm:text-5xl">Outline icons for EV charging.</h1>
-    <p class="mt-4 max-w-2xl text-lg text-muted">
-      Connectors, charging status, map markers and the words around them — 43 icons, one stroke, MIT.
+    <h1 class="max-w-3xl text-4xl text-balance sm:text-5xl">Outline icons for EV charging.</h1>
+    <p class="mt-4 max-w-2xl text-lg text-pretty text-muted">
+      Connectors, charging status, map markers and the words around them — 43&nbsp;icons, one stroke, MIT.
     </p>
 
     <div class="mt-8 inline-flex max-w-full items-center gap-3 rounded-lg border border-border bg-surface py-2 pl-4 pr-2">
@@ -32,7 +32,7 @@ const button = 'inline-flex items-center rounded-md px-4 py-2 text-sm font-mediu
       <button
         type="button"
         data-copy={install}
-        class="rounded-md px-2 py-1 text-sm text-muted hover:bg-bg hover:text-fg"
+        class="min-w-[6.5rem] rounded-md px-2 py-1 text-center text-sm text-muted hover:bg-bg hover:text-fg"
         aria-label="Copy install command">Copy</button
       >
       <span class="sr-only" role="status" aria-live="polite" data-copy-status></span>
@@ -87,18 +87,20 @@ const button = 'inline-flex items-center rounded-md px-4 py-2 text-sm font-mediu
 <script>
   for (const button of document.querySelectorAll<HTMLButtonElement>('[data-copy]')) {
     const status = button.parentElement?.querySelector<HTMLElement>('[data-copy-status]')
+    let reset: ReturnType<typeof setTimeout> | undefined
+    const show = (label: string, message: string) => {
+      button.textContent = label
+      if (status) status.textContent = message
+    }
     button.addEventListener('click', async () => {
+      clearTimeout(reset)
       try {
         await navigator.clipboard.writeText(button.dataset.copy ?? '')
-        button.textContent = 'Copied'
-        if (status) status.textContent = 'Copied to clipboard'
+        show('Copied', 'Copied to clipboard')
       } catch {
-        button.textContent = 'Copy failed'
+        show('Copy failed', 'Copy failed')
       }
-      setTimeout(() => {
-        button.textContent = 'Copy'
-        if (status) status.textContent = ''
-      }, 2000)
+      reset = setTimeout(() => show('Copy', ''), 2000)
     })
   }
 </script>

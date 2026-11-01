@@ -13,7 +13,7 @@ export default defineConfig({
   use: { baseURL: `http://localhost:${port}` },
   projects: [{ name: 'chromium', use: { ...devices['Desktop Chrome'] } }],
   webServer: {
-    command: `npm run preview -- --port ${port}`,
+    command: `npm run preview -- --port ${port} --ignore-lock`,
     cwd: import.meta.dirname,
     url: `http://localhost:${port}`,
     reuseExistingServer: !process.env.CI,

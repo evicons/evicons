@@ -7,10 +7,14 @@ interface Props {
   title: string
   description: string
   ogImage?: string
+  /** Error pages: no canonical/og:url, not indexed. */
+  noindex?: boolean
 }
 
-const { title, description, ogImage } = Astro.props
-const canonical = new URL(Astro.url.pathname, Astro.site)
+const { title, description, ogImage, noindex = false } = Astro.props
+// One URL form everywhere: no trailing slash (except the root).
+const path = Astro.url.pathname.length > 1 ? Astro.url.pathname.replace(/\/+$/, '') : '/'
+const canonical = new URL(path, Astro.site)
 const image = ogImage ? new URL(ogImage, Astro.site).href : undefined
 ---
 
@@ -21,12 +25,14 @@ const image = ogImage ? new URL(ogImage, Astro.site).href : undefined
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
-    <link rel="canonical" href={canonical.href} />
+    {noindex ? <meta name="robots" content="noindex" /> : <link rel="canonical" href={canonical.href} />}
+    {/* Empty favicon until the brand assets exist (avoids a /favicon.ico 404). */}
+    <link rel="icon" href="data:," />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="EVicons" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:url" content={canonical.href} />
+    {!noindex && <meta property="og:url" content={canonical.href} />}
     {image && <meta property="og:image" content={image} />}
     <meta name="twitter:card" content={image ? 'summary_large_image' : 'summary'} />
     <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />

@@ -17,7 +17,7 @@ RUN npm run build:icons \
  && npm run build -w @evicons/react \
  && npm run build -w site
 
-FROM nginx:1.27-alpine
+FROM nginx:1.30-alpine
 COPY site/nginx.conf /etc/nginx/conf.d/default.conf
 COPY --from=build /repo/site/dist /usr/share/nginx/html
 EXPOSE 80

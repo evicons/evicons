@@ -1,12 +1,16 @@
 # Used by BuildKit for `docker build -f site/Dockerfile .` (context: repository root).
+# Allow-list: only what the site build needs.
+*
+!package.json
+!package-lock.json
+!tsconfig.base.json
+!README.md
+!CHANGELOG.md
+!LICENSE
+!icons/
+!packages/
+!site/
+!tools/
 **/node_modules
 **/dist
 **/.astro
-.git
-preview/dist
-test-results
-playwright-report
-.tmp-tests
-.superpowers
-.claude
-docs/superpowers

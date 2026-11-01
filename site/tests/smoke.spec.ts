@@ -27,12 +27,65 @@ test('theme toggle switches data-theme and remembers the choice', async ({ page 
   await page.emulateMedia({ colorScheme: 'light' })
   await page.goto('/')
   const html = page.locator('html')
+  const toggle = page.getByRole('button', { name: 'Toggle colour theme' })
   await expect(html).toHaveAttribute('data-theme', 'light')
-  await page.getByRole('button', { name: 'Switch to dark theme' }).click()
+  await expect(toggle.locator('.theme-glyph-light')).toBeVisible()
+  await toggle.click()
   await expect(html).toHaveAttribute('data-theme', 'dark')
   await page.reload()
   await expect(html).toHaveAttribute('data-theme', 'dark')
-  await expect(page.getByRole('button', { name: 'Switch to light theme' })).toBeVisible()
+  await expect(toggle.locator('.theme-glyph-dark')).toBeVisible()
+  await expect(toggle.locator('.theme-glyph-light')).toBeHidden()
+})
+
+test('theme toggle is correct in dark mode before hydration', async ({ page }) => {
+  // Block the island bundles: only the inline head script runs.
+  await page.route('**/_astro/*.js', (route) => route.abort())
+  await page.emulateMedia({ colorScheme: 'dark' })
+  await page.goto('/')
+  await expect(page.locator('html')).toHaveAttribute('data-theme', 'dark')
+  const toggle = page.getByRole('button', { name: 'Toggle colour theme' })
+  await expect(toggle.locator('.theme-glyph-dark')).toBeVisible()
+  await expect(toggle.locator('.theme-glyph-light')).toBeHidden()
+})
+
+test('copy button copies the install line and announces it', async ({ page, context }) => {
+  await context.grantPermissions(['clipboard-read', 'clipboard-write'])
+  await page.goto('/')
+  const button = page.getByRole('button', { name: 'Copy install command' })
+  await button.click()
+  await expect(button).toHaveText('Copied')
+  await expect(page.locator('[data-copy-status]')).toHaveText('Copied to clipboard')
+  expect(await page.evaluate(() => navigator.clipboard.readText())).toBe('npm i @evicons/react')
+})
+
+test('copy button announces a failure and keeps its width', async ({ page }) => {
+  await page.addInitScript(() => {
+    Object.defineProperty(navigator, 'clipboard', {
+      value: { writeText: () => Promise.reject(new Error('denied')) },
+    })
+  })
+  await page.goto('/')
+  const button = page.getByRole('button', { name: 'Copy install command' })
+  const before = (await button.boundingBox())!.width
+  await button.click()
+  await expect(button).toHaveText('Copy failed')
+  await expect(page.locator('[data-copy-status]')).toHaveText('Copy failed')
+  expect((await button.boundingBox())!.width).toBe(before)
+})
+
+test('canonical URLs have no trailing slash; the 404 page is not indexed', async ({ page, request }) => {
+  await page.goto('/icons')
+  await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', 'https://evicons.dev/icons')
+  await expect(page.locator('meta[property="og:url"]')).toHaveAttribute('content', 'https://evicons.dev/icons')
+  await page.goto('/')
+  await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', 'https://evicons.dev/')
+  const notFound = await request.get('/this-page-does-not-exist')
+  expect(notFound.status()).toBe(404)
+  const body = await notFound.text()
+  expect(body).toContain('<meta name="robots" content="noindex">')
+  expect(body).not.toContain('rel="canonical"')
+  expect(body).not.toContain('og:url')
 })
 
 test('header and footer links have no dead internal targets', async ({ page, request }) => {
