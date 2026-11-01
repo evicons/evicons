@@ -129,3 +129,18 @@ test('package LICENSE files are byte-identical copies of the root LICENSE', () =
     expect(readFileSync(file), `${file} differs from the root LICENSE`).toEqual(root)
   }
 })
+
+test('marker svg files are self-contained images', () => {
+  const svgDir = join(ROOT, 'packages/svg/svg')
+  const markers = readdirSync(svgDir).filter((f) => /^marker(-.*)?\.svg$/.test(f))
+  expect(markers).toHaveLength(8)
+  for (const file of markers) {
+    const svg = readFileSync(join(svgDir, file), 'utf8')
+    expect(svg, file).toContain('xmlns="http://www.w3.org/2000/svg"')
+    expect(svg, file).toContain('width="24"')
+    expect(svg, file).toContain('height="24"')
+  }
+  const icons = JSON.parse(readFileSync(join(ROOT, 'packages/svg/icons.json'), 'utf8')) as Record<string, { since: string }>
+  expect(Object.keys(icons)).toHaveLength(43)
+  for (const [name, meta] of Object.entries(icons)) expect(['0.1.0', '0.2.0'], name).toContain(meta.since)
+})

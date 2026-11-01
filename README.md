@@ -1,6 +1,6 @@
 # EVicons
 
-Open-source icons for e-mobility and EV charging: charging stations, connector faces, AC/DC, charge point status and vehicles. MIT licensed.
+Open-source icons for e-mobility and EV charging: charging stations, connector faces, AC/DC and power, energy, vehicles, payment, charge point status and map markers. MIT licensed.
 
 EVicons covers **only** e-mobility. General UI icons (arrows, menu, search, close, ...) are out of scope; keep using a general icon set such as Lucide for those. EVicons contains no brand or manufacturer logos.
 
@@ -136,15 +136,60 @@ import icons from '@evicons/svg/icons.json' with { type: 'json' }
 
 ## Icons
 
+### Connectors
+
+| Name | React component | Meaning |
+|---|---|---|
+| `plug-type-2` | `PlugType2` | Type 2 connector (IEC 62196-2, "Mennekes"), shown as the vehicle inlet face |
+| `plug-ccs2` | `PlugCcs2` | CCS Combo 2 connector (IEC 62196-3, Type 2 with two DC contacts), shown as the vehicle inlet face |
+| `plug-chademo` | `PlugChademo` | CHAdeMO DC connector (IEC 62196-3 configuration AA, JEVS G105), shown as the vehicle inlet face |
+| `plug-schuko` | `PlugSchuko` | Schuko socket (CEE 7/3, DIN 49440, household AC), shown as the socket face seen from the front |
+
+### Stations and sites
+
 | Name | React component | Meaning |
 |---|---|---|
 | `charging-station` | `ChargingStation` | Charging station: a public or private charge point for electric vehicles |
-| `plug-type-2` | `PlugType2` | Type 2 connector (IEC 62196-2, "Mennekes"), shown as the vehicle inlet face |
-| `plug-ccs2` | `PlugCcs2` | CCS Combo 2 connector (IEC 62196-3, Type 2 with two DC contacts), shown as the vehicle inlet face |
+| `charging-plug` | `ChargingPlug` | Charging plug in general, seen from the side with its cable (no specific connector type) |
+| `charging-cable` | `ChargingCable` | Charging cable attached to the charge point (tethered cable with plug, no own cable needed) |
+| `wallbox` | `Wallbox` | Wallbox: a wall-mounted home charger for electric vehicles |
+| `home-charging` | `HomeCharging` | Home charging: charging the vehicle at home |
+| `parking-charging` | `ParkingCharging` | Charging parking: a parking space where electric vehicles can charge |
+
+### Power and energy
+
+| Name | React component | Meaning |
+|---|---|---|
 | `current-ac` | `CurrentAc` | Alternating current (AC) charging |
 | `current-dc` | `CurrentDc` | Direct current (DC) charging |
 | `fast-charging` | `FastCharging` | Fast charging: high charging power, typically DC fast or high-power charging |
+| `charging-bolt` | `ChargingBolt` | Charging or electricity in general (plain lightning bolt) |
+| `power-kw` | `PowerKw` | Power in kilowatts (kW), for example the charging power of a charge point |
+| `solar-charging` | `SolarCharging` | Solar charging: charging with power from photovoltaics (PV surplus) |
+| `green-power` | `GreenPower` | Green power: electricity from renewable sources |
+| `battery-charging` | `BatteryCharging` | Battery charging: the vehicle battery is being charged |
+| `bidirectional-charging` | `BidirectionalCharging` | Bidirectional charging: energy flows into and out of the vehicle (V2G, V2H) |
+
+### Vehicles
+
+| Name | React component | Meaning |
+|---|---|---|
 | `car-plugged` | `CarPlugged` | Electric car connected to a charging cable |
+| `car-electric` | `CarElectric` | Electric car (battery electric vehicle) |
+| `driving-range` | `DrivingRange` | Range: distance the vehicle can drive on its battery charge |
+
+### Payment
+
+| Name | React component | Meaning |
+|---|---|---|
+| `charging-card` | `ChargingCard` | Charging card: an RFID card that starts a charging session |
+| `app-charging` | `AppCharging` | Charging by app: start and pay a charging session with a smartphone app |
+| `card-terminal` | `CardTerminal` | Card terminal: ad hoc payment by debit or credit card, contactless |
+| `roaming` | `Roaming` | Roaming: charging with a contract from another provider |
+| `charging-tariff` | `ChargingTariff` | Charging tariff: the price of charging, for example per kWh |
+| `charging-log` | `ChargingLog` | Charging log: a record of charging sessions, for example a log book or receipt |
+
+### Status
 
 Status icons share a round frame; the sign inside carries the meaning.
 
@@ -159,6 +204,83 @@ Status icons share a round frame; the sign inside carries the meaning.
 | `status-queue` | `StatusQueue` | Two cars, one behind the other | Queue: cars are queuing at this station; you would have to wait |
 
 "Faulted" (the station reports an error) and "out of service" (taken out of service by the operator) are different states; use the one your data actually reports.
+
+### Markers
+
+Map pins with a sign in the head, for 24 to 40 px; see [Map markers](#map-markers) for filled mode.
+
+| Name | React component | Sign | Meaning |
+|---|---|---|---|
+| `marker` | `Marker` | Lightning bolt | Map marker for a charging point |
+| `marker-ac` | `MarkerAc` | Letters AC | Map marker for an AC charging point |
+| `marker-dc` | `MarkerDc` | Letters DC | Map marker for a DC charging point |
+| `marker-available` | `MarkerAvailable` | Check mark | Map marker: the charging point is available |
+| `marker-occupied` | `MarkerOccupied` | Clock | Map marker: the charging point is occupied |
+| `marker-faulted` | `MarkerFaulted` | Exclamation mark | Map marker: the charging point reports an error and cannot charge |
+| `marker-out-of-service` | `MarkerOutOfService` | Cross | Map marker: the charging point is out of service |
+| `marker-unknown` | `MarkerUnknown` | Question mark | Map marker: the status of the charging point is unknown |
+
+## Map markers
+
+The `marker-*` icons are map pins with a sign in the head (listed under [Markers](#markers)). Use them at 24, 32 or 40 px; they are not drawn for 16 px. Like all icons they are outlines in `currentColor`, and they can also be drawn filled: the pin in your colour, the sign in white. The SVG files never contain a colour; filling is done by your CSS or your code.
+
+**Element order is a contract:** in every marker the first `<path>` is the pin, a single closed shape that encloses the sign. Everything after it is the sign. This order never changes in a released marker.
+
+### Filled with CSS (inline SVG and React)
+
+```css
+.marker { color: #1f9d55; }
+.marker svg > path:first-of-type { fill: currentColor; }
+.marker svg > :not(path:first-of-type) { stroke: #fff; }
+```
+
+```tsx
+import { MarkerAvailable } from '@evicons/react'
+
+export function AvailablePin() {
+  return (
+    <span className="marker">
+      <MarkerAvailable size={32} title="Available" />
+    </span>
+  )
+}
+```
+
+Select the pin with `path:first-of-type`, not `:first-child`: with `title`, the React component renders a `<title>` as the first child of the `<svg>`. The rule works for inline SVG and the React components. It does not work with the sprite: the shapes of a `<symbol>` shown with `<use>` are not children of your `<svg>`, so page CSS cannot select them. The pin keeps its stroke, so a filled pin is 0.75 units larger than its outline; that is intended.
+
+### MapLibre GL
+
+Map libraries draw markers as images, where page CSS does not apply. Fill the SVG string before you turn it into an image: set the root `stroke="currentColor"` to white (the sign inherits it) and give the first `<path>`, the pin, the fill and stroke colour. Then load it from a data URL and add it with `pixelRatio: 2`, so it stays sharp on high-density screens:
+
+```ts
+import type { Map } from 'maplibre-gl'
+
+// `svg` is the text of a file from @evicons/svg, for example `@evicons/svg/marker-available.svg`
+// (with Vite: `import svg from '@evicons/svg/marker-available.svg?raw'`). `size` is the size on the map in px.
+export async function addMarkerImage(map: Map, name: string, svg: string, colour: string, size = 32) {
+  const filled = svg
+    .replace('width="24" height="24"', `width="${size * 2}" height="${size * 2}"`)
+    .replace('stroke="currentColor"', 'stroke="#fff"')
+    .replace('<path ', `<path fill="${colour}" stroke="${colour}" `)
+  const img = new Image()
+  img.src = `data:image/svg+xml;charset=utf-8,${encodeURIComponent(filled)}`
+  await img.decode()
+  map.addImage(name, img, { pixelRatio: 2 })
+}
+```
+
+```ts
+await addMarkerImage(map, 'ev-marker-available', svg, '#1f9d55')
+
+map.addLayer({
+  id: 'charge-points',
+  type: 'symbol',
+  source: 'charge-points',
+  layout: { 'icon-image': 'ev-marker-available', 'icon-anchor': 'bottom', 'icon-offset': [0, 32 / 12] },
+})
+```
+
+The pin's tip is at y 22 of 24, so with `'icon-anchor': 'bottom'` an offset of `size / 12` px moves the tip onto the point. Use one image per marker and colour. For an outline marker, only set the size and replace the root `stroke="currentColor"` with the colour.
 
 ## Compatibility
 

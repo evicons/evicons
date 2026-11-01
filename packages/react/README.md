@@ -1,6 +1,6 @@
 # @evicons/react
 
-React components for [EVicons](https://github.com/evicons/evicons), MIT-licensed outline icons for e-mobility and EV charging: charging stations, connector faces, AC/DC, charge point status and vehicles.
+React components for [EVicons](https://github.com/evicons/evicons), MIT-licensed outline icons for e-mobility and EV charging: charging stations, connector faces, AC/DC and power, energy, vehicles, payment, charge point status and map markers.
 
 EVicons covers only e-mobility; keep using a general icon set such as Lucide for general UI icons. Icons use `currentColor` and contain no colours. Raw SVG files, a sprite and metadata are in [`@evicons/svg`](https://www.npmjs.com/package/@evicons/svg).
 
@@ -87,15 +87,60 @@ To combine a status with another icon, place a small status icon (half the base 
 
 ## Icons
 
+### Connectors
+
+| Name | React component | Meaning |
+|---|---|---|
+| `plug-type-2` | `PlugType2` | Type 2 connector (IEC 62196-2, "Mennekes"), shown as the vehicle inlet face |
+| `plug-ccs2` | `PlugCcs2` | CCS Combo 2 connector (IEC 62196-3, Type 2 with two DC contacts), shown as the vehicle inlet face |
+| `plug-chademo` | `PlugChademo` | CHAdeMO DC connector (IEC 62196-3 configuration AA, JEVS G105), shown as the vehicle inlet face |
+| `plug-schuko` | `PlugSchuko` | Schuko socket (CEE 7/3, DIN 49440, household AC), shown as the socket face seen from the front |
+
+### Stations and sites
+
 | Name | React component | Meaning |
 |---|---|---|
 | `charging-station` | `ChargingStation` | Charging station: a public or private charge point for electric vehicles |
-| `plug-type-2` | `PlugType2` | Type 2 connector (IEC 62196-2, "Mennekes"), shown as the vehicle inlet face |
-| `plug-ccs2` | `PlugCcs2` | CCS Combo 2 connector (IEC 62196-3, Type 2 with two DC contacts), shown as the vehicle inlet face |
+| `charging-plug` | `ChargingPlug` | Charging plug in general, seen from the side with its cable (no specific connector type) |
+| `charging-cable` | `ChargingCable` | Charging cable attached to the charge point (tethered cable with plug, no own cable needed) |
+| `wallbox` | `Wallbox` | Wallbox: a wall-mounted home charger for electric vehicles |
+| `home-charging` | `HomeCharging` | Home charging: charging the vehicle at home |
+| `parking-charging` | `ParkingCharging` | Charging parking: a parking space where electric vehicles can charge |
+
+### Power and energy
+
+| Name | React component | Meaning |
+|---|---|---|
 | `current-ac` | `CurrentAc` | Alternating current (AC) charging |
 | `current-dc` | `CurrentDc` | Direct current (DC) charging |
 | `fast-charging` | `FastCharging` | Fast charging: high charging power, typically DC fast or high-power charging |
+| `charging-bolt` | `ChargingBolt` | Charging or electricity in general (plain lightning bolt) |
+| `power-kw` | `PowerKw` | Power in kilowatts (kW), for example the charging power of a charge point |
+| `solar-charging` | `SolarCharging` | Solar charging: charging with power from photovoltaics (PV surplus) |
+| `green-power` | `GreenPower` | Green power: electricity from renewable sources |
+| `battery-charging` | `BatteryCharging` | Battery charging: the vehicle battery is being charged |
+| `bidirectional-charging` | `BidirectionalCharging` | Bidirectional charging: energy flows into and out of the vehicle (V2G, V2H) |
+
+### Vehicles
+
+| Name | React component | Meaning |
+|---|---|---|
 | `car-plugged` | `CarPlugged` | Electric car connected to a charging cable |
+| `car-electric` | `CarElectric` | Electric car (battery electric vehicle) |
+| `driving-range` | `DrivingRange` | Range: distance the vehicle can drive on its battery charge |
+
+### Payment
+
+| Name | React component | Meaning |
+|---|---|---|
+| `charging-card` | `ChargingCard` | Charging card: an RFID card that starts a charging session |
+| `app-charging` | `AppCharging` | Charging by app: start and pay a charging session with a smartphone app |
+| `card-terminal` | `CardTerminal` | Card terminal: ad hoc payment by debit or credit card, contactless |
+| `roaming` | `Roaming` | Roaming: charging with a contract from another provider |
+| `charging-tariff` | `ChargingTariff` | Charging tariff: the price of charging, for example per kWh |
+| `charging-log` | `ChargingLog` | Charging log: a record of charging sessions, for example a log book or receipt |
+
+### Status
 
 Status icons share a round frame; the sign inside carries the meaning.
 
@@ -110,6 +155,32 @@ Status icons share a round frame; the sign inside carries the meaning.
 | `status-queue` | `StatusQueue` | Two cars, one behind the other | Queue: cars are queuing at this station; you would have to wait |
 
 "Faulted" (the station reports an error) and "out of service" (taken out of service by the operator) are different states; use the one your data actually reports.
+
+### Markers
+
+Map pins with a sign in the head, for 24 to 40 px; see [Map markers](#map-markers) for filled mode.
+
+| Name | React component | Sign | Meaning |
+|---|---|---|---|
+| `marker` | `Marker` | Lightning bolt | Map marker for a charging point |
+| `marker-ac` | `MarkerAc` | Letters AC | Map marker for an AC charging point |
+| `marker-dc` | `MarkerDc` | Letters DC | Map marker for a DC charging point |
+| `marker-available` | `MarkerAvailable` | Check mark | Map marker: the charging point is available |
+| `marker-occupied` | `MarkerOccupied` | Clock | Map marker: the charging point is occupied |
+| `marker-faulted` | `MarkerFaulted` | Exclamation mark | Map marker: the charging point reports an error and cannot charge |
+| `marker-out-of-service` | `MarkerOutOfService` | Cross | Map marker: the charging point is out of service |
+| `marker-unknown` | `MarkerUnknown` | Question mark | Map marker: the status of the charging point is unknown |
+
+## Map markers
+
+The first `<path>` of every `marker-*` icon is the pin, so markers can be drawn filled with CSS: the pin in your colour, the sign in white.
+
+```css
+.marker svg > path:first-of-type { fill: currentColor; }
+.marker svg > :not(path:first-of-type) { stroke: #fff; }
+```
+
+Use `path:first-of-type`, not `:first-child`: with `title`, the component renders a `<title>` as the first child. For map libraries that draw images (MapLibre `addImage`), see the [recipe in the repository README](https://github.com/evicons/evicons#map-markers).
 
 ## Compatibility
 

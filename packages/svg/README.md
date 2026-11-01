@@ -18,6 +18,8 @@ Sprite:
 <svg width="24" height="24"><use href="sprite.svg#evicon-<name>" /></svg>
 ```
 
+Map markers (`marker-*.svg`) can be drawn filled because their first `<path>` is the pin. Page CSS cannot reach into the sprite, so for filled markers inline the SVG or fill the SVG string before you use it as an image; see [Map markers](https://github.com/evicons/evicons#map-markers) in the repository README.
+
 Metadata (names, categories, meanings, tags, aliases) is in `icons.json`:
 
 ```js

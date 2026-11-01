@@ -6,6 +6,25 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
+## [0.2.0] - 2026-11-01
+
+### Added
+
+- 29 icons:
+  - Connectors and station: `plug-chademo` (CHAdeMO, vehicle inlet face), `plug-schuko` (Schuko socket face), `charging-plug` (plug seen from the side), `charging-cable` (tethered cable), `wallbox`, `home-charging`, `parking-charging`
+  - Energy: `solar-charging`, `green-power`, `battery-charging`, `bidirectional-charging`
+  - Vehicle and power: `car-electric`, `driving-range` (named `driving-range`, not `range`, because a React export `Range` would shadow the DOM global), `power-kw`, `charging-bolt`
+  - Payment: `charging-card`, `app-charging`, `card-terminal`, `roaming`, `charging-tariff`, `charging-log`
+  - Map markers: `marker`, `marker-ac`, `marker-dc`, `marker-available`, `marker-occupied`, `marker-faulted`, `marker-out-of-service`, `marker-unknown`
+- Map markers can be drawn filled: the first `<path>` of every marker is the pin. See "Map markers" in the README for the CSS rule and a MapLibre example.
+
+### Changed
+
+- New categories `energy` and `marker` in the icon metadata (`icons.json`).
+- The icon linter checks markers: the first element of a `marker` icon must be a single closed `<path>` (the pin) that encloses the sign.
+- New documented exception `solid-sign` for the small lightning bolt used inside other icons (design guide sections 2 and 4).
+- The stroke alphabet gains the letters k, W and P, and a lone letter that is the main subject of an icon may use cap height 11 (design guide section 6).
+
 ## [0.1.0] - 2026-11-01
 
 First release.
@@ -30,5 +49,6 @@ First release.
   - `status-unknown`: unknown (question mark)
   - `status-queue`: queue (two cars, one behind the other)
 
-[Unreleased]: https://github.com/evicons/evicons/compare/v0.1.0...HEAD
+[Unreleased]: https://github.com/evicons/evicons/compare/v0.2.0...HEAD
+[0.2.0]: https://github.com/evicons/evicons/releases/tag/v0.2.0
 [0.1.0]: https://github.com/evicons/evicons/releases/tag/v0.1.0
