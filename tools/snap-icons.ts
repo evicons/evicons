@@ -1,9 +1,10 @@
-import { mkdirSync } from 'node:fs'
+import { existsSync, mkdirSync, readFileSync } from 'node:fs'
 import { dirname, join, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { chromium } from '@playwright/test'
 import { formatError, lintIcons, loadIcons } from './lint-icons.ts'
-import type { IconNode } from './lib/svg.ts'
+import type { IconMeta } from './lib/meta.ts'
+import { parseIcon, type IconNode } from './lib/svg.ts'
 
 /**
  * Renders icons from `icons/` into one PNG for review: per icon a light and a dark row,
@@ -57,26 +58,35 @@ h2{font-size:13px;margin:12px 0 4px}
   return `<!doctype html><html><head><meta charset="utf-8"><style>${css}</style></head><body>${blocks}</body></html>`
 }
 
+const ICONS_DIR = join(resolve(dirname(fileURLToPath(import.meta.url)), '..'), 'icons')
+
+/** Loads one icon without touching the rest of `icons/` (loadIcons reads every file). */
+function loadIcon(name: string): Icon {
+  const svg = readFileSync(join(ICONS_DIR, `${name}.svg`), 'utf8')
+  const meta = JSON.parse(readFileSync(join(ICONS_DIR, `${name}.json`), 'utf8')) as IconMeta
+  return { name, svg, node: parseIcon(svg), meta }
+}
+
 async function main(argv: string[]): Promise<number> {
   const [out, ...names] = argv
   if (!out || out.startsWith('--')) {
     console.error('usage: node tools/snap-icons.ts <out.png> [name...]')
     return 2
   }
-  const root = resolve(dirname(fileURLToPath(import.meta.url)), '..')
-  const iconsDir = join(root, 'icons')
-  const errors = lintIcons(iconsDir, { release: false })
+  const iconsDir = ICONS_DIR
+  // Only the requested icons must be clean; a half-drawn icon elsewhere must not block a snapshot.
+  const wanted = new Set(names.flatMap((n) => [`${n}.svg`, `${n}.json`]))
+  const errors = lintIcons(iconsDir, { release: false }).filter((e) => names.length === 0 || wanted.has(e.file))
   if (errors.length > 0) {
     for (const e of errors) console.error(formatError(e))
     return 1
   }
-  const all = loadIcons(iconsDir)
-  const unknown = names.filter((n) => !all.some((i) => i.name === n))
+  const unknown = names.filter((n) => !existsSync(join(iconsDir, `${n}.svg`)) || !existsSync(join(iconsDir, `${n}.json`)))
   if (unknown.length > 0) {
     console.error(`unknown icon(s): ${unknown.join(', ')}`)
     return 1
   }
-  const icons = names.length > 0 ? names.map((n) => all.find((i) => i.name === n)!) : all
+  const icons = names.length > 0 ? names.map(loadIcon) : loadIcons(iconsDir)
 
   const outPath = resolve(out)
   mkdirSync(dirname(outPath), { recursive: true })

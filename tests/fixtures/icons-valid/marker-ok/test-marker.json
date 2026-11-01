@@ -21,5 +21,9 @@
     "createdBy": "ai",
     "approvedBy": null,
     "approvedOn": null
-  }
+  },
+  "exceptions": [
+    "sharp-corner",
+    "solid-sign"
+  ]
 }
