@@ -1,0 +1,46 @@
+{
+  "category": "energy",
+  "meaning": {
+    "en": "Solar charging: charging with power from photovoltaics (PV surplus)",
+    "de": "Solarladen: Laden mit Strom aus Photovoltaik (PV-Überschuss)"
+  },
+  "tags": {
+    "en": [
+      "solar charging",
+      "solar",
+      "photovoltaics",
+      "pv",
+      "pv surplus",
+      "solar panel",
+      "sun"
+    ],
+    "de": [
+      "solarladen",
+      "solar",
+      "photovoltaik",
+      "pv",
+      "pv-überschuss",
+      "solarmodul",
+      "sonne"
+    ],
+    "fr": [
+      "recharge solaire",
+      "solaire",
+      "photovoltaïque",
+      "pv",
+      "panneau solaire",
+      "soleil"
+    ]
+  },
+  "since": "0.2.0",
+  "aliases": [],
+  "exceptions": [
+    "solid-sign",
+    "sharp-corner"
+  ],
+  "provenance": {
+    "createdBy": "ai",
+    "approvedBy": null,
+    "approvedOn": null
+  }
+}

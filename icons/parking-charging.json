@@ -1,0 +1,44 @@
+{
+  "category": "station",
+  "meaning": {
+    "en": "Charging parking: a parking space where electric vehicles can charge",
+    "de": "Parken mit Laden: Parkplatz, auf dem Elektrofahrzeuge laden können"
+  },
+  "tags": {
+    "en": [
+      "parking",
+      "charging parking",
+      "parking space",
+      "parking lot",
+      "ev parking",
+      "letter p"
+    ],
+    "de": [
+      "parkplatz",
+      "parken",
+      "ladeparkplatz",
+      "stellplatz",
+      "e-parkplatz",
+      "buchstabe p"
+    ],
+    "fr": [
+      "parking",
+      "place de stationnement",
+      "stationnement",
+      "parking recharge",
+      "lettre p"
+    ]
+  },
+  "since": "0.2.0",
+  "aliases": [],
+  "exceptions": [
+    "letters",
+    "solid-sign",
+    "sharp-corner"
+  ],
+  "provenance": {
+    "createdBy": "ai",
+    "approvedBy": null,
+    "approvedOn": null
+  }
+}

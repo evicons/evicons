@@ -1,0 +1,43 @@
+{
+  "category": "station",
+  "meaning": {
+    "en": "Home charging: charging the vehicle at home",
+    "de": "Laden zu Hause: das Fahrzeug zu Hause laden"
+  },
+  "tags": {
+    "en": [
+      "home charging",
+      "charging at home",
+      "home",
+      "house",
+      "private charging",
+      "charging"
+    ],
+    "de": [
+      "laden zu hause",
+      "heimladen",
+      "zuhause",
+      "haus",
+      "privat laden",
+      "laden"
+    ],
+    "fr": [
+      "recharge à domicile",
+      "domicile",
+      "maison",
+      "recharge privée",
+      "recharge"
+    ]
+  },
+  "since": "0.2.0",
+  "aliases": [],
+  "exceptions": [
+    "solid-sign",
+    "sharp-corner"
+  ],
+  "provenance": {
+    "createdBy": "ai",
+    "approvedBy": null,
+    "approvedOn": null
+  }
+}

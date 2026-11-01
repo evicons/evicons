@@ -20,7 +20,7 @@ EVicons only covers e-mobility and EV charging. General UI icons (arrows, close,
 - **Clean markup:** only flat `path`, `circle`, `rect`, `line`, `polyline` and `ellipse` children; no transforms, ids, classes, inline styles or groups. Files are SVGO-normalised (`npm run lint:icons -- --fix`).
 - **Direction:** vehicles face right. Icons are not mirrored for RTL; mirroring is up to the app. Letters and connector faces never mirror.
 - **Meaning:** icons complement text, they do not replace it. Every icon documents its precise meaning in its metadata (`meaning.en` / `meaning.de`).
-- **Small bolt:** where a small lightning bolt is the EV cue inside another icon (home, card, phone, leaf), it is always the same block: height 6.5, width 4, the vertex layout of the `fast-charging` bolt (top tip right of centre, step to the left, lower tip left of centre) scaled to that box. Relative to its top-left corner `(X, Y)`: `M2.75 0 0 3.5h1.5L1 6.5l3-4H2.25Z` (for example at origin (10, 6.75): `M12.75 6.75 10 10.25h1.5l-.5 3 3-4h-1.75Z`). Its inner spacing is intentionally below 2.0 (smallest 1.0), so at stroke 1.5 the counter closes and the block reads as a solid sign, like a dot. Its tips are sharp like the `fast-charging` bolt. Every icon that uses the block declares `solid-sign` and `sharp-corner`. The spacing between the bolt and everything around it stays at least 2.0. Never scale it per icon; move it. (Marker heads use their own, larger sign; see section 9.)
+- **Small bolt:** where a small lightning bolt is the EV cue inside another icon (home, card, phone, leaf), it is always the same block: height 6.5, width 4, the vertex layout of the `fast-charging` bolt (top tip right of centre, step to the left, lower tip left of centre) scaled to that box. Relative to its top-left corner `(X, Y)`: `M2.75 0 0 3.5h1.5L1 6.5l3-4H2.25Z` (for example at origin (10, 6.75): `M12.75 6.75 10 10.25h1.5l-.5 3 3-4h-1.75Z`). Its inner spacing is intentionally below 2.0 (smallest 1.0), so at stroke 1.5 the counter closes and the block reads as a solid sign, like a dot. Its tips are sharp like the `fast-charging` bolt. Every icon that uses the block declares `solid-sign` and `sharp-corner`. The spacing between the bolt and everything around it stays at least 2.0. Never scale it per icon; move it. Placed so far (origin of the block): `home-charging` (10, 10.75), `solar-charging` (18.25, 15.25), `green-power` (16.5, 14.5), `parking-charging` (13.5, 10.5). (Marker heads use their own, larger sign; see section 9.)
 - **Overlay cut-out:** when the small bolt (or another secondary sign) overlaps an outer contour, the contour is interrupted around it: a real gap in the stroke, not a sign drawn on top. Keep at least 2.0 between the bolt's centre lines and the cut ends of the contour (0.5 visible gap with round caps), and check 16 px.
 
 ## 3. Lucide is a visual reference only
@@ -98,7 +98,7 @@ Reuse it wherever a plug is shown from the side (`charging-cable`, `bidirectiona
 Letters are drawn as strokes with the regular stroke width (1.5), round caps and joins. Coordinates are relative to the letter's top-left corner; to place a letter, add the origin `(X, Y)` to every coordinate.
 
 - **Cap height:** 8 units (baseline at `Y + 8`).
-- **Widths (centre line):** A = 6, C = 5.5, D = 5.5, R = 5.
+- **Widths (centre line):** A = 6, C = 5.5, D = 5.5, P = 4.75, R = 5.
 - **Spacing:** 2 units between the boxes of two letters (the next letter starts at `X + width + 2`).
 - **Crossbar of A:** at `Y + 5`, from `X + 1.13` to `X + 4.87` (on the legs).
 
@@ -110,11 +110,11 @@ Letters are drawn as strokes with the regular stroke width (1.5), round caps and
 | R | `M0 8V0H2.5A2.25 2.25 0 0 1 2.5 4.5H0M2.5 4.5 5 8` |
 | k | added in Tasks 3/4 |
 | W | added in Tasks 3/4 |
-| P | added in Tasks 3/4 |
+| P | `M0 8V0H2.5A2.25 2.25 0 0 1 2.5 4.5H0` |
 
 Example: `current-ac` places A at origin `(5.25, 3.75)` and C at `(13.25, 3.75)`, which gives `m5.25 11.75 3-8 3 8m-4.87-3h3.74` and `M18.75 5.35c-.7-1-1.6-1.6-2.6-1.6-1.7 0-2.9 1.8-2.9 4s1.2 4 2.9 4c1 0 1.9-.6 2.6-1.6` after SVGO.
 
-A and C are tested at 16 px in `current-ac`; D is tested at 16 px in `current-dc` (D at origin (5.5, 3.75), C at (13, 3.75)): readable, its counter stays open. R is used alone in `status-reserved` at origin (9.5, 8): stem from the baseline to the cap line, bowl a half circle r 2.25 from y 0 to y 4.5 (slightly above the middle, counter 3.0 high, 1.5 visible), leg from the bowl's end at (2.5, 4.5) to (5, 8). Tested at 16 px: readable, counter open. k, W and P are added to this table together with the icons that need them (`parking-charging`, `power-kw`).
+A and C are tested at 16 px in `current-ac`; D is tested at 16 px in `current-dc` (D at origin (5.5, 3.75), C at (13, 3.75)): readable, its counter stays open. R is used alone in `status-reserved` at origin (9.5, 8): stem from the baseline to the cap line, bowl a half circle r 2.25 from y 0 to y 4.5 (slightly above the middle, counter 3.0 high, 1.5 visible), leg from the bowl's end at (2.5, 4.5) to (5, 8). Tested at 16 px: readable, counter open. P is the R without its leg: the same stem and the same bowl (half circle r 2.25 from y 0 to y 4.5, closing on the stem at (0, 4.5)), so P and R match when they appear in the same set. It is used in `parking-charging` at origin (6.5, 7), which gives `M6.5 15V7H9a2.25 2.25 0 0 1 0 4.5H6.5`. Tested at 16 px (at device scale 1 and 2): readable, its counter (4.5 between the centre lines, 3.0 visible) stays open. k and W are added to this table together with the icon that needs them (`power-kw`).
 
 ## 7. Status icons
 

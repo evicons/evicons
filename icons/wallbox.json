@@ -1,0 +1,38 @@
+{
+  "category": "station",
+  "meaning": {
+    "en": "Wallbox: a wall-mounted home charger for electric vehicles",
+    "de": "Wallbox: an der Wand montierte Ladestation für Elektrofahrzeuge (Heimladen)"
+  },
+  "tags": {
+    "en": [
+      "wallbox",
+      "wall box",
+      "home charger",
+      "wall charger",
+      "wall-mounted charger",
+      "charging"
+    ],
+    "de": [
+      "wallbox",
+      "heimlader",
+      "ladebox",
+      "wandladestation",
+      "laden"
+    ],
+    "fr": [
+      "wallbox",
+      "borne murale",
+      "chargeur mural",
+      "borne domestique",
+      "recharge"
+    ]
+  },
+  "since": "0.2.0",
+  "aliases": [],
+  "provenance": {
+    "createdBy": "ai",
+    "approvedBy": null,
+    "approvedOn": null
+  }
+}

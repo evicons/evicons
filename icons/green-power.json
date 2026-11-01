@@ -1,0 +1,43 @@
+{
+  "category": "energy",
+  "meaning": {
+    "en": "Green power: electricity from renewable sources",
+    "de": "Ökostrom: Strom aus erneuerbaren Quellen"
+  },
+  "tags": {
+    "en": [
+      "green power",
+      "green electricity",
+      "renewable energy",
+      "eco",
+      "leaf",
+      "sustainable"
+    ],
+    "de": [
+      "ökostrom",
+      "grünstrom",
+      "erneuerbare energie",
+      "öko",
+      "blatt",
+      "nachhaltig"
+    ],
+    "fr": [
+      "électricité verte",
+      "énergie verte",
+      "énergie renouvelable",
+      "écologique",
+      "feuille"
+    ]
+  },
+  "since": "0.2.0",
+  "aliases": [],
+  "exceptions": [
+    "solid-sign",
+    "sharp-corner"
+  ],
+  "provenance": {
+    "createdBy": "ai",
+    "approvedBy": null,
+    "approvedOn": null
+  }
+}

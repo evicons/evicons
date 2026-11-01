@@ -267,6 +267,139 @@
     },
     "pascal": "FastCharging"
   },
+  "green-power": {
+    "category": "energy",
+    "meaning": {
+      "en": "Green power: electricity from renewable sources",
+      "de": "Ökostrom: Strom aus erneuerbaren Quellen"
+    },
+    "tags": {
+      "en": [
+        "green power",
+        "green electricity",
+        "renewable energy",
+        "eco",
+        "leaf",
+        "sustainable"
+      ],
+      "de": [
+        "ökostrom",
+        "grünstrom",
+        "erneuerbare energie",
+        "öko",
+        "blatt",
+        "nachhaltig"
+      ],
+      "fr": [
+        "électricité verte",
+        "énergie verte",
+        "énergie renouvelable",
+        "écologique",
+        "feuille"
+      ]
+    },
+    "since": "0.2.0",
+    "aliases": [],
+    "exceptions": [
+      "solid-sign",
+      "sharp-corner"
+    ],
+    "provenance": {
+      "createdBy": "ai",
+      "approvedBy": null,
+      "approvedOn": null
+    },
+    "pascal": "GreenPower"
+  },
+  "home-charging": {
+    "category": "station",
+    "meaning": {
+      "en": "Home charging: charging the vehicle at home",
+      "de": "Laden zu Hause: das Fahrzeug zu Hause laden"
+    },
+    "tags": {
+      "en": [
+        "home charging",
+        "charging at home",
+        "home",
+        "house",
+        "private charging",
+        "charging"
+      ],
+      "de": [
+        "laden zu hause",
+        "heimladen",
+        "zuhause",
+        "haus",
+        "privat laden",
+        "laden"
+      ],
+      "fr": [
+        "recharge à domicile",
+        "domicile",
+        "maison",
+        "recharge privée",
+        "recharge"
+      ]
+    },
+    "since": "0.2.0",
+    "aliases": [],
+    "exceptions": [
+      "solid-sign",
+      "sharp-corner"
+    ],
+    "provenance": {
+      "createdBy": "ai",
+      "approvedBy": null,
+      "approvedOn": null
+    },
+    "pascal": "HomeCharging"
+  },
+  "parking-charging": {
+    "category": "station",
+    "meaning": {
+      "en": "Charging parking: a parking space where electric vehicles can charge",
+      "de": "Parken mit Laden: Parkplatz, auf dem Elektrofahrzeuge laden können"
+    },
+    "tags": {
+      "en": [
+        "parking",
+        "charging parking",
+        "parking space",
+        "parking lot",
+        "ev parking",
+        "letter p"
+      ],
+      "de": [
+        "parkplatz",
+        "parken",
+        "ladeparkplatz",
+        "stellplatz",
+        "e-parkplatz",
+        "buchstabe p"
+      ],
+      "fr": [
+        "parking",
+        "place de stationnement",
+        "stationnement",
+        "parking recharge",
+        "lettre p"
+      ]
+    },
+    "since": "0.2.0",
+    "aliases": [],
+    "exceptions": [
+      "letters",
+      "solid-sign",
+      "sharp-corner"
+    ],
+    "provenance": {
+      "createdBy": "ai",
+      "approvedBy": null,
+      "approvedOn": null
+    },
+    "pascal": "ParkingCharging"
+  },
   "plug-ccs2": {
     "category": "connector",
     "meaning": {
@@ -462,6 +595,53 @@
       "approvedOn": "2026-10-21"
     },
     "pascal": "PlugType2"
+  },
+  "solar-charging": {
+    "category": "energy",
+    "meaning": {
+      "en": "Solar charging: charging with power from photovoltaics (PV surplus)",
+      "de": "Solarladen: Laden mit Strom aus Photovoltaik (PV-Überschuss)"
+    },
+    "tags": {
+      "en": [
+        "solar charging",
+        "solar",
+        "photovoltaics",
+        "pv",
+        "pv surplus",
+        "solar panel",
+        "sun"
+      ],
+      "de": [
+        "solarladen",
+        "solar",
+        "photovoltaik",
+        "pv",
+        "pv-überschuss",
+        "solarmodul",
+        "sonne"
+      ],
+      "fr": [
+        "recharge solaire",
+        "solaire",
+        "photovoltaïque",
+        "pv",
+        "panneau solaire",
+        "soleil"
+      ]
+    },
+    "since": "0.2.0",
+    "aliases": [],
+    "exceptions": [
+      "solid-sign",
+      "sharp-corner"
+    ],
+    "provenance": {
+      "createdBy": "ai",
+      "approvedBy": null,
+      "approvedOn": null
+    },
+    "pascal": "SolarCharging"
   },
   "status-available": {
     "category": "status",
@@ -723,5 +903,44 @@
       "approvedOn": "2026-11-01"
     },
     "pascal": "StatusUnknown"
+  },
+  "wallbox": {
+    "category": "station",
+    "meaning": {
+      "en": "Wallbox: a wall-mounted home charger for electric vehicles",
+      "de": "Wallbox: an der Wand montierte Ladestation für Elektrofahrzeuge (Heimladen)"
+    },
+    "tags": {
+      "en": [
+        "wallbox",
+        "wall box",
+        "home charger",
+        "wall charger",
+        "wall-mounted charger",
+        "charging"
+      ],
+      "de": [
+        "wallbox",
+        "heimlader",
+        "ladebox",
+        "wandladestation",
+        "laden"
+      ],
+      "fr": [
+        "wallbox",
+        "borne murale",
+        "chargeur mural",
+        "borne domestique",
+        "recharge"
+      ]
+    },
+    "since": "0.2.0",
+    "aliases": [],
+    "provenance": {
+      "createdBy": "ai",
+      "approvedBy": null,
+      "approvedOn": null
+    },
+    "pascal": "Wallbox"
   }
 }
