@@ -40,6 +40,11 @@ const { sections } = Astro.props
     for (const heading of headings) {
       if (heading.getBoundingClientRect().top <= line) current = heading.id
     }
+    // At the bottom of the page the last sections cannot reach the line: the last one is current.
+    const root = document.documentElement
+    if (headings.length && window.scrollY > 0 && window.scrollY + window.innerHeight >= root.scrollHeight - 2) {
+      current = headings.at(-1)!.id
+    }
     for (const [id, link] of links) {
       if (id === current) link.setAttribute('aria-current', 'location')
       else link.removeAttribute('aria-current')

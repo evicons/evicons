@@ -32,7 +32,9 @@ const data = rows.map((row) => {
   if (!icon) throw new Error(`Unknown status icon ${name}`)
   const Icon = (icons as unknown as Record<string, EvIconComponent>)[icon.pascal]
   if (!Icon) throw new Error(`No React component ${icon.pascal}`)
-  return { ...row, name, Icon, meaning: icon.meaning.en, contrast: contrastOnWhite(row.colour) }
+  const contrast = contrastOnWhite(row.colour)
+  // Below 3:1 (WCAG 1.4.11, non-text contrast) the colour is not enough for an icon on a light background.
+  return { ...row, name, Icon, meaning: icon.meaning.en, contrast, lowContrast: Number(contrast) < 3 }
 })
 ---
 
@@ -49,23 +51,28 @@ const data = rows.map((row) => {
     </thead>
     <tbody>
       {
-        data.map(({ label, name, Icon, colour, status, contrast, meaning }) => (
-          <tr>
+        data.map(({ label, name, Icon, colour, status, contrast, lowContrast, meaning }) => (
+          <tr class:list={{ 'low-contrast': lowContrast }}>
             <th scope="row">{label}</th>
-            <td>
+            <td data-label="Icon">
               <span class="flex items-center gap-2 whitespace-nowrap">
                 <Icon size={24} style={{ color: `var(--status-${status})` }} />
                 <code>{name}</code>
               </span>
             </td>
-            <td>
+            <td data-label="Colour">
               <span class="flex items-center gap-2 whitespace-nowrap">
                 <span class="size-3.5 shrink-0 rounded-sm" style={`background:${colour}`} aria-hidden="true" />
                 <code>{colour}</code>
               </span>
             </td>
-            <td class="whitespace-nowrap">{contrast}:1</td>
-            <td>{meaning}</td>
+            <td data-label="On white">
+              <span>
+                <span class="whitespace-nowrap">{contrast}:1</span>
+                {lowContrast && <span class="contrast-flag">Below 3:1: dark backgrounds only</span>}
+              </span>
+            </td>
+            <td data-label="Meaning">{meaning}</td>
           </tr>
         ))
       }

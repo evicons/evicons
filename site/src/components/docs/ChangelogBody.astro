@@ -1,0 +1,9 @@
+---
+// Site-specific touches on the rendered CHANGELOG.md (the file itself stays written for GitHub):
+// an empty "Unreleased" section is left out, and the README's "Map markers" section is linked on this site.
+const html = (await Astro.slots.render('default'))
+  .replace(/<h2 id="unreleased">[\s\S]*?<\/h2>\s*(?=<h2[\s>])/, '')
+  .replaceAll('See “Map markers” in the README', 'See <a href="/docs#markers">Map markers</a> in the docs')
+---
+
+<Fragment set:html={html} />

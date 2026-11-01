@@ -20,6 +20,18 @@ const canonical = new URL(path, Astro.site)
 // Default social image: public/og.png (1200 × 630), rendered by scripts/render-og.mjs.
 const image = new URL(ogImage ?? '/og.png', Astro.site).href
 const imageAlt = ogImageAlt ?? (ogImage ? title : 'EVicons: outline icons for EV charging')
+// Structured data for search engines: the project as open-source code.
+const jsonLd = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'SoftwareSourceCode',
+  name: 'EVicons',
+  description: 'Open-source outline icons for EV charging: connectors, charging status, map markers.',
+  url: new URL('/', Astro.site).href,
+  codeRepository: 'https://github.com/evicons/evicons',
+  programmingLanguage: 'TypeScript',
+  license: 'https://opensource.org/license/mit',
+  publisher: { '@type': 'Organization', name: 'Landolsi Digital', url: 'https://landolsi.de' },
+})
 ---
 
 <!doctype html>
@@ -53,6 +65,7 @@ const imageAlt = ogImageAlt ?? (ogImage ? title : 'EVicons: outline icons for EV
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={image} />
     <meta name="twitter:image:alt" content={imageAlt} />
+    {!noindex && <script type="application/ld+json" is:inline set:html={jsonLd} />}
     <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
     <meta name="theme-color" content="#09090b" media="(prefers-color-scheme: dark)" />
     <script is:inline>

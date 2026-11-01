@@ -101,11 +101,15 @@ test('header and footer links have no dead internal targets', async ({ page, req
 
 test('status demo icons take their colour from CSS', async ({ page }) => {
   await page.goto('/')
-  const colour = (name: string) =>
-    page.locator(`svg.evicon-${name}`).evaluate((el) => getComputedStyle(el).color)
+  const demo = page.locator('[data-status-demo] li')
+  const colour = (name: string) => demo.locator(`svg.evicon-${name}`).evaluate((el) => getComputedStyle(el).color)
   expect(await colour('status-available')).toBe('rgb(22, 163, 74)')
-  expect(await colour('status-occupied')).toBe('rgb(245, 158, 11)')
+  // The landing page uses the darker amber (#d97706): #f59e0b is below 3:1 on white.
+  expect(await colour('status-occupied')).toBe('rgb(217, 119, 6)')
   expect(await colour('status-faulted')).toBe('rgb(220, 38, 38)')
+  expect(await colour('status-out-of-service')).toBe('rgb(113, 113, 122)')
+  // All seven shapes are shown, in the text colour.
+  await expect(page.locator('[data-status-demo] > div > svg')).toHaveCount(7)
 })
 
 test('brand page offers the logo as SVG and PNG downloads', async ({ page, request }) => {

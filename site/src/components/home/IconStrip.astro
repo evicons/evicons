@@ -1,0 +1,109 @@
+---
+// A slowly moving strip of every icon, drawn from the SVG sources of @evicons/svg.
+// Each icon is defined once as a <symbol>; the strip shows two copies of the list so the loop is seamless.
+// It pauses on hover and focus and stands still (scrollable by hand) with prefers-reduced-motion.
+import { loadIcons } from '../../lib/icons'
+
+const icons = loadIcons().map((icon) => {
+  const match = /^<svg\b[^>]*>([\s\S]*)<\/svg>$/.exec(icon.svg)
+  if (!match) throw new Error(`Unexpected SVG source for ${icon.name}`)
+  return { name: icon.name, id: `strip-${icon.name}`, body: match[1]!.trim() }
+})
+const symbols = icons.map(({ id, body }) => `<symbol id="${id}" viewBox="0 0 24 24">${body}</symbol>`).join('')
+---
+
+<div
+  class="icon-strip"
+  role="region"
+  aria-label={`All ${icons.length} icons`}
+  tabindex="0"
+  data-icon-strip
+>
+  <svg width="0" height="0" class="absolute" aria-hidden="true" focusable="false"><defs set:html={symbols} /></svg>
+  <div class="icon-strip-track">
+    {
+      [0, 1].map((copy) => (
+        <ul class="icon-strip-list" aria-hidden={copy === 1 ? 'true' : undefined}>
+          {icons.map(({ name, id }) => (
+            <li class="icon-strip-item" title={copy === 0 ? name : undefined}>
+              <svg
+                width="28"
+                height="28"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <use href={`#${id}`} />
+              </svg>
+              {copy === 0 && <span class="sr-only">{name}</span>}
+            </li>
+          ))}
+        </ul>
+      ))
+    }
+  </div>
+</div>
+
+<style>
+  .icon-strip {
+    position: relative;
+    overflow: hidden;
+    /* Soft edges: icons fade in and out instead of being cut off. */
+    mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);
+    border-radius: 0.5rem;
+  }
+  .icon-strip:focus-visible {
+    mask-image: none;
+  }
+  .icon-strip-track {
+    display: flex;
+    width: max-content;
+    animation: icon-strip 160s linear infinite;
+  }
+  .icon-strip:hover .icon-strip-track,
+  .icon-strip:focus .icon-strip-track,
+  .icon-strip:focus-within .icon-strip-track {
+    animation-play-state: paused;
+  }
+  .icon-strip-list {
+    display: flex;
+    flex-shrink: 0;
+    /* The trailing padding equals the gap, so both copies have the same width and the loop does not jump. */
+    gap: 0.75rem;
+    padding: 0.5rem 0.75rem 0.5rem 0;
+  }
+  .icon-strip-item {
+    display: flex;
+    width: 3.5rem;
+    height: 3.5rem;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--border);
+    border-radius: 0.625rem;
+    background: var(--surface);
+    color: var(--fg);
+  }
+  @keyframes icon-strip {
+    to {
+      transform: translateX(-50%);
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .icon-strip {
+      overflow-x: auto;
+      mask-image: none;
+    }
+    .icon-strip-track {
+      animation: none;
+    }
+    .icon-strip-list[aria-hidden] {
+      display: none;
+    }
+  }
+</style>

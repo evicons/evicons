@@ -2,7 +2,20 @@
 import Placeholder from '../components/Placeholder.astro'
 ---
 
-<Placeholder title="Imprint – EVicons" heading="Imprint" description="Legal notice for evicons.dev.">
-  <p class="mt-4">EVicons is published by Landolsi Digital.</p>
-  <p class="mt-2">Contact and legal details: <a href="https://landolsi.de">landolsi.de</a></p>
+<Placeholder title="Imprint – EVicons" heading="Imprint" description="Legal notice and privacy note for evicons.dev.">
+  <div class="mt-6 max-w-2xl space-y-4">
+    <p>
+      evicons.dev and the EVicons packages are published by Landolsi Digital,{' '}
+      <a href="https://landolsi.de">landolsi.de</a>.
+    </p>
+    <p class="text-muted">Imprint text follows.</p>
+  </div>
+
+  <section aria-labelledby="privacy" class="mt-12 max-w-2xl">
+    <h2 id="privacy" class="text-xl">Privacy</h2>
+    <p class="mt-3">
+      This site sets no cookies and uses no tracking; the web server keeps its standard access logs only. The map demo
+      on <a href="/map">/map</a> loads its map tiles from OpenFreeMap when you open it.
+    </p>
+  </section>
 </Placeholder>

@@ -14,7 +14,11 @@ export default defineConfig({
   retries: 0,
   reporter: process.env.CI ? [['list'], ['html', { open: 'never', outputFolder: '../playwright-report/site' }]] : 'list',
   use: { baseURL: `http://localhost:${port}` },
-  projects: [{ name: 'chromium', use: { ...devices['Desktop Chrome'] } }],
+  projects: [
+    { name: 'chromium', use: { ...devices['Desktop Chrome'] }, testIgnore: 'lighthouse.spec.ts' },
+    // Lighthouse measures timings: run it alone, after the other tests.
+    { name: 'lighthouse', testMatch: 'lighthouse.spec.ts', dependencies: ['chromium'] },
+  ],
   webServer: {
     command: `npm run preview -- --port ${port} --ignore-lock`,
     cwd: import.meta.dirname,

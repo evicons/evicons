@@ -81,5 +81,5 @@ The file is one object keyed by icon name:
 | `deprecated` | `{ since, replacement? }` | Only on deprecated icons; `replacement` names the icon to use instead. |
 | `standard` | `{ norm, source }` | Connectors only: the standard and the drawing the contact layout was checked against. |
 | `exceptions` | `string[]` | Optional. Deliberate style deviations from the design guide. |
-| `provenance` | `object` | How the icon was created and when it was approved. |
+| `provenance` | `{ createdBy, approvedBy, approvedOn }` | How the icon was created, who approved it and when. |
 | `pascal` | `string` | The React component name. |

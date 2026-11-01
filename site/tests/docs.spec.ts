@@ -91,3 +91,41 @@ test('docs and changelog have no console errors', async ({ page }) => {
   }
   expect(errors).toEqual([])
 })
+
+test('status table: stacked and readable at 390 px, low-contrast colour flagged', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 })
+  await page.goto('/docs#status')
+  const wrap = page.locator('.table-wrap:has(table.status-table)')
+  // No sideways scrolling: everything of a row is visible.
+  expect(await wrap.evaluate((el) => el.scrollWidth - el.clientWidth)).toBeLessThanOrEqual(0)
+  const occupied = page.locator('table.status-table tr', { hasText: 'Occupied' })
+  await expect(occupied.locator('.contrast-flag')).toHaveText('Below 3:1: dark backgrounds only')
+  await expect(occupied.getByText('Occupied: the charge point is in use')).toBeInViewport({ ratio: 0 })
+  // Only #f59e0b is below 3:1.
+  await expect(page.locator('table.status-table .contrast-flag')).toHaveCount(1)
+})
+
+test('the last docs section becomes current at the bottom of the page', async ({ page }) => {
+  await page.setViewportSize({ width: 1280, height: 900 })
+  await page.goto('/docs')
+  await page.evaluate(() => window.scrollTo(0, document.documentElement.scrollHeight))
+  const toc = page.getByRole('navigation', { name: 'On this page' })
+  await expect(toc.getByRole('link', { name: 'Contributing' })).toHaveAttribute('aria-current', 'location')
+  await expect(toc.locator('a[aria-current]')).toHaveCount(1)
+})
+
+test('changelog hides the empty Unreleased section and links the docs', async ({ page }) => {
+  await page.goto('/changelog')
+  await expect(page.getByRole('heading', { name: 'Unreleased' })).toHaveCount(0)
+  await expect(page.locator('main a[href="/docs#markers"]')).toHaveText('Map markers')
+  await expect(page.locator('main')).not.toContainText('in the README for the CSS rule')
+})
+
+test('docs use "charge point" wording and spell out the provenance type', async ({ page }) => {
+  await page.goto('/docs')
+  const article = page.locator('article.doc')
+  await expect(article.locator('section', { hasText: 'map pins with a sign' }).first()).not.toContainText(
+    'plain charging point',
+  )
+  await expect(article.locator('tr', { hasText: 'provenance' }).first()).toContainText('{ createdBy, approvedBy, approvedOn }')
+})

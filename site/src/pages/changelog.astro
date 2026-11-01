@@ -1,13 +1,14 @@
 ---
 // The repository's CHANGELOG.md, rendered at build time with the docs typography.
 import { Content } from '../../../CHANGELOG.md'
+import ChangelogBody from '../components/docs/ChangelogBody.astro'
 import Base from '../layouts/Base.astro'
 ---
 
 <Base title="Changelog – EVicons" description="All EVicons releases and changes.">
   <div class="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:py-16">
     <article class="doc changelog max-w-3xl">
-      <Content />
+      <ChangelogBody><Content /></ChangelogBody>
     </article>
   </div>
 </Base>

@@ -1,0 +1,93 @@
+---
+// A static stand-in for a map: a few streets, a park and a river, with filled marker-* pins on top.
+// The pins are the real icons, filled by the README's CSS contract (.marker-filled in global.css).
+import { MarkerAvailable, MarkerDc, MarkerFaulted, MarkerOccupied, MarkerOutOfService } from '@evicons/react'
+
+const pins = [
+  { Icon: MarkerAvailable, x: 22, y: 46, colour: 'var(--status-available)' },
+  { Icon: MarkerDc, x: 47, y: 74, colour: 'var(--accent)' },
+  { Icon: MarkerOccupied, x: 60, y: 34, colour: 'var(--status-occupied)' },
+  { Icon: MarkerFaulted, x: 83, y: 58, colour: 'var(--status-faulted)' },
+  { Icon: MarkerOutOfService, x: 36, y: 88, colour: 'var(--status-out-of-service)' },
+]
+---
+
+<div class="map-mock" aria-hidden="true">
+  <svg viewBox="0 0 400 176" preserveAspectRatio="xMidYMid slice" class="absolute inset-0 size-full">
+    <rect width="400" height="176" class="map-land" />
+    <path d="M250 -10c-30 40-10 70 30 92s60 70 40 104h120V-10Z" class="map-park" />
+    <path d="M-10 132c60-18 110 4 160-6s92-46 150-40 80 30 110 22" class="map-water" />
+    <g class="map-road-edge">
+      <path d="M-10 60h420M120-10l40 196M300-10l-60 196" />
+    </g>
+    <g class="map-road">
+      <path d="M-10 60h420M120-10l40 196M300-10l-60 196" />
+    </g>
+    <g class="map-street">
+      <path d="M-10 18l150 12M60-10v196M-10 104l420-10M200-10l-8 196M360-10l-20 196M140 150h120" />
+    </g>
+  </svg>
+  {
+    pins.map(({ Icon, x, y, colour }) => (
+      <span class="map-pin marker-filled" style={`left:${x}%;top:${y}%;color:${colour}`}>
+        <Icon size={32} />
+      </span>
+    ))
+  }
+</div>
+
+<style>
+  .map-mock {
+    position: relative;
+    height: 100%;
+    overflow: hidden;
+    --map-land: #f4f4f5;
+    --map-road: #ffffff;
+    --map-edge: #d4d4d8;
+    --map-park: color-mix(in srgb, var(--status-available) 14%, #f4f4f5);
+    --map-water: color-mix(in srgb, var(--accent) 22%, #f4f4f5);
+  }
+  :global([data-theme='dark']) .map-mock {
+    --map-land: #18181b;
+    --map-road: #3f3f46;
+    --map-edge: #27272a;
+    --map-park: color-mix(in srgb, var(--status-available) 14%, #18181b);
+    --map-water: color-mix(in srgb, var(--accent) 30%, #18181b);
+  }
+  .map-land {
+    fill: var(--map-land);
+  }
+  .map-park {
+    fill: var(--map-park);
+  }
+  .map-water {
+    fill: none;
+    stroke: var(--map-water);
+    stroke-width: 12;
+  }
+  .map-road-edge,
+  .map-road,
+  .map-street {
+    fill: none;
+    stroke-linecap: round;
+  }
+  .map-road-edge {
+    stroke: var(--map-edge);
+    stroke-width: 11;
+  }
+  .map-road {
+    stroke: var(--map-road);
+    stroke-width: 8;
+  }
+  .map-street {
+    stroke: var(--map-road);
+    stroke-width: 4;
+  }
+  .map-pin {
+    position: absolute;
+    line-height: 0;
+    /* The pin tip is at y 22 of 24: anchor it on the point. */
+    transform: translate(-50%, -91.667%);
+    filter: drop-shadow(0 1px 1px rgb(0 0 0 / 0.25));
+  }
+</style>
