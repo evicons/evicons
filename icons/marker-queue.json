@@ -1,0 +1,46 @@
+{
+  "category": "marker",
+  "meaning": {
+    "en": "Map marker: drivers are queuing for the charging point, expect a wait",
+    "de": "Kartenmarker: am Ladepunkt warten Fahrer in einer Warteschlange, mit Wartezeit rechnen"
+  },
+  "tags": {
+    "en": [
+      "marker",
+      "map pin",
+      "queue",
+      "waiting",
+      "wait time",
+      "hourglass",
+      "status"
+    ],
+    "de": [
+      "marker",
+      "kartenpin",
+      "warteschlange",
+      "warten",
+      "wartezeit",
+      "sanduhr",
+      "status"
+    ],
+    "fr": [
+      "marqueur",
+      "épingle",
+      "file d’attente",
+      "attente",
+      "temps d’attente",
+      "sablier",
+      "statut"
+    ]
+  },
+  "since": "0.3.0",
+  "aliases": [],
+  "exceptions": [
+    "sharp-corner"
+  ],
+  "provenance": {
+    "createdBy": "ai",
+    "approvedBy": null,
+    "approvedOn": null
+  }
+}

@@ -126,6 +126,50 @@
     },
     "pascal": "BidirectionalCharging"
   },
+  "calibrated-meter": {
+    "category": "payment",
+    "meaning": {
+      "en": "Calibrated meter: the charging point bills energy with a meter that complies with calibration law (Eichrecht)",
+      "de": "Geeichter Zähler: der Ladepunkt rechnet die Energie mit einem eichrechtskonformen Zähler ab"
+    },
+    "tags": {
+      "en": [
+        "calibrated meter",
+        "calibration law",
+        "eichrecht",
+        "certified meter",
+        "energy meter",
+        "verified billing",
+        "compliant"
+      ],
+      "de": [
+        "geeichter zähler",
+        "eichrecht",
+        "eichrechtskonform",
+        "stromzähler",
+        "energiezähler",
+        "geprüfte abrechnung",
+        "konform"
+      ],
+      "fr": [
+        "compteur étalonné",
+        "métrologie légale",
+        "eichrecht",
+        "compteur certifié",
+        "compteur d’énergie",
+        "facturation vérifiée",
+        "conforme"
+      ]
+    },
+    "since": "0.3.0",
+    "aliases": [],
+    "provenance": {
+      "createdBy": "ai",
+      "approvedBy": null,
+      "approvedOn": null
+    },
+    "pascal": "CalibratedMeter"
+  },
   "car-electric": {
     "category": "vehicle",
     "meaning": {
@@ -1338,6 +1382,102 @@
       "approvedOn": "2026-11-01"
     },
     "pascal": "MarkerOutOfService"
+  },
+  "marker-queue": {
+    "category": "marker",
+    "meaning": {
+      "en": "Map marker: drivers are queuing for the charging point, expect a wait",
+      "de": "Kartenmarker: am Ladepunkt warten Fahrer in einer Warteschlange, mit Wartezeit rechnen"
+    },
+    "tags": {
+      "en": [
+        "marker",
+        "map pin",
+        "queue",
+        "waiting",
+        "wait time",
+        "hourglass",
+        "status"
+      ],
+      "de": [
+        "marker",
+        "kartenpin",
+        "warteschlange",
+        "warten",
+        "wartezeit",
+        "sanduhr",
+        "status"
+      ],
+      "fr": [
+        "marqueur",
+        "épingle",
+        "file d’attente",
+        "attente",
+        "temps d’attente",
+        "sablier",
+        "statut"
+      ]
+    },
+    "since": "0.3.0",
+    "aliases": [],
+    "exceptions": [
+      "sharp-corner"
+    ],
+    "provenance": {
+      "createdBy": "ai",
+      "approvedBy": null,
+      "approvedOn": null
+    },
+    "pascal": "MarkerQueue"
+  },
+  "marker-reserved": {
+    "category": "marker",
+    "meaning": {
+      "en": "Map marker: the charging point is reserved for a booking",
+      "de": "Kartenmarker: der Ladepunkt ist für eine Buchung reserviert"
+    },
+    "tags": {
+      "en": [
+        "marker",
+        "map pin",
+        "reserved",
+        "booked",
+        "reservation",
+        "booking",
+        "letter r",
+        "status"
+      ],
+      "de": [
+        "marker",
+        "kartenpin",
+        "reserviert",
+        "gebucht",
+        "reservierung",
+        "buchung",
+        "buchstabe r",
+        "status"
+      ],
+      "fr": [
+        "marqueur",
+        "épingle",
+        "réservé",
+        "réservation",
+        "lettre r",
+        "statut"
+      ]
+    },
+    "since": "0.3.0",
+    "aliases": [],
+    "exceptions": [
+      "letters",
+      "sharp-corner"
+    ],
+    "provenance": {
+      "createdBy": "ai",
+      "approvedBy": null,
+      "approvedOn": null
+    },
+    "pascal": "MarkerReserved"
   },
   "marker-unknown": {
     "category": "marker",

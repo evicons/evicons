@@ -1,0 +1,43 @@
+{
+  "category": "payment",
+  "meaning": {
+    "en": "Calibrated meter: the charging point bills energy with a meter that complies with calibration law (Eichrecht)",
+    "de": "Geeichter Zähler: der Ladepunkt rechnet die Energie mit einem eichrechtskonformen Zähler ab"
+  },
+  "tags": {
+    "en": [
+      "calibrated meter",
+      "calibration law",
+      "eichrecht",
+      "certified meter",
+      "energy meter",
+      "verified billing",
+      "compliant"
+    ],
+    "de": [
+      "geeichter zähler",
+      "eichrecht",
+      "eichrechtskonform",
+      "stromzähler",
+      "energiezähler",
+      "geprüfte abrechnung",
+      "konform"
+    ],
+    "fr": [
+      "compteur étalonné",
+      "métrologie légale",
+      "eichrecht",
+      "compteur certifié",
+      "compteur d’énergie",
+      "facturation vérifiée",
+      "conforme"
+    ]
+  },
+  "since": "0.3.0",
+  "aliases": [],
+  "provenance": {
+    "createdBy": "ai",
+    "approvedBy": null,
+    "approvedOn": null
+  }
+}

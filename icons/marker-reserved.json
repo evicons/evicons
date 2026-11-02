@@ -1,0 +1,48 @@
+{
+  "category": "marker",
+  "meaning": {
+    "en": "Map marker: the charging point is reserved for a booking",
+    "de": "Kartenmarker: der Ladepunkt ist für eine Buchung reserviert"
+  },
+  "tags": {
+    "en": [
+      "marker",
+      "map pin",
+      "reserved",
+      "booked",
+      "reservation",
+      "booking",
+      "letter r",
+      "status"
+    ],
+    "de": [
+      "marker",
+      "kartenpin",
+      "reserviert",
+      "gebucht",
+      "reservierung",
+      "buchung",
+      "buchstabe r",
+      "status"
+    ],
+    "fr": [
+      "marqueur",
+      "épingle",
+      "réservé",
+      "réservation",
+      "lettre r",
+      "statut"
+    ]
+  },
+  "since": "0.3.0",
+  "aliases": [],
+  "exceptions": [
+    "letters",
+    "sharp-corner"
+  ],
+  "provenance": {
+    "createdBy": "ai",
+    "approvedBy": null,
+    "approvedOn": null
+  }
+}
