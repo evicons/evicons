@@ -25,6 +25,7 @@ const pages: { path: string; ready: (page: Page) => Promise<void> }[] = [
   { path: '/imprint', ready: async () => {} },
   { path: '/privacy', ready: async () => {} },
   { path: '/de', ready: async () => {} },
+  { path: '/de/icons', ready: async () => {} },
   { path: '/icons/plug-type-2', ready: async () => {} },
   { path: '/de/icons/marker-dc', ready: async () => {} },
 ]

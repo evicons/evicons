@@ -73,12 +73,25 @@ test('related icons and prev/next stay in the category', async ({ page }) => {
   await expect(page.locator('a[rel="prev"]')).toHaveAttribute('href', '/icons/plug-schuko')
 })
 
-test('German landing page lists every icon with its German page', async ({ page }) => {
+test('German landing page has the same sections as the English one, translated', async ({ page }) => {
+  const sections = async () =>
+    page.locator('main section').evaluateAll((list) => list.map((s) => s.getAttribute('aria-labelledby') ?? 'strip'))
+  await page.goto('/')
+  const english = await sections()
   await page.goto('/de')
   await expect(page.locator('html')).toHaveAttribute('lang', 'de')
-  await expect(page.locator('h1')).toHaveText('Icons für E-Mobilität und Ladestationen.')
-  await expect(page.locator('a[href^="/de/icons/"]')).toHaveCount(names.length)
+  await expect(page.locator('h1')).toHaveText('Kontur-Icons fürs E-Auto-Laden.')
+  expect(await sections()).toEqual(english)
+  await expect(page.locator('[data-hero-cluster] svg')).toHaveCount(9)
   await expect(page.locator('link[hreflang="en"]')).toHaveAttribute('href', 'https://evicons.dev/')
+  await expect(page.getByRole('button', { name: 'Bewegung anhalten' })).toBeVisible()
+})
+
+test('German icon overview lists every icon with its German page', async ({ page }) => {
+  await page.goto('/de/icons')
+  await expect(page.locator('html')).toHaveAttribute('lang', 'de')
+  await expect(page.locator('main a[href^="/de/icons/"]')).toHaveCount(names.length)
+  await expect(page.locator('link[hreflang="en"]')).toHaveAttribute('href', 'https://evicons.dev/icons')
 })
 
 test('the gallery page links every icon page for crawlers', async ({ page }) => {
@@ -94,11 +107,12 @@ test('sitemap lists the icon pages in both languages with hreflang', async ({ re
   }
   expect(xml).toContain('hreflang="de" href="https://evicons.dev/de/icons/plug-type-2"')
   expect(xml).toContain('<loc>https://evicons.dev/de</loc>')
+  expect(xml).toContain('<loc>https://evicons.dev/de/icons</loc>')
 })
 
 test('icon pages and /de fit a 390 px phone without sideways scrolling', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 900 })
-  for (const path of ['/de', '/icons/plug-ccs2', '/de/icons/charging-station', '/de/icons/marker-out-of-service']) {
+  for (const path of ['/de', '/de/icons', '/icons/plug-ccs2', '/de/icons/charging-station', '/de/icons/marker-out-of-service']) {
     await page.goto(path)
     const overflow = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth)
     expect(overflow, path).toBeLessThanOrEqual(0)

@@ -30,9 +30,9 @@ const t = de
       heading: `${title} Icon`,
       docTitle: `${title} Icon – SVG und React | EVicons`,
       description: `Kostenloses ${title}-Icon für Lade-Apps und E-Mobilität: ${meaning}. Kontur-SVG und React-Komponente, MIT-Lizenz.`,
-      home: 'EVicons',
-      homeHref: '/de',
-      categoryHref: `/de#${icon.category}`,
+      home: 'Icons',
+      homeHref: '/de/icons',
+      categoryHref: `/de/icons#${icon.category}`,
       sizes: 'Größen',
       onLight: 'Auf hellem Grund',
       onDark: 'Auf dunklem Grund',
@@ -351,7 +351,7 @@ const githubSource = `https://github.com/evicons/evicons/blob/main/icons/${icon.
           <span />
         )
       }
-      <a href={de ? '/de#icons' : '/icons'}>{t.all}</a>
+      <a href={de ? '/de/icons' : '/icons'}>{t.all}</a>
       {
         index < siblings.length - 1 ? (
           <a href={pagePath(siblings[index + 1]!.name)} rel="next">{iconTitles[siblings[index + 1]!.name]![lang]} →</a>

@@ -167,7 +167,7 @@ test('structured data, robots.txt and the sitemap', async ({ page, request }) =>
   // The main pages and /de; the icon pages (/icons/<name>, /de/icons/<name>) are checked in seo.spec.ts.
   const pages = urls.filter((url) => !/\/icons\/[a-z0-9-]+$/.test(url!))
   expect(pages.sort()).toEqual(
-    ['/', '/brand', '/changelog', '/de', '/docs', '/icons', '/imprint', '/map', '/privacy']
+    ['/', '/brand', '/changelog', '/de', '/de/icons', '/docs', '/icons', '/imprint', '/map', '/privacy']
       .map((p) => `https://evicons.dev${p}`)
       .sort(),
   )

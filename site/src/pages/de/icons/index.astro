@@ -1,0 +1,64 @@
+---
+// German icon overview: every icon by category, linked to its German page (/de/icons/<name>).
+// The English counterpart is the gallery (/icons).
+import { categoryLabels, iconTitles } from '../../../data/icon-titles'
+import Base from '../../../layouts/Base.astro'
+import { categoryOrder, loadIcons } from '../../../lib/icons'
+
+const icons = loadIcons()
+const count = icons.length
+const svgAttrs = {
+  viewBox: '0 0 24 24',
+  fill: 'none',
+  stroke: 'currentColor',
+  'stroke-width': '1.5',
+  'stroke-linecap': 'round',
+  'stroke-linejoin': 'round',
+  'aria-hidden': 'true',
+} as const
+const inner = (svg: string) => svg.replace(/^[\s\S]*?<svg[^>]*>/, '').replace(/<\/svg>\s*$/, '').trim()
+---
+
+<Base
+  title="Icons – Ladesäule, Stecker, Ladestatus, Kartenmarker | EVicons"
+  description={`Alle ${count} EVicons auf Deutsch: Ladesäule, Wallbox, Typ 2, CCS2, Ladestatus, Ladekarte und Kartenmarker. Jedes Icon als SVG und React-Komponente, MIT-Lizenz.`}
+  lang="de"
+  alternates={{ en: '/icons', de: '/de/icons' }}
+>
+  <section class="mx-auto max-w-6xl px-4 py-10 sm:px-6 sm:py-12">
+    <h1 class="text-3xl">Icons</h1>
+    <p class="mt-2 max-w-2xl text-muted">
+      {count} Kontur-Icons fürs E-Auto-Laden. Jedes Icon hat eine eigene Seite mit Bedeutung, Norm, Code zum Kopieren und
+      SVG-Download. Zum Suchen, Einfärben und Vergleichen gibt es die <a href="/icons" hreflang="en">Galerie</a> (Englisch).
+    </p>
+    {
+      categoryOrder.map((category) => (
+        <div class="mt-10">
+          <h2 id={category} class="text-xl">
+            {categoryLabels[category].de}
+          </h2>
+          <ul class="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-4 lg:grid-cols-6">
+            {icons
+              .filter((icon) => icon.category === category)
+              .map((icon) => (
+                <li>
+                  <a
+                    href={`/de/icons/${icon.name}`}
+                    class="flex h-full flex-col items-center gap-3 rounded-lg border border-border px-3 py-4 text-center text-sm text-fg no-underline hover:bg-surface"
+                  >
+                    <span
+                      class:list={[category === 'marker' && 'marker-filled']}
+                      style={category === 'marker' ? 'color:#2563eb' : undefined}
+                    >
+                      <svg width="32" height="32" {...svgAttrs} set:html={inner(icon.svg)} />
+                    </span>
+                    <span>{iconTitles[icon.name]!.de}</span>
+                  </a>
+                </li>
+              ))}
+          </ul>
+        </div>
+      ))
+    }
+  </section>
+</Base>
