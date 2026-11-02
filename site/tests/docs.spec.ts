@@ -1,3 +1,4 @@
+import { readFileSync } from 'node:fs'
 import { expect, test } from '@playwright/test'
 
 test('docs has every section with a working table of contents', async ({ page }) => {
@@ -118,9 +119,11 @@ test('the last docs section becomes current at the bottom of the page', async ({
   await expect(toc.locator('a[aria-current]')).toHaveCount(1)
 })
 
-test('changelog hides the empty Unreleased section and links the docs', async ({ page }) => {
+test('changelog shows Unreleased only when it has entries, and links the docs', async ({ page }) => {
+  const changelog = readFileSync(new URL('../../CHANGELOG.md', import.meta.url), 'utf8')
+  const unreleased = changelog.split('## [Unreleased]')[1]!.split('\n## [')[0]!.trim()
   await page.goto('/changelog')
-  await expect(page.getByRole('heading', { name: 'Unreleased' })).toHaveCount(0)
+  await expect(page.getByRole('heading', { name: 'Unreleased' })).toHaveCount(unreleased ? 1 : 0)
   await expect(page.locator('main a[href="/docs#markers"]')).toHaveText('Map markers')
   await expect(page.locator('main')).not.toContainText('in the README for the CSS rule')
 })
