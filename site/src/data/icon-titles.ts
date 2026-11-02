@@ -39,7 +39,6 @@ export const iconTitles: Record<string, { en: string; de: string }> = {
   'parking-charging': { en: 'EV charging parking', de: 'Parkplatz mit Ladestation' },
   'plug-ccs2': { en: 'CCS2 connector', de: 'CCS-Stecker (Combo 2)' },
   'plug-chademo': { en: 'CHAdeMO connector', de: 'CHAdeMO-Stecker' },
-  'plug-gbt': { en: 'GB/T AC connector', de: 'GB/T-Stecker (AC, China)' },
   'plug-schuko': { en: 'Schuko socket', de: 'Schuko-Steckdose' },
   'plug-type-1': { en: 'Type 1 connector (J1772)', de: 'Typ-1-Stecker (J1772)' },
   'plug-type-2': { en: 'Type 2 connector', de: 'Typ-2-Stecker' },

@@ -1303,56 +1303,6 @@
     },
     "pascal": "PlugChademo"
   },
-  "plug-gbt": {
-    "category": "connector",
-    "meaning": {
-      "en": "GB/T 20234.2 AC connector (China), shown as the vehicle inlet face",
-      "de": "GB/T-20234.2-AC-Stecker (China), dargestellt als Fahrzeug-Ladebuchse in Draufsicht"
-    },
-    "tags": {
-      "en": [
-        "gb/t",
-        "gbt",
-        "gb/t 20234.2",
-        "china",
-        "ac connector",
-        "plug",
-        "inlet"
-      ],
-      "de": [
-        "gb/t",
-        "gbt",
-        "gb/t 20234.2",
-        "china",
-        "ac-stecker",
-        "stecker",
-        "ladebuchse"
-      ],
-      "fr": [
-        "gb/t",
-        "gbt",
-        "gb/t 20234.2",
-        "chine",
-        "connecteur ac",
-        "prise"
-      ]
-    },
-    "since": "0.3.0",
-    "aliases": [],
-    "standard": {
-      "norm": "GB/T 20234.2 (AC)",
-      "source": "GB/T 20234.2 itself not consulted. Layout checked against two public drawings, retrieved 2026-11-02: Wikimedia Commons \"File:GBT 20234 (AC).svg\" by Mliu92 (CC BY-SA 4.0; pinout of the cable connector face, taken from the Amphenol catalogue below: outline round with a flat top, top row CC, CP (small); middle row L1, PE, N; bottom row L2, L3; the drawing uses the same geometry as the same author's \"File:IEC 62196-2 Type 2 (plug).svg\"), https://commons.wikimedia.org/wiki/File:GBT_20234_(AC).svg, and Amphenol PCD Shenzhen, catalogue \"Excel|Mate CC electric car charging coupler\", page 5 \"Insert arrangement\" (couplers compliant with GB/T 20234.1/2/3-2015; vehicle connector and vehicle inlet seen from the front side by side: inlet with the flat side on top, top row CP, CC (small); middle row N, PE, L1; bottom row L3, L2, i.e. the mirror image of the connector face; the e-lock above the flat side is hidden, drawn dashed), https://www.amphenol.co.jp/military/catalog/GBT.pdf. The icon shows the vehicle inlet seen from the front. Keying (flat side on top) and the 2-3-2 rows agree with the Type 2 face, so the icon uses the plug-type-2 construction unchanged (R 9, flat edge at y 5, pitch 5.3, signal r 1.0, power r 1.25); left and right are not distinguished (contacts of a row have the same size). At every size it looks like plug-type-2; the app must show the name."
-    },
-    "exceptions": [
-      "dense-connector"
-    ],
-    "provenance": {
-      "createdBy": "ai",
-      "approvedBy": null,
-      "approvedOn": null
-    },
-    "pascal": "PlugGbt"
-  },
   "plug-schuko": {
     "category": "connector",
     "meaning": {
@@ -1455,8 +1405,8 @@
   "plug-type-2": {
     "category": "connector",
     "meaning": {
-      "en": "Type 2 connector (IEC 62196-2, \"Mennekes\"), shown as the vehicle inlet face",
-      "de": "Typ-2-Stecker (IEC 62196-2, „Mennekes“), dargestellt als Fahrzeug-Ladebuchse in Draufsicht"
+      "en": "Type 2 connector (IEC 62196-2, \"Mennekes\"), shown as the vehicle inlet face; the GB/T 20234.2 AC inlet (China) has the same face",
+      "de": "Typ-2-Stecker (IEC 62196-2, „Mennekes“), dargestellt als Fahrzeug-Ladebuchse in Draufsicht; die GB/T-20234.2-AC-Buchse (China) hat dieselbe Fläche"
     },
     "tags": {
       "en": [
@@ -1465,7 +1415,11 @@
         "iec 62196-2",
         "ac connector",
         "plug",
-        "inlet"
+        "inlet",
+        "gb/t",
+        "gbt",
+        "gb/t 20234.2",
+        "china"
       ],
       "de": [
         "typ 2",
@@ -1473,21 +1427,25 @@
         "iec 62196-2",
         "ac-stecker",
         "stecker",
-        "ladebuchse"
+        "ladebuchse",
+        "gb/t",
+        "china"
       ],
       "fr": [
         "type 2",
         "mennekes",
         "iec 62196-2",
         "prise type 2",
-        "connecteur ac"
+        "connecteur ac",
+        "gb/t",
+        "chine"
       ]
     },
     "since": "0.1.0",
     "aliases": [],
     "standard": {
       "norm": "IEC 62196-2 (Type 2)",
-      "source": "IEC 62196-2 itself not consulted (paywalled). Contact layout checked against two public drawings: Wikimedia Commons \"File:Stecker-Typ 2 Belegung.svg\" (public domain; Type 2 plug \"bei Sicht auf die Steckkontakte\", male contact face: top PP, CP; middle L1, PE, N; bottom L2, L3), https://commons.wikimedia.org/wiki/File:Stecker-Typ_2_Belegung.svg, and \"File:IEC 62196-2 Type 2 (plug).svg\" by Mliu92 (CC BY-SA 4.0; end view of the female connector: top CP, PP; middle N, PE, L1; bottom L3, L2, i.e. the mirror image), https://commons.wikimedia.org/wiki/File:IEC_62196-2_Type_2_(plug).svg. Both retrieved 2026-10-21. The icon shows the male vehicle inlet seen from the front, which matches the male contact face."
+      "source": "IEC 62196-2 itself not consulted (paywalled). Contact layout checked against two public drawings: Wikimedia Commons \"File:Stecker-Typ 2 Belegung.svg\" (public domain; Type 2 plug \"bei Sicht auf die Steckkontakte\", male contact face: top PP, CP; middle L1, PE, N; bottom L2, L3), https://commons.wikimedia.org/wiki/File:Stecker-Typ_2_Belegung.svg, and \"File:IEC 62196-2 Type 2 (plug).svg\" by Mliu92 (CC BY-SA 4.0; end view of the female connector: top CP, PP; middle N, PE, L1; bottom L3, L2, i.e. the mirror image), https://commons.wikimedia.org/wiki/File:IEC_62196-2_Type_2_(plug).svg. Both retrieved 2026-10-21. The icon shows the male vehicle inlet seen from the front, which matches the male contact face. GB/T 20234.2 AC (not consulted itself) has the same face; checked on 2026-11-02 against Wikimedia Commons \"File:GBT 20234 (AC).svg\" by Mliu92 (CC BY-SA 4.0; connector face, the same geometry as the same author's Type 2 drawing, labels CC, CP / L1, PE, N / L2, L3), https://commons.wikimedia.org/wiki/File:GBT_20234_(AC).svg, and Amphenol PCD Shenzhen, catalogue \"Excel|Mate CC electric car charging coupler\", page 5 \"Insert arrangement\" (vehicle inlet: flat side on top, rows CP, CC / N, PE, L1 / L3, L2), https://www.amphenol.co.jp/military/catalog/GBT.pdf; both show the Type 2 geometry."
     },
     "exceptions": [
       "dense-connector"
