@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
+## [0.2.1] - 2026-11-02
+
 ### Fixed
 
 - The small solid bolt left a pinhole at its widest point, visible from about 48 px. A short stroke between the inner corners of its steps now closes it, in all 12 icons that use it: `app-charging`, `battery-charging`, `car-electric`, `charging-card`, `charging-log`, `charging-tariff`, `driving-range`, `green-power`, `home-charging`, `parking-charging`, `roaming`, `solar-charging`. The outline and the look at 16–24 px are unchanged.
@@ -53,6 +55,7 @@ First version, not published to npm. The first published release is 0.2.0.
   - `status-unknown`: unknown (question mark)
   - `status-queue`: queue (two cars, one behind the other)
 
-[Unreleased]: https://github.com/evicons/evicons/compare/v0.2.0...HEAD
+[Unreleased]: https://github.com/evicons/evicons/compare/v0.2.1...HEAD
+[0.2.1]: https://github.com/evicons/evicons/releases/tag/v0.2.1
 [0.2.0]: https://github.com/evicons/evicons/releases/tag/v0.2.0
 [0.1.0]: https://github.com/evicons/evicons/tree/fe97713
