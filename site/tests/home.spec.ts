@@ -148,7 +148,8 @@ test('the market section names both sites as plain text links, body text 16 px',
 
 test('structured data, robots.txt and the sitemap', async ({ page, request }) => {
   await page.goto('/')
-  const data = JSON.parse((await page.locator('script[type="application/ld+json"]').textContent())!)
+  // An array: the site-wide entry first, page-specific entries (icon pages) after it.
+  const [data] = JSON.parse((await page.locator('script[type="application/ld+json"]').textContent())!)
   expect(data).toMatchObject({
     '@context': 'https://schema.org',
     '@type': 'SoftwareSourceCode',
@@ -163,8 +164,12 @@ test('structured data, robots.txt and the sitemap', async ({ page, request }) =>
   expect(index.status()).toBe(200)
   expect(await index.text()).toContain('https://evicons.dev/sitemap-0.xml')
   const urls = [...(await (await request.get('/sitemap-0.xml')).text()).matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1])
-  expect(urls.sort()).toEqual(
-    ['/', '/brand', '/changelog', '/docs', '/icons', '/imprint', '/map', '/privacy'].map((p) => `https://evicons.dev${p}`).sort(),
+  // The main pages and /de; the icon pages (/icons/<name>, /de/icons/<name>) are checked in seo.spec.ts.
+  const pages = urls.filter((url) => !/\/icons\/[a-z0-9-]+$/.test(url!))
+  expect(pages.sort()).toEqual(
+    ['/', '/brand', '/changelog', '/de', '/docs', '/icons', '/imprint', '/map', '/privacy']
+      .map((p) => `https://evicons.dev${p}`)
+      .sort(),
   )
   // Error pages carry no structured data.
   expect(await (await request.get('/nope')).text()).not.toContain('application/ld+json')
