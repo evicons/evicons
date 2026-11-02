@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
+### Fixed
+
+- The small solid bolt left a pinhole at its widest point, visible from about 48 px. A short stroke between the inner corners of its steps now closes it, in all 12 icons that use it: `app-charging`, `battery-charging`, `car-electric`, `charging-card`, `charging-log`, `charging-tariff`, `driving-range`, `green-power`, `home-charging`, `parking-charging`, `roaming`, `solar-charging`. The outline and the look at 16–24 px are unchanged.
+
 ## [0.2.0] - 2026-11-02
 
 ### Added
