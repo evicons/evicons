@@ -16,7 +16,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
   - Power and energy: `charging-time` (duration, time-based tariff or blocking fee), `charging-power-level` (power on a scale), `charging-session` (session in progress)
   - Vehicle: `route-to-charger` (navigation to a charging point)
   - Payment: `calibrated-meter` (meter compliant with calibration law, Eichrecht)
-  - Map markers: `marker-reserved` (letter R), `marker-queue` (two cars, one behind the other)
+  - Map markers: `marker-reserved` (letter R), `marker-queue` (hourglass)
 
 ### Changed
 
