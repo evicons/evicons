@@ -156,7 +156,7 @@
         "métrologie légale",
         "eichrecht",
         "compteur certifié",
-        "compteur d’énergie",
+        "compteur d'énergie",
         "facturation vérifiée",
         "conforme"
       ]
@@ -165,8 +165,8 @@
     "aliases": [],
     "provenance": {
       "createdBy": "ai",
-      "approvedBy": null,
-      "approvedOn": null
+      "approvedBy": "Landolsi Digital",
+      "approvedOn": "2026-11-02"
     },
     "pascal": "CalibratedMeter"
   },
@@ -1411,9 +1411,9 @@
       "fr": [
         "marqueur",
         "épingle",
-        "file d’attente",
+        "file d'attente",
         "attente",
-        "temps d’attente",
+        "temps d'attente",
         "sablier",
         "statut"
       ]
@@ -1425,8 +1425,8 @@
     ],
     "provenance": {
       "createdBy": "ai",
-      "approvedBy": null,
-      "approvedOn": null
+      "approvedBy": "Landolsi Digital",
+      "approvedOn": "2026-11-02"
     },
     "pascal": "MarkerQueue"
   },
@@ -1474,8 +1474,8 @@
     ],
     "provenance": {
       "createdBy": "ai",
-      "approvedBy": null,
-      "approvedOn": null
+      "approvedBy": "Landolsi Digital",
+      "approvedOn": "2026-11-02"
     },
     "pascal": "MarkerReserved"
   },
