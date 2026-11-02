@@ -462,8 +462,8 @@
     ],
     "provenance": {
       "createdBy": "ai",
-      "approvedBy": null,
-      "approvedOn": null
+      "approvedBy": "Landolsi Digital",
+      "approvedOn": "2026-11-02"
     },
     "pascal": "ChargingOperator"
   },
@@ -703,8 +703,8 @@
     ],
     "provenance": {
       "createdBy": "ai",
-      "approvedBy": null,
-      "approvedOn": null
+      "approvedBy": "Landolsi Digital",
+      "approvedOn": "2026-11-02"
     },
     "pascal": "DestinationCharging"
   },
@@ -1627,8 +1627,8 @@
     ],
     "provenance": {
       "createdBy": "ai",
-      "approvedBy": null,
-      "approvedOn": null
+      "approvedBy": "Landolsi Digital",
+      "approvedOn": "2026-11-02"
     },
     "pascal": "ReportFault"
   },
