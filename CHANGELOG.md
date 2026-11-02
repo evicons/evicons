@@ -6,6 +6,22 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
+## [0.3.0] - 2026-11-02
+
+### Added
+
+- 11 icons:
+  - Connector: `plug-type-1` (Type 1, SAE J1772 / IEC 62196-2 Type 1, vehicle inlet face)
+  - Station and site: `charging-operator` (charge point operator), `destination-charging`, `report-fault` (report a fault at a charging point)
+  - Power and energy: `charging-time` (duration, time-based tariff or blocking fee), `charging-power-level` (power on a scale), `charging-session` (session in progress)
+  - Vehicle: `route-to-charger` (navigation to a charging point)
+  - Payment: `calibrated-meter` (meter compliant with calibration law, Eichrecht)
+  - Map markers: `marker-reserved` (letter R), `marker-queue` (two cars, one behind the other)
+
+### Changed
+
+- `plug-type-2` now also stands for the GB/T 20234.2 AC inlet, which has the same face: GB/T tags and a meaning note added.
+
 ## [0.2.1] - 2026-11-02
 
 ### Fixed
@@ -55,7 +71,8 @@ First version, not published to npm. The first published release is 0.2.0.
   - `status-unknown`: unknown (question mark)
   - `status-queue`: queue (two cars, one behind the other)
 
-[Unreleased]: https://github.com/evicons/evicons/compare/v0.2.1...HEAD
+[Unreleased]: https://github.com/evicons/evicons/compare/v0.3.0...HEAD
+[0.3.0]: https://github.com/evicons/evicons/releases/tag/v0.3.0
 [0.2.1]: https://github.com/evicons/evicons/releases/tag/v0.2.1
 [0.2.0]: https://github.com/evicons/evicons/releases/tag/v0.2.0
 [0.1.0]: https://github.com/evicons/evicons/tree/fe97713

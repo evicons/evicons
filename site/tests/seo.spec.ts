@@ -9,7 +9,7 @@ const meta = JSON.parse(readFileSync(new URL('../../packages/svg/icons.json', im
 const names = Object.keys(meta)
 
 test('every icon has an English and a German page, each linking the other', async ({ request }) => {
-  expect(names.length).toBeGreaterThanOrEqual(43)
+  expect(names.length).toBeGreaterThanOrEqual(54)
   for (const name of names) {
     for (const [path, lang] of [
       [`/icons/${name}`, 'en'],
@@ -66,11 +66,11 @@ test('German icon page is German and switches to English', async ({ page }) => {
 test('related icons and prev/next stay in the category', async ({ page }) => {
   await page.goto('/icons/plug-type-2')
   const more = page.locator('section[aria-labelledby="more"] a')
-  await expect(more).toHaveCount(3)
+  await expect(more).toHaveCount(4)
   for (const href of await more.evaluateAll((links) => links.map((l) => l.getAttribute('href')))) {
     expect(href).toMatch(/^\/icons\/plug-/)
   }
-  await expect(page.locator('a[rel="prev"]')).toHaveAttribute('href', '/icons/plug-schuko')
+  await expect(page.locator('a[rel="prev"]')).toHaveAttribute('href', '/icons/plug-type-1')
 })
 
 test('German landing page has the same sections as the English one, translated', async ({ page }) => {

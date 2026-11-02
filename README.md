@@ -144,7 +144,8 @@ import icons from '@evicons/svg/icons.json' with { type: 'json' }
 
 | Name | React component | Meaning |
 |---|---|---|
-| `plug-type-2` | `PlugType2` | Type 2 connector (IEC 62196-2, "Mennekes"), shown as the vehicle inlet face |
+| `plug-type-2` | `PlugType2` | Type 2 connector (IEC 62196-2, "Mennekes"), shown as the vehicle inlet face; the GB/T 20234.2 AC inlet (China) has the same face |
+| `plug-type-1` | `PlugType1` | Type 1 AC connector (SAE J1772, IEC 62196-2 Type 1; North America, Japan), shown as the vehicle inlet face |
 | `plug-ccs2` | `PlugCcs2` | CCS Combo 2 connector (IEC 62196-3, Type 2 with two DC contacts), shown as the vehicle inlet face |
 | `plug-chademo` | `PlugChademo` | CHAdeMO DC connector (IEC 62196-3 configuration AA, JEVS G105), shown as the vehicle inlet face |
 | `plug-schuko` | `PlugSchuko` | Schuko socket (CEE 7/3, DIN 49440, household AC), shown as the socket face seen from the front |
@@ -159,6 +160,9 @@ import icons from '@evicons/svg/icons.json' with { type: 'json' }
 | `wallbox` | `Wallbox` | Wallbox: a wall-mounted home charger for electric vehicles |
 | `home-charging` | `HomeCharging` | Home charging: charging the vehicle at home |
 | `parking-charging` | `ParkingCharging` | Charging parking: a parking space where electric vehicles can charge |
+| `charging-operator` | `ChargingOperator` | Charge point operator (CPO): the company that runs a charging point |
+| `destination-charging` | `DestinationCharging` | Destination charging: charging while staying at a hotel, shop or restaurant |
+| `report-fault` | `ReportFault` | Report a fault: tell the operator that a charging point has an electrical or technical problem |
 
 ### Power and energy
 
@@ -173,6 +177,9 @@ import icons from '@evicons/svg/icons.json' with { type: 'json' }
 | `green-power` | `GreenPower` | Green power: electricity from renewable sources |
 | `battery-charging` | `BatteryCharging` | Battery charging: the vehicle battery is being charged |
 | `bidirectional-charging` | `BidirectionalCharging` | Bidirectional charging: energy flows into and out of the vehicle (V2G, V2H) |
+| `charging-time` | `ChargingTime` | Charging time: how long a charging session takes, or a time-based tariff or blocking fee |
+| `charging-power-level` | `ChargingPowerLevel` | Charging power level: the charging power shown on a scale (kW display, power filter) |
+| `charging-session` | `ChargingSession` | Charging session in progress: the vehicle is charging right now (live session) |
 
 ### Vehicles
 
@@ -181,6 +188,7 @@ import icons from '@evicons/svg/icons.json' with { type: 'json' }
 | `car-plugged` | `CarPlugged` | Electric car connected to a charging cable |
 | `car-electric` | `CarElectric` | Electric car (battery electric vehicle) |
 | `driving-range` | `DrivingRange` | Range: distance the vehicle can drive on its battery charge |
+| `route-to-charger` | `RouteToCharger` | Route to the charger: navigation to a charging point |
 
 ### Payment
 
@@ -192,6 +200,7 @@ import icons from '@evicons/svg/icons.json' with { type: 'json' }
 | `roaming` | `Roaming` | Roaming: charging with a contract from another provider |
 | `charging-tariff` | `ChargingTariff` | Charging tariff: the price of charging, for example per kWh |
 | `charging-log` | `ChargingLog` | Charging log: a record of charging sessions, for example a log book or receipt |
+| `calibrated-meter` | `CalibratedMeter` | Calibrated meter: the charging point bills energy with a meter that complies with calibration law (Eichrecht) |
 
 ### Status
 
@@ -225,6 +234,8 @@ The charging marker is named `marker-charging` (`MarkerCharging`), not `marker`,
 | `marker-faulted` | `MarkerFaulted` | Exclamation mark | Map marker: the charging point reports an error and cannot charge |
 | `marker-out-of-service` | `MarkerOutOfService` | Cross | Map marker: the charging point is out of service |
 | `marker-unknown` | `MarkerUnknown` | Question mark | Map marker: the status of the charging point is unknown |
+| `marker-reserved` | `MarkerReserved` | Letter R | Map marker: the charging point is reserved for a booking |
+| `marker-queue` | `MarkerQueue` | Two cars, one behind the other | Map marker: drivers are queuing for the charging point, expect a wait |
 
 ## Map markers
 
