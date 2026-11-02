@@ -89,6 +89,7 @@ test.describe('docker image', () => {
         "frame-ancestors 'none'; base-uri 'self'; object-src 'none'; form-action 'self'",
       )
       expect(headers['x-frame-options'], response.url()).toBe('DENY')
+      expect(headers['strict-transport-security'], response.url()).toBe('max-age=31536000')
     }
     // The 404 page is not cached either.
     expect(notFound.headers()['cache-control']).toBe('no-cache')
