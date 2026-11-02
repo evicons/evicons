@@ -1,0 +1,46 @@
+{
+  "category": "power",
+  "meaning": {
+    "en": "Charging power level: the charging power shown on a scale (kW display, power filter)",
+    "de": "Ladeleistung als Skala: die Ladeleistung auf einer Skala (kW-Anzeige, Leistungsfilter)"
+  },
+  "tags": {
+    "en": [
+      "charging power",
+      "power level",
+      "gauge",
+      "speedometer",
+      "kw",
+      "power filter",
+      "charging speed"
+    ],
+    "de": [
+      "ladeleistung",
+      "leistung",
+      "tacho",
+      "anzeige",
+      "kw",
+      "leistungsfilter",
+      "ladegeschwindigkeit"
+    ],
+    "fr": [
+      "puissance de recharge",
+      "niveau de puissance",
+      "jauge",
+      "compteur",
+      "kw",
+      "vitesse de recharge"
+    ]
+  },
+  "since": "0.3.0",
+  "aliases": [],
+  "exceptions": [
+    "solid-sign",
+    "sharp-corner"
+  ],
+  "provenance": {
+    "createdBy": "ai",
+    "approvedBy": null,
+    "approvedOn": null
+  }
+}

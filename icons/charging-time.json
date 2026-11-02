@@ -1,0 +1,46 @@
+{
+  "category": "power",
+  "meaning": {
+    "en": "Charging time: how long a charging session takes, or a time-based tariff or blocking fee",
+    "de": "Ladedauer: wie lange ein Ladevorgang dauert, oder ein Zeittarif bzw. eine Blockiergebühr"
+  },
+  "tags": {
+    "en": [
+      "charging time",
+      "charging duration",
+      "time",
+      "clock",
+      "time-based tariff",
+      "blocking fee",
+      "idle fee"
+    ],
+    "de": [
+      "ladedauer",
+      "ladezeit",
+      "zeit",
+      "uhr",
+      "zeittarif",
+      "blockiergebühr",
+      "standgebühr"
+    ],
+    "fr": [
+      "durée de recharge",
+      "temps de recharge",
+      "temps",
+      "horloge",
+      "tarif horaire",
+      "frais d'occupation"
+    ]
+  },
+  "since": "0.3.0",
+  "aliases": [],
+  "exceptions": [
+    "solid-sign",
+    "sharp-corner"
+  ],
+  "provenance": {
+    "createdBy": "ai",
+    "approvedBy": null,
+    "approvedOn": null
+  }
+}

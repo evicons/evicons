@@ -1,0 +1,45 @@
+{
+  "category": "vehicle",
+  "meaning": {
+    "en": "Route to the charger: navigation to a charging point",
+    "de": "Route zur Ladesäule: Navigation zu einem Ladepunkt"
+  },
+  "tags": {
+    "en": [
+      "route",
+      "navigation",
+      "directions",
+      "route to charger",
+      "navigate",
+      "trip",
+      "charging stop"
+    ],
+    "de": [
+      "route",
+      "navigation",
+      "wegbeschreibung",
+      "route zur ladesäule",
+      "hinbringen",
+      "fahrt",
+      "ladestopp"
+    ],
+    "fr": [
+      "itinéraire",
+      "navigation",
+      "trajet",
+      "itinéraire vers la borne",
+      "arrêt de recharge"
+    ]
+  },
+  "since": "0.3.0",
+  "aliases": [],
+  "exceptions": [
+    "solid-sign",
+    "sharp-corner"
+  ],
+  "provenance": {
+    "createdBy": "ai",
+    "approvedBy": null,
+    "approvedOn": null
+  }
+}

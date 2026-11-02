@@ -1,0 +1,42 @@
+{
+  "category": "energy",
+  "meaning": {
+    "en": "Charging session in progress: the vehicle is charging right now (live session)",
+    "de": "Ladevorgang läuft: das Fahrzeug lädt gerade (laufende Sitzung)"
+  },
+  "tags": {
+    "en": [
+      "charging session",
+      "charging in progress",
+      "live session",
+      "active charging",
+      "charging",
+      "cycle"
+    ],
+    "de": [
+      "ladevorgang",
+      "ladevorgang läuft",
+      "laufende sitzung",
+      "lädt",
+      "laden",
+      "live"
+    ],
+    "fr": [
+      "session de recharge",
+      "recharge en cours",
+      "session active",
+      "recharge",
+      "en direct"
+    ]
+  },
+  "since": "0.3.0",
+  "aliases": [],
+  "exceptions": [
+    "sharp-corner"
+  ],
+  "provenance": {
+    "createdBy": "ai",
+    "approvedBy": null,
+    "approvedOn": null
+  }
+}

@@ -505,6 +505,96 @@
     },
     "pascal": "ChargingPlug"
   },
+  "charging-power-level": {
+    "category": "power",
+    "meaning": {
+      "en": "Charging power level: the charging power shown on a scale (kW display, power filter)",
+      "de": "Ladeleistung als Skala: die Ladeleistung auf einer Skala (kW-Anzeige, Leistungsfilter)"
+    },
+    "tags": {
+      "en": [
+        "charging power",
+        "power level",
+        "gauge",
+        "speedometer",
+        "kw",
+        "power filter",
+        "charging speed"
+      ],
+      "de": [
+        "ladeleistung",
+        "leistung",
+        "tacho",
+        "anzeige",
+        "kw",
+        "leistungsfilter",
+        "ladegeschwindigkeit"
+      ],
+      "fr": [
+        "puissance de recharge",
+        "niveau de puissance",
+        "jauge",
+        "compteur",
+        "kw",
+        "vitesse de recharge"
+      ]
+    },
+    "since": "0.3.0",
+    "aliases": [],
+    "exceptions": [
+      "solid-sign",
+      "sharp-corner"
+    ],
+    "provenance": {
+      "createdBy": "ai",
+      "approvedBy": null,
+      "approvedOn": null
+    },
+    "pascal": "ChargingPowerLevel"
+  },
+  "charging-session": {
+    "category": "energy",
+    "meaning": {
+      "en": "Charging session in progress: the vehicle is charging right now (live session)",
+      "de": "Ladevorgang läuft: das Fahrzeug lädt gerade (laufende Sitzung)"
+    },
+    "tags": {
+      "en": [
+        "charging session",
+        "charging in progress",
+        "live session",
+        "active charging",
+        "charging",
+        "cycle"
+      ],
+      "de": [
+        "ladevorgang",
+        "ladevorgang läuft",
+        "laufende sitzung",
+        "lädt",
+        "laden",
+        "live"
+      ],
+      "fr": [
+        "session de recharge",
+        "recharge en cours",
+        "session active",
+        "recharge",
+        "en direct"
+      ]
+    },
+    "since": "0.3.0",
+    "aliases": [],
+    "exceptions": [
+      "sharp-corner"
+    ],
+    "provenance": {
+      "createdBy": "ai",
+      "approvedBy": null,
+      "approvedOn": null
+    },
+    "pascal": "ChargingSession"
+  },
   "charging-station": {
     "category": "station",
     "meaning": {
@@ -586,6 +676,53 @@
       "approvedOn": "2026-11-01"
     },
     "pascal": "ChargingTariff"
+  },
+  "charging-time": {
+    "category": "power",
+    "meaning": {
+      "en": "Charging time: how long a charging session takes, or a time-based tariff or blocking fee",
+      "de": "Ladedauer: wie lange ein Ladevorgang dauert, oder ein Zeittarif bzw. eine Blockiergebühr"
+    },
+    "tags": {
+      "en": [
+        "charging time",
+        "charging duration",
+        "time",
+        "clock",
+        "time-based tariff",
+        "blocking fee",
+        "idle fee"
+      ],
+      "de": [
+        "ladedauer",
+        "ladezeit",
+        "zeit",
+        "uhr",
+        "zeittarif",
+        "blockiergebühr",
+        "standgebühr"
+      ],
+      "fr": [
+        "durée de recharge",
+        "temps de recharge",
+        "temps",
+        "horloge",
+        "tarif horaire",
+        "frais d'occupation"
+      ]
+    },
+    "since": "0.3.0",
+    "aliases": [],
+    "exceptions": [
+      "solid-sign",
+      "sharp-corner"
+    ],
+    "provenance": {
+      "createdBy": "ai",
+      "approvedBy": null,
+      "approvedOn": null
+    },
+    "pascal": "ChargingTime"
   },
   "current-ac": {
     "category": "power",
@@ -1676,6 +1813,52 @@
       "approvedOn": "2026-11-01"
     },
     "pascal": "Roaming"
+  },
+  "route-to-charger": {
+    "category": "vehicle",
+    "meaning": {
+      "en": "Route to the charger: navigation to a charging point",
+      "de": "Route zur Ladesäule: Navigation zu einem Ladepunkt"
+    },
+    "tags": {
+      "en": [
+        "route",
+        "navigation",
+        "directions",
+        "route to charger",
+        "navigate",
+        "trip",
+        "charging stop"
+      ],
+      "de": [
+        "route",
+        "navigation",
+        "wegbeschreibung",
+        "route zur ladesäule",
+        "hinbringen",
+        "fahrt",
+        "ladestopp"
+      ],
+      "fr": [
+        "itinéraire",
+        "navigation",
+        "trajet",
+        "itinéraire vers la borne",
+        "arrêt de recharge"
+      ]
+    },
+    "since": "0.3.0",
+    "aliases": [],
+    "exceptions": [
+      "solid-sign",
+      "sharp-corner"
+    ],
+    "provenance": {
+      "createdBy": "ai",
+      "approvedBy": null,
+      "approvedOn": null
+    },
+    "pascal": "RouteToCharger"
   },
   "solar-charging": {
     "category": "energy",
