@@ -1,0 +1,48 @@
+{
+  "category": "connector",
+  "meaning": {
+    "en": "Type 1 AC connector (SAE J1772, IEC 62196-2 Type 1; North America, Japan), shown as the vehicle inlet face",
+    "de": "Typ-1-AC-Stecker (SAE J1772, IEC 62196-2 Typ 1; Nordamerika, Japan), dargestellt als Fahrzeug-Ladebuchse in Draufsicht"
+  },
+  "tags": {
+    "en": [
+      "type 1",
+      "j1772",
+      "sae j1772",
+      "iec 62196-2",
+      "yazaki",
+      "ac connector",
+      "plug",
+      "inlet"
+    ],
+    "de": [
+      "typ 1",
+      "j1772",
+      "sae j1772",
+      "iec 62196-2",
+      "yazaki",
+      "ac-stecker",
+      "stecker",
+      "ladebuchse"
+    ],
+    "fr": [
+      "type 1",
+      "j1772",
+      "sae j1772",
+      "iec 62196-2",
+      "connecteur ac",
+      "prise type 1"
+    ]
+  },
+  "since": "0.3.0",
+  "aliases": [],
+  "standard": {
+    "norm": "SAE J1772 / IEC 62196-2 Type 1",
+    "source": "SAE J1772 and IEC 62196-2 themselves not consulted. Layout checked against three public drawings on Wikimedia Commons, retrieved 2026-11-02: \"File:J1772 connector.svg\" by Mliu92 (CC BY-SA 4.0; \"view facing the plug end\", i.e. the face of the cable connector, drawn approximately to scale, 10 px = 1 mm: round face, L1 and N large at the top left and right, PP and CP small at the lower left and right, PE large at the bottom centre; relative to the face radius R the contacts sit at (±0.38, −0.33) R, (±0.52, +0.27) R and (0, +0.52) R), https://commons.wikimedia.org/wiki/File:J1772_connector.svg; \"File:SAE J1772 Type 1.png\" (Schneider Electric, CC BY 3.0; connector face with latch at the top, same arrangement: two large contacts at the top, two small ones at the sides, one large at the bottom centre), https://commons.wikimedia.org/wiki/File:SAE_J1772_Type_1.png; and \"File:Type1 J1772.svg\" by GreatDrok (CC BY-SA 4.0; unlabelled, same arrangement), https://commons.wikimedia.org/wiki/File:Type1_J1772.svg. The drawings show the connector face; the icon shows the vehicle inlet seen from the front, which is its mirror image (N top left, L1 top right, CP lower left, PP lower right). Because L1 and N have the same size, and PP and CP too, the mirrored face looks the same. Contact positions are the Mliu92 positions scaled to R 9. Drawn: the face outline (latch and keying tab omitted, too fine), L1, N and PE as rings r 1.5, PP and CP as dots (the drawing's 4.5 mm signal pins against 6 mm power pins; plain dots keep the two sizes apart at 16 px)."
+  },
+  "provenance": {
+    "createdBy": "ai",
+    "approvedBy": null,
+    "approvedOn": null
+  }
+}

@@ -77,6 +77,21 @@ The Type 2 part reuses the Type 2 construction above, scaled so that the Type 2 
 - Signal contacts: dots (zero-length paths) at `(10.25, 6.875)`, `(13.75, 6.875)`, `(10.25, 17.125)`, `(13.75, 17.125)`. The two signal bosses sit 0.57 R above and below the centre; of their four contacts each, only the horizontal pair at ±1.75 from the boss centre is drawn (upper: N/C, SS1; lower: C-L, C-H). The centre stays empty.
 - Smallest gaps (centre lines minus radii): DC ring to outline 3.25, signal pair 3.5 apart, signal dot to outline 3.58, signal dot to DC ring 4.2.
 
+### Type 1 reference geometry (from `plug-type-1`)
+
+- Outline: circle `C = (12, 12)`, `R = 9` (as CHAdeMO), no flat edge; the latch and the keying tab are omitted (too fine).
+- Contact positions from the public drawing "File:J1772 connector.svg" (Mliu92, to scale), scaled to R 9 and mirrored from the connector face to the inlet. Because the contacts of each pair have the same size, the mirror image looks the same.
+- L1 and N: rings `r = 1.5` at `(15.4, 9.05)` and `(8.6, 9.05)` (inlet: N top left, L1 top right), (±0.38, −0.33) R from the centre.
+- PE: ring `r = 1.5` at `(12, 16.7)`, 0.52 R below the centre.
+- CP and PP: dots (zero-length paths) at `(7.35, 14.45)` and `(16.65, 14.45)` (inlet: CP lower left, PP lower right), (±0.52, +0.27) R. Dots, not small rings, so that the two contact sizes stay apart at 16 px.
+- Smallest gaps (centre lines minus radii): PE ring to outline 2.8, L1/N ring to outline 3.0, signal dot to PE ring 3.67, L1 to N 3.8, signal dot to outline 3.74, signal dot to L1/N ring 4.04.
+
+### GB/T reference geometry (from `plug-gbt`)
+
+- GB/T 20234.2 AC has the Type 2 face: both public drawings (Mliu92 "File:GBT 20234 (AC).svg", the connector face, drawn with the same geometry as the same author's Type 2 drawing; Amphenol catalogue "Insert arrangement", the vehicle inlet) show a round outline with the flat side on top and the 2-3-2 rows of Type 2. Only the labels differ: inlet top row CP, CC; middle row N, PE, L1; bottom row L3, L2.
+- The icon therefore uses the Type 2 reference geometry above unchanged (outline, pitch 5.3, rows, signal r 1.0, power r 1.25) and looks exactly like `plug-type-2`. The e-lock above the flat side is hidden behind the housing (dashed in the inlet drawing) and is not drawn. The app must show the text "GB/T" next to the icon.
+- Smallest gaps: as Type 2 (signal contact to flat edge 2.29, signal to power contact 2.31, power contact to outline 2.44).
+
 ### Schuko reference geometry (from `plug-schuko`)
 
 Socket face seen from the front (exception above).
