@@ -1,5 +1,5 @@
 ---
-import LogoMark from '../../../brand/logo-mark.svg'
+import Logo from '../../../brand/logo.svg'
 import ThemeToggle from './ThemeToggle'
 
 const nav = [
@@ -13,11 +13,11 @@ const path = Astro.url.pathname.replace(/\/$/, '')
 
 <header class="border-b border-border">
   <div class="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-x-6 gap-y-2 px-4 py-3 sm:px-6">
-    <a href="/" class="-ml-1 flex items-center gap-1.5 text-xl leading-none tracking-[-0.01em] text-fg no-underline">
-      <LogoMark width={30} height={30} class="shrink-0 text-link" aria-hidden="true" />
-      <span><span class="font-semibold">EV</span>icons</span>
+    <!-- min-h-8 on the nav: the theme toggle (32 px) sets the row height before it hydrates, so the row never grows. -->
+    <a href="/" class="flex items-center py-1 text-fg no-underline" aria-label="EVicons">
+      <Logo width={140} height={24} class="h-6 w-auto shrink-0" aria-hidden="true" />
     </a>
-    <nav aria-label="Main" class="flex flex-wrap items-center gap-x-5 gap-y-1 text-sm">
+    <nav aria-label="Main" class="flex min-h-8 flex-wrap items-center gap-x-5 gap-y-1 text-sm">
       {
         nav.map((item) => (
           <a

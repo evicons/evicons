@@ -4,21 +4,21 @@ import Logo from '../../../brand/logo.svg'
 import Base from '../layouts/Base.astro'
 
 const downloads = [
-  { href: '/brand/logo.svg', label: 'Lockup', format: 'SVG', note: 'currentColor, no font needed' },
-  { href: '/brand/logo-mark.svg', label: 'Mark', format: 'SVG', note: '24 × 24, currentColor' },
+  { href: '/brand/logo.svg', label: 'Lockup', format: 'SVG', note: 'EV blue mark, text in currentColor' },
+  { href: '/brand/logo-mark.svg', label: 'Mark', format: 'SVG', note: 'EV blue, square' },
   { href: '/brand/logo-on-light.png', label: 'Lockup for light backgrounds', format: 'PNG', note: '1600 px, transparent' },
   { href: '/brand/logo-on-dark.png', label: 'Lockup for dark backgrounds', format: 'PNG', note: '1600 px, transparent' },
 ]
 
 const rules = [
-  ['Clear space', 'Keep free space around the logo at least as large as the height of the bolt in the mark.'],
+  ['Clear space', 'Keep free space around the logo at least as large as the plug in the mark.'],
   ['Minimum size', 'Mark 16 px, lockup 120 px wide.'],
   [
     'Colour',
-    'Use the logo in one colour: currentColor (the text colour around it) or EV blue #2563eb. Do not recolour parts of it or use other colours.',
+    'The mark is EV blue #2563eb, the word "evicons" takes the text colour around it (currentColor) and ".dev" the same colour at 65 % opacity. On a single-colour background where blue does not work, the whole logo may be one colour. Do not use other colours.',
   ],
   ['Do not distort', 'Scale it only proportionally. Do not stretch, slant, rotate or rearrange the mark and the wordmark.'],
-  ['No effects', 'No shadows, outlines, gradients, glows or backgrounds behind the strokes.'],
+  ['No effects', 'No shadows, outlines, gradients or glows.'],
 ]
 
 const colours = [
@@ -42,8 +42,9 @@ const dark = 'bg-zinc-900 text-zinc-100'
   <div class="mx-auto max-w-6xl px-4 py-16 sm:px-6">
     <h1 class="text-3xl">Brand</h1>
     <p class="mt-4 max-w-2xl text-muted">
-      The EVicons mark is the outline of a Type 2 vehicle inlet with a charging bolt, drawn on the icon grid with the
-      icon stroke. Like the icons, the logo files use <code class="font-mono text-sm">currentColor</code>.
+      The EVicons mark is a lowercase e drawn as a charging cable that ends in a plug. The mark is EV blue; the
+      wordmark takes the text colour around it (<code class="font-mono text-sm">currentColor</code>), so the same
+      file works on light and dark backgrounds.
     </p>
 
     <section aria-labelledby="logo" class="mt-12">
@@ -131,7 +132,7 @@ const dark = 'bg-zinc-900 text-zinc-100'
       <h2 id="name" class="text-2xl">Name</h2>
       <p class="mt-3 max-w-2xl text-muted">
         Write the name as <strong class="font-semibold text-fg">EVicons</strong>: capital E and V, lowercase “icons”, one
-        word. Not “EV Icons”, “EV-icons”, “Evicons” or “evicons”; the lowercase form is only used in the domain
+        word. Not “EV Icons”, “EV-icons”, “Evicons” or “evicons”; the lowercase form is only used in the logo, the domain
         evicons.dev and the npm scope <code class="font-mono text-sm">@evicons</code>.
       </p>
     </section>
