@@ -1,0 +1,17 @@
+---
+import IconPage from '../../components/IconPage.astro'
+import { loadIconDetails, loadIcons } from '../../lib/icons'
+
+export function getStaticPaths() {
+  const icons = loadIcons()
+  const details = loadIconDetails()
+  return icons.map((icon) => ({
+    params: { name: icon.name },
+    props: { icon, details: details[icon.name]!, siblings: icons.filter((other) => other.category === icon.category) },
+  }))
+}
+
+const { icon, details, siblings } = Astro.props
+---
+
+<IconPage icon={icon} details={details} siblings={siblings} lang="en" />

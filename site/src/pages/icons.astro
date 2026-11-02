@@ -1,7 +1,8 @@
 ---
 import Gallery from '../components/gallery/Gallery'
 import Base from '../layouts/Base.astro'
-import { loadIcons } from '../lib/icons'
+import { categoryLabels, iconTitles } from '../data/icon-titles'
+import { categoryOrder, loadIcons } from '../lib/icons'
 
 const icons = loadIcons()
 ---
@@ -18,6 +19,30 @@ const icons = loadIcons()
     </p>
     <div class="mt-8">
       <Gallery client:load icons={icons} />
+    </div>
+  </section>
+  <section aria-labelledby="icon-pages" class="mx-auto max-w-6xl border-t border-border px-4 py-10 sm:px-6">
+    <h2 id="icon-pages" class="text-xl">Icon pages</h2>
+    <p class="mt-2 max-w-2xl text-sm text-muted">
+      Every icon also has its own page with its meaning, standard, code and SVG download.
+    </p>
+    <div class="mt-6 grid gap-x-8 gap-y-6 sm:grid-cols-2 lg:grid-cols-4">
+      {
+        categoryOrder.map((category) => (
+          <div>
+            <h3 class="text-sm font-medium">{categoryLabels[category].en}</h3>
+            <ul class="mt-2 space-y-1 text-sm">
+              {icons
+                .filter((icon) => icon.category === category)
+                .map((icon) => (
+                  <li>
+                    <a href={`/icons/${icon.name}`}>{iconTitles[icon.name]!.en}</a>
+                  </li>
+                ))}
+            </ul>
+          </div>
+        ))
+      }
     </div>
   </section>
 </Base>

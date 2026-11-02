@@ -15,7 +15,11 @@ export default defineConfig({
     react(),
     mdx(),
     // sitemap-index.xml + sitemap-0.xml; the OG render template and the error page are not pages to index.
-    sitemap({ filter: (page) => !/\/(og|404)\/?$/.test(new URL(page).pathname) }),
+    // i18n: /de/... pages are paired with the page without the prefix (hreflang links in the sitemap).
+    sitemap({
+      filter: (page) => !/\/(og|404)\/?$/.test(new URL(page).pathname),
+      i18n: { defaultLocale: 'en', locales: { en: 'en', de: 'de' } },
+    }),
   ],
   markdown: {
     // Code blocks in the docs and the changelog: light and dark theme, switched by data-theme (global.css).

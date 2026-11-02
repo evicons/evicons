@@ -1,10 +1,15 @@
 ---
+interface Props {
+  lang?: 'en' | 'de'
+}
+const { lang = 'en' } = Astro.props
+const de = lang === 'de'
 const links = [
   { href: 'https://github.com/evicons/evicons', label: 'GitHub' },
   { href: 'https://www.npmjs.com/package/@evicons/react', label: 'npm' },
   { href: '/changelog', label: 'Changelog' },
-  { href: '/imprint', label: 'Imprint' },
-  { href: '/privacy', label: 'Privacy' },
+  { href: '/imprint', label: de ? 'Impressum' : 'Imprint' },
+  { href: '/privacy', label: de ? 'Datenschutz' : 'Privacy' },
 ]
 ---
 
@@ -12,7 +17,7 @@ const links = [
   <div
     class="mx-auto flex max-w-6xl flex-col gap-3 px-4 py-6 text-sm text-muted sm:flex-row sm:items-center sm:justify-between sm:px-6"
   >
-    <p>MIT licence · © 2026 Landolsi Digital</p>
+    <p>{de ? 'MIT-Lizenz' : 'MIT licence'} · © 2026 Landolsi Digital</p>
     <nav aria-label="Footer" class="flex flex-wrap gap-x-5 gap-y-1">
       {
         links.map((link) => (

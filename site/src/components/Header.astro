@@ -8,6 +8,11 @@ const nav = [
   { href: '/map', label: 'Map' },
   { href: '/brand', label: 'Brand' },
 ]
+interface Props {
+  /** Link to the same page in the other language, when there is one. */
+  switchTo?: { href: string; label: string; lang: 'en' | 'de' }
+}
+const { switchTo } = Astro.props
 const path = Astro.url.pathname.replace(/\/$/, '')
 ---
 
@@ -17,7 +22,7 @@ const path = Astro.url.pathname.replace(/\/$/, '')
     <a href="/" class="flex items-center py-1 text-fg no-underline" aria-label="EVicons">
       <Logo width={140} height={24} class="h-6 w-auto shrink-0" aria-hidden="true" />
     </a>
-    <nav aria-label="Main" class="flex min-h-8 flex-wrap items-center gap-x-5 gap-y-1 text-sm">
+    <nav aria-label="Main" class="flex min-h-8 flex-wrap items-center gap-x-4 gap-y-1 text-sm sm:gap-x-5">
       {
         nav.map((item) => (
           <a
@@ -30,6 +35,20 @@ const path = Astro.url.pathname.replace(/\/$/, '')
         ))
       }
       <a href="https://github.com/evicons/evicons" class="text-muted no-underline hover:text-fg">GitHub</a>
+      {
+        switchTo && (
+          <a
+            href={switchTo.href}
+            hreflang={switchTo.lang}
+            lang={switchTo.lang}
+            title={switchTo.label}
+            aria-label={`${switchTo.lang.toUpperCase()}, ${switchTo.label}`}
+            class="text-muted no-underline hover:text-fg"
+          >
+            {switchTo.lang.toUpperCase()}
+          </a>
+        )
+      }
       <ThemeToggle client:load />
     </nav>
   </div>

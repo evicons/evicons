@@ -1,15 +1,23 @@
-// Copies the logo files from brand/ into site/public/brand/ before `astro dev` and `astro build`,
-// so /brand/logo.svg etc. are served as real files (no symlinks in the repository).
-// site/public/brand/ is generated and git-ignored; brand/ is the source.
-import { copyFile, mkdir, readdir } from 'node:fs/promises'
+// Copies static files into site/public/ before `astro dev` and `astro build` (no symlinks in the repository):
+//   brand/*.svg|png                 -> site/public/brand/   (/brand/logo.svg etc.)
+//   @evicons/svg svg/*.svg           -> site/public/svg/     (/svg/<name>.svg: icon pages, image search, downloads)
+// Both targets are generated and git-ignored; brand/ and the package are the sources.
+import { copyFile, mkdir, readdir, rm } from 'node:fs/promises'
+import { createRequire } from 'node:module'
+import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
-const from = fileURLToPath(new URL('../../brand/', import.meta.url))
-const to = fileURLToPath(new URL('../public/brand/', import.meta.url))
+async function copyAll(from, to, pattern, what) {
+  const files = (await readdir(from)).filter((name) => pattern.test(name))
+  if (files.length === 0) throw new Error(`No ${what} in ${from}`)
+  // Start empty, so a renamed or removed file does not linger.
+  await rm(to, { recursive: true, force: true })
+  await mkdir(to, { recursive: true })
+  for (const name of files) await copyFile(join(from, name), join(to, name))
+  console.log(`copy-brand: ${files.length} ${what} to ${to.replace(/.*\/site\//, 'site/')}`)
+}
 
-const files = (await readdir(from)).filter((name) => /\.(svg|png)$/.test(name))
-if (files.length === 0) throw new Error(`No logo files in ${from}`)
-
-await mkdir(to, { recursive: true })
-for (const name of files) await copyFile(from + name, to + name)
-console.log(`copy-brand: ${files.length} files to site/public/brand/`)
+const brand = fileURLToPath(new URL('../../brand/', import.meta.url))
+const svgPackage = dirname(createRequire(import.meta.url).resolve('@evicons/svg/package.json'))
+await copyAll(brand, fileURLToPath(new URL('../public/brand/', import.meta.url)), /\.(svg|png)$/, 'logo files')
+await copyAll(join(svgPackage, 'svg'), fileURLToPath(new URL('../public/svg/', import.meta.url)), /\.svg$/, 'icon SVGs')

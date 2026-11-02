@@ -14,9 +14,15 @@ interface Props {
   ogImageAlt?: string
   /** Error pages: no canonical/og:url, not indexed. */
   noindex?: boolean
+  lang?: 'en' | 'de'
+  /** The same page in both languages (paths): hreflang links and the language switch in the header. */
+  alternates?: { en: string; de: string }
+  /** Page-specific structured data, added after the site-wide SoftwareSourceCode entry. */
+  jsonLd?: Record<string, unknown>[]
 }
 
-const { title, description, ogImage, ogImageAlt, noindex = false } = Astro.props
+const { title, description, ogImage, ogImageAlt, noindex = false, lang = 'en', alternates, jsonLd: pageJsonLd = [] } =
+  Astro.props
 // One URL form everywhere: no trailing slash (except the root).
 const path = Astro.url.pathname.length > 1 ? Astro.url.pathname.replace(/\/+$/, '') : '/'
 const canonical = new URL(path, Astro.site)
@@ -24,21 +30,36 @@ const canonical = new URL(path, Astro.site)
 const image = new URL(ogImage ?? '/og.png', Astro.site).href
 const imageAlt = ogImageAlt ?? (ogImage ? title : 'EVicons: outline icons for EV charging')
 // Structured data for search engines: the project as open-source code.
-const jsonLd = JSON.stringify({
-  '@context': 'https://schema.org',
-  '@type': 'SoftwareSourceCode',
-  name: 'EVicons',
-  description: 'Open-source outline icons for EV charging: connectors, charging status, map markers.',
-  url: new URL('/', Astro.site).href,
-  codeRepository: 'https://github.com/evicons/evicons',
-  programmingLanguage: 'TypeScript',
-  license: 'https://opensource.org/license/mit',
-  publisher: { '@type': 'Organization', name: 'Landolsi Digital', url: 'https://landolsi.de' },
-})
+const jsonLd = JSON.stringify([
+  {
+    '@context': 'https://schema.org',
+    '@type': 'SoftwareSourceCode',
+    name: 'EVicons',
+    description: 'Open-source outline icons for EV charging: connectors, charging status, map markers.',
+    url: new URL('/', Astro.site).href,
+    codeRepository: 'https://github.com/evicons/evicons',
+    programmingLanguage: 'TypeScript',
+    license: 'https://opensource.org/license/mit',
+    publisher: { '@type': 'Organization', name: 'Landolsi Digital', url: 'https://landolsi.de' },
+  },
+  ...pageJsonLd.map((entry) => ({ '@context': 'https://schema.org', ...entry })),
+])
+const hreflang = alternates
+  ? [
+      { lang: 'en', href: new URL(alternates.en, Astro.site).href },
+      { lang: 'de', href: new URL(alternates.de, Astro.site).href },
+      { lang: 'x-default', href: new URL(alternates.en, Astro.site).href },
+    ]
+  : []
+const switchTo = alternates
+  ? lang === 'en'
+    ? { href: alternates.de, label: 'Deutsch', lang: 'de' as const }
+    : { href: alternates.en, label: 'English', lang: 'en' as const }
+  : undefined
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={lang}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -46,10 +67,12 @@ const jsonLd = JSON.stringify({
     <link rel="preload" href={interLatin} as="font" type="font/woff2" crossorigin />
     <meta name="description" content={description} />
     {noindex ? <meta name="robots" content="noindex" /> : <link rel="canonical" href={canonical.href} />}
+    {!noindex && hreflang.map((alt) => <link rel="alternate" hreflang={alt.lang} href={alt.href} />)}
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <meta property="og:type" content="website" />
+    <meta property="og:locale" content={lang === 'de' ? 'de_DE' : 'en_US'} />
     <meta property="og:site_name" content="EVicons" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
@@ -90,12 +113,12 @@ const jsonLd = JSON.stringify({
     <a
       href="#main"
       class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded focus:bg-accent focus:px-3 focus:py-2 focus:text-accent-fg"
-      >Skip to content</a
+      >{lang === 'de' ? 'Zum Inhalt springen' : 'Skip to content'}</a
     >
-    <Header />
+    <Header switchTo={switchTo} />
     <main id="main" class="flex-1">
       <slot />
     </main>
-    <Footer />
+    <Footer lang={lang} />
   </body>
 </html>

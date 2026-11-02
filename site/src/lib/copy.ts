@@ -17,9 +17,10 @@ export function wireCopyButtons(root: ParentNode = document): void {
       const text = button.dataset.copy ?? button.closest('[data-snippet]')?.querySelector('pre')?.textContent ?? ''
       try {
         await navigator.clipboard.writeText(text)
-        show('Copied', 'Copied to clipboard')
+        show(button.dataset.copied ?? 'Copied', button.dataset.copiedMessage ?? 'Copied to clipboard')
       } catch {
-        show('Copy failed', 'Copy failed')
+        const failed = button.dataset.failed ?? 'Copy failed'
+        show(failed, failed)
       }
       reset = setTimeout(() => show(idle, ''), 2000)
     })

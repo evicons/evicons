@@ -64,3 +64,24 @@ export function loadIcons(): IconEntry[] {
     )
   return cache
 }
+
+export interface IconDetails {
+  meaning: { en: string; de: string }
+  since: string
+  aliases: string[]
+}
+
+/** Extra metadata for the icon pages only (kept out of IconEntry, which the gallery ships to the client). */
+export function loadIconDetails(): Record<string, IconDetails> {
+  const root = dirname(createRequire(import.meta.url).resolve('@evicons/svg/package.json'))
+  const meta = JSON.parse(readFileSync(join(root, 'icons.json'), 'utf8')) as Record<
+    string,
+    { meaning: { en: string; de: string }; since: string; aliases?: string[] }
+  >
+  return Object.fromEntries(
+    Object.entries(meta).map(([name, m]) => [
+      name,
+      { meaning: { en: m.meaning.en, de: m.meaning.de }, since: m.since, aliases: m.aliases ?? [] },
+    ]),
+  )
+}

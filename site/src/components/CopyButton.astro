@@ -6,17 +6,26 @@ interface Props {
   /** Accessible name, for example "Copy install command". */
   label: string
   class?: string
+  /** Language of the visible button text. */
+  lang?: 'en' | 'de'
 }
 
-const { text, label, class: className } = Astro.props
+const { text, label, class: className, lang = 'en' } = Astro.props
+const strings = {
+  en: { idle: 'Copy', copied: 'Copied', copiedMessage: 'Copied to clipboard', failed: 'Copy failed' },
+  de: { idle: 'Kopieren', copied: 'Kopiert', copiedMessage: 'In die Zwischenablage kopiert', failed: 'Kopieren fehlgeschlagen' },
+}[lang]
 ---
 
 <button
   type="button"
   data-copy-button
   data-copy={text}
+  data-copied={strings.copied}
+  data-copied-message={strings.copiedMessage}
+  data-failed={strings.failed}
   class:list={['rounded-md px-2 py-1 text-center text-sm text-muted hover:text-fg', className]}
-  aria-label={label}>Copy</button
+  aria-label={label}>{strings.idle}</button
 >
 <span class="sr-only" role="status" aria-live="polite" data-copy-status></span>
 
