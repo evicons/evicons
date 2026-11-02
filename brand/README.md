@@ -13,7 +13,7 @@ The favicons and the social image of evicons.dev are in `site/public/` and are r
 
 ## The mark
 
-The mark is a lowercase e drawn as a charging cable that ends in a plug. It is a filled shape in EV blue `#2563eb`. In both SVG files the blue is set as `fill: var(--logo-accent, #2563eb)`, so a page can change it with the CSS variable `--logo-accent`; without it the files show EV blue.
+The mark is a lowercase e drawn as a charging cable that ends in a plug. It is a filled shape in EV blue `#2563eb`.
 
 The wordmark "evicons" uses `currentColor`; ".dev" uses the same colour at 65 % opacity. The favicon is the mark on its own (EV blue, a lighter blue `#60a5fa` in dark mode).
 
