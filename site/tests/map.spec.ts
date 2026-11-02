@@ -144,9 +144,13 @@ test('blocked tiles: notice instead of a blank map, markers, legend and stations
   const popup = page.locator('.maplibregl-popup')
   await expect(popup).toContainText('Riverside Car Park')
   // The notice sits above the map frame, so it never covers the popup.
-  const notice = (await page.locator('[data-map-notice="offline"]').boundingBox())!
-  const frame = (await page.locator('canvas.maplibregl-canvas').boundingBox())!
-  expect(notice.y + notice.height).toBeLessThanOrEqual(frame.y)
+  // Both boxes in one frame: the station click smooth-scrolls the map into view.
+  const gap = await page.evaluate(() => {
+    const notice = document.querySelector('[data-map-notice="offline"]')!.getBoundingClientRect()
+    const frame = document.querySelector('canvas.maplibregl-canvas')!.getBoundingClientRect()
+    return frame.top - notice.bottom
+  })
+  expect(gap).toBeGreaterThanOrEqual(0)
   // The only console errors are the blocked requests themselves.
   expect(errors.length).toBeGreaterThan(0)
   for (const error of errors) expect(error).toMatch(/Failed to load resource: net::ERR_FAILED/)
