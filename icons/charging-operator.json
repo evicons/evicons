@@ -1,0 +1,44 @@
+{
+  "category": "station",
+  "meaning": {
+    "en": "Charge point operator (CPO): the company that runs a charging point",
+    "de": "Ladepunktbetreiber (CPO): das Unternehmen, das einen Ladepunkt betreibt"
+  },
+  "tags": {
+    "en": [
+      "charge point operator",
+      "cpo",
+      "operator",
+      "company",
+      "building",
+      "charging"
+    ],
+    "de": [
+      "ladepunktbetreiber",
+      "betreiber",
+      "cpo",
+      "unternehmen",
+      "gebäude",
+      "laden"
+    ],
+    "fr": [
+      "opérateur de recharge",
+      "opérateur",
+      "cpo",
+      "entreprise",
+      "bâtiment",
+      "recharge"
+    ]
+  },
+  "since": "0.3.0",
+  "aliases": [],
+  "exceptions": [
+    "solid-sign",
+    "sharp-corner"
+  ],
+  "provenance": {
+    "createdBy": "ai",
+    "approvedBy": null,
+    "approvedOn": null
+  }
+}

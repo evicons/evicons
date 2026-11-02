@@ -422,6 +422,51 @@
     },
     "pascal": "ChargingLog"
   },
+  "charging-operator": {
+    "category": "station",
+    "meaning": {
+      "en": "Charge point operator (CPO): the company that runs a charging point",
+      "de": "Ladepunktbetreiber (CPO): das Unternehmen, das einen Ladepunkt betreibt"
+    },
+    "tags": {
+      "en": [
+        "charge point operator",
+        "cpo",
+        "operator",
+        "company",
+        "building",
+        "charging"
+      ],
+      "de": [
+        "ladepunktbetreiber",
+        "betreiber",
+        "cpo",
+        "unternehmen",
+        "gebäude",
+        "laden"
+      ],
+      "fr": [
+        "opérateur de recharge",
+        "opérateur",
+        "cpo",
+        "entreprise",
+        "bâtiment",
+        "recharge"
+      ]
+    },
+    "since": "0.3.0",
+    "aliases": [],
+    "exceptions": [
+      "solid-sign",
+      "sharp-corner"
+    ],
+    "provenance": {
+      "createdBy": "ai",
+      "approvedBy": null,
+      "approvedOn": null
+    },
+    "pascal": "ChargingOperator"
+  },
   "charging-plug": {
     "category": "station",
     "meaning": {
@@ -617,6 +662,51 @@
       "approvedOn": "2026-11-01"
     },
     "pascal": "CurrentDc"
+  },
+  "destination-charging": {
+    "category": "station",
+    "meaning": {
+      "en": "Destination charging: charging while staying at a hotel, shop or restaurant",
+      "de": "Laden am Ziel: laden während des Aufenthalts im Hotel, beim Einkaufen oder im Restaurant"
+    },
+    "tags": {
+      "en": [
+        "destination charging",
+        "hotel",
+        "overnight charging",
+        "stay",
+        "bed",
+        "charging"
+      ],
+      "de": [
+        "laden am ziel",
+        "zielladen",
+        "hotel",
+        "übernachtung",
+        "bett",
+        "laden"
+      ],
+      "fr": [
+        "recharge à destination",
+        "hôtel",
+        "recharge de nuit",
+        "séjour",
+        "lit",
+        "recharge"
+      ]
+    },
+    "since": "0.3.0",
+    "aliases": [],
+    "exceptions": [
+      "solid-sign",
+      "sharp-corner"
+    ],
+    "provenance": {
+      "createdBy": "ai",
+      "approvedBy": null,
+      "approvedOn": null
+    },
+    "pascal": "DestinationCharging"
   },
   "driving-range": {
     "category": "vehicle",
@@ -1496,6 +1586,51 @@
       "approvedOn": "2026-11-01"
     },
     "pascal": "PowerKw"
+  },
+  "report-fault": {
+    "category": "station",
+    "meaning": {
+      "en": "Report a fault: tell the operator that a charging point has an electrical or technical problem",
+      "de": "Störung melden: dem Betreiber ein elektrisches oder technisches Problem an einem Ladepunkt melden"
+    },
+    "tags": {
+      "en": [
+        "report fault",
+        "report a problem",
+        "fault",
+        "warning",
+        "hazard",
+        "electrical fault"
+      ],
+      "de": [
+        "störung melden",
+        "problem melden",
+        "störung",
+        "warnung",
+        "defekt",
+        "elektrischer fehler"
+      ],
+      "fr": [
+        "signaler une panne",
+        "signaler un problème",
+        "panne",
+        "avertissement",
+        "danger",
+        "défaut électrique"
+      ]
+    },
+    "since": "0.3.0",
+    "aliases": [],
+    "exceptions": [
+      "solid-sign",
+      "sharp-corner"
+    ],
+    "provenance": {
+      "createdBy": "ai",
+      "approvedBy": null,
+      "approvedOn": null
+    },
+    "pascal": "ReportFault"
   },
   "roaming": {
     "category": "payment",

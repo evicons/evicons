@@ -1,0 +1,44 @@
+{
+  "category": "station",
+  "meaning": {
+    "en": "Report a fault: tell the operator that a charging point has an electrical or technical problem",
+    "de": "Störung melden: dem Betreiber ein elektrisches oder technisches Problem an einem Ladepunkt melden"
+  },
+  "tags": {
+    "en": [
+      "report fault",
+      "report a problem",
+      "fault",
+      "warning",
+      "hazard",
+      "electrical fault"
+    ],
+    "de": [
+      "störung melden",
+      "problem melden",
+      "störung",
+      "warnung",
+      "defekt",
+      "elektrischer fehler"
+    ],
+    "fr": [
+      "signaler une panne",
+      "signaler un problème",
+      "panne",
+      "avertissement",
+      "danger",
+      "défaut électrique"
+    ]
+  },
+  "since": "0.3.0",
+  "aliases": [],
+  "exceptions": [
+    "solid-sign",
+    "sharp-corner"
+  ],
+  "provenance": {
+    "createdBy": "ai",
+    "approvedBy": null,
+    "approvedOn": null
+  }
+}

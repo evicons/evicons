@@ -1,0 +1,44 @@
+{
+  "category": "station",
+  "meaning": {
+    "en": "Destination charging: charging while staying at a hotel, shop or restaurant",
+    "de": "Laden am Ziel: laden während des Aufenthalts im Hotel, beim Einkaufen oder im Restaurant"
+  },
+  "tags": {
+    "en": [
+      "destination charging",
+      "hotel",
+      "overnight charging",
+      "stay",
+      "bed",
+      "charging"
+    ],
+    "de": [
+      "laden am ziel",
+      "zielladen",
+      "hotel",
+      "übernachtung",
+      "bett",
+      "laden"
+    ],
+    "fr": [
+      "recharge à destination",
+      "hôtel",
+      "recharge de nuit",
+      "séjour",
+      "lit",
+      "recharge"
+    ]
+  },
+  "since": "0.3.0",
+  "aliases": [],
+  "exceptions": [
+    "solid-sign",
+    "sharp-corner"
+  ],
+  "provenance": {
+    "createdBy": "ai",
+    "approvedBy": null,
+    "approvedOn": null
+  }
+}
