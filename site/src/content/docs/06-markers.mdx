@@ -65,15 +65,15 @@ map.addLayer({
   id: 'charge-points',
   type: 'symbol',
   source: 'charge-points',
-  layout: { 'icon-image': 'ev-marker-charging', 'icon-anchor': 'bottom', 'icon-offset': [0, 32 / 12] },
+  layout: { 'icon-image': 'ev-marker-charging', 'icon-anchor': 'bottom', 'icon-offset': [(32 * 9.5) / 24, (32 * 2.5) / 24] },
 })
 ```
 
-The pin's tip is at y 22 of 24, so with `'icon-anchor': 'bottom'` an offset of `size / 12` px moves the tip onto the point. Use one image per marker and colour. For an outline marker, only set the size and replace the root `stroke="currentColor"` with the colour.
+The pin's corner, which marks the point, is at (2.5, 21.5) of 24, so with `'icon-anchor': 'bottom'` an offset of `[size × 9.5 / 24, size × 2.5 / 24]` px moves the corner onto the point. Use one image per marker and colour. For an outline marker, only set the size and replace the root `stroke="currentColor"` with the colour.
 
 ### Leaflet
 
-Leaflet's `L.divIcon` places HTML on the map, so the inline SVG and the CSS rule above work as they are. Size the SVG to the icon box and anchor the tip, which sits at 22/24 of the height:
+Leaflet's `L.divIcon` places HTML on the map, so the inline SVG and the CSS rule above work as they are. Size the SVG to the icon box and anchor the corner, which sits at 2.5/24 of the width and 21.5/24 of the height:
 
 ```ts
 import L from 'leaflet'
@@ -84,7 +84,7 @@ const icon = L.divIcon({
   html: svg,
   className: 'marker', // replaces Leaflet's default white box; the CSS rule above fills the pin
   iconSize: [size, size],
-  iconAnchor: [size / 2, (size * 22) / 24],
+  iconAnchor: [(size * 2.5) / 24, (size * 21.5) / 24],
 })
 
 L.marker([47.856, 12.128], { icon, title: 'Available' }).addTo(map)

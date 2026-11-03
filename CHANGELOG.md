@@ -18,6 +18,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Changed
 
+- **Map markers have a new pin.** The ten `marker-*` icons are now a circle with one square corner at the lower left (`M2.5 21.5V12a9.5 9.5 0 1 1 9.5 9.5Z`, head centre (12, 12), radius 9.5) instead of a drop with its tip at the bottom centre. The corner marks the point on the map, so anchor it at `(size × 2.5 / 24, size × 21.5 / 24)` instead of the bottom centre (README, "Map markers"). The signs are unchanged and moved down by 2 with the head centre; the element order contract (first `<path>` is the pin) still holds.
 - The idle-fee tags ("idle fee", "blocking fee", "Blockiergebühr", "frais d'occupation" and similar) moved from `charging-time` to the new `idle-fee`; the meaning of `charging-time` is narrowed to the duration of charging and time-based tariffs.
 - Documentation: new sections "Small sizes" and "Right-to-left layouts".
 

@@ -57,17 +57,22 @@ declare global {
 }
 
 /**
- * Offset that puts the tip of a pin of `size` px on the point (anchor `bottom`). In the 24-unit
- * grid the tip is at y 22 and the head is a circle around (12, 10) with radius 7.5.
+ * Offset that puts the corner of a pin of `size` px on the point (anchor `bottom`). In the 24-unit
+ * grid the corner is at (2.5, 21.5) and the head is a circle around (12, 12) with radius 9.5, so
+ * the image moves 9.5 units right and 2.5 units down.
  */
-const pinOffset = (size: number): [number, number] => [0, size / 12]
+const pinOffset = (size: number): [number, number] => [(9.5 * size) / 24, (2.5 * size) / 24]
 
-/** Offset of the AC/DC badge: its tip sits on the pin head, up and to the right (45°). */
+/** Offset of the AC/DC badge: its corner sits on the pin head, up and to the right (45°). */
 function badgeOffset(pin: number): [number, number] {
   const s = pin / 24
-  const r = 7.5 * s + 0.75 * s // head radius plus half the stroke
-  return [r * Math.SQRT1_2, -12 * s - r * Math.SQRT1_2 + BADGE / 12]
+  const r = 9.5 * s + 0.75 * s // head radius plus half the stroke
+  const [bx, by] = pinOffset(BADGE)
+  return [9.5 * s + r * Math.SQRT1_2 + bx, -9.5 * s - r * Math.SQRT1_2 + by]
 }
+
+/** Horizontal distance from the point to the centre of the selected pin's head. */
+const HEAD_X = (9.5 * PIN_SELECTED) / 24
 
 function iconImage(selected: string | null): ExpressionSpecification {
   return [
@@ -84,15 +89,15 @@ function iconOffset(selected: string | null, pin: (size: number) => [number, num
 
 /** Popup offsets per anchor: clear of the selected pin, whichever side the popup opens on. */
 const popupOffset: Offset = {
-  center: [0, 0],
-  top: [0, 6],
-  bottom: [0, -(PIN_SELECTED + 2)],
-  left: [PIN_SELECTED / 2, -PIN_SELECTED / 2],
-  right: [-PIN_SELECTED / 2, -PIN_SELECTED / 2],
-  'top-left': [PIN_SELECTED / 4, 0],
-  'top-right': [-PIN_SELECTED / 4, 0],
-  'bottom-left': [PIN_SELECTED / 4, -(PIN_SELECTED + 2)],
-  'bottom-right': [-PIN_SELECTED / 4, -(PIN_SELECTED + 2)],
+  center: [HEAD_X, 0],
+  top: [HEAD_X, 6],
+  bottom: [HEAD_X, -(PIN_SELECTED + 2)],
+  left: [HEAD_X + PIN_SELECTED / 2, -HEAD_X],
+  right: [-PIN_SELECTED / 4, -HEAD_X],
+  'top-left': [HEAD_X + PIN_SELECTED / 4, 6],
+  'top-right': [HEAD_X - PIN_SELECTED / 4, 6],
+  'bottom-left': [HEAD_X + PIN_SELECTED / 4, -(PIN_SELECTED + 2)],
+  'bottom-right': [HEAD_X - PIN_SELECTED / 4, -(PIN_SELECTED + 2)],
 }
 
 function fallbackStyle(background: string): StyleSpecification {
@@ -175,8 +180,8 @@ function testHook(map: MapLibreMap): NonNullable<Window['__evMap']> {
       if (!station) return null
       const point = map.project([station.lng, station.lat])
       const rect = map.getCanvas().getBoundingClientRect()
-      // The head of a 32 px pin is 12/24 of its size above the tip (which sits on the point).
-      return { x: rect.left + point.x, y: rect.top + point.y - (PIN * 12) / 24 }
+      // The head centre of a 32 px pin is 9.5/24 of its size right of and above the corner (which sits on the point).
+      return { x: rect.left + point.x + (PIN * 9.5) / 24, y: rect.top + point.y - (PIN * 9.5) / 24 }
     },
   }
 }

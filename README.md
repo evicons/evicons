@@ -328,11 +328,11 @@ map.addLayer({
   id: 'charge-points',
   type: 'symbol',
   source: 'charge-points',
-  layout: { 'icon-image': 'ev-marker-charging', 'icon-anchor': 'bottom', 'icon-offset': [0, 32 / 12] },
+  layout: { 'icon-image': 'ev-marker-charging', 'icon-anchor': 'bottom', 'icon-offset': [(32 * 9.5) / 24, (32 * 2.5) / 24] },
 })
 ```
 
-The pin's tip is at y 22 of 24, so with `'icon-anchor': 'bottom'` an offset of `size / 12` px moves the tip onto the point. Use one image per marker and colour. For an outline marker, only set the size and replace the root `stroke="currentColor"` with the colour.
+The pin's corner, which marks the point, is at (2.5, 21.5) of 24, so with `'icon-anchor': 'bottom'` an offset of `[size × 9.5 / 24, size × 2.5 / 24]` px moves the corner onto the point. Use one image per marker and colour. For an outline marker, only set the size and replace the root `stroke="currentColor"` with the colour.
 
 ## Compatibility
 
