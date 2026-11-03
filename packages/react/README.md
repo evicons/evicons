@@ -156,7 +156,7 @@ To combine a status with another icon, place a small status icon (half the base 
 | `driving-range` | `DrivingRange` | Range: distance the vehicle can drive on its battery charge |
 | `route-to-charger` | `RouteToCharger` | Route to the charger: navigation to a charging point |
 | `truck-electric` | `TruckElectric` | Electric truck: a battery electric goods vehicle (vehicle class N) |
-| `bus-electric` | `BusElectric` | Electric bus: a battery electric bus or coach (vehicle class M) |
+| `bus-electric` | `BusElectric` | Electric bus: a battery electric bus or coach (vehicle class M2/M3) |
 | `bike-electric` | `BikeElectric` | Electric bike: e-bike, pedelec or electric cargo bike (light electric vehicle) |
 | `plug-in-hybrid` | `PlugInHybrid` | Plug-in hybrid (PHEV): a vehicle that charges from the grid and also runs on fuel |
 

@@ -177,7 +177,7 @@
     "category": "vehicle",
     "meaning": {
       "en": "Electric bike: e-bike, pedelec or electric cargo bike (light electric vehicle)",
-      "de": "E-Bike: Pedelec, E-Bike oder E-Lastenrad (leichtes Elektrofahrzeug)"
+      "de": "E-Bike: Pedelec, S-Pedelec oder E-Lastenrad (leichtes Elektrofahrzeug)"
     },
     "tags": {
       "en": [
@@ -219,8 +219,8 @@
   "bus-electric": {
     "category": "vehicle",
     "meaning": {
-      "en": "Electric bus: a battery electric bus or coach (vehicle class M)",
-      "de": "E-Bus: batterieelektrischer Bus oder Reisebus (Fahrzeugklasse M)"
+      "en": "Electric bus: a battery electric bus or coach (vehicle class M2/M3)",
+      "de": "E-Bus: batterieelektrischer Bus oder Reisebus (Fahrzeugklasse M2/M3)"
     },
     "tags": {
       "en": [
