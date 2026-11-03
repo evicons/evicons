@@ -16,6 +16,7 @@ const out = join(import.meta.dirname, '../../.tmp-tests/docs-snippets')
 /** Props for exported example components that need them. */
 const exampleProps: Record<string, Record<string, unknown>> = {
   StatusLabel: { value: 'queue' },
+  ClusterPin: { count: 12 },
 }
 
 interface Block {

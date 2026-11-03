@@ -232,6 +232,8 @@ The first `<path>` of every `marker-*` icon is the pin, so markers can be drawn 
 
 Use `path:first-of-type`, not `:first-child`: with `title`, the component renders a `<title>` as the first child. For map libraries that draw images (MapLibre `addImage`), see the [recipe in the repository README](https://github.com/evicons/evicons#map-markers).
 
+For a cluster, use `marker-cluster`, the empty pin, and draw the count in its head; for the selected station, draw its own marker larger (40 px instead of 32) and with a white ring, not only in another colour. The repository README shows both, for MapLibre, Leaflet and React, under [Clusters and selection](https://github.com/evicons/evicons#clusters-and-selection).
+
 ## Compatibility
 
 | | Supported |

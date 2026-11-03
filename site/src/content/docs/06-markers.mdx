@@ -5,7 +5,7 @@ title: Map markers
 
 import MarkerDemo from '../../components/docs/MarkerDemo.astro'
 
-The `marker-*` icons are map pins with a sign in the head: `marker-charging` is the plain charge point, the others add AC/DC or a status. Use them at **24, 32 or 40 px**; they are not drawn for 16 px. Like all icons they are outlines in `currentColor`, and they can also be drawn filled: the pin in your colour, the sign in white. The SVG files never contain a colour; filling is done by your CSS or your code.
+The `marker-*` icons are map pins with a sign in the head: `marker-charging` is the plain charge point, the others add AC/DC or a status, and `marker-cluster` leaves the head empty for a count ([Clusters and selection](#clusters-and-selection)). Use them at **24, 32 or 40 px**; they are not drawn for 16 px. Like all icons they are outlines in `currentColor`, and they can also be drawn filled: the pin in your colour, the sign in white. The SVG files never contain a colour; filling is done by your CSS or your code.
 
 <MarkerDemo />
 
@@ -95,3 +95,114 @@ L.marker([47.856, 12.128], { icon, title: 'Available' }).addTo(map)
 ```
 
 See the [map demo](/map) for markers on a real map.
+
+### Clusters and selection
+
+Map libraries group nearby points into clusters, and most apps highlight the station the user has selected. Neither needs its own sign: a cluster is the empty `marker-cluster` pin with the count drawn in its head, and the selected station keeps its own marker, drawn larger and with a ring.
+
+**Clusters.** Fill `marker-cluster` in your cluster colour and draw the count in white, centred in the head. The head centre is at (12, 12) of 24, the centre of the icon box: in a box of `size` px it sits at (size × 12 / 24, size × 12 / 24) from the top-left corner. With the corner anchored on the point, the count is `size × 9.5 / 24` px right of and above the point. Size the pin for the largest count you show: at 13 px bold, the head of a 32 px pin holds two digits, the head of a 40 px pin three characters (`999`, `15k`). Pick a cluster colour with at least 4.5:1 contrast to white (EV blue `#2563eb` has 5.2:1); the count then needs no halo.
+
+In MapLibre, set `cluster: true` on the GeoJSON source. Every cluster gets the properties `point_count` and `point_count_abbreviated` (`1.2k`, `15k`); a symbol layer draws the pin and puts the count on the head centre. `text-offset` is in ems of `text-size`:
+
+```ts
+import type { GeoJSONSource } from 'maplibre-gl'
+
+const size = 32
+const textSize = 13 // about size × 0.42
+const head = (size * 9.5) / 24 // from the point to the head centre, right and up, in px
+
+map.addSource('charge-points', { type: 'geojson', data: chargePoints, cluster: true, clusterRadius: 48 })
+// `clusterSvg` is the text of @evicons/svg/marker-cluster.svg
+await addMarkerImage(map, 'ev-marker-cluster', clusterSvg, '#2563eb')
+
+map.addLayer({
+  id: 'clusters',
+  type: 'symbol',
+  source: 'charge-points',
+  filter: ['has', 'point_count'],
+  layout: {
+    'icon-image': 'ev-marker-cluster',
+    'icon-anchor': 'bottom',
+    'icon-offset': [(size * 9.5) / 24, (size * 2.5) / 24],
+    'icon-allow-overlap': true,
+    'text-field': ['get', 'point_count_abbreviated'],
+    'text-font': ['Noto Sans Bold'], // a bold face that your style's glyphs provide
+    'text-size': textSize,
+    'text-anchor': 'center',
+    'text-offset': [head / textSize, -head / textSize],
+    'text-allow-overlap': true,
+  },
+  paint: { 'text-color': '#fff' },
+})
+
+// A click on a cluster zooms in until it splits.
+map.on('click', 'clusters', async (event) => {
+  const cluster = event.features![0]!
+  const source = map.getSource<GeoJSONSource>('charge-points')!
+  const zoom = await source.getClusterExpansionZoom(cluster.properties.cluster_id)
+  map.easeTo({ center: (cluster.geometry as GeoJSON.Point).coordinates as [number, number], zoom })
+})
+```
+
+Give the layer of single charge points `filter: ['!', ['has', 'point_count']]`, so that it skips the clusters. The count is text, so the style needs `glyphs` that serve the `text-font`; with a style without glyphs, leave the text properties out and show the pin alone.
+
+For HTML markers (Leaflet's `L.divIcon`, a MapLibre `Marker` with an element, or a React component), put the count in a `<span>` over the head. The head centre is the centre of the box, so `left: 50%` and `top: 50%` place it:
+
+```css
+.ev-cluster { position: relative; display: block; width: 32px; height: 32px; color: #2563eb; }
+.ev-cluster svg { display: block; width: 100%; height: 100%; }
+.ev-cluster svg > path:first-of-type { fill: currentColor; }
+.ev-cluster .count { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); font: 700 13px/1 system-ui, sans-serif; color: #fff; }
+```
+
+```ts
+import L from 'leaflet'
+import svg from '@evicons/svg/marker-cluster.svg?raw'
+
+const size = 32
+export function clusterIcon(count: number) {
+  return L.divIcon({
+    html: `<span class="ev-cluster">${svg}<span class="count">${count}</span></span>`,
+    className: '', // no Leaflet box; the wrapper inside carries the class
+    iconSize: [size, size],
+    iconAnchor: [(size * 2.5) / 24, (size * 21.5) / 24],
+  })
+}
+```
+
+With Leaflet.markercluster, return it from `iconCreateFunction: (cluster) => clusterIcon(cluster.getChildCount())`. The class is `ev-cluster`, not `marker-cluster`, because Leaflet.markercluster styles `.marker-cluster` itself. In React:
+
+```tsx
+import { MarkerCluster } from '@evicons/react'
+
+export function ClusterPin({ count }: { count: number }) {
+  return (
+    <span className="ev-cluster">
+      <MarkerCluster size={32} aria-label={`${count} charging points`} />
+      <span className="count" aria-hidden="true">
+        {count}
+      </span>
+    </span>
+  )
+}
+```
+
+**Selection.** There is no "selected" marker: draw the selected station's own marker, so that its status stays visible, and set it apart in ways that do not depend on colour.
+
+- **Larger:** 40 px instead of the 32 px of the other markers. On a map, register a separate 40 px image rather than scaling with `icon-size`, so that it stays sharp, and compute its offsets for 40 px.
+- **A white ring:** it lifts the pin off the map and off its neighbours. In CSS, give the pin a wide white stroke painted under its fill: `stroke-width: 4` leaves 1.25 units of white outside the pin, 2 px at 40 px. A map image cannot be styled, and MapLibre's `icon-halo-*` only applies to SDF icons, so draw the ring into the image: a white copy of the pin, 4 wide, underneath the filled one.
+- **On top:** draw it above the other markers: `symbol-sort-key` in MapLibre (a higher key is drawn later), `zIndexOffset` in Leaflet, `z-index` for HTML markers.
+
+```css
+.marker.is-selected svg > path:first-of-type { stroke: #fff; stroke-width: 4; paint-order: stroke; }
+```
+
+```ts
+// `filled` is the SVG string after the three replacements in addMarkerImage. The root stroke is
+// white by then, so the extra path is the white ring.
+export function withRing(filled: string) {
+  return filled.replace('<path ', '<path d="M2.5 21.5V12a9.5 9.5 0 1 1 9.5 9.5Z" stroke-width="4"/><path ')
+}
+```
+
+Colour alone does not mark a selection: people who cannot tell the colours apart must still see it ([WCAG 1.4.1, Use of Color](https://www.w3.org/WAI/WCAG22/Understanding/use-of-color.html)), and on a status map the colour already means the status. A stronger shade of the marker colour may add to size, ring and order, but not replace them. The [map demo](/map) clusters its stations when you zoom out and draws the selected station this way.
