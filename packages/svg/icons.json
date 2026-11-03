@@ -1138,8 +1138,8 @@
     ],
     "provenance": {
       "createdBy": "ai",
-      "approvedBy": null,
-      "approvedOn": null
+      "approvedBy": "Landolsi Digital",
+      "approvedOn": "2026-11-03"
     },
     "pascal": "FreeCharging"
   },
@@ -1357,8 +1357,8 @@
     ],
     "provenance": {
       "createdBy": "ai",
-      "approvedBy": null,
-      "approvedOn": null
+      "approvedBy": "Landolsi Digital",
+      "approvedOn": "2026-11-03"
     },
     "pascal": "IdleFee"
   },
@@ -1912,8 +1912,8 @@
     "aliases": [],
     "provenance": {
       "createdBy": "ai",
-      "approvedBy": null,
-      "approvedOn": null
+      "approvedBy": "Landolsi Digital",
+      "approvedOn": "2026-11-03"
     },
     "pascal": "PlugAndCharge"
   },
@@ -2359,8 +2359,8 @@
     ],
     "provenance": {
       "createdBy": "ai",
-      "approvedBy": null,
-      "approvedOn": null
+      "approvedBy": "Landolsi Digital",
+      "approvedOn": "2026-11-03"
     },
     "pascal": "QrCharging"
   },
