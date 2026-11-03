@@ -78,9 +78,9 @@ Because this is done by the browser and not computed from `size`, it also works 
 
 ### Small sizes
 
-At 16 px the default stroke is drawn 1 px wide. Keep it at full weight with `absoluteStrokeWidth` and `strokeWidth={1.5}`, or with `strokeWidth={2}` when you do not use `absoluteStrokeWidth`. Next to Lucide icons (stroke 2), set `strokeWidth={2}` so both sets look equally heavy.
+At 16 px the default stroke is drawn 1 px wide. Keep it at full weight with `absoluteStrokeWidth` and `strokeWidth={1.5}`, or with `strokeWidth={2}` when you do not use `absoluteStrokeWidth`. Next to Lucide icons (stroke 2), set `strokeWidth={2}` so both sets look equally heavy. This thickens the stroke relative to the drawing, so tight gaps such as the cut-out around the small bolt may close; check the icon at that size.
 
-Not every icon is readable at 16 px. Use these from 20 px: the connector faces (`plug-*`), the letter icons (`current-ac`, `current-dc`, `power-kw`, `parking-charging`) and `bike-electric`. Use the map markers (`marker-*`) from 24 px.
+Not every icon is readable at 16 px. Use these from 20 px: the connector faces (category `connector`: `plug-type-1`, `plug-type-2`, `plug-ccs1`, `plug-ccs2`, `plug-chademo`, `plug-nacs`, `plug-schuko`), the letter icons (`current-ac`, `current-dc`, `power-kw`, `parking-charging`) and `bike-electric`. Use the map markers (`marker-*`) from 24 px.
 
 ### Accessibility
 
@@ -107,7 +107,7 @@ Do not use an icon as the only carrier of information. At 16 px the contacts of 
 
 ### Right-to-left layouts
 
-EVicons are not mirrored automatically. In a right-to-left layout, mirror the icons that show a direction: `route-to-charger`, `charging-plug`, `charging-cable`, `car-plugged`, `bidirectional-charging` and all vehicles (`car-electric`, `truck-electric`, `bus-electric`, `bike-electric`). Never mirror the letter icons, the connector faces (`plug-*`), `status-out-of-service` or the map markers.
+EVicons are not mirrored automatically. In a right-to-left layout, mirror the icons that show a direction: `route-to-charger`, `charging-plug`, `plug-and-charge`, `charging-cable`, `car-plugged`, `bidirectional-charging` and all vehicles (`car-electric`, `truck-electric`, `bus-electric`, `bike-electric`). Never mirror the letter icons, the connector faces (category `connector`: `plug-type-1`, `plug-type-2`, `plug-ccs1`, `plug-ccs2`, `plug-chademo`, `plug-nacs`, `plug-schuko`), `status-out-of-service` or the map markers.
 
 ```css
 [dir="rtl"] .evicon-mirror { transform: scaleX(-1); }

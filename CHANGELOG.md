@@ -18,7 +18,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Changed
 
-- The tags "idle fee" moved from `charging-time` to the new `idle-fee`; the meaning of `charging-time` is narrowed to the duration of charging and time-based tariffs.
+- The idle-fee tags ("idle fee", "blocking fee", "Blockiergebühr", "frais d'occupation" and similar) moved from `charging-time` to the new `idle-fee`; the meaning of `charging-time` is narrowed to the duration of charging and time-based tariffs.
 - Documentation: new sections "Small sizes" and "Right-to-left layouts".
 
 ## [0.3.0] - 2026-11-02
