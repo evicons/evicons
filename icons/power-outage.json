@@ -1,0 +1,42 @@
+{
+  "category": "energy",
+  "meaning": {
+    "en": "Power outage: no grid power at the site, the charging point has no electricity",
+    "de": "Stromausfall: kein Netzstrom am Standort, der Ladepunkt ist ohne Strom"
+  },
+  "tags": {
+    "en": [
+      "power outage",
+      "blackout",
+      "no power",
+      "grid failure",
+      "outage",
+      "power cut"
+    ],
+    "de": [
+      "stromausfall",
+      "kein strom",
+      "netzausfall",
+      "netzstörung",
+      "stromlos",
+      "blackout"
+    ],
+    "fr": [
+      "coupure de courant",
+      "panne de courant",
+      "panne réseau",
+      "pas de courant",
+      "délestage"
+    ]
+  },
+  "since": "0.5.0",
+  "aliases": [],
+  "exceptions": [
+    "sharp-corner"
+  ],
+  "provenance": {
+    "createdBy": "ai",
+    "approvedBy": null,
+    "approvedOn": null
+  }
+}

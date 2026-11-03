@@ -1,0 +1,40 @@
+{
+  "category": "station",
+  "meaning": {
+    "en": "Charging socket: the charging point has a socket outlet, bring your own cable (no tethered cable)",
+    "de": "Ladepunkt mit Steckdose: Kabel mitbringen (kein fest angeschlagenes Kabel)"
+  },
+  "tags": {
+    "en": [
+      "charging socket",
+      "socket outlet",
+      "bring your own cable",
+      "untethered",
+      "type 2 socket",
+      "outlet"
+    ],
+    "de": [
+      "ladesteckdose",
+      "steckdose",
+      "kabel mitbringen",
+      "ohne kabel",
+      "typ-2-steckdose",
+      "buchse"
+    ],
+    "fr": [
+      "prise de recharge",
+      "prise",
+      "apportez votre câble",
+      "sans câble attaché",
+      "prise type 2"
+    ]
+  },
+  "since": "0.5.0",
+  "aliases": [],
+  "exceptions": [],
+  "provenance": {
+    "createdBy": "ai",
+    "approvedBy": null,
+    "approvedOn": null
+  }
+}

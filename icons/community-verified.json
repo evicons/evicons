@@ -1,0 +1,43 @@
+{
+  "category": "station",
+  "meaning": {
+    "en": "Community verified: information reported or confirmed by drivers (for example a price, a free charger or a tip)",
+    "de": "Von der Community bestätigt: von Fahrern gemeldete oder bestätigte Angabe (zum Beispiel ein Preis, kostenloses Laden oder ein Hinweis)"
+  },
+  "tags": {
+    "en": [
+      "community verified",
+      "verified by drivers",
+      "user reported",
+      "confirmed",
+      "review",
+      "community"
+    ],
+    "de": [
+      "von der community bestätigt",
+      "von fahrern bestätigt",
+      "nutzermeldung",
+      "bestätigt",
+      "fahrerhinweis",
+      "community"
+    ],
+    "fr": [
+      "confirmé par des conducteurs",
+      "vérifié par la communauté",
+      "signalement",
+      "confirmé",
+      "avis"
+    ]
+  },
+  "since": "0.5.0",
+  "aliases": [],
+  "exceptions": [
+    "solid-sign",
+    "sharp-corner"
+  ],
+  "provenance": {
+    "createdBy": "ai",
+    "approvedBy": null,
+    "approvedOn": null
+  }
+}

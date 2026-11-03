@@ -66,7 +66,7 @@ Because this is done by the browser and not computed from `size`, it also works 
 
 At 16 px the default stroke is drawn 1 px wide. Keep it at full weight with `absoluteStrokeWidth` and `strokeWidth={1.5}`, or with `strokeWidth={2}` when you do not use `absoluteStrokeWidth`. Next to Lucide icons (stroke 2), set `strokeWidth={2}` so both sets look equally heavy. This thickens the stroke relative to the drawing, so tight gaps such as the cut-out around the small bolt may close; check the icon at that size.
 
-Not every icon is readable at 16 px. Use these from 20 px: the connector faces (category `connector`: `plug-type-1`, `plug-type-2`, `plug-ccs1`, `plug-ccs2`, `plug-chademo`, `plug-nacs`, `plug-gbt-dc`, `plug-mcs`, `plug-schuko`), the letter icons (`current-ac`, `current-dc`, `power-kw`, `parking-charging`), `bike-electric` and `charging-availability`. Use the map markers (`marker-*`) from 24 px.
+Not every icon is readable at 16 px. Use these from 20 px: the connector faces (category `connector`: `plug-type-1`, `plug-type-2`, `plug-ccs1`, `plug-ccs2`, `plug-chademo`, `plug-nacs`, `plug-gbt-dc`, `plug-mcs`, `plug-schuko`), the letter icons (`current-ac`, `current-dc`, `power-kw`, `parking-charging`), `bike-electric`, `motorcycle-electric` and `charging-availability`. Use the map markers (`marker-*`) from 24 px.
 
 ## Accessibility
 
@@ -134,6 +134,8 @@ To combine a status with another icon, place a small status icon (half the base 
 | `charging-availability` | `ChargingAvailability` | Charging availability: how many charging points at a site are free or occupied |
 | `station-uptime` | `StationUptime` | Station uptime: the operating status of a charging point over time, its reliability (for example availability over the last 30 days) |
 | `restricted-access` | `RestrictedAccess` | Restricted access: the charging point is not open to everyone (private, customers only, company vehicles only, behind a barrier) |
+| `community-verified` | `CommunityVerified` | Community verified: information reported or confirmed by drivers (for example a price, a free charger or a tip) |
+| `charging-socket` | `ChargingSocket` | Charging socket: the charging point has a socket outlet, bring your own cable (no tethered cable) |
 
 ### Power and energy
 
@@ -150,6 +152,7 @@ To combine a status with another icon, place a small status icon (half the base 
 | `bidirectional-charging` | `BidirectionalCharging` | Bidirectional charging: energy flows into and out of the vehicle (V2G, V2H) |
 | `charging-power-level` | `ChargingPowerLevel` | Charging power level: the charging power shown on a scale (kW display, power filter) |
 | `charging-session` | `ChargingSession` | Charging session in progress: the vehicle is charging right now (live session) |
+| `power-outage` | `PowerOutage` | Power outage: no grid power at the site, the charging point has no electricity |
 | `charging-time` | `ChargingTime` | Charging time: how long a charging session takes, or a time-based tariff |
 
 ### Vehicles
@@ -163,6 +166,7 @@ To combine a status with another icon, place a small status icon (half the base 
 | `truck-electric` | `TruckElectric` | Electric truck: a battery electric goods vehicle (vehicle class N) |
 | `bus-electric` | `BusElectric` | Electric bus: a battery electric bus or coach (vehicle class M2/M3) |
 | `bike-electric` | `BikeElectric` | Electric bike: e-bike, pedelec or electric cargo bike (light electric vehicle) |
+| `motorcycle-electric` | `MotorcycleElectric` | Electric motorcycle or electric scooter (vehicle class L, for example L1e and L3e) |
 | `plug-in-hybrid` | `PlugInHybrid` | Plug-in hybrid (PHEV): a vehicle that charges from the grid and also runs on fuel |
 
 ### Payment

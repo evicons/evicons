@@ -863,6 +863,47 @@
     },
     "pascal": "ChargingSession"
   },
+  "charging-socket": {
+    "category": "station",
+    "meaning": {
+      "en": "Charging socket: the charging point has a socket outlet, bring your own cable (no tethered cable)",
+      "de": "Ladepunkt mit Steckdose: Kabel mitbringen (kein fest angeschlagenes Kabel)"
+    },
+    "tags": {
+      "en": [
+        "charging socket",
+        "socket outlet",
+        "bring your own cable",
+        "untethered",
+        "type 2 socket",
+        "outlet"
+      ],
+      "de": [
+        "ladesteckdose",
+        "steckdose",
+        "kabel mitbringen",
+        "ohne kabel",
+        "typ-2-steckdose",
+        "buchse"
+      ],
+      "fr": [
+        "prise de recharge",
+        "prise",
+        "apportez votre câble",
+        "sans câble attaché",
+        "prise type 2"
+      ]
+    },
+    "since": "0.5.0",
+    "aliases": [],
+    "exceptions": [],
+    "provenance": {
+      "createdBy": "ai",
+      "approvedBy": null,
+      "approvedOn": null
+    },
+    "pascal": "ChargingSocket"
+  },
   "charging-station": {
     "category": "station",
     "meaning": {
@@ -986,6 +1027,50 @@
       "approvedOn": "2026-11-02"
     },
     "pascal": "ChargingTime"
+  },
+  "community-verified": {
+    "category": "station",
+    "meaning": {
+      "en": "Community verified: information reported or confirmed by drivers (for example a price, a free charger or a tip)",
+      "de": "Von der Community bestätigt: von Fahrern gemeldete oder bestätigte Angabe (zum Beispiel ein Preis, kostenloses Laden oder ein Hinweis)"
+    },
+    "tags": {
+      "en": [
+        "community verified",
+        "verified by drivers",
+        "user reported",
+        "confirmed",
+        "review",
+        "community"
+      ],
+      "de": [
+        "von der community bestätigt",
+        "von fahrern bestätigt",
+        "nutzermeldung",
+        "bestätigt",
+        "fahrerhinweis",
+        "community"
+      ],
+      "fr": [
+        "confirmé par des conducteurs",
+        "vérifié par la communauté",
+        "signalement",
+        "confirmé",
+        "avis"
+      ]
+    },
+    "since": "0.5.0",
+    "aliases": [],
+    "exceptions": [
+      "solid-sign",
+      "sharp-corner"
+    ],
+    "provenance": {
+      "createdBy": "ai",
+      "approvedBy": null,
+      "approvedOn": null
+    },
+    "pascal": "CommunityVerified"
   },
   "current-ac": {
     "category": "power",
@@ -1966,6 +2051,50 @@
     },
     "pascal": "MarkerUnknown"
   },
+  "motorcycle-electric": {
+    "category": "vehicle",
+    "meaning": {
+      "en": "Electric motorcycle or electric scooter (vehicle class L, for example L1e and L3e)",
+      "de": "E-Motorrad oder E-Roller (Fahrzeugklasse L, zum Beispiel L1e und L3e)"
+    },
+    "tags": {
+      "en": [
+        "electric motorcycle",
+        "e-motorcycle",
+        "electric scooter",
+        "e-scooter",
+        "moped",
+        "motorbike"
+      ],
+      "de": [
+        "e-motorrad",
+        "elektromotorrad",
+        "e-roller",
+        "elektroroller",
+        "motorroller",
+        "motorrad"
+      ],
+      "fr": [
+        "moto électrique",
+        "scooter électrique",
+        "deux-roues électrique",
+        "moto",
+        "scooter"
+      ]
+    },
+    "since": "0.5.0",
+    "aliases": [],
+    "exceptions": [
+      "solid-sign",
+      "sharp-corner"
+    ],
+    "provenance": {
+      "createdBy": "ai",
+      "approvedBy": null,
+      "approvedOn": null
+    },
+    "pascal": "MotorcycleElectric"
+  },
   "parking-charging": {
     "category": "station",
     "meaning": {
@@ -2608,6 +2737,49 @@
       "approvedOn": "2026-11-01"
     },
     "pascal": "PowerKw"
+  },
+  "power-outage": {
+    "category": "energy",
+    "meaning": {
+      "en": "Power outage: no grid power at the site, the charging point has no electricity",
+      "de": "Stromausfall: kein Netzstrom am Standort, der Ladepunkt ist ohne Strom"
+    },
+    "tags": {
+      "en": [
+        "power outage",
+        "blackout",
+        "no power",
+        "grid failure",
+        "outage",
+        "power cut"
+      ],
+      "de": [
+        "stromausfall",
+        "kein strom",
+        "netzausfall",
+        "netzstörung",
+        "stromlos",
+        "blackout"
+      ],
+      "fr": [
+        "coupure de courant",
+        "panne de courant",
+        "panne réseau",
+        "pas de courant",
+        "délestage"
+      ]
+    },
+    "since": "0.5.0",
+    "aliases": [],
+    "exceptions": [
+      "sharp-corner"
+    ],
+    "provenance": {
+      "createdBy": "ai",
+      "approvedBy": null,
+      "approvedOn": null
+    },
+    "pascal": "PowerOutage"
   },
   "qr-charging": {
     "category": "payment",

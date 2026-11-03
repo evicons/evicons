@@ -1,0 +1,43 @@
+{
+  "category": "vehicle",
+  "meaning": {
+    "en": "Electric motorcycle or electric scooter (vehicle class L, for example L1e and L3e)",
+    "de": "E-Motorrad oder E-Roller (Fahrzeugklasse L, zum Beispiel L1e und L3e)"
+  },
+  "tags": {
+    "en": [
+      "electric motorcycle",
+      "e-motorcycle",
+      "electric scooter",
+      "e-scooter",
+      "moped",
+      "motorbike"
+    ],
+    "de": [
+      "e-motorrad",
+      "elektromotorrad",
+      "e-roller",
+      "elektroroller",
+      "motorroller",
+      "motorrad"
+    ],
+    "fr": [
+      "moto électrique",
+      "scooter électrique",
+      "deux-roues électrique",
+      "moto",
+      "scooter"
+    ]
+  },
+  "since": "0.5.0",
+  "aliases": [],
+  "exceptions": [
+    "solid-sign",
+    "sharp-corner"
+  ],
+  "provenance": {
+    "createdBy": "ai",
+    "approvedBy": null,
+    "approvedOn": null
+  }
+}
