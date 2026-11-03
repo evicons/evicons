@@ -2157,6 +2157,65 @@
     },
     "pascal": "PlugChademo"
   },
+  "plug-gbt-dc": {
+    "category": "connector",
+    "meaning": {
+      "en": "GB/T DC connector (GB/T 20234.3, China; DC fast charging with the contacts DC+, DC−, PE, S+, S−, CC1, CC2, A+, A−), shown as the vehicle inlet face",
+      "de": "GB/T-DC-Stecker (GB/T 20234.3, China; DC-Schnellladen mit den Kontakten DC+, DC−, PE, S+, S−, CC1, CC2, A+, A−), dargestellt als Fahrzeug-Ladebuchse in Draufsicht"
+    },
+    "tags": {
+      "en": [
+        "gb/t dc",
+        "gbt dc",
+        "gb/t 20234.3",
+        "gb/t",
+        "gbt",
+        "china",
+        "dc connector",
+        "fast charging",
+        "plug",
+        "inlet"
+      ],
+      "de": [
+        "gb/t dc",
+        "gbt dc",
+        "gb/t 20234.3",
+        "gb/t",
+        "gbt",
+        "china",
+        "dc-stecker",
+        "schnellladen",
+        "stecker",
+        "ladebuchse"
+      ],
+      "fr": [
+        "gb/t dc",
+        "gbt dc",
+        "gb/t 20234.3",
+        "gb/t",
+        "gbt",
+        "chine",
+        "connecteur dc",
+        "recharge rapide"
+      ]
+    },
+    "since": "0.5.0",
+    "aliases": [],
+    "standard": {
+      "norm": "GB/T 20234.3-2015 (DC)",
+      "source": "GB/T 20234.3 itself not consulted. Layout checked against the public drawing \"File:GBT 20234 (DC).svg\" on Wikimedia Commons by Mliu92 (CC BY-SA 4.0), retrieved 2026-11-03, https://upload.wikimedia.org/wikipedia/commons/2/28/GBT_20234_%28DC%29.svg (file page https://commons.wikimedia.org/wiki/File:GBT_20234_(DC).svg): \"GBT-20234.3 electric vehicle connector pinout for DC charging\", dimensions taken from UNECE EVE-07-14e and the pinout from the Amphenol GB/T catalogue (as the file page states; only the ratios to the outline radius were used, so the drawing's scale does not matter). It shows the connector face: a circle with a flat top 0.876 R above the centre, a top row S+, CC2, S− at (−0.356, 0, +0.356) R across and 0.622 R above the centre, CC1 0.267 R above the centre, the two large power contacts DC+ (left) and DC− (right) at (±0.504, +0.036) R with r 0.385 R, PE (r 0.237 R) 0.622 R below the centre between A+ (left) and A− (right) at ±0.422 R. The icon shows the vehicle inlet seen from the front, which is the mirror image (S− top left, S+ top right, DC− left, DC+ right, A− lower left, A+ lower right); the layout is mirror-symmetric, so only the labels swap and the face looks the same. Drawn: outline circle R 9 around (12, 12) with the flat top at y 4.25 (0.861 R, on the quarter grid; the drawing has 0.876 R), without fillets at the ends of the flat edge, because fillets would run into the top row (sharp-corner). Contact positions are the drawing's scaled to R 9 (the drawing's R is 337.5 px): S−, CC2, S+ dots at (8.8, 6.4), (12, 6.4), (15.2, 6.4); CC1 dot at (12, 9.6); A−, A+ dots at (8.2, 17.6), (15.8, 17.6). Deviations from the drawing, for the 2.0 connector minimum: DC− and DC+ rings r 2.4 instead of r 3.47 at (7.5, 12.25) and (16.5, 12.25) (drawing (±4.53, +0.32) from the centre); PE ring r 1.5 instead of r 2.13, moved up 0.35 to (12, 17.25); the seven small contacts as dots instead of rings r 1.33."
+    },
+    "exceptions": [
+      "dense-connector",
+      "sharp-corner"
+    ],
+    "provenance": {
+      "createdBy": "ai",
+      "approvedBy": null,
+      "approvedOn": null
+    },
+    "pascal": "PlugGbtDc"
+  },
   "plug-in-hybrid": {
     "category": "vehicle",
     "meaning": {
@@ -2196,6 +2255,63 @@
       "approvedOn": "2026-11-03"
     },
     "pascal": "PlugInHybrid"
+  },
+  "plug-mcs": {
+    "category": "connector",
+    "meaning": {
+      "en": "MCS connector (Megawatt Charging System, SAE J3271 / IEC 63379; DC charging for trucks and buses with the contacts DC+, DC−, PE and four communication and detection contacts), shown as the vehicle inlet face",
+      "de": "MCS-Stecker (Megawatt Charging System, SAE J3271 / IEC 63379; DC-Laden für Lkw und Busse mit den Kontakten DC+, DC−, PE und vier Kommunikations- und Erkennungskontakten), dargestellt als Fahrzeug-Ladebuchse in Draufsicht"
+    },
+    "tags": {
+      "en": [
+        "mcs",
+        "megawatt charging system",
+        "megawatt charging",
+        "sae j3271",
+        "iec 63379",
+        "truck charging",
+        "heavy duty",
+        "dc connector",
+        "plug",
+        "inlet"
+      ],
+      "de": [
+        "mcs",
+        "megawatt charging system",
+        "megawattladen",
+        "sae j3271",
+        "iec 63379",
+        "lkw-laden",
+        "nutzfahrzeug",
+        "dc-stecker",
+        "stecker",
+        "ladebuchse"
+      ],
+      "fr": [
+        "mcs",
+        "megawatt charging system",
+        "recharge mégawatt",
+        "sae j3271",
+        "iec 63379",
+        "recharge poids lourds",
+        "connecteur dc"
+      ]
+    },
+    "since": "0.5.0",
+    "aliases": [],
+    "standard": {
+      "norm": "SAE J3271 / IEC 63379 (MCS)",
+      "source": "SAE J3271 (2025) and IEC 63379 (2026) themselves not consulted; the official dimension drawing is in IEC 63379 (paywalled). Layout taken from the public drawing \"File:MCS v3.2.svg\" on Wikimedia Commons by Mliu92 (CC BY-SA 4.0), retrieved 2026-11-03, https://commons.wikimedia.org/wiki/File:MCS_v3.2.svg: \"Speculative diagram of Megawatt Charging System, version 3.2\", \"Scale is 10px = 1 mm\", dimensions \"scaled and assumed from\" an edited sketch posted in April 2022 (EPRI public download, as the file page states); the connector face, 130 mm wide. It shows a triangle with the tip down, its outline the hull of two upper corner circles (r 35 mm) concentric with the two DC contacts and a tip circle (r 24.5 mm) concentric with PE; two DC contacts (sleeve r 22.5 mm, pin r 9.5 mm) in the upper corners; PE (r 15 mm) at the bottom; four C contacts between them: a middle pair 8 mm apart in a shared stadium-shaped insulator and an outer pair lower left and right. Checked on 2026-11-03 against a second public figure, the CharIN pin assignment photo in EV Engineering Online, \"Why cables and connectors are engineering challenges in megawatt EV charging\" (A. Etengoff, 2026-06-17, Figure 2, \"Image: CharIN\"), https://www.evengineeringonline.com/why-cables-and-connectors-are-engineering-challenges-in-megawatt-ev-charging/: the face of the cable connector with the same contact count and the same basic arrangement (triangle tip down, DC+ top left and DC− top right, the communication pair PHY2, PHY1 side by side in one insulator in the middle, CE lower left and ID lower right, PE at the bottom); it differs only in detail (the middle pair sits higher, between the DC contacts). The seven pin names DC+, DC−, PE, PHY1, PHY2, CP, PP are given in NREL/TP-5400-89238 (2024), https://docs.nrel.gov/docs/fy24osti/89238.pdf (the report itself could not be retrieved on 2026-11-03, so its figures were not compared), and the arrangement matches Wikipedia \"Megawatt Charging System\". The icon shows the vehicle inlet seen from the front, the mirror image of the connector face; the layout is mirror-symmetric, so only the labels swap (DC− left, DC+ right). Drawn, scaled 1 mm = 0.146 units: outline as the hull of corner circles r 5.12 around (7.62, 8.72) and (16.38, 8.72) and a tip circle r 3.58 around (12, 16.84), joined by their outer tangents; DC rings r 2.5 in the corner circle centres (between the drawing's sleeve r 3.29 and pin r 1.39); PE ring r 1.5 at (12, 16.84) (drawing r 2.19, reduced for 2.08 to the tip circle); the outer C pair as dots at (8.78, 14.3) and (15.22, 14.3); the middle C pair as dots at (10.75, 12.8) and (13.25, 12.8), spread from the drawing's 1.17 to 2.5 apart, without the stadium around them (too fine)."
+    },
+    "exceptions": [
+      "dense-connector"
+    ],
+    "provenance": {
+      "createdBy": "ai",
+      "approvedBy": null,
+      "approvedOn": null
+    },
+    "pascal": "PlugMcs"
   },
   "plug-nacs": {
     "category": "connector",

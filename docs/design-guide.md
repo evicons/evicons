@@ -60,7 +60,7 @@ Reuse it for CCS2, whose upper part is the Type 2 face.
   - bottom, `y = 16.606`: L2 at `x = 9.35`, L3 at `x = 14.65`
 - Smallest gaps (centre lines minus radii): signal contact to flat edge 2.29, signal to power contact 2.31, power contact to outline 2.44.
 - At 16–24 px all seven contacts render as similar dots (the hole of a r 1.0 ring is 0.25 units, of a r 1.25 ring 0.75 units). Small and large contacts are only distinguishable in large sizes, so the app must always show the text "Type 2" next to the icon.
-- **GB/T 20234.2 AC** shares this face: the vehicle inlet has the flat side on top and the same 2-3-2 rows; the outline and contact positions are the same; the labels (and, reportedly, the contact gender, which is not visible in an outline icon) differ (inlet: top CP, CC; middle N, PE, L1; bottom L3, L2). It is covered by `plug-type-2` (tags "gb/t", "china"), not by a separate icon. Sources, retrieved 2026-11-02: Wikimedia Commons "File:GBT 20234 (AC).svg" (Mliu92, CC BY-SA 4.0; connector face, same geometry as the author's Type 2 drawing) and the Amphenol PCD Shenzhen catalogue "Excel|Mate CC", page 5 "Insert arrangement" (vehicle inlet).
+- **GB/T 20234.2 AC** shares this face: the vehicle inlet has the flat side on top and the same 2-3-2 rows; the outline and contact positions are the same; the labels (and, reportedly, the contact gender, which is not visible in an outline icon) differ (inlet: top CP, CC; middle N, PE, L1; bottom L3, L2). It is covered by `plug-type-2` (tags "gb/t", "china"), not by a separate icon. The GB/T DC inlet (GB/T 20234.3) is a different face and has its own icon, `plug-gbt-dc` (below). Sources, retrieved 2026-11-02: Wikimedia Commons "File:GBT 20234 (AC).svg" (Mliu92, CC BY-SA 4.0; connector face, same geometry as the author's Type 2 drawing) and the Amphenol PCD Shenzhen catalogue "Excel|Mate CC", page 5 "Insert arrangement" (vehicle inlet).
 
 ### CCS2 reference geometry (from `plug-ccs2`)
 
@@ -106,6 +106,27 @@ Built like CCS2: the Type 1 face on top, the CCS2 DC part below it, unchanged.
 - Ground: ring `r = 1.25` at `(12, 16.1)`, bottom centre, slightly above the pilot contacts as in the drawing. Its pin is smaller than the HV pins and larger than the pilot pins, so the three sizes keep their order.
 - CP and PP: dots (zero-length paths) at `(8.25, 16.4)` and `(15.75, 16.4)` (inlet: CP lower left, PP lower right).
 - Smallest gaps (centre lines minus radii): signal dot to outline 2.5, signal dot to Ground ring 2.51, HV ring to outline 2.65, Ground ring to outline 2.65, HV to HV 6.7.
+
+### GB/T DC reference geometry (from `plug-gbt-dc`)
+
+- Outline: circle `C = (12, 12)`, `R = 9`, flattened by a horizontal edge at `y = 4.25` (0.861 R above the centre; the drawing has 0.876 R, set on the quarter grid), flat edge x 7.424–16.576: `M7.424 4.25h9.152a9 9 0 1 1-9.152 0`. The flat edge is higher than the Type 2 edge (0.778 R), which sets the two faces apart together with the DC rings. **No fillets** at the ends of the flat edge (`sharp-corner`): fillets r 2 as for Type 2, or even r 0.75, run into the top contact row.
+- Contact positions from the public drawing "File:GBT 20234 (DC).svg" (Mliu92, CC BY-SA 4.0, connector face; only ratios to the outline radius used), scaled to R 9 (the drawing's R is 337.5 px). The layout is mirror-symmetric, so the inlet looks the same; only the labels swap (inlet, seen from the front):
+  - top row, `y = 6.4`: S−, CC2, S+ as dots at `x = 8.8`, `12`, `15.2` (drawing: (−0.356, 0, +0.356) R, 0.622 R above the centre)
+  - `(12, 9.6)`: CC1 as a dot (0.267 R above the centre)
+  - DC− and DC+: rings `r = 2.4` at `(7.5, 12.25)` and `(16.5, 12.25)` (drawing: r 3.47 at (±4.53, +0.32); reduced for 2.0 to the outline, centre rounded to (±4.5, +0.25))
+  - PE: ring `r = 1.5` at `(12, 17.25)` (drawing: r 2.13 at (12, 17.6); reduced and moved up 0.35 for 2.25 to the outline)
+  - A− and A+: dots at `(8.2, 17.6)` and `(15.8, 17.6)`, left and right of PE (drawing: ±0.422 R, 0.622 R below the centre)
+- Three contact sizes keep their order: DC rings r 2.4, PE ring r 1.5, the seven signal and auxiliary contacts as dots (drawing: rings r 1.33, which would merge).
+- Smallest gaps (centre lines minus radii, measured): DC ring to outline 2.09, top dots to flat edge 2.15, A dot to outline 2.23, PE ring to outline 2.25, PE ring to A dot 2.32, top corner dots to the ends of the flat edge 2.55, DC ring to CC1 2.82, DC ring to PE ring 2.83, DC ring to A dot 3.0, dot pitch in the top row 3.2, DC ring to top corner dot 3.59.
+
+### MCS reference geometry (from `plug-mcs`)
+
+- Outline: a triangle with the tip down, built as the hull of three circles: two corner circles `r = 5.12` around `(7.62, 8.72)` and `(16.38, 8.72)`, concentric with the DC contacts, and a tip circle `r = 3.58` around `(12, 16.84)`, concentric with PE. The top edge is the upper tangent of the corner circles (y 3.6), the sides are the outer tangents from corner circle to tip circle (tangent points `(20.417, 11.869)`, `(14.823, 19.042)` and mirrored): `M7.62 3.6h8.76a5.12 5.12 0 0 1 4.037 8.269l-5.594 7.173a3.58 3.58 0 0 1-5.646 0l-5.594-7.173A5.12 5.12 0 0 1 7.62 3.6`. It spans x 2.5–21.5 (19 wide) and y 3.6–20.42.
+- Construction and positions from the public drawing "File:MCS v3.2.svg" (Mliu92, CC BY-SA 4.0, 10 px = 1 mm, 130 mm wide, marked as speculative), scaled to a width of 19 (1 mm = 0.146 units); the drawing's outline is the same three-circle hull. Checked against the CharIN pin assignment photo (EV Engineering Online, 2026-06-17, Figure 2): same contact count and arrangement. Mirror-symmetric, so the inlet looks the same; only DC+ and DC− swap (inlet: DC− left, DC+ right).
+- DC− and DC+: rings `r = 2.5` at the corner circle centres (drawing: sleeve r 3.29 around a pin r 1.39; one ring in between).
+- PE: ring `r = 1.5` at `(12, 16.84)` (drawing r 2.19; reduced for 2.08 to the tip circle).
+- Four C contacts as dots: the middle pair at `(10.75, 12.8)` and `(13.25, 12.8)` (drawing: two pins 1.17 apart in one stadium-shaped insulator; spread to 2.5 apart, the stadium is omitted, too fine), the outer pair at `(8.78, 14.3)` and `(15.22, 14.3)` (as in the drawing).
+- Smallest gaps (centre lines minus radii, measured): PE ring to tip circle 2.08, outer to middle C dot 2.48, middle C pair 2.5, PE ring to outer C dot 2.60, outer C dot to slanted side 2.60, DC ring to outline 2.62, DC ring to middle C dot 2.64, PE ring to middle C dot 2.73, DC ring to outer C dot 3.2, DC to DC 3.76.
 
 ### Schuko reference geometry (from `plug-schuko`)
 

@@ -1,0 +1,56 @@
+{
+  "category": "connector",
+  "meaning": {
+    "en": "MCS connector (Megawatt Charging System, SAE J3271 / IEC 63379; DC charging for trucks and buses with the contacts DC+, DC−, PE and four communication and detection contacts), shown as the vehicle inlet face",
+    "de": "MCS-Stecker (Megawatt Charging System, SAE J3271 / IEC 63379; DC-Laden für Lkw und Busse mit den Kontakten DC+, DC−, PE und vier Kommunikations- und Erkennungskontakten), dargestellt als Fahrzeug-Ladebuchse in Draufsicht"
+  },
+  "tags": {
+    "en": [
+      "mcs",
+      "megawatt charging system",
+      "megawatt charging",
+      "sae j3271",
+      "iec 63379",
+      "truck charging",
+      "heavy duty",
+      "dc connector",
+      "plug",
+      "inlet"
+    ],
+    "de": [
+      "mcs",
+      "megawatt charging system",
+      "megawattladen",
+      "sae j3271",
+      "iec 63379",
+      "lkw-laden",
+      "nutzfahrzeug",
+      "dc-stecker",
+      "stecker",
+      "ladebuchse"
+    ],
+    "fr": [
+      "mcs",
+      "megawatt charging system",
+      "recharge mégawatt",
+      "sae j3271",
+      "iec 63379",
+      "recharge poids lourds",
+      "connecteur dc"
+    ]
+  },
+  "since": "0.5.0",
+  "aliases": [],
+  "standard": {
+    "norm": "SAE J3271 / IEC 63379 (MCS)",
+    "source": "SAE J3271 (2025) and IEC 63379 (2026) themselves not consulted; the official dimension drawing is in IEC 63379 (paywalled). Layout taken from the public drawing \"File:MCS v3.2.svg\" on Wikimedia Commons by Mliu92 (CC BY-SA 4.0), retrieved 2026-11-03, https://commons.wikimedia.org/wiki/File:MCS_v3.2.svg: \"Speculative diagram of Megawatt Charging System, version 3.2\", \"Scale is 10px = 1 mm\", dimensions \"scaled and assumed from\" an edited sketch posted in April 2022 (EPRI public download, as the file page states); the connector face, 130 mm wide. It shows a triangle with the tip down, its outline the hull of two upper corner circles (r 35 mm) concentric with the two DC contacts and a tip circle (r 24.5 mm) concentric with PE; two DC contacts (sleeve r 22.5 mm, pin r 9.5 mm) in the upper corners; PE (r 15 mm) at the bottom; four C contacts between them: a middle pair 8 mm apart in a shared stadium-shaped insulator and an outer pair lower left and right. Checked on 2026-11-03 against a second public figure, the CharIN pin assignment photo in EV Engineering Online, \"Why cables and connectors are engineering challenges in megawatt EV charging\" (A. Etengoff, 2026-06-17, Figure 2, \"Image: CharIN\"), https://www.evengineeringonline.com/why-cables-and-connectors-are-engineering-challenges-in-megawatt-ev-charging/: the face of the cable connector with the same contact count and the same basic arrangement (triangle tip down, DC+ top left and DC− top right, the communication pair PHY2, PHY1 side by side in one insulator in the middle, CE lower left and ID lower right, PE at the bottom); it differs only in detail (the middle pair sits higher, between the DC contacts). The seven pin names DC+, DC−, PE, PHY1, PHY2, CP, PP are given in NREL/TP-5400-89238 (2024), https://docs.nrel.gov/docs/fy24osti/89238.pdf (the report itself could not be retrieved on 2026-11-03, so its figures were not compared), and the arrangement matches Wikipedia \"Megawatt Charging System\". The icon shows the vehicle inlet seen from the front, the mirror image of the connector face; the layout is mirror-symmetric, so only the labels swap (DC− left, DC+ right). Drawn, scaled 1 mm = 0.146 units: outline as the hull of corner circles r 5.12 around (7.62, 8.72) and (16.38, 8.72) and a tip circle r 3.58 around (12, 16.84), joined by their outer tangents; DC rings r 2.5 in the corner circle centres (between the drawing's sleeve r 3.29 and pin r 1.39); PE ring r 1.5 at (12, 16.84) (drawing r 2.19, reduced for 2.08 to the tip circle); the outer C pair as dots at (8.78, 14.3) and (15.22, 14.3); the middle C pair as dots at (10.75, 12.8) and (13.25, 12.8), spread from the drawing's 1.17 to 2.5 apart, without the stadium around them (too fine)."
+  },
+  "exceptions": [
+    "dense-connector"
+  ],
+  "provenance": {
+    "createdBy": "ai",
+    "approvedBy": null,
+    "approvedOn": null
+  }
+}
