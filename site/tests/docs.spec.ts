@@ -136,3 +136,13 @@ test('docs use "charge point" wording and spell out the provenance type', async 
   )
   await expect(article.locator('tr', { hasText: 'provenance' }).first()).toContainText('{ createdBy, approvedBy, approvedOn }')
 })
+
+test('docs explain small sizes and right-to-left', async ({ page }) => {
+  await page.goto('/docs')
+  await expect(page.getByRole('heading', { name: 'Small sizes' })).toHaveCount(1)
+  await expect(page.getByRole('heading', { name: 'Right-to-left layouts' })).toHaveCount(1)
+  const text = await page.locator('main').innerText()
+  expect(text).toContain('absoluteStrokeWidth')
+  expect(text).toContain('20 px')
+  expect(text).toContain('scaleX(-1)')
+})

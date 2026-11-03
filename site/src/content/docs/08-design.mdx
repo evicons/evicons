@@ -15,3 +15,13 @@ Every icon follows the [design guide](https://github.com/evicons/evicons/blob/ma
 - **Status:** one round frame (`<circle cx="12" cy="12" r="9"/>`) for every status; the sign inside identifies it without colour.
 - **Markers:** one standard pin, always the first `<path>`; the sign stays inside the pin head.
 - **Drawn from scratch:** no paths copied, traced or adapted from Lucide or any other icon set.
+
+### Right-to-left layouts
+
+EVicons are not mirrored automatically. In a right-to-left layout, mirror the icons that show a direction: `route-to-charger`, `charging-plug`, `charging-cable`, `car-plugged`, `bidirectional-charging` and all vehicles (`car-electric`, `truck-electric`, `bus-electric`, `bike-electric`). Never mirror the letter icons, the connector faces (`plug-*`), `status-out-of-service` or the map markers.
+
+```css
+[dir="rtl"] .evicon-mirror { transform: scaleX(-1); }
+```
+
+Then add the class to the icons that should flip: `<CarElectric className="evicon-mirror" />`.

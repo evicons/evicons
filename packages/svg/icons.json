@@ -901,8 +901,8 @@
   "charging-time": {
     "category": "power",
     "meaning": {
-      "en": "Charging time: how long a charging session takes, or a time-based tariff or blocking fee",
-      "de": "Ladedauer: wie lange ein Ladevorgang dauert, oder ein Zeittarif bzw. eine Blockiergebühr"
+      "en": "Charging time: how long a charging session takes, or a time-based tariff",
+      "de": "Ladedauer: wie lange ein Ladevorgang dauert, oder ein Zeittarif"
     },
     "tags": {
       "en": [

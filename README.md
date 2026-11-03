@@ -76,6 +76,12 @@ By default the stroke scales with the icon: at `size={12}` a stroke of 1.5 is dr
 
 Because this is done by the browser and not computed from `size`, it also works when the size comes from CSS (`size="1em"`, `className="size-4"`, non-square sizes). Shapes you pass as children are not changed.
 
+### Small sizes
+
+At 16 px the default stroke is drawn 1 px wide. Keep it at full weight with `absoluteStrokeWidth` and `strokeWidth={1.5}`, or with `strokeWidth={2}` when you do not use `absoluteStrokeWidth`. Next to Lucide icons (stroke 2), set `strokeWidth={2}` so both sets look equally heavy.
+
+Not every icon is readable at 16 px. Use these from 20 px: the connector faces (`plug-*`), the letter icons (`current-ac`, `current-dc`, `power-kw`, `parking-charging`) and `bike-electric`. Use the map markers (`marker-*`) from 24 px.
+
 ### Accessibility
 
 Icons are decorative by default: the `<svg>` gets `aria-hidden="true"` and no role. Icons complement visible text; when an icon stands alone and carries meaning, give it an accessible name. As soon as it has one, `aria-hidden` is dropped and `role="img"` is set.
@@ -98,6 +104,16 @@ An explicit `role` or `aria-hidden` that you pass always wins over the defaults.
 ### Icons complement text
 
 Do not use an icon as the only carrier of information. At 16 px the contacts of a connector face render as similar dots, so faces that share a part are hard to tell apart: `plug-type-2` and `plug-ccs2` differ only in the DC part below the Type 2 contacts, `plug-type-1` and `plug-ccs1` only in the DC pair below the Type 1 contacts. Likewise `plug-type-1`, `plug-chademo` and `plug-schuko` look alike at 16 px (round faces). Always show the connector name next to the icon, for example "Type 2 · 22 kW". The same applies to status icons: show the status as text or at least as an accessible name.
+
+### Right-to-left layouts
+
+EVicons are not mirrored automatically. In a right-to-left layout, mirror the icons that show a direction: `route-to-charger`, `charging-plug`, `charging-cable`, `car-plugged`, `bidirectional-charging` and all vehicles (`car-electric`, `truck-electric`, `bus-electric`, `bike-electric`). Never mirror the letter icons, the connector faces (`plug-*`), `status-out-of-service` or the map markers.
+
+```css
+[dir="rtl"] .evicon-mirror { transform: scaleX(-1); }
+```
+
+Then add the class to the icons that should flip: `<CarElectric className="evicon-mirror" />`.
 
 ### Status overlay pattern
 
@@ -188,7 +204,7 @@ The same index with SVG markup and URLs, without installing anything: [evicons.d
 | `green-power` | `GreenPower` | Green power: electricity from renewable sources |
 | `battery-charging` | `BatteryCharging` | Battery charging: the vehicle battery is being charged |
 | `bidirectional-charging` | `BidirectionalCharging` | Bidirectional charging: energy flows into and out of the vehicle (V2G, V2H) |
-| `charging-time` | `ChargingTime` | Charging time: how long a charging session takes, or a time-based tariff or blocking fee |
+| `charging-time` | `ChargingTime` | Charging time: how long a charging session takes, or a time-based tariff |
 | `charging-power-level` | `ChargingPowerLevel` | Charging power level: the charging power shown on a scale (kW display, power filter) |
 | `charging-session` | `ChargingSession` | Charging session in progress: the vehicle is charging right now (live session) |
 

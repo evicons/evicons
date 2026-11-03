@@ -62,6 +62,12 @@ By default the stroke scales with the icon: at `size={12}` a stroke of 1.5 is dr
 
 Because this is done by the browser and not computed from `size`, it also works when the size comes from CSS (`size="1em"`, `className="size-4"`, non-square sizes). Shapes you pass as children are not changed.
 
+## Small sizes
+
+At 16 px the default stroke is drawn 1 px wide. Keep it at full weight with `absoluteStrokeWidth` and `strokeWidth={1.5}`, or with `strokeWidth={2}` when you do not use `absoluteStrokeWidth`. Next to Lucide icons (stroke 2), set `strokeWidth={2}` so both sets look equally heavy.
+
+Not every icon is readable at 16 px. Use these from 20 px: the connector faces (`plug-*`), the letter icons (`current-ac`, `current-dc`, `power-kw`, `parking-charging`) and `bike-electric`. Use the map markers (`marker-*`) from 24 px.
+
 ## Accessibility
 
 Icons are decorative by default: the `<svg>` gets `aria-hidden="true"` and no role. Icons complement visible text; when an icon stands alone and carries meaning, give it an accessible name. As soon as it has one, `aria-hidden` is dropped and `role="img"` is set.
@@ -139,7 +145,7 @@ To combine a status with another icon, place a small status icon (half the base 
 | `bidirectional-charging` | `BidirectionalCharging` | Bidirectional charging: energy flows into and out of the vehicle (V2G, V2H) |
 | `charging-power-level` | `ChargingPowerLevel` | Charging power level: the charging power shown on a scale (kW display, power filter) |
 | `charging-session` | `ChargingSession` | Charging session in progress: the vehicle is charging right now (live session) |
-| `charging-time` | `ChargingTime` | Charging time: how long a charging session takes, or a time-based tariff or blocking fee |
+| `charging-time` | `ChargingTime` | Charging time: how long a charging session takes, or a time-based tariff |
 
 ### Vehicles
 
