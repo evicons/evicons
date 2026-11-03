@@ -6,6 +6,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
+## [0.5.1] - 2026-11-03
+
+### Added
+
+- `marker-cluster`: the map pin with an empty head, for a cluster of charging points; the app draws the count in the head.
+- Documentation: "Clusters and selection" (README, "Map markers"): drawing the count on the cluster pin in MapLibre, Leaflet and React, and marking the selected station by size, a white ring and drawing order rather than by colour alone.
+- Map demo on evicons.dev: nearby stations merge into clusters when you zoom out, and a click on a cluster zooms in; the selected station now has a white ring and is drawn on top.
+
 ## [0.5.0] - 2026-11-03
 
 ### Added
@@ -97,7 +105,8 @@ First version, not published to npm. The first published release is 0.2.0.
   - `status-unknown`: unknown (question mark)
   - `status-queue`: queue (two cars, one behind the other)
 
-[Unreleased]: https://github.com/evicons/evicons/compare/v0.5.0...HEAD
+[Unreleased]: https://github.com/evicons/evicons/compare/v0.5.1...HEAD
+[0.5.1]: https://github.com/evicons/evicons/releases/tag/v0.5.1
 [0.5.0]: https://github.com/evicons/evicons/releases/tag/v0.5.0
 [0.4.0]: https://github.com/evicons/evicons/releases/tag/v0.4.0
 [0.3.0]: https://github.com/evicons/evicons/releases/tag/v0.3.0
