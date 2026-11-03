@@ -83,7 +83,7 @@ An explicit `role` or `aria-hidden` that you pass always wins over the defaults.
 
 ## Icons complement text
 
-Do not use an icon as the only carrier of information. At 16 px the contacts of a connector face render as similar dots, so faces that share a part are hard to tell apart: `plug-type-2` and `plug-ccs2` differ only in the DC part below the Type 2 contacts. Likewise `plug-type-1`, `plug-chademo` and `plug-schuko` look alike at 16 px (round faces). Always show the connector name next to the icon, for example "Type 2 · 22 kW". The same applies to status icons: show the status as text or at least as an accessible name.
+Do not use an icon as the only carrier of information. At 16 px the contacts of a connector face render as similar dots, so faces that share a part are hard to tell apart: `plug-type-2` and `plug-ccs2` differ only in the DC part below the Type 2 contacts, `plug-type-1` and `plug-ccs1` only in the DC pair below the Type 1 contacts. Likewise `plug-type-1`, `plug-chademo` and `plug-schuko` look alike at 16 px (round faces). Always show the connector name next to the icon, for example "Type 2 · 22 kW". The same applies to status icons: show the status as text or at least as an accessible name.
 
 ## Status overlay pattern
 
@@ -100,6 +100,8 @@ To combine a status with another icon, place a small status icon (half the base 
 | `plug-chademo` | `PlugChademo` | CHAdeMO DC connector (IEC 62196-3 configuration AA, JEVS G105), shown as the vehicle inlet face |
 | `plug-schuko` | `PlugSchuko` | Schuko socket (CEE 7/3, DIN 49440, household AC), shown as the socket face seen from the front |
 | `plug-type-1` | `PlugType1` | Type 1 AC connector (SAE J1772, IEC 62196-2 Type 1; North America, Japan), shown as the vehicle inlet face |
+| `plug-ccs1` | `PlugCcs1` | CCS Combo 1 connector (IEC 62196-3 configuration EE, SAE J1772 Type 1 with two DC contacts; North America), shown as the vehicle inlet face |
+| `plug-nacs` | `PlugNacs` | NACS connector (SAE J3400, North American Charging Standard; AC and DC through the same two power contacts), shown as the vehicle inlet face |
 
 ### Stations and sites
 

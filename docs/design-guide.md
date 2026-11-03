@@ -87,6 +87,25 @@ The Type 2 part reuses the Type 2 construction above, scaled so that the Type 2 
 - CP and PP: dots (zero-length paths) at `(7.35, 14.45)` and `(16.65, 14.45)` (inlet: CP lower left, PP lower right), (±0.52, +0.27) R. Dots, not small rings, so that the two contact sizes stay apart at 16 px.
 - Smallest gaps (centre lines minus radii): PE ring to outline 2.8, L1/N ring to outline 3.0, signal dot to PE ring 3.67, L1 to N 3.8, signal dot to outline 3.74, signal dot to L1/N ring 4.04.
 
+### CCS1 reference geometry (from `plug-ccs1`)
+
+Built like CCS2: the Type 1 face on top, the CCS2 DC part below it, unchanged.
+
+- Type 1 outline: circle `C = (12, 7.75)`, `R = 6` (spans y 1.75–13.75); latch, keying tab and the neck between the two parts are omitted.
+- Contact positions from the public drawing "File:J1772 (CCS1).svg" (Mliu92, to scale; the same Type 1 positions as "File:J1772 connector.svg"), scaled to R 6 and mirrored from the connector face to the inlet: N and L1 at `(9.72, 5.77)` and `(14.28, 5.77)` (inlet: N top left, L1 top right), PE at `(12, 10.87)`, CP and PP at `(8.88, 9.37)` and `(15.12, 9.37)` (inlet: CP lower left, PP lower right).
+- L1, N and PE: solid discs (two-arc paths r 0.75, as the CCS2 power contacts), for example `M8.97 5.77a.75.75 0 1 0 1.5 0 .75.75 0 1 0-1.5 0`. Rings r 1.0 would leave 1.98 and 1.88 to the outline. CP and PP: dots (zero-length paths).
+- DC part: the CCS2 stadium `rect x=5.35 y=15.75 width=13.3 height=6.35 rx=3.175` with DC− and DC+ rings r 1.15 at `(8.525, 18.925)` and `(15.475, 18.925)` (inlet: DC− left, DC+ right), 2.0 below the Type 1 outline (the drawing has 0.46 R; reduced to fit the live area). The drawing's DC part is about 1.2 times the face diameter; the unchanged CCS2 part is 1.11 times.
+- Smallest gaps (centre lines minus radii): Type 1 outline to DC part 2.0, DC contact to stadium 2.025, PE disc to outline 2.13, L1/N disc to outline 2.23, signal dot to outline 2.48, signal dot to PE disc 2.71, signal dot to L1/N disc 2.95, L1 to N 3.06.
+
+### NACS reference geometry (from `plug-nacs`)
+
+- Outline, 18 × 15.75 (x 3–21, y 4.25–20), wider at the top: arched top edge (r 29.25, tangent to the corners) from `(6.208, 4.829)` to `(17.792, 4.829)`, top corners r 4 around `(7, 8.75)` and `(17, 8.75)`, straight sides x 3 and 21 from y 8.75 to 11.5, elliptical bottom (radii 9 × 8.5 around `(12, 11.5)`): `M6.208 4.829a29.25 29.25 0 0 1 11.584 0A4 4 0 0 1 21 8.75v2.75a9 8.5 0 0 1-18 0V8.75a4 4 0 0 1 3.208-3.921`. Latch slot, keying tab and the housing pockets are omitted.
+- Contact positions from the inlet figure of the Tesla NACS specification TS-0023666 (2022), section 5.1.1.2 (vehicle inlet seen from the front, so no mirroring), scaled to a width of 18 and checked against Wikimedia Commons "File:NACS pinout annotated.svg" (RickyCourtney, connector face, same layout mirrored).
+- HV+ and HV− (DC, and L1/L2 for AC): rings `r = 1.5` at `(7.15, 9.2)` and `(16.85, 9.2)` (inlet: HV+ top left, HV− top right).
+- Ground: ring `r = 1.25` at `(12, 16.1)`, bottom centre, slightly above the pilot contacts as in the drawing. Its pin is smaller than the HV pins and larger than the pilot pins, so the three sizes keep their order.
+- CP and PP: dots (zero-length paths) at `(8.25, 16.4)` and `(15.75, 16.4)` (inlet: CP lower left, PP lower right).
+- Smallest gaps (centre lines minus radii): signal dot to outline 2.5, signal dot to Ground ring 2.51, HV ring to outline 2.65, Ground ring to outline 2.65, HV to HV 6.7.
+
 ### Schuko reference geometry (from `plug-schuko`)
 
 Socket face seen from the front (exception above).

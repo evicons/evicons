@@ -1,0 +1,54 @@
+{
+  "category": "connector",
+  "meaning": {
+    "en": "CCS Combo 1 connector (IEC 62196-3 configuration EE, SAE J1772 Type 1 with two DC contacts; North America), shown as the vehicle inlet face",
+    "de": "CCS-Combo-1-Stecker (IEC 62196-3 Konfiguration EE, SAE-J1772-Typ-1 mit zwei DC-Kontakten; Nordamerika), dargestellt als Fahrzeug-Ladebuchse in Draufsicht"
+  },
+  "tags": {
+    "en": [
+      "ccs",
+      "ccs1",
+      "combo 1",
+      "j1772 combo",
+      "iec 62196-3",
+      "dc connector",
+      "fast charging",
+      "plug",
+      "inlet"
+    ],
+    "de": [
+      "ccs",
+      "ccs1",
+      "combo 1",
+      "j1772 combo",
+      "iec 62196-3",
+      "dc-stecker",
+      "schnellladen",
+      "stecker",
+      "ladebuchse"
+    ],
+    "fr": [
+      "ccs",
+      "ccs1",
+      "combo 1",
+      "j1772 combo",
+      "iec 62196-3",
+      "connecteur dc",
+      "recharge rapide"
+    ]
+  },
+  "since": "0.4.0",
+  "aliases": [],
+  "standard": {
+    "norm": "IEC 62196-3 configuration EE (CCS Combo 1) / SAE J1772 DC",
+    "source": "IEC 62196-3 and SAE J1772 themselves not consulted. Layout checked against the public drawing \"File:J1772 (CCS1).svg\" on Wikimedia Commons by Mliu92 (CC BY-SA 4.0), retrieved 2026-11-03, https://commons.wikimedia.org/wiki/File:J1772_(CCS1).svg: \"view facing the end of the plug\", i.e. the face of the cable connector, drawn approximately to scale (10 px = 1 mm). It shows the round Type 1 face with the same five contacts as the author's \"File:J1772 connector.svg\" (L1 and N large at the top left and right, PP and CP small at the lower left and right, PE large at the bottom centre; (±0.38, −0.33) R, (±0.52, +0.27) R and (0, +0.52) R from the face centre), and below it a separate stadium-shaped DC part, about 1.2 times as wide as the face diameter, with DC+ (left) and DC− (right) concentric with its round ends. The icon shows the vehicle inlet seen from the front, which is the mirror image (N top left, L1 top right, CP lower left, PP lower right, DC− left, DC+ right); because the contacts of each pair have the same size, the mirrored face looks the same. Drawn: the Type 1 face as a circle R 6 (latch, keying tab and the neck between the two parts omitted, too fine) with the drawing's contact positions scaled to R 6; L1, N and PE as solid discs (two-arc paths r 0.75, as the CCS2 power contacts), because rings r 1.0 would leave only 1.98 and 1.88 to the face outline; PP and CP as dots. The DC part is the plug-ccs2 DC part unchanged (13.3 wide, 1.11 times the face diameter); the gap between face and DC part is 2.0 instead of the drawing's 0.46 R so that both parts fit the live area."
+  },
+  "exceptions": [
+    "dense-connector"
+  ],
+  "provenance": {
+    "createdBy": "ai",
+    "approvedBy": null,
+    "approvedOn": null
+  }
+}

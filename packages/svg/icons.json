@@ -1571,6 +1571,61 @@
     },
     "pascal": "ParkingCharging"
   },
+  "plug-ccs1": {
+    "category": "connector",
+    "meaning": {
+      "en": "CCS Combo 1 connector (IEC 62196-3 configuration EE, SAE J1772 Type 1 with two DC contacts; North America), shown as the vehicle inlet face",
+      "de": "CCS-Combo-1-Stecker (IEC 62196-3 Konfiguration EE, SAE-J1772-Typ-1 mit zwei DC-Kontakten; Nordamerika), dargestellt als Fahrzeug-Ladebuchse in Draufsicht"
+    },
+    "tags": {
+      "en": [
+        "ccs",
+        "ccs1",
+        "combo 1",
+        "j1772 combo",
+        "iec 62196-3",
+        "dc connector",
+        "fast charging",
+        "plug",
+        "inlet"
+      ],
+      "de": [
+        "ccs",
+        "ccs1",
+        "combo 1",
+        "j1772 combo",
+        "iec 62196-3",
+        "dc-stecker",
+        "schnellladen",
+        "stecker",
+        "ladebuchse"
+      ],
+      "fr": [
+        "ccs",
+        "ccs1",
+        "combo 1",
+        "j1772 combo",
+        "iec 62196-3",
+        "connecteur dc",
+        "recharge rapide"
+      ]
+    },
+    "since": "0.4.0",
+    "aliases": [],
+    "standard": {
+      "norm": "IEC 62196-3 configuration EE (CCS Combo 1) / SAE J1772 DC",
+      "source": "IEC 62196-3 and SAE J1772 themselves not consulted. Layout checked against the public drawing \"File:J1772 (CCS1).svg\" on Wikimedia Commons by Mliu92 (CC BY-SA 4.0), retrieved 2026-11-03, https://commons.wikimedia.org/wiki/File:J1772_(CCS1).svg: \"view facing the end of the plug\", i.e. the face of the cable connector, drawn approximately to scale (10 px = 1 mm). It shows the round Type 1 face with the same five contacts as the author's \"File:J1772 connector.svg\" (L1 and N large at the top left and right, PP and CP small at the lower left and right, PE large at the bottom centre; (±0.38, −0.33) R, (±0.52, +0.27) R and (0, +0.52) R from the face centre), and below it a separate stadium-shaped DC part, about 1.2 times as wide as the face diameter, with DC+ (left) and DC− (right) concentric with its round ends. The icon shows the vehicle inlet seen from the front, which is the mirror image (N top left, L1 top right, CP lower left, PP lower right, DC− left, DC+ right); because the contacts of each pair have the same size, the mirrored face looks the same. Drawn: the Type 1 face as a circle R 6 (latch, keying tab and the neck between the two parts omitted, too fine) with the drawing's contact positions scaled to R 6; L1, N and PE as solid discs (two-arc paths r 0.75, as the CCS2 power contacts), because rings r 1.0 would leave only 1.98 and 1.88 to the face outline; PP and CP as dots. The DC part is the plug-ccs2 DC part unchanged (13.3 wide, 1.11 times the face diameter); the gap between face and DC part is 2.0 instead of the drawing's 0.46 R so that both parts fit the live area."
+    },
+    "exceptions": [
+      "dense-connector"
+    ],
+    "provenance": {
+      "createdBy": "ai",
+      "approvedBy": null,
+      "approvedOn": null
+    },
+    "pascal": "PlugCcs1"
+  },
   "plug-ccs2": {
     "category": "connector",
     "meaning": {
@@ -1669,6 +1724,61 @@
       "approvedOn": "2026-11-01"
     },
     "pascal": "PlugChademo"
+  },
+  "plug-nacs": {
+    "category": "connector",
+    "meaning": {
+      "en": "NACS connector (SAE J3400, North American Charging Standard; AC and DC through the same two power contacts), shown as the vehicle inlet face",
+      "de": "NACS-Stecker (SAE J3400, North American Charging Standard; AC und DC über dieselben zwei Leistungskontakte), dargestellt als Fahrzeug-Ladebuchse in Draufsicht"
+    },
+    "tags": {
+      "en": [
+        "nacs",
+        "j3400",
+        "sae j3400",
+        "north american charging standard",
+        "tesla connector",
+        "dc connector",
+        "fast charging",
+        "plug",
+        "inlet"
+      ],
+      "de": [
+        "nacs",
+        "j3400",
+        "sae j3400",
+        "north american charging standard",
+        "tesla-stecker",
+        "dc-stecker",
+        "schnellladen",
+        "stecker",
+        "ladebuchse"
+      ],
+      "fr": [
+        "nacs",
+        "j3400",
+        "sae j3400",
+        "north american charging standard",
+        "connecteur tesla",
+        "connecteur dc",
+        "recharge rapide"
+      ]
+    },
+    "since": "0.4.0",
+    "aliases": [],
+    "standard": {
+      "norm": "SAE J3400 (NACS)",
+      "source": "SAE J3400 itself not consulted. Layout checked against two public drawings, retrieved 2026-11-03: (1) Tesla, \"North American Charging Standard Technical Specification\" TS-0023666 (2022), section 5.1.1.2 \"Inlet - 1,000V and 500V Configuration\" (page 12), the vehicle inlet seen from the front, published openly by Tesla (no licence stated; only the geometry was checked, nothing copied) and since withdrawn in favour of SAE J3400; archived copy https://web.archive.org/web/20221217074652/https://tesla-cdn.thron.com/static/HXVNIC_North_American_Charging_Standard_Technical_Specification_TS-0023666_HFTPKZ.pdf. It shows a face wider at the top, with an arched top edge, rounded top corners, nearly straight sides and a rounded bottom (about 18 : 15.7), HV+ (top left) and HV− (top right) as two large contacts side by side, and below them a row of Control Pilot (lower left), Ground (bottom centre, slightly higher, in a keying tab) and Proximity Pilot (lower right); the Ground pin is smaller than the HV pins and larger than the pilot pins. (2) Wikimedia Commons \"File:NACS pinout annotated.svg\" by RickyCourtney (CC BY-SA 4.0), https://commons.wikimedia.org/wiki/File:NACS_pinout_annotated.svg: \"view facing the end of the plug\" (cable connector face): the same outline and the mirrored arrangement (DC−/L2 and DC+/L1 at the top, PP, G and CP in one row below, G larger than PP and CP). Positions follow the Tesla inlet figure scaled to a width of 18: HV contacts at (12 ± 4.85, 9.2), pilot contacts at (12 ± 3.75, 16.4), Ground at (12, 16.1). Drawn: the face outline (latch slot, keying tab and the inner housing pockets omitted, too fine), HV+ and HV− as rings r 1.5, Ground as a ring r 1.25, CP and PP as dots, so the three contact sizes of the drawings keep their order."
+    },
+    "exceptions": [
+      "dense-connector"
+    ],
+    "provenance": {
+      "createdBy": "ai",
+      "approvedBy": null,
+      "approvedOn": null
+    },
+    "pascal": "PlugNacs"
   },
   "plug-schuko": {
     "category": "connector",
