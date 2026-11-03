@@ -37,6 +37,7 @@ Use the icons alongside text, not instead of it. General UI icons (arrows, menus
 ## Docs
 
 - [Usage, props, colour, accessibility](${site}/docs)
+- [OpenStreetMap: pick icons from \`amenity=charging_station\` and \`socket:*\` tags](${site}/docs#openstreetmap); tag → icon index: \`@evicons/svg/osm.json\`
 - [Gallery with search and copy](${site}/icons)
 - [Changelog](${site}/changelog)
 - [Brand assets](${site}/brand)

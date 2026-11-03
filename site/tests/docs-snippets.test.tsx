@@ -17,6 +17,7 @@ const out = join(import.meta.dirname, '../../.tmp-tests/docs-snippets')
 const exampleProps: Record<string, Record<string, unknown>> = {
   StatusLabel: { value: 'queue' },
   ClusterPin: { count: 12 },
+  StationSockets: { tags: { amenity: 'charging_station', 'socket:type2': '2', 'socket:cee_red_32a': '1', 'socket:type3': '1' } },
 }
 
 interface Block {

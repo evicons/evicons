@@ -30,6 +30,14 @@ Metadata (names, categories, meanings, tags, aliases) is in `icons.json`:
 import icons from '@evicons/svg/icons.json' with { type: 'json' }
 ```
 
+OpenStreetMap tags (`amenity=charging_station`, `socket:<type>=<count>`, ...) map to icons in `osm.json`, an object from tag to icon name; the same tags are in the `osm` field of `icons.json`. A bare key such as `socket:type2` stands for any value, `key=value` for that value only. See [OpenStreetMap](https://github.com/evicons/evicons#openstreetmap) in the repository README for the full table and examples:
+
+```js
+import osm from '@evicons/svg/osm.json' with { type: 'json' }
+
+osm['socket:type2_combo'] // 'plug-ccs2'
+```
+
 ## License
 
 MIT

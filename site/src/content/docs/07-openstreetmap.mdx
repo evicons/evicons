@@ -1,0 +1,141 @@
+---
+id: openstreetmap
+title: OpenStreetMap
+---
+
+OpenStreetMap (OSM) maps charging stations as `amenity=charging_station`. Each socket type is a key `socket:<type>` whose value is the number of sockets of that type (`socket:type2=2`), and `socket:<type>:output` is its maximum power (`socket:type2_combo:output=150 kW`). Further tags say which vehicles can charge (`motorcar=yes`, `bicycle=yes`), whether it costs (`fee=no`), who may use it (`access=customers`) and who runs it (`operator=*`). Every icon lists the tags it stands for in the `osm` field of its metadata, so an app can pick the icon from the tags alone. Tag names follow the OSM wiki pages [Key:socket](https://wiki.openstreetmap.org/wiki/Key:socket) and [Tag:amenity=charging_station](https://wiki.openstreetmap.org/wiki/Tag:amenity%3Dcharging_station) (retrieved 2026-11-03).
+
+A bare key (`socket:type2`, `operator`, `charging_station:output`) stands for any value of that key; `key=value` for that value only. Each tag belongs to one icon at most:
+
+| OSM tag | Icon | React component |
+|---|---|---|
+| `access=customers` | `restricted-access` | `RestrictedAccess` |
+| `access=private` | `restricted-access` | `RestrictedAccess` |
+| `amenity=charging_station` | `charging-station` | `ChargingStation` |
+| `bicycle=yes` | `bike-electric` | `BikeElectric` |
+| `bus=yes` | `bus-electric` | `BusElectric` |
+| `charging_station:output` | `power-kw` | `PowerKw` |
+| `fee=no` | `free-charging` | `FreeCharging` |
+| `fee=yes` | `charging-tariff` | `ChargingTariff` |
+| `frequency=0` | `current-dc` | `CurrentDc` |
+| `frequency=50` | `current-ac` | `CurrentAc` |
+| `frequency=60` | `current-ac` | `CurrentAc` |
+| `hgv=yes` | `truck-electric` | `TruckElectric` |
+| `motorcar=yes` | `car-electric` | `CarElectric` |
+| `motorcycle=yes` | `motorcycle-electric` | `MotorcycleElectric` |
+| `operator` | `charging-operator` | `ChargingOperator` |
+| `parking_space=charging` | `parking-charging` | `ParkingCharging` |
+| `socket:cee_blue` | `plug-cee-blue` | `PlugCeeBlue` |
+| `socket:cee_red_125a` | `plug-cee-red` | `PlugCeeRed` |
+| `socket:cee_red_16a` | `plug-cee-red` | `PlugCeeRed` |
+| `socket:cee_red_32a` | `plug-cee-red` | `PlugCeeRed` |
+| `socket:cee_red_63a` | `plug-cee-red` | `PlugCeeRed` |
+| `socket:chademo` | `plug-chademo` | `PlugChademo` |
+| `socket:gb_ac` | `plug-type-2` | `PlugType2` |
+| `socket:gb_dc` | `plug-gbt-dc` | `PlugGbtDc` |
+| `socket:mcs` | `plug-mcs` | `PlugMcs` |
+| `socket:nacs` | `plug-nacs` | `PlugNacs` |
+| `socket:schuko` | `plug-schuko` | `PlugSchuko` |
+| `socket:type1` | `plug-type-1` | `PlugType1` |
+| `socket:type1_combo` | `plug-ccs1` | `PlugCcs1` |
+| `socket:type2` | `plug-type-2` | `PlugType2` |
+| `socket:type2_cable` | `plug-type-2` | `PlugType2` |
+| `socket:type2_combo` | `plug-ccs2` | `PlugCcs2` |
+| `socket:unknown` | `charging-plug` | `ChargingPlug` |
+
+- `socket:tesla_supercharger` is deprecated on the wiki (tag the socket as `socket:nacs`, `socket:type2_combo` or `socket:gb_dc` by region) and is not mapped; like any other socket without an icon, it falls back to `charging-plug` (`socket:unknown`).
+- `socket:gb_ac` maps to `plug-type-2`: the GB/T 20234.2 AC inlet has the same face as Type 2.
+- `plug-schuko`, `plug-cee-blue` and `plug-cee-red` show the socket face seen from the front, not a vehicle inlet: in OSM these are sockets at the station, used with a portable charging cable.
+
+### Tags to icons
+
+`@evicons/svg/osm.json` maps every tag in the table to its icon name; `icons.json` carries the same tags per icon in `osm` (also on the site: [evicons.dev/icons.json](https://evicons.dev/icons.json)). To show the sockets of a station, collect the `socket:*` keys whose value is a positive number, look them up and fall back to `charging-plug` for sockets without an icon:
+
+```ts
+import osm from '@evicons/svg/osm.json' with { type: 'json' }
+
+const iconFor: Record<string, string> = osm
+
+/** Icon names for the sockets of one `amenity=charging_station` element, without duplicates. */
+export function socketIcons(tags: Record<string, string>): string[] {
+  const icons = new Set<string>()
+  for (const [key, value] of Object.entries(tags)) {
+    if (!/^socket:[a-z0-9_]+$/.test(key)) continue // skips socket:<type>:output and other sub-keys
+    if (!(Number.parseInt(value, 10) > 0)) continue // the value is a count
+    icons.add(iconFor[key] ?? 'charging-plug')
+  }
+  return [...icons]
+}
+
+socketIcons({ amenity: 'charging_station', 'socket:type2': '2', 'socket:type2_combo': '1', 'socket:type2_combo:output': '150 kW' })
+// ['plug-type-2', 'plug-ccs2']
+```
+
+In React, map the tags to components with an explicit import list. Do not look components up by name in `import * as icons`: a lookup by a computed name keeps every icon in the bundle.
+
+```tsx
+import {
+  ChargingPlug,
+  PlugCcs1,
+  PlugCcs2,
+  PlugCeeBlue,
+  PlugCeeRed,
+  PlugChademo,
+  PlugGbtDc,
+  PlugMcs,
+  PlugNacs,
+  PlugSchuko,
+  PlugType1,
+  PlugType2,
+  type EvIconComponent,
+} from '@evicons/react'
+
+const socketComponents: Record<string, EvIconComponent> = {
+  'socket:cee_blue': PlugCeeBlue,
+  'socket:cee_red_125a': PlugCeeRed,
+  'socket:cee_red_16a': PlugCeeRed,
+  'socket:cee_red_32a': PlugCeeRed,
+  'socket:cee_red_63a': PlugCeeRed,
+  'socket:chademo': PlugChademo,
+  'socket:gb_ac': PlugType2,
+  'socket:gb_dc': PlugGbtDc,
+  'socket:mcs': PlugMcs,
+  'socket:nacs': PlugNacs,
+  'socket:schuko': PlugSchuko,
+  'socket:type1': PlugType1,
+  'socket:type1_combo': PlugCcs1,
+  'socket:type2': PlugType2,
+  'socket:type2_cable': PlugType2,
+  'socket:type2_combo': PlugCcs2,
+}
+
+export function StationSockets({ tags }: { tags: Record<string, string> }) {
+  const sockets = Object.entries(tags).filter(([key, value]) => /^socket:[a-z0-9_]+$/.test(key) && Number.parseInt(value, 10) > 0)
+  return (
+    <ul>
+      {sockets.map(([key, count]) => {
+        const Icon = socketComponents[key] ?? ChargingPlug
+        return (
+          <li key={key}>
+            <Icon size={20} /> {key.slice('socket:'.length)} × {count}
+          </li>
+        )
+      })}
+    </ul>
+  )
+}
+```
+
+The list shows the OSM socket type next to each icon; replace it with your own connector names (for example "Type 2", "CCS"), since the icon complements the text.
+
+### Querying with Overpass
+
+The [Overpass API](https://wiki.openstreetmap.org/wiki/Overpass_API) returns the charging stations in a bounding box (south, west, north, east). `out center;` gives ways and relations a centre point, so every result can be drawn as a marker:
+
+```text
+[out:json][timeout:25];
+nwr["amenity"="charging_station"](47.80,12.05,47.90,12.20);
+out center;
+```
+
+Each element has its tags in `tags`, ready for `socketIcons` above. OSM data is licensed under the [ODbL](https://www.openstreetmap.org/copyright): show "© OpenStreetMap contributors" wherever you display it. Public Overpass instances are shared and rate-limited: query a bounding box, not the whole map; cache the result instead of querying on every map move; and for regular or large imports run your own instance or use an OSM extract.
