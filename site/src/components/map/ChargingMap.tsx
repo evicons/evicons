@@ -51,8 +51,12 @@ const CLUSTER_FONT = ['Noto Sans Bold']
 const PIN = 32
 const PIN_SELECTED = 40
 const BADGE = 24
-/** Cluster count in px, about 0.42 of the pin: two digits fit in the head of a 32 px pin. */
+/**
+ * Cluster count in px, about 0.42 of the 32 px pin. It holds two digits there; clusters of 100 and
+ * more get a 40 px pin (README, "Clusters and selection"), whose head holds `999` and `1.2k` at the same size.
+ */
 const CLUSTER_TEXT = 13
+const CLUSTER_LARGE = 100
 
 /** `offline`: no tiles, markers on a plain background. `failed`: MapLibre itself did not load. */
 type Phase = 'loading' | 'ready' | 'offline' | 'failed'
@@ -93,8 +97,15 @@ function badgeOffset(pin: number): [number, number] {
 /** Horizontal distance from the point to the centre of the selected pin's head. */
 const HEAD_X = (9.5 * PIN_SELECTED) / 24
 
-/** Distance from the point to the head centre of a 32 px pin, right and up (README, "Clusters and selection"). */
-const HEAD = (9.5 * PIN) / 24
+/** Distance from the point to the head centre of a pin, right and up (README, "Clusters and selection"). */
+const headOf = (size: number) => (9.5 * size) / 24
+const HEAD = headOf(PIN)
+
+/** The value for a 32 px cluster pin, or for a 40 px one from CLUSTER_LARGE points. */
+function byClusterSize(at32: unknown, at40: unknown): ExpressionSpecification {
+  return ['step', ['get', 'point_count'], at32, CLUSTER_LARGE, at40] as ExpressionSpecification
+}
+const clusterTextOffset = (size: number) => ['literal', [headOf(size) / CLUSTER_TEXT, -headOf(size) / CLUSTER_TEXT]]
 
 function iconImage(selected: string | null): ExpressionSpecification {
   return [
@@ -111,7 +122,10 @@ function iconOffset(selected: string | null, pin: (size: number) => [number, num
 
 /**
  * Drawing order: the selected pin on top; the others from north to south, so a lower pin covers
- * the one above it (the order MapLibre uses without a sort key).
+ * the one above it (the order MapLibre uses without a sort key). 90 is above every −lat.
+ * Limits: the sort key orders symbols only within one tile bucket, the cluster layer is drawn
+ * above all station pins, and the AC/DC badges (the lowest layer) stay under neighbouring pins.
+ * With 12 stations that is rare.
  */
 function sortKey(selected: string | null): ExpressionSpecification {
   return ['case', ['==', ['get', 'id'], selected ?? ''], 90, ['-', ['get', 'lat']]]
@@ -137,8 +151,8 @@ function fallbackStyle(background: string): StyleSpecification {
 const cssVar = (name: string) => getComputedStyle(document.documentElement).getPropertyValue(name).trim()
 
 /**
- * The 13 marker images: one pin per status (normal, and selected: larger with a white ring), the
- * AC/DC badges and the cluster pin.
+ * The 14 marker images: one pin per status (normal, and selected: larger with a white ring), the
+ * AC/DC badges and the cluster pin at 32 and 40 px.
  */
 function markerImages(): Promise<[string, HTMLImageElement][]> {
   const urls: [string, string][] = []
@@ -149,7 +163,10 @@ function markerImages(): Promise<[string, HTMLImageElement][]> {
   }
   const accent = cssVar('--accent')
   urls.push(['ev-ac', markerImage('marker-ac', accent, BADGE)], ['ev-dc', markerImage('marker-dc', accent, BADGE)])
-  urls.push(['ev-marker-cluster', markerImage('marker-cluster', accent, PIN)])
+  // Clusters in a neutral dark colour, apart from the blue AC/DC badges.
+  const cluster = cssVar('--map-cluster')
+  urls.push(['ev-marker-cluster', markerImage('marker-cluster', cluster, PIN)])
+  urls.push(['ev-marker-cluster-40', markerImage('marker-cluster', cluster, PIN_SELECTED)])
   return Promise.all(urls.map(async ([id, url]) => [id, await loadMarkerImage(url)] as [string, HTMLImageElement]))
 }
 
@@ -226,7 +243,9 @@ function testHook(map: MapLibreMap): NonNullable<Window['__evMap']> {
         const id = feature.properties?.cluster_id as number
         if (seen.has(id) || feature.geometry.type !== 'Point') continue
         const point = map.project(feature.geometry.coordinates as [number, number])
-        seen.set(id, { count: feature.properties?.point_count as number, x: rect.left + point.x + HEAD, y: rect.top + point.y - HEAD })
+        const count = feature.properties?.point_count as number
+        const head = headOf(count >= CLUSTER_LARGE ? PIN_SELECTED : PIN)
+        seen.set(id, { count, x: rect.left + point.x + head, y: rect.top + point.y - head })
       }
       return [...seen.values()]
     },
@@ -252,6 +271,8 @@ export default function ChargingMap({ children }: { children?: ReactNode }) {
   // Bumped after each style load (tile style, then maybe the fallback): the selection is re-applied.
   const [styleVersion, setStyleVersion] = useState(0)
   const [selected, setSelected] = useState<string | null>(null)
+  const selectedRef = useRef<string | null>(null)
+  selectedRef.current = selected
   const [popupNode, setPopupNode] = useState<HTMLDivElement | null>(null)
 
   const byId = useMemo(() => new Map(stations.map((s) => [s.id, s])), [])
@@ -399,7 +420,7 @@ export default function ChargingMap({ children }: { children?: ReactNode }) {
                 'text-size': CLUSTER_TEXT,
                 'text-anchor': 'center',
                 // On the head centre, in ems of the text size.
-                'text-offset': [HEAD / CLUSTER_TEXT, -HEAD / CLUSTER_TEXT],
+                'text-offset': byClusterSize(clusterTextOffset(PIN), clusterTextOffset(PIN_SELECTED)),
                 'text-allow-overlap': true,
                 'text-ignore-placement': true,
               }
@@ -410,9 +431,9 @@ export default function ChargingMap({ children }: { children?: ReactNode }) {
             source: 'ev-stations',
             filter: ['has', 'point_count'],
             layout: {
-              'icon-image': 'ev-marker-cluster',
+              'icon-image': byClusterSize('ev-marker-cluster', 'ev-marker-cluster-40'),
               'icon-anchor': 'bottom',
-              'icon-offset': pinOffset(PIN),
+              'icon-offset': byClusterSize(['literal', pinOffset(PIN)], ['literal', pinOffset(PIN_SELECTED)]),
               'icon-allow-overlap': true,
               'icon-ignore-placement': true,
               ...count,
@@ -431,8 +452,13 @@ export default function ChargingMap({ children }: { children?: ReactNode }) {
         if (!map?.getLayer('ev-stations')) return
         const cluster = map.queryRenderedFeatures(event.point, { layers: ['ev-clusters'] })[0]
         if (cluster && cluster.geometry.type === 'Point') {
-          const source = map.getSource<GeoJSONSource>('ev-stations')
-          const zoom = await source?.getClusterExpansionZoom(cluster.properties.cluster_id as number)
+          let zoom: number | undefined
+          try {
+            const source = map.getSource<GeoJSONSource>('ev-stations')
+            zoom = await source?.getClusterExpansionZoom(cluster.properties.cluster_id as number)
+          } catch {
+            return // a stale cluster id, for example after the switch to the fallback style
+          }
           if (zoom === undefined || !map) return
           const center = cluster.geometry.coordinates as [number, number]
           if (matchMedia('(prefers-reduced-motion: reduce)').matches) map.jumpTo({ center, zoom })
@@ -443,6 +469,13 @@ export default function ChargingMap({ children }: { children?: ReactNode }) {
         const id = hit?.properties?.id
         originRef.current = 'map'
         setSelected(typeof id === 'string' ? id : null)
+      })
+      // Zoomed out so far that stations cluster: the selected pin may be inside a cluster, so the
+      // popup would point at nothing. Clear the selection (focus stays on the map, not the list).
+      map.on('zoomend', () => {
+        if (!map || !selectedRef.current || map.getZoom() >= clusterMaxZoomRef.current + 1) return
+        originRef.current = 'map'
+        setSelected(null)
       })
       for (const layer of [...STATION_LAYERS, 'ev-clusters']) {
         map.on('mouseenter', layer, () => {

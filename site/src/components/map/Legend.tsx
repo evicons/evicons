@@ -1,3 +1,4 @@
+import { MarkerCluster } from '@evicons/react'
 import { currentInfo, legendStatuses, statusColour, statusInfo, type Current } from './stations'
 
 // Static legend (rendered on the server, no JavaScript): works even when the map cannot load.
@@ -38,6 +39,20 @@ export default function Legend() {
             </li>
           )
         })}
+      </ul>
+      <ul className="mt-3 space-y-2 border-t border-border pt-3 text-sm">
+        <li className="flex items-center gap-2" data-legend-entry="cluster">
+          <span className="flex w-14 shrink-0 justify-end">
+            <span className="marker-filled relative inline-flex" style={{ color: 'var(--map-cluster)' }} aria-hidden="true">
+              <MarkerCluster size={24} />
+              {/* On the head centre, the centre of the box. */}
+              <span className="absolute inset-0 flex items-center justify-center text-[10px] leading-none font-bold text-white">
+                3
+              </span>
+            </span>
+          </span>
+          <span>Cluster: several charge points; the number says how many</span>
+        </li>
       </ul>
     </section>
   )

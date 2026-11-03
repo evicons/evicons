@@ -41,7 +41,7 @@ export const iconTitles: Record<string, { en: string; de: string }> = {
   'marker-ac': { en: 'AC charging map marker', de: 'Kartenmarker AC-Ladepunkt' },
   'marker-available': { en: 'Available charger map marker', de: 'Kartenmarker Ladepunkt frei' },
   'marker-charging': { en: 'Charging station map marker', de: 'Kartenmarker Ladestation' },
-  'marker-cluster': { en: 'Cluster marker', de: 'Cluster-Marker' },
+  'marker-cluster': { en: 'Cluster map marker', de: 'Kartenmarker Cluster' },
   'marker-dc': { en: 'DC charging map marker', de: 'Kartenmarker DC-Ladepunkt' },
   'marker-faulted': { en: 'Faulted charger map marker', de: 'Kartenmarker Ladepunkt defekt' },
   'marker-occupied': { en: 'Occupied charger map marker', de: 'Kartenmarker Ladepunkt belegt' },

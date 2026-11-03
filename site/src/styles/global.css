@@ -22,6 +22,9 @@
   --status-unknown: #0891b2;
   --status-reserved: #7c3aed;
   --status-queue: #c2410c;
+  /* Cluster pins on the map: neutral slate, apart from the blue AC/DC badges; white count at 14.6:1.
+     The map stays light in both themes, so this is not redefined for dark. */
+  --map-cluster: #1e293b;
 
   /* Neutrals: zinc scale */
   --bg: #ffffff;

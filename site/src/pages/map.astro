@@ -40,6 +40,10 @@ import Base from '../layouts/Base.astro'
 </Base>
 
 <style is:global>
+  /* The cluster swatch in the legend: its dark slate needs a light outline on the dark page (the map itself stays light). */
+  [data-theme='dark'] [data-legend-entry='cluster'] svg > path:first-of-type {
+    stroke: var(--muted);
+  }
   /* MapLibre popups and controls in the site theme. */
   [data-map] .maplibregl-popup-content {
     background: var(--bg);

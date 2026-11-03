@@ -49,6 +49,7 @@ const expectedImages = [
   'ev-faulted',
   'ev-faulted-selected',
   'ev-marker-cluster',
+  'ev-marker-cluster-40',
   'ev-occupied',
   'ev-occupied-selected',
   'ev-out-of-service',
@@ -57,7 +58,7 @@ const expectedImages = [
   'ev-unknown-selected',
 ]
 
-test('map page loads with canvas, 13 marker images and the legend', async ({ page }) => {
+test('map page loads with canvas, 14 marker images and the legend', async ({ page }) => {
   const errors = collectErrors(page)
   await stubTiles(page)
   await page.goto('/map')
@@ -70,7 +71,7 @@ test('map page loads with canvas, 13 marker images and the legend', async ({ pag
   // Drawn, not only registered: all 12 pins are rendered once the map is idle, none in a cluster.
   await expect.poll(() => renderedStations(page)).toBe(12)
   expect(await renderedClusters(page)).toEqual([])
-  await expect(page.locator('[data-legend-entry]')).toHaveCount(7)
+  await expect(page.locator('[data-legend-entry]')).toHaveCount(8)
   await expect(page.locator('[data-station]')).toHaveCount(12)
   await expect(page.getByText('Demo data — fictional charge points', { exact: true })).toBeVisible()
   await expect(page.locator('[data-map-intro]')).toContainText('drawn with the marker-* icons: one filled pin')
@@ -87,7 +88,7 @@ test('map page loads with canvas, 13 marker images and the legend', async ({ pag
 test('the station list opens the popup with status, connectors and power; Escape returns focus', async ({ page }) => {
   await stubTiles(page)
   await page.goto('/map')
-  await expect.poll(() => markerImages(page)).toHaveLength(13)
+  await expect.poll(() => markerImages(page)).toHaveLength(14)
   const button = page.locator('[data-station="demo-03"]')
   await button.focus()
   await page.keyboard.press('Enter')
@@ -155,13 +156,29 @@ test('zooming out merges nearby pins into clusters; clicking a cluster zooms in'
   expect(errors).toEqual([])
 })
 
+test('zooming out until the stations cluster clears the selection', async ({ page }) => {
+  await stubTiles(page)
+  await page.goto('/map')
+  await expect.poll(() => renderedStations(page)).toBe(12)
+  await clickPin(page, 'demo-03')
+  const popup = page.locator('.maplibregl-popup')
+  await expect(popup).toHaveCount(1)
+  const zoomOut = page.getByRole('button', { name: 'Zoom out' })
+  for (let i = 0; i < 2; i++) {
+    await zoomOut.click()
+    await renderedStations(page) // waits until the map is idle
+  }
+  await expect(popup).toHaveCount(0)
+  await expect(page.locator('[data-station][aria-pressed="true"]')).toHaveCount(0)
+})
+
 test('blocked tiles: notice instead of a blank map, markers, legend and stations stay', async ({ page }) => {
   const errors = collectErrors(page)
   await page.route(TILES, (route) => route.abort())
   await page.goto('/map')
   await expect(page.getByText('Map tiles could not be loaded')).toBeVisible()
   await expect(page.locator('[data-map]')).toHaveAttribute('data-map-state', 'offline')
-  await expect(page.locator('[data-legend-entry]')).toHaveCount(7)
+  await expect(page.locator('[data-legend-entry]')).toHaveCount(8)
   await expect(page.locator('[data-station]')).toHaveCount(12)
   // The markers are drawn on a plain background instead of the tiles.
   await expect.poll(() => markerImages(page)).toEqual(expectedImages)
@@ -189,7 +206,7 @@ test('MapLibre blocked: "The map could not be loaded", legend and stations stay'
   await expect(page.getByText('The map could not be loaded')).toBeVisible()
   await expect(page.locator('[data-map]')).toHaveAttribute('data-map-state', 'failed')
   await expect(page.getByText('Map tiles could not be loaded')).toHaveCount(0)
-  await expect(page.locator('[data-legend-entry]')).toHaveCount(7)
+  await expect(page.locator('[data-legend-entry]')).toHaveCount(8)
   await expect(page.locator('[data-station]')).toHaveCount(12)
   for (const error of errors) expect(error).toMatch(/Failed to load resource: net::ERR_FAILED/)
 })

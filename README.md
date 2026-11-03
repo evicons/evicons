@@ -348,20 +348,24 @@ The pin's corner, which marks the point, is at (2.5, 21.5) of 24, so with `'icon
 
 Map libraries group nearby points into clusters, and most apps highlight the station the user has selected. Neither needs its own sign: a cluster is the empty `marker-cluster` pin with the count drawn in its head, and the selected station keeps its own marker, drawn larger and with a ring.
 
-**Clusters.** Fill `marker-cluster` in your cluster colour and draw the count in white, centred in the head. The head centre is at (12, 12) of 24, the centre of the icon box: in a box of `size` px it sits at (size × 12 / 24, size × 12 / 24) from the top-left corner. With the corner anchored on the point, the count is `size × 9.5 / 24` px right of and above the point. Size the pin for the largest count you show: at 13 px bold, the head of a 32 px pin holds two digits, the head of a 40 px pin three characters (`999`, `15k`). Pick a cluster colour with at least 4.5:1 contrast to white (EV blue `#2563eb` has 5.2:1); the count then needs no halo.
+**Clusters.** Fill `marker-cluster` in your cluster colour and draw the count in white, centred in the head. The head centre is at (12, 12) of 24, the centre of the icon box: in a box of `size` px it sits at (size × 12 / 24, size × 12 / 24) from the top-left corner. With the corner anchored on the point, the count is `size × 9.5 / 24` px right of and above the point. Size the pin for the count: at 13 px bold, the head of a 32 px pin holds two digits, and the head of a 40 px pin holds `999` and `1.2k`, so switch to 40 px from 100 points. The text stays 13 px at both sizes. Pick a cluster colour with at least 4.5:1 contrast to white (EV blue `#2563eb` has 5.2:1); the count then needs no halo.
 
-In MapLibre, set `cluster: true` on the GeoJSON source. Every cluster gets the properties `point_count` and `point_count_abbreviated` (`1.2k`, `15k`); a symbol layer draws the pin and puts the count on the head centre. `text-offset` is in ems of `text-size`:
+In MapLibre, set `cluster: true` on the GeoJSON source. Every cluster gets the properties `point_count` and `point_count_abbreviated` (`999`, `1.2k`, `15k`); a symbol layer draws the pin, 32 or 40 px by `point_count`, and puts the count on the head centre. `text-offset` is in ems of `text-size`:
 
 ```ts
-import type { GeoJSONSource } from 'maplibre-gl'
+import type { ExpressionSpecification, GeoJSONSource } from 'maplibre-gl'
 
-const size = 32
-const textSize = 13 // about size × 0.42
-const head = (size * 9.5) / 24 // from the point to the head centre, right and up, in px
+const textSize = 13 // about 32 × 0.42; also at 40 px, where it leaves room for `1.2k`
+/** The value for 32 px pins (up to 99 points) or 40 px pins (100 and more). */
+const bySize = (at32: unknown, at40: unknown) => ['step', ['get', 'point_count'], at32, 100, at40] as ExpressionSpecification
+const head = (size: number) => (size * 9.5) / 24 // from the point to the head centre, right and up, in px
+const iconOffset = (size: number) => ['literal', [head(size), (size * 2.5) / 24]]
+const textOffset = (size: number) => ['literal', [head(size) / textSize, -head(size) / textSize]]
 
 map.addSource('charge-points', { type: 'geojson', data: chargePoints, cluster: true, clusterRadius: 48 })
 // `clusterSvg` is the text of @evicons/svg/marker-cluster.svg
-await addMarkerImage(map, 'ev-marker-cluster', clusterSvg, '#2563eb')
+await addMarkerImage(map, 'ev-marker-cluster', clusterSvg, '#2563eb', 32)
+await addMarkerImage(map, 'ev-marker-cluster-40', clusterSvg, '#2563eb', 40)
 
 map.addLayer({
   id: 'clusters',
@@ -369,15 +373,15 @@ map.addLayer({
   source: 'charge-points',
   filter: ['has', 'point_count'],
   layout: {
-    'icon-image': 'ev-marker-cluster',
+    'icon-image': bySize('ev-marker-cluster', 'ev-marker-cluster-40'),
     'icon-anchor': 'bottom',
-    'icon-offset': [(size * 9.5) / 24, (size * 2.5) / 24],
+    'icon-offset': bySize(iconOffset(32), iconOffset(40)),
     'icon-allow-overlap': true,
     'text-field': ['get', 'point_count_abbreviated'],
     'text-font': ['Noto Sans Bold'], // a bold face that your style's glyphs provide
     'text-size': textSize,
     'text-anchor': 'center',
-    'text-offset': [head / textSize, -head / textSize],
+    'text-offset': bySize(textOffset(32), textOffset(40)),
     'text-allow-overlap': true,
   },
   paint: { 'text-color': '#fff' },
@@ -398,6 +402,7 @@ For HTML markers (Leaflet's `L.divIcon`, a MapLibre `Marker` with an element, or
 
 ```css
 .ev-cluster { position: relative; display: block; width: 32px; height: 32px; color: #2563eb; }
+.ev-cluster.is-large { width: 40px; height: 40px; }
 .ev-cluster svg { display: block; width: 100%; height: 100%; }
 .ev-cluster svg > path:first-of-type { fill: currentColor; }
 .ev-cluster .count { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); font: 700 13px/1 system-ui, sans-serif; color: #fff; }
@@ -407,10 +412,13 @@ For HTML markers (Leaflet's `L.divIcon`, a MapLibre `Marker` with an element, or
 import L from 'leaflet'
 import svg from '@evicons/svg/marker-cluster.svg?raw'
 
-const size = 32
+// The same abbreviation as MapLibre's `point_count_abbreviated`: 999, 1.2k, 15k.
+const abbreviate = (n: number) => (n >= 10_000 ? `${Math.round(n / 1000)}k` : n >= 1000 ? `${Math.round(n / 100) / 10}k` : `${n}`)
+
 export function clusterIcon(count: number) {
+  const size = count >= 100 ? 40 : 32
   return L.divIcon({
-    html: `<span class="ev-cluster">${svg}<span class="count">${count}</span></span>`,
+    html: `<span class="ev-cluster${size === 40 ? ' is-large' : ''}">${svg}<span class="count">${abbreviate(count)}</span></span>`,
     className: '', // no Leaflet box; the wrapper inside carries the class
     iconSize: [size, size],
     iconAnchor: [(size * 2.5) / 24, (size * 21.5) / 24],
@@ -418,7 +426,7 @@ export function clusterIcon(count: number) {
 }
 ```
 
-With Leaflet.markercluster, return it from `iconCreateFunction: (cluster) => clusterIcon(cluster.getChildCount())`. The class is `ev-cluster`, not `marker-cluster`, because Leaflet.markercluster styles `.marker-cluster` itself. In React:
+With Leaflet.markercluster, return it from `iconCreateFunction: (cluster) => clusterIcon(cluster.getChildCount())`. The class is `ev-cluster`, not `marker-cluster`, because Leaflet.markercluster styles `.marker-cluster` itself. In React (abbreviate and size large counts the same way):
 
 ```tsx
 import { MarkerCluster } from '@evicons/react'
@@ -438,7 +446,7 @@ export function ClusterPin({ count }: { count: number }) {
 **Selection.** There is no "selected" marker: draw the selected station's own marker, so that its status stays visible, and set it apart in ways that do not depend on colour.
 
 - **Larger:** 40 px instead of the 32 px of the other markers. On a map, register a separate 40 px image rather than scaling with `icon-size`, so that it stays sharp, and compute its offsets for 40 px.
-- **A white ring:** it lifts the pin off the map and off its neighbours. In CSS, give the pin a wide white stroke painted under its fill: `stroke-width: 4` leaves 1.25 units of white outside the pin, 2 px at 40 px. A map image cannot be styled, and MapLibre's `icon-halo-*` only applies to SDF icons, so draw the ring into the image: a white copy of the pin, 4 wide, underneath the filled one.
+- **A white ring:** it lifts the pin off the map and off its neighbours. In CSS, give the pin a wide white stroke painted under its fill: `stroke-width: 4` puts 2 units of white outside the path (3.3 px at 40 px), in place of the pin's own stroke, so the pin grows by 1.25 units overall. A map image cannot be styled, and MapLibre's `icon-halo-*` only applies to SDF icons, so draw the ring into the image: a white copy of the pin, 4 wide, underneath the filled one, which keeps its coloured stroke and leaves 1.25 units of white (2 px at 40 px).
 - **On top:** draw it above the other markers: `symbol-sort-key` in MapLibre (a higher key is drawn later), `zIndexOffset` in Leaflet, `z-index` for HTML markers.
 
 ```css
