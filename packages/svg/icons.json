@@ -1,4 +1,51 @@
 {
+  "accessible-charging": {
+    "category": "station",
+    "meaning": {
+      "en": "Accessible charging bay: a charging point usable from a wheelchair (step-free, wider bay, reachable controls)",
+      "de": "Barrierefreier Ladeplatz: ein Ladepunkt, der vom Rollstuhl aus nutzbar ist (stufenlos, breiter Stellplatz, erreichbare Bedienung)"
+    },
+    "tags": {
+      "en": [
+        "accessible charging",
+        "accessible",
+        "wheelchair",
+        "barrier-free",
+        "disabled parking",
+        "accessibility",
+        "charging"
+      ],
+      "de": [
+        "barrierefreies laden",
+        "barrierefrei",
+        "rollstuhl",
+        "behindertenparkplatz",
+        "zugänglich",
+        "laden"
+      ],
+      "fr": [
+        "recharge accessible",
+        "accessible",
+        "fauteuil roulant",
+        "pmr",
+        "place handicapé",
+        "accessibilité",
+        "recharge"
+      ]
+    },
+    "since": "0.4.0",
+    "aliases": [],
+    "exceptions": [
+      "solid-sign",
+      "sharp-corner"
+    ],
+    "provenance": {
+      "createdBy": "ai",
+      "approvedBy": null,
+      "approvedOn": null
+    },
+    "pascal": "AccessibleCharging"
+  },
   "app-charging": {
     "category": "payment",
     "meaning": {
@@ -421,6 +468,50 @@
       "approvedOn": "2026-11-01"
     },
     "pascal": "ChargingCard"
+  },
+  "charging-hub": {
+    "category": "station",
+    "meaning": {
+      "en": "Charging hub: a site with several charging points in one place (HPC hub, charging park)",
+      "de": "Ladepark: ein Standort mit mehreren Ladepunkten an einem Ort (HPC-Hub)"
+    },
+    "tags": {
+      "en": [
+        "charging hub",
+        "charging park",
+        "hpc hub",
+        "charging plaza",
+        "multiple chargers",
+        "charging"
+      ],
+      "de": [
+        "ladepark",
+        "ladehub",
+        "hpc-hub",
+        "schnellladepark",
+        "mehrere ladepunkte",
+        "laden"
+      ],
+      "fr": [
+        "hub de recharge",
+        "parc de recharge",
+        "station hpc",
+        "plusieurs bornes",
+        "recharge"
+      ]
+    },
+    "since": "0.4.0",
+    "aliases": [],
+    "exceptions": [
+      "solid-sign",
+      "sharp-corner"
+    ],
+    "provenance": {
+      "createdBy": "ai",
+      "approvedBy": null,
+      "approvedOn": null
+    },
+    "pascal": "ChargingHub"
   },
   "charging-log": {
     "category": "payment",
@@ -1100,6 +1191,53 @@
       "approvedOn": "2026-11-01"
     },
     "pascal": "GreenPower"
+  },
+  "highway-charging": {
+    "category": "station",
+    "meaning": {
+      "en": "Motorway charging: charging on or next to a motorway (service area, rest stop)",
+      "de": "Laden an der Autobahn: Laden an oder neben der Autobahn (Raststätte, Rastplatz)"
+    },
+    "tags": {
+      "en": [
+        "motorway charging",
+        "highway charging",
+        "motorway",
+        "highway",
+        "freeway",
+        "service area",
+        "rest stop",
+        "charging"
+      ],
+      "de": [
+        "laden an der autobahn",
+        "autobahn",
+        "raststätte",
+        "rastplatz",
+        "schnellstraße",
+        "laden"
+      ],
+      "fr": [
+        "recharge sur autoroute",
+        "autoroute",
+        "aire de service",
+        "aire de repos",
+        "voie rapide",
+        "recharge"
+      ]
+    },
+    "since": "0.4.0",
+    "aliases": [],
+    "exceptions": [
+      "solid-sign",
+      "sharp-corner"
+    ],
+    "provenance": {
+      "createdBy": "ai",
+      "approvedBy": null,
+      "approvedOn": null
+    },
+    "pascal": "HighwayCharging"
   },
   "home-charging": {
     "category": "station",

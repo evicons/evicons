@@ -1,0 +1,43 @@
+{
+  "category": "station",
+  "meaning": {
+    "en": "Charging hub: a site with several charging points in one place (HPC hub, charging park)",
+    "de": "Ladepark: ein Standort mit mehreren Ladepunkten an einem Ort (HPC-Hub)"
+  },
+  "tags": {
+    "en": [
+      "charging hub",
+      "charging park",
+      "hpc hub",
+      "charging plaza",
+      "multiple chargers",
+      "charging"
+    ],
+    "de": [
+      "ladepark",
+      "ladehub",
+      "hpc-hub",
+      "schnellladepark",
+      "mehrere ladepunkte",
+      "laden"
+    ],
+    "fr": [
+      "hub de recharge",
+      "parc de recharge",
+      "station hpc",
+      "plusieurs bornes",
+      "recharge"
+    ]
+  },
+  "since": "0.4.0",
+  "aliases": [],
+  "exceptions": [
+    "solid-sign",
+    "sharp-corner"
+  ],
+  "provenance": {
+    "createdBy": "ai",
+    "approvedBy": null,
+    "approvedOn": null
+  }
+}

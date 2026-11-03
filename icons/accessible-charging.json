@@ -1,0 +1,46 @@
+{
+  "category": "station",
+  "meaning": {
+    "en": "Accessible charging bay: a charging point usable from a wheelchair (step-free, wider bay, reachable controls)",
+    "de": "Barrierefreier Ladeplatz: ein Ladepunkt, der vom Rollstuhl aus nutzbar ist (stufenlos, breiter Stellplatz, erreichbare Bedienung)"
+  },
+  "tags": {
+    "en": [
+      "accessible charging",
+      "accessible",
+      "wheelchair",
+      "barrier-free",
+      "disabled parking",
+      "accessibility",
+      "charging"
+    ],
+    "de": [
+      "barrierefreies laden",
+      "barrierefrei",
+      "rollstuhl",
+      "behindertenparkplatz",
+      "zugänglich",
+      "laden"
+    ],
+    "fr": [
+      "recharge accessible",
+      "accessible",
+      "fauteuil roulant",
+      "pmr",
+      "place handicapé",
+      "accessibilité",
+      "recharge"
+    ]
+  },
+  "since": "0.4.0",
+  "aliases": [],
+  "exceptions": [
+    "solid-sign",
+    "sharp-corner"
+  ],
+  "provenance": {
+    "createdBy": "ai",
+    "approvedBy": null,
+    "approvedOn": null
+  }
+}

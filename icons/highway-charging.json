@@ -1,0 +1,46 @@
+{
+  "category": "station",
+  "meaning": {
+    "en": "Motorway charging: charging on or next to a motorway (service area, rest stop)",
+    "de": "Laden an der Autobahn: Laden an oder neben der Autobahn (Raststätte, Rastplatz)"
+  },
+  "tags": {
+    "en": [
+      "motorway charging",
+      "highway charging",
+      "motorway",
+      "highway",
+      "freeway",
+      "service area",
+      "rest stop",
+      "charging"
+    ],
+    "de": [
+      "laden an der autobahn",
+      "autobahn",
+      "raststätte",
+      "rastplatz",
+      "schnellstraße",
+      "laden"
+    ],
+    "fr": [
+      "recharge sur autoroute",
+      "autoroute",
+      "aire de service",
+      "aire de repos",
+      "voie rapide",
+      "recharge"
+    ]
+  },
+  "since": "0.4.0",
+  "aliases": [],
+  "exceptions": [
+    "solid-sign",
+    "sharp-corner"
+  ],
+  "provenance": {
+    "createdBy": "ai",
+    "approvedBy": null,
+    "approvedOn": null
+  }
+}

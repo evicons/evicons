@@ -171,6 +171,9 @@ The same index with SVG markup and URLs, without installing anything: [evicons.d
 | `dealer-charging` | `DealerCharging` | Car dealer charging: a charging point at a car dealership, showroom or garage |
 | `shop-charging` | `ShopCharging` | Charging while shopping: a charging point at a supermarket, shopping centre or retail car park |
 | `streetlight-charging` | `StreetlightCharging` | Street light charging: a charging point built into a street light (kerbside charging) |
+| `charging-hub` | `ChargingHub` | Charging hub: a site with several charging points in one place (HPC hub, charging park) |
+| `highway-charging` | `HighwayCharging` | Motorway charging: charging on or next to a motorway (service area, rest stop) |
+| `accessible-charging` | `AccessibleCharging` | Accessible charging bay: a charging point usable from a wheelchair (step-free, wider bay, reachable controls) |
 
 ### Power and energy
 
