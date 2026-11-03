@@ -36,6 +36,9 @@
     "solid-sign",
     "sharp-corner"
   ],
+  "osm": [
+    "parking_space=charging"
+  ],
   "provenance": {
     "createdBy": "ai",
     "approvedBy": "Landolsi Digital",

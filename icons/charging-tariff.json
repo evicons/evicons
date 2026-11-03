@@ -35,6 +35,9 @@
     "solid-sign",
     "sharp-corner"
   ],
+  "osm": [
+    "fee=yes"
+  ],
   "provenance": {
     "createdBy": "ai",
     "approvedBy": "Landolsi Digital",

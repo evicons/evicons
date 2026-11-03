@@ -29,6 +29,9 @@
   "exceptions": [
     "letters"
   ],
+  "osm": [
+    "charging_station:output"
+  ],
   "provenance": {
     "createdBy": "ai",
     "approvedBy": "Landolsi Digital",

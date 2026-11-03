@@ -214,7 +214,9 @@ Use a badge size of half the base icon. At 12 px the default stroke scales down 
 
 ## 8. Metadata and provenance
 
-Each icon has `<name>.json` next to `<name>.svg` (schema in `tools/lib/meta.ts`): category, meaning (en/de), tags (en/de/fr), `since`, aliases, optional `standard` and `exceptions`, and `provenance`:
+Each icon has `<name>.json` next to `<name>.svg` (schema in `tools/lib/meta.ts`): category, meaning (en/de), tags (en/de/fr), `since`, aliases, optional `standard`, `exceptions` and `osm`, and `provenance`:
+
+- `osm`: the OpenStreetMap tags the icon stands for, so that apps reading OSM charging data (`amenity=charging_station`, `socket:<type>=<count>`) can pick the icon from the metadata alone. An entry is a bare key (`socket:type2`: any value; for socket keys the value is the number of sockets) or `key=value` (`fee=no`), with the key as written on the OSM wiki (lower case, parts separated by `:`). A tag belongs to one icon at most; the linter checks this across all icons. Map a tag only when the icon shows exactly what the tag means; deprecated keys (`socket:tesla_supercharger`) are not mapped. The build writes the reverse index `packages/svg/osm.json` (tag → icon name).
 
 - `createdBy`: `"ai"` or `"human"`, without product names.
 - `approvedBy` / `approvedOn`: `null` until the owner (Landolsi Digital) or a maintainer the owner delegated to approves the icon after an independent review of the preview; `approvedBy` holds the company name, never a person; a release (`npm run lint:icons -- --release`) requires both.

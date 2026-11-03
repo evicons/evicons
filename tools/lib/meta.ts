@@ -16,11 +16,18 @@ export type IconMeta = {
   /** Required for category 'connector'. */
   standard?: { norm: string; source: string }
   exceptions?: Array<(typeof KNOWN_EXCEPTIONS)[number]>
+  /**
+   * OpenStreetMap tags this icon stands for: a bare key such as `socket:type2` (any value, for socket
+   * keys the value is a count) or `key=value`.
+   */
+  osm?: string[]
   provenance: { createdBy: 'ai' | 'human'; approvedBy: string | null; approvedOn: string | null }
 }
 
 const SEMVER = /^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(-[0-9A-Za-z.-]+)?$/
 const ISO_DATE = /^\d{4}-\d{2}-\d{2}$/
+/** An OpenStreetMap key (lower case, `:`-separated parts), optionally with `=value`. */
+export const OSM_TAG = /^[a-z][a-z0-9_]*(:[a-z0-9_]+)*(=[A-Za-z0-9_.;:-]+)?$/
 
 type Obj = Record<string, unknown>
 
@@ -56,7 +63,7 @@ export function validateMeta(raw: unknown, name: string): string[] {
     raw,
     '',
     ['category', 'meaning', 'tags', 'since', 'aliases', 'provenance'],
-    ['deprecated', 'standard', 'exceptions'],
+    ['deprecated', 'standard', 'exceptions', 'osm'],
     errors,
   )
 
@@ -144,6 +151,21 @@ export function validateMeta(raw: unknown, name: string): string[] {
           errors.push(`exceptions[${i}]: unknown exception ${JSON.stringify(id)} (known: ${KNOWN_EXCEPTIONS.join(', ')})`)
         }
       })
+    }
+  }
+
+  if ('osm' in raw) {
+    const osm = raw.osm
+    if (!Array.isArray(osm)) {
+      errors.push('osm: must be an array of OpenStreetMap tags')
+    } else {
+      if (osm.length < 1) errors.push('osm: must contain at least 1 entry')
+      osm.forEach((tag, i) => {
+        if (typeof tag !== 'string' || !OSM_TAG.test(tag)) {
+          errors.push(`osm[${i}]: must be an OpenStreetMap key such as "socket:type2" or a tag such as "fee=no", got ${JSON.stringify(tag)}`)
+        }
+      })
+      if (new Set(osm).size !== osm.length) errors.push('osm: must not contain duplicates')
     }
   }
 

@@ -48,6 +48,11 @@
   "exceptions": [
     "dense-connector"
   ],
+  "osm": [
+    "socket:type2",
+    "socket:type2_cable",
+    "socket:gb_ac"
+  ],
   "provenance": {
     "createdBy": "ai",
     "approvedBy": "Landolsi Digital",

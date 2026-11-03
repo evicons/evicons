@@ -43,6 +43,9 @@
   "exceptions": [
     "dense-connector"
   ],
+  "osm": [
+    "socket:type2_combo"
+  ],
   "provenance": {
     "createdBy": "ai",
     "approvedBy": "Landolsi Digital",

@@ -46,6 +46,9 @@
   "exceptions": [
     "dense-connector"
   ],
+  "osm": [
+    "socket:nacs"
+  ],
   "provenance": {
     "createdBy": "ai",
     "approvedBy": "Landolsi Digital",

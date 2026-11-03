@@ -209,6 +209,9 @@
       "solid-sign",
       "sharp-corner"
     ],
+    "osm": [
+      "bicycle=yes"
+    ],
     "provenance": {
       "createdBy": "ai",
       "approvedBy": "Landolsi Digital",
@@ -251,6 +254,9 @@
     "exceptions": [
       "solid-sign",
       "sharp-corner"
+    ],
+    "osm": [
+      "bus=yes"
     ],
     "provenance": {
       "createdBy": "ai",
@@ -337,6 +343,9 @@
     "exceptions": [
       "solid-sign",
       "sharp-corner"
+    ],
+    "osm": [
+      "motorcar=yes"
     ],
     "provenance": {
       "createdBy": "ai",
@@ -730,6 +739,9 @@
       "solid-sign",
       "sharp-corner"
     ],
+    "osm": [
+      "operator"
+    ],
     "provenance": {
       "createdBy": "ai",
       "approvedBy": "Landolsi Digital",
@@ -768,6 +780,9 @@
     },
     "since": "0.2.0",
     "aliases": [],
+    "osm": [
+      "socket:unknown"
+    ],
     "provenance": {
       "createdBy": "ai",
       "approvedBy": "Landolsi Digital",
@@ -937,6 +952,9 @@
     },
     "since": "0.1.0",
     "aliases": [],
+    "osm": [
+      "amenity=charging_station"
+    ],
     "provenance": {
       "createdBy": "ai",
       "approvedBy": "Landolsi Digital",
@@ -980,6 +998,9 @@
     "exceptions": [
       "solid-sign",
       "sharp-corner"
+    ],
+    "osm": [
+      "fee=yes"
     ],
     "provenance": {
       "createdBy": "ai",
@@ -1107,6 +1128,10 @@
     "exceptions": [
       "letters"
     ],
+    "osm": [
+      "frequency=50",
+      "frequency=60"
+    ],
     "provenance": {
       "createdBy": "ai",
       "approvedBy": "Landolsi Digital",
@@ -1144,6 +1169,9 @@
     "aliases": [],
     "exceptions": [
       "letters"
+    ],
+    "osm": [
+      "frequency=0"
     ],
     "provenance": {
       "createdBy": "ai",
@@ -1357,6 +1385,9 @@
       "letters",
       "solid-sign",
       "sharp-corner"
+    ],
+    "osm": [
+      "fee=no"
     ],
     "provenance": {
       "createdBy": "ai",
@@ -2139,6 +2170,9 @@
       "solid-sign",
       "sharp-corner"
     ],
+    "osm": [
+      "motorcycle=yes"
+    ],
     "provenance": {
       "createdBy": "ai",
       "approvedBy": "Landolsi Digital",
@@ -2183,6 +2217,9 @@
       "letters",
       "solid-sign",
       "sharp-corner"
+    ],
+    "osm": [
+      "parking_space=charging"
     ],
     "provenance": {
       "createdBy": "ai",
@@ -2278,6 +2315,9 @@
     "exceptions": [
       "dense-connector"
     ],
+    "osm": [
+      "socket:type1_combo"
+    ],
     "provenance": {
       "createdBy": "ai",
       "approvedBy": "Landolsi Digital",
@@ -2330,6 +2370,9 @@
     "exceptions": [
       "dense-connector"
     ],
+    "osm": [
+      "socket:type2_combo"
+    ],
     "provenance": {
       "createdBy": "ai",
       "approvedBy": "Landolsi Digital",
@@ -2377,6 +2420,9 @@
       "norm": "IEC 62196-3 configuration AA (CHAdeMO, JEVS G105)",
       "source": "IEC 62196-3 / JEVS G105 not consulted; layout checked against public drawings on Wikimedia Commons, retrieved 2026-11-01: \"File:CHAdeMO connector.svg\" by Mliu92 (CC BY-SA 4.0; connector face with 10 contacts: DC+ and DC- left and right on the centre line at 0.46 R, two round signal bosses above and below at 0.57 R, each with four signal contacts in a diamond, pitch 0.18 R from the boss centre), https://commons.wikimedia.org/wiki/File:CHAdeMO_connector.svg, and \"File:CHAdeMO socket.svg\" by Mliu92 (CC BY-SA 4.0; socket face with the same arrangement: DC at 0.45 R, signal bosses at 0.55 R, signal contacts at 0.20 R from the boss centre), https://commons.wikimedia.org/wiki/File:CHAdeMO_socket.svg. Drawn: outline, both DC contacts, and per signal boss the horizontal pair at the boss centre (upper boss: the two side contacts, labelled N/C and SS1 in the connector drawing; lower boss: C-L and C-H). Omitted: the upper and lower contact of each boss (FG, DCP, PP, SS2), the boss rims and the keyway, because they would merge at 16 px. Left and right are not distinguished (DC+ and DC- look alike)."
     },
+    "osm": [
+      "socket:chademo"
+    ],
     "provenance": {
       "createdBy": "ai",
       "approvedBy": "Landolsi Digital",
@@ -2435,6 +2481,9 @@
     "exceptions": [
       "dense-connector",
       "sharp-corner"
+    ],
+    "osm": [
+      "socket:gb_dc"
     ],
     "provenance": {
       "createdBy": "ai",
@@ -2538,6 +2587,9 @@
     "exceptions": [
       "dense-connector"
     ],
+    "osm": [
+      "socket:mcs"
+    ],
     "provenance": {
       "createdBy": "ai",
       "approvedBy": "Landolsi Digital",
@@ -2593,6 +2645,9 @@
     "exceptions": [
       "dense-connector"
     ],
+    "osm": [
+      "socket:nacs"
+    ],
     "provenance": {
       "createdBy": "ai",
       "approvedBy": "Landolsi Digital",
@@ -2643,6 +2698,9 @@
       "norm": "CEE 7/3 (DIN 49440)",
       "source": "CEE 7/3 and DIN 49440 not consulted; layout checked against a public drawing on Wikimedia Commons, retrieved 2026-11-01: \"File:Type F Socket.svg\" by Aeroid (public domain; socket face: round recess 39 mm, two contact holes on the horizontal centre line 19 mm apart, earthing clips at the top and bottom of the recess), https://commons.wikimedia.org/wiki/File:Type_F_Socket.svg. Hole spacing follows that drawing (19/39 = 0.49 of the recess diameter); the holes are drawn as solid discs of diameter 2.5 (two-arc paths r 0.5, design guide section 2; the drawing's 5 mm holes scale to about 2.3) and the earthing clips as short horizontal strokes just inside the rim, not touching it, so they stay separate at 16 px. Socket face exception (design guide section 5): Schuko has no vehicle inlet."
     },
+    "osm": [
+      "socket:schuko"
+    ],
     "provenance": {
       "createdBy": "ai",
       "approvedBy": "Landolsi Digital",
@@ -2692,6 +2750,9 @@
       "norm": "SAE J1772 / IEC 62196-2 Type 1",
       "source": "SAE J1772 and IEC 62196-2 themselves not consulted. Layout checked against three public drawings on Wikimedia Commons, retrieved 2026-11-02: \"File:J1772 connector.svg\" by Mliu92 (CC BY-SA 4.0; \"view facing the plug end\", i.e. the face of the cable connector, drawn approximately to scale, 10 px = 1 mm: round face, L1 and N large at the top left and right, PP and CP small at the lower left and right, PE large at the bottom centre; relative to the face radius R the contacts sit at (±0.38, −0.33) R, (±0.52, +0.27) R and (0, +0.52) R), https://commons.wikimedia.org/wiki/File:J1772_connector.svg; \"File:SAE J1772 Type 1.png\" (Schneider Electric, CC BY 3.0; connector face with latch at the top, same arrangement: two large contacts at the top, two small ones at the sides, one large at the bottom centre), https://commons.wikimedia.org/wiki/File:SAE_J1772_Type_1.png; and \"File:Type1 J1772.svg\" by GreatDrok (CC BY-SA 4.0; unlabelled, same arrangement), https://commons.wikimedia.org/wiki/File:Type1_J1772.svg. The Mliu92 drawing shows the connector face; the other two show the same arrangement; the icon shows the vehicle inlet seen from the front, which is its mirror image (N top left, L1 top right, CP lower left, PP lower right). Because L1 and N have the same size, and PP and CP too, the mirrored face looks the same. Contact positions are the Mliu92 positions scaled to R 9. Drawn: the face outline (latch and keying tab omitted, too fine), L1, N and PE as rings r 1.5, PP and CP as dots (the drawing's 4.5 mm signal pins against 6 mm power pins; plain dots keep the two sizes apart at 16 px)."
     },
+    "osm": [
+      "socket:type1"
+    ],
     "provenance": {
       "createdBy": "ai",
       "approvedBy": "Landolsi Digital",
@@ -2749,6 +2810,11 @@
     "exceptions": [
       "dense-connector"
     ],
+    "osm": [
+      "socket:type2",
+      "socket:type2_cable",
+      "socket:gb_ac"
+    ],
     "provenance": {
       "createdBy": "ai",
       "approvedBy": "Landolsi Digital",
@@ -2786,6 +2852,9 @@
     "aliases": [],
     "exceptions": [
       "letters"
+    ],
+    "osm": [
+      "charging_station:output"
     ],
     "provenance": {
       "createdBy": "ai",
@@ -2968,6 +3037,10 @@
     "exceptions": [
       "solid-sign",
       "sharp-corner"
+    ],
+    "osm": [
+      "access=customers",
+      "access=private"
     ],
     "provenance": {
       "createdBy": "ai",
@@ -3549,6 +3622,9 @@
     "exceptions": [
       "solid-sign",
       "sharp-corner"
+    ],
+    "osm": [
+      "hgv=yes"
     ],
     "provenance": {
       "createdBy": "ai",

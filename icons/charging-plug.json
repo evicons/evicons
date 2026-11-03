@@ -29,6 +29,9 @@
   },
   "since": "0.2.0",
   "aliases": [],
+  "osm": [
+    "socket:unknown"
+  ],
   "provenance": {
     "createdBy": "ai",
     "approvedBy": "Landolsi Digital",

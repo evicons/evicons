@@ -29,6 +29,9 @@
   "exceptions": [
     "letters"
   ],
+  "osm": [
+    "frequency=0"
+  ],
   "provenance": {
     "createdBy": "ai",
     "approvedBy": "Landolsi Digital",

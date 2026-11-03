@@ -34,6 +34,9 @@
     "solid-sign",
     "sharp-corner"
   ],
+  "osm": [
+    "bicycle=yes"
+  ],
   "provenance": {
     "createdBy": "ai",
     "approvedBy": "Landolsi Digital",

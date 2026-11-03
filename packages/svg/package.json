@@ -18,11 +18,12 @@
     "ccs"
   ],
   "license": "MIT",
-  "files": ["svg", "sprite.svg", "icons.json", "README.md", "LICENSE"],
+  "files": ["svg", "sprite.svg", "icons.json", "osm.json", "README.md", "LICENSE"],
   "exports": {
     "./*.svg": "./svg/*.svg",
     "./sprite.svg": "./sprite.svg",
     "./icons.json": "./icons.json",
+    "./osm.json": "./osm.json",
     "./package.json": "./package.json"
   },
   "repository": { "type": "git", "url": "git+https://github.com/evicons/evicons.git", "directory": "packages/svg" },

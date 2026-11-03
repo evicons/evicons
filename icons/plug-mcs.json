@@ -53,6 +53,9 @@
   "exceptions": [
     "dense-connector"
   ],
+  "osm": [
+    "socket:mcs"
+  ],
   "provenance": {
     "createdBy": "ai",
     "approvedBy": "Landolsi Digital",

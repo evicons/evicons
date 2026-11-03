@@ -14,7 +14,9 @@ export const GET: APIRoute = () => {
         .filter((icon) => icon.category === category)
         .map((icon) => {
           const title = iconTitles[icon.name]?.en ?? icon.name
-          return `- [${title} (\`${icon.name}\`, React \`${icon.pascal}\`)](${site}/icons/${icon.name}): ${details[icon.name]!.meaning.en}`
+          const { meaning, osm } = details[icon.name]!
+          const tags = osm.length > 0 ? ` (OpenStreetMap: ${osm.map((tag) => `\`${tag}\``).join(', ')})` : ''
+          return `- [${title} (\`${icon.name}\`, React \`${icon.pascal}\`)](${site}/icons/${icon.name}): ${meaning.en}${tags}`
         })
       return `### ${categoryLabels[category].en}\n\n${rows.join('\n')}`
     })

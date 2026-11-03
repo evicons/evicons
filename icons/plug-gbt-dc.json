@@ -50,6 +50,9 @@
     "dense-connector",
     "sharp-corner"
   ],
+  "osm": [
+    "socket:gb_dc"
+  ],
   "provenance": {
     "createdBy": "ai",
     "approvedBy": "Landolsi Digital",

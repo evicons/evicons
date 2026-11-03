@@ -79,6 +79,36 @@ test('icons.json carries meta + pascal', () => {
   expect(read('svg-pkg/icons.json')).toContain('\n  "test-bolt": {')
 })
 
+test('osm.json maps each OpenStreetMap tag to its icon, keys sorted', () => {
+  const dir = join(tmp, 'icons-osm')
+  mkdirSync(dir)
+  for (const name of ['test-bolt', 'test-ring']) {
+    copyFileSync(join(VALID, `${name}.svg`), join(dir, `${name}.svg`))
+    const meta = JSON.parse(readFileSync(join(VALID, `${name}.json`), 'utf8'))
+    meta.osm = name === 'test-ring' ? ['socket:type2', 'fee=no'] : ['amenity=charging_station']
+    writeFileSync(join(dir, `${name}.json`), JSON.stringify(meta))
+  }
+  buildIcons(opts(dir))
+  expect(read('svg-pkg/osm.json')).toBe(
+    '{\n  "amenity=charging_station": "test-bolt",\n  "fee=no": "test-ring",\n  "socket:type2": "test-ring"\n}\n',
+  )
+  expect(JSON.parse(read('svg-pkg/icons.json'))['test-ring'].osm).toEqual(['socket:type2', 'fee=no'])
+})
+
+test('the published osm.json maps the common sockets', () => {
+  const osm = JSON.parse(readFileSync(join(ROOT, 'packages/svg/osm.json'), 'utf8')) as Record<string, string>
+  const icons = JSON.parse(readFileSync(join(ROOT, 'packages/svg/icons.json'), 'utf8')) as Record<string, { osm?: string[] }>
+  expect(osm['socket:type2_combo']).toBe('plug-ccs2')
+  expect(osm['socket:gb_ac']).toBe('plug-type-2')
+  expect(osm['socket:unknown']).toBe('charging-plug')
+  expect(osm['socket:tesla_supercharger']).toBeUndefined()
+  for (const [tag, name] of Object.entries(osm)) {
+    expect(Object.keys(icons), tag).toContain(name)
+    expect(icons[name]!.osm, tag).toContain(tag)
+  }
+  expect(Object.keys(osm)).toEqual(Object.keys(osm).sort())
+})
+
 test('removes stale outputs', () => {
   mkdirSync(join(reactDir, 'icons'))
   writeFileSync(join(reactDir, 'icons/old.ts'), 'x')
@@ -112,6 +142,7 @@ test('builds zero icons from an empty or missing directory', () => {
   buildIcons(opts(join(tmp, 'missing')))
   expect(read('react-src/index.ts')).not.toContain('./icons/')
   expect(read('svg-pkg/icons.json')).toBe('{}\n')
+  expect(read('svg-pkg/osm.json')).toBe('{}\n')
   expect(read('svg-pkg/sprite.svg')).toContain('<svg xmlns="http://www.w3.org/2000/svg">')
   expect(readdirSync(join(reactDir, 'icons'))).toEqual([])
 })

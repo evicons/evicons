@@ -29,6 +29,9 @@
   },
   "since": "0.1.0",
   "aliases": [],
+  "osm": [
+    "amenity=charging_station"
+  ],
   "provenance": {
     "createdBy": "ai",
     "approvedBy": "Landolsi Digital",

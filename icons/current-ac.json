@@ -29,6 +29,10 @@
   "exceptions": [
     "letters"
   ],
+  "osm": [
+    "frequency=50",
+    "frequency=60"
+  ],
   "provenance": {
     "createdBy": "ai",
     "approvedBy": "Landolsi Digital",

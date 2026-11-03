@@ -294,6 +294,8 @@ export function lintIcons(dir: string, opts: { release: boolean }): LintError[] 
   const names = [...new Set([...svgs, ...jsons])].sort()
   // PascalCase identifier -> description of its first owner
   const identifiers = new Map<string, string>()
+  // OpenStreetMap tag -> the icon that claimed it first
+  const osmTags = new Map<string, string>()
 
   for (const name of names) {
     const svgFile = `${name}.svg`
@@ -333,6 +335,12 @@ export function lintIcons(dir: string, opts: { release: boolean }): LintError[] 
       const existing = identifiers.get(id)
       if (existing) errors.push({ file: jsonFile, message: `PascalCase name "${id}" of ${owner} collides with ${existing}` })
       else identifiers.set(id, owner)
+    }
+
+    for (const tag of meta.osm ?? []) {
+      const owner = osmTags.get(tag)
+      if (owner) errors.push({ file: jsonFile, message: `osm tag "${tag}" of icon "${name}" is already mapped to icon "${owner}"` })
+      else osmTags.set(tag, name)
     }
 
     if (opts.release) {

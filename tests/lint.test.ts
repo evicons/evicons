@@ -31,6 +31,7 @@ const CASES: Array<[string, Record<string, unknown>, boolean]> = [
   [invalid('connector-without-standard'), { file: 'bad.json', message: expect.stringMatching(/standard/) }, true],
   [invalid('unknown-exception'), { file: 'bad.json', message: expect.stringMatching(/unknown exception/i) }, true],
   [invalid('duplicate-pascal'), { file: 'plug.json', message: expect.stringMatching(/Ac2/) }, true],
+  [invalid('duplicate-osm'), { file: 'ring-b.json', message: expect.stringMatching(/socket:type2.*ring-b.*ring-a/) }, true],
   [UNAPPROVED, { file: 'bad.json', message: expect.stringMatching(/approvedBy/) }, false],
 ]
 
@@ -133,6 +134,13 @@ test('the eleven real markers pass the marker rules', () => {
   expect(errors.filter((e) => e.message.startsWith('marker:'))).toEqual([])
 })
 
+test('an OpenStreetMap tag may belong to one icon only', () => {
+  // ring-a and ring-b both claim socket:type2; fee=no on ring-a alone is fine
+  expect(lintIcons(invalid('duplicate-osm'), { release: false })).toEqual([
+    { file: 'ring-b.json', message: 'osm tag "socket:type2" of icon "ring-b" is already mapped to icon "ring-a"' },
+  ])
+})
+
 test('valid marker passes', () => {
   expect(lintIcons(join(VALID, 'marker-ok'), { release: false })).toEqual([])
 })
@@ -196,6 +204,22 @@ describe('validateMeta', () => {
 
   test('rejects non-kebab aliases', () => {
     expect(validateMeta({ ...base, aliases: ['FooBar'] }, 'x')).toContainEqual(expect.stringMatching(/aliases/))
+  })
+
+  test('accepts OpenStreetMap keys and tags in osm', () => {
+    const osm = ['socket:type2', 'socket:type2_combo', 'amenity=charging_station', 'frequency=50', 'charging_station:output']
+    expect(validateMeta({ ...base, osm }, 'x')).toEqual([])
+  })
+
+  test.each([
+    ['an upper-case key', ['Socket:Type2'], /osm\[0\]/],
+    ['an empty value', ['socket:type2='], /osm\[0\]/],
+    ['an empty string', [''], /osm\[0\]/],
+    ['a duplicate', ['fee=no', 'fee=no'], /osm: must not contain duplicates/],
+    ['an empty list', [], /osm: must contain at least 1 entry/],
+    ['a string instead of a list', 'socket:type2', /osm: must be an array/],
+  ])('rejects osm with %s', (_, osm, message) => {
+    expect(validateMeta({ ...base, osm }, 'x')).toContainEqual(expect.stringMatching(message))
   })
 
   test('requires standard for connectors', () => {
