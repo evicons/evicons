@@ -116,6 +116,10 @@ To combine a status with another icon, place a small status icon (half the base 
 | `charging-operator` | `ChargingOperator` | Charge point operator (CPO): the company that runs a charging point |
 | `destination-charging` | `DestinationCharging` | Destination charging: charging while staying at a hotel, shop or restaurant |
 | `report-fault` | `ReportFault` | Report a fault: tell the operator that a charging point has an electrical or technical problem |
+| `fuel-station-charging` | `FuelStationCharging` | Fuel station charging: a charging point at a fuel or service station (under the canopy) |
+| `dealer-charging` | `DealerCharging` | Car dealer charging: a charging point at a car dealership, showroom or garage |
+| `shop-charging` | `ShopCharging` | Charging while shopping: a charging point at a supermarket, shopping centre or retail car park |
+| `streetlight-charging` | `StreetlightCharging` | Street light charging: a charging point built into a street light (kerbside charging) |
 
 ### Power and energy
 

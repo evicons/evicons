@@ -1,0 +1,43 @@
+{
+  "category": "station",
+  "meaning": {
+    "en": "Fuel station charging: a charging point at a fuel or service station (under the canopy)",
+    "de": "Laden an der Tankstelle: ein Ladepunkt an einer Tank- oder Raststelle (unter dem Tankstellendach)"
+  },
+  "tags": {
+    "en": [
+      "fuel station charging",
+      "fuel station",
+      "gas station",
+      "petrol station",
+      "service station",
+      "canopy",
+      "charging"
+    ],
+    "de": [
+      "laden an der tankstelle",
+      "tankstelle",
+      "raststätte",
+      "tankstellendach",
+      "laden"
+    ],
+    "fr": [
+      "recharge en station-service",
+      "station-service",
+      "station essence",
+      "aire de service",
+      "recharge"
+    ]
+  },
+  "since": "0.4.0",
+  "aliases": [],
+  "exceptions": [
+    "solid-sign",
+    "sharp-corner"
+  ],
+  "provenance": {
+    "createdBy": "ai",
+    "approvedBy": null,
+    "approvedOn": null
+  }
+}

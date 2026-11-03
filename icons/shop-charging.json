@@ -1,0 +1,46 @@
+{
+  "category": "station",
+  "meaning": {
+    "en": "Charging while shopping: a charging point at a supermarket, shopping centre or retail car park",
+    "de": "Laden beim Einkaufen: ein Ladepunkt am Supermarkt, Einkaufszentrum oder Kundenparkplatz"
+  },
+  "tags": {
+    "en": [
+      "charging while shopping",
+      "shopping",
+      "supermarket",
+      "shopping centre",
+      "retail",
+      "shopping cart",
+      "charging"
+    ],
+    "de": [
+      "laden beim einkaufen",
+      "einkaufen",
+      "supermarkt",
+      "einkaufszentrum",
+      "kundenparkplatz",
+      "einkaufswagen",
+      "laden"
+    ],
+    "fr": [
+      "recharge pendant les courses",
+      "courses",
+      "supermarché",
+      "centre commercial",
+      "chariot",
+      "recharge"
+    ]
+  },
+  "since": "0.4.0",
+  "aliases": [],
+  "exceptions": [
+    "solid-sign",
+    "sharp-corner"
+  ],
+  "provenance": {
+    "createdBy": "ai",
+    "approvedBy": null,
+    "approvedOn": null
+  }
+}

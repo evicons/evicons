@@ -1,0 +1,45 @@
+{
+  "category": "station",
+  "meaning": {
+    "en": "Car dealer charging: a charging point at a car dealership, showroom or garage",
+    "de": "Laden beim Autohaus: ein Ladepunkt beim Autohaus, im Showroom oder in der Werkstatt"
+  },
+  "tags": {
+    "en": [
+      "car dealer charging",
+      "car dealer",
+      "dealership",
+      "showroom",
+      "garage",
+      "workshop",
+      "charging"
+    ],
+    "de": [
+      "laden beim autohaus",
+      "autohaus",
+      "händler",
+      "showroom",
+      "werkstatt",
+      "laden"
+    ],
+    "fr": [
+      "recharge chez le concessionnaire",
+      "concessionnaire",
+      "showroom",
+      "garage",
+      "atelier",
+      "recharge"
+    ]
+  },
+  "since": "0.4.0",
+  "aliases": [],
+  "exceptions": [
+    "solid-sign",
+    "sharp-corner"
+  ],
+  "provenance": {
+    "createdBy": "ai",
+    "approvedBy": null,
+    "approvedOn": null
+  }
+}

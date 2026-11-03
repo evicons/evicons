@@ -844,6 +844,52 @@
     },
     "pascal": "CurrentDc"
   },
+  "dealer-charging": {
+    "category": "station",
+    "meaning": {
+      "en": "Car dealer charging: a charging point at a car dealership, showroom or garage",
+      "de": "Laden beim Autohaus: ein Ladepunkt beim Autohaus, im Showroom oder in der Werkstatt"
+    },
+    "tags": {
+      "en": [
+        "car dealer charging",
+        "car dealer",
+        "dealership",
+        "showroom",
+        "garage",
+        "workshop",
+        "charging"
+      ],
+      "de": [
+        "laden beim autohaus",
+        "autohaus",
+        "händler",
+        "showroom",
+        "werkstatt",
+        "laden"
+      ],
+      "fr": [
+        "recharge chez le concessionnaire",
+        "concessionnaire",
+        "showroom",
+        "garage",
+        "atelier",
+        "recharge"
+      ]
+    },
+    "since": "0.4.0",
+    "aliases": [],
+    "exceptions": [
+      "solid-sign",
+      "sharp-corner"
+    ],
+    "provenance": {
+      "createdBy": "ai",
+      "approvedBy": null,
+      "approvedOn": null
+    },
+    "pascal": "DealerCharging"
+  },
   "destination-charging": {
     "category": "station",
     "meaning": {
@@ -966,6 +1012,50 @@
       "approvedOn": "2026-11-01"
     },
     "pascal": "FastCharging"
+  },
+  "fuel-station-charging": {
+    "category": "station",
+    "meaning": {
+      "en": "Fuel station charging: a charging point at a fuel or service station (under the canopy)",
+      "de": "Laden an der Tankstelle: ein Ladepunkt an einer Tank- oder Raststelle (unter dem Tankstellendach)"
+    },
+    "tags": {
+      "en": [
+        "fuel station charging",
+        "fuel station",
+        "gas station",
+        "petrol station",
+        "service station",
+        "canopy",
+        "charging"
+      ],
+      "de": [
+        "laden an der tankstelle",
+        "tankstelle",
+        "raststätte",
+        "tankstellendach",
+        "laden"
+      ],
+      "fr": [
+        "recharge en station-service",
+        "station-service",
+        "station essence",
+        "aire de service",
+        "recharge"
+      ]
+    },
+    "since": "0.4.0",
+    "aliases": [],
+    "exceptions": [
+      "solid-sign",
+      "sharp-corner"
+    ],
+    "provenance": {
+      "createdBy": "ai",
+      "approvedBy": null,
+      "approvedOn": null
+    },
+    "pascal": "FuelStationCharging"
   },
   "green-power": {
     "category": "energy",
@@ -2110,6 +2200,53 @@
     },
     "pascal": "RouteToCharger"
   },
+  "shop-charging": {
+    "category": "station",
+    "meaning": {
+      "en": "Charging while shopping: a charging point at a supermarket, shopping centre or retail car park",
+      "de": "Laden beim Einkaufen: ein Ladepunkt am Supermarkt, Einkaufszentrum oder Kundenparkplatz"
+    },
+    "tags": {
+      "en": [
+        "charging while shopping",
+        "shopping",
+        "supermarket",
+        "shopping centre",
+        "retail",
+        "shopping cart",
+        "charging"
+      ],
+      "de": [
+        "laden beim einkaufen",
+        "einkaufen",
+        "supermarkt",
+        "einkaufszentrum",
+        "kundenparkplatz",
+        "einkaufswagen",
+        "laden"
+      ],
+      "fr": [
+        "recharge pendant les courses",
+        "courses",
+        "supermarché",
+        "centre commercial",
+        "chariot",
+        "recharge"
+      ]
+    },
+    "since": "0.4.0",
+    "aliases": [],
+    "exceptions": [
+      "solid-sign",
+      "sharp-corner"
+    ],
+    "provenance": {
+      "createdBy": "ai",
+      "approvedBy": null,
+      "approvedOn": null
+    },
+    "pascal": "ShopCharging"
+  },
   "solar-charging": {
     "category": "energy",
     "meaning": {
@@ -2417,6 +2554,50 @@
       "approvedOn": "2026-11-01"
     },
     "pascal": "StatusUnknown"
+  },
+  "streetlight-charging": {
+    "category": "station",
+    "meaning": {
+      "en": "Street light charging: a charging point built into a street light (kerbside charging)",
+      "de": "Laternenladen: ein Ladepunkt in einer Straßenlaterne (Laden am Straßenrand)"
+    },
+    "tags": {
+      "en": [
+        "street light charging",
+        "street light",
+        "lamppost",
+        "lamp post",
+        "kerbside charging",
+        "on-street charging",
+        "charging"
+      ],
+      "de": [
+        "laternenladen",
+        "laterne",
+        "straßenlaterne",
+        "laden am straßenrand",
+        "laden"
+      ],
+      "fr": [
+        "recharge sur lampadaire",
+        "lampadaire",
+        "éclairage public",
+        "recharge en voirie",
+        "recharge"
+      ]
+    },
+    "since": "0.4.0",
+    "aliases": [],
+    "exceptions": [
+      "solid-sign",
+      "sharp-corner"
+    ],
+    "provenance": {
+      "createdBy": "ai",
+      "approvedBy": null,
+      "approvedOn": null
+    },
+    "pascal": "StreetlightCharging"
   },
   "wallbox": {
     "category": "station",

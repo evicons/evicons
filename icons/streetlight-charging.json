@@ -1,0 +1,43 @@
+{
+  "category": "station",
+  "meaning": {
+    "en": "Street light charging: a charging point built into a street light (kerbside charging)",
+    "de": "Laternenladen: ein Ladepunkt in einer Straßenlaterne (Laden am Straßenrand)"
+  },
+  "tags": {
+    "en": [
+      "street light charging",
+      "street light",
+      "lamppost",
+      "lamp post",
+      "kerbside charging",
+      "on-street charging",
+      "charging"
+    ],
+    "de": [
+      "laternenladen",
+      "laterne",
+      "straßenlaterne",
+      "laden am straßenrand",
+      "laden"
+    ],
+    "fr": [
+      "recharge sur lampadaire",
+      "lampadaire",
+      "éclairage public",
+      "recharge en voirie",
+      "recharge"
+    ]
+  },
+  "since": "0.4.0",
+  "aliases": [],
+  "exceptions": [
+    "solid-sign",
+    "sharp-corner"
+  ],
+  "provenance": {
+    "createdBy": "ai",
+    "approvedBy": null,
+    "approvedOn": null
+  }
+}
