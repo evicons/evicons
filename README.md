@@ -138,6 +138,8 @@ Metadata for all icons:
 import icons from '@evicons/svg/icons.json' with { type: 'json' }
 ```
 
+The same index with SVG markup and URLs, without installing anything: [evicons.dev/icons.json](https://evicons.dev/icons.json). A plain-text guide for AI assistants: [evicons.dev/llms.txt](https://evicons.dev/llms.txt).
+
 ## Icons
 
 ### Connectors

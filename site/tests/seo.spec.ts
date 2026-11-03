@@ -118,3 +118,53 @@ test('icon pages and /de fit a 390 px phone without sideways scrolling', async (
     expect(overflow, path).toBeLessThanOrEqual(0)
   }
 })
+
+test('/icons.json is a machine-readable index of every icon', async ({ request }) => {
+  const response = await request.get('/icons.json')
+  expect(response.status()).toBe(200)
+  expect(response.headers()['content-type']).toContain('application/json')
+  const index = (await response.json()) as {
+    name: string
+    license: string
+    version: string
+    count: number
+    icons: Array<{
+      name: string
+      pascal: string
+      category: string
+      meaning: { en: string; de: string }
+      tags: { en: string[]; de: string[]; fr: string[] }
+      since: string
+      svg: string
+      url: { svg: string; page: { en: string; de: string } }
+    }>
+  }
+  expect(index.name).toBe('EVicons')
+  expect(index.license).toBe('MIT')
+  expect(index.version).toMatch(/^\d+\.\d+\.\d+$/)
+  expect(index.count).toBe(names.length)
+  expect(index.icons.map((i) => i.name).sort()).toEqual([...names].sort())
+  const type2 = index.icons.find((i) => i.name === 'plug-type-2')!
+  expect(type2.pascal).toBe('PlugType2')
+  expect(type2.category).toBe('connector')
+  expect(type2.meaning.de).toBe(meta['plug-type-2']!.meaning.de)
+  expect(type2.svg).toMatch(/^<svg[^>]*viewBox="0 0 24 24"[\s\S]*<\/svg>$/)
+  expect(type2.url).toEqual({
+    svg: 'https://evicons.dev/svg/plug-type-2.svg',
+    page: { en: 'https://evicons.dev/icons/plug-type-2', de: 'https://evicons.dev/de/icons/plug-type-2' },
+  })
+})
+
+test('/llms.txt describes the library and links every icon page', async ({ request }) => {
+  const response = await request.get('/llms.txt')
+  expect(response.status()).toBe(200)
+  expect(response.headers()['content-type']).toContain('text/plain')
+  const text = await response.text()
+  expect(text.startsWith('# EVicons\n\n> ')).toBe(true)
+  expect(text).toContain('https://evicons.dev/icons.json')
+  expect(text).toContain('@evicons/react')
+  expect(text).toContain('@evicons/svg')
+  for (const name of names) {
+    expect(text, name).toContain(`](https://evicons.dev/icons/${name}): `)
+  }
+})
