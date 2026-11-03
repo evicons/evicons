@@ -1,4 +1,4 @@
-// /icons.json: a machine-readable index of every icon (metadata, SVG markup and URLs) for tools and AI assistants.
+// /icons.json: a machine-readable index of every icon (metadata, SVG markup and URLs) for tools and other programs.
 // Same source as the gallery and the icon pages: the @evicons/svg package.
 import type { APIRoute } from 'astro'
 import { readFileSync } from 'node:fs'

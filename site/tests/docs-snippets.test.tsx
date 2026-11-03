@@ -17,7 +17,15 @@ const out = join(import.meta.dirname, '../../.tmp-tests/docs-snippets')
 const exampleProps: Record<string, Record<string, unknown>> = {
   StatusLabel: { value: 'queue' },
   ClusterPin: { count: 12 },
-  StationSockets: { tags: { amenity: 'charging_station', 'socket:type2': '2', 'socket:cee_red_32a': '1', 'socket:type3': '1' } },
+  StationSockets: {
+    tags: { amenity: 'charging_station', 'socket:type2': '2', 'socket:cee_red_32a': '1', 'socket:type3': '1', 'socket:schuko': 'yes', 'socket:chademo': '0' },
+  },
+}
+
+/** Icons the rendered example must (and must not) contain, for examples whose output depends on their props. */
+const exampleIcons: Record<string, { has: string[]; not: string[] }> = {
+  // `yes` counts as a socket, `0` does not; socket:type3 has no icon and falls back to charging-plug.
+  StationSockets: { has: ['plug-type-2', 'plug-cee-red', 'charging-plug', 'plug-schuko'], not: ['plug-chademo'] },
 }
 
 interface Block {
@@ -81,6 +89,8 @@ describe('docs snippets', () => {
         const html = renderToString(createElement(Component, exampleProps[name] ?? {}))
         expect(html, name).toContain('<svg')
         expect(html, name).toContain('class="evicon evicon-')
+        for (const icon of exampleIcons[name]?.has ?? []) expect(html, name).toContain(`evicon-${icon}"`)
+        for (const icon of exampleIcons[name]?.not ?? []) expect(html, name).not.toContain(`evicon-${icon}"`)
       }
     },
   )

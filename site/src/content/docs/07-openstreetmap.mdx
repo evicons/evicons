@@ -3,7 +3,7 @@ id: openstreetmap
 title: OpenStreetMap
 ---
 
-OpenStreetMap (OSM) maps charging stations as `amenity=charging_station`. Each socket type is a key `socket:<type>` whose value is the number of sockets of that type (`socket:type2=2`), and `socket:<type>:output` is its maximum power (`socket:type2_combo:output=150 kW`). Further tags say which vehicles can charge (`motorcar=yes`, `bicycle=yes`), whether it costs (`fee=no`), who may use it (`access=customers`) and who runs it (`operator=*`). Every icon lists the tags it stands for in the `osm` field of its metadata, so an app can pick the icon from the tags alone. Tag names follow the OSM wiki pages [Key:socket](https://wiki.openstreetmap.org/wiki/Key:socket) and [Tag:amenity=charging_station](https://wiki.openstreetmap.org/wiki/Tag:amenity%3Dcharging_station) (retrieved 2026-11-03).
+OpenStreetMap (OSM) maps charging stations as `amenity=charging_station`. Each socket type is a key `socket:<type>` whose value is a count (or `yes`) of the sockets of that type (`socket:type2=2`), and `socket:<type>:output` is its maximum power (`socket:type2_combo:output=150 kW`). Further tags say which vehicles can charge (`motorcar=yes`, `bicycle=yes`), whether it costs (`fee=no`), who may use it (`access=customers`) and who runs it (`operator=*`). Every icon lists the tags it stands for in the `osm` field of its metadata, so an app can pick the icon from the tags alone. Tag names follow the OSM wiki pages [Key:socket](https://wiki.openstreetmap.org/wiki/Key:socket), [Tag:amenity=charging_station](https://wiki.openstreetmap.org/wiki/Tag:amenity%3Dcharging_station), [Key:access](https://wiki.openstreetmap.org/wiki/Key:access), [Key:frequency](https://wiki.openstreetmap.org/wiki/Key:frequency) and [Key:parking_space](https://wiki.openstreetmap.org/wiki/Key:parking_space) (retrieved 2026-11-03).
 
 A bare key (`socket:type2`, `operator`, `charging_station:output`) stands for any value of that key; `key=value` for that value only. Each tag belongs to one icon at most:
 
@@ -43,32 +43,35 @@ A bare key (`socket:type2`, `operator`, `charging_station:output`) stands for an
 | `socket:type2_combo` | `plug-ccs2` | `PlugCcs2` |
 | `socket:unknown` | `charging-plug` | `ChargingPlug` |
 
-- `socket:tesla_supercharger` is deprecated on the wiki (tag the socket as `socket:nacs`, `socket:type2_combo` or `socket:gb_dc` by region) and is not mapped; like any other socket without an icon, it falls back to `charging-plug` (`socket:unknown`).
+- `socket:tesla_supercharger` is discouraged on the wiki; use `socket:nacs`, `socket:type2_cable`/`socket:type2_combo` or `socket:gb_ac`/`socket:gb_dc` by region. It is not mapped; like any other socket without an icon, it falls back to `charging-plug` (`socket:unknown`).
 - `socket:gb_ac` maps to `plug-type-2`: the GB/T 20234.2 AC inlet has the same face as Type 2.
 - `plug-schuko`, `plug-cee-blue` and `plug-cee-red` show the socket face seen from the front, not a vehicle inlet: in OSM these are sockets at the station, used with a portable charging cable.
 
 ### Tags to icons
 
-`@evicons/svg/osm.json` maps every tag in the table to its icon name; `icons.json` carries the same tags per icon in `osm` (also on the site: [evicons.dev/icons.json](https://evicons.dev/icons.json)). To show the sockets of a station, collect the `socket:*` keys whose value is a positive number, look them up and fall back to `charging-plug` for sockets without an icon:
+`@evicons/svg/osm.json` maps every tag in the table to its icon name; `icons.json` carries the same tags per icon in `osm` (also on the site: [evicons.dev/icons.json](https://evicons.dev/icons.json)). To show the sockets of a station, collect the `socket:*` keys whose value is a count (or `yes`), look them up and fall back to `charging-plug` for sockets without an icon:
 
 ```ts
 import osm from '@evicons/svg/osm.json' with { type: 'json' }
 
 const iconFor: Record<string, string> = osm
 
+/** A socket value is a count of sockets or `yes` (OSM wiki Key:socket). */
+const isSocketCount = (value: string) => value === 'yes' || /^[1-9]\d*$/.test(value)
+
 /** Icon names for the sockets of one `amenity=charging_station` element, without duplicates. */
 export function socketIcons(tags: Record<string, string>): string[] {
   const icons = new Set<string>()
   for (const [key, value] of Object.entries(tags)) {
     if (!/^socket:[a-z0-9_]+$/.test(key)) continue // skips socket:<type>:output and other sub-keys
-    if (!(Number.parseInt(value, 10) > 0)) continue // the value is a count
+    if (!isSocketCount(value)) continue
     icons.add(iconFor[key] ?? 'charging-plug')
   }
   return [...icons]
 }
 
-socketIcons({ amenity: 'charging_station', 'socket:type2': '2', 'socket:type2_combo': '1', 'socket:type2_combo:output': '150 kW' })
-// ['plug-type-2', 'plug-ccs2']
+socketIcons({ amenity: 'charging_station', 'socket:type2': '2', 'socket:type2_combo': '1', 'socket:type2_combo:output': '150 kW', 'socket:schuko': 'yes' })
+// ['plug-type-2', 'plug-ccs2', 'plug-schuko']
 ```
 
 In React, map the tags to components with an explicit import list. Do not look components up by name in `import * as icons`: a lookup by a computed name keeps every icon in the bundle.
@@ -109,15 +112,19 @@ const socketComponents: Record<string, EvIconComponent> = {
   'socket:type2_combo': PlugCcs2,
 }
 
+/** A socket value is a count of sockets or `yes` (OSM wiki Key:socket). */
+const isSocketCount = (value: string) => value === 'yes' || /^[1-9]\d*$/.test(value)
+
 export function StationSockets({ tags }: { tags: Record<string, string> }) {
-  const sockets = Object.entries(tags).filter(([key, value]) => /^socket:[a-z0-9_]+$/.test(key) && Number.parseInt(value, 10) > 0)
+  const sockets = Object.entries(tags).filter(([key, value]) => /^socket:[a-z0-9_]+$/.test(key) && isSocketCount(value))
   return (
     <ul>
       {sockets.map(([key, count]) => {
         const Icon = socketComponents[key] ?? ChargingPlug
         return (
           <li key={key}>
-            <Icon size={20} /> {key.slice('socket:'.length)} × {count}
+            <Icon size={20} /> {key.slice('socket:'.length)}
+            {count === 'yes' ? '' : ` × ${count}`}
           </li>
         )
       })}
