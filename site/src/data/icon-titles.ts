@@ -54,6 +54,8 @@ export const iconTitles: Record<string, { en: string; de: string }> = {
   'plug-and-charge': { en: 'Plug & Charge', de: 'Plug & Charge' },
   'plug-ccs1': { en: 'CCS1 connector (Combo 1)', de: 'CCS1-Stecker (Combo 1)' },
   'plug-ccs2': { en: 'CCS2 connector', de: 'CCS-Stecker (Combo 2)' },
+  'plug-cee-blue': { en: 'CEE blue socket', de: 'CEE-Steckdose blau' },
+  'plug-cee-red': { en: 'CEE red socket', de: 'CEE-Steckdose rot' },
   'plug-chademo': { en: 'CHAdeMO connector', de: 'CHAdeMO-Stecker' },
   'plug-gbt-dc': { en: 'GB/T DC connector', de: 'GB/T-DC-Stecker' },
   'plug-in-hybrid': { en: 'Plug-in hybrid', de: 'Plug-in-Hybrid' },

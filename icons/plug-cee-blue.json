@@ -1,0 +1,61 @@
+{
+  "category": "connector",
+  "meaning": {
+    "en": "CEE blue socket (IEC 60309-2, 2P+E, 230 V, 16/32 A, earth at 6 h; campsite or caravan socket), shown as the socket face seen from the front",
+    "de": "CEE-Steckdose blau (IEC 60309-2, 2P+E, 230 V, 16/32 A, Schutzkontakt auf 6 Uhr; Camping-/Caravan-Steckdose), dargestellt als Steckdosenfläche von vorn"
+  },
+  "tags": {
+    "en": [
+      "cee",
+      "cee blue",
+      "iec 60309",
+      "iec 60309-2",
+      "camping",
+      "caravan",
+      "campsite",
+      "blue",
+      "230 v",
+      "industrial socket",
+      "ac",
+      "socket"
+    ],
+    "de": [
+      "cee",
+      "cee blau",
+      "iec 60309",
+      "campingstecker",
+      "camping",
+      "caravan",
+      "wohnmobil",
+      "blau",
+      "230 v",
+      "ac",
+      "steckdose"
+    ],
+    "fr": [
+      "cee",
+      "cee bleue",
+      "iec 60309",
+      "prise camping",
+      "caravane",
+      "bleue",
+      "230 v",
+      "ac",
+      "prise"
+    ]
+  },
+  "since": "0.6.0",
+  "aliases": [],
+  "standard": {
+    "norm": "IEC 60309-2 (2P+E, 6 h)",
+    "source": "IEC 60309-2 itself not consulted. Layout checked against the public drawing \"File:IEC 60309-2 16-20A 2P+E socket.svg\" on Wikimedia Commons by Mliu92 (CC BY-SA 4.0), retrieved 2026-11-03, https://commons.wikimedia.org/wiki/File:IEC_60309-2_16-20A_2P%2BE_socket.svg (socket end view; only ratios to the opening radius used, so the drawing's scale does not matter): opening r 18 around the centre, contacts on a circle r 8.75 (0.486 R), earth r 4.1 at 6 h, the two pins r 2.9 at 120° from earth (10 h and 2 h), the key nose r 5.5 at 6 h on the housing (r 24.15). The earth position relative to the key encodes the voltage (\"File:IEC 60309-2 connector clock diagram.svg\", same author): 6 h is 230 V for 2P+E. Drawn: outline circle R 9 around (12, 12) for the opening, as for plug-schuko; the key as an outward bump of radius 2 at 6 h (arc between (10.1, 20.797) and (13.9, 20.797), centre (12, 20.173), bottom at y 22.17), because the housing and the drawing's nose (11.1 below the centre once scaled) lie outside the canvas. Contact positions are the drawing's scaled to R 9 (the drawing's R is 18): earth ring at (12, 16.375), pin rings at (8.211, 9.813) and (15.789, 9.813). Contact sizes: earth r 1.75, pins r 1.25 (the Type 2 power contact size), the same in plug-cee-red, so that both faces share one contact set; the drawing scales to r 2.05 and 1.45 (both drawings use the same contact sizes, earth r 4.1 and pins r 2.9, ratio 1.41; the icon keeps 1.4). Socket face exception (design guide section 5): in EV charging the IEC 60309 socket is a supply socket (campsites, farms, mobile charging cables), not a vehicle inlet."
+  },
+  "osm": [
+    "socket:cee_blue"
+  ],
+  "provenance": {
+    "createdBy": "ai",
+    "approvedBy": "Landolsi Digital",
+    "approvedOn": "2026-11-03"
+  }
+}

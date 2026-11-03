@@ -10,7 +10,7 @@ EVicons covers **only** e-mobility. General UI icons (arrows, menu, search, clos
 
 - Outline style on a 24 × 24 grid, stroke width 1.5, round caps and joins.
 - `currentColor` only: the SVGs contain no colours, colour comes from your CSS.
-- Connector icons show the vehicle inlet face, except `plug-schuko` which shows the socket face (there is no Schuko vehicle inlet), with the contact layout checked against public drawings of the connector standards (see each icon's `standard.source`).
+- Connector icons show the vehicle inlet face, except `plug-schuko`, `plug-cee-blue` and `plug-cee-red`, which show the socket face (these sockets have no vehicle inlet in EV charging), with the contact layout checked against public drawings of the connector standards (see each icon's `standard.source`).
 - Every icon has a documented meaning (see [Icons](#icons)).
 
 | Package | Contents |
@@ -80,7 +80,7 @@ Because this is done by the browser and not computed from `size`, it also works 
 
 At 16 px the default stroke is drawn 1 px wide. Keep it at full weight with `absoluteStrokeWidth` and `strokeWidth={1.5}`, or with `strokeWidth={2}` when you do not use `absoluteStrokeWidth`. Next to Lucide icons (stroke 2), set `strokeWidth={2}` so both sets look equally heavy. This thickens the stroke relative to the drawing, so tight gaps such as the cut-out around the small bolt may close; check the icon at that size.
 
-Not every icon is readable at 16 px. Use these from 20 px: the connector faces (category `connector`: `plug-type-1`, `plug-type-2`, `plug-ccs1`, `plug-ccs2`, `plug-chademo`, `plug-nacs`, `plug-gbt-dc`, `plug-mcs`, `plug-schuko`), the letter icons (`current-ac`, `current-dc`, `power-kw`, `parking-charging`), `bike-electric`, `motorcycle-electric` and `charging-availability`. Use the map markers (`marker-*`) from 24 px.
+Not every icon is readable at 16 px. Use these from 20 px: the connector faces (category `connector`: `plug-type-1`, `plug-type-2`, `plug-ccs1`, `plug-ccs2`, `plug-chademo`, `plug-nacs`, `plug-gbt-dc`, `plug-mcs`, `plug-schuko`, `plug-cee-blue`, `plug-cee-red`), the letter icons (`current-ac`, `current-dc`, `power-kw`, `parking-charging`), `bike-electric`, `motorcycle-electric` and `charging-availability`. Use the map markers (`marker-*`) from 24 px.
 
 ### Accessibility
 
@@ -103,11 +103,11 @@ An explicit `role` or `aria-hidden` that you pass always wins over the defaults.
 
 ### Icons complement text
 
-Do not use an icon as the only carrier of information. At 16 px the contacts of a connector face render as similar dots, so faces that share a part are hard to tell apart: `plug-type-2` and `plug-ccs2` differ only in the DC part below the Type 2 contacts, `plug-type-1` and `plug-ccs1` only in the DC pair below the Type 1 contacts. `plug-gbt-dc` differs from `plug-type-2` mainly by the two large DC rings and the higher flat edge. Likewise `plug-type-1`, `plug-chademo` and `plug-schuko` look alike at 16 px (round faces). Always show the connector name next to the icon, for example "Type 2 · 22 kW". The same applies to status icons: show the status as text or at least as an accessible name.
+Do not use an icon as the only carrier of information. At 16 px the contacts of a connector face render as similar dots, so faces that share a part are hard to tell apart: `plug-type-2` and `plug-ccs2` differ only in the DC part below the Type 2 contacts, `plug-type-1` and `plug-ccs1` only in the DC pair below the Type 1 contacts. `plug-gbt-dc` differs from `plug-type-2` mainly by the two large DC rings and the higher flat edge. Likewise `plug-type-1`, `plug-chademo` and `plug-schuko` look alike at 16 px (round faces), and `plug-cee-blue` resembles `plug-type-1` (two contacts above a larger one; the CEE face has the key at the bottom). Always show the connector name next to the icon, for example "Type 2 · 22 kW". The same applies to status icons: show the status as text or at least as an accessible name.
 
 ### Right-to-left layouts
 
-EVicons are not mirrored automatically. In a right-to-left layout, mirror the icons that show a direction: `route-to-charger`, `charging-plug`, `plug-and-charge`, `charging-cable`, `car-plugged`, `bidirectional-charging` and all vehicles (`car-electric`, `truck-electric`, `bus-electric`, `bike-electric`, `motorcycle-electric`). Never mirror the letter icons, the connector faces (category `connector`: `plug-type-1`, `plug-type-2`, `plug-ccs1`, `plug-ccs2`, `plug-chademo`, `plug-nacs`, `plug-gbt-dc`, `plug-mcs`, `plug-schuko`), `status-out-of-service` or the map markers.
+EVicons are not mirrored automatically. In a right-to-left layout, mirror the icons that show a direction: `route-to-charger`, `charging-plug`, `plug-and-charge`, `charging-cable`, `car-plugged`, `bidirectional-charging` and all vehicles (`car-electric`, `truck-electric`, `bus-electric`, `bike-electric`, `motorcycle-electric`). Never mirror the letter icons, the connector faces (category `connector`: `plug-type-1`, `plug-type-2`, `plug-ccs1`, `plug-ccs2`, `plug-chademo`, `plug-nacs`, `plug-gbt-dc`, `plug-mcs`, `plug-schuko`, `plug-cee-blue`, `plug-cee-red`), `status-out-of-service` or the map markers.
 
 ```css
 [dir="rtl"] .evicon-mirror { transform: scaleX(-1); }
@@ -171,6 +171,8 @@ The same index with SVG markup and URLs, without installing anything: [evicons.d
 | `plug-mcs` | `PlugMcs` | MCS connector (Megawatt Charging System, SAE J3271 / IEC 63379; DC charging for trucks and buses with the contacts DC+, DC−, PE and four communication and detection contacts), shown as the vehicle inlet face |
 | `plug-chademo` | `PlugChademo` | CHAdeMO DC connector (IEC 62196-3 configuration AA, JEVS G105), shown as the vehicle inlet face |
 | `plug-schuko` | `PlugSchuko` | Schuko socket (CEE 7/3, DIN 49440, household AC), shown as the socket face seen from the front |
+| `plug-cee-blue` | `PlugCeeBlue` | CEE blue socket (IEC 60309-2, 2P+E, 230 V, 16/32 A, earth at 6 h; campsite or caravan socket), shown as the socket face seen from the front |
+| `plug-cee-red` | `PlugCeeRed` | CEE red socket (IEC 60309-2, 3P+N+E, 400 V three-phase, 16 to 125 A, earth at 6 h), shown as the socket face seen from the front |
 
 ### Stations and sites
 

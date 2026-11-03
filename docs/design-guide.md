@@ -45,7 +45,7 @@ Exceptions do not relax any lint rule. They mark a deliberate deviation for revi
 - A connector icon always shows the **vehicle inlet seen from the front**, the way the driver sees the charging socket on the car.
 - The outline follows the inlet's shape, with keying and flattening in their standard position (Type 2: flat side on top).
 - Contacts are outline circles in their standard positions. Power contacts are larger than signal contacts.
-- **Exception, socket face seen from the front:** a connector that exists only as a socket and never as a vehicle inlet (Schuko, CEE 7/3) shows the socket face as seen from the front, the way the user sees it on the wall. Its metadata still has `standard`.
+- **Exception, socket face seen from the front:** a connector that exists only as a socket and never as a vehicle inlet (Schuko, CEE 7/3; the CEE industrial sockets, IEC 60309-2) shows the socket face as seen from the front, the way the user sees it on the wall. Its metadata still has `standard`.
 - Each connector icon has `standard: { norm, source }` in its metadata. The source must name the figure the layout was checked against. Before approval the contact count, sizes and positions are checked against that source, not only visually (see `docs/acceptance/`).
 
 ### Type 2 reference geometry (from `plug-type-2`)
@@ -136,6 +136,17 @@ Socket face seen from the front (exception above).
 - Contact holes: solid discs `r = 0.5` (two-arc paths, section 2) at `(7.625, 12)` and `(16.375, 12)`, 8.75 apart (19 mm on 39 mm). Holes are discs, not rings; plain dots are too faint at 16 px.
 - Earthing clips: `M10.75 5.75h2.5` and `M10.75 18.25h2.5`, just inside the rim, not touching it.
 - Smallest gaps: clip end to outline 2.63 (clip middle 2.75), hole to outline 4.125.
+
+### CEE reference geometry (from `plug-cee-blue` and `plug-cee-red`)
+
+Socket face seen from the front (exception above). IEC 60309-2 keys the sockets mechanically, not by colour: the key sits at 6 h and the earth contact's clock position against it encodes the voltage (6 h is 230 V for 2P+E and 400 V for 3P+N+E). The SVGs carry no colour; blue and red are told apart by the contact count (3 and 5).
+
+- Outline (both): circle `C = (12, 12)`, `R = 9`, standing for the opening, as for `plug-schuko`, with the key as an outward bump of radius 2 at 6 h: `M10.1 20.797a2 2 0 0 0 3.8 0 9 9 0 1 0-3.8 0`. The bump joins the circle at `(10.1, 20.797)` and `(13.9, 20.797)` (3.8 wide), its centre is `(12, 20.173)` and its bottom at y 22.17 (22.92 with half the stroke, inside the live area). The drawings put the key nose on the housing, outside the opening (11.1 below the centre once scaled); the bump keeps it at the bottom of the face, where it sets CEE apart from the other round faces.
+- Contacts (both): rings, earth `r = 1.75`, all others `r = 1.25` (the Type 2 power contact size). Both public drawings use the same contact sizes (earth r 4.1, others r 2.9, ratio 1.41), so the two icons share one contact set; scaled strictly they would be r 2.05 / 1.45 (blue) and r 1.59 / 1.125 (red).
+- `plug-cee-blue` (2P+E, from "File:IEC 60309-2 16-20A 2P+E socket.svg", Mliu92, CC BY-SA 4.0; opening r 18, contact circle r 8.75 = 0.486 R): contact circle `r = 4.375`; earth at `(12, 16.375)` (6 h), the two pins at `(8.211, 9.813)` and `(15.789, 9.813)` (120° from earth).
+- `plug-cee-red` (3P+N+E, from "File:IEC 60309-2 16-20A 3P+N+E socket.svg", same author; opening r 23.2, contact circle r 13.25 = 0.571 R): contact circle `r = 5.14`; earth at `(12, 17.14)` (6 h), the other four at ±72° and ±144° from earth: `(7.111, 13.588)`, `(16.889, 13.588)`, `(8.979, 7.842)`, `(15.021, 7.842)`. Declares `dense-connector` (earth to the key bump below 2.5).
+- Smallest gaps (centre lines minus radii, measured): blue: earth to the bump joins 3.06, pin to outline 3.375, pin to earth 4.58, pin to pin 5.08. Red: earth to the bump joins 2.37, contact to outline 2.61, earth to the ±72° contacts 3.04, neighbouring small contacts 3.54.
+- At 16 px `plug-cee-blue` resembles `plug-type-1` (two contacts above a larger one); the bump is the difference, so the app names the connector next to the icon.
 
 ### Side-view plug block (from `charging-plug`)
 
