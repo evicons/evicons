@@ -6,6 +6,21 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
+## [0.4.0] - 2026-11-03
+
+### Added
+
+- 17 icons:
+  - Connectors: `plug-ccs1` (CCS Combo 1, IEC 62196-3 configuration EE / SAE J1772 DC, vehicle inlet face), `plug-nacs` (NACS, SAE J3400, vehicle inlet face)
+  - Station and site: `fuel-station-charging` (fuel or service station), `dealer-charging` (car dealership), `shop-charging` (while shopping), `streetlight-charging` (street light), `charging-hub` (several charging points in one place), `highway-charging` (motorway), `accessible-charging` (wheelchair-accessible bay)
+  - Payment: `free-charging` (no cost to the driver), `idle-fee` (fee for occupying the point after charging), `qr-charging` (ad hoc charging by QR code), `plug-and-charge` (automatic authorisation, ISO 15118)
+  - Vehicle: `truck-electric` (electric goods vehicle), `bus-electric` (electric bus or coach), `bike-electric` (e-bike, pedelec, electric cargo bike), `plug-in-hybrid` (PHEV)
+
+### Changed
+
+- The tags "idle fee" moved from `charging-time` to the new `idle-fee`; the meaning of `charging-time` is narrowed to the duration of charging and time-based tariffs.
+- Documentation: new sections "Small sizes" and "Right-to-left layouts".
+
 ## [0.3.0] - 2026-11-02
 
 ### Added
@@ -71,7 +86,8 @@ First version, not published to npm. The first published release is 0.2.0.
   - `status-unknown`: unknown (question mark)
   - `status-queue`: queue (two cars, one behind the other)
 
-[Unreleased]: https://github.com/evicons/evicons/compare/v0.3.0...HEAD
+[Unreleased]: https://github.com/evicons/evicons/compare/v0.4.0...HEAD
+[0.4.0]: https://github.com/evicons/evicons/releases/tag/v0.4.0
 [0.3.0]: https://github.com/evicons/evicons/releases/tag/v0.3.0
 [0.2.1]: https://github.com/evicons/evicons/releases/tag/v0.2.1
 [0.2.0]: https://github.com/evicons/evicons/releases/tag/v0.2.0

@@ -11,23 +11,24 @@ const search = (page: Page) => page.getByRole('searchbox', { name: 'Search icons
 // From `md` up the panel is a region beside the grid, below it a modal dialog (see the mobile tests).
 const panelOf = (page: Page) => page.locator('[data-icon-panel]')
 
-test('shows all 54 icons', async ({ page }) => {
+test('shows all 71 icons', async ({ page }) => {
   await open(page)
-  await expect(cards(page)).toHaveCount(54)
+  await expect(cards(page)).toHaveCount(71)
 })
 
-test('search "ccs" finds only plug-ccs2', async ({ page }) => {
+test('search "ccs" finds only the CCS plugs', async ({ page }) => {
   await open(page)
   await search(page).fill('ccs')
-  await expect(cards(page)).toHaveCount(1)
-  await expect(cards(page).first()).toHaveAttribute('data-icon-card', 'plug-ccs2')
+  await expect(cards(page)).toHaveCount(2)
+  await expect(cards(page).nth(0)).toHaveAttribute('data-icon-card', 'plug-ccs1')
+  await expect(cards(page).nth(1)).toHaveAttribute('data-icon-card', 'plug-ccs2')
 })
 
 test('search matches German tags', async ({ page }) => {
   await open(page)
   await search(page).fill('Stecker')
   await expect.poll(() => cards(page).count()).toBeGreaterThanOrEqual(4)
-  await expect.poll(() => cards(page).count()).toBeLessThan(54)
+  await expect.poll(() => cards(page).count()).toBeLessThan(71)
 })
 
 test('search ignores case and accents', async ({ page }) => {
