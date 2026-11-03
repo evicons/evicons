@@ -203,7 +203,7 @@ Status icons share a round frame; the sign inside carries the meaning.
 
 ### Markers
 
-Map pins with a sign in the head, for 24 to 40 px; see [Map markers](#map-markers) for filled mode.
+Map pins with a sign in the head (the cluster pin leaves it empty for a count), for 24 to 40 px; see [Map markers](#map-markers) for filled mode.
 
 The charging marker is named `marker-charging` (`MarkerCharging`), not `marker`, so that it does not clash with the `Marker` component of map libraries (MapLibre, Mapbox, Leaflet, Google Maps).
 
@@ -219,6 +219,7 @@ The charging marker is named `marker-charging` (`MarkerCharging`), not `marker`,
 | `marker-unknown` | `MarkerUnknown` | Question mark | Map marker: the status of the charging point is unknown |
 | `marker-queue` | `MarkerQueue` | Hourglass | Map marker: drivers are queuing for the charging point, expect a wait |
 | `marker-reserved` | `MarkerReserved` | Letter R | Map marker: the charging point is reserved for a booking |
+| `marker-cluster` | `MarkerCluster` | Empty head | Map marker for a cluster of charging points; the app draws the count in the head |
 
 ## Map markers
 

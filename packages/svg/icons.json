@@ -1723,6 +1723,53 @@
     },
     "pascal": "MarkerCharging"
   },
+  "marker-cluster": {
+    "category": "marker",
+    "meaning": {
+      "en": "Map marker for a cluster of charging points; the app draws the count in the head",
+      "de": "Kartenmarker für mehrere zusammengefasste Ladepunkte; die App schreibt die Anzahl in den Kopf"
+    },
+    "tags": {
+      "en": [
+        "cluster",
+        "group",
+        "count",
+        "map pin",
+        "marker",
+        "several stations",
+        "map"
+      ],
+      "de": [
+        "cluster",
+        "gruppe",
+        "anzahl",
+        "kartenpin",
+        "marker",
+        "mehrere ladestationen",
+        "karte"
+      ],
+      "fr": [
+        "groupe",
+        "regroupement",
+        "nombre",
+        "épingle",
+        "marqueur",
+        "plusieurs bornes",
+        "carte"
+      ]
+    },
+    "since": "0.5.1",
+    "aliases": [],
+    "exceptions": [
+      "sharp-corner"
+    ],
+    "provenance": {
+      "createdBy": "ai",
+      "approvedBy": "Landolsi Digital",
+      "approvedOn": "2026-11-03"
+    },
+    "pascal": "MarkerCluster"
+  },
   "marker-dc": {
     "category": "marker",
     "meaning": {

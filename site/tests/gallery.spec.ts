@@ -11,9 +11,9 @@ const search = (page: Page) => page.getByRole('searchbox', { name: 'Search icons
 // From `md` up the panel is a region beside the grid, below it a modal dialog (see the mobile tests).
 const panelOf = (page: Page) => page.locator('[data-icon-panel]')
 
-test('shows all 80 icons', async ({ page }) => {
+test('shows all 81 icons', async ({ page }) => {
   await open(page)
-  await expect(cards(page)).toHaveCount(80)
+  await expect(cards(page)).toHaveCount(81)
 })
 
 test('search "ccs" finds only the CCS plugs', async ({ page }) => {
@@ -28,7 +28,7 @@ test('search matches German tags', async ({ page }) => {
   await open(page)
   await search(page).fill('Stecker')
   await expect.poll(() => cards(page).count()).toBeGreaterThanOrEqual(4)
-  await expect.poll(() => cards(page).count()).toBeLessThan(80)
+  await expect.poll(() => cards(page).count()).toBeLessThan(81)
 })
 
 test('search ignores case and accents', async ({ page }) => {
@@ -46,10 +46,10 @@ test('search without a match shows the empty state', async ({ page }) => {
   await expect(cards(page)).toHaveCount(0)
 })
 
-test('Markers chip shows the 10 markers', async ({ page }) => {
+test('Markers chip shows the 11 markers', async ({ page }) => {
   await open(page)
   await page.getByRole('group', { name: 'Category' }).getByRole('button', { name: 'Markers' }).click()
-  await expect(cards(page)).toHaveCount(10)
+  await expect(cards(page)).toHaveCount(11)
 })
 
 test('clicking an icon opens the panel with the React import and updates the URL', async ({ page }) => {
