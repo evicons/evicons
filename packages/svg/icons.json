@@ -173,6 +173,92 @@
     },
     "pascal": "BidirectionalCharging"
   },
+  "bike-electric": {
+    "category": "vehicle",
+    "meaning": {
+      "en": "Electric bike: e-bike, pedelec or electric cargo bike (light electric vehicle)",
+      "de": "E-Bike: Pedelec, E-Bike oder E-Lastenrad (leichtes Elektrofahrzeug)"
+    },
+    "tags": {
+      "en": [
+        "e-bike",
+        "electric bike",
+        "electric bicycle",
+        "pedelec",
+        "cargo bike",
+        "light electric vehicle"
+      ],
+      "de": [
+        "e-bike",
+        "pedelec",
+        "elektrofahrrad",
+        "lastenrad",
+        "e-lastenrad",
+        "fahrrad"
+      ],
+      "fr": [
+        "vélo électrique",
+        "vae",
+        "vélo à assistance électrique",
+        "vélo cargo"
+      ]
+    },
+    "since": "0.4.0",
+    "aliases": [],
+    "exceptions": [
+      "solid-sign",
+      "sharp-corner"
+    ],
+    "provenance": {
+      "createdBy": "ai",
+      "approvedBy": null,
+      "approvedOn": null
+    },
+    "pascal": "BikeElectric"
+  },
+  "bus-electric": {
+    "category": "vehicle",
+    "meaning": {
+      "en": "Electric bus: a battery electric bus or coach (vehicle class M)",
+      "de": "E-Bus: batterieelektrischer Bus oder Reisebus (Fahrzeugklasse M)"
+    },
+    "tags": {
+      "en": [
+        "electric bus",
+        "e-bus",
+        "bus",
+        "coach",
+        "public transport",
+        "depot charging"
+      ],
+      "de": [
+        "e-bus",
+        "elektrobus",
+        "bus",
+        "reisebus",
+        "nahverkehr",
+        "depotladen"
+      ],
+      "fr": [
+        "bus électrique",
+        "autobus",
+        "autocar",
+        "transport en commun"
+      ]
+    },
+    "since": "0.4.0",
+    "aliases": [],
+    "exceptions": [
+      "solid-sign",
+      "sharp-corner"
+    ],
+    "provenance": {
+      "createdBy": "ai",
+      "approvedBy": null,
+      "approvedOn": null
+    },
+    "pascal": "BusElectric"
+  },
   "calibrated-meter": {
     "category": "payment",
     "meaning": {
@@ -2071,6 +2157,46 @@
     },
     "pascal": "PlugChademo"
   },
+  "plug-in-hybrid": {
+    "category": "vehicle",
+    "meaning": {
+      "en": "Plug-in hybrid (PHEV): a vehicle that charges from the grid and also runs on fuel",
+      "de": "Plug-in-Hybrid (PHEV): ein Fahrzeug, das am Stromnetz lädt und zusätzlich mit Kraftstoff fährt"
+    },
+    "tags": {
+      "en": [
+        "plug-in hybrid",
+        "phev",
+        "hybrid",
+        "hybrid vehicle",
+        "fuel and electric"
+      ],
+      "de": [
+        "plug-in-hybrid",
+        "phev",
+        "hybrid",
+        "hybridfahrzeug",
+        "kraftstoff und strom"
+      ],
+      "fr": [
+        "hybride rechargeable",
+        "phev",
+        "hybride",
+        "véhicule hybride"
+      ]
+    },
+    "since": "0.4.0",
+    "aliases": [],
+    "exceptions": [
+      "sharp-corner"
+    ],
+    "provenance": {
+      "createdBy": "ai",
+      "approvedBy": null,
+      "approvedOn": null
+    },
+    "pascal": "PlugInHybrid"
+  },
   "plug-nacs": {
     "category": "connector",
     "meaning": {
@@ -2898,6 +3024,50 @@
       "approvedOn": "2026-11-03"
     },
     "pascal": "StreetlightCharging"
+  },
+  "truck-electric": {
+    "category": "vehicle",
+    "meaning": {
+      "en": "Electric truck: a battery electric goods vehicle (vehicle class N)",
+      "de": "E-Lkw: batterieelektrisches Nutzfahrzeug (Fahrzeugklasse N)"
+    },
+    "tags": {
+      "en": [
+        "electric truck",
+        "e-truck",
+        "truck",
+        "lorry",
+        "commercial vehicle",
+        "heavy-duty vehicle",
+        "goods vehicle"
+      ],
+      "de": [
+        "e-lkw",
+        "elektro-lkw",
+        "lkw",
+        "lastwagen",
+        "nutzfahrzeug",
+        "schwerlastverkehr"
+      ],
+      "fr": [
+        "camion électrique",
+        "camion",
+        "poids lourd",
+        "véhicule utilitaire"
+      ]
+    },
+    "since": "0.4.0",
+    "aliases": [],
+    "exceptions": [
+      "solid-sign",
+      "sharp-corner"
+    ],
+    "provenance": {
+      "createdBy": "ai",
+      "approvedBy": null,
+      "approvedOn": null
+    },
+    "pascal": "TruckElectric"
   },
   "wallbox": {
     "category": "station",

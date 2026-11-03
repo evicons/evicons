@@ -1,0 +1,42 @@
+{
+  "category": "vehicle",
+  "meaning": {
+    "en": "Electric bus: a battery electric bus or coach (vehicle class M)",
+    "de": "E-Bus: batterieelektrischer Bus oder Reisebus (Fahrzeugklasse M)"
+  },
+  "tags": {
+    "en": [
+      "electric bus",
+      "e-bus",
+      "bus",
+      "coach",
+      "public transport",
+      "depot charging"
+    ],
+    "de": [
+      "e-bus",
+      "elektrobus",
+      "bus",
+      "reisebus",
+      "nahverkehr",
+      "depotladen"
+    ],
+    "fr": [
+      "bus électrique",
+      "autobus",
+      "autocar",
+      "transport en commun"
+    ]
+  },
+  "since": "0.4.0",
+  "aliases": [],
+  "exceptions": [
+    "solid-sign",
+    "sharp-corner"
+  ],
+  "provenance": {
+    "createdBy": "ai",
+    "approvedBy": null,
+    "approvedOn": null
+  }
+}

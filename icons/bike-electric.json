@@ -1,0 +1,42 @@
+{
+  "category": "vehicle",
+  "meaning": {
+    "en": "Electric bike: e-bike, pedelec or electric cargo bike (light electric vehicle)",
+    "de": "E-Bike: Pedelec, E-Bike oder E-Lastenrad (leichtes Elektrofahrzeug)"
+  },
+  "tags": {
+    "en": [
+      "e-bike",
+      "electric bike",
+      "electric bicycle",
+      "pedelec",
+      "cargo bike",
+      "light electric vehicle"
+    ],
+    "de": [
+      "e-bike",
+      "pedelec",
+      "elektrofahrrad",
+      "lastenrad",
+      "e-lastenrad",
+      "fahrrad"
+    ],
+    "fr": [
+      "vélo électrique",
+      "vae",
+      "vélo à assistance électrique",
+      "vélo cargo"
+    ]
+  },
+  "since": "0.4.0",
+  "aliases": [],
+  "exceptions": [
+    "solid-sign",
+    "sharp-corner"
+  ],
+  "provenance": {
+    "createdBy": "ai",
+    "approvedBy": null,
+    "approvedOn": null
+  }
+}

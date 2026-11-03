@@ -1,0 +1,43 @@
+{
+  "category": "vehicle",
+  "meaning": {
+    "en": "Electric truck: a battery electric goods vehicle (vehicle class N)",
+    "de": "E-Lkw: batterieelektrisches Nutzfahrzeug (Fahrzeugklasse N)"
+  },
+  "tags": {
+    "en": [
+      "electric truck",
+      "e-truck",
+      "truck",
+      "lorry",
+      "commercial vehicle",
+      "heavy-duty vehicle",
+      "goods vehicle"
+    ],
+    "de": [
+      "e-lkw",
+      "elektro-lkw",
+      "lkw",
+      "lastwagen",
+      "nutzfahrzeug",
+      "schwerlastverkehr"
+    ],
+    "fr": [
+      "camion électrique",
+      "camion",
+      "poids lourd",
+      "véhicule utilitaire"
+    ]
+  },
+  "since": "0.4.0",
+  "aliases": [],
+  "exceptions": [
+    "solid-sign",
+    "sharp-corner"
+  ],
+  "provenance": {
+    "createdBy": "ai",
+    "approvedBy": null,
+    "approvedOn": null
+  }
+}

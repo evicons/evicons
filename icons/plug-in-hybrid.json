@@ -1,0 +1,39 @@
+{
+  "category": "vehicle",
+  "meaning": {
+    "en": "Plug-in hybrid (PHEV): a vehicle that charges from the grid and also runs on fuel",
+    "de": "Plug-in-Hybrid (PHEV): ein Fahrzeug, das am Stromnetz lädt und zusätzlich mit Kraftstoff fährt"
+  },
+  "tags": {
+    "en": [
+      "plug-in hybrid",
+      "phev",
+      "hybrid",
+      "hybrid vehicle",
+      "fuel and electric"
+    ],
+    "de": [
+      "plug-in-hybrid",
+      "phev",
+      "hybrid",
+      "hybridfahrzeug",
+      "kraftstoff und strom"
+    ],
+    "fr": [
+      "hybride rechargeable",
+      "phev",
+      "hybride",
+      "véhicule hybride"
+    ]
+  },
+  "since": "0.4.0",
+  "aliases": [],
+  "exceptions": [
+    "sharp-corner"
+  ],
+  "provenance": {
+    "createdBy": "ai",
+    "approvedBy": null,
+    "approvedOn": null
+  }
+}
