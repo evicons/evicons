@@ -1,0 +1,44 @@
+{
+  "category": "station",
+  "meaning": {
+    "en": "Restricted access: the charging point is not open to everyone (private, customers only, company vehicles only, behind a barrier)",
+    "de": "Zugang eingeschränkt: der Ladepunkt ist nicht für alle zugänglich (privat, nur für Kunden, nur Firmenfahrzeuge, hinter einer Schranke)"
+  },
+  "tags": {
+    "en": [
+      "restricted access",
+      "private",
+      "customers only",
+      "access",
+      "lock",
+      "barrier"
+    ],
+    "de": [
+      "zugang eingeschränkt",
+      "privat",
+      "nur für kunden",
+      "zugang",
+      "schloss",
+      "schranke"
+    ],
+    "fr": [
+      "accès restreint",
+      "privé",
+      "réservé aux clients",
+      "accès",
+      "cadenas",
+      "barrière"
+    ]
+  },
+  "since": "0.5.0",
+  "aliases": [],
+  "exceptions": [
+    "solid-sign",
+    "sharp-corner"
+  ],
+  "provenance": {
+    "createdBy": "ai",
+    "approvedBy": null,
+    "approvedOn": null
+  }
+}

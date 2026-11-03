@@ -80,7 +80,7 @@ Because this is done by the browser and not computed from `size`, it also works 
 
 At 16 px the default stroke is drawn 1 px wide. Keep it at full weight with `absoluteStrokeWidth` and `strokeWidth={1.5}`, or with `strokeWidth={2}` when you do not use `absoluteStrokeWidth`. Next to Lucide icons (stroke 2), set `strokeWidth={2}` so both sets look equally heavy. This thickens the stroke relative to the drawing, so tight gaps such as the cut-out around the small bolt may close; check the icon at that size.
 
-Not every icon is readable at 16 px. Use these from 20 px: the connector faces (category `connector`: `plug-type-1`, `plug-type-2`, `plug-ccs1`, `plug-ccs2`, `plug-chademo`, `plug-nacs`, `plug-gbt-dc`, `plug-mcs`, `plug-schuko`), the letter icons (`current-ac`, `current-dc`, `power-kw`, `parking-charging`) and `bike-electric`. Use the map markers (`marker-*`) from 24 px.
+Not every icon is readable at 16 px. Use these from 20 px: the connector faces (category `connector`: `plug-type-1`, `plug-type-2`, `plug-ccs1`, `plug-ccs2`, `plug-chademo`, `plug-nacs`, `plug-gbt-dc`, `plug-mcs`, `plug-schuko`), the letter icons (`current-ac`, `current-dc`, `power-kw`, `parking-charging`), `bike-electric` and `charging-availability`. Use the map markers (`marker-*`) from 24 px.
 
 ### Accessibility
 
@@ -192,6 +192,9 @@ The same index with SVG markup and URLs, without installing anything: [evicons.d
 | `charging-hub` | `ChargingHub` | Charging hub: a site with several charging points in one place (HPC hub, charging park) |
 | `highway-charging` | `HighwayCharging` | Motorway charging: charging on or next to a motorway (service area, rest stop) |
 | `accessible-charging` | `AccessibleCharging` | Accessible charging bay: a charging point usable from a wheelchair (step-free, wider bay, reachable controls) |
+| `charging-availability` | `ChargingAvailability` | Charging availability: how many charging points at a site are free or occupied |
+| `station-uptime` | `StationUptime` | Station uptime: the operating status of a charging point over time, its reliability (for example availability over the last 30 days) |
+| `restricted-access` | `RestrictedAccess` | Restricted access: the charging point is not open to everyone (private, customers only, company vehicles only, behind a barrier) |
 
 ### Power and energy
 

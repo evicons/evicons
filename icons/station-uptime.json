@@ -1,0 +1,43 @@
+{
+  "category": "station",
+  "meaning": {
+    "en": "Station uptime: the operating status of a charging point over time, its reliability (for example availability over the last 30 days)",
+    "de": "Betriebsstatus über die Zeit: Zuverlässigkeit eines Ladepunkts (zum Beispiel Verfügbarkeit der letzten 30 Tage)"
+  },
+  "tags": {
+    "en": [
+      "uptime",
+      "station uptime",
+      "reliability",
+      "operating status",
+      "availability history",
+      "status timeline"
+    ],
+    "de": [
+      "betriebsstatus",
+      "verfügbarkeit",
+      "zuverlässigkeit",
+      "betriebszeit",
+      "statusverlauf",
+      "letzte 30 tage"
+    ],
+    "fr": [
+      "disponibilité",
+      "fiabilité",
+      "état de fonctionnement",
+      "historique de disponibilité",
+      "temps de fonctionnement"
+    ]
+  },
+  "since": "0.5.0",
+  "aliases": [],
+  "exceptions": [
+    "solid-sign",
+    "sharp-corner"
+  ],
+  "provenance": {
+    "createdBy": "ai",
+    "approvedBy": null,
+    "approvedOn": null
+  }
+}

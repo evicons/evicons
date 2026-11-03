@@ -1,0 +1,46 @@
+{
+  "category": "station",
+  "meaning": {
+    "en": "Charging availability: how many charging points at a site are free or occupied",
+    "de": "Belegung: wie viele Ladepunkte eines Standorts frei oder belegt sind"
+  },
+  "tags": {
+    "en": [
+      "availability",
+      "charging availability",
+      "free",
+      "occupied",
+      "charging bay",
+      "parking bay",
+      "status"
+    ],
+    "de": [
+      "belegung",
+      "verfügbarkeit",
+      "frei",
+      "belegt",
+      "ladeplatz",
+      "stellplatz",
+      "status"
+    ],
+    "fr": [
+      "disponibilité",
+      "libre",
+      "occupée",
+      "place de recharge",
+      "place de stationnement",
+      "statut"
+    ]
+  },
+  "since": "0.5.0",
+  "aliases": [],
+  "exceptions": [
+    "solid-sign",
+    "sharp-corner"
+  ],
+  "provenance": {
+    "createdBy": "ai",
+    "approvedBy": null,
+    "approvedOn": null
+  }
+}

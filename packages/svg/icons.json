@@ -426,6 +426,53 @@
     },
     "pascal": "CardTerminal"
   },
+  "charging-availability": {
+    "category": "station",
+    "meaning": {
+      "en": "Charging availability: how many charging points at a site are free or occupied",
+      "de": "Belegung: wie viele Ladepunkte eines Standorts frei oder belegt sind"
+    },
+    "tags": {
+      "en": [
+        "availability",
+        "charging availability",
+        "free",
+        "occupied",
+        "charging bay",
+        "parking bay",
+        "status"
+      ],
+      "de": [
+        "belegung",
+        "verfügbarkeit",
+        "frei",
+        "belegt",
+        "ladeplatz",
+        "stellplatz",
+        "status"
+      ],
+      "fr": [
+        "disponibilité",
+        "libre",
+        "occupée",
+        "place de recharge",
+        "place de stationnement",
+        "statut"
+      ]
+    },
+    "since": "0.5.0",
+    "aliases": [],
+    "exceptions": [
+      "solid-sign",
+      "sharp-corner"
+    ],
+    "provenance": {
+      "createdBy": "ai",
+      "approvedBy": null,
+      "approvedOn": null
+    },
+    "pascal": "ChargingAvailability"
+  },
   "charging-bolt": {
     "category": "power",
     "meaning": {
@@ -2651,6 +2698,51 @@
     },
     "pascal": "ReportFault"
   },
+  "restricted-access": {
+    "category": "station",
+    "meaning": {
+      "en": "Restricted access: the charging point is not open to everyone (private, customers only, company vehicles only, behind a barrier)",
+      "de": "Zugang eingeschränkt: der Ladepunkt ist nicht für alle zugänglich (privat, nur für Kunden, nur Firmenfahrzeuge, hinter einer Schranke)"
+    },
+    "tags": {
+      "en": [
+        "restricted access",
+        "private",
+        "customers only",
+        "access",
+        "lock",
+        "barrier"
+      ],
+      "de": [
+        "zugang eingeschränkt",
+        "privat",
+        "nur für kunden",
+        "zugang",
+        "schloss",
+        "schranke"
+      ],
+      "fr": [
+        "accès restreint",
+        "privé",
+        "réservé aux clients",
+        "accès",
+        "cadenas",
+        "barrière"
+      ]
+    },
+    "since": "0.5.0",
+    "aliases": [],
+    "exceptions": [
+      "solid-sign",
+      "sharp-corner"
+    ],
+    "provenance": {
+      "createdBy": "ai",
+      "approvedBy": null,
+      "approvedOn": null
+    },
+    "pascal": "RestrictedAccess"
+  },
   "roaming": {
     "category": "payment",
     "meaning": {
@@ -2835,6 +2927,50 @@
       "approvedOn": "2026-11-01"
     },
     "pascal": "SolarCharging"
+  },
+  "station-uptime": {
+    "category": "station",
+    "meaning": {
+      "en": "Station uptime: the operating status of a charging point over time, its reliability (for example availability over the last 30 days)",
+      "de": "Betriebsstatus über die Zeit: Zuverlässigkeit eines Ladepunkts (zum Beispiel Verfügbarkeit der letzten 30 Tage)"
+    },
+    "tags": {
+      "en": [
+        "uptime",
+        "station uptime",
+        "reliability",
+        "operating status",
+        "availability history",
+        "status timeline"
+      ],
+      "de": [
+        "betriebsstatus",
+        "verfügbarkeit",
+        "zuverlässigkeit",
+        "betriebszeit",
+        "statusverlauf",
+        "letzte 30 tage"
+      ],
+      "fr": [
+        "disponibilité",
+        "fiabilité",
+        "état de fonctionnement",
+        "historique de disponibilité",
+        "temps de fonctionnement"
+      ]
+    },
+    "since": "0.5.0",
+    "aliases": [],
+    "exceptions": [
+      "solid-sign",
+      "sharp-corner"
+    ],
+    "provenance": {
+      "createdBy": "ai",
+      "approvedBy": null,
+      "approvedOn": null
+    },
+    "pascal": "StationUptime"
   },
   "status-available": {
     "category": "status",
