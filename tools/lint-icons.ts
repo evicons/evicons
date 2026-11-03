@@ -218,9 +218,9 @@ function lintSvg(file: string, source: string, errors: LintError[]): void {
 }
 
 /** The standard pin (design guide section 9), as SVGO writes it. Every marker starts with it. */
-export const MARKER_PIN = 'm12 22-5.855-7.312a7.5 7.5 0 1 1 11.71 0Z'
+export const MARKER_PIN = 'M2.5 21.5V12a9.5 9.5 0 1 1 9.5 9.5Z'
 /** Region the sign must stay inside: the pin head and its flanks (geometry, without stroke). */
-export const MARKER_SIGN_AREA = { minX: 6.5, minY: 4.5, maxX: 17.5, maxY: 18 }
+export const MARKER_SIGN_AREA = { minX: 5.25, minY: 5.25, maxX: 18.75, maxY: 18.75 }
 
 export const MARKER_PIN_ERROR = 'marker: first element must be the standard pin path (design guide section 9)'
 export const MARKER_SIGN_ERROR = `marker: sign elements must lie inside the pin head (x ${MARKER_SIGN_AREA.minX}–${MARKER_SIGN_AREA.maxX}, y ${MARKER_SIGN_AREA.minY}–${MARKER_SIGN_AREA.maxY})`

@@ -15,7 +15,7 @@ test.each([
   const paths = [...svg.querySelectorAll(':scope > path')]
   expect(paths).toHaveLength(2)
   const [pin, sign] = paths
-  expect(pin.getAttribute('d')).toMatch(/^m12 22/)
+  expect(pin.getAttribute('d')).toMatch(/^M2.5 21.5/)
 
   expect(svg.parentElement!.querySelector(PIN)).toBe(pin)
   expect(pin.matches(SIGN)).toBe(false)

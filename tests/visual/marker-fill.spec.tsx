@@ -22,7 +22,7 @@ for (const title of [undefined, 'Charging station']) {
       }),
     )
     expect(paths).toHaveLength(2)
-    expect(paths[0]).toEqual({ d: expect.stringMatching(/^m12 22/), fill: RED, stroke: RED })
+    expect(paths[0]).toEqual({ d: expect.stringMatching(/^M2.5 21.5/), fill: RED, stroke: RED })
     expect(paths[1]).toMatchObject({ fill: 'none', stroke: WHITE })
   })
 }
