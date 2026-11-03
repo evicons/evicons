@@ -6,6 +6,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
+## [0.5.0] - 2026-11-03
+
+### Added
+
+- 9 icons:
+  - Connectors: `plug-gbt-dc` (GB/T 20234.3 DC, China, vehicle inlet face), `plug-mcs` (MCS, Megawatt Charging System, SAE J3271 / IEC 63379, for trucks and buses, vehicle inlet face, drawn from a public speculative diagram)
+  - Station and site: `charging-availability` (how many charging points at a site are free or occupied), `station-uptime` (operating status of a charging point over time), `restricted-access` (not open to everyone), `community-verified` (information reported or confirmed by drivers), `charging-socket` (socket outlet, bring your own cable)
+  - Vehicle: `motorcycle-electric` (electric motorcycle or scooter, vehicle class L)
+  - Energy: `power-outage` (no grid power at the site)
+
 ## [0.4.0] - 2026-11-03
 
 ### Added
@@ -87,7 +97,8 @@ First version, not published to npm. The first published release is 0.2.0.
   - `status-unknown`: unknown (question mark)
   - `status-queue`: queue (two cars, one behind the other)
 
-[Unreleased]: https://github.com/evicons/evicons/compare/v0.4.0...HEAD
+[Unreleased]: https://github.com/evicons/evicons/compare/v0.5.0...HEAD
+[0.5.0]: https://github.com/evicons/evicons/releases/tag/v0.5.0
 [0.4.0]: https://github.com/evicons/evicons/releases/tag/v0.4.0
 [0.3.0]: https://github.com/evicons/evicons/releases/tag/v0.3.0
 [0.2.1]: https://github.com/evicons/evicons/releases/tag/v0.2.1

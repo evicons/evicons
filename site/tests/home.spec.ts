@@ -7,10 +7,10 @@ test('the icon strip shows every icon once, hidden from assistive technology', a
   await expect(strip.locator('[tabindex], a, button')).toHaveCount(0)
   const lists = strip.locator('ul')
   await expect(lists).toHaveCount(2)
-  await expect(lists.nth(0).locator('li')).toHaveCount(71)
-  await expect(lists.nth(1).locator('li')).toHaveCount(71)
+  await expect(lists.nth(0).locator('li')).toHaveCount(80)
+  await expect(lists.nth(1).locator('li')).toHaveCount(80)
   // Screen readers get one sentence instead of 142 strip entries.
-  await expect(page.locator('section[aria-label="Icon strip"] .sr-only')).toHaveText('All 71 icons')
+  await expect(page.locator('section[aria-label="Icon strip"] .sr-only')).toHaveText('All 80 icons')
   // Every <use> points at a symbol defined on the page, drawn from the SVG sources.
   const missing = await strip.evaluate((el) =>
     [...el.querySelectorAll('use')].map((u) => u.getAttribute('href')!).filter((href) => !document.querySelector(href)),

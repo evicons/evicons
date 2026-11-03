@@ -11,9 +11,9 @@ const search = (page: Page) => page.getByRole('searchbox', { name: 'Search icons
 // From `md` up the panel is a region beside the grid, below it a modal dialog (see the mobile tests).
 const panelOf = (page: Page) => page.locator('[data-icon-panel]')
 
-test('shows all 71 icons', async ({ page }) => {
+test('shows all 80 icons', async ({ page }) => {
   await open(page)
-  await expect(cards(page)).toHaveCount(71)
+  await expect(cards(page)).toHaveCount(80)
 })
 
 test('search "ccs" finds only the CCS plugs', async ({ page }) => {
@@ -28,7 +28,7 @@ test('search matches German tags', async ({ page }) => {
   await open(page)
   await search(page).fill('Stecker')
   await expect.poll(() => cards(page).count()).toBeGreaterThanOrEqual(4)
-  await expect.poll(() => cards(page).count()).toBeLessThan(71)
+  await expect.poll(() => cards(page).count()).toBeLessThan(80)
 })
 
 test('search ignores case and accents', async ({ page }) => {
