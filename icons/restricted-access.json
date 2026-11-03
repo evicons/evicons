@@ -11,7 +11,9 @@
       "customers only",
       "access",
       "lock",
-      "barrier"
+      "barrier",
+      "padlock",
+      "locked"
     ],
     "de": [
       "zugang eingeschränkt",
@@ -19,7 +21,9 @@
       "nur für kunden",
       "zugang",
       "schloss",
-      "schranke"
+      "schranke",
+      "vorhängeschloss",
+      "gesperrt"
     ],
     "fr": [
       "accès restreint",
@@ -27,7 +31,8 @@
       "réservé aux clients",
       "accès",
       "cadenas",
-      "barrière"
+      "barrière",
+      "verrouillé"
     ]
   },
   "since": "0.5.0",

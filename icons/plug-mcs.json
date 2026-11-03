@@ -15,7 +15,10 @@
       "heavy duty",
       "dc connector",
       "plug",
-      "inlet"
+      "inlet",
+      "truck",
+      "lorry",
+      "hgv"
     ],
     "de": [
       "mcs",
@@ -27,7 +30,8 @@
       "nutzfahrzeug",
       "dc-stecker",
       "stecker",
-      "ladebuchse"
+      "ladebuchse",
+      "lkw"
     ],
     "fr": [
       "mcs",
@@ -36,7 +40,8 @@
       "sae j3271",
       "iec 63379",
       "recharge poids lourds",
-      "connecteur dc"
+      "connecteur dc",
+      "camion"
     ]
   },
   "since": "0.5.0",

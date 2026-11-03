@@ -11,7 +11,8 @@
       "reliability",
       "operating status",
       "availability history",
-      "status timeline"
+      "status timeline",
+      "downtime"
     ],
     "de": [
       "betriebsstatus",
@@ -19,14 +20,16 @@
       "zuverlässigkeit",
       "betriebszeit",
       "statusverlauf",
-      "letzte 30 tage"
+      "letzte 30 tage",
+      "ausfallzeit"
     ],
     "fr": [
       "disponibilité",
       "fiabilité",
       "état de fonctionnement",
       "historique de disponibilité",
-      "temps de fonctionnement"
+      "temps de fonctionnement",
+      "temps d'arrêt"
     ]
   },
   "since": "0.5.0",

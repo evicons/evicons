@@ -12,7 +12,8 @@
       "occupied",
       "charging bay",
       "parking bay",
-      "status"
+      "status",
+      "occupancy"
     ],
     "de": [
       "belegung",
@@ -29,7 +30,8 @@
       "occupée",
       "place de recharge",
       "place de stationnement",
-      "statut"
+      "statut",
+      "occupation"
     ]
   },
   "since": "0.5.0",
