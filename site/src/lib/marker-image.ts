@@ -3,6 +3,7 @@
 import markerAc from '@evicons/svg/marker-ac.svg?raw'
 import markerAvailable from '@evicons/svg/marker-available.svg?raw'
 import markerCharging from '@evicons/svg/marker-charging.svg?raw'
+import markerCluster from '@evicons/svg/marker-cluster.svg?raw'
 import markerDc from '@evicons/svg/marker-dc.svg?raw'
 import markerFaulted from '@evicons/svg/marker-faulted.svg?raw'
 import markerOccupied from '@evicons/svg/marker-occupied.svg?raw'
@@ -13,6 +14,7 @@ const sources = {
   'marker-ac': markerAc,
   'marker-available': markerAvailable,
   'marker-charging': markerCharging,
+  'marker-cluster': markerCluster,
   'marker-dc': markerDc,
   'marker-faulted': markerFaulted,
   'marker-occupied': markerOccupied,
@@ -22,20 +24,32 @@ const sources = {
 
 export type MarkerName = keyof typeof sources
 
+/** The standard pin (design guide section 9), the first `<path>` of every marker. */
+const PIN = 'M2.5 21.5V12a9.5 9.5 0 1 1 9.5 9.5Z'
+
+export interface FillOptions {
+  /**
+   * Draw a white ring around the pin (README, "Clusters and selection"): a wider white copy of
+   * the pin underneath the filled one, 1.25 units outside its stroke (2 px at 40 px).
+   */
+  ring?: boolean
+}
+
 /**
  * Fill a marker SVG: the first `<path>` (the pin) in `colour`, the sign in white.
  * The SVG is drawn at twice `size`, for `map.addImage(id, img, { pixelRatio: 2 })`.
  */
-export function fillMarker(svg: string, colour: string, size = 32): string {
-  return svg
+export function fillMarker(svg: string, colour: string, size = 32, { ring = false }: FillOptions = {}): string {
+  const filled = svg
     .replace('width="24" height="24"', `width="${size * 2}" height="${size * 2}"`)
     .replace('stroke="currentColor"', 'stroke="#fff"')
     .replace('<path ', `<path fill="${colour}" stroke="${colour}" `)
+  return ring ? filled.replace('<path ', `<path d="${PIN}" stroke-width="4"/><path `) : filled
 }
 
 /** Data URL of a filled marker; `size` is the size on the map in CSS px (24 to 40). */
-export function markerImage(name: MarkerName, colour: string, size = 32): string {
-  return `data:image/svg+xml;charset=utf-8,${encodeURIComponent(fillMarker(sources[name], colour, size))}`
+export function markerImage(name: MarkerName, colour: string, size = 32, options?: FillOptions): string {
+  return `data:image/svg+xml;charset=utf-8,${encodeURIComponent(fillMarker(sources[name], colour, size, options))}`
 }
 
 /** Decode a marker data URL into an image for `map.addImage`. */

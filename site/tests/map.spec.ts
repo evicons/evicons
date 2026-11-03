@@ -35,6 +35,7 @@ function collectErrors(page: Page) {
 // The test hook exists only under automation (navigator.webdriver).
 const markerImages = (page: Page) => page.evaluate(() => window.__evMap?.listImages().sort() ?? [])
 const renderedStations = (page: Page) => page.evaluate(() => window.__evMap?.renderedStations() ?? 0)
+const renderedClusters = (page: Page) => page.evaluate(() => window.__evMap?.renderedClusters() ?? [])
 
 async function clickPin(page: Page, id: string) {
   const point = await page.evaluate((id) => window.__evMap!.pinPoint(id), id)
@@ -47,6 +48,7 @@ const expectedImages = [
   'ev-dc',
   'ev-faulted',
   'ev-faulted-selected',
+  'ev-marker-cluster',
   'ev-occupied',
   'ev-occupied-selected',
   'ev-out-of-service',
@@ -55,7 +57,7 @@ const expectedImages = [
   'ev-unknown-selected',
 ]
 
-test('map page loads with canvas, 12 marker images and the legend', async ({ page }) => {
+test('map page loads with canvas, 13 marker images and the legend', async ({ page }) => {
   const errors = collectErrors(page)
   await stubTiles(page)
   await page.goto('/map')
@@ -65,8 +67,9 @@ test('map page loads with canvas, 12 marker images and the legend', async ({ pag
   expect((await canvas.boundingBox())!.height).toBeGreaterThan(300)
   await expect.poll(() => markerImages(page)).toEqual(expectedImages)
   await expect(page.locator('[data-map]')).toHaveAttribute('data-map-state', 'ready')
-  // Drawn, not only registered: all 12 pins are rendered once the map is idle.
+  // Drawn, not only registered: all 12 pins are rendered once the map is idle, none in a cluster.
   await expect.poll(() => renderedStations(page)).toBe(12)
+  expect(await renderedClusters(page)).toEqual([])
   await expect(page.locator('[data-legend-entry]')).toHaveCount(7)
   await expect(page.locator('[data-station]')).toHaveCount(12)
   await expect(page.getByText('Demo data — fictional charge points', { exact: true })).toBeVisible()
@@ -84,7 +87,7 @@ test('map page loads with canvas, 12 marker images and the legend', async ({ pag
 test('the station list opens the popup with status, connectors and power; Escape returns focus', async ({ page }) => {
   await stubTiles(page)
   await page.goto('/map')
-  await expect.poll(() => markerImages(page)).toHaveLength(12)
+  await expect.poll(() => markerImages(page)).toHaveLength(13)
   const button = page.locator('[data-station="demo-03"]')
   await button.focus()
   await page.keyboard.press('Enter')
@@ -127,6 +130,29 @@ test('clicking pin A, then pin B opens B; empty space and Escape close the popup
   await page.mouse.click(box.x + 12, box.y + box.height - 40)
   await expect(popup).toHaveCount(0)
   await expect(page.locator('[data-station][aria-pressed="true"]')).toHaveCount(0)
+})
+
+test('zooming out merges nearby pins into clusters; clicking a cluster zooms in', async ({ page }) => {
+  const errors = collectErrors(page)
+  await stubTiles(page)
+  await page.goto('/map')
+  await expect.poll(() => renderedStations(page)).toBe(12)
+  const zoomOut = page.getByRole('button', { name: 'Zoom out' })
+  for (let i = 0; i < 2; i++) {
+    await zoomOut.click()
+    await renderedStations(page) // waits until the map is idle
+  }
+  await expect.poll(async () => (await renderedClusters(page)).length).toBeGreaterThan(0)
+  // Every station is drawn once: as its own pin or counted in a cluster.
+  const clusters = await renderedClusters(page)
+  const single = await renderedStations(page)
+  expect(single + clusters.reduce((sum, c) => sum + c.count, 0)).toBe(12)
+  const largest = clusters.sort((a, b) => b.count - a.count)[0]!
+  await page.mouse.click(largest.x, largest.y)
+  await expect.poll(() => renderedStations(page)).toBeGreaterThan(single)
+  // A cluster click zooms; it does not select a station.
+  await expect(page.locator('.maplibregl-popup')).toHaveCount(0)
+  expect(errors).toEqual([])
 })
 
 test('blocked tiles: notice instead of a blank map, markers, legend and stations stay', async ({ page }) => {

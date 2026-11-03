@@ -1,5 +1,14 @@
 import 'maplibre-gl/dist/maplibre-gl.css'
-import type { ExpressionSpecification, Map as MapLibreMap, Offset, Popup, StyleSpecification } from 'maplibre-gl'
+import type {
+  ExpressionSpecification,
+  FilterSpecification,
+  GeoJSONSource,
+  Map as MapLibreMap,
+  Offset,
+  Popup,
+  StyleSpecification,
+  SymbolLayerSpecification,
+} from 'maplibre-gl'
 import { useEffect, useMemo, useRef, useState, type ReactNode } from 'react'
 import { createPortal } from 'react-dom'
 // MapLibre 6 runs its tile worker from a separate module file next to its own bundle; after bundling
@@ -30,12 +39,20 @@ const STYLE_TIMEOUT = 15_000
 /** Tile or source errors before the first tile arrives that count as "no tiles" (not one stray tile). */
 const TILE_ERRORS_OFFLINE = 3
 const STATION_LAYERS = ['ev-stations', 'ev-current']
+/** Single stations: every feature of the clustered source that is not a cluster. */
+const NOT_CLUSTER: FilterSpecification = ['!', ['has', 'point_count']]
+/** Clustering radius in px: pins closer than this merge into one cluster pin. */
+const CLUSTER_RADIUS = 48
+/** A bold face of the tile style for the cluster count (OpenFreeMap Liberty serves Noto Sans). */
+const CLUSTER_FONT = ['Noto Sans Bold']
 
 // Marker sizes in CSS px (README: 24 to 40). The selected pin gets its own, larger image
 // rather than `icon-size`, so it stays sharp.
 const PIN = 32
 const PIN_SELECTED = 40
 const BADGE = 24
+/** Cluster count in px, about 0.42 of the pin: two digits fit in the head of a 32 px pin. */
+const CLUSTER_TEXT = 13
 
 /** `offline`: no tiles, markers on a plain background. `failed`: MapLibre itself did not load. */
 type Phase = 'loading' | 'ready' | 'offline' | 'failed'
@@ -52,6 +69,8 @@ declare global {
       renderedStations: () => Promise<number>
       /** Page coordinates of a station's pin head, for clicking it. */
       pinPoint: (id: string) => { x: number; y: number } | null
+      /** After the map is idle: the cluster pins drawn, with their point count and the page coordinates of their head. */
+      renderedClusters: () => Promise<{ count: number; x: number; y: number }[]>
     }
   }
 }
@@ -74,6 +93,9 @@ function badgeOffset(pin: number): [number, number] {
 /** Horizontal distance from the point to the centre of the selected pin's head. */
 const HEAD_X = (9.5 * PIN_SELECTED) / 24
 
+/** Distance from the point to the head centre of a 32 px pin, right and up (README, "Clusters and selection"). */
+const HEAD = (9.5 * PIN) / 24
+
 function iconImage(selected: string | null): ExpressionSpecification {
   return [
     'case',
@@ -85,6 +107,14 @@ function iconImage(selected: string | null): ExpressionSpecification {
 
 function iconOffset(selected: string | null, pin: (size: number) => [number, number]): ExpressionSpecification {
   return ['case', ['==', ['get', 'id'], selected ?? ''], ['literal', pin(PIN_SELECTED)], ['literal', pin(PIN)]]
+}
+
+/**
+ * Drawing order: the selected pin on top; the others from north to south, so a lower pin covers
+ * the one above it (the order MapLibre uses without a sort key).
+ */
+function sortKey(selected: string | null): ExpressionSpecification {
+  return ['case', ['==', ['get', 'id'], selected ?? ''], 90, ['-', ['get', 'lat']]]
 }
 
 /** Popup offsets per anchor: clear of the selected pin, whichever side the popup opens on. */
@@ -106,16 +136,20 @@ function fallbackStyle(background: string): StyleSpecification {
 
 const cssVar = (name: string) => getComputedStyle(document.documentElement).getPropertyValue(name).trim()
 
-/** The 12 marker images: one pin per status (normal and selected) and the AC/DC badges. */
+/**
+ * The 13 marker images: one pin per status (normal, and selected: larger with a white ring), the
+ * AC/DC badges and the cluster pin.
+ */
 function markerImages(): Promise<[string, HTMLImageElement][]> {
   const urls: [string, string][] = []
   for (const status of mapStatuses) {
     const colour = cssVar(`--status-${status}`)
     urls.push([`ev-${status}`, markerImage(`marker-${status}`, colour, PIN)])
-    urls.push([`ev-${status}-selected`, markerImage(`marker-${status}`, colour, PIN_SELECTED)])
+    urls.push([`ev-${status}-selected`, markerImage(`marker-${status}`, colour, PIN_SELECTED, { ring: true })])
   }
   const accent = cssVar('--accent')
   urls.push(['ev-ac', markerImage('marker-ac', accent, BADGE)], ['ev-dc', markerImage('marker-dc', accent, BADGE)])
+  urls.push(['ev-marker-cluster', markerImage('marker-cluster', accent, PIN)])
   return Promise.all(urls.map(async ([id, url]) => [id, await loadMarkerImage(url)] as [string, HTMLImageElement]))
 }
 
@@ -181,7 +215,20 @@ function testHook(map: MapLibreMap): NonNullable<Window['__evMap']> {
       const point = map.project([station.lng, station.lat])
       const rect = map.getCanvas().getBoundingClientRect()
       // The head centre of a 32 px pin is 9.5/24 of its size right of and above the corner (which sits on the point).
-      return { x: rect.left + point.x + (PIN * 9.5) / 24, y: rect.top + point.y - (PIN * 9.5) / 24 }
+      return { x: rect.left + point.x + HEAD, y: rect.top + point.y - HEAD }
+    },
+    renderedClusters: async () => {
+      if (!map.getLayer('ev-clusters')) return []
+      if (!map.loaded() || map.isMoving()) await map.once('idle')
+      const rect = map.getCanvas().getBoundingClientRect()
+      const seen = new Map<number, { count: number; x: number; y: number }>()
+      for (const feature of map.queryRenderedFeatures({ layers: ['ev-clusters'] })) {
+        const id = feature.properties?.cluster_id as number
+        if (seen.has(id) || feature.geometry.type !== 'Point') continue
+        const point = map.project(feature.geometry.coordinates as [number, number])
+        seen.set(id, { count: feature.properties?.point_count as number, x: rect.left + point.x + HEAD, y: rect.top + point.y - HEAD })
+      }
+      return [...seen.values()]
     },
   }
 }
@@ -196,6 +243,8 @@ export default function ChargingMap({ children }: { children?: ReactNode }) {
   const libRef = useRef<MapLibre | null>(null)
   const mapRef = useRef<MapLibreMap | null>(null)
   const popupRef = useRef<Popup | null>(null)
+  // Stations cluster up to this zoom: one below the start view, so every pin is single at first.
+  const clusterMaxZoomRef = useRef(0)
   const headingRef = useRef<HTMLHeadingElement>(null)
   const openerRef = useRef<HTMLButtonElement | null>(null)
   const originRef = useRef<Origin>('map')
@@ -240,6 +289,8 @@ export default function ChargingMap({ children }: { children?: ReactNode }) {
         fadeDuration: reduceMotion ? 0 : 300,
       })
       mapRef.current = map
+      // The start zoom depends on the frame (a phone shows less); clusters form only below it.
+      clusterMaxZoomRef.current = Math.max(0, Math.floor(map.getZoom()) - 1)
       map.touchZoomRotate.disableRotation()
       map.keyboard.disableRotation()
       map.addControl(new maplibre.NavigationControl({ showCompass: false }), 'top-right')
@@ -299,9 +350,12 @@ export default function ChargingMap({ children }: { children?: ReactNode }) {
               features: stations.map((s) => ({
                 type: 'Feature',
                 geometry: { type: 'Point', coordinates: [s.lng, s.lat] },
-                properties: { id: s.id, status: s.status, current: s.current },
+                properties: { id: s.id, status: s.status, current: s.current, lat: s.lat },
               })),
             },
+            cluster: true,
+            clusterRadius: CLUSTER_RADIUS,
+            clusterMaxZoom: clusterMaxZoomRef.current,
           })
         }
         if (!map.getLayer('ev-current')) {
@@ -309,6 +363,7 @@ export default function ChargingMap({ children }: { children?: ReactNode }) {
             id: 'ev-current',
             type: 'symbol',
             source: 'ev-stations',
+            filter: NOT_CLUSTER,
             layout: {
               'icon-image': ['concat', 'ev-', ['get', 'current']],
               'icon-anchor': 'bottom',
@@ -323,29 +378,73 @@ export default function ChargingMap({ children }: { children?: ReactNode }) {
             id: 'ev-stations',
             type: 'symbol',
             source: 'ev-stations',
+            filter: NOT_CLUSTER,
             layout: {
               'icon-image': iconImage(null),
               'icon-anchor': 'bottom',
               'icon-offset': iconOffset(null, pinOffset),
               'icon-allow-overlap': true,
               'icon-ignore-placement': true,
+              'symbol-sort-key': sortKey(null),
             },
+          })
+        }
+        if (!map.getLayer('ev-clusters')) {
+          // The count needs the style's glyphs. The plain fallback style has none (and a text field
+          // without glyphs is a style error), so there the cluster is the pin alone, without a count.
+          const count: SymbolLayerSpecification['layout'] = map.getStyle().glyphs
+            ? {
+                'text-field': ['get', 'point_count_abbreviated'],
+                'text-font': CLUSTER_FONT,
+                'text-size': CLUSTER_TEXT,
+                'text-anchor': 'center',
+                // On the head centre, in ems of the text size.
+                'text-offset': [HEAD / CLUSTER_TEXT, -HEAD / CLUSTER_TEXT],
+                'text-allow-overlap': true,
+                'text-ignore-placement': true,
+              }
+            : {}
+          map.addLayer({
+            id: 'ev-clusters',
+            type: 'symbol',
+            source: 'ev-stations',
+            filter: ['has', 'point_count'],
+            layout: {
+              'icon-image': 'ev-marker-cluster',
+              'icon-anchor': 'bottom',
+              'icon-offset': pinOffset(PIN),
+              'icon-allow-overlap': true,
+              'icon-ignore-placement': true,
+              ...count,
+            },
+            paint: { 'text-color': '#fff' },
           })
         }
         if (!offline) setPhase('ready')
         setStyleVersion((v) => v + 1)
       })
 
-      // One click handler for the whole map: a pin selects its station, empty space clears the
-      // selection. (The popup's own closeOnClick is off: it would undo a click on another pin.)
-      map.on('click', (event) => {
+      // One click handler for the whole map: a cluster zooms in until it splits, a pin selects its
+      // station, empty space clears the selection. (The popup's own closeOnClick is off: it would
+      // undo a click on another pin.)
+      map.on('click', async (event) => {
         if (!map?.getLayer('ev-stations')) return
+        const cluster = map.queryRenderedFeatures(event.point, { layers: ['ev-clusters'] })[0]
+        if (cluster && cluster.geometry.type === 'Point') {
+          const source = map.getSource<GeoJSONSource>('ev-stations')
+          const zoom = await source?.getClusterExpansionZoom(cluster.properties.cluster_id as number)
+          if (zoom === undefined || !map) return
+          const center = cluster.geometry.coordinates as [number, number]
+          if (matchMedia('(prefers-reduced-motion: reduce)').matches) map.jumpTo({ center, zoom })
+          else map.easeTo({ center, zoom, duration: 400 })
+          return
+        }
         const hit = map.queryRenderedFeatures(event.point, { layers: STATION_LAYERS })[0]
         const id = hit?.properties?.id
         originRef.current = 'map'
         setSelected(typeof id === 'string' ? id : null)
       })
-      for (const layer of STATION_LAYERS) {
+      for (const layer of [...STATION_LAYERS, 'ev-clusters']) {
         map.on('mouseenter', layer, () => {
           if (map) map.getCanvas().style.cursor = 'pointer'
         })
@@ -387,6 +486,7 @@ export default function ChargingMap({ children }: { children?: ReactNode }) {
     if (map.getLayer('ev-stations')) {
       map.setLayoutProperty('ev-stations', 'icon-image', iconImage(selected))
       map.setLayoutProperty('ev-stations', 'icon-offset', iconOffset(selected, pinOffset))
+      map.setLayoutProperty('ev-stations', 'symbol-sort-key', sortKey(selected))
       map.setLayoutProperty('ev-current', 'icon-offset', iconOffset(selected, badgeOffset))
     }
     const station = selected ? byId.get(selected) : undefined
@@ -417,8 +517,10 @@ export default function ChargingMap({ children }: { children?: ReactNode }) {
       if (!popup.isOpen()) popup.addTo(map)
       if (originRef.current === 'list') {
         const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches
-        if (reduceMotion) map.jumpTo({ center })
-        else map.easeTo({ center, duration: 400 })
+        // Zoomed out, the station may be inside a cluster: zoom in until it has its own pin.
+        const zoom = Math.max(map.getZoom(), clusterMaxZoomRef.current + 1)
+        if (reduceMotion) map.jumpTo({ center, zoom })
+        else map.easeTo({ center, zoom, duration: 400 })
         containerRef.current?.scrollIntoView({ block: 'nearest', behavior: reduceMotion ? 'auto' : 'smooth' })
         headingRef.current?.focus({ preventScroll: true })
       }
