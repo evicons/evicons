@@ -885,8 +885,8 @@
     ],
     "provenance": {
       "createdBy": "ai",
-      "approvedBy": null,
-      "approvedOn": null
+      "approvedBy": "Landolsi Digital",
+      "approvedOn": "2026-11-03"
     },
     "pascal": "DealerCharging"
   },
@@ -1052,8 +1052,8 @@
     ],
     "provenance": {
       "createdBy": "ai",
-      "approvedBy": null,
-      "approvedOn": null
+      "approvedBy": "Landolsi Digital",
+      "approvedOn": "2026-11-03"
     },
     "pascal": "FuelStationCharging"
   },
@@ -2242,8 +2242,8 @@
     ],
     "provenance": {
       "createdBy": "ai",
-      "approvedBy": null,
-      "approvedOn": null
+      "approvedBy": "Landolsi Digital",
+      "approvedOn": "2026-11-03"
     },
     "pascal": "ShopCharging"
   },
@@ -2594,8 +2594,8 @@
     ],
     "provenance": {
       "createdBy": "ai",
-      "approvedBy": null,
-      "approvedOn": null
+      "approvedBy": "Landolsi Digital",
+      "approvedOn": "2026-11-03"
     },
     "pascal": "StreetlightCharging"
   },
