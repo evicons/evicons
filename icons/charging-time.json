@@ -10,26 +10,21 @@
       "charging duration",
       "time",
       "clock",
-      "time-based tariff",
-      "blocking fee",
-      "idle fee"
+      "time-based tariff"
     ],
     "de": [
       "ladedauer",
       "ladezeit",
       "zeit",
       "uhr",
-      "zeittarif",
-      "blockiergebühr",
-      "standgebühr"
+      "zeittarif"
     ],
     "fr": [
       "durée de recharge",
       "temps de recharge",
       "temps",
       "horloge",
-      "tarif horaire",
-      "frais d'occupation"
+      "tarif horaire"
     ]
   },
   "since": "0.3.0",

@@ -824,26 +824,21 @@
         "charging duration",
         "time",
         "clock",
-        "time-based tariff",
-        "blocking fee",
-        "idle fee"
+        "time-based tariff"
       ],
       "de": [
         "ladedauer",
         "ladezeit",
         "zeit",
         "uhr",
-        "zeittarif",
-        "blockiergebühr",
-        "standgebühr"
+        "zeittarif"
       ],
       "fr": [
         "durée de recharge",
         "temps de recharge",
         "temps",
         "horloge",
-        "tarif horaire",
-        "frais d'occupation"
+        "tarif horaire"
       ]
     },
     "since": "0.3.0",
@@ -1104,6 +1099,50 @@
     },
     "pascal": "FastCharging"
   },
+  "free-charging": {
+    "category": "payment",
+    "meaning": {
+      "en": "Free charging: charging at no cost to the driver",
+      "de": "Kostenlos laden: Laden, das für den Fahrer nichts kostet"
+    },
+    "tags": {
+      "en": [
+        "free charging",
+        "free",
+        "free of charge",
+        "no cost",
+        "complimentary charging",
+        "zero price"
+      ],
+      "de": [
+        "kostenlos laden",
+        "kostenlos",
+        "gratis",
+        "gratis laden",
+        "ohne kosten",
+        "umsonst"
+      ],
+      "fr": [
+        "recharge gratuite",
+        "gratuit",
+        "sans frais",
+        "borne gratuite"
+      ]
+    },
+    "since": "0.4.0",
+    "aliases": [],
+    "exceptions": [
+      "letters",
+      "solid-sign",
+      "sharp-corner"
+    ],
+    "provenance": {
+      "createdBy": "ai",
+      "approvedBy": null,
+      "approvedOn": null
+    },
+    "pascal": "FreeCharging"
+  },
   "fuel-station-charging": {
     "category": "station",
     "meaning": {
@@ -1282,6 +1321,46 @@
       "approvedOn": "2026-11-01"
     },
     "pascal": "HomeCharging"
+  },
+  "idle-fee": {
+    "category": "payment",
+    "meaning": {
+      "en": "Idle fee: a fee for occupying the charging point after charging has finished",
+      "de": "Blockiergebühr: Gebühr für das Belegen des Ladepunkts nach dem Ende des Ladevorgangs"
+    },
+    "tags": {
+      "en": [
+        "idle fee",
+        "blocking fee",
+        "overstay fee",
+        "parking fee",
+        "parking meter"
+      ],
+      "de": [
+        "blockiergebühr",
+        "standgebühr",
+        "standzeitgebühr",
+        "parkuhr"
+      ],
+      "fr": [
+        "frais d'occupation",
+        "frais de stationnement",
+        "pénalité de stationnement",
+        "parcmètre"
+      ]
+    },
+    "since": "0.4.0",
+    "aliases": [],
+    "exceptions": [
+      "solid-sign",
+      "sharp-corner"
+    ],
+    "provenance": {
+      "createdBy": "ai",
+      "approvedBy": null,
+      "approvedOn": null
+    },
+    "pascal": "IdleFee"
   },
   "marker-ac": {
     "category": "marker",
@@ -1799,6 +1878,45 @@
     },
     "pascal": "ParkingCharging"
   },
+  "plug-and-charge": {
+    "category": "payment",
+    "meaning": {
+      "en": "Plug & Charge: the vehicle authorises the charging session automatically when it is plugged in (ISO 15118)",
+      "de": "Plug & Charge: das Fahrzeug schaltet den Ladevorgang beim Einstecken automatisch frei (ISO 15118)"
+    },
+    "tags": {
+      "en": [
+        "plug and charge",
+        "plug & charge",
+        "iso 15118",
+        "automatic authorisation",
+        "contract certificate",
+        "plug in and charge"
+      ],
+      "de": [
+        "plug and charge",
+        "plug & charge",
+        "iso 15118",
+        "automatische freischaltung",
+        "einstecken und laden"
+      ],
+      "fr": [
+        "plug and charge",
+        "plug & charge",
+        "iso 15118",
+        "authentification automatique",
+        "brancher et recharger"
+      ]
+    },
+    "since": "0.4.0",
+    "aliases": [],
+    "provenance": {
+      "createdBy": "ai",
+      "approvedBy": null,
+      "approvedOn": null
+    },
+    "pascal": "PlugAndCharge"
+  },
   "plug-ccs1": {
     "category": "connector",
     "meaning": {
@@ -2201,6 +2319,50 @@
       "approvedOn": "2026-11-01"
     },
     "pascal": "PowerKw"
+  },
+  "qr-charging": {
+    "category": "payment",
+    "meaning": {
+      "en": "QR code charging: start or pay for a charging session ad hoc by scanning the QR code at the charging point",
+      "de": "Laden per QR-Code: einen Ladevorgang ad hoc über den QR-Code am Ladepunkt freischalten oder bezahlen"
+    },
+    "tags": {
+      "en": [
+        "qr code",
+        "qr code charging",
+        "scan to charge",
+        "ad hoc charging",
+        "ad hoc payment",
+        "afir"
+      ],
+      "de": [
+        "qr-code",
+        "laden per qr-code",
+        "ad-hoc-laden",
+        "ad-hoc-zahlung",
+        "scannen",
+        "afir"
+      ],
+      "fr": [
+        "code qr",
+        "recharge par code qr",
+        "recharge ad hoc",
+        "paiement ad hoc",
+        "scanner"
+      ]
+    },
+    "since": "0.4.0",
+    "aliases": [],
+    "exceptions": [
+      "solid-sign",
+      "sharp-corner"
+    ],
+    "provenance": {
+      "createdBy": "ai",
+      "approvedBy": null,
+      "approvedOn": null
+    },
+    "pascal": "QrCharging"
   },
   "report-fault": {
     "category": "station",

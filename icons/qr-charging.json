@@ -1,0 +1,43 @@
+{
+  "category": "payment",
+  "meaning": {
+    "en": "QR code charging: start or pay for a charging session ad hoc by scanning the QR code at the charging point",
+    "de": "Laden per QR-Code: einen Ladevorgang ad hoc über den QR-Code am Ladepunkt freischalten oder bezahlen"
+  },
+  "tags": {
+    "en": [
+      "qr code",
+      "qr code charging",
+      "scan to charge",
+      "ad hoc charging",
+      "ad hoc payment",
+      "afir"
+    ],
+    "de": [
+      "qr-code",
+      "laden per qr-code",
+      "ad-hoc-laden",
+      "ad-hoc-zahlung",
+      "scannen",
+      "afir"
+    ],
+    "fr": [
+      "code qr",
+      "recharge par code qr",
+      "recharge ad hoc",
+      "paiement ad hoc",
+      "scanner"
+    ]
+  },
+  "since": "0.4.0",
+  "aliases": [],
+  "exceptions": [
+    "solid-sign",
+    "sharp-corner"
+  ],
+  "provenance": {
+    "createdBy": "ai",
+    "approvedBy": null,
+    "approvedOn": null
+  }
+}

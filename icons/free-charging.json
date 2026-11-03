@@ -1,0 +1,43 @@
+{
+  "category": "payment",
+  "meaning": {
+    "en": "Free charging: charging at no cost to the driver",
+    "de": "Kostenlos laden: Laden, das für den Fahrer nichts kostet"
+  },
+  "tags": {
+    "en": [
+      "free charging",
+      "free",
+      "free of charge",
+      "no cost",
+      "complimentary charging",
+      "zero price"
+    ],
+    "de": [
+      "kostenlos laden",
+      "kostenlos",
+      "gratis",
+      "gratis laden",
+      "ohne kosten",
+      "umsonst"
+    ],
+    "fr": [
+      "recharge gratuite",
+      "gratuit",
+      "sans frais",
+      "borne gratuite"
+    ]
+  },
+  "since": "0.4.0",
+  "aliases": [],
+  "exceptions": [
+    "letters",
+    "solid-sign",
+    "sharp-corner"
+  ],
+  "provenance": {
+    "createdBy": "ai",
+    "approvedBy": null,
+    "approvedOn": null
+  }
+}

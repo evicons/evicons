@@ -1,0 +1,38 @@
+{
+  "category": "payment",
+  "meaning": {
+    "en": "Plug & Charge: the vehicle authorises the charging session automatically when it is plugged in (ISO 15118)",
+    "de": "Plug & Charge: das Fahrzeug schaltet den Ladevorgang beim Einstecken automatisch frei (ISO 15118)"
+  },
+  "tags": {
+    "en": [
+      "plug and charge",
+      "plug & charge",
+      "iso 15118",
+      "automatic authorisation",
+      "contract certificate",
+      "plug in and charge"
+    ],
+    "de": [
+      "plug and charge",
+      "plug & charge",
+      "iso 15118",
+      "automatische freischaltung",
+      "einstecken und laden"
+    ],
+    "fr": [
+      "plug and charge",
+      "plug & charge",
+      "iso 15118",
+      "authentification automatique",
+      "brancher et recharger"
+    ]
+  },
+  "since": "0.4.0",
+  "aliases": [],
+  "provenance": {
+    "createdBy": "ai",
+    "approvedBy": null,
+    "approvedOn": null
+  }
+}

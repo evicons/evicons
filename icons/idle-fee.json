@@ -1,0 +1,39 @@
+{
+  "category": "payment",
+  "meaning": {
+    "en": "Idle fee: a fee for occupying the charging point after charging has finished",
+    "de": "Blockiergebühr: Gebühr für das Belegen des Ladepunkts nach dem Ende des Ladevorgangs"
+  },
+  "tags": {
+    "en": [
+      "idle fee",
+      "blocking fee",
+      "overstay fee",
+      "parking fee",
+      "parking meter"
+    ],
+    "de": [
+      "blockiergebühr",
+      "standgebühr",
+      "standzeitgebühr",
+      "parkuhr"
+    ],
+    "fr": [
+      "frais d'occupation",
+      "frais de stationnement",
+      "pénalité de stationnement",
+      "parcmètre"
+    ]
+  },
+  "since": "0.4.0",
+  "aliases": [],
+  "exceptions": [
+    "solid-sign",
+    "sharp-corner"
+  ],
+  "provenance": {
+    "createdBy": "ai",
+    "approvedBy": null,
+    "approvedOn": null
+  }
+}

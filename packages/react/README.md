@@ -161,6 +161,10 @@ To combine a status with another icon, place a small status icon (half the base 
 | `charging-tariff` | `ChargingTariff` | Charging tariff: the price of charging, for example per kWh |
 | `charging-log` | `ChargingLog` | Charging log: a record of charging sessions, for example a log book or receipt |
 | `calibrated-meter` | `CalibratedMeter` | Calibrated meter: the charging point bills energy with a meter that complies with calibration law (Eichrecht) |
+| `free-charging` | `FreeCharging` | Free charging: charging at no cost to the driver |
+| `idle-fee` | `IdleFee` | Idle fee: a fee for occupying the charging point after charging has finished |
+| `qr-charging` | `QrCharging` | QR code charging: start or pay for a charging session ad hoc by scanning the QR code at the charging point |
+| `plug-and-charge` | `PlugAndCharge` | Plug & Charge: the vehicle authorises the charging session automatically when it is plugged in (ISO 15118) |
 
 ### Status
 
