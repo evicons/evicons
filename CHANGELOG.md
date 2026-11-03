@@ -6,6 +6,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
+## [0.6.0] - 2026-11-03
+
+### Added
+
+- OpenStreetMap tags in the metadata: the optional `osm` field lists the tags an icon stands for, as a bare key (`socket:type2`, any value; for sockets the value is the count) or as `key=value` (`fee=no`). 26 icons carry tags (all connector faces, `charging-plug` for `socket:unknown`, `charging-station`, the vehicles, `current-ac`/`current-dc`, `power-kw`, `free-charging`, `charging-tariff`, `restricted-access`, `parking-charging`, `charging-operator`); a tag belongs to one icon at most, which the linter checks. `socket:gb_ac` maps to `plug-type-2` (same face); the deprecated `socket:tesla_supercharger` is not mapped.
+- `@evicons/svg/osm.json`: an index from each OpenStreetMap tag to its icon name. `icons.json` (package and evicons.dev/icons.json) carries `osm` per icon, and evicons.dev/llms.txt lists the tags next to each icon.
+- 2 icons, both shown as the socket face seen from the front (IEC 60309-2, no vehicle inlet):
+  - `plug-cee-blue`: CEE blue socket (2P+E, 230 V, 16/32 A, earth at 6 h; campsite or caravan socket), OSM `socket:cee_blue`
+  - `plug-cee-red`: CEE red socket (3P+N+E, 400 V three-phase, 16 to 125 A, earth at 6 h), OSM `socket:cee_red_16a`, `_32a`, `_63a`, `_125a`
+- Documentation: "OpenStreetMap" (README and evicons.dev/docs#openstreetmap): the tags that matter, the full tag-to-icon table, picking icons from a station's tags in JavaScript and React, and an Overpass query with notes on attribution (ODbL) and fair use of public Overpass instances.
+
 ## [0.5.1] - 2026-11-03
 
 ### Added
@@ -105,7 +116,8 @@ First version, not published to npm. The first published release is 0.2.0.
   - `status-unknown`: unknown (question mark)
   - `status-queue`: queue (two cars, one behind the other)
 
-[Unreleased]: https://github.com/evicons/evicons/compare/v0.5.1...HEAD
+[Unreleased]: https://github.com/evicons/evicons/compare/v0.6.0...HEAD
+[0.6.0]: https://github.com/evicons/evicons/releases/tag/v0.6.0
 [0.5.1]: https://github.com/evicons/evicons/releases/tag/v0.5.1
 [0.5.0]: https://github.com/evicons/evicons/releases/tag/v0.5.0
 [0.4.0]: https://github.com/evicons/evicons/releases/tag/v0.4.0
