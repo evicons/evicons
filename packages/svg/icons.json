@@ -899,8 +899,8 @@
     "exceptions": [],
     "provenance": {
       "createdBy": "ai",
-      "approvedBy": null,
-      "approvedOn": null
+      "approvedBy": "Landolsi Digital",
+      "approvedOn": "2026-11-03"
     },
     "pascal": "ChargingSocket"
   },
@@ -1067,8 +1067,8 @@
     ],
     "provenance": {
       "createdBy": "ai",
-      "approvedBy": null,
-      "approvedOn": null
+      "approvedBy": "Landolsi Digital",
+      "approvedOn": "2026-11-03"
     },
     "pascal": "CommunityVerified"
   },
@@ -2090,8 +2090,8 @@
     ],
     "provenance": {
       "createdBy": "ai",
-      "approvedBy": null,
-      "approvedOn": null
+      "approvedBy": "Landolsi Digital",
+      "approvedOn": "2026-11-03"
     },
     "pascal": "MotorcycleElectric"
   },
@@ -2776,8 +2776,8 @@
     ],
     "provenance": {
       "createdBy": "ai",
-      "approvedBy": null,
-      "approvedOn": null
+      "approvedBy": "Landolsi Digital",
+      "approvedOn": "2026-11-03"
     },
     "pascal": "PowerOutage"
   },
