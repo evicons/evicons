@@ -1,7 +1,8 @@
 // Copies static files into site/public/ before `astro dev` and `astro build` (no symlinks in the repository):
 //   brand/*.svg|png                 -> site/public/brand/   (/brand/logo.svg etc.)
 //   @evicons/svg svg/*.svg           -> site/public/svg/     (/svg/<name>.svg: icon pages, image search, downloads)
-// Both targets are generated and git-ignored; brand/ and the package are the sources.
+//   @openpanel/web tracker.global.js -> site/public/op1.js   (statistics script from our own origin, see Analytics.astro)
+// All targets are generated and git-ignored; brand/ and the packages are the sources.
 import { copyFile, mkdir, readdir, rm } from 'node:fs/promises'
 import { createRequire } from 'node:module'
 import { dirname, join } from 'node:path'
@@ -18,6 +19,11 @@ async function copyAll(from, to, pattern, what) {
 }
 
 const brand = fileURLToPath(new URL('../../brand/', import.meta.url))
-const svgPackage = dirname(createRequire(import.meta.url).resolve('@evicons/svg/package.json'))
+const require = createRequire(import.meta.url)
+const svgPackage = dirname(require.resolve('@evicons/svg/package.json'))
+// @openpanel/web exports only its entry point (dist/index.js); the tracker sits next to it.
+const tracker = join(dirname(require.resolve('@openpanel/web')), 'src', 'tracker.global.js')
 await copyAll(brand, fileURLToPath(new URL('../public/brand/', import.meta.url)), /\.(svg|png)$/, 'logo files')
 await copyAll(join(svgPackage, 'svg'), fileURLToPath(new URL('../public/svg/', import.meta.url)), /\.svg$/, 'icon SVGs')
+await copyFile(tracker, fileURLToPath(new URL('../public/op1.js', import.meta.url)))
+console.log('copy-brand: OpenPanel tracker to site/public/op1.js')

@@ -270,6 +270,8 @@ export default function IconPanel(props: Props) {
       <button
         type="button"
         onClick={() => download(icon)}
+        data-track="download_svg"
+        data-icon={icon.name}
         className="mt-4 inline-flex items-center gap-2 rounded-md bg-accent px-4 py-2 text-sm font-medium text-accent-fg hover:opacity-90"
       >
         <svg

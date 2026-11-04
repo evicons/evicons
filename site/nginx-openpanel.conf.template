@@ -1,0 +1,46 @@
+# Statistics proxy, http level (cookieless OpenPanel, see /privacy#statistik). An nginx template: at container
+# start the image's entrypoint fills in the environment variables PUBLIC_OPENPANEL_CLIENT_ID, OPENPANEL_API_URL
+# and NGINX_LOCAL_RESOLVERS (envsubst, restricted to these three by NGINX_ENVSUBST_FILTER in the Dockerfile), so
+# nginx's own variables stay as they are. nginx-openpanel.envsh checks the values first. The location is in
+# nginx-openpanel-location.conf.
+
+# Empty client ID: /api/op/track answers 404 and nothing is proxied.
+map $host $op_client_id {
+    default "${PUBLIC_OPENPANEL_CLIENT_ID}";
+}
+# A variable in proxy_pass: nginx resolves the host per request (cached), so the container starts even
+# when DNS is not reachable yet.
+map $host $op_upstream {
+    default "${OPENPANEL_API_URL}/track";
+}
+# The nameservers from the container's /etc/resolv.conf (NGINX_ENTRYPOINT_LOCAL_RESOLVERS): Docker's embedded
+# DNS 127.0.0.11 in Coolify's network. Only used for the statistics upstream.
+resolver ${NGINX_LOCAL_RESOLVERS} valid=300s ipv6=off;
+resolver_timeout 5s;
+
+# Visitor IP behind the reverse proxy (Traefik): X-Real-Ip, else the last X-Forwarded-For entry (the one the
+# proxy appended; earlier entries come from the client). Without either, none (the proxy is always there).
+map $http_x_forwarded_for $op_forwarded_ip {
+    "~(?:^|,)\s*(?<last>[^,\s]+)\s*$" $last;
+    default "";
+}
+map $http_x_real_ip $op_visitor_ip {
+    "" $op_forwarded_ip;
+    default $http_x_real_ip;
+}
+# Truncated before it leaves this server: IPv4 to /24 (last block 0), IPv6 to /48 (first three blocks).
+# Anything else is not passed on.
+map $op_visitor_ip $op_client_ip {
+    "~^(?:::ffff:)?(?<v4>\d{1,3}\.\d{1,3}\.\d{1,3})\.\d{1,3}$" "$v4.0";
+    "~*^(?<v6>[0-9a-f]{1,4}:[0-9a-f]{1,4}:[0-9a-f]{1,4}):" "$v6::";
+    "~*^(?<v6>[0-9a-f]{1,4}:[0-9a-f]{1,4})::" "$v6:0::";
+    "~*^(?<v6>[0-9a-f]{1,4})::" "$v6:0:0::";
+    default "";
+}
+
+# Rate limit per truncated IP (the proxy's address if there is none): 120 events a minute, bursts of 30.
+map $op_client_ip $op_limit_key {
+    "" $binary_remote_addr;
+    default $op_client_ip;
+}
+limit_req_zone $op_limit_key zone=openpanel:1m rate=120r/m;

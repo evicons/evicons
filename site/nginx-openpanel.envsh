@@ -1,0 +1,29 @@
+#!/bin/sh
+# Sourced by the nginx image's entrypoint (/docker-entrypoint.d/16-openpanel.envsh), after
+# 15-local-resolvers.envsh and before the templates are filled in: checks the statistics settings, so a wrong
+# value switches the statistics proxy off (or back to the default server) instead of breaking the nginx config.
+
+op_log() {
+  echo "16-openpanel.envsh: $*"
+}
+
+PUBLIC_OPENPANEL_CLIENT_ID="$(printf '%s' "${PUBLIC_OPENPANEL_CLIENT_ID:-}" | tr -d '[:space:]')"
+if [ -n "$PUBLIC_OPENPANEL_CLIENT_ID" ] &&
+  ! printf '%s' "$PUBLIC_OPENPANEL_CLIENT_ID" | grep -Eq '^[0-9A-Za-z-]+$'; then
+  op_log "PUBLIC_OPENPANEL_CLIENT_ID is not a valid client ID; statistics proxy off"
+  PUBLIC_OPENPANEL_CLIENT_ID=""
+fi
+[ -n "$PUBLIC_OPENPANEL_CLIENT_ID" ] || op_log "no PUBLIC_OPENPANEL_CLIENT_ID; /api/op/track answers 404"
+export PUBLIC_OPENPANEL_CLIENT_ID
+
+OPENPANEL_API_URL="${OPENPANEL_API_URL:-https://stats.landolsi.de}"
+OPENPANEL_API_URL="${OPENPANEL_API_URL%/}"
+if ! printf '%s' "$OPENPANEL_API_URL" | grep -Eq '^https?://[0-9A-Za-z.-]+(:[0-9]+)?$'; then
+  op_log "OPENPANEL_API_URL is not a plain http(s)://host[:port] URL; using https://stats.landolsi.de"
+  OPENPANEL_API_URL="https://stats.landolsi.de"
+fi
+export OPENPANEL_API_URL
+
+# No nameserver in /etc/resolv.conf: Docker's embedded DNS (only needed for the statistics upstream).
+NGINX_LOCAL_RESOLVERS="${NGINX_LOCAL_RESOLVERS:-127.0.0.11}"
+export NGINX_LOCAL_RESOLVERS
