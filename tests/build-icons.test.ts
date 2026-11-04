@@ -211,6 +211,6 @@ test('marker svg files are self-contained images', () => {
     expect(svg, file).toContain('height="24"')
   }
   const icons = JSON.parse(readFileSync(join(ROOT, 'packages/svg/icons.json'), 'utf8')) as Record<string, { since: string }>
-  expect(Object.keys(icons)).toHaveLength(83)
-  for (const [name, meta] of Object.entries(icons)) expect(['0.1.0', '0.2.0', '0.3.0', '0.4.0', '0.5.0', '0.5.1', '0.6.0'], name).toContain(meta.since)
+  expect(Object.keys(icons)).toHaveLength(84)
+  for (const [name, meta] of Object.entries(icons)) expect(['0.1.0', '0.2.0', '0.3.0', '0.4.0', '0.5.0', '0.5.1', '0.6.0', '0.8.0'], name).toContain(meta.since)
 })

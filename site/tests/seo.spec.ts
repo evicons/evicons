@@ -9,7 +9,7 @@ const meta = JSON.parse(readFileSync(new URL('../../packages/svg/icons.json', im
 const names = Object.keys(meta)
 
 test('every icon has an English and a German page, each linking the other', async ({ request }) => {
-  expect(names.length).toBeGreaterThanOrEqual(83)
+  expect(names.length).toBeGreaterThanOrEqual(84)
   for (const name of names) {
     for (const [path, lang] of [
       [`/icons/${name}`, 'en'],

@@ -67,6 +67,7 @@ export const iconTitles: Record<string, { en: string; de: string }> = {
   'power-kw': { en: 'Charging power (kW)', de: 'Ladeleistung (kW)' },
   'power-outage': { en: 'Power outage', de: 'Stromausfall' },
   'qr-charging': { en: 'QR code charging', de: 'Laden per QR-Code' },
+  'register-verified': { en: 'Registered charge point', de: 'Amtlich registrierter Ladepunkt' },
   'report-fault': { en: 'Report a fault', de: 'Störung melden' },
   'restricted-access': { en: 'Restricted access', de: 'Zugang eingeschränkt' },
   roaming: { en: 'Charging roaming', de: 'Roaming beim Laden' },

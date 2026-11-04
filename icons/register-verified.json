@@ -1,0 +1,45 @@
+{
+  "category": "station",
+  "meaning": {
+    "en": "Listed in an official charging point register, e.g. the national register kept by the regulator (data from the authority, not from users)",
+    "de": "In einem amtlichen Ladesäulenregister geführt, z. B. dem Register der Bundesnetzagentur (Daten von der Behörde, nicht von Nutzern)"
+  },
+  "tags": {
+    "en": [
+      "official register",
+      "regulator",
+      "verified",
+      "registered",
+      "government data",
+      "charging point register",
+      "official"
+    ],
+    "de": [
+      "amtlich",
+      "ladesäulenregister",
+      "bundesnetzagentur",
+      "bnetza",
+      "offiziell",
+      "registriert",
+      "amtlich registriert"
+    ],
+    "fr": [
+      "registre officiel",
+      "données officielles",
+      "enregistré",
+      "officiel",
+      "régulateur"
+    ]
+  },
+  "since": "0.8.0",
+  "aliases": [],
+  "exceptions": [
+    "solid-sign",
+    "sharp-corner"
+  ],
+  "provenance": {
+    "createdBy": "ai",
+    "approvedBy": "Landolsi Digital",
+    "approvedOn": "2026-11-04"
+  }
+}

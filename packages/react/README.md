@@ -137,6 +137,7 @@ To combine a status with another icon, place a small status icon (half the base 
 | `station-uptime` | `StationUptime` | Station uptime: the operating status of a charging point over time, its reliability (for example availability over the last 30 days) |
 | `restricted-access` | `RestrictedAccess` | Restricted access: the charging point is not open to everyone (private, customers only, company vehicles only, behind a barrier) |
 | `community-verified` | `CommunityVerified` | Community verified: information reported or confirmed by drivers (for example a price, a free charger or a tip) |
+| `register-verified` | `RegisterVerified` | Listed in an official charging point register, e.g. the national register kept by the regulator (data from the authority, not from users) |
 | `charging-socket` | `ChargingSocket` | Charging socket: the charging point has a socket outlet, bring your own cable (no tethered cable) |
 
 ### Power and energy
