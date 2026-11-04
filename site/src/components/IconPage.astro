@@ -230,6 +230,7 @@ const githubSource = `https://github.com/evicons/evicons/blob/main/icons/${icon.
           <a
             href={`/svg/${icon.name}.svg`}
             download={`${icon.name}.svg`}
+            data-track="download_svg"
             class="rounded-md bg-accent px-4 py-2 text-sm font-medium text-accent-fg no-underline hover:opacity-90"
             >{t.download}</a
           >
@@ -252,7 +253,7 @@ const githubSource = `https://github.com/evicons/evicons/blob/main/icons/${icon.
         <div class={snippetClass} data-snippet>
           <div class="snippet-head">
             <span class="snippet-lang">Shell</span>
-            <CopyButton label={t.copyLabel('Shell')} class="min-w-[6.5rem] hover:bg-bg" lang={lang} />
+            <CopyButton label={t.copyLabel('Shell')} class="min-w-[6.5rem] hover:bg-bg" lang={lang} track="copy_install" />
           </div>
           <Code code={install} lang="sh" themes={themes} transformers={transformers} />
         </div>
@@ -260,7 +261,7 @@ const githubSource = `https://github.com/evicons/evicons/blob/main/icons/${icon.
         <div class={snippetClass} data-snippet>
           <div class="snippet-head">
             <span class="snippet-lang">TSX</span>
-            <CopyButton label={t.copyLabel('React')} class="min-w-[6.5rem] hover:bg-bg" lang={lang} />
+            <CopyButton label={t.copyLabel('React')} class="min-w-[6.5rem] hover:bg-bg" lang={lang} track="copy_react" />
           </div>
           <Code code={reactCode} lang="tsx" themes={themes} transformers={transformers} />
         </div>
@@ -268,7 +269,7 @@ const githubSource = `https://github.com/evicons/evicons/blob/main/icons/${icon.
         <div class={snippetClass} data-snippet>
           <div class="snippet-head">
             <span class="snippet-lang">SVG</span>
-            <CopyButton label={t.copyLabel('SVG')} class="min-w-[6.5rem] hover:bg-bg" lang={lang} />
+            <CopyButton label={t.copyLabel('SVG')} class="min-w-[6.5rem] hover:bg-bg" lang={lang} track="copy_svg" />
           </div>
           <Code code={icon.svg} lang="html" themes={themes} transformers={transformers} />
         </div>
@@ -276,7 +277,7 @@ const githubSource = `https://github.com/evicons/evicons/blob/main/icons/${icon.
         <div class={snippetClass} data-snippet>
           <div class="snippet-head">
             <span class="snippet-lang">HTML</span>
-            <CopyButton label={t.copyLabel('Sprite')} class="min-w-[6.5rem] hover:bg-bg" lang={lang} />
+            <CopyButton label={t.copyLabel('Sprite')} class="min-w-[6.5rem] hover:bg-bg" lang={lang} track="copy_sprite" />
           </div>
           <Code code={spriteCode} lang="html" themes={themes} transformers={transformers} />
         </div>

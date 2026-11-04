@@ -70,6 +70,7 @@ export default function CodeTabs({ snippets }: { snippets: Snippet[] }) {
         <button
           type="button"
           onClick={onCopy}
+          data-track={`copy_${current.id}`}
           className="rounded-md px-2 py-1 text-sm text-muted hover:bg-surface hover:text-fg"
           aria-label={`Copy ${current.label} code`}
         >

@@ -9,6 +9,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 ### Added
 
 - JOSM map paint style at evicons.dev/josm (`https://evicons.dev/josm/evicons.zip`, also as plain `evicons.mapcss` with its icons): an add-on style that draws charging stations with the EVicons pins (DC, AC, no socket data, disused) and charge points with their connector icon, with optional output and "socket?" labels. Generated from the icons and their `osm` tags; the npm packages do not change. Documentation: "JOSM map style" (README and evicons.dev/docs#openstreetmap).
+- evicons.dev: cookieless statistics with a self-hosted OpenPanel on our own server in Germany, to see which icons and docs are used. No cookies; the tracker is served from evicons.dev itself (`/op1.js`) and sends events only to a same-origin nginx proxy (`/api/op/track`: POST, JSON, at most 16 KB, rate-limited), which sets the client ID itself and passes the visitor IP on only truncated (IPv4 /24, IPv6 /48). Named events for copying code and downloading SVGs. Off unless the build and the container set `PUBLIC_OPENPANEL_CLIENT_ID`; also off on localhost, `*.local` and with `?preview=true`. The privacy policy describes it.
 
 ## [0.6.0] - 2026-11-03
 
