@@ -155,7 +155,7 @@ Each element has its tags in `tags`, ready for `socketIcons` above. OSM data is 
 https://evicons.dev/josm/evicons.zip
 ```
 
-The style is also served as a plain file, `https://evicons.dev/josm/evicons.mapcss`, with its icons in `https://evicons.dev/josm/icons/`. Stations appear from zoom 14, charge points from zoom 17:
+The style is also served as a plain file, `https://evicons.dev/josm/evicons.mapcss`, which loads its icons from `https://evicons.dev/josm/icons/` by absolute URL (prefer the zip: it works offline once JOSM has cached it). Stations appear from zoom 14, charge points from zoom 17:
 
 - **DC** (`marker-dc`, blue pin): the station has a DC socket (`socket:type2_combo`, `socket:type1_combo`, `socket:chademo`, `socket:gb_dc`, `socket:mcs`, `socket:nacs`, `socket:chaoji` or the older `socket:tesla_supercharger`) or `frequency=0`. DC wins over AC. NACS counts as DC because most mapped NACS sockets are Tesla Superchargers.
 - **AC** (`marker-ac`, blue pin): any other `socket:<type>`.

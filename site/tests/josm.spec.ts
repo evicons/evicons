@@ -12,14 +12,16 @@ test('/josm/evicons.zip is a ZIP archive', async ({ request }) => {
   expect(body.includes(Buffer.from('icons/marker-dc.svg'))).toBe(true)
 })
 
-test('/josm/evicons.mapcss is the style, with icons next to it', async ({ request }) => {
+test('/josm/evicons.mapcss is the style, with its icons by absolute URL', async ({ request }) => {
   const response = await request.get('/josm/evicons.mapcss')
   expect(response.status()).toBe(200)
   // Empty under `astro preview`, text/plain under nginx; never an HTML page.
   expect(response.headers()['content-type'] ?? '').toMatch(/^(text\/plain.*)?$/)
   const text = await response.text()
   expect(text).toContain('title: "EVicons: EV charging";')
-  const icons = [...new Set([...text.matchAll(/"(icons\/[a-z0-9-]+\.svg)"/g)].map((m) => m[1]!))]
+  // JOSM resolves relative icon paths only inside a zip, so the plain file uses absolute URLs.
+  expect(text).not.toMatch(/"icons\//)
+  const icons = [...new Set([...text.matchAll(/"https:\/\/evicons\.dev\/josm\/(icons\/[a-z0-9-]+\.svg)"/g)].map((m) => m[1]!))]
   expect(icons.length).toBeGreaterThan(10)
   for (const path of icons) {
     const icon = await request.get(`/josm/${path}`)
