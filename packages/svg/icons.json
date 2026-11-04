@@ -39,6 +39,9 @@
       "solid-sign",
       "sharp-corner"
     ],
+    "osm": [
+      "wheelchair=yes"
+    ],
     "provenance": {
       "createdBy": "ai",
       "approvedBy": "Landolsi Digital",
@@ -3834,6 +3837,9 @@
     "exceptions": [
       "solid-sign",
       "sharp-corner"
+    ],
+    "osm": [
+      "support=street_lamp"
     ],
     "provenance": {
       "createdBy": "ai",

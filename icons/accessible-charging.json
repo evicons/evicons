@@ -38,6 +38,9 @@
     "solid-sign",
     "sharp-corner"
   ],
+  "osm": [
+    "wheelchair=yes"
+  ],
   "provenance": {
     "createdBy": "ai",
     "approvedBy": "Landolsi Digital",

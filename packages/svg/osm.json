@@ -31,5 +31,7 @@
   "socket:type2": "plug-type-2",
   "socket:type2_cable": "plug-type-2",
   "socket:type2_combo": "plug-ccs2",
-  "socket:unknown": "charging-plug"
+  "socket:unknown": "charging-plug",
+  "support=street_lamp": "streetlight-charging",
+  "wheelchair=yes": "accessible-charging"
 }
