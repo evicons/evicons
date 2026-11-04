@@ -1299,7 +1299,8 @@
       "sharp-corner"
     ],
     "ocpi": [
-      "Location.facilities=HOTEL"
+      "Location.facilities=HOTEL",
+      "Location.facilities=RESTAURANT"
     ],
     "provenance": {
       "createdBy": "ai",
@@ -3510,9 +3511,6 @@
     "exceptions": [
       "solid-sign",
       "sharp-corner"
-    ],
-    "ocpi": [
-      "Location.energy_mix.energy_sources.source=SOLAR"
     ],
     "provenance": {
       "createdBy": "ai",

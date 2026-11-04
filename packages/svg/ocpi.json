@@ -39,11 +39,11 @@
   "EVSE.status=OUTOFORDER": "status-faulted",
   "EVSE.status=RESERVED": "status-reserved",
   "EVSE.status=UNKNOWN": "status-unknown",
-  "Location.energy_mix.energy_sources.source=SOLAR": "solar-charging",
   "Location.energy_mix.is_green_energy=true": "green-power",
   "Location.facilities=FUEL_STATION": "fuel-station-charging",
   "Location.facilities=HOTEL": "destination-charging",
   "Location.facilities=MALL": "shop-charging",
+  "Location.facilities=RESTAURANT": "destination-charging",
   "Location.facilities=SUPERMARKET": "shop-charging",
   "Location.parking_type=ALONG_MOTORWAY": "highway-charging"
 }

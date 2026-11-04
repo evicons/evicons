@@ -37,7 +37,8 @@
     "sharp-corner"
   ],
   "ocpi": [
-    "Location.facilities=HOTEL"
+    "Location.facilities=HOTEL",
+    "Location.facilities=RESTAURANT"
   ],
   "provenance": {
     "createdBy": "ai",

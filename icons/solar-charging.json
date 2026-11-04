@@ -38,9 +38,6 @@
     "solid-sign",
     "sharp-corner"
   ],
-  "ocpi": [
-    "Location.energy_mix.energy_sources.source=SOLAR"
-  ],
   "provenance": {
     "createdBy": "ai",
     "approvedBy": "Landolsi Digital",
