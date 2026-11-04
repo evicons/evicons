@@ -611,6 +611,24 @@ out center;
 
 Each element has its tags in `tags`, ready for `socketIcons` above. OSM data is licensed under the [ODbL](https://www.openstreetmap.org/copyright): show "© OpenStreetMap contributors" wherever you display it. Public Overpass instances are shared and rate-limited: query a bounding box, not the whole map; cache the result instead of querying on every map move; and for regular or large imports run your own instance or use an OSM extract.
 
+### JOSM map style
+
+[JOSM](https://josm.openstreetmap.de), the desktop OpenStreetMap editor, can draw charging stations with EVicons while you map. The style is an add-on: it draws only charging stations and charge points, on top of your base map style, which keeps drawing everything else. To add it, open Preferences → Map Paint Styles in JOSM, click the "+" button on the right and enter this URL:
+
+```text
+https://evicons.dev/josm/evicons.zip
+```
+
+The style is also served as a plain file, `https://evicons.dev/josm/evicons.mapcss`, with its icons in `https://evicons.dev/josm/icons/`. Stations appear from zoom 14, charge points from zoom 17:
+
+- **DC** (`marker-dc`, blue pin): the station has a DC socket (`socket:type2_combo`, `socket:type1_combo`, `socket:chademo`, `socket:gb_dc`, `socket:mcs`, `socket:nacs`, `socket:chaoji` or the older `socket:tesla_supercharger`) or `frequency=0`. DC wins over AC. NACS counts as DC because most mapped NACS sockets are Tesla Superchargers.
+- **AC** (`marker-ac`, blue pin): any other `socket:<type>`.
+- **No socket data** (`marker-unknown`, cyan pin with a question mark): no socket counts. A socket counts with a count above 0 or `yes`; `0` and `no` do not. These stations are the ones to complete; from zoom 16 they are labelled "socket?".
+- **Disused** (`marker-out-of-service`, grey pin with a cross): `disused:amenity=charging_station`.
+- **Charge points** (`man_made=charge_point`): the connector of their first socket in this order: MCS, CCS2, CCS1, CHAdeMO, GB/T DC, NACS, Type 2 (also `socket:type2_cable` and `socket:gb_ac`), Type 1, CEE red, CEE blue, Schuko; any other socket, or none, shows `charging-plug`. The connector is drawn in dark lines on a white disc.
+
+The pin's corner sits on the station's node; an area gets its pin at its centre. From zoom 16 a label next to the pin shows the output: `charging_station:output`, else the output of the station's most powerful socket type, else the capacity (`×4`). Two style settings turn the output labels and the "socket?" labels off: right-click the style in the Map Styles panel and open Style settings. The style is generated from the icons and their OpenStreetMap tags with each release of the site, and it is MIT-licensed like the icons.
+
 ## Compatibility
 
 | | Supported |
