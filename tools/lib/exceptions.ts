@@ -4,8 +4,8 @@
  * - letters: uses the EVicons stroke alphabet (AC, DC, kW, ...)
  * - dense-connector: connector face needs more detail than the style usually allows
  * - sharp-corner: a corner is intentionally drawn sharp despite round joins
- * - solid-sign: small sign (e.g. the small bolt) whose inner gaps are below the spacing minimum
- *   on purpose; it reads as a solid shape
+ * - solid-sign: the icon contains a solid lightning bolt, one of the canonical bolt paths with
+ *   fill="currentColor" (the only fill in EVicons, design guide section 2)
  */
 export const KNOWN_EXCEPTIONS = ['letters', 'dense-connector', 'sharp-corner', 'solid-sign'] as const
 

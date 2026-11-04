@@ -32,11 +32,12 @@
   "since": "0.3.0",
   "aliases": [],
   "exceptions": [
-    "sharp-corner"
+    "sharp-corner",
+    "solid-sign"
   ],
   "provenance": {
     "createdBy": "ai",
     "approvedBy": "Landolsi Digital",
-    "approvedOn": "2026-11-02"
+    "approvedOn": "2026-11-04"
   }
 }

@@ -42,7 +42,7 @@
     "provenance": {
       "createdBy": "ai",
       "approvedBy": "Landolsi Digital",
-      "approvedOn": "2026-11-03"
+      "approvedOn": "2026-11-04"
     },
     "pascal": "AccessibleCharging"
   },
@@ -87,7 +87,7 @@
     "provenance": {
       "createdBy": "ai",
       "approvedBy": "Landolsi Digital",
-      "approvedOn": "2026-11-01"
+      "approvedOn": "2026-11-04"
     },
     "pascal": "AppCharging"
   },
@@ -130,7 +130,7 @@
     "provenance": {
       "createdBy": "ai",
       "approvedBy": "Landolsi Digital",
-      "approvedOn": "2026-11-01"
+      "approvedOn": "2026-11-04"
     },
     "pascal": "BatteryCharging"
   },
@@ -215,7 +215,7 @@
     "provenance": {
       "createdBy": "ai",
       "approvedBy": "Landolsi Digital",
-      "approvedOn": "2026-11-03"
+      "approvedOn": "2026-11-04"
     },
     "pascal": "BikeElectric"
   },
@@ -261,7 +261,7 @@
     "provenance": {
       "createdBy": "ai",
       "approvedBy": "Landolsi Digital",
-      "approvedOn": "2026-11-03"
+      "approvedOn": "2026-11-04"
     },
     "pascal": "BusElectric"
   },
@@ -350,7 +350,7 @@
     "provenance": {
       "createdBy": "ai",
       "approvedBy": "Landolsi Digital",
-      "approvedOn": "2026-11-01"
+      "approvedOn": "2026-11-04"
     },
     "pascal": "CarElectric"
   },
@@ -480,7 +480,7 @@
     "provenance": {
       "createdBy": "ai",
       "approvedBy": "Landolsi Digital",
-      "approvedOn": "2026-11-03"
+      "approvedOn": "2026-11-04"
     },
     "pascal": "ChargingAvailability"
   },
@@ -517,12 +517,13 @@
     "since": "0.2.0",
     "aliases": [],
     "exceptions": [
-      "sharp-corner"
+      "sharp-corner",
+      "solid-sign"
     ],
     "provenance": {
       "createdBy": "ai",
       "approvedBy": "Landolsi Digital",
-      "approvedOn": "2026-11-01"
+      "approvedOn": "2026-11-04"
     },
     "pascal": "ChargingBolt"
   },
@@ -609,7 +610,7 @@
     "provenance": {
       "createdBy": "ai",
       "approvedBy": "Landolsi Digital",
-      "approvedOn": "2026-11-01"
+      "approvedOn": "2026-11-04"
     },
     "pascal": "ChargingCard"
   },
@@ -653,7 +654,7 @@
     "provenance": {
       "createdBy": "ai",
       "approvedBy": "Landolsi Digital",
-      "approvedOn": "2026-11-03"
+      "approvedOn": "2026-11-04"
     },
     "pascal": "ChargingHub"
   },
@@ -697,7 +698,7 @@
     "provenance": {
       "createdBy": "ai",
       "approvedBy": "Landolsi Digital",
-      "approvedOn": "2026-11-01"
+      "approvedOn": "2026-11-04"
     },
     "pascal": "ChargingLog"
   },
@@ -745,7 +746,7 @@
     "provenance": {
       "createdBy": "ai",
       "approvedBy": "Landolsi Digital",
-      "approvedOn": "2026-11-02"
+      "approvedOn": "2026-11-04"
     },
     "pascal": "ChargingOperator"
   },
@@ -833,7 +834,7 @@
     "provenance": {
       "createdBy": "ai",
       "approvedBy": "Landolsi Digital",
-      "approvedOn": "2026-11-02"
+      "approvedOn": "2026-11-04"
     },
     "pascal": "ChargingPowerLevel"
   },
@@ -871,12 +872,13 @@
     "since": "0.3.0",
     "aliases": [],
     "exceptions": [
-      "sharp-corner"
+      "sharp-corner",
+      "solid-sign"
     ],
     "provenance": {
       "createdBy": "ai",
       "approvedBy": "Landolsi Digital",
-      "approvedOn": "2026-11-02"
+      "approvedOn": "2026-11-04"
     },
     "pascal": "ChargingSession"
   },
@@ -952,13 +954,17 @@
     },
     "since": "0.1.0",
     "aliases": [],
+    "exceptions": [
+      "solid-sign",
+      "sharp-corner"
+    ],
     "osm": [
       "amenity=charging_station"
     ],
     "provenance": {
       "createdBy": "ai",
       "approvedBy": "Landolsi Digital",
-      "approvedOn": "2026-10-21"
+      "approvedOn": "2026-11-04"
     },
     "pascal": "ChargingStation"
   },
@@ -1005,7 +1011,7 @@
     "provenance": {
       "createdBy": "ai",
       "approvedBy": "Landolsi Digital",
-      "approvedOn": "2026-11-01"
+      "approvedOn": "2026-11-04"
     },
     "pascal": "ChargingTariff"
   },
@@ -1047,7 +1053,7 @@
     "provenance": {
       "createdBy": "ai",
       "approvedBy": "Landolsi Digital",
-      "approvedOn": "2026-11-02"
+      "approvedOn": "2026-11-04"
     },
     "pascal": "ChargingTime"
   },
@@ -1093,7 +1099,7 @@
     "provenance": {
       "createdBy": "ai",
       "approvedBy": "Landolsi Digital",
-      "approvedOn": "2026-11-03"
+      "approvedOn": "2026-11-04"
     },
     "pascal": "CommunityVerified"
   },
@@ -1222,7 +1228,7 @@
     "provenance": {
       "createdBy": "ai",
       "approvedBy": "Landolsi Digital",
-      "approvedOn": "2026-11-03"
+      "approvedOn": "2026-11-04"
     },
     "pascal": "DealerCharging"
   },
@@ -1267,7 +1273,7 @@
     "provenance": {
       "createdBy": "ai",
       "approvedBy": "Landolsi Digital",
-      "approvedOn": "2026-11-02"
+      "approvedOn": "2026-11-04"
     },
     "pascal": "DestinationCharging"
   },
@@ -1307,7 +1313,7 @@
     "provenance": {
       "createdBy": "ai",
       "approvedBy": "Landolsi Digital",
-      "approvedOn": "2026-11-01"
+      "approvedOn": "2026-11-04"
     },
     "pascal": "DrivingRange"
   },
@@ -1340,12 +1346,13 @@
     "since": "0.1.0",
     "aliases": [],
     "exceptions": [
-      "sharp-corner"
+      "sharp-corner",
+      "solid-sign"
     ],
     "provenance": {
       "createdBy": "ai",
       "approvedBy": "Landolsi Digital",
-      "approvedOn": "2026-11-01"
+      "approvedOn": "2026-11-04"
     },
     "pascal": "FastCharging"
   },
@@ -1392,7 +1399,7 @@
     "provenance": {
       "createdBy": "ai",
       "approvedBy": "Landolsi Digital",
-      "approvedOn": "2026-11-03"
+      "approvedOn": "2026-11-04"
     },
     "pascal": "FreeCharging"
   },
@@ -1436,7 +1443,7 @@
     "provenance": {
       "createdBy": "ai",
       "approvedBy": "Landolsi Digital",
-      "approvedOn": "2026-11-03"
+      "approvedOn": "2026-11-04"
     },
     "pascal": "FuelStationCharging"
   },
@@ -1480,7 +1487,7 @@
     "provenance": {
       "createdBy": "ai",
       "approvedBy": "Landolsi Digital",
-      "approvedOn": "2026-11-01"
+      "approvedOn": "2026-11-04"
     },
     "pascal": "GreenPower"
   },
@@ -1527,7 +1534,7 @@
     "provenance": {
       "createdBy": "ai",
       "approvedBy": "Landolsi Digital",
-      "approvedOn": "2026-11-03"
+      "approvedOn": "2026-11-04"
     },
     "pascal": "HighwayCharging"
   },
@@ -1571,7 +1578,7 @@
     "provenance": {
       "createdBy": "ai",
       "approvedBy": "Landolsi Digital",
-      "approvedOn": "2026-11-01"
+      "approvedOn": "2026-11-04"
     },
     "pascal": "HomeCharging"
   },
@@ -1611,7 +1618,7 @@
     "provenance": {
       "createdBy": "ai",
       "approvedBy": "Landolsi Digital",
-      "approvedOn": "2026-11-03"
+      "approvedOn": "2026-11-04"
     },
     "pascal": "IdleFee"
   },
@@ -1745,12 +1752,13 @@
     "since": "0.2.0",
     "aliases": [],
     "exceptions": [
-      "sharp-corner"
+      "sharp-corner",
+      "solid-sign"
     ],
     "provenance": {
       "createdBy": "ai",
       "approvedBy": "Landolsi Digital",
-      "approvedOn": "2026-11-01"
+      "approvedOn": "2026-11-04"
     },
     "pascal": "MarkerCharging"
   },
@@ -2176,7 +2184,7 @@
     "provenance": {
       "createdBy": "ai",
       "approvedBy": "Landolsi Digital",
-      "approvedOn": "2026-11-03"
+      "approvedOn": "2026-11-04"
     },
     "pascal": "MotorcycleElectric"
   },
@@ -2224,7 +2232,7 @@
     "provenance": {
       "createdBy": "ai",
       "approvedBy": "Landolsi Digital",
-      "approvedOn": "2026-11-01"
+      "approvedOn": "2026-11-04"
     },
     "pascal": "ParkingCharging"
   },
@@ -2656,12 +2664,13 @@
     "since": "0.4.0",
     "aliases": [],
     "exceptions": [
-      "sharp-corner"
+      "sharp-corner",
+      "solid-sign"
     ],
     "provenance": {
       "createdBy": "ai",
       "approvedBy": "Landolsi Digital",
-      "approvedOn": "2026-11-03"
+      "approvedOn": "2026-11-04"
     },
     "pascal": "PlugInHybrid"
   },
@@ -3030,12 +3039,13 @@
     "since": "0.5.0",
     "aliases": [],
     "exceptions": [
-      "sharp-corner"
+      "sharp-corner",
+      "solid-sign"
     ],
     "provenance": {
       "createdBy": "ai",
       "approvedBy": "Landolsi Digital",
-      "approvedOn": "2026-11-03"
+      "approvedOn": "2026-11-04"
     },
     "pascal": "PowerOutage"
   },
@@ -3079,7 +3089,7 @@
     "provenance": {
       "createdBy": "ai",
       "approvedBy": "Landolsi Digital",
-      "approvedOn": "2026-11-03"
+      "approvedOn": "2026-11-04"
     },
     "pascal": "QrCharging"
   },
@@ -3124,7 +3134,7 @@
     "provenance": {
       "createdBy": "ai",
       "approvedBy": "Landolsi Digital",
-      "approvedOn": "2026-11-02"
+      "approvedOn": "2026-11-04"
     },
     "pascal": "ReportFault"
   },
@@ -3178,7 +3188,7 @@
     "provenance": {
       "createdBy": "ai",
       "approvedBy": "Landolsi Digital",
-      "approvedOn": "2026-11-03"
+      "approvedOn": "2026-11-04"
     },
     "pascal": "RestrictedAccess"
   },
@@ -3223,7 +3233,7 @@
     "provenance": {
       "createdBy": "ai",
       "approvedBy": "Landolsi Digital",
-      "approvedOn": "2026-11-01"
+      "approvedOn": "2026-11-04"
     },
     "pascal": "Roaming"
   },
@@ -3269,7 +3279,7 @@
     "provenance": {
       "createdBy": "ai",
       "approvedBy": "Landolsi Digital",
-      "approvedOn": "2026-11-02"
+      "approvedOn": "2026-11-04"
     },
     "pascal": "RouteToCharger"
   },
@@ -3316,7 +3326,7 @@
     "provenance": {
       "createdBy": "ai",
       "approvedBy": "Landolsi Digital",
-      "approvedOn": "2026-11-03"
+      "approvedOn": "2026-11-04"
     },
     "pascal": "ShopCharging"
   },
@@ -3363,7 +3373,7 @@
     "provenance": {
       "createdBy": "ai",
       "approvedBy": "Landolsi Digital",
-      "approvedOn": "2026-11-01"
+      "approvedOn": "2026-11-04"
     },
     "pascal": "SolarCharging"
   },
@@ -3410,7 +3420,7 @@
     "provenance": {
       "createdBy": "ai",
       "approvedBy": "Landolsi Digital",
-      "approvedOn": "2026-11-03"
+      "approvedOn": "2026-11-04"
     },
     "pascal": "StationUptime"
   },
@@ -3715,7 +3725,7 @@
     "provenance": {
       "createdBy": "ai",
       "approvedBy": "Landolsi Digital",
-      "approvedOn": "2026-11-03"
+      "approvedOn": "2026-11-04"
     },
     "pascal": "StreetlightCharging"
   },
@@ -3762,7 +3772,7 @@
     "provenance": {
       "createdBy": "ai",
       "approvedBy": "Landolsi Digital",
-      "approvedOn": "2026-11-03"
+      "approvedOn": "2026-11-04"
     },
     "pascal": "TruckElectric"
   },

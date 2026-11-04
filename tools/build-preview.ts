@@ -66,7 +66,7 @@ h1{font-size:20px;margin:0 0 12px}h2{font-size:16px;margin:32px 0 12px}
 .ovitem>.ev{display:block}
 .ovwrap{text-align:center;font-size:12px;color:var(--muted)}
 .fillpane{display:inline-flex;gap:14px;align-items:center;padding-left:14px;border-left:1px solid rgba(128,128,128,.5)}
-.filled svg>path:first-of-type{fill:currentColor}.filled svg>:not(path:first-of-type){stroke:#fff}
+.filled svg>path:first-of-type{fill:currentColor}.filled svg>:not(path:first-of-type){stroke:#fff}.filled svg>[fill]{fill:#fff}
 .maps{display:flex;gap:16px;flex-wrap:wrap}
 .mapwrap{font-size:12px;color:var(--muted)}
 .map-mock{position:relative;width:360px;border-radius:8px;overflow:hidden;background:#e4e6e9;margin-top:4px}
@@ -164,7 +164,7 @@ function mapMock(markers: Icon[], mode: 'outline' | 'filled'): string {
 function markerSection(markers: Icon[]): string {
   if (markers.length === 0) return ''
   return `<section id="markers"><h2>Markers</h2>
-<div class="meta">Checked at ${MARKER_SIZES.join(', ')} px. Filled mode (the first <code>&lt;path&gt;</code> is the pin): <code>svg &gt; path:first-of-type { fill: currentColor }</code>, <code>svg &gt; :not(path:first-of-type) { stroke: #fff }</code>.</div>
+<div class="meta">Checked at ${MARKER_SIZES.join(', ')} px. Filled mode (the first <code>&lt;path&gt;</code> is the pin): <code>svg &gt; path:first-of-type { fill: currentColor }</code>, <code>svg &gt; :not(path:first-of-type) { stroke: #fff }</code>, <code>svg &gt; [fill] { fill: #fff }</code> (the solid bolt).</div>
 <div class="cards">${markers.map(markerCard).join('')}</div>
 <h2>Map mock</h2><div class="maps">${mapMock(markers, 'outline')}${mapMock(markers, 'filled')}</div></section>`
 }

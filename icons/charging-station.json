@@ -29,12 +29,16 @@
   },
   "since": "0.1.0",
   "aliases": [],
+  "exceptions": [
+    "solid-sign",
+    "sharp-corner"
+  ],
   "osm": [
     "amenity=charging_station"
   ],
   "provenance": {
     "createdBy": "ai",
     "approvedBy": "Landolsi Digital",
-    "approvedOn": "2026-10-21"
+    "approvedOn": "2026-11-04"
   }
 }

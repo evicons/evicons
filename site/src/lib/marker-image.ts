@@ -36,13 +36,14 @@ export interface FillOptions {
 }
 
 /**
- * Fill a marker SVG: the first `<path>` (the pin) in `colour`, the sign in white.
- * The SVG is drawn at twice `size`, for `map.addImage(id, img, { pixelRatio: 2 })`.
+ * Fill a marker SVG: the first `<path>` (the pin) in `colour`, the sign in white (its stroke, and the
+ * fill of a solid bolt). The SVG is drawn at twice `size`, for `map.addImage(id, img, { pixelRatio: 2 })`.
  */
 export function fillMarker(svg: string, colour: string, size = 32, { ring = false }: FillOptions = {}): string {
   const filled = svg
     .replace('width="24" height="24"', `width="${size * 2}" height="${size * 2}"`)
     .replace('stroke="currentColor"', 'stroke="#fff"')
+    .replaceAll('fill="currentColor"', 'fill="#fff"')
     .replace('<path ', `<path fill="${colour}" stroke="${colour}" `)
   return ring ? filled.replace('<path ', `<path d="${PIN}" stroke-width="4"/><path `) : filled
 }

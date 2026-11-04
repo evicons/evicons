@@ -157,6 +157,13 @@ test('filled markers follow the CSS contract, also with a title', async ({ page 
       .nth(1)
       .evaluate((el) => getComputedStyle(el).stroke),
   ).toBe('rgb(255, 255, 255)')
+  // The solid bolt of marker-charging is white inside as well.
+  expect(
+    await page
+      .locator('[data-icon-card="marker-charging"] svg path')
+      .nth(1)
+      .evaluate((el) => getComputedStyle(el).fill),
+  ).toBe('rgb(255, 255, 255)')
 
   // The panel preview is the React component with `title`: <title> is the first child of the <svg>.
   await page.locator('[data-icon-card="marker-available"]').click()

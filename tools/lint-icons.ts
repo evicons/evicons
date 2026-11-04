@@ -3,6 +3,7 @@ import { join, resolve } from 'node:path'
 import { optimize } from 'svgo'
 import { svgPathBbox } from 'svg-path-bbox'
 import type { INode } from 'svgson'
+import { boltName } from './lib/bolts.ts'
 import { validateMeta, type IconMeta } from './lib/meta.ts'
 import { isKebabCase, toPascalCase } from './lib/names.ts'
 import { isAllowedTag, parseIcon, parseSvg, type AllowedTag, type IconNode } from './lib/svg.ts'
@@ -126,7 +127,11 @@ function lintElement(file: string, el: INode, errors: LintError[], nested = fals
   const { required, optional } = ELEMENT_ATTRIBUTES[element]
   let geometryOk = true
   for (const attribute of Object.keys(el.attributes)) {
-    if (!required.includes(attribute) && !optional.includes(attribute)) {
+    if (element === 'path' && attribute === 'fill' && !nested) {
+      if (el.attributes.fill !== 'currentColor' || boltName(el.attributes.d ?? '') === null) {
+        errors.push({ file, element, attribute, message: SOLID_FILL_ERROR })
+      }
+    } else if (!required.includes(attribute) && !optional.includes(attribute)) {
       errors.push({ file, element, attribute, message: 'attribute not allowed; styling belongs in CSS via currentColor' })
     }
   }
@@ -214,6 +219,37 @@ function lintSvg(file: string, source: string, errors: LintError[]): void {
   }
   if (optimize(source, svgoConfig).data !== source) {
     errors.push({ file, message: 'file is not SVGO-normalised; run `npm run lint:icons -- --fix`' })
+  }
+}
+
+export const SOLID_FILL_ERROR =
+  'fill not allowed; only a solid lightning bolt (one of the bolt paths of design guide section 2, moved, not scaled) takes fill="currentColor"'
+export const SOLID_UNFILLED_ERROR = 'solid bolt: a lightning bolt path must have fill="currentColor" (design guide section 2)'
+export const SOLID_SIGN_ERROR = 'solid bolt: an icon with a filled bolt declares the exceptions "solid-sign" and "sharp-corner", and an icon declaring "solid-sign" has a filled bolt'
+
+/**
+ * Solid bolts (design guide section 2): every lightning bolt is one of the canonical bolt paths
+ * with `fill="currentColor"`, the only fill in EVicons. lintElement rejects a fill anywhere else;
+ * this checks that bolt paths are filled and that the exceptions are declared.
+ */
+function lintSolidBolts(file: string, source: string, meta: IconMeta, errors: LintError[]): void {
+  let root: INode
+  try {
+    root = parseSvg(source)
+  } catch {
+    return // reported by lintSvg
+  }
+  let filled = 0
+  for (const el of root.children) {
+    if (el.type !== 'element' || el.name !== 'path') continue
+    const bolt = boltName(el.attributes.d ?? '')
+    if (bolt !== null && el.attributes.fill === 'currentColor') filled++
+    else if (bolt !== null) errors.push({ file, element: 'path', message: SOLID_UNFILLED_ERROR })
+  }
+  const exceptions: readonly string[] = meta.exceptions ?? []
+  const declared = exceptions.includes('solid-sign')
+  if ((filled > 0 && !(declared && exceptions.includes('sharp-corner'))) || (filled === 0 && declared)) {
+    errors.push({ file: file.replace(/\.svg$/, '.json'), message: SOLID_SIGN_ERROR })
   }
 }
 
@@ -328,6 +364,7 @@ export function lintIcons(dir: string, opts: { release: boolean }): LintError[] 
     if (meta.category === 'marker' && svgs.has(name)) {
       lintMarker(svgFile, readFileSync(join(dir, svgFile), 'utf8'), errors)
     }
+    if (svgs.has(name)) lintSolidBolts(svgFile, readFileSync(join(dir, svgFile), 'utf8'), meta, errors)
 
     const claims: Array<[string, string]> = [[toPascalCase(name), `icon "${name}"`]]
     for (const alias of meta.aliases) claims.push([toPascalCase(alias), `alias "${alias}" of icon "${name}"`])

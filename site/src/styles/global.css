@@ -149,6 +149,10 @@
 .marker-filled svg > :not(path:first-of-type) {
   stroke: #fff;
 }
+/* The solid bolt carries fill="currentColor"; in a filled pin it is white like the rest of the sign. */
+.marker-filled svg > [fill] {
+  fill: #fff;
+}
 
 /* In the components layer, so that Tailwind utilities on single elements still win. */
 @layer components {

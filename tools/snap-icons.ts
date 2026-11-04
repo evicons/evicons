@@ -54,7 +54,7 @@ h2{font-size:13px;margin:12px 0 4px}
 .theme{width:36px;color:inherit;opacity:.6}
 .cell{min-width:96px;display:flex;justify-content:center;align-items:center}
 .sep{width:1px;align-self:stretch;background:rgba(128,128,128,.5)}
-.filled{color:#2563eb}.filled svg>path:first-of-type{fill:currentColor}.filled svg>:not(path:first-of-type){stroke:#fff}`
+.filled{color:#2563eb}.filled svg>path:first-of-type{fill:currentColor}.filled svg>:not(path:first-of-type){stroke:#fff}.filled svg>[fill]{fill:#fff}`
   return `<!doctype html><html><head><meta charset="utf-8"><style>${css}</style></head><body>${blocks}</body></html>`
 }
 

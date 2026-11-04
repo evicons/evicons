@@ -2,7 +2,16 @@ import { copyFileSync, mkdirSync, mkdtempSync, readdirSync, readFileSync, rmSync
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { describe, expect, test } from 'vitest'
-import { lintIcons, loadIcons, MARKER_NAME_ERROR, MARKER_PIN_ERROR, MARKER_SIGN_ERROR } from '../tools/lint-icons.ts'
+import {
+  lintIcons,
+  loadIcons,
+  MARKER_NAME_ERROR,
+  MARKER_PIN_ERROR,
+  MARKER_SIGN_ERROR,
+  SOLID_FILL_ERROR,
+  SOLID_SIGN_ERROR,
+  SOLID_UNFILLED_ERROR,
+} from '../tools/lint-icons.ts'
 import { validateMeta } from '../tools/lib/meta.ts'
 import { parseIcon } from '../tools/lib/svg.ts'
 
@@ -96,6 +105,53 @@ test('rect with zero corner radius passes the size rule', () => {
   } finally {
     rmSync(dir, { recursive: true, force: true })
   }
+})
+
+describe('solid bolts', () => {
+  const ROOT_TAG = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24">'
+  const BOLT = 'm12.75 10.75-2.25 3.5h1.25l-.5 3 2.25-3.5h-1.25Z'
+  const BOTH = ['solid-sign', 'sharp-corner']
+  function lintOne(elements: string, exceptions?: string[]) {
+    const dir = mkdtempSync(join(tmpdir(), 'evicons-lint-'))
+    try {
+      writeFileSync(join(dir, 'bolt.svg'), `${ROOT_TAG}\n  ${elements}\n</svg>\n`)
+      const meta = JSON.parse(readFileSync(invalid('negative-size/bad.json'), 'utf8'))
+      writeFileSync(join(dir, 'bolt.json'), JSON.stringify(exceptions ? { ...meta, exceptions } : meta))
+      return lintIcons(dir, { release: false })
+    } finally {
+      rmSync(dir, { recursive: true, force: true })
+    }
+  }
+
+  test('a filled canonical bolt with solid-sign and sharp-corner passes', () => {
+    expect(lintOne(`<path fill="currentColor" d="${BOLT}"/>`, BOTH)).toEqual([])
+  })
+
+  test.each([
+    ['on a path that is no bolt', '<path fill="currentColor" d="M6 6h12v12H6Z"/>'],
+    ['in a colour', `<path fill="red" d="${BOLT}"/>`],
+    ['on a scaled bolt', '<path fill="currentColor" d="m14.75 7.25-4.5 7h2.5l-1 6 4.5-7h-2.5Z"/>'],
+  ])('fill %s fails', (_, element) => {
+    expect(lintOne(element, BOTH)).toContainEqual({ file: 'bolt.svg', element: 'path', attribute: 'fill', message: SOLID_FILL_ERROR })
+  })
+
+  test('fill on another element fails', () => {
+    expect(lintOne('<circle cx="12" cy="12" r="5" fill="currentColor"/>')).toContainEqual(
+      expect.objectContaining({ file: 'bolt.svg', element: 'circle', attribute: 'fill' }),
+    )
+  })
+
+  test('a bolt without fill fails', () => {
+    expect(lintOne(`<path d="${BOLT}"/>`, BOTH)).toContainEqual({ file: 'bolt.svg', element: 'path', message: SOLID_UNFILLED_ERROR })
+  })
+
+  test.each([
+    ['a filled bolt without solid-sign', `<path fill="currentColor" d="${BOLT}"/>`, ['sharp-corner']],
+    ['a filled bolt without sharp-corner', `<path fill="currentColor" d="${BOLT}"/>`, ['solid-sign']],
+    ['solid-sign without a bolt', '<path d="M6 12h12"/>', BOTH],
+  ])('%s fails', (_, element, exceptions) => {
+    expect(lintOne(element, exceptions)).toEqual([{ file: 'bolt.json', message: SOLID_SIGN_ERROR }])
+  })
 })
 
 test('bbox counts half stroke', () => {
