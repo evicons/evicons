@@ -3,6 +3,7 @@ import '../styles/global.css'
 // The Latin subset of Inter, preloaded: it is used on every page, and arriving before first paint it
 // does not swap in later and shift the text.
 import interLatin from '@fontsource-variable/inter/files/inter-latin-wght-normal.woff2?url'
+import Analytics from '../components/Analytics.astro'
 import Footer from '../components/Footer.astro'
 import Header from '../components/Header.astro'
 
@@ -108,6 +109,7 @@ const switchTo = alternates
         document.documentElement.dataset.theme = theme
       })()
     </script>
+    <Analytics />
   </head>
   <body class="flex min-h-screen flex-col bg-bg text-fg">
     <a

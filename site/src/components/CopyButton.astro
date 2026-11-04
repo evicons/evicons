@@ -8,9 +8,11 @@ interface Props {
   class?: string
   /** Language of the visible button text. */
   lang?: 'en' | 'de'
+  /** Statistics event name for a click (data-track, see Analytics.astro), for example "copy_svg". */
+  track?: string
 }
 
-const { text, label, class: className, lang = 'en' } = Astro.props
+const { text, label, class: className, lang = 'en', track } = Astro.props
 const strings = {
   en: { idle: 'Copy', copied: 'Copied', copiedMessage: 'Copied to clipboard', failed: 'Copy failed' },
   de: { idle: 'Kopieren', copied: 'Kopiert', copiedMessage: 'In die Zwischenablage kopiert', failed: 'Kopieren fehlgeschlagen' },
@@ -20,6 +22,7 @@ const strings = {
 <button
   type="button"
   data-copy-button
+  data-track={track}
   data-copy={text}
   data-copied={strings.copied}
   data-copied-message={strings.copiedMessage}

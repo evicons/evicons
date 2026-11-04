@@ -1,0 +1,41 @@
+---
+// Cookieless statistics with the self-hosted OpenPanel (stats.landolsi.de), see /privacy#statistik.
+// Rendered only when the build sets PUBLIC_OPENPANEL_CLIENT_ID (Docker build arg); the default build has no
+// statistics at all. The tracker is served from our own origin (/op1.js, copied from @openpanel/web by
+// scripts/copy-brand.mjs) and sends events only to the same-origin proxy /api/op/track (nginx-openpanel*.conf),
+// which adds the client ID itself and passes on the visitor IP only truncated. Off on localhost, *.local and
+// with ?preview=true. Named events come from data-track attributes on buttons and links (trackAttributes).
+const clientId = import.meta.env.PUBLIC_OPENPANEL_CLIENT_ID?.trim() ?? ''
+// The same rule as the nginx side (nginx-openpanel.envsh): letters, digits and dashes (OpenPanel uses UUIDs).
+if (clientId && !/^[0-9A-Za-z-]+$/.test(clientId)) {
+  throw new Error(`PUBLIC_OPENPANEL_CLIENT_ID is not a valid OpenPanel client ID: ${JSON.stringify(clientId)}`)
+}
+---
+
+{
+  clientId && (
+    <script is:inline define:vars={{ clientId }} data-openpanel>
+      const host = location.hostname
+      const local = host === 'localhost' || host === '127.0.0.1' || host === '[::1]' || host.endsWith('.local')
+      const preview = new URLSearchParams(location.search).get('preview') === 'true'
+      if (!local && !preview) {
+        window.op =
+          window.op ||
+          function (...args) {
+            ;(window.op.q = window.op.q || []).push(args)
+          }
+        window.op('init', {
+          clientId,
+          apiUrl: '/api/op',
+          trackScreenViews: true,
+          trackOutgoingLinks: true,
+          trackAttributes: true,
+        })
+        const script = document.createElement('script')
+        script.src = '/op1.js'
+        script.async = true
+        document.head.append(script)
+      }
+    </script>
+  )
+}

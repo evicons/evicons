@@ -8,6 +8,7 @@ playwright-report/
 .tmp-tests/
 site/dist/
 site/.astro/
-# Copied from brand/ by site/scripts/copy-brand.mjs
+# Copied from brand/, @evicons/svg and @openpanel/web by site/scripts/copy-brand.mjs
 site/public/brand/
 site/public/svg/
+site/public/op1.js
