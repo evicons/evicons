@@ -97,3 +97,16 @@ describe('solid bolts in the icons', () => {
     for (const name of small) expect(used(name), name).toEqual(['small'])
   })
 })
+
+describe('the hollow bolts of 0.6 are gone', () => {
+  // The linter only knows the canonical bolts, so a hollow copy of an old bolt would lint clean.
+  // These are the distinctive tails of the old paths (small block, marker sign, full bolts).
+  const OLD_TAILS = ['h1.5l-.5 3 3-4h-1.75Z', 'l5-5.75h-2.75Z', '8-11.5h-4.5Z', '8-11.5H16Z']
+  const dir = join(import.meta.dirname, '..', 'icons')
+  for (const file of readdirSync(dir).filter((f) => f.endsWith('.svg'))) {
+    test(file, () => {
+      const svg = readFileSync(join(dir, file), 'utf8')
+      for (const tail of OLD_TAILS) expect(svg, tail).not.toContain(tail)
+    })
+  }
+})
