@@ -24,7 +24,7 @@ export const GET: APIRoute = () => {
 
   const text = `# EVicons
 
-> Open-source (MIT) outline icons for EV charging: connectors, charging stations, charging status, payment and map markers. ${icons.length} icons, 24 × 24, stroke 1.5, \`currentColor\`, no fills. Published by Landolsi Digital.
+> Open-source (MIT) outline icons for EV charging: connectors, charging stations, charging status, payment and map markers. ${icons.length} icons, 24 × 24, stroke 1.5, \`currentColor\`, no fills except the solid lightning bolts. Published by Landolsi Digital.
 
 Use the icons alongside text, not instead of it. General UI icons (arrows, menus, settings) are out of scope; the set covers only electric-vehicle charging. Connector icons show the vehicle inlet seen from the front (the Schuko and CEE sockets show the socket face), drawn from public reference drawings (the standards themselves were not consulted). Status icons carry their meaning in the shape; colour is up to the app.
 

@@ -22,7 +22,7 @@ npm ci
 
 Each icon is two files in `icons/`: the SVG and its metadata. Everything in `packages/` is generated from them.
 
-1. **Draw `icons/<name>.svg`** on the 24 × 24 grid, following the [design guide](docs/design-guide.md): outline only, stroke width 1.5, round caps and joins, `currentColor`, no fills, colours, transforms, ids, classes or groups. The root element has exactly the attributes listed in the guide.
+1. **Draw `icons/<name>.svg`** on the 24 × 24 grid, following the [design guide](docs/design-guide.md): outline only, stroke width 1.5, round caps and joins, `currentColor`, no fills, colours, transforms, ids, classes or groups. The one fill is a lightning bolt: use one of the solid bolt paths of the guide (section 2, "Lightning bolt"), moved but not scaled, with `fill="currentColor"`, and declare `solid-sign` and `sharp-corner`. The root element has exactly the attributes listed in the guide.
 2. **Write `icons/<name>.json`** with the metadata. The schema is in `tools/lib/meta.ts`:
 
    ```json

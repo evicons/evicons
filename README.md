@@ -8,7 +8,7 @@ Open-source icons for e-mobility and EV charging: charging stations, connector f
 
 EVicons covers **only** e-mobility. General UI icons (arrows, menu, search, close, ...) are out of scope; keep using a general icon set such as Lucide for those. EVicons contains no brand or manufacturer logos.
 
-- Outline style on a 24 × 24 grid, stroke width 1.5, round caps and joins.
+- Outline style on a 24 × 24 grid, stroke width 1.5, round caps and joins; lightning bolts are solid.
 - `currentColor` only: the SVGs contain no colours, colour comes from your CSS.
 - Connector icons show the vehicle inlet face, except `plug-schuko`, `plug-cee-blue` and `plug-cee-red`, which show the socket face (these sockets have no vehicle inlet in EV charging), with the contact layout checked against public drawings of the connector standards (see each icon's `standard.source`).
 - Every icon has a documented meaning (see [Icons](#icons)).
@@ -286,7 +286,7 @@ The charging marker is named `marker-charging` (`MarkerCharging`), not `marker`,
 
 ## Map markers
 
-The `marker-*` icons are map pins with a sign in the head (listed under [Markers](#markers)); `marker-charging` is the plain charging point, the others add AC/DC or a status, and `marker-cluster` leaves the head empty for a count ([Clusters and selection](#clusters-and-selection)). Use them at 24, 32 or 40 px; they are not drawn for 16 px. Like all icons they are outlines in `currentColor`, and they can also be drawn filled: the pin in your colour, the sign in white. The SVG files never contain a colour; filling is done by your CSS or your code.
+The `marker-*` icons are map pins with a sign in the head (listed under [Markers](#markers)); `marker-charging` is the plain charging point, the others add AC/DC or a status, and `marker-cluster` leaves the head empty for a count ([Clusters and selection](#clusters-and-selection)). Use them at 24, 32 or 40 px; they are not drawn for 16 px. Like all icons they are outlines in `currentColor` (the lightning bolt of `marker-charging` is solid), and they can also be drawn filled: the pin in your colour, the sign in white. The SVG files never contain a colour; filling is done by your CSS or your code.
 
 **Element order is a contract:** in every marker the first `<path>` is the pin, a single closed shape that encloses the sign. Everything after it is the sign. This order never changes in a released marker.
 
@@ -296,6 +296,7 @@ The `marker-*` icons are map pins with a sign in the head (listed under [Markers
 .marker { color: #1f9d55; }
 .marker svg > path:first-of-type { fill: currentColor; }
 .marker svg > :not(path:first-of-type) { stroke: #fff; }
+.marker svg > [fill] { fill: #fff; }
 ```
 
 ```tsx
@@ -310,11 +311,11 @@ export function AvailablePin() {
 }
 ```
 
-Select the pin with `path:first-of-type`, not `:first-child`: with `title`, the React component renders a `<title>` as the first child of the `<svg>`. The rule works for inline SVG and the React components. It does not work with the sprite: the shapes of a `<symbol>` shown with `<use>` are not children of your `<svg>`, so page CSS cannot select them. The pin keeps its stroke, so a filled pin is 0.75 units larger than its outline; that is intended.
+Select the pin with `path:first-of-type`, not `:first-child`: with `title`, the React component renders a `<title>` as the first child of the `<svg>`. The rule works for inline SVG and the React components. It does not work with the sprite: the shapes of a `<symbol>` shown with `<use>` are not children of your `<svg>`, so page CSS cannot select them. The pin keeps its stroke, so a filled pin is 0.75 units larger than its outline; that is intended. The third rule is for the solid bolt of `marker-charging`: it is the only shape with its own `fill="currentColor"` (since 0.7.0), so without the rule it takes the pin colour and only its white edge shows. For a hollow pin (white head, coloured outline and sign) fill the pin white instead (`.marker svg > path:first-of-type { fill: #fff; }`) and leave out the other two rules; the bolt then stays solid in your colour.
 
 ### MapLibre GL
 
-Map libraries draw markers as images, where page CSS does not apply. Fill the SVG string before you turn it into an image: set the root `stroke="currentColor"` to white (the sign inherits it) and give the first `<path>`, the pin, the fill and stroke colour. Then load it from a data URL and add it with `pixelRatio: 2`, so it stays sharp on high-density screens:
+Map libraries draw markers as images, where page CSS does not apply. Fill the SVG string before you turn it into an image: set the root `stroke="currentColor"` to white (the sign inherits it), the solid bolt's `fill="currentColor"` to white as well, and give the first `<path>`, the pin, the fill and stroke colour. Then load it from a data URL and add it with `pixelRatio: 2`, so it stays sharp on high-density screens:
 
 ```ts
 import type { Map } from 'maplibre-gl'
@@ -325,6 +326,7 @@ export async function addMarkerImage(map: Map, name: string, svg: string, colour
   const filled = svg
     .replace('width="24" height="24"', `width="${size * 2}" height="${size * 2}"`)
     .replace('stroke="currentColor"', 'stroke="#fff"')
+    .replaceAll('fill="currentColor"', 'fill="#fff"')
     .replace('<path ', `<path fill="${colour}" stroke="${colour}" `)
   const img = new Image()
   img.src = `data:image/svg+xml;charset=utf-8,${encodeURIComponent(filled)}`
@@ -456,7 +458,7 @@ export function ClusterPin({ count }: { count: number }) {
 ```
 
 ```ts
-// `filled` is the SVG string after the three replacements in addMarkerImage. The root stroke is
+// `filled` is the SVG string after the four replacements in addMarkerImage. The root stroke is
 // white by then, so the extra path is the white ring.
 export function withRing(filled: string) {
   return filled.replace('<path ', '<path d="M2.5 21.5V12a9.5 9.5 0 1 1 9.5 9.5Z" stroke-width="4"/><path ')
