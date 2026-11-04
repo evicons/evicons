@@ -93,6 +93,20 @@ test.describe('docker image', () => {
     }
     // The 404 page is not cached either.
     expect(notFound.headers()['cache-control']).toBe('no-cache')
+    // The JOSM style: nginx has no type for .mapcss in mime.types; /josm/ sets it, keeping the headers.
+    const josm: [string, string][] = [
+      ['/josm/evicons.mapcss', 'text/plain; charset=utf-8'],
+      ['/josm/evicons.zip', 'application/zip'],
+      ['/josm/icons/marker-dc.svg', 'image/svg+xml'],
+    ]
+    for (const [path, type] of josm) {
+      const response = await request.get(`${origin}${path}`)
+      expect(response.status(), path).toBe(200)
+      expect(response.headers()['content-type'], path).toBe(type)
+      expect(response.headers()['cache-control'], path).toBe('no-cache')
+      expect(response.headers()['x-content-type-options'], path).toBe('nosniff')
+    }
+    expect((await request.get(`${origin}/josm/nope.svg`)).status()).toBe(404)
     // Hashed assets are cached for a year.
     const asset = docs.match(/\/_astro\/[\w.-]+\.css/)?.[0]
     expect(asset).toBeTruthy()

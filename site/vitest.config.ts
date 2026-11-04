@@ -7,6 +7,6 @@ export default defineConfig({
   oxc: { jsx: { runtime: 'automatic' } },
   test: {
     environment: 'node',
-    include: ['tests/**/*.test.tsx'],
+    include: ['tests/**/*.test.{ts,tsx}'],
   },
 })

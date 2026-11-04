@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
+### Added
+
+- JOSM map paint style at evicons.dev/josm (`https://evicons.dev/josm/evicons.zip`, also as plain `evicons.mapcss` with its icons): an add-on style that draws charging stations with the EVicons pins (DC, AC, no socket data, disused) and charge points with their connector icon, with optional output and "socket?" labels. Generated from the icons and their `osm` tags; the npm packages do not change. Documentation: "JOSM map style" (README and evicons.dev/docs#openstreetmap).
+
 ## [0.6.0] - 2026-11-03
 
 ### Added
