@@ -6,6 +6,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
+## [0.8.0] - 2026-11-04
+
+### Added
+
+- OCPI values in the metadata: the optional `ocpi` field lists the values of the OCPI Locations module an icon stands for, as `<Object>.<field>=<VALUE>` (`Connector.standard=IEC_62196_T2`, `EVSE.status=AVAILABLE`, `Location.energy_mix.is_green_energy=true`). 33 icons carry 47 values: 41 defined in OCPI 2.2.1 and 6 defined only from OCPI 2.3.0 (`Connector.standard=MCS`, `Connector.standard=SAE_J3400` for NACS, the two Plug & Charge `Connector.capabilities`, and the parking restrictions `EMPLOYEES` and `TENANTS`): every connector face, `current-ac`/`current-dc` (`power_type`), `charging-cable`/`charging-socket` (`format`), six `status-*` icons (`EVSE.status`), `card-terminal` and `charging-card` (`EVSE.capabilities`), `plug-and-charge`, `parking-charging`, `restricted-access`, `motorcycle-electric` (`EVSE.parking_restrictions`), `highway-charging`, `fuel-station-charging`, `shop-charging`, `destination-charging` (`Location.parking_type` and `facilities`), `green-power` and `solar-charging` (`Location.energy_mix`). The linter accepts only fields and values copied from the spec (`tools/lib/ocpi.ts`) and checks that a value belongs to one icon at most. Tesla's own `TESLA_S` and `TESLA_R` are not mapped to `plug-nacs`.
+- `@evicons/svg/ocpi.json`: an index from each OCPI value to its icon name. `icons.json` (package and evicons.dev/icons.json) carries `ocpi` per icon, and evicons.dev/llms.txt lists the values next to each icon.
+- Two more OpenStreetMap tags: `wheelchair=yes` on `accessible-charging` and `support=street_lamp` on `streetlight-charging` (OSM wiki Key:wheelchair and Key:support, retrieved 2026-11-04).
+- 1 icon: `register-verified` (station): listed in an official charging point register, for example the national register kept by the regulator (data from the authority, not from users). A record card with the edge of the next card behind it, the small solid bolt and a check mark: the official counterpart of `community-verified` (information confirmed by drivers).
+- Documentation: "OCPI" (README and evicons.dev/docs#ocpi): the value-to-icon table with the OCPI version of each value, notes on statuses, connectors, payment, energy and parking, and picking the icons of a Location, EVSE or Connector in JavaScript. The German charging point register (Bundesnetzagentur) and the AFIR data feeds use their own field names; no mapping is shipped for them.
+
 ## [0.7.0] - 2026-11-04
 
 ### Changed
@@ -134,7 +144,8 @@ First version, not published to npm. The first published release is 0.2.0.
   - `status-unknown`: unknown (question mark)
   - `status-queue`: queue (two cars, one behind the other)
 
-[Unreleased]: https://github.com/evicons/evicons/compare/v0.7.0...HEAD
+[Unreleased]: https://github.com/evicons/evicons/compare/v0.8.0...HEAD
+[0.8.0]: https://github.com/evicons/evicons/releases/tag/v0.8.0
 [0.7.0]: https://github.com/evicons/evicons/releases/tag/v0.7.0
 [0.6.0]: https://github.com/evicons/evicons/releases/tag/v0.6.0
 [0.5.1]: https://github.com/evicons/evicons/releases/tag/v0.5.1
