@@ -39,17 +39,16 @@ export const MARKER_SIZE = 32
 export const CONNECTOR_SIZE = 24
 
 /**
- * JOSM centres an icon on the node. The pin's corner is at (2.5, 21.5) of 24, its box centre at (12, 12):
- * moving the icon 9.5 units right and 9.5 units up puts the corner on the node.
- */
-export const MARKER_OFFSET = Math.round(((9.5 * MARKER_SIZE) / 24) * 1000) / 1000
-
-/**
- * Node labels start right of the pin: its head reaches x = 22.25 of 24 (radius 9.5 plus half the stroke), that is
- * (22.25 - 2.5) / 24 of the size right of the node. A right-aligned JOSM label starts 5 px right of its offset
+ * The pin is not offset: JOSM centres an icon on the node and selects a node only within a few px of it, so the
+ * pin head (centre (12, 12) of 24, the icon centre) sits on the node, as JOSM's own icons do.
+ * Node labels start right of the head: it reaches x = 22.25 of 24 (radius 9.5 plus half the stroke), that is
+ * (22.25 - 12) / 24 of the size right of the node. A right-aligned JOSM label starts 5 px right of its offset
  * (the right half of the 5 px node box, 3 px, plus 2 px); the label then starts 2 px clear of the pin.
  */
-const LABEL_OFFSET_X = Math.round(((22.25 - 2.5) * MARKER_SIZE) / 24) + 2 - 5
+const LABEL_OFFSET_X = Math.round(((22.25 - 12) * MARKER_SIZE) / 24) + 2 - 5
+
+/** Area labels: centred below the pin, whose corner reaches 9.5 units plus half the stroke below the centre. */
+const AREA_LABEL_OFFSET_Y = -(Math.round(((9.5 + 0.75) * MARKER_SIZE) / 24) + 8)
 
 /**
  * A socket value that counts: `yes` or a count of sockets, also the `;`-separated form (`6;3`, OSM wiki
@@ -140,14 +139,21 @@ export function bakeMarker(name: string, svg: string, colour: string): string {
 }
 
 /**
- * A connector icon for a charge point: the line icon in dark ink, at 3/4 size on a white disc with a thin ink
- * ring, so it reads on light map tiles and on aerial imagery alike.
+ * Scale of the connector inside its disc: at 0.75 the dense faces (CCS2, Type 2) smear at 24 px; 0.85 keeps their
+ * contacts apart and still clears the ring.
+ */
+const CONNECTOR_SCALE = 0.85
+const CONNECTOR_SHIFT = Math.round((12 - 12 * CONNECTOR_SCALE) * 1000) / 1000
+
+/**
+ * A connector icon for a charge point: the line icon in dark ink, at CONNECTOR_SCALE on a white disc with a thin
+ * ink ring, so it reads on light map tiles and on aerial imagery alike.
  */
 export function bakeConnector(name: string, svg: string): string {
   return [
     `<svg xmlns="http://www.w3.org/2000/svg" width="${CONNECTOR_SIZE}" height="${CONNECTOR_SIZE}" viewBox="0 0 24 24">`,
-    `  <circle cx="12" cy="12" r="11.25" fill="#fff" stroke="${CONNECTOR_INK}" stroke-width="1"/>`,
-    '  <g transform="matrix(0.75 0 0 0.75 3 3)">',
+    `  <circle cx="12" cy="12" r="11.5" fill="#fff" stroke="${CONNECTOR_INK}" stroke-width="0.75"/>`,
+    `  <g transform="matrix(${CONNECTOR_SCALE} 0 0 ${CONNECTOR_SCALE} ${CONNECTOR_SHIFT} ${CONNECTOR_SHIFT})">`,
     ...shapes(name, svg).map((s) => `  ${shape(s, `fill="none" stroke="${CONNECTOR_INK}" ${LINE}`)}`),
     '  </g>',
     '</svg>',
@@ -198,18 +204,17 @@ export function buildJosmStyle({ icons, version, date }: JosmStyleInput): JosmSt
     `icon-image: "icons/${name}.svg";`,
     `icon-width: ${MARKER_SIZE};`,
     `icon-height: ${MARKER_SIZE};`,
-    `icon-offset-x: ${MARKER_OFFSET};`,
-    `icon-offset-y: -${MARKER_OFFSET};`,
   ]
   const outputLabel = `[setting("evicons_output_label")]`
   const firstValue = (key: string) => `text: eval(get(split(";", tag("${key}")), 0));`
   // Output labels from the lowest to the highest priority: a later rule overrides the text of an earlier one.
-  const socketOutputs = [...sockets].reverse().map(([, keys]) =>
-    rule(
-      keys.flatMap((key) => sel(BOTH, ZOOM.labels, `${STATION}["${key}:output"]${outputLabel}`, LABEL)),
-      keys.length === 1 ? [firstValue(`${keys[0]}:output`)] : [`text: eval(get(split(";", any(${keys.map((k) => `tag("${k}:output")`).join(', ')})), 0));`],
-    ),
-  )
+  // Only a socket type that counts gives its output (socket:chademo=0 with socket:chademo:output=50 kW does not).
+  const socketOutputs = [...sockets]
+    .flatMap(([, keys]) => keys)
+    .reverse()
+    .map((key) =>
+      rule(sel(BOTH, ZOOM.labels, `${STATION}["${key}"=~${count}]["${key}:output"]${outputLabel}`, LABEL), [firstValue(`${key}:output`)]),
+    )
 
   const mapcss = `/*
  * EVicons: EV charging, a JOSM map paint style.
@@ -223,9 +228,9 @@ meta {
     description: "EV charging stations and charge points drawn with EVicons: AC/DC markers, stations without socket data highlighted, connector icons on charge points.";
     author: "Landolsi Digital";
     version: "${version}_${date}";
-    link: "https://evicons.dev/docs#openstreetmap";
+    link: "https://evicons.dev/docs#josm-map-style";
     /* r11730: icons on areas (icon-position); also used: regex key and value conditions (r8874),
-       icon-offset (r8085), style settings (r7450). */
+       style settings (r7450). */
     min-josm-version: 11730;
     icon: "icons/marker-dc.svg";
 }
@@ -243,9 +248,9 @@ setting::evicons_socket_hint {
 }
 
 /*
- * Charging stations: the EVicons map pin, its corner on the node (areas: on the centre of the area).
- * JOSM centres an icon on the node; the pin's corner is at (2.5, 21.5) of 24, so the ${MARKER_SIZE} px pin
- * moves ${MARKER_SIZE} x 9.5 / 24 px right and up. Rules further down override the pin: no socket data,
+ * Charging stations: the EVicons map pin, ${MARKER_SIZE} px, its head on the node as JOSM's own icons are (JOSM
+ * selects a node only within a few px of it). Areas get the pin at their centre once it fits on screen.
+ * Rules further down override the pin: no socket data,
  * then AC, then DC (DC wins), then disused. evicons_kind tells the label layer which pin was chosen.
  */
 ${rule(sel(BOTH, ZOOM.stations, STATION), [...pin('marker-unknown'), 'evicons_kind: "unknown";'])}
@@ -262,16 +267,17 @@ ${rule(
   ['icon-image: "icons/marker-dc.svg";', 'evicons_kind: "dc";'],
 )}
 
-/* Disused stations (lifecycle prefix; operational_status=closed is deprecated on the wiki in favour of it). */
+/* Disused stations (lifecycle prefix). operational_status=closed is not handled; the wiki recommends the disused: prefix. */
 ${rule(sel(BOTH, ZOOM.stations, DISUSED), [...pin('marker-out-of-service'), 'evicons_kind: "out_of_service";'])}
 
 ${rule(sel(['area'], ZOOM.stations, DISUSED), ['icon-position: center;'])}
 
 /*
- * Labels, in their own layer so the base style's name label stays (JOSM puts that one below the pin).
+ * Labels, in their own layer so the base style's name label stays (JOSM puts that one below and right of the pin).
  * Nodes: right of the pin head, from zoom ${ZOOM.labels} (JOSM starts a right-aligned label 5 px right of the offset).
- * Areas: centred below the pin. The text is the station output (charging_station:output), else the output
- * of its most powerful socket type, else the capacity; stations without socket data say "socket?" instead.
+ * Areas: centred below the pin. The text is the station output (charging_station:output), else the output of its
+ * highest-priority socket type that counts (first value), else the capacity; stations without socket data say
+ * "socket?" instead.
  */
 ${rule(sel(BOTH, ZOOM.labels, STATION, LABEL), [
   'font-size: 10;',
@@ -284,13 +290,13 @@ ${rule(sel(['node'], ZOOM.labels, STATION, LABEL), [
   'text-anchor-horizontal: right;',
   'text-anchor-vertical: center;',
   `text-offset-x: ${LABEL_OFFSET_X};`,
-  `text-offset-y: ${Math.round(MARKER_OFFSET)};`,
+  'text-offset-y: 0;',
 ])}
 
 ${rule(sel(['area'], ZOOM.labels, STATION, LABEL), [
   'text-position: center;',
-  `text-offset-x: ${Math.round(MARKER_OFFSET)};`,
-  'text-offset-y: -9;',
+  'text-offset-x: 0;',
+  `text-offset-y: ${AREA_LABEL_OFFSET_Y};`,
 ])}
 
 ${rule(sel(BOTH, ZOOM.labels, `${STATION}[capacity]${outputLabel}`, LABEL), ['text: eval(concat("×", tag("capacity")));'])}

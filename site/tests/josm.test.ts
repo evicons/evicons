@@ -214,7 +214,7 @@ describe('JOSM style', () => {
     description: "EV charging stations and charge points drawn with EVicons: AC/DC markers, stations without socket data highlighted, connector icons on charge points.";
     author: "Landolsi Digital";
     version: "0.6.0_2026-11-04";
-    link: "https://evicons.dev/docs#openstreetmap";`)
+    link: "https://evicons.dev/docs#josm-map-style";`)
     expect(mapcss).toMatch(/\n {4}min-josm-version: \d+;\n {4}icon: "icons\/marker-dc\.svg";\n\}/)
     expect(mapcss.indexOf('meta {')).toBeLessThan(mapcss.indexOf('setting::'))
     expect(mapcss).not.toMatch(/\bcanvas\b/) // an add-on: the base style keeps the canvas
@@ -303,14 +303,14 @@ describe('JOSM style', () => {
     expect(render('node', { amenity: 'fuel', 'socket:type2': '1' }).icon).toBeUndefined()
   })
 
-  it('anchors the pin corner on the node and centres area icons', () => {
+  it('puts the pin head on the node (no offset) and centres area icons', () => {
+    // JOSM selects a node only within a few px of it: the head centre (12, 12) is the icon centre, on the node.
     const pin = render('node', station({ 'socket:type2': '1' })).default
     expect(pin.get('icon-width')).toBe('32')
-    // Icon centre (16, 16) of 32 to the corner (2.5, 21.5) of 24 = (3.33, 28.67): 12.667 right and up.
-    expect(pin.get('icon-offset-x')).toBe('12.667')
-    expect(pin.get('icon-offset-y')).toBe('-12.667')
+    expect(pin.get('icon-height')).toBe('32')
+    expect(mapcss).not.toContain('icon-offset')
     expect(render('area', station()).default.get('icon-position')).toBe('center')
-    expect(render('node', { 'disused:amenity': 'charging_station' }).default.get('icon-offset-x')).toBe('12.667')
+    expect(render('node', { 'disused:amenity': 'charging_station' }).default.get('icon-width')).toBe('32')
   })
 
   it('labels the output, else the capacity, and marks stations without socket data', () => {
@@ -318,6 +318,10 @@ describe('JOSM style', () => {
     expect(render('node', station({ 'socket:type2': '2', 'socket:type2:output': '22 kW', 'socket:type2_combo': '1', 'socket:type2_combo:output': '50 kW;150 kW' })).label).toBe('50 kW')
     expect(render('node', station({ 'socket:cee_red_32a': '1', 'socket:cee_red_32a:output': '22 kW' })).label).toBe('22 kW')
     expect(render('node', station({ 'socket:type2': '2', capacity: '4' })).label).toBe('×4')
+    // Only a socket type that counts gives its output.
+    expect(render('node', station({ 'socket:type2': '2', 'socket:chademo': '0', 'socket:chademo:output': '50 kW' })).label).toBeUndefined()
+    expect(render('node', station({ 'socket:type2': '2', 'socket:type2:output': '22 kW', 'socket:chademo': '0', 'socket:chademo:output': '50 kW' })).label).toBe('22 kW')
+    expect(render('node', station({ 'socket:type2': '0', 'socket:type2:output': '22 kW', 'socket:type2_cable': '1', 'socket:type2_cable:output': '11 kW' })).label).toBe('11 kW')
     expect(render('node', station({ 'socket:type2': '2' })).label).toBeUndefined()
     expect(render('node', station({ capacity: '2' })).label).toBe('socket?')
     expect(render('node', station({ 'socket:type2': '0' })).label).toBe('socket?')
