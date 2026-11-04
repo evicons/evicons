@@ -2,6 +2,7 @@
 // /josm/evicons.mapcss, /josm/icons/<name>.svg and, bundled, /josm/evicons.zip. Generated at build time from the
 // icon sources: the SVGs and the `osm` tags of their metadata. Server only (node:zlib).
 import { crc32, deflateRawSync } from 'node:zlib'
+import { boltName } from '../../../tools/lib/bolts.ts'
 
 /** What the generator needs of an icon: its SVG source and its OpenStreetMap tags (`osm` in the metadata). */
 export interface JosmIconSource {
@@ -107,32 +108,54 @@ const LINE = 'stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"'
 /** The standard pin, the first `<path>` of every marker (design guide section 9). */
 const PIN = 'M2.5 21.5V12a9.5 9.5 0 1 1 9.5 9.5Z'
 
-/** The shape elements of an icon: every child of the root `<svg>`, each a self-closing element. */
-function shapes(name: string, svg: string): { tag: string; attrs: string }[] {
+interface Shape {
+  tag: string
+  attrs: string
+  /** A solid lightning bolt (design guide section 2): filled as well as stroked in the sign colour. */
+  solid: boolean
+}
+
+const SOLID_FILL = /^fill="currentColor"\s+/
+
+/**
+ * The shape elements of an icon: every child of the root `<svg>`, each a self-closing element. The only paint an
+ * icon may carry is the solid bolt's `fill="currentColor"`, on one of the canonical bolt paths; it is taken off
+ * here and baked in again by the caller.
+ */
+function shapes(name: string, svg: string): Shape[] {
   const inner = svg.replace(/^[\s\S]*?<svg[^>]*>/, '').replace(/<\/svg>\s*$/, '')
-  const found = [...inner.matchAll(/<([a-z]+)\s([^>]*?)\s*\/>/g)].map((m) => ({ tag: m[1]!, attrs: m[2]! }))
+  const found = [...inner.matchAll(/<([a-z]+)\s([^>]*?)\s*\/>/g)].map((m) => ({ tag: m[1]!, attrs: m[2]!, solid: false }))
   const rest = inner.replace(/<([a-z]+)\s([^>]*?)\s*\/>/g, '').trim()
   if (found.length === 0 || rest !== '') throw new Error(`${name}: expected only self-closing shape elements`)
-  for (const { attrs } of found) {
-    if (/\b(fill|stroke|style|class|transform)=/.test(attrs)) throw new Error(`${name}: shape with its own paint or transform`)
+  for (const s of found) {
+    if (s.tag === 'path' && SOLID_FILL.test(s.attrs)) {
+      const attrs = s.attrs.replace(SOLID_FILL, '')
+      const d = /^d="([^"]*)"$/.exec(attrs)?.[1]
+      if (d === undefined || boltName(d) === null) throw new Error(`${name}: fill on a shape that is not a solid bolt`)
+      s.attrs = attrs
+      s.solid = true
+    }
+    if (/\b(fill|stroke|style|class|transform)=/.test(s.attrs)) throw new Error(`${name}: shape with its own paint or transform`)
   }
   return found
 }
 
 /**
  * Every shape carries its paint as attributes: JOSM renders SVG with its own renderer, so nothing relies on
- * `currentColor`, CSS or inheritance from the root.
+ * `currentColor`, CSS or inheritance from the root. `colour` is the sign colour: the stroke of every shape and the
+ * fill of a solid bolt; other shapes are not filled.
  */
-const shape = ({ tag, attrs }: { tag: string; attrs: string }, paint: string) => `  <${tag} ${attrs} ${paint}/>`
+const shape = ({ tag, attrs, solid }: Shape, colour: string) =>
+  `  <${tag} ${attrs} fill="${solid ? colour : 'none'}" stroke="${colour}" ${LINE}/>`
 
-/** A station marker filled like the site's map demo: the pin in `colour`, the sign in white. */
+/** A station marker filled like the site's map demo: the pin in `colour`, the sign in white (a solid bolt filled white). */
 export function bakeMarker(name: string, svg: string, colour: string): string {
   const [pin, ...sign] = shapes(name, svg)
   if (!pin || pin.tag !== 'path' || pin.attrs !== `d="${PIN}"`) throw new Error(`${name}: the first shape is not the pin`)
   return [
     `<svg xmlns="http://www.w3.org/2000/svg" width="${MARKER_SIZE}" height="${MARKER_SIZE}" viewBox="0 0 24 24">`,
-    shape(pin, `fill="${colour}" stroke="${colour}" ${LINE}`),
-    ...sign.map((s) => shape(s, `fill="none" stroke="#fff" ${LINE}`)),
+    `  <${pin.tag} ${pin.attrs} fill="${colour}" stroke="${colour}" ${LINE}/>`,
+    ...sign.map((s) => shape(s, '#fff')),
     '</svg>',
     '',
   ].join('\n')
@@ -154,7 +177,7 @@ export function bakeConnector(name: string, svg: string): string {
     `<svg xmlns="http://www.w3.org/2000/svg" width="${CONNECTOR_SIZE}" height="${CONNECTOR_SIZE}" viewBox="0 0 24 24">`,
     `  <circle cx="12" cy="12" r="11.5" fill="#fff" stroke="${CONNECTOR_INK}" stroke-width="0.75"/>`,
     `  <g transform="matrix(${CONNECTOR_SCALE} 0 0 ${CONNECTOR_SCALE} ${CONNECTOR_SHIFT} ${CONNECTOR_SHIFT})">`,
-    ...shapes(name, svg).map((s) => `  ${shape(s, `fill="none" stroke="${CONNECTOR_INK}" ${LINE}`)}`),
+    ...shapes(name, svg).map((s) => `  ${shape(s, CONNECTOR_INK)}`),
     '  </g>',
     '</svg>',
     '',

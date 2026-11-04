@@ -5,10 +5,13 @@ import { crc32, inflateRawSync } from 'node:zlib'
 import { describe, expect, it } from 'vitest'
 import {
   CONNECTOR_FALLBACK,
+  CONNECTOR_INK,
   CONNECTOR_PRIORITY,
   DC_SOCKETS,
   DC_SOCKETS_WITHOUT_ICON,
   STATION_MARKERS,
+  bakeConnector,
+  bakeMarker,
   buildJosmStyle,
   josmZip,
   type JosmIconSource,
@@ -359,6 +362,26 @@ describe('JOSM style', () => {
     expect(sign).toContain('fill="none" stroke="#fff"')
     expect(style.icons['icons/marker-dc.svg']).toMatch(/^<svg [^>]*width="32" height="32"/)
     expect(style.icons['icons/plug-ccs2.svg']).toMatch(/^<svg [^>]*width="24" height="24"/)
+  })
+
+  it('bakes a solid bolt filled in the sign colour, and refuses any other fill', () => {
+    const charging = bakeMarker('marker-charging', icons['marker-charging']!.svg, '#2563eb')
+    expect(charging).not.toContain('currentColor')
+    const [pin, bolt, ...rest] = [...charging.matchAll(/<path [^>]*\/>/g)].map((m) => m[0])
+    expect(rest).toEqual([])
+    expect(pin).toContain('fill="#2563eb" stroke="#2563eb"')
+    expect(bolt).toBe(
+      '<path d="m13.25 6.25-4 6.25h2.5l-1 5.25 4-6.25h-2.5Z" fill="#fff" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>',
+    )
+    // The same bolt on a connector disc is filled in ink; the line icons stay unfilled.
+    const fast = bakeConnector('fast-charging', icons['fast-charging']!.svg)
+    expect(fast).toContain(`fill="${CONNECTOR_INK}" stroke="${CONNECTOR_INK}"`)
+    expect(fast.match(/fill="none"/g)).toHaveLength(2)
+    // fill="currentColor" on a shape that is not a canonical bolt, or another fill, is refused.
+    const notBolt = icons['marker-charging']!.svg.replace('<path d="M2.5 21.5', '<path fill="currentColor" d="M2.5 21.5')
+    expect(() => bakeMarker('marker-x', notBolt, '#000')).toThrow(/not a solid bolt/)
+    const red = icons['marker-charging']!.svg.replace('fill="currentColor"', 'fill="red"')
+    expect(() => bakeMarker('marker-x', red, '#000')).toThrow(/own paint/)
   })
 
   it('refuses a socket icon that has no place in the priority list', () => {
