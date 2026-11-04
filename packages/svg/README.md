@@ -38,6 +38,15 @@ import osm from '@evicons/svg/osm.json' with { type: 'json' }
 osm['socket:type2_combo'] // 'plug-ccs2'
 ```
 
+OCPI values (OCPI 2.2.1 and 2.3.0, Locations module) map to icons in `ocpi.json`, an object from `<Object>.<field>=<VALUE>` to icon name; the same values are in the `ocpi` field of `icons.json`. See [OCPI](https://github.com/evicons/evicons#ocpi) in the repository README for the full table and an example:
+
+```js
+import ocpi from '@evicons/svg/ocpi.json' with { type: 'json' }
+
+ocpi['Connector.standard=IEC_62196_T2_COMBO'] // 'plug-ccs2'
+ocpi['EVSE.status=CHARGING'] // 'status-occupied'
+```
+
 ## License
 
 MIT

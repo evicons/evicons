@@ -15,6 +15,7 @@ test('docs has every section with a working table of contents', async ({ page })
     '#status',
     '#markers',
     '#openstreetmap',
+    '#ocpi',
     '#accessibility',
     '#design',
     '#versioning',

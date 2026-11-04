@@ -635,6 +635,107 @@ The style is also served as a plain file, `https://evicons.dev/josm/evicons.mapc
 
 The pin head sits on the station's node, as JOSM's own icons do, so a click on the pin selects the station. An area gets its pin at its centre once the area is large enough on screen for the pin to fit (JOSM draws area icons only then); the same goes for its label. From zoom 16 a label next to the pin shows the output: `charging_station:output`, else the output of the station's highest-priority socket type that counts (first value, in the charge point order above), else the capacity (`×4`). Two style settings turn the output labels and the "socket?" labels off: right-click the style in the Map Styles panel and open Style settings. The style is generated from the icons and their OpenStreetMap tags with each release of the site, and it is MIT-licensed like the icons.
 
+## OCPI
+
+[OCPI](https://evroaming.org/ocpi/) (Open Charge Point Interface) is the protocol in which charge point operators (CPOs) share their charging locations with e-mobility service providers (eMSPs) and roaming hubs. Its Locations module describes a `Location` (the site), its `EVSE`s (each charges one vehicle at a time and has a live `status`) and their `Connector`s (the socket or cable, with its `standard` and `power_type`). Every icon lists the OCPI values it stands for in the `ocpi` field of its metadata, so an app reading OCPI data can pick the icon from the values alone.
+
+An entry is `<Object>.<field>=<VALUE>`: the object, the field (nested classes and lists joined with `.`) and one enum value as written in the spec, for example `Connector.standard=IEC_62196_T2` or `Location.energy_mix.energy_sources.source=SOLAR`. For a list of enums (`EVSE.capabilities`, `Location.facilities`, `EVSE.parking_restrictions`) the entry matches any element of the list. The values follow the Locations module of [OCPI 2.2.1](https://github.com/ocpi/ocpi/blob/2.2.1/mod_locations.asciidoc); values marked 2.3 exist only from [OCPI 2.3.0](https://github.com/ocpi/ocpi/blob/v2.3.0/mod_locations.asciidoc) on (both retrieved 2026-11-04). Each value belongs to one icon at most:
+
+| OCPI value | Icon | React component | OCPI version |
+|---|---|---|---|
+| `Connector.capabilities=ISO_15118_20_PLUG_AND_CHARGE` | `plug-and-charge` | `PlugAndCharge` | 2.3 |
+| `Connector.capabilities=ISO_15118_2_PLUG_AND_CHARGE` | `plug-and-charge` | `PlugAndCharge` | 2.3 |
+| `Connector.format=CABLE` | `charging-cable` | `ChargingCable` | 2.2.1 |
+| `Connector.format=SOCKET` | `charging-socket` | `ChargingSocket` | 2.2.1 |
+| `Connector.power_type=AC_1_PHASE` | `current-ac` | `CurrentAc` | 2.2.1 |
+| `Connector.power_type=AC_2_PHASE` | `current-ac` | `CurrentAc` | 2.2.1 |
+| `Connector.power_type=AC_2_PHASE_SPLIT` | `current-ac` | `CurrentAc` | 2.2.1 |
+| `Connector.power_type=AC_3_PHASE` | `current-ac` | `CurrentAc` | 2.2.1 |
+| `Connector.power_type=DC` | `current-dc` | `CurrentDc` | 2.2.1 |
+| `Connector.standard=CHADEMO` | `plug-chademo` | `PlugChademo` | 2.2.1 |
+| `Connector.standard=DOMESTIC_F` | `plug-schuko` | `PlugSchuko` | 2.2.1 |
+| `Connector.standard=GBT_AC` | `plug-type-2` | `PlugType2` | 2.2.1 |
+| `Connector.standard=GBT_DC` | `plug-gbt-dc` | `PlugGbtDc` | 2.2.1 |
+| `Connector.standard=IEC_60309_2_single_16` | `plug-cee-blue` | `PlugCeeBlue` | 2.2.1 |
+| `Connector.standard=IEC_60309_2_three_16` | `plug-cee-red` | `PlugCeeRed` | 2.2.1 |
+| `Connector.standard=IEC_60309_2_three_32` | `plug-cee-red` | `PlugCeeRed` | 2.2.1 |
+| `Connector.standard=IEC_60309_2_three_64` | `plug-cee-red` | `PlugCeeRed` | 2.2.1 |
+| `Connector.standard=IEC_62196_T1` | `plug-type-1` | `PlugType1` | 2.2.1 |
+| `Connector.standard=IEC_62196_T1_COMBO` | `plug-ccs1` | `PlugCcs1` | 2.2.1 |
+| `Connector.standard=IEC_62196_T2` | `plug-type-2` | `PlugType2` | 2.2.1 |
+| `Connector.standard=IEC_62196_T2_COMBO` | `plug-ccs2` | `PlugCcs2` | 2.2.1 |
+| `Connector.standard=MCS` | `plug-mcs` | `PlugMcs` | 2.3 |
+| `Connector.standard=SAE_J3400` | `plug-nacs` | `PlugNacs` | 2.3 |
+| `EVSE.capabilities=CHIP_CARD_SUPPORT` | `card-terminal` | `CardTerminal` | 2.2.1 |
+| `EVSE.capabilities=CONTACTLESS_CARD_SUPPORT` | `card-terminal` | `CardTerminal` | 2.2.1 |
+| `EVSE.capabilities=CREDIT_CARD_PAYABLE` | `card-terminal` | `CardTerminal` | 2.2.1 |
+| `EVSE.capabilities=DEBIT_CARD_PAYABLE` | `card-terminal` | `CardTerminal` | 2.2.1 |
+| `EVSE.capabilities=PED_TERMINAL` | `card-terminal` | `CardTerminal` | 2.2.1 |
+| `EVSE.capabilities=RFID_READER` | `charging-card` | `ChargingCard` | 2.2.1 |
+| `EVSE.parking_restrictions=CUSTOMERS` | `restricted-access` | `RestrictedAccess` | 2.2.1 |
+| `EVSE.parking_restrictions=EMPLOYEES` | `restricted-access` | `RestrictedAccess` | 2.3 |
+| `EVSE.parking_restrictions=EV_ONLY` | `parking-charging` | `ParkingCharging` | 2.2.1 |
+| `EVSE.parking_restrictions=MOTORCYCLES` | `motorcycle-electric` | `MotorcycleElectric` | 2.2.1 |
+| `EVSE.parking_restrictions=TENANTS` | `restricted-access` | `RestrictedAccess` | 2.3 |
+| `EVSE.status=AVAILABLE` | `status-available` | `StatusAvailable` | 2.2.1 |
+| `EVSE.status=CHARGING` | `status-occupied` | `StatusOccupied` | 2.2.1 |
+| `EVSE.status=INOPERATIVE` | `status-out-of-service` | `StatusOutOfService` | 2.2.1 |
+| `EVSE.status=OUTOFORDER` | `status-faulted` | `StatusFaulted` | 2.2.1 |
+| `EVSE.status=RESERVED` | `status-reserved` | `StatusReserved` | 2.2.1 |
+| `EVSE.status=UNKNOWN` | `status-unknown` | `StatusUnknown` | 2.2.1 |
+| `Location.energy_mix.energy_sources.source=SOLAR` | `solar-charging` | `SolarCharging` | 2.2.1 |
+| `Location.energy_mix.is_green_energy=true` | `green-power` | `GreenPower` | 2.2.1 |
+| `Location.facilities=FUEL_STATION` | `fuel-station-charging` | `FuelStationCharging` | 2.2.1 |
+| `Location.facilities=HOTEL` | `destination-charging` | `DestinationCharging` | 2.2.1 |
+| `Location.facilities=MALL` | `shop-charging` | `ShopCharging` | 2.2.1 |
+| `Location.facilities=SUPERMARKET` | `shop-charging` | `ShopCharging` | 2.2.1 |
+| `Location.parking_type=ALONG_MOTORWAY` | `highway-charging` | `HighwayCharging` | 2.2.1 |
+
+- **Status:** the six mapped `EVSE.status` values use the `status-*` icons; on a map use the marker with the same name instead (`status-occupied` → `marker-occupied`, and so on). `OUTOFORDER` (broken) is `status-faulted`, `INOPERATIVE` (not yet active or temporarily unavailable, not broken) is `status-out-of-service`. `BLOCKED` (a car or another barrier in the way), `PLANNED` and `REMOVED` are not mapped.
+- **Connectors:** `GBT_AC` maps to `plug-type-2` (same face as Type 2), `DOMESTIC_F` (Schuko) to `plug-schuko`. NACS is `SAE_J3400`, new in OCPI 2.3.0; Tesla's own `TESLA_S` and `TESLA_R` are not mapped to `plug-nacs`. Like any other connector without an icon (the other `DOMESTIC_*` and `NEMA_*` sockets, `CHAOJI`, `IEC_62196_T3A`, the pantographs), they fall back to `charging-plug` in the example below.
+- **Payment:** the five payment terminal capabilities (`CHIP_CARD_SUPPORT`, `CONTACTLESS_CARD_SUPPORT`, `CREDIT_CARD_PAYABLE`, `DEBIT_CARD_PAYABLE`, `PED_TERMINAL`) all mean that the EVSE has a payment terminal, so they share `card-terminal`; `RFID_READER` is `charging-card`. Plug & Charge is a connector capability of OCPI 2.3.0 (`ISO_15118_2_PLUG_AND_CHARGE`, `ISO_15118_20_PLUG_AND_CHARGE`); OCPI 2.2.1 has no value for it.
+- **Energy:** `Location.energy_mix.is_green_energy=true` (100 % renewable) is `green-power`. `Location.energy_mix.energy_sources.source=SOLAR` is any share of solar power in the mix; check its `percentage` if you show `solar-charging` only for a high share.
+- **Site and parking:** `ALONG_MOTORWAY` is `highway-charging`, the facilities `FUEL_STATION`, `MALL`/`SUPERMARKET` and `HOTEL` are `fuel-station-charging`, `shop-charging` and `destination-charging`. Of the parking restrictions, `EV_ONLY` is `parking-charging`, `MOTORCYCLES` is `motorcycle-electric`, and `CUSTOMERS` (and, from 2.3, `EMPLOYEES` and `TENANTS`) is `restricted-access`. Not mapped: the facility `PARKING_LOT` and the other parking types (a car park, not a charging bay), `DISABLED` (a bay reserved for disabled people says nothing about wheelchair access to the charger; `accessible-charging` means the latter), `PLUGGED` and `TAXIS`.
+- **Registers:** the German charging point register of the Bundesnetzagentur (Ladesäulenregister) and the AFIR data feeds of the national access points use their own field names, not OCPI; EVicons ships no mapping for them. To mark a charging point that appears in such an official register, use `register-verified` (data from the authority); `community-verified` marks information confirmed by drivers.
+
+### Values to icons
+
+`@evicons/svg/ocpi.json` maps every value in the table to its icon name; `icons.json` carries the same values per icon in `ocpi` (also on the site: [evicons.dev/icons.json](https://evicons.dev/icons.json)). To pick the icons of one OCPI object, flatten it into `Object.field=VALUE` entries and look them up. The function below leaves the EVSEs of a location and the connectors of an EVSE out, so that each gets its own icons:
+
+```ts
+import ocpi from '@evicons/svg/ocpi.json' with { type: 'json' }
+
+const iconFor: Record<string, string> = ocpi
+
+/** `Object.field=VALUE` entries of one OCPI object; nested classes and lists are flattened, EVSEs and connectors skipped. */
+function entries(path: string, value: unknown): string[] {
+  if (Array.isArray(value)) return value.flatMap((item) => entries(path, item))
+  if (value !== null && typeof value === 'object') {
+    return Object.entries(value).flatMap(([key, child]) =>
+      key === 'evses' || key === 'connectors' ? [] : entries(`${path}.${key}`, child),
+    )
+  }
+  return [`${path}=${String(value)}`]
+}
+
+/** Icon names for one OCPI Location, EVSE or Connector object, without duplicates. */
+export function ocpiIcons(object: 'Location' | 'EVSE' | 'Connector', data: object): string[] {
+  return [...new Set(entries(object, data).flatMap((entry) => iconFor[entry] ?? []))]
+}
+
+const evse = {
+  uid: '3256',
+  status: 'CHARGING',
+  capabilities: ['RFID_READER', 'CREDIT_CARD_PAYABLE', 'CONTACTLESS_CARD_SUPPORT'],
+  connectors: [{ id: '1', standard: 'IEC_62196_T2_COMBO', format: 'CABLE', power_type: 'DC', max_voltage: 920, max_amperage: 400 }],
+}
+ocpiIcons('EVSE', evse) // ['status-occupied', 'charging-card', 'card-terminal']
+ocpiIcons('Connector', evse.connectors[0]!) // ['plug-ccs2', 'charging-cable', 'current-dc']
+ocpiIcons('Connector', { standard: 'NEMA_14_50', format: 'SOCKET', power_type: 'AC_2_PHASE_SPLIT' }) // ['charging-socket', 'current-ac']
+```
+
+A connector whose `standard` has no icon gets none from the lookup; show `charging-plug` for it, next to the connector's name, since the icon complements the text.
+
 ## Compatibility
 
 | | Supported |
