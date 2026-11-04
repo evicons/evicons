@@ -6,6 +6,19 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
+## [0.7.0] - 2026-11-04
+
+### Changed
+
+- **Every lightning bolt is slim and solid.** The bolts were too wide, and the hollow ones left a white hole in the middle, which showed most in a marker drawn hollow (white head, dark outline and sign). Every bolt is now one slim shape, filled: a closed path with `fill="currentColor"` (the only fill in EVicons), in three sizes that are moved, never scaled: small (3 × 6.5) as the cue inside other icons, sign size (5.5 × 11.5) in the marker head, full size (9 × 18.5). Design guide section 2, "Lightning bolt". 43 icons changed:
+  - Full size: `charging-bolt`, `fast-charging`
+  - Sign size: `marker-charging`, `charging-session`, `plug-in-hybrid`
+  - Torn bolt, now two solid pieces with a crack: `power-outage`
+  - Small bolt (narrower, centred where the old one was): `accessible-charging`, `app-charging`, `battery-charging`, `bike-electric`, `bus-electric`, `car-electric`, `charging-availability`, `charging-card`, `charging-hub`, `charging-log`, `charging-operator`, `charging-power-level`, `charging-station`, `charging-tariff`, `charging-time`, `community-verified`, `dealer-charging`, `destination-charging`, `driving-range`, `free-charging`, `fuel-station-charging`, `green-power`, `highway-charging`, `home-charging`, `idle-fee`, `motorcycle-electric`, `parking-charging`, `qr-charging`, `report-fault`, `restricted-access`, `roaming`, `route-to-charger`, `shop-charging`, `solar-charging`, `station-uptime`, `streetlight-charging`, `truck-electric`
+  - `charging-station`: the small bolt replaces the zigzag line in the display, which grows from 6.25 × 9 to 7.25 × 10.5 to fit it. `streetlight-charging`: the lower mast stub is 0.25 shorter.
+- **Filled markers need one more CSS rule.** The bolt of `marker-charging` carries `fill="currentColor"`, so in filled mode add `.marker svg > [fill] { fill: #fff; }` (README, "Map markers"); without it the bolt takes the pin colour and only its white edge shows. For map images, replace `fill="currentColor"` with `fill="#fff"` as well as the root stroke. In hollow mode (pin filled white) the bolt stays solid in the marker colour without any rule.
+- The linter accepts `fill="currentColor"` only on one of the bolt paths and requires `solid-sign` and `sharp-corner` on every icon with a bolt; `solid-sign` now means "contains a solid bolt".
+
 ## [0.6.0] - 2026-11-03
 
 ### Added
@@ -116,7 +129,8 @@ First version, not published to npm. The first published release is 0.2.0.
   - `status-unknown`: unknown (question mark)
   - `status-queue`: queue (two cars, one behind the other)
 
-[Unreleased]: https://github.com/evicons/evicons/compare/v0.6.0...HEAD
+[Unreleased]: https://github.com/evicons/evicons/compare/v0.7.0...HEAD
+[0.7.0]: https://github.com/evicons/evicons/releases/tag/v0.7.0
 [0.6.0]: https://github.com/evicons/evicons/releases/tag/v0.6.0
 [0.5.1]: https://github.com/evicons/evicons/releases/tag/v0.5.1
 [0.5.0]: https://github.com/evicons/evicons/releases/tag/v0.5.0
