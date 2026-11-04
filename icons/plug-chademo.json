@@ -41,6 +41,9 @@
   "osm": [
     "socket:chademo"
   ],
+  "ocpi": [
+    "Connector.standard=CHADEMO"
+  ],
   "provenance": {
     "createdBy": "ai",
     "approvedBy": "Landolsi Digital",

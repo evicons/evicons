@@ -32,6 +32,9 @@
   "osm": [
     "frequency=0"
   ],
+  "ocpi": [
+    "Connector.power_type=DC"
+  ],
   "provenance": {
     "createdBy": "ai",
     "approvedBy": "Landolsi Digital",

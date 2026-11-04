@@ -56,6 +56,9 @@
   "osm": [
     "socket:mcs"
   ],
+  "ocpi": [
+    "Connector.standard=MCS"
+  ],
   "provenance": {
     "createdBy": "ai",
     "approvedBy": "Landolsi Digital",

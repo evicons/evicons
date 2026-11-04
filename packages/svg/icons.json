@@ -428,6 +428,13 @@
     },
     "since": "0.2.0",
     "aliases": [],
+    "ocpi": [
+      "EVSE.capabilities=CHIP_CARD_SUPPORT",
+      "EVSE.capabilities=CONTACTLESS_CARD_SUPPORT",
+      "EVSE.capabilities=CREDIT_CARD_PAYABLE",
+      "EVSE.capabilities=DEBIT_CARD_PAYABLE",
+      "EVSE.capabilities=PED_TERMINAL"
+    ],
     "provenance": {
       "createdBy": "ai",
       "approvedBy": "Landolsi Digital",
@@ -560,6 +567,9 @@
     },
     "since": "0.2.0",
     "aliases": [],
+    "ocpi": [
+      "Connector.format=CABLE"
+    ],
     "provenance": {
       "createdBy": "ai",
       "approvedBy": "Landolsi Digital",
@@ -606,6 +616,9 @@
     "exceptions": [
       "solid-sign",
       "sharp-corner"
+    ],
+    "ocpi": [
+      "EVSE.capabilities=RFID_READER"
     ],
     "provenance": {
       "createdBy": "ai",
@@ -916,6 +929,9 @@
     "since": "0.5.0",
     "aliases": [],
     "exceptions": [],
+    "ocpi": [
+      "Connector.format=SOCKET"
+    ],
     "provenance": {
       "createdBy": "ai",
       "approvedBy": "Landolsi Digital",
@@ -1138,6 +1154,12 @@
       "frequency=50",
       "frequency=60"
     ],
+    "ocpi": [
+      "Connector.power_type=AC_1_PHASE",
+      "Connector.power_type=AC_2_PHASE",
+      "Connector.power_type=AC_2_PHASE_SPLIT",
+      "Connector.power_type=AC_3_PHASE"
+    ],
     "provenance": {
       "createdBy": "ai",
       "approvedBy": "Landolsi Digital",
@@ -1178,6 +1200,9 @@
     ],
     "osm": [
       "frequency=0"
+    ],
+    "ocpi": [
+      "Connector.power_type=DC"
     ],
     "provenance": {
       "createdBy": "ai",
@@ -1269,6 +1294,9 @@
     "exceptions": [
       "solid-sign",
       "sharp-corner"
+    ],
+    "ocpi": [
+      "Location.facilities=HOTEL"
     ],
     "provenance": {
       "createdBy": "ai",
@@ -1440,6 +1468,9 @@
       "solid-sign",
       "sharp-corner"
     ],
+    "ocpi": [
+      "Location.facilities=FUEL_STATION"
+    ],
     "provenance": {
       "createdBy": "ai",
       "approvedBy": "Landolsi Digital",
@@ -1483,6 +1514,9 @@
     "exceptions": [
       "solid-sign",
       "sharp-corner"
+    ],
+    "ocpi": [
+      "Location.energy_mix.is_green_energy=true"
     ],
     "provenance": {
       "createdBy": "ai",
@@ -1530,6 +1564,9 @@
     "exceptions": [
       "solid-sign",
       "sharp-corner"
+    ],
+    "ocpi": [
+      "Location.parking_type=ALONG_MOTORWAY"
     ],
     "provenance": {
       "createdBy": "ai",
@@ -2181,6 +2218,9 @@
     "osm": [
       "motorcycle=yes"
     ],
+    "ocpi": [
+      "EVSE.parking_restrictions=MOTORCYCLES"
+    ],
     "provenance": {
       "createdBy": "ai",
       "approvedBy": "Landolsi Digital",
@@ -2229,6 +2269,9 @@
     "osm": [
       "parking_space=charging"
     ],
+    "ocpi": [
+      "EVSE.parking_restrictions=EV_ONLY"
+    ],
     "provenance": {
       "createdBy": "ai",
       "approvedBy": "Landolsi Digital",
@@ -2268,6 +2311,10 @@
     },
     "since": "0.4.0",
     "aliases": [],
+    "ocpi": [
+      "Connector.capabilities=ISO_15118_2_PLUG_AND_CHARGE",
+      "Connector.capabilities=ISO_15118_20_PLUG_AND_CHARGE"
+    ],
     "provenance": {
       "createdBy": "ai",
       "approvedBy": "Landolsi Digital",
@@ -2326,6 +2373,9 @@
     "osm": [
       "socket:type1_combo"
     ],
+    "ocpi": [
+      "Connector.standard=IEC_62196_T1_COMBO"
+    ],
     "provenance": {
       "createdBy": "ai",
       "approvedBy": "Landolsi Digital",
@@ -2380,6 +2430,9 @@
     ],
     "osm": [
       "socket:type2_combo"
+    ],
+    "ocpi": [
+      "Connector.standard=IEC_62196_T2_COMBO"
     ],
     "provenance": {
       "createdBy": "ai",
@@ -2442,6 +2495,9 @@
     },
     "osm": [
       "socket:cee_blue"
+    ],
+    "ocpi": [
+      "Connector.standard=IEC_60309_2_single_16"
     ],
     "provenance": {
       "createdBy": "ai",
@@ -2514,6 +2570,11 @@
       "socket:cee_red_63a",
       "socket:cee_red_125a"
     ],
+    "ocpi": [
+      "Connector.standard=IEC_60309_2_three_16",
+      "Connector.standard=IEC_60309_2_three_32",
+      "Connector.standard=IEC_60309_2_three_64"
+    ],
     "provenance": {
       "createdBy": "ai",
       "approvedBy": "Landolsi Digital",
@@ -2563,6 +2624,9 @@
     },
     "osm": [
       "socket:chademo"
+    ],
+    "ocpi": [
+      "Connector.standard=CHADEMO"
     ],
     "provenance": {
       "createdBy": "ai",
@@ -2625,6 +2689,9 @@
     ],
     "osm": [
       "socket:gb_dc"
+    ],
+    "ocpi": [
+      "Connector.standard=GBT_DC"
     ],
     "provenance": {
       "createdBy": "ai",
@@ -2732,6 +2799,9 @@
     "osm": [
       "socket:mcs"
     ],
+    "ocpi": [
+      "Connector.standard=MCS"
+    ],
     "provenance": {
       "createdBy": "ai",
       "approvedBy": "Landolsi Digital",
@@ -2790,6 +2860,9 @@
     "osm": [
       "socket:nacs"
     ],
+    "ocpi": [
+      "Connector.standard=SAE_J3400"
+    ],
     "provenance": {
       "createdBy": "ai",
       "approvedBy": "Landolsi Digital",
@@ -2843,6 +2916,9 @@
     "osm": [
       "socket:schuko"
     ],
+    "ocpi": [
+      "Connector.standard=DOMESTIC_F"
+    ],
     "provenance": {
       "createdBy": "ai",
       "approvedBy": "Landolsi Digital",
@@ -2894,6 +2970,9 @@
     },
     "osm": [
       "socket:type1"
+    ],
+    "ocpi": [
+      "Connector.standard=IEC_62196_T1"
     ],
     "provenance": {
       "createdBy": "ai",
@@ -2956,6 +3035,10 @@
       "socket:type2",
       "socket:type2_cable",
       "socket:gb_ac"
+    ],
+    "ocpi": [
+      "Connector.standard=IEC_62196_T2",
+      "Connector.standard=GBT_AC"
     ],
     "provenance": {
       "createdBy": "ai",
@@ -3185,6 +3268,11 @@
       "access=customers",
       "access=private"
     ],
+    "ocpi": [
+      "EVSE.parking_restrictions=CUSTOMERS",
+      "EVSE.parking_restrictions=EMPLOYEES",
+      "EVSE.parking_restrictions=TENANTS"
+    ],
     "provenance": {
       "createdBy": "ai",
       "approvedBy": "Landolsi Digital",
@@ -3323,6 +3411,10 @@
       "solid-sign",
       "sharp-corner"
     ],
+    "ocpi": [
+      "Location.facilities=MALL",
+      "Location.facilities=SUPERMARKET"
+    ],
     "provenance": {
       "createdBy": "ai",
       "approvedBy": "Landolsi Digital",
@@ -3369,6 +3461,9 @@
     "exceptions": [
       "solid-sign",
       "sharp-corner"
+    ],
+    "ocpi": [
+      "Location.energy_mix.energy_sources.source=SOLAR"
     ],
     "provenance": {
       "createdBy": "ai",
@@ -3456,6 +3551,9 @@
     },
     "since": "0.1.0",
     "aliases": [],
+    "ocpi": [
+      "EVSE.status=AVAILABLE"
+    ],
     "provenance": {
       "createdBy": "ai",
       "approvedBy": "Landolsi Digital",
@@ -3498,6 +3596,9 @@
     },
     "since": "0.1.0",
     "aliases": [],
+    "ocpi": [
+      "EVSE.status=OUTOFORDER"
+    ],
     "provenance": {
       "createdBy": "ai",
       "approvedBy": "Landolsi Digital",
@@ -3530,6 +3631,9 @@
     },
     "since": "0.1.0",
     "aliases": [],
+    "ocpi": [
+      "EVSE.status=CHARGING"
+    ],
     "provenance": {
       "createdBy": "ai",
       "approvedBy": "Landolsi Digital",
@@ -3571,6 +3675,9 @@
     },
     "since": "0.1.0",
     "aliases": [],
+    "ocpi": [
+      "EVSE.status=INOPERATIVE"
+    ],
     "provenance": {
       "createdBy": "ai",
       "approvedBy": "Landolsi Digital",
@@ -3645,6 +3752,9 @@
     "exceptions": [
       "letters"
     ],
+    "ocpi": [
+      "EVSE.status=RESERVED"
+    ],
     "provenance": {
       "createdBy": "ai",
       "approvedBy": "Landolsi Digital",
@@ -3678,6 +3788,9 @@
     },
     "since": "0.1.0",
     "aliases": [],
+    "ocpi": [
+      "EVSE.status=UNKNOWN"
+    ],
     "provenance": {
       "createdBy": "ai",
       "approvedBy": "Landolsi Digital",

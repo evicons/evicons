@@ -36,6 +36,9 @@
     "solid-sign",
     "sharp-corner"
   ],
+  "ocpi": [
+    "Location.facilities=HOTEL"
+  ],
   "provenance": {
     "createdBy": "ai",
     "approvedBy": "Landolsi Digital",

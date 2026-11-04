@@ -38,6 +38,9 @@
   "osm": [
     "motorcycle=yes"
   ],
+  "ocpi": [
+    "EVSE.parking_restrictions=MOTORCYCLES"
+  ],
   "provenance": {
     "createdBy": "ai",
     "approvedBy": "Landolsi Digital",

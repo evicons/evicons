@@ -38,6 +38,9 @@
     "solid-sign",
     "sharp-corner"
   ],
+  "ocpi": [
+    "EVSE.capabilities=RFID_READER"
+  ],
   "provenance": {
     "createdBy": "ai",
     "approvedBy": "Landolsi Digital",

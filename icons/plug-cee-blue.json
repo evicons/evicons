@@ -53,6 +53,9 @@
   "osm": [
     "socket:cee_blue"
   ],
+  "ocpi": [
+    "Connector.standard=IEC_60309_2_single_16"
+  ],
   "provenance": {
     "createdBy": "ai",
     "approvedBy": "Landolsi Digital",

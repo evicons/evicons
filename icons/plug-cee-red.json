@@ -62,6 +62,11 @@
     "socket:cee_red_63a",
     "socket:cee_red_125a"
   ],
+  "ocpi": [
+    "Connector.standard=IEC_60309_2_three_16",
+    "Connector.standard=IEC_60309_2_three_32",
+    "Connector.standard=IEC_60309_2_three_64"
+  ],
   "provenance": {
     "createdBy": "ai",
     "approvedBy": "Landolsi Digital",

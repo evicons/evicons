@@ -24,6 +24,7 @@ export const GET: APIRoute = () => {
       aliases: d.aliases,
       ...(icon.standard ? { standard: icon.standard } : {}),
       ...(d.osm.length > 0 ? { osm: d.osm } : {}),
+      ...(d.ocpi.length > 0 ? { ocpi: d.ocpi } : {}),
       svg: icon.svg,
       url: {
         svg: `${site}/svg/${icon.name}.svg`,

@@ -49,6 +49,9 @@
   "osm": [
     "socket:nacs"
   ],
+  "ocpi": [
+    "Connector.standard=SAE_J3400"
+  ],
   "provenance": {
     "createdBy": "ai",
     "approvedBy": "Landolsi Digital",

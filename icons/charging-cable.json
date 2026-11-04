@@ -31,6 +31,9 @@
   },
   "since": "0.2.0",
   "aliases": [],
+  "ocpi": [
+    "Connector.format=CABLE"
+  ],
   "provenance": {
     "createdBy": "ai",
     "approvedBy": "Landolsi Digital",

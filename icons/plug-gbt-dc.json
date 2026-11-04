@@ -53,6 +53,9 @@
   "osm": [
     "socket:gb_dc"
   ],
+  "ocpi": [
+    "Connector.standard=GBT_DC"
+  ],
   "provenance": {
     "createdBy": "ai",
     "approvedBy": "Landolsi Digital",

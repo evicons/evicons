@@ -33,6 +33,9 @@
   },
   "since": "0.1.0",
   "aliases": [],
+  "ocpi": [
+    "EVSE.status=OUTOFORDER"
+  ],
   "provenance": {
     "createdBy": "ai",
     "approvedBy": "Landolsi Digital",

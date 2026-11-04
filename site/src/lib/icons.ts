@@ -71,6 +71,8 @@ export interface IconDetails {
   aliases: string[]
   /** OpenStreetMap tags the icon stands for (see the docs section "OpenStreetMap"). */
   osm: string[]
+  /** OCPI values the icon stands for (see the docs section "OCPI"). */
+  ocpi: string[]
 }
 
 /** Extra metadata for the icon pages only (kept out of IconEntry, which the gallery ships to the client). */
@@ -78,12 +80,18 @@ export function loadIconDetails(): Record<string, IconDetails> {
   const root = dirname(createRequire(import.meta.url).resolve('@evicons/svg/package.json'))
   const meta = JSON.parse(readFileSync(join(root, 'icons.json'), 'utf8')) as Record<
     string,
-    { meaning: { en: string; de: string }; since: string; aliases?: string[]; osm?: string[] }
+    { meaning: { en: string; de: string }; since: string; aliases?: string[]; osm?: string[]; ocpi?: string[] }
   >
   return Object.fromEntries(
     Object.entries(meta).map(([name, m]) => [
       name,
-      { meaning: { en: m.meaning.en, de: m.meaning.de }, since: m.since, aliases: m.aliases ?? [], osm: m.osm ?? [] },
+      {
+        meaning: { en: m.meaning.en, de: m.meaning.de },
+        since: m.since,
+        aliases: m.aliases ?? [],
+        osm: m.osm ?? [],
+        ocpi: m.ocpi ?? [],
+      },
     ]),
   )
 }

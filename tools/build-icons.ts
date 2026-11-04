@@ -30,7 +30,8 @@ function writeOwnedDir(dir: string, files: Map<string, string>): void {
 /**
  * Generates the React modules and the raw-SVG package from the icon sources.
  * Owns only `<reactDir>/icons/*`, `<reactDir>/index.ts` and, in `svgDir`,
- * `svg/`, `sprite.svg`, `icons.json` and `osm.json` (OpenStreetMap tag -> icon name).
+ * `svg/`, `sprite.svg`, `icons.json`, `osm.json` (OpenStreetMap tag -> icon name) and `ocpi.json`
+ * (OCPI value -> icon name).
  * Throws when the icons do not lint.
  */
 export function buildIcons({ iconsDir, reactDir, svgDir }: BuildOptions): void {
@@ -49,6 +50,7 @@ export function buildIcons({ iconsDir, reactDir, svgDir }: BuildOptions): void {
   const meta: Record<string, unknown> = {}
   const symbols: string[] = []
   const osm: Record<string, string> = {}
+  const ocpi: Record<string, string> = {}
 
   for (const { name, svg, node, meta: m } of icons) {
     const pascal = toPascalCase(name)
@@ -65,6 +67,7 @@ export function buildIcons({ iconsDir, reactDir, svgDir }: BuildOptions): void {
     svgs.set(`${name}.svg`, svg)
     meta[name] = { ...m, pascal }
     for (const tag of m.osm ?? []) osm[tag] = name
+    for (const value of m.ocpi ?? []) ocpi[value] = name
     symbols.push(
       `  <symbol id="evicon-${name}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">${nodeToMarkup(node)}</symbol>\n`,
     )
@@ -84,8 +87,9 @@ export function buildIcons({ iconsDir, reactDir, svgDir }: BuildOptions): void {
   writeOwnedDir(join(svgDir, 'svg'), svgs)
   writeFileSync(join(svgDir, 'sprite.svg'), `<svg xmlns="http://www.w3.org/2000/svg">\n${symbols.join('')}</svg>\n`)
   writeFileSync(join(svgDir, 'icons.json'), `${JSON.stringify(meta, null, 2)}\n`)
-  const osmSorted = Object.fromEntries(Object.keys(osm).sort().map((tag) => [tag, osm[tag]]))
-  writeFileSync(join(svgDir, 'osm.json'), `${JSON.stringify(osmSorted, null, 2)}\n`)
+  const sorted = (index: Record<string, string>) => Object.fromEntries(Object.keys(index).sort().map((key) => [key, index[key]]))
+  writeFileSync(join(svgDir, 'osm.json'), `${JSON.stringify(sorted(osm), null, 2)}\n`)
+  writeFileSync(join(svgDir, 'ocpi.json'), `${JSON.stringify(sorted(ocpi), null, 2)}\n`)
 }
 
 if (import.meta.main) {

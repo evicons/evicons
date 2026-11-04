@@ -35,6 +35,9 @@
     "solid-sign",
     "sharp-corner"
   ],
+  "ocpi": [
+    "Location.energy_mix.is_green_energy=true"
+  ],
   "provenance": {
     "createdBy": "ai",
     "approvedBy": "Landolsi Digital",

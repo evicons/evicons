@@ -45,6 +45,11 @@
     "access=customers",
     "access=private"
   ],
+  "ocpi": [
+    "EVSE.parking_restrictions=CUSTOMERS",
+    "EVSE.parking_restrictions=EMPLOYEES",
+    "EVSE.parking_restrictions=TENANTS"
+  ],
   "provenance": {
     "createdBy": "ai",
     "approvedBy": "Landolsi Digital",

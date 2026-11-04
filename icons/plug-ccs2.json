@@ -46,6 +46,9 @@
   "osm": [
     "socket:type2_combo"
   ],
+  "ocpi": [
+    "Connector.standard=IEC_62196_T2_COMBO"
+  ],
   "provenance": {
     "createdBy": "ai",
     "approvedBy": "Landolsi Digital",

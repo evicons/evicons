@@ -33,6 +33,12 @@
     "frequency=50",
     "frequency=60"
   ],
+  "ocpi": [
+    "Connector.power_type=AC_1_PHASE",
+    "Connector.power_type=AC_2_PHASE",
+    "Connector.power_type=AC_2_PHASE_SPLIT",
+    "Connector.power_type=AC_3_PHASE"
+  ],
   "provenance": {
     "createdBy": "ai",
     "approvedBy": "Landolsi Digital",

@@ -6,6 +6,7 @@ import { createElement } from 'react'
 import { render } from '@testing-library/react'
 import { afterEach, beforeEach, expect, test } from 'vitest'
 import { buildIcons } from '../tools/build-icons.ts'
+import { ocpiVersion } from '../tools/lib/ocpi.ts'
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..')
 const VALID = join(ROOT, 'tests/fixtures/icons-valid')
@@ -109,6 +110,43 @@ test('the published osm.json maps the common sockets', () => {
   expect(Object.keys(osm)).toEqual(Object.keys(osm).sort())
 })
 
+test('ocpi.json maps each OCPI value to its icon, keys sorted', () => {
+  const dir = join(tmp, 'icons-ocpi')
+  mkdirSync(dir)
+  for (const name of ['test-bolt', 'test-ring']) {
+    copyFileSync(join(VALID, `${name}.svg`), join(dir, `${name}.svg`))
+    const meta = JSON.parse(readFileSync(join(VALID, `${name}.json`), 'utf8'))
+    meta.ocpi = name === 'test-ring' ? ['EVSE.status=AVAILABLE', 'Connector.format=CABLE'] : ['Connector.power_type=DC']
+    writeFileSync(join(dir, `${name}.json`), JSON.stringify(meta))
+  }
+  buildIcons(opts(dir))
+  expect(read('svg-pkg/ocpi.json')).toBe(
+    '{\n  "Connector.format=CABLE": "test-ring",\n  "Connector.power_type=DC": "test-bolt",\n  "EVSE.status=AVAILABLE": "test-ring"\n}\n',
+  )
+  expect(JSON.parse(read('svg-pkg/icons.json'))['test-ring'].ocpi).toEqual(['EVSE.status=AVAILABLE', 'Connector.format=CABLE'])
+})
+
+test('the published ocpi.json maps connectors, power types and statuses', () => {
+  const ocpi = JSON.parse(readFileSync(join(ROOT, 'packages/svg/ocpi.json'), 'utf8')) as Record<string, string>
+  const icons = JSON.parse(readFileSync(join(ROOT, 'packages/svg/icons.json'), 'utf8')) as Record<string, { ocpi?: string[] }>
+  expect(ocpi['Connector.standard=IEC_62196_T2_COMBO']).toBe('plug-ccs2')
+  expect(ocpi['Connector.standard=GBT_AC']).toBe('plug-type-2')
+  expect(ocpi['Connector.power_type=AC_3_PHASE']).toBe('current-ac')
+  expect(ocpi['EVSE.status=CHARGING']).toBe('status-occupied')
+  // Tesla's own connectors are not NACS (SAE J3400); OCPI 2.3.0 names NACS SAE_J3400.
+  expect(ocpi['Connector.standard=TESLA_S']).toBeUndefined()
+  expect(ocpi['Connector.standard=TESLA_R']).toBeUndefined()
+  expect(ocpi['Connector.standard=SAE_J3400']).toBe('plug-nacs')
+  for (const [value, name] of Object.entries(ocpi)) {
+    expect(ocpiVersion(value), value).toBeDefined()
+    expect(Object.keys(icons), value).toContain(name)
+    expect(icons[name]!.ocpi, value).toContain(value)
+  }
+  const total = Object.values(icons).reduce((n, meta) => n + (meta.ocpi?.length ?? 0), 0)
+  expect(Object.keys(ocpi)).toHaveLength(total)
+  expect(Object.keys(ocpi)).toEqual(Object.keys(ocpi).sort())
+})
+
 test('removes stale outputs', () => {
   mkdirSync(join(reactDir, 'icons'))
   writeFileSync(join(reactDir, 'icons/old.ts'), 'x')
@@ -143,6 +181,7 @@ test('builds zero icons from an empty or missing directory', () => {
   expect(read('react-src/index.ts')).not.toContain('./icons/')
   expect(read('svg-pkg/icons.json')).toBe('{}\n')
   expect(read('svg-pkg/osm.json')).toBe('{}\n')
+  expect(read('svg-pkg/ocpi.json')).toBe('{}\n')
   expect(read('svg-pkg/sprite.svg')).toContain('<svg xmlns="http://www.w3.org/2000/svg">')
   expect(readdirSync(join(reactDir, 'icons'))).toEqual([])
 })

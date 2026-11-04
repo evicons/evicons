@@ -35,6 +35,9 @@
     "solid-sign",
     "sharp-corner"
   ],
+  "ocpi": [
+    "Location.facilities=FUEL_STATION"
+  ],
   "provenance": {
     "createdBy": "ai",
     "approvedBy": "Landolsi Digital",

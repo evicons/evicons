@@ -44,6 +44,9 @@
   "osm": [
     "socket:schuko"
   ],
+  "ocpi": [
+    "Connector.standard=DOMESTIC_F"
+  ],
   "provenance": {
     "createdBy": "ai",
     "approvedBy": "Landolsi Digital",

@@ -43,6 +43,9 @@
   "osm": [
     "socket:type1"
   ],
+  "ocpi": [
+    "Connector.standard=IEC_62196_T1"
+  ],
   "provenance": {
     "createdBy": "ai",
     "approvedBy": "Landolsi Digital",

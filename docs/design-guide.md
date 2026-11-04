@@ -278,12 +278,14 @@ Use a badge size of half the base icon. At 12 px the default stroke scales down 
 
 ## 8. Metadata and provenance
 
-Each icon has `<name>.json` next to `<name>.svg` (schema in `tools/lib/meta.ts`): category, meaning (en/de), tags (en/de/fr), `since`, aliases, optional `standard`, `exceptions` and `osm`, and `provenance`:
+Each icon has `<name>.json` next to `<name>.svg` (schema in `tools/lib/meta.ts`): category, meaning (en/de), tags (en/de/fr), `since`, aliases, optional `standard`, `exceptions`, `osm` and `ocpi`, and `provenance`:
 
 - `createdBy`: `"ai"` or `"human"`, without product names.
 - `approvedBy` / `approvedOn`: `null` until the owner (Landolsi Digital) or a maintainer the owner delegated to approves the icon after an independent review of the preview; `approvedBy` holds the company name, never a person; a release (`npm run lint:icons -- --release`) requires both.
 
 The optional `osm` field lists the OpenStreetMap tags the icon stands for, so that apps reading OSM charging data (`amenity=charging_station`, `socket:<type>=<count>`) can pick the icon from the metadata alone. An entry is a bare key (`socket:type2`: any value; for socket keys the value is a count, or `yes`) or `key=value` (`fee=no`), with the key as written on the OSM wiki (lower case, parts separated by `:`). A tag belongs to one icon at most; the linter checks this across all icons. Map a tag only when the icon shows exactly what the tag means. `socket:tesla_supercharger` is not mapped: it is discouraged on the wiki; use `socket:nacs`, `socket:type2_cable`/`socket:type2_combo` or `socket:gb_ac`/`socket:gb_dc` by region. The build writes the reverse index `packages/svg/osm.json` (tag → icon name).
+
+The optional `ocpi` field does the same for OCPI, the protocol between charge point operators and e-mobility providers: it lists the values of the OCPI Locations module the icon stands for, as `<Object>.<field>=<VALUE>` (`Connector.standard=IEC_62196_T2`, `EVSE.status=AVAILABLE`). The object is `Location`, `EVSE` or `Connector`; nested classes and lists are joined with `.` (`Location.energy_mix.energy_sources.source=SOLAR`, `EVSE.capabilities=RFID_READER`: a list of enums matches any of its elements). Values come from OCPI 2.2.1; values that only OCPI 2.3.0 defines (`Connector.standard=MCS`, `Connector.standard=SAE_J3400`, the `Connector.capabilities` for Plug & Charge) are allowed and marked "OCPI 2.3" in the docs. `tools/lib/ocpi.ts` lists the known fields with their full enums, copied from `mod_locations.asciidoc` at the tags `2.2.1` and `v2.3.0`; the linter rejects anything else and checks that a value belongs to one icon at most. Map a value only when the icon means exactly what the spec says it means (Tesla's own `TESLA_S` and `TESLA_R` are not `plug-nacs`). The build writes the reverse index `packages/svg/ocpi.json` (value → icon name).
 
 ## 9. Markers
 

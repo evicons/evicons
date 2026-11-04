@@ -332,6 +332,8 @@ export function lintIcons(dir: string, opts: { release: boolean }): LintError[] 
   const identifiers = new Map<string, string>()
   // OpenStreetMap tag -> the icon that claimed it first
   const osmTags = new Map<string, string>()
+  // OCPI value -> the icon that claimed it first
+  const ocpiValues = new Map<string, string>()
 
   for (const name of names) {
     const svgFile = `${name}.svg`
@@ -378,6 +380,12 @@ export function lintIcons(dir: string, opts: { release: boolean }): LintError[] 
       const owner = osmTags.get(tag)
       if (owner) errors.push({ file: jsonFile, message: `osm tag "${tag}" of icon "${name}" is already mapped to icon "${owner}"` })
       else osmTags.set(tag, name)
+    }
+
+    for (const value of meta.ocpi ?? []) {
+      const owner = ocpiValues.get(value)
+      if (owner) errors.push({ file: jsonFile, message: `ocpi value "${value}" of icon "${name}" is already mapped to icon "${owner}"` })
+      else ocpiValues.set(value, name)
     }
 
     if (opts.release) {

@@ -1,5 +1,6 @@
 import { KNOWN_EXCEPTIONS, isKnownException } from './exceptions.ts'
 import { isKebabCase } from './names.ts'
+import { OCPI_VALUE, ocpiVersion } from './ocpi.ts'
 
 export const CATEGORIES = ['connector', 'station', 'power', 'vehicle', 'status', 'payment', 'energy', 'marker'] as const
 
@@ -21,6 +22,11 @@ export type IconMeta = {
    * keys the value is a count) or `key=value`.
    */
   osm?: string[]
+  /**
+   * OCPI values this icon stands for, as `<Object>.<field>=<VALUE>` (for example `Connector.standard=IEC_62196_T2`);
+   * the known fields and values are listed in `tools/lib/ocpi.ts`.
+   */
+  ocpi?: string[]
   provenance: { createdBy: 'ai' | 'human'; approvedBy: string | null; approvedOn: string | null }
 }
 
@@ -63,7 +69,7 @@ export function validateMeta(raw: unknown, name: string): string[] {
     raw,
     '',
     ['category', 'meaning', 'tags', 'since', 'aliases', 'provenance'],
-    ['deprecated', 'standard', 'exceptions', 'osm'],
+    ['deprecated', 'standard', 'exceptions', 'osm', 'ocpi'],
     errors,
   )
 
@@ -166,6 +172,23 @@ export function validateMeta(raw: unknown, name: string): string[] {
         }
       })
       if (new Set(osm).size !== osm.length) errors.push('osm: must not contain duplicates')
+    }
+  }
+
+  if ('ocpi' in raw) {
+    const ocpi = raw.ocpi
+    if (!Array.isArray(ocpi)) {
+      errors.push('ocpi: must be an array of OCPI values')
+    } else {
+      if (ocpi.length < 1) errors.push('ocpi: must contain at least 1 entry')
+      ocpi.forEach((entry, i) => {
+        if (typeof entry !== 'string' || !OCPI_VALUE.test(entry)) {
+          errors.push(`ocpi[${i}]: must be an OCPI value such as "Connector.standard=IEC_62196_T2", got ${JSON.stringify(entry)}`)
+        } else if (ocpiVersion(entry) === undefined) {
+          errors.push(`ocpi[${i}]: unknown OCPI field or value ${JSON.stringify(entry)} (known fields and values: tools/lib/ocpi.ts)`)
+        }
+      })
+      if (new Set(ocpi).size !== ocpi.length) errors.push('ocpi: must not contain duplicates')
     }
   }
 

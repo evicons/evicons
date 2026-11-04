@@ -30,6 +30,9 @@
   "exceptions": [
     "letters"
   ],
+  "ocpi": [
+    "EVSE.status=RESERVED"
+  ],
   "provenance": {
     "createdBy": "ai",
     "approvedBy": "Landolsi Digital",

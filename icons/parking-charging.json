@@ -39,6 +39,9 @@
   "osm": [
     "parking_space=charging"
   ],
+  "ocpi": [
+    "EVSE.parking_restrictions=EV_ONLY"
+  ],
   "provenance": {
     "createdBy": "ai",
     "approvedBy": "Landolsi Digital",

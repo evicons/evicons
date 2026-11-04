@@ -24,6 +24,9 @@
   },
   "since": "0.1.0",
   "aliases": [],
+  "ocpi": [
+    "EVSE.status=UNKNOWN"
+  ],
   "provenance": {
     "createdBy": "ai",
     "approvedBy": "Landolsi Digital",

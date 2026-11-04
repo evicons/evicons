@@ -38,6 +38,10 @@
     "solid-sign",
     "sharp-corner"
   ],
+  "ocpi": [
+    "Location.facilities=MALL",
+    "Location.facilities=SUPERMARKET"
+  ],
   "provenance": {
     "createdBy": "ai",
     "approvedBy": "Landolsi Digital",

@@ -34,6 +34,13 @@
   },
   "since": "0.2.0",
   "aliases": [],
+  "ocpi": [
+    "EVSE.capabilities=CHIP_CARD_SUPPORT",
+    "EVSE.capabilities=CONTACTLESS_CARD_SUPPORT",
+    "EVSE.capabilities=CREDIT_CARD_PAYABLE",
+    "EVSE.capabilities=DEBIT_CARD_PAYABLE",
+    "EVSE.capabilities=PED_TERMINAL"
+  ],
   "provenance": {
     "createdBy": "ai",
     "approvedBy": "Landolsi Digital",

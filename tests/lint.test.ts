@@ -41,6 +41,7 @@ const CASES: Array<[string, Record<string, unknown>, boolean]> = [
   [invalid('unknown-exception'), { file: 'bad.json', message: expect.stringMatching(/unknown exception/i) }, true],
   [invalid('duplicate-pascal'), { file: 'plug.json', message: expect.stringMatching(/Ac2/) }, true],
   [invalid('duplicate-osm'), { file: 'ring-b.json', message: expect.stringMatching(/socket:type2.*ring-b.*ring-a/) }, true],
+  [invalid('duplicate-ocpi'), { file: 'ring-b.json', message: expect.stringMatching(/EVSE\.status=AVAILABLE.*ring-b.*ring-a/) }, true],
   [UNAPPROVED, { file: 'bad.json', message: expect.stringMatching(/approvedBy/) }, false],
 ]
 
@@ -197,6 +198,13 @@ test('an OpenStreetMap tag may belong to one icon only', () => {
   ])
 })
 
+test('an OCPI value may belong to one icon only', () => {
+  // ring-a and ring-b both claim EVSE.status=AVAILABLE; Connector.format=CABLE on ring-a alone is fine
+  expect(lintIcons(invalid('duplicate-ocpi'), { release: false })).toEqual([
+    { file: 'ring-b.json', message: 'ocpi value "EVSE.status=AVAILABLE" of icon "ring-b" is already mapped to icon "ring-a"' },
+  ])
+})
+
 test('valid marker passes', () => {
   expect(lintIcons(join(VALID, 'marker-ok'), { release: false })).toEqual([])
 })
@@ -276,6 +284,35 @@ describe('validateMeta', () => {
     ['a string instead of a list', 'socket:type2', /osm: must be an array/],
   ])('rejects osm with %s', (_, osm, message) => {
     expect(validateMeta({ ...base, osm }, 'x')).toContainEqual(expect.stringMatching(message))
+  })
+
+  test('accepts OCPI values of 2.2.1 and 2.3.0 in ocpi', () => {
+    const ocpi = [
+      'Connector.standard=IEC_62196_T2',
+      'Connector.standard=IEC_60309_2_single_16',
+      'Connector.standard=SAE_J3400',
+      'Connector.capabilities=ISO_15118_2_PLUG_AND_CHARGE',
+      'EVSE.status=AVAILABLE',
+      'Location.energy_mix.is_green_energy=true',
+      'Location.energy_mix.energy_sources.source=SOLAR',
+    ]
+    expect(validateMeta({ ...base, ocpi }, 'x')).toEqual([])
+  })
+
+  test.each([
+    ['an unknown object', ['Tariff.type=REGULAR'], /ocpi\[0\]: must be an OCPI value/],
+    ['a missing value', ['EVSE.status='], /ocpi\[0\]: must be an OCPI value/],
+    ['a lower-case object', ['evse.status=AVAILABLE'], /ocpi\[0\]: must be an OCPI value/],
+    ['a path that is too deep', ['Location.a.b.c.d=X'], /ocpi\[0\]: must be an OCPI value/],
+    ['an unknown field', ['EVSE.colour=GREEN'], /ocpi\[0\]: unknown OCPI field or value/],
+    ['a misspelt value', ['EVSE.status=OUT_OF_ORDER'], /ocpi\[0\]: unknown OCPI field or value/],
+    ['a value of another field', ['Connector.format=AVAILABLE'], /ocpi\[0\]: unknown OCPI field or value/],
+    ['an inherited property', ['EVSE.status=constructor'], /ocpi\[0\]: unknown OCPI field or value/],
+    ['a duplicate', ['EVSE.status=AVAILABLE', 'EVSE.status=AVAILABLE'], /ocpi: must not contain duplicates/],
+    ['an empty list', [], /ocpi: must contain at least 1 entry/],
+    ['a string instead of a list', 'EVSE.status=AVAILABLE', /ocpi: must be an array/],
+  ])('rejects ocpi with %s', (_, ocpi, message) => {
+    expect(validateMeta({ ...base, ocpi }, 'x')).toContainEqual(expect.stringMatching(message))
   })
 
   test('requires standard for connectors', () => {

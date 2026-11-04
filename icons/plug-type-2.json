@@ -53,6 +53,10 @@
     "socket:type2_cable",
     "socket:gb_ac"
   ],
+  "ocpi": [
+    "Connector.standard=IEC_62196_T2",
+    "Connector.standard=GBT_AC"
+  ],
   "provenance": {
     "createdBy": "ai",
     "approvedBy": "Landolsi Digital",

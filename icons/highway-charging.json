@@ -38,6 +38,9 @@
     "solid-sign",
     "sharp-corner"
   ],
+  "ocpi": [
+    "Location.parking_type=ALONG_MOTORWAY"
+  ],
   "provenance": {
     "createdBy": "ai",
     "approvedBy": "Landolsi Digital",

@@ -82,12 +82,14 @@ test('package.json of both packages is exported (ESM and CJS resolution)', () =>
   }
 })
 
-test('@evicons/svg exports icons.json and osm.json', () => {
-  for (const file of ['icons.json', 'osm.json']) {
+test('@evicons/svg exports icons.json, osm.json and ocpi.json', () => {
+  for (const file of ['icons.json', 'osm.json', 'ocpi.json']) {
     expect(nodeEval(`console.log(require.resolve('@evicons/svg/${file}'))`, 'commonjs')).toBe(join(ROOT, 'packages/svg', file))
   }
   const osm = JSON.parse(nodeEval("console.log(JSON.stringify(require('@evicons/svg/osm.json')))", 'commonjs')) as Record<string, string>
   expect(osm['socket:type2']).toBe('plug-type-2')
+  const ocpi = JSON.parse(nodeEval("console.log(JSON.stringify(require('@evicons/svg/ocpi.json')))", 'commonjs')) as Record<string, string>
+  expect(ocpi['Connector.standard=IEC_62196_T2']).toBe('plug-type-2')
 })
 
 // require(esm) exists from Node 20.19 / 22.12; older runtimes cannot load an ESM-only package with require().

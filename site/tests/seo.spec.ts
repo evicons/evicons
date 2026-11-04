@@ -136,6 +136,7 @@ test('/icons.json is a machine-readable index of every icon', async ({ request }
       tags: { en: string[]; de: string[]; fr: string[] }
       since: string
       osm?: string[]
+      ocpi?: string[]
       svg: string
       url: { svg: string; page: { en: string; de: string } }
     }>
@@ -151,6 +152,9 @@ test('/icons.json is a machine-readable index of every icon', async ({ request }
   expect(type2.meaning.de).toBe(meta['plug-type-2']!.meaning.de)
   expect(type2.osm).toEqual(['socket:type2', 'socket:type2_cable', 'socket:gb_ac'])
   expect(index.icons.find((i) => i.name === 'status-faulted')!).not.toHaveProperty('osm')
+  expect(type2.ocpi).toEqual(['Connector.standard=IEC_62196_T2', 'Connector.standard=GBT_AC'])
+  expect(index.icons.find((i) => i.name === 'status-faulted')!.ocpi).toEqual(['EVSE.status=OUTOFORDER'])
+  expect(index.icons.find((i) => i.name === 'charging-bolt')!).not.toHaveProperty('ocpi')
   expect(type2.svg).toMatch(/^<svg[^>]*viewBox="0 0 24 24"[\s\S]*<\/svg>$/)
   expect(type2.url).toEqual({
     svg: 'https://evicons.dev/svg/plug-type-2.svg',
@@ -170,5 +174,5 @@ test('/llms.txt describes the library and links every icon page', async ({ reque
   for (const name of names) {
     expect(text, name).toContain(`](https://evicons.dev/icons/${name}): `)
   }
-  expect(text).toContain('(OpenStreetMap: `socket:type2_combo`)')
+  expect(text).toContain('(OpenStreetMap: `socket:type2_combo`) (OCPI: `Connector.standard=IEC_62196_T2_COMBO`)')
 })
