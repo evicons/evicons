@@ -28,6 +28,16 @@ npm install @evicons/react
 npm install @evicons/svg
 ```
 
+### Iconify
+
+EVicons is also on [Iconify](https://iconify.design) with the prefix `evicons` and the same icon names, so it works wherever Iconify does: the Iconify components for React, Vue and Svelte, `astro-icon`, UnoCSS, the Tailwind CSS plugin and the Iconify plugins for Figma and code editors.
+
+```html
+<iconify-icon icon="evicons:charging-station"></iconify-icon>
+```
+
+Every icon is also served as `https://api.iconify.design/evicons/<name>.svg`. Iconify picks up new releases on its own schedule, so the newest icons can arrive there a few days after npm. Filled map markers need inline SVG or the React components (see [Map markers](#map-markers)).
+
 ## Usage (React)
 
 ```tsx
