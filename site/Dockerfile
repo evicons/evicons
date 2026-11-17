@@ -9,6 +9,7 @@ ENV ASTRO_TELEMETRY_DISABLED=1
 COPY package.json package-lock.json ./
 COPY packages/react/package.json packages/react/
 COPY packages/svg/package.json packages/svg/
+COPY packages/vue/package.json packages/vue/
 COPY site/package.json site/
 RUN npm ci --ignore-scripts
 

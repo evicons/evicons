@@ -34,7 +34,7 @@ jobs:
         env:
           TAG: ${{ github.ref_name }}
         run: |
-          for dir in packages/react packages/svg; do
+          for dir in packages/react packages/svg packages/vue; do
             version=$(node -p "require('./$dir/package.json').version")
             if [ "v$version" != "$TAG" ]; then
               echo "::error::$dir/package.json has version $version, tag is $TAG"
@@ -57,7 +57,7 @@ jobs:
       - run: npm run build
       - name: Publish packages (skip versions already on npm)
         run: |
-          for dir in packages/svg packages/react; do
+          for dir in packages/svg packages/react packages/vue; do
             name=$(node -p "require('./$dir/package.json').name")
             version=$(node -p "require('./$dir/package.json').version")
             # Prints the version if it exists; prints nothing (or fails for an unknown package) otherwise.

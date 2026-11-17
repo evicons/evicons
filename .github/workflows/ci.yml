@@ -34,7 +34,7 @@ jobs:
       - run: npm run typecheck
 
   smoke:
-    name: Smoke (Node ${{ matrix.node }}, React ${{ matrix.react }})
+    name: Smoke (Node ${{ matrix.node }}, React ${{ matrix.react }}, Vue)
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -53,8 +53,9 @@ jobs:
           V: ${{ matrix.react }}
         run: npm i -D react@$V react-dom@$V @types/react@$V --no-save
       # The generated sources are checked in (verified by the check job), so only the
-      # package itself is compiled here; tools/*.ts needs Node 24.
+      # packages themselves are compiled here; tools/*.ts needs Node 24.
       - run: npm run build -w @evicons/react
+      - run: npm run build -w @evicons/vue
       - run: npm run test:smoke
 
   consumer-next:
