@@ -12,7 +12,7 @@ export interface IconEntry {
   category: Category
   /** English only: the gallery island ships these props to the client, and nothing on the site shows `de`. */
   meaning: { en: string }
-  tags: { en: string[]; de: string[]; fr: string[] }
+  tags: { en: string[]; de: string[]; fr: string[]; it: string[]; es: string[]; nl: string[]; pl: string[] }
   /** The SVG file content, verbatim. */
   svg: string
   standard?: { norm: string; source: string }
@@ -33,7 +33,7 @@ export const categoryOrder: Category[] = [
 interface RawEntry {
   category: Category
   meaning: { en: string; de: string }
-  tags: { en: string[]; de: string[]; fr: string[] }
+  tags: { en: string[]; de: string[]; fr: string[]; it: string[]; es: string[]; nl: string[]; pl: string[] }
   pascal: string
   standard?: { norm: string; source: string }
 }
@@ -53,7 +53,7 @@ export function loadIcons(): IconEntry[] {
         pascal: m.pascal,
         category: m.category,
         meaning: { en: m.meaning.en },
-        tags: { en: m.tags.en, de: m.tags.de, fr: m.tags.fr },
+        tags: { en: m.tags.en, de: m.tags.de, fr: m.tags.fr, it: m.tags.it, es: m.tags.es, nl: m.tags.nl, pl: m.tags.pl },
         svg: readFileSync(join(root, 'svg', `${name}.svg`), 'utf8').trim(),
         ...(m.standard ? { standard: { norm: m.standard.norm, source: m.standard.source } } : {}),
       }

@@ -248,7 +248,7 @@ export default function IconPanel(props: Props) {
       <p className="mt-4 text-sm">{icon.meaning.en}</p>
 
       <dl className="mt-4 space-y-2 text-sm">
-        {(['en', 'de', 'fr'] as const).map((lang) => (
+        {(['en', 'de', 'fr', 'it', 'es', 'nl', 'pl'] as const).map((lang) => (
           <div key={lang} className="flex gap-3">
             <dt className="w-6 shrink-0 pt-0.5 font-mono text-xs uppercase text-muted">{lang}</dt>
             <dd className="flex flex-wrap gap-1">

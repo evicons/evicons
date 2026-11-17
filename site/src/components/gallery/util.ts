@@ -32,10 +32,10 @@ export function normalise(text: string): string {
     .toLowerCase()
 }
 
-/** One normalised search string per icon: name, component name, meaning (en) and all tags. */
+/** One normalised search string per icon: name, component name, meaning (en) and the tags in every language. */
 export function haystack(icon: IconEntry): string {
   return normalise(
-    [icon.name, icon.pascal, icon.meaning.en, ...icon.tags.en, ...icon.tags.de, ...icon.tags.fr].join('\n'),
+    [icon.name, icon.pascal, icon.meaning.en, ...Object.values(icon.tags).flat()].join('\n'),
   )
 }
 

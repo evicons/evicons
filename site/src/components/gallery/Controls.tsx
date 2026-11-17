@@ -73,7 +73,7 @@ export default function Controls(props: Props) {
           type="search"
           value={query}
           onChange={(event) => onQuery(event.target.value)}
-          placeholder="Search icons (en, de, fr)"
+          placeholder="Search icons in 7 languages"
           aria-label="Search icons"
           autoComplete="off"
           spellCheck={false}
