@@ -34,13 +34,6 @@ describe('canonical bolts', () => {
     }
   })
 
-  test('the torn pieces are point-symmetric to each other', () => {
-    const [upper, lower] = [BOLTS['torn-upper'], BOLTS['torn-lower']]
-    expect(box(upper)).toEqual([0, 0, 6, 9.25])
-    expect(box(lower)).toEqual([0, 0, 6, 9.25])
-    for (let k = 0; k < 3; k++) expect([6 - lower[k][0], 9.25 - lower[k][1]]).toEqual([...upper[k]])
-  })
-
   test('the marker sign is the bolt the owner approved on 2026-11-04', () => {
     expect(boltName('M13.25 6.25 9.25 12.5h2.5L10.75 17.75l4-6.25h-2.5Z')).toBe('sign')
     const pin = node('marker-charging').find(([, a]) => a.fill === 'currentColor')
@@ -92,7 +85,7 @@ describe('solid bolts in the icons', () => {
     expect(used('charging-bolt')).toEqual(['full'])
     expect(used('fast-charging')).toEqual(['full'])
     for (const name of ['marker-charging', 'charging-session', 'plug-in-hybrid']) expect(used(name)).toEqual(['sign'])
-    expect(used('power-outage')).toEqual(['torn-upper', 'torn-lower'])
+    expect(used('power-outage')).toEqual(['full'])
     const small = solid.filter((n) => !['charging-bolt', 'fast-charging', 'marker-charging', 'charging-session', 'plug-in-hybrid', 'power-outage'].includes(n))
     for (const name of small) expect(used(name), name).toEqual(['small'])
   })

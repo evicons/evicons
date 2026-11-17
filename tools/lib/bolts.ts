@@ -13,12 +13,8 @@ export const BOLTS = {
   small: [[2.25, 0], [0, 3.5], [1.25, 3.5], [0.75, 6.5], [3, 3], [1.75, 3]],
   /** Main sign of a marker head (approved by the owner on 2026-11-04) and of `charging-session`, `plug-in-hybrid`; 5.5 × 11.5. */
   sign: [[4, 0], [0, 6.25], [2.5, 6.25], [1.5, 11.5], [5.5, 5.25], [3, 5.25]],
-  /** Full-size bolt of `charging-bolt` and `fast-charging`, 9 × 18.5. */
+  /** Full-size bolt of `charging-bolt`, `fast-charging` and `power-outage`, 9 × 18.5. */
   full: [[6.5, 0], [0, 10], [4, 10], [2.5, 18.5], [9, 8.5], [5, 8.5]],
-  /** Torn bolt of `power-outage`, upper piece (top tip, crack's left end, crack's right end), 6 × 9.25. */
-  'torn-upper': [[6, 0], [0, 9.25], [4.75, 7.5]],
-  /** Torn bolt of `power-outage`, lower piece (lower tip, crack's right end, crack's left end), 6 × 9.25. */
-  'torn-lower': [[0, 9.25], [6, 0], [1.25, 1.75]],
 } as const satisfies Record<string, ReadonlyArray<readonly [number, number]>>
 
 export type BoltName = keyof typeof BOLTS
