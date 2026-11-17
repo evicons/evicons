@@ -2,9 +2,16 @@
 
 All notable changes to this project are documented in this file.
 
-The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html). Both packages, `@evicons/react` and `@evicons/svg`, share one version.
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html). All packages, `@evicons/react`, `@evicons/svg` and (from 0.9.0) `@evicons/vue`, share one version.
 
 ## [Unreleased]
+
+## [0.9.0] - 2026-11-17
+
+### Added
+
+- `@evicons/vue`: Vue 3 components for all 84 icons, with the same names, props (`size`, `strokeWidth`, `absoluteStrokeWidth`, `title`) and accessibility rules as `@evicons/react`. Other attributes (`class`, `style`, `aria-*`, `data-*`, listeners) fall through to the `<svg>`, slot content follows the icon's shapes. Tree-shakable ESM with TypeScript types, single icons under `@evicons/vue/icons/<name>`, server rendering in Nuxt and with `vue/server-renderer` (the `<title>` id comes from Vue's `useId`). Peer dependency `vue@^3.5.0`. The icon modules are generated from the same sources as the React ones (#1).
+- Documentation: "Vue" (README and evicons.dev/docs#vue) and "Iconify" (README and evicons.dev/docs#install): EVicons is on Iconify with the prefix `evicons`.
 
 ## [0.8.0] - 2026-11-04
 
@@ -144,7 +151,8 @@ First version, not published to npm. The first published release is 0.2.0.
   - `status-unknown`: unknown (question mark)
   - `status-queue`: queue (two cars, one behind the other)
 
-[Unreleased]: https://github.com/evicons/evicons/compare/v0.8.0...HEAD
+[Unreleased]: https://github.com/evicons/evicons/compare/v0.9.0...HEAD
+[0.9.0]: https://github.com/evicons/evicons/releases/tag/v0.9.0
 [0.8.0]: https://github.com/evicons/evicons/releases/tag/v0.8.0
 [0.7.0]: https://github.com/evicons/evicons/releases/tag/v0.7.0
 [0.6.0]: https://github.com/evicons/evicons/releases/tag/v0.6.0
