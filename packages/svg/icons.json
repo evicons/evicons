@@ -31,6 +31,42 @@
         "place handicapé",
         "accessibilité",
         "recharge"
+      ],
+      "it": [
+        "ricarica accessibile",
+        "accessibile",
+        "sedia a rotelle",
+        "senza barriere",
+        "parcheggio disabili",
+        "accessibilità",
+        "ricarica"
+      ],
+      "es": [
+        "recarga accesible",
+        "accesible",
+        "silla de ruedas",
+        "sin barreras",
+        "plaza para discapacitados",
+        "accesibilidad",
+        "recarga"
+      ],
+      "nl": [
+        "toegankelijk laden",
+        "toegankelijk",
+        "rolstoel",
+        "drempelvrij",
+        "invalidenparkeerplaats",
+        "toegankelijkheid",
+        "laden"
+      ],
+      "pl": [
+        "dostępne ładowanie",
+        "dostępny",
+        "wózek inwalidzki",
+        "bez barier",
+        "miejsce dla niepełnosprawnych",
+        "dostępność",
+        "ładowanie"
       ]
     },
     "since": "0.4.0",
@@ -79,6 +115,38 @@
         "téléphone",
         "mobile",
         "paiement"
+      ],
+      "it": [
+        "ricarica con app",
+        "app",
+        "smartphone",
+        "telefono",
+        "cellulare",
+        "pagamento"
+      ],
+      "es": [
+        "recarga con app",
+        "app",
+        "aplicación",
+        "smartphone",
+        "móvil",
+        "pago"
+      ],
+      "nl": [
+        "laden via app",
+        "app",
+        "smartphone",
+        "telefoon",
+        "mobiel",
+        "betalen"
+      ],
+      "pl": [
+        "ładowanie przez aplikację",
+        "aplikacja",
+        "smartfon",
+        "telefon",
+        "komórka",
+        "płatność"
       ]
     },
     "since": "0.2.0",
@@ -122,6 +190,39 @@
         "batterie",
         "recharge",
         "niveau de charge"
+      ],
+      "it": [
+        "batteria in carica",
+        "batteria",
+        "ricarica",
+        "stato di carica",
+        "soc",
+        "livello di carica"
+      ],
+      "es": [
+        "batería cargando",
+        "batería",
+        "carga",
+        "estado de carga",
+        "soc",
+        "nivel de carga"
+      ],
+      "nl": [
+        "accu laadt",
+        "accu",
+        "batterij",
+        "laden",
+        "laadniveau",
+        "soc"
+      ],
+      "pl": [
+        "ładowanie baterii",
+        "bateria",
+        "akumulator",
+        "ładowanie",
+        "poziom naładowania",
+        "stan naładowania",
+        "soc"
       ]
     },
     "since": "0.2.0",
@@ -165,6 +266,41 @@
         "v2g",
         "v2h",
         "véhicule vers réseau"
+      ],
+      "it": [
+        "ricarica bidirezionale",
+        "bidirezionale",
+        "v2g",
+        "v2h",
+        "vehicle to grid",
+        "vehicle to home"
+      ],
+      "es": [
+        "carga bidireccional",
+        "recarga bidireccional",
+        "bidireccional",
+        "v2g",
+        "v2h",
+        "vehículo a red",
+        "vehículo a hogar"
+      ],
+      "nl": [
+        "bidirectioneel laden",
+        "bidirectioneel",
+        "v2g",
+        "v2h",
+        "vehicle to grid",
+        "vehicle to home",
+        "terugleveren"
+      ],
+      "pl": [
+        "ładowanie dwukierunkowe",
+        "dwukierunkowe",
+        "v2g",
+        "v2h",
+        "vehicle to grid",
+        "pojazd do sieci",
+        "pojazd do domu"
       ]
     },
     "since": "0.2.0",
@@ -204,6 +340,38 @@
         "vae",
         "vélo à assistance électrique",
         "vélo cargo"
+      ],
+      "it": [
+        "bici elettrica",
+        "e-bike",
+        "bicicletta elettrica",
+        "bicicletta a pedalata assistita",
+        "pedelec",
+        "cargo bike"
+      ],
+      "es": [
+        "bicicleta eléctrica",
+        "e-bike",
+        "bici eléctrica",
+        "pedelec",
+        "bicicleta de carga",
+        "vehículo eléctrico ligero"
+      ],
+      "nl": [
+        "e-bike",
+        "elektrische fiets",
+        "fiets",
+        "pedelec",
+        "bakfiets",
+        "elektrische bakfiets"
+      ],
+      "pl": [
+        "rower elektryczny",
+        "e-bike",
+        "rower",
+        "pedelec",
+        "rower cargo",
+        "rower towarowy"
       ]
     },
     "since": "0.4.0",
@@ -250,6 +418,39 @@
         "autobus",
         "autocar",
         "transport en commun"
+      ],
+      "it": [
+        "autobus elettrico",
+        "e-bus",
+        "autobus",
+        "pullman",
+        "trasporto pubblico",
+        "ricarica in deposito"
+      ],
+      "es": [
+        "autobús eléctrico",
+        "e-bus",
+        "autobús",
+        "autocar",
+        "transporte público",
+        "carga en cocheras"
+      ],
+      "nl": [
+        "elektrische bus",
+        "e-bus",
+        "bus",
+        "touringcar",
+        "openbaar vervoer",
+        "busdepot"
+      ],
+      "pl": [
+        "autobus elektryczny",
+        "e-bus",
+        "autobus",
+        "autokar",
+        "transport publiczny",
+        "komunikacja miejska",
+        "ładowanie w zajezdni"
       ]
     },
     "since": "0.4.0",
@@ -301,6 +502,42 @@
         "compteur d'énergie",
         "facturation vérifiée",
         "conforme"
+      ],
+      "it": [
+        "contatore certificato",
+        "metrologia legale",
+        "eichrecht",
+        "contatore tarato",
+        "contatore di energia",
+        "fatturazione verificata",
+        "conforme"
+      ],
+      "es": [
+        "contador calibrado",
+        "metrología legal",
+        "eichrecht",
+        "contador certificado",
+        "contador de energía",
+        "facturación verificada",
+        "conforme"
+      ],
+      "nl": [
+        "geijkte meter",
+        "ijkwet",
+        "eichrecht",
+        "gecertificeerde meter",
+        "energiemeter",
+        "geverifieerde facturatie",
+        "conform"
+      ],
+      "pl": [
+        "licznik legalizowany",
+        "metrologia prawna",
+        "eichrecht",
+        "licznik certyfikowany",
+        "licznik energii",
+        "zweryfikowane rozliczenie",
+        "zgodny"
       ]
     },
     "since": "0.3.0",
@@ -339,6 +576,41 @@
         "ve",
         "véhicule électrique",
         "ma voiture"
+      ],
+      "it": [
+        "auto elettrica",
+        "ev",
+        "bev",
+        "veicolo elettrico",
+        "la mia auto",
+        "veicolo",
+        "macchina elettrica"
+      ],
+      "es": [
+        "coche eléctrico",
+        "ve",
+        "bev",
+        "vehículo eléctrico",
+        "mi coche",
+        "vehículo",
+        "auto eléctrico"
+      ],
+      "nl": [
+        "elektrische auto",
+        "ev",
+        "bev",
+        "elektrisch voertuig",
+        "mijn auto",
+        "voertuig"
+      ],
+      "pl": [
+        "samochód elektryczny",
+        "elektryk",
+        "ev",
+        "bev",
+        "pojazd elektryczny",
+        "mój samochód",
+        "pojazd"
       ]
     },
     "since": "0.2.0",
@@ -384,6 +656,38 @@
         "branchée",
         "en charge",
         "câble de recharge"
+      ],
+      "it": [
+        "auto elettrica",
+        "ev",
+        "collegata",
+        "in carica",
+        "ricarica auto",
+        "cavo di ricarica"
+      ],
+      "es": [
+        "coche eléctrico",
+        "ve",
+        "enchufado",
+        "cargando",
+        "recarga del coche",
+        "cable de carga"
+      ],
+      "nl": [
+        "elektrische auto",
+        "ev",
+        "aangesloten",
+        "laden",
+        "auto laden",
+        "laadkabel"
+      ],
+      "pl": [
+        "samochód elektryczny",
+        "ev",
+        "podłączony",
+        "ładowanie",
+        "ładowanie samochodu",
+        "kabel do ładowania"
       ]
     },
     "since": "0.1.0",
@@ -426,6 +730,43 @@
         "ad hoc",
         "sans contact",
         "carte bancaire",
+        "afir"
+      ],
+      "it": [
+        "terminale di pagamento",
+        "terminale carte",
+        "pos",
+        "ad hoc",
+        "contactless",
+        "carta di debito",
+        "carta di credito",
+        "afir"
+      ],
+      "es": [
+        "terminal de pago",
+        "datáfono",
+        "ad hoc",
+        "sin contacto",
+        "tarjeta de débito",
+        "tarjeta de crédito",
+        "afir"
+      ],
+      "nl": [
+        "betaalterminal",
+        "pinautomaat",
+        "ad hoc",
+        "contactloos",
+        "pinpas",
+        "creditcard",
+        "afir"
+      ],
+      "pl": [
+        "terminal płatniczy",
+        "terminal kartowy",
+        "ad hoc",
+        "płatność zbliżeniowa",
+        "karta debetowa",
+        "karta kredytowa",
         "afir"
       ]
     },
@@ -479,6 +820,46 @@
         "place de stationnement",
         "statut",
         "occupation"
+      ],
+      "it": [
+        "disponibilità",
+        "disponibilità ricarica",
+        "libero",
+        "occupato",
+        "stallo di ricarica",
+        "posto auto",
+        "stato",
+        "occupazione"
+      ],
+      "es": [
+        "disponibilidad",
+        "disponibilidad de carga",
+        "libre",
+        "ocupado",
+        "plaza de recarga",
+        "plaza de aparcamiento",
+        "estado",
+        "ocupación"
+      ],
+      "nl": [
+        "beschikbaarheid",
+        "laadbeschikbaarheid",
+        "vrij",
+        "bezet",
+        "laadplek",
+        "parkeerplek",
+        "status",
+        "bezetting"
+      ],
+      "pl": [
+        "dostępność",
+        "dostępność ładowania",
+        "wolne",
+        "zajęte",
+        "stanowisko ładowania",
+        "miejsce parkingowe",
+        "status",
+        "zajętość"
       ]
     },
     "since": "0.5.0",
@@ -522,6 +903,38 @@
         "électricité",
         "courant",
         "énergie"
+      ],
+      "it": [
+        "ricarica",
+        "fulmine",
+        "saetta",
+        "elettricità",
+        "corrente",
+        "energia"
+      ],
+      "es": [
+        "recarga",
+        "carga",
+        "rayo",
+        "electricidad",
+        "corriente",
+        "energía"
+      ],
+      "nl": [
+        "laden",
+        "bliksem",
+        "bliksemschicht",
+        "elektriciteit",
+        "stroom",
+        "energie"
+      ],
+      "pl": [
+        "ładowanie",
+        "piorun",
+        "błyskawica",
+        "elektryczność",
+        "prąd",
+        "energia"
       ]
     },
     "since": "0.2.0",
@@ -566,6 +979,38 @@
         "câble",
         "fiche",
         "recharge"
+      ],
+      "it": [
+        "cavo di ricarica",
+        "cavo fisso",
+        "cavo integrato",
+        "cavo",
+        "spina",
+        "ricarica"
+      ],
+      "es": [
+        "cable de carga",
+        "cable fijo",
+        "cable integrado",
+        "cable",
+        "conector",
+        "recarga"
+      ],
+      "nl": [
+        "laadkabel",
+        "vaste kabel",
+        "vaste laadkabel",
+        "kabel",
+        "stekker",
+        "laden"
+      ],
+      "pl": [
+        "kabel do ładowania",
+        "stały kabel",
+        "przewód",
+        "kabel",
+        "wtyczka",
+        "ładowanie"
       ]
     },
     "since": "0.2.0",
@@ -612,6 +1057,42 @@
         "carte",
         "sans contact",
         "paiement"
+      ],
+      "it": [
+        "tessera di ricarica",
+        "rfid",
+        "tessera rfid",
+        "carta",
+        "contactless",
+        "tessera roaming",
+        "pagamento"
+      ],
+      "es": [
+        "tarjeta de recarga",
+        "rfid",
+        "tarjeta rfid",
+        "tarjeta",
+        "sin contacto",
+        "tarjeta de roaming",
+        "pago"
+      ],
+      "nl": [
+        "laadpas",
+        "rfid",
+        "rfid-pas",
+        "pas",
+        "contactloos",
+        "laadkaart",
+        "betalen"
+      ],
+      "pl": [
+        "karta do ładowania",
+        "rfid",
+        "karta rfid",
+        "karta",
+        "karta zbliżeniowa",
+        "karta roamingowa",
+        "płatność"
       ]
     },
     "since": "0.2.0",
@@ -659,6 +1140,38 @@
         "station hpc",
         "plusieurs bornes",
         "recharge"
+      ],
+      "it": [
+        "hub di ricarica",
+        "parco di ricarica",
+        "hub hpc",
+        "area di ricarica",
+        "più colonnine",
+        "ricarica"
+      ],
+      "es": [
+        "hub de recarga",
+        "electrolinera",
+        "parque de recarga",
+        "hub hpc",
+        "varios cargadores",
+        "recarga"
+      ],
+      "nl": [
+        "laadplein",
+        "laadhub",
+        "laadpark",
+        "hpc-hub",
+        "meerdere laadpalen",
+        "laden"
+      ],
+      "pl": [
+        "hub ładowania",
+        "park ładowania",
+        "hub hpc",
+        "strefa ładowania",
+        "wiele ładowarek",
+        "ładowanie"
       ]
     },
     "since": "0.4.0",
@@ -703,6 +1216,38 @@
         "session de recharge",
         "reçu",
         "relevé"
+      ],
+      "it": [
+        "registro ricariche",
+        "registro",
+        "cronologia ricariche",
+        "sessione",
+        "ricevuta",
+        "storico"
+      ],
+      "es": [
+        "registro de recargas",
+        "registro",
+        "historial de carga",
+        "sesión",
+        "recibo",
+        "justificante"
+      ],
+      "nl": [
+        "laadlogboek",
+        "logboek",
+        "laadgeschiedenis",
+        "laadsessie",
+        "bon",
+        "overzicht"
+      ],
+      "pl": [
+        "dziennik ładowania",
+        "historia ładowania",
+        "sesja",
+        "paragon",
+        "potwierdzenie",
+        "rejestr"
       ]
     },
     "since": "0.2.0",
@@ -748,6 +1293,40 @@
         "entreprise",
         "bâtiment",
         "recharge"
+      ],
+      "it": [
+        "operatore di ricarica",
+        "cpo",
+        "operatore",
+        "gestore",
+        "azienda",
+        "edificio",
+        "ricarica"
+      ],
+      "es": [
+        "operador de recarga",
+        "cpo",
+        "operador",
+        "empresa",
+        "edificio",
+        "recarga"
+      ],
+      "nl": [
+        "laadpaalexploitant",
+        "cpo",
+        "exploitant",
+        "operator",
+        "bedrijf",
+        "gebouw",
+        "laden"
+      ],
+      "pl": [
+        "operator stacji ładowania",
+        "cpo",
+        "operator",
+        "firma",
+        "budynek",
+        "ładowanie"
       ]
     },
     "since": "0.3.0",
@@ -793,6 +1372,38 @@
         "fiche",
         "câble",
         "recharge"
+      ],
+      "it": [
+        "spina di ricarica",
+        "spina",
+        "connettore",
+        "cavo",
+        "ricarica",
+        "ricarica auto elettrica"
+      ],
+      "es": [
+        "conector de carga",
+        "enchufe",
+        "conector",
+        "cable",
+        "recarga",
+        "recarga de coche eléctrico"
+      ],
+      "nl": [
+        "laadstekker",
+        "stekker",
+        "connector",
+        "kabel",
+        "laden",
+        "elektrisch laden"
+      ],
+      "pl": [
+        "wtyczka do ładowania",
+        "wtyczka",
+        "złącze",
+        "kabel",
+        "ładowanie",
+        "ładowanie ev"
       ]
     },
     "since": "0.2.0",
@@ -839,6 +1450,42 @@
         "compteur",
         "kw",
         "vitesse de recharge"
+      ],
+      "it": [
+        "potenza di ricarica",
+        "livello di potenza",
+        "indicatore",
+        "tachimetro",
+        "kw",
+        "filtro potenza",
+        "velocità di ricarica"
+      ],
+      "es": [
+        "potencia de carga",
+        "nivel de potencia",
+        "indicador",
+        "velocímetro",
+        "kw",
+        "filtro de potencia",
+        "velocidad de carga"
+      ],
+      "nl": [
+        "laadvermogen",
+        "vermogensniveau",
+        "meter",
+        "snelheidsmeter",
+        "kw",
+        "vermogensfilter",
+        "laadsnelheid"
+      ],
+      "pl": [
+        "moc ładowania",
+        "poziom mocy",
+        "wskaźnik",
+        "prędkościomierz",
+        "kw",
+        "filtr mocy",
+        "szybkość ładowania"
       ]
     },
     "since": "0.3.0",
@@ -883,6 +1530,38 @@
         "session active",
         "recharge",
         "en direct"
+      ],
+      "it": [
+        "sessione di ricarica",
+        "ricarica in corso",
+        "sessione attiva",
+        "ricarica attiva",
+        "ricarica",
+        "ciclo"
+      ],
+      "es": [
+        "sesión de carga",
+        "carga en curso",
+        "sesión activa",
+        "cargando",
+        "recarga",
+        "ciclo"
+      ],
+      "nl": [
+        "laadsessie",
+        "bezig met laden",
+        "actieve sessie",
+        "live sessie",
+        "laden",
+        "cyclus"
+      ],
+      "pl": [
+        "sesja ładowania",
+        "ładowanie w toku",
+        "aktywna sesja",
+        "trwa ładowanie",
+        "ładowanie",
+        "cykl"
       ]
     },
     "since": "0.3.0",
@@ -927,6 +1606,38 @@
         "apportez votre câble",
         "sans câble attaché",
         "prise type 2"
+      ],
+      "it": [
+        "presa di ricarica",
+        "presa",
+        "porta il tuo cavo",
+        "senza cavo",
+        "presa tipo 2",
+        "cavo proprio"
+      ],
+      "es": [
+        "toma de carga",
+        "toma",
+        "enchufe",
+        "trae tu propio cable",
+        "sin cable",
+        "toma tipo 2"
+      ],
+      "nl": [
+        "laadcontactdoos",
+        "contactdoos",
+        "eigen kabel meenemen",
+        "zonder vaste kabel",
+        "type 2 contactdoos",
+        "aansluiting"
+      ],
+      "pl": [
+        "gniazdo ładowania",
+        "gniazdo",
+        "własny kabel",
+        "bez kabla",
+        "gniazdo typ 2",
+        "gniazdko"
       ]
     },
     "since": "0.5.0",
@@ -969,6 +1680,38 @@
         "station de recharge",
         "point de charge",
         "borne électrique"
+      ],
+      "it": [
+        "colonnina di ricarica",
+        "stazione di ricarica",
+        "punto di ricarica",
+        "colonnina",
+        "caricatore",
+        "evse"
+      ],
+      "es": [
+        "punto de recarga",
+        "estación de carga",
+        "cargador",
+        "electrolinera",
+        "poste de recarga",
+        "evse"
+      ],
+      "nl": [
+        "laadpaal",
+        "laadstation",
+        "laadpunt",
+        "oplaadpunt",
+        "lader",
+        "evse"
+      ],
+      "pl": [
+        "stacja ładowania",
+        "ładowarka",
+        "punkt ładowania",
+        "słupek ładowania",
+        "evse",
+        "stacja ev"
       ]
     },
     "since": "0.1.0",
@@ -1016,6 +1759,35 @@
         "prix",
         "prix par kwh",
         "coût"
+      ],
+      "it": [
+        "tariffa di ricarica",
+        "tariffa",
+        "prezzo",
+        "prezzo per kwh",
+        "costo"
+      ],
+      "es": [
+        "tarifa de recarga",
+        "tarifa",
+        "precio",
+        "precio por kwh",
+        "coste"
+      ],
+      "nl": [
+        "laadtarief",
+        "tarief",
+        "prijs",
+        "prijs per kwh",
+        "kosten"
+      ],
+      "pl": [
+        "taryfa ładowania",
+        "taryfa",
+        "cena",
+        "cena za kwh",
+        "koszt",
+        "stawka"
       ]
     },
     "since": "0.2.0",
@@ -1061,6 +1833,34 @@
         "temps",
         "horloge",
         "tarif horaire"
+      ],
+      "it": [
+        "tempo di ricarica",
+        "durata ricarica",
+        "tempo",
+        "orologio",
+        "tariffa a tempo"
+      ],
+      "es": [
+        "tiempo de carga",
+        "duración de la carga",
+        "tiempo",
+        "reloj",
+        "tarifa por tiempo"
+      ],
+      "nl": [
+        "laadtijd",
+        "laadduur",
+        "tijd",
+        "klok",
+        "tijdtarief"
+      ],
+      "pl": [
+        "czas ładowania",
+        "długość ładowania",
+        "czas",
+        "zegar",
+        "taryfa czasowa"
       ]
     },
     "since": "0.3.0",
@@ -1107,6 +1907,38 @@
         "confirmé",
         "avis",
         "communauté"
+      ],
+      "it": [
+        "verificato dalla community",
+        "confermato dagli utenti",
+        "segnalazione",
+        "confermato",
+        "recensione",
+        "community"
+      ],
+      "es": [
+        "verificado por la comunidad",
+        "confirmado por conductores",
+        "reportado por usuarios",
+        "confirmado",
+        "reseña",
+        "comunidad"
+      ],
+      "nl": [
+        "geverifieerd door community",
+        "bevestigd door rijders",
+        "gemeld door gebruikers",
+        "bevestigd",
+        "review",
+        "community"
+      ],
+      "pl": [
+        "zweryfikowane przez społeczność",
+        "potwierdzone przez kierowców",
+        "zgłoszenie",
+        "potwierdzone",
+        "opinia",
+        "społeczność"
       ]
     },
     "since": "0.5.0",
@@ -1146,6 +1978,31 @@
         "courant alternatif",
         "recharge ac",
         "recharge normale"
+      ],
+      "it": [
+        "ac",
+        "corrente alternata",
+        "ricarica ac",
+        "ricarica normale"
+      ],
+      "es": [
+        "ac",
+        "ca",
+        "corriente alterna",
+        "carga ac",
+        "carga normal"
+      ],
+      "nl": [
+        "ac",
+        "wisselstroom",
+        "ac laden",
+        "normaal laden"
+      ],
+      "pl": [
+        "ac",
+        "prąd przemienny",
+        "ładowanie ac",
+        "ładowanie normalne"
       ]
     },
     "since": "0.1.0",
@@ -1194,6 +2051,31 @@
         "courant continu",
         "recharge dc",
         "recharge rapide"
+      ],
+      "it": [
+        "dc",
+        "corrente continua",
+        "ricarica dc",
+        "ricarica rapida"
+      ],
+      "es": [
+        "dc",
+        "cc",
+        "corriente continua",
+        "carga dc",
+        "carga rápida"
+      ],
+      "nl": [
+        "dc",
+        "gelijkstroom",
+        "dc laden",
+        "snelladen"
+      ],
+      "pl": [
+        "dc",
+        "prąd stały",
+        "ładowanie dc",
+        "szybkie ładowanie"
       ]
     },
     "since": "0.1.0",
@@ -1245,6 +2127,40 @@
         "garage",
         "atelier",
         "recharge"
+      ],
+      "it": [
+        "ricarica dal concessionario",
+        "concessionario",
+        "salone",
+        "showroom",
+        "officina",
+        "ricarica"
+      ],
+      "es": [
+        "recarga en concesionario",
+        "concesionario",
+        "exposición",
+        "taller",
+        "garaje",
+        "recarga"
+      ],
+      "nl": [
+        "laden bij dealer",
+        "autodealer",
+        "dealer",
+        "showroom",
+        "garage",
+        "werkplaats",
+        "laden"
+      ],
+      "pl": [
+        "ładowanie u dealera",
+        "dealer",
+        "salon samochodowy",
+        "salon",
+        "warsztat",
+        "serwis",
+        "ładowanie"
       ]
     },
     "since": "0.4.0",
@@ -1290,6 +2206,38 @@
         "séjour",
         "lit",
         "recharge"
+      ],
+      "it": [
+        "ricarica a destinazione",
+        "hotel",
+        "ricarica notturna",
+        "soggiorno",
+        "letto",
+        "ricarica"
+      ],
+      "es": [
+        "recarga en destino",
+        "hotel",
+        "carga nocturna",
+        "estancia",
+        "cama",
+        "recarga"
+      ],
+      "nl": [
+        "bestemmingsladen",
+        "hotel",
+        "nachtladen",
+        "verblijf",
+        "bed",
+        "laden"
+      ],
+      "pl": [
+        "ładowanie w miejscu docelowym",
+        "hotel",
+        "ładowanie nocne",
+        "nocleg",
+        "łóżko",
+        "ładowanie"
       ]
     },
     "since": "0.3.0",
@@ -1334,6 +2282,33 @@
         "distance",
         "route",
         "km"
+      ],
+      "it": [
+        "autonomia",
+        "autonomia di guida",
+        "distanza",
+        "strada",
+        "km"
+      ],
+      "es": [
+        "autonomía",
+        "distancia",
+        "carretera",
+        "km"
+      ],
+      "nl": [
+        "actieradius",
+        "bereik",
+        "afstand",
+        "weg",
+        "km"
+      ],
+      "pl": [
+        "zasięg",
+        "dystans",
+        "odległość",
+        "droga",
+        "km"
       ]
     },
     "since": "0.2.0",
@@ -1373,6 +2348,34 @@
         "recharge rapide",
         "charge rapide",
         "haute puissance"
+      ],
+      "it": [
+        "ricarica rapida",
+        "ricarica veloce",
+        "ricarica ultrarapida",
+        "hpc",
+        "alta potenza"
+      ],
+      "es": [
+        "carga rápida",
+        "recarga rápida",
+        "carga ultrarrápida",
+        "hpc",
+        "alta potencia"
+      ],
+      "nl": [
+        "snelladen",
+        "snellader",
+        "ultrasnelladen",
+        "hpc",
+        "hoog vermogen"
+      ],
+      "pl": [
+        "szybkie ładowanie",
+        "ultraszybkie ładowanie",
+        "szybka ładowarka",
+        "hpc",
+        "duża moc"
       ]
     },
     "since": "0.1.0",
@@ -1416,6 +2419,35 @@
         "gratuit",
         "sans frais",
         "borne gratuite"
+      ],
+      "it": [
+        "ricarica gratuita",
+        "gratis",
+        "gratuito",
+        "senza costi",
+        "colonnina gratuita"
+      ],
+      "es": [
+        "recarga gratuita",
+        "gratis",
+        "gratuito",
+        "sin coste",
+        "punto de recarga gratuito"
+      ],
+      "nl": [
+        "gratis laden",
+        "gratis",
+        "kosteloos",
+        "geen kosten",
+        "gratis laadpaal"
+      ],
+      "pl": [
+        "darmowe ładowanie",
+        "za darmo",
+        "darmowe",
+        "bezpłatne",
+        "bezpłatne ładowanie",
+        "bez opłat"
       ]
     },
     "since": "0.4.0",
@@ -1464,6 +2496,38 @@
         "station essence",
         "aire de service",
         "recharge"
+      ],
+      "it": [
+        "ricarica al distributore",
+        "distributore",
+        "stazione di servizio",
+        "benzinaio",
+        "area di servizio",
+        "pensilina",
+        "ricarica"
+      ],
+      "es": [
+        "recarga en gasolinera",
+        "gasolinera",
+        "estación de servicio",
+        "área de servicio",
+        "marquesina",
+        "recarga"
+      ],
+      "nl": [
+        "laden bij tankstation",
+        "tankstation",
+        "benzinestation",
+        "pompstation",
+        "overkapping",
+        "laden"
+      ],
+      "pl": [
+        "ładowanie na stacji paliw",
+        "stacja paliw",
+        "stacja benzynowa",
+        "wiata",
+        "ładowanie"
       ]
     },
     "since": "0.4.0",
@@ -1511,6 +2575,38 @@
         "énergie renouvelable",
         "écologique",
         "feuille"
+      ],
+      "it": [
+        "energia verde",
+        "elettricità verde",
+        "energia rinnovabile",
+        "eco",
+        "foglia",
+        "sostenibile"
+      ],
+      "es": [
+        "energía verde",
+        "electricidad verde",
+        "energía renovable",
+        "eco",
+        "hoja",
+        "sostenible"
+      ],
+      "nl": [
+        "groene stroom",
+        "groene energie",
+        "hernieuwbare energie",
+        "duurzaam",
+        "eco",
+        "blad"
+      ],
+      "pl": [
+        "zielona energia",
+        "zielony prąd",
+        "energia odnawialna",
+        "eko",
+        "liść",
+        "ekologiczny"
       ]
     },
     "since": "0.2.0",
@@ -1561,6 +2657,39 @@
         "aire de repos",
         "voie rapide",
         "recharge"
+      ],
+      "it": [
+        "ricarica in autostrada",
+        "autostrada",
+        "area di servizio",
+        "area di sosta",
+        "superstrada",
+        "ricarica"
+      ],
+      "es": [
+        "recarga en autopista",
+        "autopista",
+        "autovía",
+        "área de servicio",
+        "área de descanso",
+        "recarga"
+      ],
+      "nl": [
+        "laden langs de snelweg",
+        "snelweg",
+        "autosnelweg",
+        "verzorgingsplaats",
+        "wegrestaurant",
+        "laden"
+      ],
+      "pl": [
+        "ładowanie przy autostradzie",
+        "autostrada",
+        "droga ekspresowa",
+        "mop",
+        "miejsce obsługi podróżnych",
+        "parking",
+        "ładowanie"
       ]
     },
     "since": "0.4.0",
@@ -1608,6 +2737,37 @@
         "maison",
         "recharge privée",
         "recharge"
+      ],
+      "it": [
+        "ricarica domestica",
+        "ricarica a casa",
+        "casa",
+        "abitazione",
+        "ricarica privata",
+        "ricarica"
+      ],
+      "es": [
+        "recarga en casa",
+        "carga doméstica",
+        "casa",
+        "hogar",
+        "recarga privada",
+        "recarga"
+      ],
+      "nl": [
+        "thuisladen",
+        "thuis laden",
+        "thuis",
+        "huis",
+        "privé laden",
+        "laden"
+      ],
+      "pl": [
+        "ładowanie w domu",
+        "domowe ładowanie",
+        "dom",
+        "ładowanie prywatne",
+        "ładowanie"
       ]
     },
     "since": "0.2.0",
@@ -1648,6 +2808,33 @@
         "frais de stationnement",
         "pénalité de stationnement",
         "parcmètre"
+      ],
+      "it": [
+        "penale di sosta",
+        "tariffa di occupazione",
+        "costo sosta",
+        "sosta prolungata",
+        "parchimetro"
+      ],
+      "es": [
+        "tarifa de ocupación",
+        "penalización por ocupación",
+        "tarifa de estacionamiento",
+        "tiempo excedido",
+        "parquímetro"
+      ],
+      "nl": [
+        "blokkeertarief",
+        "blokkeerkosten",
+        "parkeerkosten",
+        "parkeermeter"
+      ],
+      "pl": [
+        "opłata za postój",
+        "opłata za blokowanie",
+        "opłata parkingowa",
+        "kara za postój",
+        "parkometr"
       ]
     },
     "since": "0.4.0",
@@ -1696,6 +2883,44 @@
         "recharge ac",
         "recharge normale",
         "emplacement"
+      ],
+      "it": [
+        "segnaposto",
+        "marker",
+        "pin mappa",
+        "ac",
+        "corrente alternata",
+        "ricarica ac",
+        "ricarica normale",
+        "posizione"
+      ],
+      "es": [
+        "marcador",
+        "pin del mapa",
+        "ac",
+        "corriente alterna",
+        "carga ac",
+        "carga normal",
+        "ubicación"
+      ],
+      "nl": [
+        "kaartpin",
+        "marker",
+        "ac",
+        "wisselstroom",
+        "ac laden",
+        "normaal laden",
+        "locatie"
+      ],
+      "pl": [
+        "znacznik",
+        "pinezka",
+        "marker",
+        "ac",
+        "prąd przemienny",
+        "ładowanie ac",
+        "ładowanie normalne",
+        "lokalizacja"
       ]
     },
     "since": "0.2.0",
@@ -1741,6 +2966,40 @@
         "libre",
         "coche",
         "statut"
+      ],
+      "it": [
+        "segnaposto",
+        "marker",
+        "pin mappa",
+        "disponibile",
+        "libero",
+        "spunta",
+        "stato"
+      ],
+      "es": [
+        "marcador",
+        "pin del mapa",
+        "disponible",
+        "libre",
+        "marca de verificación",
+        "estado"
+      ],
+      "nl": [
+        "kaartpin",
+        "marker",
+        "beschikbaar",
+        "vrij",
+        "vinkje",
+        "status"
+      ],
+      "pl": [
+        "znacznik",
+        "pinezka",
+        "marker",
+        "dostępny",
+        "wolny",
+        "ptaszek",
+        "status"
       ]
     },
     "since": "0.2.0",
@@ -1788,6 +3047,44 @@
         "emplacement",
         "carte",
         "éclair"
+      ],
+      "it": [
+        "segnaposto",
+        "marker",
+        "pin mappa",
+        "punto di ricarica",
+        "colonnina di ricarica",
+        "posizione",
+        "mappa",
+        "fulmine"
+      ],
+      "es": [
+        "marcador",
+        "pin del mapa",
+        "punto de recarga",
+        "estación de carga",
+        "ubicación",
+        "mapa",
+        "rayo"
+      ],
+      "nl": [
+        "kaartpin",
+        "marker",
+        "laadpunt",
+        "laadpaal",
+        "locatie",
+        "kaart",
+        "bliksem"
+      ],
+      "pl": [
+        "znacznik",
+        "pinezka",
+        "marker",
+        "punkt ładowania",
+        "stacja ładowania",
+        "lokalizacja",
+        "mapa",
+        "błyskawica"
       ]
     },
     "since": "0.2.0",
@@ -1836,6 +3133,44 @@
         "marqueur",
         "plusieurs bornes",
         "carte"
+      ],
+      "it": [
+        "segnaposto",
+        "marker",
+        "pin mappa",
+        "cluster",
+        "gruppo",
+        "numero",
+        "più colonnine",
+        "mappa"
+      ],
+      "es": [
+        "marcador",
+        "pin del mapa",
+        "clúster",
+        "grupo",
+        "número",
+        "varias estaciones",
+        "mapa"
+      ],
+      "nl": [
+        "kaartpin",
+        "marker",
+        "cluster",
+        "groep",
+        "aantal",
+        "meerdere laadpalen",
+        "kaart"
+      ],
+      "pl": [
+        "znacznik",
+        "pinezka",
+        "marker",
+        "klaster",
+        "grupa",
+        "liczba",
+        "wiele stacji",
+        "mapa"
       ]
     },
     "since": "0.5.1",
@@ -1883,6 +3218,44 @@
         "recharge dc",
         "recharge rapide",
         "emplacement"
+      ],
+      "it": [
+        "segnaposto",
+        "marker",
+        "pin mappa",
+        "dc",
+        "corrente continua",
+        "ricarica dc",
+        "ricarica rapida",
+        "posizione"
+      ],
+      "es": [
+        "marcador",
+        "pin del mapa",
+        "dc",
+        "corriente continua",
+        "carga dc",
+        "carga rápida",
+        "ubicación"
+      ],
+      "nl": [
+        "kaartpin",
+        "marker",
+        "dc",
+        "gelijkstroom",
+        "dc laden",
+        "snelladen",
+        "locatie"
+      ],
+      "pl": [
+        "znacznik",
+        "pinezka",
+        "marker",
+        "dc",
+        "prąd stały",
+        "ładowanie dc",
+        "szybkie ładowanie",
+        "lokalizacja"
       ]
     },
     "since": "0.2.0",
@@ -1932,6 +3305,48 @@
         "erreur",
         "point d’exclamation",
         "statut"
+      ],
+      "it": [
+        "segnaposto",
+        "marker",
+        "pin mappa",
+        "guasto",
+        "in avaria",
+        "errore",
+        "difettoso",
+        "punto esclamativo",
+        "stato"
+      ],
+      "es": [
+        "marcador",
+        "pin del mapa",
+        "averiado",
+        "avería",
+        "error",
+        "defectuoso",
+        "signo de exclamación",
+        "estado"
+      ],
+      "nl": [
+        "kaartpin",
+        "marker",
+        "defect",
+        "storing",
+        "fout",
+        "kapot",
+        "uitroepteken",
+        "status"
+      ],
+      "pl": [
+        "znacznik",
+        "pinezka",
+        "marker",
+        "awaria",
+        "uszkodzony",
+        "błąd",
+        "niesprawny",
+        "wykrzyknik",
+        "status"
       ]
     },
     "since": "0.2.0",
@@ -1978,6 +3393,40 @@
         "en cours d’utilisation",
         "horloge",
         "statut"
+      ],
+      "it": [
+        "segnaposto",
+        "marker",
+        "pin mappa",
+        "occupato",
+        "in uso",
+        "orologio",
+        "stato"
+      ],
+      "es": [
+        "marcador",
+        "pin del mapa",
+        "ocupado",
+        "en uso",
+        "reloj",
+        "estado"
+      ],
+      "nl": [
+        "kaartpin",
+        "marker",
+        "bezet",
+        "in gebruik",
+        "klok",
+        "status"
+      ],
+      "pl": [
+        "znacznik",
+        "pinezka",
+        "marker",
+        "zajęty",
+        "w użyciu",
+        "zegar",
+        "status"
       ]
     },
     "since": "0.2.0",
@@ -2025,6 +3474,44 @@
         "maintenance",
         "désactivé",
         "statut"
+      ],
+      "it": [
+        "segnaposto",
+        "marker",
+        "pin mappa",
+        "fuori servizio",
+        "non disponibile",
+        "manutenzione",
+        "disattivato",
+        "stato"
+      ],
+      "es": [
+        "marcador",
+        "pin del mapa",
+        "fuera de servicio",
+        "no disponible",
+        "mantenimiento",
+        "desactivado",
+        "estado"
+      ],
+      "nl": [
+        "kaartpin",
+        "marker",
+        "buiten gebruik",
+        "niet beschikbaar",
+        "onderhoud",
+        "uitgeschakeld",
+        "status"
+      ],
+      "pl": [
+        "znacznik",
+        "pinezka",
+        "marker",
+        "nieczynny",
+        "niedostępny",
+        "konserwacja",
+        "wyłączony",
+        "status"
       ]
     },
     "since": "0.2.0",
@@ -2072,6 +3559,46 @@
         "temps d'attente",
         "sablier",
         "statut"
+      ],
+      "it": [
+        "segnaposto",
+        "marker",
+        "pin mappa",
+        "in coda",
+        "coda",
+        "attesa",
+        "tempo di attesa",
+        "clessidra",
+        "stato"
+      ],
+      "es": [
+        "marcador",
+        "pin del mapa",
+        "cola",
+        "en cola",
+        "espera",
+        "tiempo de espera",
+        "reloj de arena",
+        "estado"
+      ],
+      "nl": [
+        "kaartpin",
+        "marker",
+        "wachtrij",
+        "wachten",
+        "wachttijd",
+        "zandloper",
+        "status"
+      ],
+      "pl": [
+        "znacznik",
+        "pinezka",
+        "marker",
+        "kolejka",
+        "oczekiwanie",
+        "czas oczekiwania",
+        "klepsydra",
+        "status"
       ]
     },
     "since": "0.3.0",
@@ -2120,6 +3647,42 @@
         "réservation",
         "lettre r",
         "statut"
+      ],
+      "it": [
+        "segnaposto",
+        "marker",
+        "pin mappa",
+        "prenotato",
+        "riservato",
+        "prenotazione",
+        "lettera r",
+        "stato"
+      ],
+      "es": [
+        "marcador",
+        "pin del mapa",
+        "reservado",
+        "reserva",
+        "letra r",
+        "estado"
+      ],
+      "nl": [
+        "kaartpin",
+        "marker",
+        "gereserveerd",
+        "reservering",
+        "geboekt",
+        "letter r",
+        "status"
+      ],
+      "pl": [
+        "znacznik",
+        "pinezka",
+        "marker",
+        "zarezerwowany",
+        "rezerwacja",
+        "litera r",
+        "status"
       ]
     },
     "since": "0.3.0",
@@ -2168,6 +3731,44 @@
         "hors ligne",
         "point d’interrogation",
         "statut"
+      ],
+      "it": [
+        "segnaposto",
+        "marker",
+        "pin mappa",
+        "sconosciuto",
+        "nessun dato",
+        "offline",
+        "punto interrogativo",
+        "stato"
+      ],
+      "es": [
+        "marcador",
+        "pin del mapa",
+        "desconocido",
+        "sin datos",
+        "sin conexión",
+        "signo de interrogación",
+        "estado"
+      ],
+      "nl": [
+        "kaartpin",
+        "marker",
+        "onbekend",
+        "geen gegevens",
+        "offline",
+        "vraagteken",
+        "status"
+      ],
+      "pl": [
+        "znacznik",
+        "pinezka",
+        "marker",
+        "nieznany",
+        "brak danych",
+        "offline",
+        "znak zapytania",
+        "status"
       ]
     },
     "since": "0.2.0",
@@ -2211,6 +3812,38 @@
         "deux-roues électrique",
         "moto",
         "scooter"
+      ],
+      "it": [
+        "moto elettrica",
+        "scooter elettrico",
+        "motorino elettrico",
+        "ciclomotore",
+        "moto",
+        "scooter"
+      ],
+      "es": [
+        "moto eléctrica",
+        "motocicleta eléctrica",
+        "scooter eléctrico",
+        "ciclomotor",
+        "moto",
+        "scooter"
+      ],
+      "nl": [
+        "elektrische motor",
+        "elektrische motorfiets",
+        "elektrische scooter",
+        "e-scooter",
+        "brommer",
+        "scooter"
+      ],
+      "pl": [
+        "motocykl elektryczny",
+        "skuter elektryczny",
+        "e-skuter",
+        "motorower",
+        "motocykl",
+        "skuter"
       ]
     },
     "since": "0.5.0",
@@ -2261,6 +3894,38 @@
         "stationnement",
         "parking recharge",
         "lettre p"
+      ],
+      "it": [
+        "parcheggio",
+        "parcheggio con ricarica",
+        "posto auto",
+        "area di parcheggio",
+        "parcheggio auto elettriche",
+        "lettera p"
+      ],
+      "es": [
+        "aparcamiento",
+        "parking",
+        "plaza de aparcamiento",
+        "aparcamiento con recarga",
+        "aparcamiento para ve",
+        "letra p"
+      ],
+      "nl": [
+        "parkeren",
+        "parkeerplaats",
+        "parkeerplek",
+        "laadparkeerplaats",
+        "parkeerterrein",
+        "letter p"
+      ],
+      "pl": [
+        "parking",
+        "miejsce parkingowe",
+        "parking z ładowaniem",
+        "miejsce dla ev",
+        "postój",
+        "litera p"
       ]
     },
     "since": "0.2.0",
@@ -2311,6 +3976,38 @@
         "iso 15118",
         "authentification automatique",
         "brancher et recharger"
+      ],
+      "it": [
+        "plug and charge",
+        "plug & charge",
+        "iso 15118",
+        "autorizzazione automatica",
+        "certificato di contratto",
+        "collega e ricarica"
+      ],
+      "es": [
+        "plug and charge",
+        "plug & charge",
+        "iso 15118",
+        "autorización automática",
+        "certificado de contrato",
+        "enchufar y cargar"
+      ],
+      "nl": [
+        "plug and charge",
+        "plug & charge",
+        "iso 15118",
+        "automatische autorisatie",
+        "contractcertificaat",
+        "inpluggen en laden"
+      ],
+      "pl": [
+        "plug and charge",
+        "plug & charge",
+        "iso 15118",
+        "automatyczna autoryzacja",
+        "certyfikat umowy",
+        "podłącz i ładuj"
       ]
     },
     "since": "0.4.0",
@@ -2363,6 +4060,50 @@
         "iec 62196-3",
         "connecteur dc",
         "recharge rapide"
+      ],
+      "it": [
+        "ccs",
+        "ccs1",
+        "combo 1",
+        "j1772 combo",
+        "iec 62196-3",
+        "connettore dc",
+        "ricarica rapida",
+        "connettore",
+        "presa veicolo"
+      ],
+      "es": [
+        "ccs",
+        "ccs1",
+        "combo 1",
+        "j1772 combo",
+        "iec 62196-3",
+        "conector dc",
+        "carga rápida",
+        "conector",
+        "toma del vehículo"
+      ],
+      "nl": [
+        "ccs",
+        "ccs1",
+        "combo 1",
+        "j1772 combo",
+        "iec 62196-3",
+        "dc-stekker",
+        "snelladen",
+        "stekker",
+        "laadaansluiting"
+      ],
+      "pl": [
+        "ccs",
+        "ccs1",
+        "combo 1",
+        "j1772 combo",
+        "iec 62196-3",
+        "złącze dc",
+        "szybkie ładowanie",
+        "wtyczka",
+        "gniazdo pojazdu"
       ]
     },
     "since": "0.4.0",
@@ -2421,6 +4162,46 @@
         "iec 62196-3",
         "connecteur dc",
         "recharge rapide"
+      ],
+      "it": [
+        "ccs",
+        "ccs2",
+        "combo 2",
+        "iec 62196-3",
+        "connettore dc",
+        "ricarica rapida",
+        "connettore",
+        "presa veicolo"
+      ],
+      "es": [
+        "ccs",
+        "ccs2",
+        "combo 2",
+        "iec 62196-3",
+        "conector dc",
+        "carga rápida",
+        "conector",
+        "toma del vehículo"
+      ],
+      "nl": [
+        "ccs",
+        "ccs2",
+        "combo 2",
+        "iec 62196-3",
+        "dc-stekker",
+        "snelladen",
+        "stekker",
+        "laadaansluiting"
+      ],
+      "pl": [
+        "ccs",
+        "ccs2",
+        "combo 2",
+        "iec 62196-3",
+        "złącze dc",
+        "szybkie ładowanie",
+        "wtyczka",
+        "gniazdo pojazdu"
       ]
     },
     "since": "0.1.0",
@@ -2489,6 +4270,59 @@
         "230 v",
         "ac",
         "prise"
+      ],
+      "it": [
+        "cee",
+        "cee blu",
+        "iec 60309",
+        "iec 60309-2",
+        "campeggio",
+        "roulotte",
+        "camper",
+        "blu",
+        "230 v",
+        "presa industriale",
+        "ac",
+        "presa"
+      ],
+      "es": [
+        "cee",
+        "cee azul",
+        "iec 60309",
+        "iec 60309-2",
+        "camping",
+        "caravana",
+        "azul",
+        "230 v",
+        "toma industrial",
+        "ac",
+        "enchufe"
+      ],
+      "nl": [
+        "cee",
+        "cee blauw",
+        "iec 60309",
+        "iec 60309-2",
+        "camping",
+        "caravan",
+        "blauw",
+        "230 v",
+        "industriële contactdoos",
+        "ac",
+        "contactdoos"
+      ],
+      "pl": [
+        "cee",
+        "cee niebieskie",
+        "iec 60309",
+        "iec 60309-2",
+        "kemping",
+        "przyczepa kempingowa",
+        "niebieski",
+        "230 v",
+        "gniazdo przemysłowe",
+        "ac",
+        "gniazdo"
       ]
     },
     "since": "0.6.0",
@@ -2557,6 +4391,63 @@
         "400 v",
         "ac",
         "prise"
+      ],
+      "it": [
+        "cee",
+        "cee rossa",
+        "iec 60309",
+        "iec 60309-2",
+        "trifase",
+        "400 v",
+        "industriale",
+        "presa industriale",
+        "rossa",
+        "16 a",
+        "32 a",
+        "ac",
+        "presa"
+      ],
+      "es": [
+        "cee",
+        "cee rojo",
+        "iec 60309",
+        "iec 60309-2",
+        "trifásico",
+        "400 v",
+        "industrial",
+        "toma industrial",
+        "rojo",
+        "16 a",
+        "32 a",
+        "ac"
+      ],
+      "nl": [
+        "cee",
+        "cee rood",
+        "iec 60309",
+        "iec 60309-2",
+        "krachtstroom",
+        "driefasig",
+        "400 v",
+        "industrieel",
+        "rood",
+        "16 a",
+        "32 a",
+        "ac"
+      ],
+      "pl": [
+        "cee",
+        "cee czerwone",
+        "iec 60309",
+        "iec 60309-2",
+        "prąd trójfazowy",
+        "gniazdo siłowe",
+        "400 v",
+        "gniazdo przemysłowe",
+        "czerwony",
+        "16 a",
+        "32 a",
+        "ac"
       ]
     },
     "since": "0.6.0",
@@ -2618,6 +4509,39 @@
         "connecteur dc",
         "recharge rapide",
         "prise"
+      ],
+      "it": [
+        "chademo",
+        "jevs g105",
+        "iec 62196-3",
+        "connettore dc",
+        "ricarica rapida",
+        "connettore",
+        "presa veicolo"
+      ],
+      "es": [
+        "chademo",
+        "jevs g105",
+        "iec 62196-3",
+        "conector dc",
+        "carga rápida",
+        "conector"
+      ],
+      "nl": [
+        "chademo",
+        "jevs g105",
+        "iec 62196-3",
+        "dc-stekker",
+        "snelladen",
+        "stekker"
+      ],
+      "pl": [
+        "chademo",
+        "jevs g105",
+        "iec 62196-3",
+        "złącze dc",
+        "szybkie ładowanie",
+        "wtyczka"
       ]
     },
     "since": "0.2.0",
@@ -2679,6 +4603,46 @@
         "chine",
         "connecteur dc",
         "recharge rapide"
+      ],
+      "it": [
+        "gb/t dc",
+        "gbt dc",
+        "gb/t 20234.3",
+        "gb/t",
+        "gbt",
+        "cina",
+        "connettore dc",
+        "ricarica rapida"
+      ],
+      "es": [
+        "gb/t dc",
+        "gbt dc",
+        "gb/t 20234.3",
+        "gb/t",
+        "gbt",
+        "china",
+        "conector dc",
+        "carga rápida"
+      ],
+      "nl": [
+        "gb/t dc",
+        "gbt dc",
+        "gb/t 20234.3",
+        "gb/t",
+        "gbt",
+        "china",
+        "dc-stekker",
+        "snelladen"
+      ],
+      "pl": [
+        "gb/t dc",
+        "gbt dc",
+        "gb/t 20234.3",
+        "gb/t",
+        "gbt",
+        "chiny",
+        "złącze dc",
+        "szybkie ładowanie"
       ]
     },
     "since": "0.5.0",
@@ -2730,6 +4694,32 @@
         "phev",
         "hybride",
         "véhicule hybride"
+      ],
+      "it": [
+        "ibrida plug-in",
+        "phev",
+        "ibrido",
+        "veicolo ibrido",
+        "ibrida ricaricabile"
+      ],
+      "es": [
+        "híbrido enchufable",
+        "phev",
+        "híbrido",
+        "vehículo híbrido"
+      ],
+      "nl": [
+        "plug-in hybride",
+        "phev",
+        "hybride",
+        "hybride auto"
+      ],
+      "pl": [
+        "hybryda plug-in",
+        "phev",
+        "hybryda",
+        "pojazd hybrydowy",
+        "samochód hybrydowy"
       ]
     },
     "since": "0.4.0",
@@ -2789,6 +4779,50 @@
         "recharge poids lourds",
         "connecteur dc",
         "camion"
+      ],
+      "it": [
+        "mcs",
+        "megawatt charging system",
+        "ricarica megawatt",
+        "sae j3271",
+        "iec 63379",
+        "ricarica camion",
+        "mezzi pesanti",
+        "connettore dc",
+        "camion"
+      ],
+      "es": [
+        "mcs",
+        "megawatt charging system",
+        "carga de megavatios",
+        "sae j3271",
+        "iec 63379",
+        "carga de camiones",
+        "vehículos pesados",
+        "conector dc",
+        "camión"
+      ],
+      "nl": [
+        "mcs",
+        "megawatt charging system",
+        "megawattladen",
+        "sae j3271",
+        "iec 63379",
+        "vrachtwagen laden",
+        "zwaar transport",
+        "dc-stekker",
+        "vrachtwagen"
+      ],
+      "pl": [
+        "mcs",
+        "megawatt charging system",
+        "ładowanie megawatowe",
+        "sae j3271",
+        "iec 63379",
+        "ładowanie ciężarówek",
+        "pojazdy ciężkie",
+        "złącze dc",
+        "ciężarówka"
       ]
     },
     "since": "0.5.0",
@@ -2850,6 +4884,42 @@
         "connecteur tesla",
         "connecteur dc",
         "recharge rapide"
+      ],
+      "it": [
+        "nacs",
+        "j3400",
+        "sae j3400",
+        "north american charging standard",
+        "connettore tesla",
+        "connettore dc",
+        "ricarica rapida"
+      ],
+      "es": [
+        "nacs",
+        "j3400",
+        "sae j3400",
+        "north american charging standard",
+        "conector tesla",
+        "conector dc",
+        "carga rápida"
+      ],
+      "nl": [
+        "nacs",
+        "j3400",
+        "sae j3400",
+        "north american charging standard",
+        "tesla-stekker",
+        "dc-stekker",
+        "snelladen"
+      ],
+      "pl": [
+        "nacs",
+        "j3400",
+        "sae j3400",
+        "north american charging standard",
+        "złącze tesla",
+        "złącze dc",
+        "szybkie ładowanie"
       ]
     },
     "since": "0.4.0",
@@ -2909,6 +4979,46 @@
         "prise domestique",
         "ac",
         "prise"
+      ],
+      "it": [
+        "schuko",
+        "cee 7/3",
+        "din 49440",
+        "tipo f",
+        "presa schuko",
+        "presa domestica",
+        "ac",
+        "presa"
+      ],
+      "es": [
+        "schuko",
+        "cee 7/3",
+        "din 49440",
+        "tipo f",
+        "enchufe doméstico",
+        "ac",
+        "cargador portátil",
+        "enchufe"
+      ],
+      "nl": [
+        "schuko",
+        "cee 7/3",
+        "din 49440",
+        "type f",
+        "randaarde",
+        "stopcontact",
+        "ac",
+        "mobiele lader"
+      ],
+      "pl": [
+        "schuko",
+        "cee 7/3",
+        "din 49440",
+        "typ f",
+        "gniazdo domowe",
+        "ac",
+        "ładowarka przenośna",
+        "gniazdko"
       ]
     },
     "since": "0.2.0",
@@ -2964,6 +5074,44 @@
         "iec 62196-2",
         "connecteur ac",
         "prise type 1"
+      ],
+      "it": [
+        "tipo 1",
+        "j1772",
+        "sae j1772",
+        "iec 62196-2",
+        "yazaki",
+        "connettore ac",
+        "connettore tipo 1",
+        "presa veicolo"
+      ],
+      "es": [
+        "tipo 1",
+        "j1772",
+        "sae j1772",
+        "iec 62196-2",
+        "yazaki",
+        "conector ac",
+        "conector tipo 1"
+      ],
+      "nl": [
+        "type 1",
+        "j1772",
+        "sae j1772",
+        "iec 62196-2",
+        "yazaki",
+        "ac-stekker",
+        "stekker"
+      ],
+      "pl": [
+        "typ 1",
+        "j1772",
+        "sae j1772",
+        "iec 62196-2",
+        "yazaki",
+        "złącze ac",
+        "złącze typ 1",
+        "wtyczka"
       ]
     },
     "since": "0.3.0",
@@ -3024,6 +5172,52 @@
         "gb/t",
         "chine",
         "gbt"
+      ],
+      "it": [
+        "tipo 2",
+        "mennekes",
+        "iec 62196-2",
+        "presa tipo 2",
+        "connettore ac",
+        "connettore",
+        "gb/t",
+        "gbt",
+        "gb/t 20234.2",
+        "cina"
+      ],
+      "es": [
+        "tipo 2",
+        "mennekes",
+        "iec 62196-2",
+        "conector tipo 2",
+        "conector ac",
+        "gb/t",
+        "gbt",
+        "gb/t 20234.2",
+        "china"
+      ],
+      "nl": [
+        "type 2",
+        "mennekes",
+        "iec 62196-2",
+        "ac-stekker",
+        "stekker",
+        "gb/t",
+        "gbt",
+        "gb/t 20234.2",
+        "china"
+      ],
+      "pl": [
+        "typ 2",
+        "mennekes",
+        "iec 62196-2",
+        "złącze typ 2",
+        "złącze ac",
+        "wtyczka",
+        "gb/t",
+        "gbt",
+        "gb/t 20234.2",
+        "chiny"
       ]
     },
     "since": "0.1.0",
@@ -3051,6 +5245,99 @@
     },
     "pascal": "PlugType2"
   },
+  "plug-type-e": {
+    "category": "connector",
+    "meaning": {
+      "en": "Type E socket (CEE 7/5, French socket with an earth pin; household AC in France, Belgium, Poland and the Czech Republic), shown as the socket face seen from the front",
+      "de": "Typ-E-Steckdose (CEE 7/5, französische Steckdose mit Erdungsstift; Haushalt, AC, in Frankreich, Belgien, Polen und Tschechien), dargestellt als Steckdosenfläche von vorn"
+    },
+    "tags": {
+      "en": [
+        "type e",
+        "cee 7/5",
+        "french socket",
+        "earth pin",
+        "household socket",
+        "ac",
+        "granny charger",
+        "socket"
+      ],
+      "de": [
+        "typ e",
+        "cee 7/5",
+        "französische steckdose",
+        "erdungsstift",
+        "haushaltssteckdose",
+        "ac",
+        "notladekabel",
+        "steckdose"
+      ],
+      "fr": [
+        "type e",
+        "cee 7/5",
+        "prise française",
+        "prise domestique",
+        "broche de terre",
+        "ac",
+        "câble de recharge occasionnelle",
+        "prise"
+      ],
+      "it": [
+        "tipo e",
+        "cee 7/5",
+        "presa francese",
+        "spinotto di terra",
+        "presa domestica",
+        "ac",
+        "presa"
+      ],
+      "es": [
+        "tipo e",
+        "cee 7/5",
+        "enchufe francés",
+        "clavija de tierra",
+        "enchufe doméstico",
+        "ac",
+        "enchufe"
+      ],
+      "nl": [
+        "type e",
+        "cee 7/5",
+        "frans stopcontact",
+        "penaarde",
+        "aardpen",
+        "stopcontact",
+        "ac"
+      ],
+      "pl": [
+        "typ e",
+        "cee 7/5",
+        "gniazdo z bolcem",
+        "bolec uziemiający",
+        "gniazdo domowe",
+        "ac",
+        "gniazdko"
+      ]
+    },
+    "since": "0.10.0",
+    "aliases": [],
+    "standard": {
+      "norm": "CEE 7/5 (NF C 61-314)",
+      "source": "CEE 7/5 and NF C 61-314 not consulted; layout checked against a public drawing on Wikimedia Commons, retrieved 2026-11-17: \"File:Type E Socket.svg\" by Aeroid (public domain; socket face: round recess 39 mm, two contact holes on the horizontal centre line 19 mm apart, earth pin of 5 mm diameter 10.2 mm above the centre at 12 h), https://commons.wikimedia.org/wiki/File:Type_E_Socket.svg. Recess and holes as in plug-schuko (same drawing series); the earth pin scales to 4.7 above the centre and is drawn at y 7.25 as a ring r 1.5 (the drawing's 5 mm pin scales to r 1.15; slightly larger so that its counter stays open and it reads as a pin, not a hole), 2.75 below the rim. Socket face exception (design guide section 5): Type E has no vehicle inlet."
+    },
+    "osm": [
+      "socket:typee"
+    ],
+    "ocpi": [
+      "Connector.standard=DOMESTIC_E"
+    ],
+    "provenance": {
+      "createdBy": "ai",
+      "approvedBy": null,
+      "approvedOn": null
+    },
+    "pascal": "PlugTypeE"
+  },
   "power-kw": {
     "category": "power",
     "meaning": {
@@ -3075,6 +5362,30 @@
         "kilowatt",
         "puissance",
         "puissance de charge"
+      ],
+      "it": [
+        "kw",
+        "kilowatt",
+        "potenza",
+        "potenza di ricarica"
+      ],
+      "es": [
+        "kw",
+        "kilovatio",
+        "potencia",
+        "potencia de carga"
+      ],
+      "nl": [
+        "kw",
+        "kilowatt",
+        "vermogen",
+        "laadvermogen"
+      ],
+      "pl": [
+        "kw",
+        "kilowat",
+        "moc",
+        "moc ładowania"
       ]
     },
     "since": "0.2.0",
@@ -3121,6 +5432,34 @@
         "panne réseau",
         "pas de courant",
         "délestage"
+      ],
+      "it": [
+        "blackout",
+        "interruzione di corrente",
+        "mancanza di corrente",
+        "guasto alla rete",
+        "senza corrente"
+      ],
+      "es": [
+        "apagón",
+        "corte de luz",
+        "sin corriente",
+        "fallo de red",
+        "corte de suministro"
+      ],
+      "nl": [
+        "stroomstoring",
+        "stroomuitval",
+        "geen stroom",
+        "netstoring",
+        "black-out"
+      ],
+      "pl": [
+        "awaria zasilania",
+        "brak prądu",
+        "przerwa w dostawie prądu",
+        "blackout",
+        "awaria sieci"
       ]
     },
     "since": "0.5.0",
@@ -3165,6 +5504,39 @@
         "recharge ad hoc",
         "paiement ad hoc",
         "scanner"
+      ],
+      "it": [
+        "codice qr",
+        "qr code",
+        "ricarica con qr code",
+        "scansiona per ricaricare",
+        "ricarica ad hoc",
+        "pagamento ad hoc",
+        "afir"
+      ],
+      "es": [
+        "código qr",
+        "recarga con código qr",
+        "escanear para cargar",
+        "carga ad hoc",
+        "pago ad hoc",
+        "afir"
+      ],
+      "nl": [
+        "qr-code",
+        "laden met qr-code",
+        "scannen om te laden",
+        "ad hoc laden",
+        "ad hoc betalen",
+        "afir"
+      ],
+      "pl": [
+        "kod qr",
+        "ładowanie kodem qr",
+        "zeskanuj i ładuj",
+        "ładowanie ad hoc",
+        "płatność ad hoc",
+        "afir"
       ]
     },
     "since": "0.4.0",
@@ -3211,6 +5583,42 @@
         "enregistré",
         "officiel",
         "régulateur"
+      ],
+      "it": [
+        "registro ufficiale",
+        "ente regolatore",
+        "verificato",
+        "registrato",
+        "dati pubblici",
+        "registro punti di ricarica",
+        "ufficiale"
+      ],
+      "es": [
+        "registro oficial",
+        "regulador",
+        "verificado",
+        "registrado",
+        "datos oficiales",
+        "registro de puntos de recarga",
+        "oficial"
+      ],
+      "nl": [
+        "officieel register",
+        "toezichthouder",
+        "geverifieerd",
+        "geregistreerd",
+        "overheidsdata",
+        "laadpaalregister",
+        "officieel"
+      ],
+      "pl": [
+        "oficjalny rejestr",
+        "regulator",
+        "zweryfikowany",
+        "zarejestrowany",
+        "dane urzędowe",
+        "rejestr stacji ładowania",
+        "urzędowy"
       ]
     },
     "since": "0.8.0",
@@ -3256,6 +5664,38 @@
         "avertissement",
         "danger",
         "défaut électrique"
+      ],
+      "it": [
+        "segnala guasto",
+        "segnala un problema",
+        "guasto",
+        "avviso",
+        "pericolo",
+        "guasto elettrico"
+      ],
+      "es": [
+        "informar de avería",
+        "reportar un problema",
+        "avería",
+        "aviso",
+        "peligro",
+        "fallo eléctrico"
+      ],
+      "nl": [
+        "storing melden",
+        "probleem melden",
+        "storing",
+        "waarschuwing",
+        "gevaar",
+        "elektrische storing"
+      ],
+      "pl": [
+        "zgłoś awarię",
+        "zgłoś problem",
+        "awaria",
+        "ostrzeżenie",
+        "niebezpieczeństwo",
+        "usterka elektryczna"
       ]
     },
     "since": "0.3.0",
@@ -3306,6 +5746,43 @@
         "cadenas",
         "barrière",
         "verrouillé"
+      ],
+      "it": [
+        "accesso limitato",
+        "privato",
+        "solo clienti",
+        "accesso",
+        "lucchetto",
+        "sbarra",
+        "bloccato"
+      ],
+      "es": [
+        "acceso restringido",
+        "privado",
+        "solo clientes",
+        "acceso",
+        "candado",
+        "barrera",
+        "bloqueado"
+      ],
+      "nl": [
+        "beperkte toegang",
+        "privé",
+        "alleen klanten",
+        "toegang",
+        "slot",
+        "slagboom",
+        "hangslot",
+        "afgesloten"
+      ],
+      "pl": [
+        "ograniczony dostęp",
+        "prywatny",
+        "tylko dla klientów",
+        "dostęp",
+        "kłódka",
+        "szlaban",
+        "zablokowany"
       ]
     },
     "since": "0.5.0",
@@ -3360,6 +5837,39 @@
         "opérateur",
         "réseau",
         "interopérabilité"
+      ],
+      "it": [
+        "roaming",
+        "fornitore",
+        "operatore",
+        "rete",
+        "interoperabilità",
+        "globale"
+      ],
+      "es": [
+        "roaming",
+        "itinerancia",
+        "proveedor",
+        "operador",
+        "red",
+        "interoperabilidad",
+        "global"
+      ],
+      "nl": [
+        "roaming",
+        "aanbieder",
+        "provider",
+        "operator",
+        "netwerk",
+        "interoperabiliteit"
+      ],
+      "pl": [
+        "roaming",
+        "dostawca",
+        "operator",
+        "sieć",
+        "interoperacyjność",
+        "globalny"
       ]
     },
     "since": "0.2.0",
@@ -3406,6 +5916,42 @@
         "trajet",
         "itinéraire vers la borne",
         "arrêt de recharge"
+      ],
+      "it": [
+        "percorso",
+        "navigazione",
+        "indicazioni",
+        "percorso alla colonnina",
+        "naviga",
+        "viaggio",
+        "sosta di ricarica"
+      ],
+      "es": [
+        "ruta",
+        "navegación",
+        "cómo llegar",
+        "ruta al cargador",
+        "navegar",
+        "viaje",
+        "parada de recarga"
+      ],
+      "nl": [
+        "route",
+        "navigatie",
+        "routebeschrijving",
+        "route naar laadpaal",
+        "navigeren",
+        "reis",
+        "laadstop"
+      ],
+      "pl": [
+        "trasa",
+        "nawigacja",
+        "wskazówki dojazdu",
+        "trasa do ładowarki",
+        "nawiguj",
+        "podróż",
+        "postój na ładowanie"
       ]
     },
     "since": "0.3.0",
@@ -3453,6 +5999,42 @@
         "centre commercial",
         "chariot",
         "recharge"
+      ],
+      "it": [
+        "ricarica durante la spesa",
+        "spesa",
+        "supermercato",
+        "centro commerciale",
+        "negozio",
+        "carrello",
+        "ricarica"
+      ],
+      "es": [
+        "recarga mientras compras",
+        "compras",
+        "supermercado",
+        "centro comercial",
+        "comercio",
+        "carrito",
+        "recarga"
+      ],
+      "nl": [
+        "laden tijdens het winkelen",
+        "winkelen",
+        "supermarkt",
+        "winkelcentrum",
+        "winkel",
+        "winkelwagen",
+        "laden"
+      ],
+      "pl": [
+        "ładowanie podczas zakupów",
+        "zakupy",
+        "supermarket",
+        "centrum handlowe",
+        "sklep",
+        "wózek sklepowy",
+        "ładowanie"
       ]
     },
     "since": "0.4.0",
@@ -3504,6 +6086,42 @@
         "pv",
         "panneau solaire",
         "soleil"
+      ],
+      "it": [
+        "ricarica solare",
+        "solare",
+        "fotovoltaico",
+        "pv",
+        "surplus fotovoltaico",
+        "pannello solare",
+        "sole"
+      ],
+      "es": [
+        "carga solar",
+        "solar",
+        "fotovoltaica",
+        "pv",
+        "excedente fotovoltaico",
+        "panel solar",
+        "sol"
+      ],
+      "nl": [
+        "zonneladen",
+        "zonne-energie",
+        "zonnepanelen",
+        "pv",
+        "pv-overschot",
+        "zonnepaneel",
+        "zon"
+      ],
+      "pl": [
+        "ładowanie solarne",
+        "ładowanie z fotowoltaiki",
+        "fotowoltaika",
+        "pv",
+        "nadwyżka z pv",
+        "panel słoneczny",
+        "słońce"
       ]
     },
     "since": "0.2.0",
@@ -3551,6 +6169,40 @@
         "historique de disponibilité",
         "temps de fonctionnement",
         "temps d'arrêt"
+      ],
+      "it": [
+        "uptime",
+        "affidabilità",
+        "stato di funzionamento",
+        "storico disponibilità",
+        "cronologia stato",
+        "tempo di inattività",
+        "disponibilità"
+      ],
+      "es": [
+        "uptime",
+        "tiempo de actividad",
+        "fiabilidad",
+        "estado operativo",
+        "historial de disponibilidad",
+        "cronología de estado",
+        "tiempo de inactividad"
+      ],
+      "nl": [
+        "uptime",
+        "betrouwbaarheid",
+        "bedrijfsstatus",
+        "beschikbaarheidshistorie",
+        "statustijdlijn",
+        "downtime"
+      ],
+      "pl": [
+        "uptime",
+        "niezawodność",
+        "stan działania",
+        "historia dostępności",
+        "oś czasu statusu",
+        "czas przestoju"
       ]
     },
     "since": "0.5.0",
@@ -3594,6 +6246,34 @@
         "prêt",
         "main",
         "prise"
+      ],
+      "it": [
+        "disponibile",
+        "libero",
+        "pronto",
+        "mano",
+        "spina"
+      ],
+      "es": [
+        "disponible",
+        "libre",
+        "listo",
+        "mano",
+        "enchufe"
+      ],
+      "nl": [
+        "beschikbaar",
+        "vrij",
+        "klaar",
+        "hand",
+        "stekker"
+      ],
+      "pl": [
+        "dostępny",
+        "wolny",
+        "gotowy",
+        "ręka",
+        "wtyczka"
       ]
     },
     "since": "0.1.0",
@@ -3639,6 +6319,41 @@
         "hors d'usage",
         "point d’exclamation",
         "alerte"
+      ],
+      "it": [
+        "guasto",
+        "in avaria",
+        "errore",
+        "rotto",
+        "difettoso",
+        "punto esclamativo",
+        "allarme"
+      ],
+      "es": [
+        "averiado",
+        "avería",
+        "error",
+        "roto",
+        "defectuoso",
+        "signo de exclamación",
+        "alerta"
+      ],
+      "nl": [
+        "defect",
+        "storing",
+        "fout",
+        "kapot",
+        "uitroepteken",
+        "waarschuwing"
+      ],
+      "pl": [
+        "awaria",
+        "uszkodzony",
+        "błąd",
+        "zepsuty",
+        "niesprawny",
+        "wykrzyknik",
+        "alert"
       ]
     },
     "since": "0.1.0",
@@ -3674,6 +6389,30 @@
       "fr": [
         "occupé",
         "en cours d'utilisation"
+      ],
+      "it": [
+        "occupato",
+        "in uso",
+        "in carica",
+        "ricarica in corso"
+      ],
+      "es": [
+        "ocupado",
+        "en uso",
+        "cargando",
+        "en carga"
+      ],
+      "nl": [
+        "bezet",
+        "in gebruik",
+        "bezig",
+        "laden"
+      ],
+      "pl": [
+        "zajęty",
+        "w użyciu",
+        "ładowanie",
+        "trwa ładowanie"
       ]
     },
     "since": "0.1.0",
@@ -3718,6 +6457,42 @@
         "maintenance",
         "fermé",
         "prise barrée"
+      ],
+      "it": [
+        "fuori servizio",
+        "non disponibile",
+        "non funzionante",
+        "manutenzione",
+        "chiuso",
+        "dismesso",
+        "spina barrata"
+      ],
+      "es": [
+        "fuera de servicio",
+        "no disponible",
+        "inoperativo",
+        "mantenimiento",
+        "cerrado",
+        "desmantelado",
+        "enchufe tachado"
+      ],
+      "nl": [
+        "buiten gebruik",
+        "niet beschikbaar",
+        "buiten werking",
+        "onderhoud",
+        "gesloten",
+        "ontmanteld",
+        "doorgestreepte stekker"
+      ],
+      "pl": [
+        "nieczynny",
+        "niedostępny",
+        "wyłączony z użytku",
+        "konserwacja",
+        "zamknięty",
+        "wycofany z eksploatacji",
+        "przekreślona wtyczka"
       ]
     },
     "since": "0.1.0",
@@ -3756,6 +6531,33 @@
         "file d'attente",
         "attente",
         "temps d'attente"
+      ],
+      "it": [
+        "in coda",
+        "coda",
+        "attesa",
+        "tempo di attesa",
+        "auto in attesa"
+      ],
+      "es": [
+        "cola",
+        "en cola",
+        "espera",
+        "tiempo de espera",
+        "coches esperando"
+      ],
+      "nl": [
+        "wachtrij",
+        "wachten",
+        "wachttijd",
+        "rij",
+        "wachtende auto's"
+      ],
+      "pl": [
+        "kolejka",
+        "oczekiwanie",
+        "czas oczekiwania",
+        "samochody w kolejce"
       ]
     },
     "since": "0.1.0",
@@ -3792,6 +6594,30 @@
         "réservé",
         "réservation",
         "lettre r"
+      ],
+      "it": [
+        "prenotato",
+        "riservato",
+        "prenotazione",
+        "lettera r"
+      ],
+      "es": [
+        "reservado",
+        "reserva",
+        "reservada",
+        "letra r"
+      ],
+      "nl": [
+        "gereserveerd",
+        "reservering",
+        "geboekt",
+        "letter r"
+      ],
+      "pl": [
+        "zarezerwowany",
+        "rezerwacja",
+        "zarezerwowane",
+        "litera r"
       ]
     },
     "since": "0.1.0",
@@ -3831,6 +6657,30 @@
         "inconnu",
         "statut inconnu",
         "pas de données"
+      ],
+      "it": [
+        "sconosciuto",
+        "nessun dato",
+        "stato sconosciuto",
+        "offline"
+      ],
+      "es": [
+        "desconocido",
+        "sin datos",
+        "estado desconocido",
+        "sin conexión"
+      ],
+      "nl": [
+        "onbekend",
+        "geen gegevens",
+        "status onbekend",
+        "offline"
+      ],
+      "pl": [
+        "nieznany",
+        "brak danych",
+        "status nieznany",
+        "offline"
       ]
     },
     "since": "0.1.0",
@@ -3874,6 +6724,37 @@
         "éclairage public",
         "recharge en voirie",
         "recharge"
+      ],
+      "it": [
+        "ricarica da lampione",
+        "lampione",
+        "illuminazione pubblica",
+        "palo della luce",
+        "ricarica su strada",
+        "ricarica"
+      ],
+      "es": [
+        "recarga en farola",
+        "farola",
+        "alumbrado público",
+        "recarga en la calle",
+        "recarga en vía pública",
+        "recarga"
+      ],
+      "nl": [
+        "lantaarnpaalladen",
+        "lantaarnpaal",
+        "straatverlichting",
+        "laden aan de straat",
+        "laden"
+      ],
+      "pl": [
+        "ładowanie z latarni",
+        "latarnia",
+        "latarnia uliczna",
+        "oświetlenie uliczne",
+        "ładowanie przy ulicy",
+        "ładowanie"
       ]
     },
     "since": "0.4.0",
@@ -3921,6 +6802,39 @@
         "camion",
         "poids lourd",
         "véhicule utilitaire"
+      ],
+      "it": [
+        "camion elettrico",
+        "e-truck",
+        "camion",
+        "autocarro",
+        "veicolo commerciale",
+        "mezzo pesante",
+        "veicolo merci"
+      ],
+      "es": [
+        "camión eléctrico",
+        "e-truck",
+        "camión",
+        "vehículo comercial",
+        "vehículo pesado",
+        "vehículo de mercancías"
+      ],
+      "nl": [
+        "elektrische vrachtwagen",
+        "e-truck",
+        "vrachtwagen",
+        "vrachtauto",
+        "bedrijfsvoertuig",
+        "zwaar voertuig"
+      ],
+      "pl": [
+        "ciężarówka elektryczna",
+        "e-truck",
+        "ciężarówka",
+        "samochód ciężarowy",
+        "pojazd użytkowy",
+        "pojazd ciężarowy"
       ]
     },
     "since": "0.4.0",
@@ -3967,6 +6881,38 @@
         "chargeur mural",
         "borne domestique",
         "recharge"
+      ],
+      "it": [
+        "wallbox",
+        "wall box",
+        "caricatore domestico",
+        "colonnina domestica",
+        "caricatore a parete",
+        "ricarica"
+      ],
+      "es": [
+        "wallbox",
+        "wall box",
+        "cargador doméstico",
+        "cargador de pared",
+        "punto de recarga doméstico",
+        "recarga"
+      ],
+      "nl": [
+        "wallbox",
+        "thuislader",
+        "laadpaal thuis",
+        "wandlader",
+        "laadstation aan de muur",
+        "laden"
+      ],
+      "pl": [
+        "wallbox",
+        "wall box",
+        "ładowarka domowa",
+        "ładowarka ścienna",
+        "naścienna stacja ładowania",
+        "ładowanie"
       ]
     },
     "since": "0.2.0",

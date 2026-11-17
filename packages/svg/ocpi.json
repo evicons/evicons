@@ -9,6 +9,7 @@
   "Connector.power_type=AC_3_PHASE": "current-ac",
   "Connector.power_type=DC": "current-dc",
   "Connector.standard=CHADEMO": "plug-chademo",
+  "Connector.standard=DOMESTIC_E": "plug-type-e",
   "Connector.standard=DOMESTIC_F": "plug-schuko",
   "Connector.standard=GBT_AC": "plug-type-2",
   "Connector.standard=GBT_DC": "plug-gbt-dc",

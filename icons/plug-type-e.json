@@ -1,0 +1,92 @@
+{
+  "category": "connector",
+  "meaning": {
+    "en": "Type E socket (CEE 7/5, French socket with an earth pin; household AC in France, Belgium, Poland and the Czech Republic), shown as the socket face seen from the front",
+    "de": "Typ-E-Steckdose (CEE 7/5, französische Steckdose mit Erdungsstift; Haushalt, AC, in Frankreich, Belgien, Polen und Tschechien), dargestellt als Steckdosenfläche von vorn"
+  },
+  "tags": {
+    "en": [
+      "type e",
+      "cee 7/5",
+      "french socket",
+      "earth pin",
+      "household socket",
+      "ac",
+      "granny charger",
+      "socket"
+    ],
+    "de": [
+      "typ e",
+      "cee 7/5",
+      "französische steckdose",
+      "erdungsstift",
+      "haushaltssteckdose",
+      "ac",
+      "notladekabel",
+      "steckdose"
+    ],
+    "fr": [
+      "type e",
+      "cee 7/5",
+      "prise française",
+      "prise domestique",
+      "broche de terre",
+      "ac",
+      "câble de recharge occasionnelle",
+      "prise"
+    ],
+    "it": [
+      "tipo e",
+      "cee 7/5",
+      "presa francese",
+      "spinotto di terra",
+      "presa domestica",
+      "ac",
+      "presa"
+    ],
+    "es": [
+      "tipo e",
+      "cee 7/5",
+      "enchufe francés",
+      "clavija de tierra",
+      "enchufe doméstico",
+      "ac",
+      "enchufe"
+    ],
+    "nl": [
+      "type e",
+      "cee 7/5",
+      "frans stopcontact",
+      "penaarde",
+      "aardpen",
+      "stopcontact",
+      "ac"
+    ],
+    "pl": [
+      "typ e",
+      "cee 7/5",
+      "gniazdo z bolcem",
+      "bolec uziemiający",
+      "gniazdo domowe",
+      "ac",
+      "gniazdko"
+    ]
+  },
+  "since": "0.10.0",
+  "aliases": [],
+  "standard": {
+    "norm": "CEE 7/5 (NF C 61-314)",
+    "source": "CEE 7/5 and NF C 61-314 not consulted; layout checked against a public drawing on Wikimedia Commons, retrieved 2026-11-17: \"File:Type E Socket.svg\" by Aeroid (public domain; socket face: round recess 39 mm, two contact holes on the horizontal centre line 19 mm apart, earth pin of 5 mm diameter 10.2 mm above the centre at 12 h), https://commons.wikimedia.org/wiki/File:Type_E_Socket.svg. Recess and holes as in plug-schuko (same drawing series); the earth pin scales to 4.7 above the centre and is drawn at y 7.25 as a ring r 1.5 (the drawing's 5 mm pin scales to r 1.15; slightly larger so that its counter stays open and it reads as a pin, not a hole), 2.75 below the rim. Socket face exception (design guide section 5): Type E has no vehicle inlet."
+  },
+  "osm": [
+    "socket:typee"
+  ],
+  "ocpi": [
+    "Connector.standard=DOMESTIC_E"
+  ],
+  "provenance": {
+    "createdBy": "ai",
+    "approvedBy": null,
+    "approvedOn": null
+  }
+}

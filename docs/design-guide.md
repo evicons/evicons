@@ -99,7 +99,7 @@ Exceptions do not relax any lint rule. They mark a deliberate deviation for revi
 - A connector icon always shows the **vehicle inlet seen from the front**, the way the driver sees the charging socket on the car.
 - The outline follows the inlet's shape, with keying and flattening in their standard position (Type 2: flat side on top).
 - Contacts are outline circles in their standard positions. Power contacts are larger than signal contacts.
-- **Exception, socket face seen from the front:** a connector that exists only as a socket and never as a vehicle inlet (Schuko, CEE 7/3; the CEE industrial sockets, IEC 60309-2) shows the socket face as seen from the front, the way the user sees it on the wall. Its metadata still has `standard`.
+- **Exception, socket face seen from the front:** a connector that exists only as a socket and never as a vehicle inlet (Schuko, CEE 7/3; Type E, CEE 7/5; the CEE industrial sockets, IEC 60309-2) shows the socket face as seen from the front, the way the user sees it on the wall. Its metadata still has `standard`.
 - Each connector icon has `standard: { norm, source }` in its metadata. The source must name the figure the layout was checked against. Before approval the contact count, sizes and positions are checked against that source, not only visually (see `docs/acceptance/`).
 
 ### Type 2 reference geometry (from `plug-type-2`)
@@ -190,6 +190,14 @@ Socket face seen from the front (exception above).
 - Contact holes: solid discs `r = 0.5` (two-arc paths, section 2) at `(7.625, 12)` and `(16.375, 12)`, 8.75 apart (19 mm on 39 mm). Holes are discs, not rings; plain dots are too faint at 16 px.
 - Earthing clips: `M10.75 5.75h2.5` and `M10.75 18.25h2.5`, just inside the rim, not touching it.
 - Smallest gaps: clip end to outline 2.63 (clip middle 2.75), hole to outline 4.125.
+
+### Type E reference geometry (from `plug-type-e`)
+
+Socket face seen from the front (exception above). Recess and contact holes as in Schuko (same drawing series, Wikimedia Commons "File:Type E Socket.svg").
+
+- Outline and contact holes: as `plug-schuko` (circle `R = 9`, solid discs at `(7.625, 12)` and `(16.375, 12)`).
+- Earth pin: ring `r = 1.5` at `(12, 7.25)` (drawing: 5 mm pin 10.2 mm above the centre, which scales to r 1.15 at 4.7 above the centre; drawn slightly larger so that its counter stays open). The pin is male and drawn as a ring, the holes are female and drawn as discs. No earthing clips: that is the difference to Schuko at 16 px.
+- Smallest gaps: pin to outline 2.75, pin to hole 4.46.
 
 ### CEE reference geometry (from `plug-cee-blue` and `plug-cee-red`)
 

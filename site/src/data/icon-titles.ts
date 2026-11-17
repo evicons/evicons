@@ -62,6 +62,7 @@ export const iconTitles: Record<string, { en: string; de: string }> = {
   'plug-mcs': { en: 'MCS connector (Megawatt Charging System)', de: 'MCS-Stecker (Megawatt Charging System)' },
   'plug-nacs': { en: 'NACS connector (SAE J3400)', de: 'NACS-Stecker (SAE J3400)' },
   'plug-schuko': { en: 'Schuko socket', de: 'Schuko-Steckdose' },
+  'plug-type-e': { en: 'Type E socket', de: 'Typ-E-Steckdose' },
   'plug-type-1': { en: 'Type 1 connector (J1772)', de: 'Typ-1-Stecker (J1772)' },
   'plug-type-2': { en: 'Type 2 connector', de: 'Typ-2-Stecker' },
   'power-kw': { en: 'Charging power (kW)', de: 'Ladeleistung (kW)' },

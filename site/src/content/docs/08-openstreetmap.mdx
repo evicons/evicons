@@ -41,6 +41,7 @@ A bare key (`socket:type2`, `operator`, `charging_station:output`) stands for an
 | `socket:type2` | `plug-type-2` | `PlugType2` |
 | `socket:type2_cable` | `plug-type-2` | `PlugType2` |
 | `socket:type2_combo` | `plug-ccs2` | `PlugCcs2` |
+| `socket:typee` | `plug-type-e` | `PlugTypeE` |
 | `socket:unknown` | `charging-plug` | `ChargingPlug` |
 | `support=street_lamp` | `streetlight-charging` | `StreetlightCharging` |
 | `wheelchair=yes` | `accessible-charging` | `AccessibleCharging` |
@@ -48,7 +49,7 @@ A bare key (`socket:type2`, `operator`, `charging_station:output`) stands for an
 - `socket:tesla_supercharger` is discouraged on the wiki; use `socket:nacs`, `socket:type2_cable`/`socket:type2_combo` or `socket:gb_ac`/`socket:gb_dc` by region. It is not mapped; like any other socket without an icon, it falls back to `charging-plug` (`socket:unknown`).
 - `socket:gb_ac` maps to `plug-type-2`: the GB/T 20234.2 AC inlet has the same face as Type 2.
 - `wheelchair=yes` maps to `accessible-charging`: on the wiki it means full, unrestricted wheelchair access (step-free); `wheelchair=limited` and `wheelchair=no` are not mapped. `support=street_lamp` (the feature is supported by a street lamp) maps to `streetlight-charging`, the charging point built into a street light.
-- `plug-schuko`, `plug-cee-blue` and `plug-cee-red` show the socket face seen from the front, not a vehicle inlet: in OSM these are sockets at the station, used with a portable charging cable.
+- `plug-schuko`, `plug-type-e`, `plug-cee-blue` and `plug-cee-red` show the socket face seen from the front, not a vehicle inlet: in OSM these are sockets at the station, used with a portable charging cable.
 
 ### Tags to icons
 
@@ -93,6 +94,7 @@ import {
   PlugSchuko,
   PlugType1,
   PlugType2,
+  PlugTypeE,
   type EvIconComponent,
 } from '@evicons/react'
 
@@ -113,6 +115,7 @@ const socketComponents: Record<string, EvIconComponent> = {
   'socket:type2': PlugType2,
   'socket:type2_cable': PlugType2,
   'socket:type2_combo': PlugCcs2,
+  'socket:typee': PlugTypeE,
 }
 
 /** A socket value is a count of sockets or `yes` (OSM wiki Key:socket). */

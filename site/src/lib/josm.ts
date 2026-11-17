@@ -97,6 +97,7 @@ export const CONNECTOR_PRIORITY = [
   'plug-cee-red',
   'plug-cee-blue',
   'plug-schuko',
+  'plug-type-e',
 ] as const
 
 export const CONNECTOR_FALLBACK = 'charging-plug'
