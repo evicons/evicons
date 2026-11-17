@@ -3,6 +3,7 @@
 // engines see the name, meaning, standard and code; the raw SVG is linked as an image for image search.
 import { Code } from 'astro:components'
 import CopyButton from './CopyButton.astro'
+import InstallPicker from './InstallPicker.astro'
 import { categoryLabels, iconTitles } from '../data/icon-titles'
 import Base from '../layouts/Base.astro'
 import type { IconDetails, IconEntry } from '../lib/icons'
@@ -49,6 +50,7 @@ const t = de
       source: 'Quelle auf GitHub',
       use: 'Verwenden',
       install: 'Installieren',
+      installPackage: 'Paket',
       react: 'React',
       vue: 'Vue',
       svg: 'SVG',
@@ -87,6 +89,7 @@ const t = de
       source: 'Source on GitHub',
       use: 'Use it',
       install: 'Install',
+      installPackage: 'Package',
       react: 'React',
       vue: 'Vue',
       svg: 'SVG',
@@ -124,7 +127,7 @@ const svgAttrs = {
 
 const install = 'npm i @evicons/react'
 const reactCode = `import { ${icon.pascal} } from '@evicons/react'\n\n<${icon.pascal} size={24} title="${title}" />`
-const vueCode = `<!-- npm i @evicons/vue -->\n<script setup>\nimport { ${icon.pascal} } from '@evicons/vue'\n</script>\n\n<template>\n  <${icon.pascal} :size="24" title="${title}" />\n</template>`
+const vueCode = `<script setup>\nimport { ${icon.pascal} } from '@evicons/vue'\n</script>\n\n<template>\n  <${icon.pascal} :size="24" title="${title}" />\n</template>`
 const spriteCode = `<!-- ${t.spriteComment} -->\n<svg width="24" height="24" aria-hidden="true"><use href="/sprite.svg#evicon-${icon.name}" /></svg>`
 const themes = { light: 'github-light-default', dark: 'github-dark-default' } as const
 // Same comment colour fix as the Markdown code blocks (astro.config.mjs): GitHub's light comment grey fails AA.
@@ -253,12 +256,21 @@ const githubSource = `https://github.com/evicons/evicons/blob/main/icons/${icon.
       <div class="min-w-0">
         <h2 class="text-xl">{t.use}</h2>
         <h3 class="mt-5 text-sm font-medium text-muted">{t.install}</h3>
-        <div class={snippetClass} data-snippet>
-          <div class="snippet-head">
-            <span class="snippet-lang">Shell</span>
-            <CopyButton label={t.copyLabel('Shell')} class="min-w-[6.5rem] hover:bg-bg" lang={lang} track="copy_install" />
+        <div data-install>
+          <InstallPicker label={t.installPackage} class="mt-3" />
+          <div class="snippet not-prose mt-2" data-snippet>
+            <div class="snippet-head">
+              <span class="snippet-lang">Shell</span>
+              <CopyButton text={install} label={t.copyLabel('Shell')} class="min-w-[6.5rem] hover:bg-bg" lang={lang} track="copy_install" />
+            </div>
+            {
+              ['react', 'vue', 'svg'].map((id) => (
+                <div data-install-panel={id} hidden={id !== 'react'}>
+                  <Code code={`npm i @evicons/${id}`} lang="sh" themes={themes} transformers={transformers} />
+                </div>
+              ))
+            }
           </div>
-          <Code code={install} lang="sh" themes={themes} transformers={transformers} />
         </div>
         <h3 class="mt-5 text-sm font-medium text-muted">{t.react}</h3>
         <div class={snippetClass} data-snippet>

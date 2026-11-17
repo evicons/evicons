@@ -49,6 +49,22 @@ test('theme toggle is correct in dark mode before hydration', async ({ page }) =
   await expect(toggle.locator('.theme-glyph-light')).toBeHidden()
 })
 
+test('the package switch changes the install line and what the copy button copies', async ({ page, context }) => {
+  await context.grantPermissions(['clipboard-read', 'clipboard-write'])
+  for (const path of ['/', '/de', '/icons/plug-type-2']) {
+    await page.goto(path)
+    const install = page.locator('[data-install]').first()
+    await expect(install.getByRole('button', { name: 'React', exact: true })).toHaveAttribute('aria-pressed', 'true')
+    for (const [name, id] of [['Vue', 'vue'], ['SVG', 'svg'], ['React', 'react']] as const) {
+      await install.getByRole('button', { name, exact: true }).click()
+      await expect(install.getByRole('button', { name, exact: true })).toHaveAttribute('aria-pressed', 'true')
+      await expect(install.locator('[data-install-panel]:not([hidden])')).toHaveText(`npm i @evicons/${id}`)
+      await install.locator('button[data-copy-button]').click()
+      expect(await page.evaluate(() => navigator.clipboard.readText()), `${path} ${id}`).toBe(`npm i @evicons/${id}`)
+    }
+  }
+})
+
 test('copy button copies the install line and announces it', async ({ page, context }) => {
   await context.grantPermissions(['clipboard-read', 'clipboard-write'])
   await page.goto('/')

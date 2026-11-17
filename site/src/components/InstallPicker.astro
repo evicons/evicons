@@ -1,0 +1,50 @@
+---
+// Package switch for an install line: React, Vue or SVG. It sits inside a `[data-install]` container and shows
+// the matching `[data-install-panel]`, and points the container's copy button at the chosen command.
+interface Props {
+  /** Accessible name of the group, for example "Package". */
+  label: string
+  class?: string
+}
+
+const { label, class: className } = Astro.props
+const packages = [
+  { id: 'react', name: 'React' },
+  { id: 'vue', name: 'Vue' },
+  { id: 'svg', name: 'SVG' },
+]
+---
+
+<div role="group" aria-label={label} class:list={['inline-flex gap-1 rounded-md border border-border bg-bg p-0.5', className]}>
+  {
+    packages.map(({ id, name }) => (
+      <button
+        type="button"
+        data-install-pick={id}
+        data-track={`install_${id}`}
+        aria-pressed={id === 'react' ? 'true' : 'false'}
+        class="rounded px-2.5 py-1 text-sm text-muted hover:text-fg aria-pressed:bg-surface aria-pressed:font-medium aria-pressed:text-fg"
+      >
+        {name}
+      </button>
+    ))
+  }
+</div>
+
+<script>
+  for (const button of document.querySelectorAll<HTMLButtonElement>('button[data-install-pick]')) {
+    button.addEventListener('click', () => {
+      const root = button.closest('[data-install]')
+      const id = button.dataset.installPick!
+      if (!root) return
+      for (const other of root.querySelectorAll<HTMLButtonElement>('button[data-install-pick]')) {
+        other.setAttribute('aria-pressed', String(other === button))
+      }
+      for (const panel of root.querySelectorAll<HTMLElement>('[data-install-panel]')) {
+        panel.hidden = panel.dataset.installPanel !== id
+      }
+      const copy = root.querySelector<HTMLButtonElement>('button[data-copy-button]')
+      if (copy) copy.dataset.copy = `npm i @evicons/${id}`
+    })
+  }
+</script>

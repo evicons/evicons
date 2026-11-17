@@ -20,6 +20,7 @@ import {
 } from '@evicons/react'
 import Logo from '../../../../brand/logo.svg'
 import CopyButton from '../CopyButton.astro'
+import InstallPicker from '../InstallPicker.astro'
 import IconStrip from './IconStrip.astro'
 import MapMock from './MapMock.astro'
 import Base from '../../layouts/Base.astro'
@@ -42,6 +43,7 @@ const s = de
       description: `${count} kostenlose Kontur-Icons für E-Mobilität und Lade-Apps: Ladesäule, Typ 2, CCS2, Ladestatus und Kartenmarker. SVG und React, MIT-Lizenz.`,
       h1: 'Kontur-Icons fürs E-Auto-Laden.',
       copyInstall: 'Installationsbefehl kopieren',
+      installPackage: 'Paket',
       browse: 'Icons ansehen',
       browseHref: '/de/icons',
       docs: 'Anleitung (Englisch)',
@@ -78,6 +80,7 @@ const s = de
       description: tagline,
       h1: 'Outline icons for EV charging.',
       copyInstall: 'Copy install command',
+      installPackage: 'Package',
       browse: 'Browse icons',
       browseHref: '/icons',
       docs: 'Read the docs',
@@ -202,11 +205,18 @@ const market = de
           }
         </p>
 
-        <div
-          class="mt-8 inline-flex max-w-full items-center gap-3 rounded-lg border border-border bg-surface py-2 pl-4 pr-2"
-        >
-          <code class="overflow-x-auto font-mono text-sm">{install}</code>
-          <CopyButton text={install} label={s.copyInstall} class="min-w-[6.5rem] hover:bg-bg" lang={lang} track="copy_install" />
+        <div class="mt-8" data-install>
+          <InstallPicker label={s.installPackage} />
+          <div
+            class="mt-2 flex w-fit max-w-full items-center gap-3 rounded-lg border border-border bg-surface py-2 pl-4 pr-2"
+          >
+            {
+              ['react', 'vue', 'svg'].map((id) => (
+                <code class="overflow-x-auto font-mono text-sm" data-install-panel={id} hidden={id !== 'react'}>{`npm i @evicons/${id}`}</code>
+              ))
+            }
+            <CopyButton text={install} label={s.copyInstall} class="min-w-[6.5rem] hover:bg-bg" lang={lang} track="copy_install" />
+          </div>
         </div>
 
         <div class="mt-6 flex flex-wrap gap-3">
