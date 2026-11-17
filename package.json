@@ -13,9 +13,9 @@
     "test": "vitest run",
     "lint:icons": "node tools/lint-icons.ts",
     "build:icons": "node tools/build-icons.ts",
-    "build": "npm run build:icons && npm run build -w @evicons/react",
+    "build": "npm run build:icons && npm run build -w @evicons/react && npm run build -w @evicons/vue",
     "preview": "node tools/build-preview.ts",
-    "typecheck": "tsc -p tools/tsconfig.json && tsc -p packages/react/tsconfig.build.json --noEmit",
+    "typecheck": "tsc -p tools/tsconfig.json && tsc -p packages/react/tsconfig.build.json --noEmit && tsc -p packages/vue/tsconfig.build.json --noEmit",
     "test:smoke": "vitest run --config vitest.consumer.config.ts",
     "test:consumer-next": "node tools/test-consumer-next.ts",
     "snap": "node tools/snap-icons.ts",
@@ -30,6 +30,7 @@
     "@testing-library/react": "^16.3.3",
     "@types/node": "^26.6.5",
     "@types/react": "^19.3.0",
+    "@vue/test-utils": "^2.4.6",
     "esbuild": "^0.28.2",
     "jsdom": "^29.1.1",
     "lucide-static": "^1.60.0",
@@ -39,6 +40,7 @@
     "svgo": "^4.1.0",
     "svgson": "^5.3.1",
     "typescript": "^7.0.2",
-    "vitest": "^5.0.5"
+    "vitest": "^5.0.5",
+    "vue": "^3.5.45"
   }
 }

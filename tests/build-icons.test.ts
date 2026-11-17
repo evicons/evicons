@@ -58,6 +58,34 @@ test('module renders', async () => {
   expect(mod.default).toBe(mod.TestRing)
 })
 
+test('writes the same modules for Vue when vueDir is set', async () => {
+  const vueDir = join(tmp, 'vue-src')
+  mkdirSync(vueDir)
+  for (const f of ['create-ev-icon.ts', 'types.ts']) copyFileSync(join(ROOT, 'packages/vue/src', f), join(vueDir, f))
+  mkdirSync(join(vueDir, 'icons'))
+  writeFileSync(join(vueDir, 'icons/old.ts'), 'x')
+  buildIcons({ ...opts(), vueDir })
+  expect(existsSync(join(vueDir, 'icons/old.ts'))).toBe(false)
+  expect(read('vue-src/index.ts')).toBe(read('react-src/index.ts'))
+  for (const f of readdirSync(join(reactDir, 'icons'))) expect(read('vue-src/icons', f)).toBe(read('react-src/icons', f))
+  const { h, createSSRApp } = await import('vue')
+  const { renderToString } = await import('vue/server-renderer')
+  const mod = await import(/* @vite-ignore */ join(vueDir, 'icons/test-ring.ts'))
+  expect(mod.default).toBe(mod.TestRing)
+  const html = await renderToString(createSSRApp({ render: () => h(mod.TestRing) }))
+  expect(html).toContain('r="9"')
+  expect(html).toContain('evicon-test-ring')
+})
+
+test('the checked-in Vue sources match the React ones', () => {
+  const react = join(ROOT, 'packages/react/src')
+  const vue = join(ROOT, 'packages/vue/src')
+  expect(readFileSync(join(vue, 'index.ts'), 'utf8')).toBe(readFileSync(join(react, 'index.ts'), 'utf8'))
+  const files = readdirSync(join(react, 'icons')).sort()
+  expect(readdirSync(join(vue, 'icons')).sort()).toEqual(files)
+  for (const f of files) expect(readFileSync(join(vue, 'icons', f), 'utf8'), f).toBe(readFileSync(join(react, 'icons', f), 'utf8'))
+})
+
 test('sprite has one symbol per icon', () => {
   buildIcons(opts())
   const sprite = read('svg-pkg/sprite.svg')
@@ -193,7 +221,7 @@ test('refuses to build when lint fails', () => {
 
 test('package LICENSE files are byte-identical copies of the root LICENSE', () => {
   const root = readFileSync(join(ROOT, 'LICENSE'))
-  for (const pkg of ['react', 'svg']) {
+  for (const pkg of ['react', 'svg', 'vue']) {
     const file = join(ROOT, 'packages', pkg, 'LICENSE')
     expect(existsSync(file), `${file} is missing`).toBe(true)
     expect(readFileSync(file), `${file} differs from the root LICENSE`).toEqual(root)
