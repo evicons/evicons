@@ -10,6 +10,7 @@ test('docs has every section with a working table of contents', async ({ page })
   expect(targets).toEqual([
     '#install',
     '#react',
+    '#vue',
     '#svg',
     '#colouring',
     '#status',

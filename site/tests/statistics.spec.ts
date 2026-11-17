@@ -24,7 +24,7 @@ test('the tracker is served from our own origin', async ({ request }) => {
 
 test('named events sit on the copy and download buttons', async ({ page }) => {
   await page.goto('/icons/plug-type-2')
-  for (const name of ['download_svg', 'copy_install', 'copy_react', 'copy_svg', 'copy_sprite']) {
+  for (const name of ['download_svg', 'copy_install', 'copy_react', 'copy_vue', 'copy_svg', 'copy_sprite']) {
     await expect(page.locator(`main [data-track="${name}"]`), name).toHaveCount(1)
   }
   await page.goto('/')

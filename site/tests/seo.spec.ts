@@ -31,7 +31,7 @@ test('every icon has an English and a German page, each linking the other', asyn
 
 test('icon page: title, heading, structured data and the SVG as an image', async ({ page, request }) => {
   await page.goto('/icons/plug-type-2')
-  await expect(page).toHaveTitle('Type 2 connector icon – SVG and React | EVicons')
+  await expect(page).toHaveTitle('Type 2 connector icon – SVG, React and Vue | EVicons')
   await expect(page.locator('h1')).toHaveText('Type 2 connector icon')
   const description = await page.locator('meta[name="description"]').getAttribute('content')
   expect(description!.length).toBeLessThanOrEqual(170)
@@ -56,7 +56,7 @@ test('icon page: title, heading, structured data and the SVG as an image', async
 
 test('German icon page is German and switches to English', async ({ page }) => {
   await page.goto('/de/icons/charging-station')
-  await expect(page).toHaveTitle('Ladesäule Icon – SVG und React | EVicons')
+  await expect(page).toHaveTitle('Ladesäule Icon – SVG, React und Vue | EVicons')
   await expect(page.locator('h1')).toHaveText('Ladesäule Icon')
   await expect(page.getByRole('button', { name: 'Shell-Code kopieren' })).toHaveText('Kopieren')
   await page.getByRole('link', { name: 'EN, English' }).click()

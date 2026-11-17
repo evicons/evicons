@@ -77,6 +77,16 @@ test('deep link ?icon=status-queue opens the panel', async ({ page }) => {
 test('SVG and Sprite tabs show the markup', async ({ page }) => {
   await open(page, '/icons?icon=plug-ccs2')
   const panel = panelOf(page)
+  await panel.getByRole('tab', { name: 'Vue' }).click()
+  await expect(panel.getByRole('tabpanel')).toHaveText(
+    [
+      '<script setup>',
+      "import { PlugCcs2 } from '@evicons/vue'",
+      '</script>',
+      '',
+      '<PlugCcs2 :size="24" title="CCS Combo 2" />',
+    ].join('\n'),
+  )
   await panel.getByRole('tab', { name: 'SVG' }).click()
   await expect(panel.getByRole('tabpanel')).toContainText('<svg xmlns="http://www.w3.org/2000/svg"')
   await panel.getByRole('tab', { name: 'Sprite' }).click()

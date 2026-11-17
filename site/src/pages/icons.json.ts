@@ -39,7 +39,7 @@ export const GET: APIRoute = () => {
     version: pkg.version,
     homepage: site,
     repository: 'https://github.com/evicons/evicons',
-    packages: { react: '@evicons/react', svg: '@evicons/svg' },
+    packages: { react: '@evicons/react', vue: '@evicons/vue', svg: '@evicons/svg' },
     viewBox: '0 0 24 24',
     strokeWidth: 1.5,
     count: icons.length,

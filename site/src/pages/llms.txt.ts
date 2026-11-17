@@ -31,7 +31,7 @@ Use the icons alongside text, not instead of it. General UI icons (arrows, menus
 
 ## Install
 
-- npm: \`@evicons/react\` (React components, tree-shakable, named exports in PascalCase, e.g. \`ChargingStation\`) and \`@evicons/svg\` (plain SVG files, \`sprite.svg\` and \`icons.json\` with metadata).
+- npm: \`@evicons/react\` (React components, tree-shakable, named exports in PascalCase, e.g. \`ChargingStation\`) , \`@evicons/vue\` (Vue 3 components, same names and props) and \`@evicons/svg\` (plain SVG files, \`sprite.svg\` and \`icons.json\` with metadata).
 - Every icon as a file: \`${site}/svg/<name>.svg\`.
 - Machine-readable index of all icons with metadata, SVG markup and URLs: ${site}/icons.json
 - Iconify: prefix \`evicons\`, same names (e.g. \`evicons:charging-station\`); SVG at https://api.iconify.design/evicons/<name>.svg

@@ -32,11 +32,23 @@ function snippets(icon: IconEntry, title: string, size: number, stroke: number, 
     colour !== 'currentColor' ? `color="${colour}"` : '',
     `title="${title}"`,
   ].filter(Boolean)
+  const vueProps = [
+    `:size="${size}"`,
+    stroke !== 1.5 ? `:stroke-width="${stroke}"` : '',
+    colour !== 'currentColor' ? `color="${colour}"` : '',
+    `title="${title}"`,
+  ].filter(Boolean)
   return [
     {
       id: 'react',
       label: 'React',
       code: `import { ${icon.pascal} } from '@evicons/react'\n\n<${icon.pascal} ${props.join(' ')} />`,
+      wrap: true,
+    },
+    {
+      id: 'vue',
+      label: 'Vue',
+      code: `<script setup>\nimport { ${icon.pascal} } from '@evicons/vue'\n</script>\n\n<${icon.pascal} ${vueProps.join(' ')} />`,
       wrap: true,
     },
     { id: 'svg', label: 'SVG', code: icon.svg },

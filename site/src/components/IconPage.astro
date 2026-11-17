@@ -28,8 +28,8 @@ const svgUrl = new URL(`/svg/${icon.name}.svg`, site).href
 const t = de
   ? {
       heading: `${title} Icon`,
-      docTitle: `${title} Icon – SVG und React | EVicons`,
-      description: `Kostenloses ${title}-Icon für Lade-Apps und E-Mobilität: ${meaning}. Kontur-SVG und React-Komponente, MIT-Lizenz.`,
+      docTitle: `${title} Icon – SVG, React und Vue | EVicons`,
+      description: `Kostenloses ${title}-Icon für Lade-Apps und E-Mobilität: ${meaning}. Kontur-SVG, React- und Vue-Komponente, MIT-Lizenz.`,
       home: 'Icons',
       homeHref: '/de/icons',
       categoryHref: `/de/icons#${icon.category}`,
@@ -37,7 +37,7 @@ const t = de
       onLight: 'Auf hellem Grund',
       onDark: 'Auf dunklem Grund',
       facts: 'Details',
-      component: 'React-Komponente',
+      component: 'Komponente (React, Vue)',
       file: 'SVG-Datei',
       categoryLabel: 'Kategorie',
       since: 'Seit Version',
@@ -50,6 +50,7 @@ const t = de
       use: 'Verwenden',
       install: 'Installieren',
       react: 'React',
+      vue: 'Vue',
       svg: 'SVG',
       sprite: 'Sprite',
       spriteComment: 'sprite.svg aus @evicons/svg in den public-Ordner der App kopieren',
@@ -65,8 +66,8 @@ const t = de
     }
   : {
       heading: `${title} icon`,
-      docTitle: `${title} icon – SVG and React | EVicons`,
-      description: `Free ${title.toLowerCase()} icon for EV charging apps: ${meaning}. Outline SVG and React component, MIT licensed.`,
+      docTitle: `${title} icon – SVG, React and Vue | EVicons`,
+      description: `Free ${title.toLowerCase()} icon for EV charging apps: ${meaning}. Outline SVG, React and Vue component, MIT licensed.`,
       home: 'Icons',
       homeHref: '/icons',
       categoryHref: '/icons',
@@ -74,7 +75,7 @@ const t = de
       onLight: 'On a light background',
       onDark: 'On a dark background',
       facts: 'Details',
-      component: 'React component',
+      component: 'Component (React, Vue)',
       file: 'SVG file',
       categoryLabel: 'Category',
       since: 'Since version',
@@ -87,6 +88,7 @@ const t = de
       use: 'Use it',
       install: 'Install',
       react: 'React',
+      vue: 'Vue',
       svg: 'SVG',
       sprite: 'Sprite',
       spriteComment: "Copy sprite.svg from @evicons/svg to your app's public folder",
@@ -106,8 +108,8 @@ const description =
   t.description.length <= 170
     ? t.description
     : de
-      ? `Kostenloses ${title}-Icon für Lade-Apps und E-Mobilität. Kontur-SVG und React-Komponente, MIT-Lizenz.`
-      : `Free ${title.toLowerCase()} icon for EV charging apps. Outline SVG and React component, MIT licensed.`
+      ? `Kostenloses ${title}-Icon für Lade-Apps und E-Mobilität. Kontur-SVG, React- und Vue-Komponente, MIT-Lizenz.`
+      : `Free ${title.toLowerCase()} icon for EV charging apps. Outline SVG, React and Vue component, MIT licensed.`
 
 const inner = icon.svg.replace(/^[\s\S]*?<svg[^>]*>/, '').replace(/<\/svg>\s*$/, '').trim()
 const svgAttrs = {
@@ -122,6 +124,7 @@ const svgAttrs = {
 
 const install = 'npm i @evicons/react'
 const reactCode = `import { ${icon.pascal} } from '@evicons/react'\n\n<${icon.pascal} size={24} title="${title}" />`
+const vueCode = `<script setup>\nimport { ${icon.pascal} } from '@evicons/vue'\n</script>\n\n<${icon.pascal} :size="24" title="${title}" />`
 const spriteCode = `<!-- ${t.spriteComment} -->\n<svg width="24" height="24" aria-hidden="true"><use href="/sprite.svg#evicon-${icon.name}" /></svg>`
 const themes = { light: 'github-light-default', dark: 'github-dark-default' } as const
 // Same comment colour fix as the Markdown code blocks (astro.config.mjs): GitHub's light comment grey fails AA.
@@ -264,6 +267,14 @@ const githubSource = `https://github.com/evicons/evicons/blob/main/icons/${icon.
             <CopyButton label={t.copyLabel('React')} class="min-w-[6.5rem] hover:bg-bg" lang={lang} track="copy_react" />
           </div>
           <Code code={reactCode} lang="tsx" themes={themes} transformers={transformers} />
+        </div>
+        <h3 class="mt-5 text-sm font-medium text-muted">{t.vue}</h3>
+        <div class={snippetClass} data-snippet>
+          <div class="snippet-head">
+            <span class="snippet-lang">Vue</span>
+            <CopyButton label={t.copyLabel('Vue')} class="min-w-[6.5rem] hover:bg-bg" lang={lang} track="copy_vue" />
+          </div>
+          <Code code={vueCode} lang="vue" themes={themes} transformers={transformers} />
         </div>
         <h3 class="mt-5 text-sm font-medium text-muted">{t.svg}</h3>
         <div class={snippetClass} data-snippet>
