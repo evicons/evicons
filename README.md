@@ -17,6 +17,7 @@ EVicons covers **only** e-mobility. General UI icons (arrows, menu, search, clos
 |---|---|
 | [`@evicons/react`](packages/react) | React components, tree-shakable ESM with TypeScript types |
 | [`@evicons/svg`](packages/svg) | Raw SVG files, an SVG sprite and `icons.json` (names, meanings, tags, aliases) |
+| [`@evicons/vue`](packages/vue) | Vue 3 components, tree-shakable ESM with TypeScript types |
 
 ## Installation
 
@@ -28,6 +29,10 @@ npm install @evicons/react
 npm install @evicons/svg
 ```
 
+```sh
+npm install @evicons/vue
+```
+
 ### Iconify
 
 EVicons is also on [Iconify](https://iconify.design) with the prefix `evicons` and the same icon names, so it works wherever Iconify does: the Iconify components for React, Vue and Svelte, `astro-icon`, UnoCSS, the Tailwind CSS plugin and the Iconify plugins for Figma and code editors.
@@ -36,7 +41,7 @@ EVicons is also on [Iconify](https://iconify.design) with the prefix `evicons` a
 <iconify-icon icon="evicons:charging-station"></iconify-icon>
 ```
 
-Every icon is also served as `https://api.iconify.design/evicons/<name>.svg`. Iconify picks up new releases on its own schedule, so the newest icons can arrive there a few days after npm. Filled map markers need inline SVG or the React components (see [Map markers](#map-markers)).
+Every icon is also served as `https://api.iconify.design/evicons/<name>.svg`. Iconify picks up new releases on its own schedule, so the newest icons can arrive there a few days after npm. Filled map markers need inline SVG or the React or Vue components (see [Map markers](#map-markers)).
 
 ## Usage (React)
 
@@ -150,6 +155,22 @@ export function StationWithStatus() {
 
 Use a badge size of half the base icon and give it a fixed screen stroke (`absoluteStrokeWidth` with `strokeWidth={1.5}`, or `strokeWidth={2}` without it), otherwise the scaled-down stroke looks faint. The badge covers part of the base icon; on a busy background, put it on a circle in your page's background colour. EVicons does not reserve a badge corner in the icons yet.
 
+## Usage (Vue)
+
+`@evicons/vue` has the same icons, names and props as the React package, for Vue 3.5 or later and Nuxt.
+
+```vue
+<script setup lang="ts">
+import { PlugType2 } from '@evicons/vue'
+</script>
+
+<template>
+  <span><PlugType2 :size="20" title="Type 2" /> Type 2 · 22 kW</span>
+</template>
+```
+
+Props: `size`, `strokeWidth`, `absoluteStrokeWidth` and `title`, with the same defaults and accessibility rules as in React. `class`, `style`, `aria-*`, `data-*` and listeners fall through to the `<svg>`; slot content is rendered after the icon's shapes. Single icons can be imported from `@evicons/vue/icons/<name>`. The components render on the server (Nuxt, `vue/server-renderer`); the `<title>` id comes from Vue's `useId`.
+
 ## Usage (SVG)
 
 The files are in `svg/<name>.svg` of `@evicons/svg` and are exported as `@evicons/svg/<name>.svg`. To colour an icon with CSS, inline the SVG or use the sprite:
@@ -170,7 +191,7 @@ The same index with SVG markup and URLs, without installing anything: [evicons.d
 
 ### Connectors
 
-| Name | React component | Meaning |
+| Name | Component | Meaning |
 |---|---|---|
 | `plug-type-2` | `PlugType2` | Type 2 connector (IEC 62196-2, "Mennekes"), shown as the vehicle inlet face; the GB/T 20234.2 AC inlet (China) has the same face |
 | `plug-type-1` | `PlugType1` | Type 1 AC connector (SAE J1772, IEC 62196-2 Type 1; North America, Japan), shown as the vehicle inlet face |
@@ -186,7 +207,7 @@ The same index with SVG markup and URLs, without installing anything: [evicons.d
 
 ### Stations and sites
 
-| Name | React component | Meaning |
+| Name | Component | Meaning |
 |---|---|---|
 | `charging-station` | `ChargingStation` | Charging station: a public or private charge point for electric vehicles |
 | `charging-plug` | `ChargingPlug` | Charging plug in general, seen from the side with its cable (no specific connector type) |
@@ -213,7 +234,7 @@ The same index with SVG markup and URLs, without installing anything: [evicons.d
 
 ### Power and energy
 
-| Name | React component | Meaning |
+| Name | Component | Meaning |
 |---|---|---|
 | `current-ac` | `CurrentAc` | Alternating current (AC) charging |
 | `current-dc` | `CurrentDc` | Direct current (DC) charging |
@@ -231,7 +252,7 @@ The same index with SVG markup and URLs, without installing anything: [evicons.d
 
 ### Vehicles
 
-| Name | React component | Meaning |
+| Name | Component | Meaning |
 |---|---|---|
 | `car-plugged` | `CarPlugged` | Electric car connected to a charging cable |
 | `car-electric` | `CarElectric` | Electric car (battery electric vehicle) |
@@ -245,7 +266,7 @@ The same index with SVG markup and URLs, without installing anything: [evicons.d
 
 ### Payment
 
-| Name | React component | Meaning |
+| Name | Component | Meaning |
 |---|---|---|
 | `charging-card` | `ChargingCard` | Charging card: an RFID card that starts a charging session |
 | `app-charging` | `AppCharging` | Charging by app: start and pay a charging session with a smartphone app |
@@ -263,7 +284,7 @@ The same index with SVG markup and URLs, without installing anything: [evicons.d
 
 Status icons share a round frame; the sign inside carries the meaning.
 
-| Name | React component | Sign | Meaning |
+| Name | Component | Sign | Meaning |
 |---|---|---|---|
 | `status-available` | `StatusAvailable` | Hand holding a plug | Available: the charge point is free and ready to charge |
 | `status-occupied` | `StatusOccupied` | Clock | Occupied: the charge point is in use by another vehicle |
@@ -281,7 +302,7 @@ Map pins with a sign in the head (the cluster pin leaves it empty for a count), 
 
 The charging marker is named `marker-charging` (`MarkerCharging`), not `marker`, so that it does not clash with the `Marker` component of map libraries (MapLibre, Mapbox, Leaflet, Google Maps).
 
-| Name | React component | Sign | Meaning |
+| Name | Component | Sign | Meaning |
 |---|---|---|---|
 | `marker-charging` | `MarkerCharging` | Lightning bolt | Map marker for a charging point |
 | `marker-ac` | `MarkerAc` | Letters AC | Map marker for an AC charging point |
@@ -751,6 +772,7 @@ A connector whose `standard` has no icon gets none from the lookup; show `chargi
 | | Supported |
 |---|---|
 | React | 18 and 19 (peer dependency `^18.0.0 \|\| ^19.0.0`) |
+| Vue | 3.5 or later (peer dependency `^3.5.0`); in Nuxt from 3.13, the first release with Vue 3.5 |
 | Server rendering | Node.js 20 or later (tested on 20 and 24); works in React Server Components, no `'use client'` needed |
 | Module format | ESM only, no CommonJS build; `require()` works on Node.js versions with `require(esm)` (20.19+, 22.12+) |
 | TypeScript | Types included |

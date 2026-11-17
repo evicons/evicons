@@ -3,12 +3,13 @@ id: install
 title: Install
 ---
 
-EVicons ships as two packages with the same icons and one shared version. Use the React components in React apps and the SVG package everywhere else.
+EVicons ships as three packages with the same icons and one shared version. Use the React or Vue components in those apps and the SVG package everywhere else.
 
 | Package | Contents |
 |---|---|
 | `@evicons/react` | React components, tree-shakable ESM with TypeScript types |
 | `@evicons/svg` | Raw SVG files, an SVG sprite and `icons.json` (names, meanings, tags, aliases) |
+| `@evicons/vue` | Vue 3 components, tree-shakable ESM with TypeScript types |
 
 ```sh
 npm i @evicons/react
@@ -16,6 +17,10 @@ npm i @evicons/react
 
 ```sh
 npm i @evicons/svg
+```
+
+```sh
+npm i @evicons/vue
 ```
 
 EVicons covers only e-mobility and EV charging. Keep a general icon set such as Lucide for arrows, menus and other UI icons; the two sit side by side.
@@ -28,13 +33,14 @@ EVicons is also on [Iconify](https://iconify.design) with the prefix `evicons` a
 <iconify-icon icon="evicons:charging-station"></iconify-icon>
 ```
 
-Every icon is also served as `https://api.iconify.design/evicons/<name>.svg`. Iconify picks up new releases on its own schedule, so the newest icons can arrive there a few days after npm. Filled map markers need inline SVG or the React components (see [Map markers](#markers)).
+Every icon is also served as `https://api.iconify.design/evicons/<name>.svg`. Iconify picks up new releases on its own schedule, so the newest icons can arrive there a few days after npm. Filled map markers need inline SVG or the React or Vue components (see [Map markers](#markers)).
 
 ### Compatibility
 
 | | Supported |
 |---|---|
 | React | 18 and 19 (peer dependency `^18.0.0 \|\| ^19.0.0`) |
+| Vue | 3.5 or later (peer dependency `^3.5.0`); in Nuxt from 3.13, the first release with Vue 3.5 |
 | Server rendering | Node.js 20 or later (tested on 20 and 24); works in React Server Components, no `'use client'` needed |
 | Module format | ESM only, no CommonJS build; `require()` works on Node.js versions with `require(esm)` (20.19+, 22.12+) |
 | TypeScript | Types included |

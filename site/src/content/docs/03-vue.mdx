@@ -1,0 +1,46 @@
+---
+id: vue
+title: Vue
+---
+
+`@evicons/vue` has the same icons, names and props as the React package, for Vue 3.5 or later and Nuxt. Import an icon by its component name and put it next to the text it belongs to.
+
+```sh
+npm i @evicons/vue
+```
+
+```vue
+<script setup lang="ts">
+import { PlugType2, StatusAvailable } from '@evicons/vue'
+</script>
+
+<template>
+  <span>
+    <PlugType2 :size="20" title="Type 2" /> Type 2 · 22 kW
+    <StatusAvailable :size="20" class="text-green-600" title="Available" />
+  </span>
+</template>
+```
+
+Every icon is its own module and the package has `sideEffects: false`, so bundlers only include the icons you import. A single icon can also be imported directly, as a named or default export:
+
+```ts
+import PlugType2 from '@evicons/vue/icons/plug-type-2'
+```
+
+### Vue props
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `size` | `number \| string` | `24` | Width and height of the `<svg>`. Numbers are pixels; strings are passed as is (for example `"1em"`). |
+| `strokeWidth` | `number \| string` | `1.5` | Stroke width in icon units. Written `stroke-width` or `strokeWidth` in templates. |
+| `absoluteStrokeWidth` | `boolean` | `false` | Keep the stroke at `strokeWidth` screen pixels at every size, as in [React](#react). |
+| `title` | `string` | | Accessible name, rendered as `<title>` (see [Accessibility](#accessibility)). |
+
+Everything else falls through to the `<svg>` element: `class` is added after the built-in classes `evicon` and `evicon-<name>`, and `style`, `aria-*`, `data-*`, `role` and listeners such as `@click` are passed on. Content in the default slot is rendered after the icon's shapes. A template ref on an icon gives the component instance; the `<svg>` element is its `$el`.
+
+The prop type is exported as `EvIconProps`, the component type as `EvIconComponent`. Accessibility works as in React: without `title`, `aria-label` or `aria-labelledby` the icon gets `aria-hidden="true"`; with a `title` it gets `role="img"` and is named by the `<title>` element.
+
+### Server rendering and Nuxt
+
+The components render on the server, in Nuxt and with `renderToString` from `vue/server-renderer`. The id that links a `<title>` to its `<svg>` comes from Vue's `useId`, so it is unique and matches between server and client. Import the icons where you use them; there is no Nuxt module or global registration, which keeps unused icons out of the bundle.
