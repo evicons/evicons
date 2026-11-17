@@ -128,3 +128,14 @@ test('ssr markup without a name', async () => {
 })
 
 test('component name', () => expect((TestRing as { name?: string }).name).toBe('TestRing'))
+
+test('kebab-case props in templates', async () => {
+  const { compile } = await import('vue')
+  const Parent = { components: { TestRing }, render: compile('<TestRing size="1em" stroke-width="2" absolute-stroke-width />') }
+  const svg = mount(Parent).element as SVGSVGElement
+  expect(svg).toHaveAttribute('width', '1em')
+  expect(svg).toHaveAttribute('stroke-width', '2')
+  expect(svg.querySelector('circle')).toHaveAttribute('vector-effect', 'non-scaling-stroke')
+  expect(svg).not.toHaveAttribute('size')
+  expect(svg).not.toHaveAttribute('absolute-stroke-width')
+})
