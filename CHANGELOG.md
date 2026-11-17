@@ -6,6 +6,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
+## [0.10.1] - 2026-11-17
+
+### Changed
+
+- `motorcycle-electric` is redrawn as a scooter: small wheels, a seat, a footboard and a handlebar, with the small bolt above the seat. The old drawing (two large wheels and a frame) read as a bicycle next to `bike-electric`. Name, meaning and metadata are unchanged.
+- `power-outage` is redrawn as the full bolt with a cross at its lower right. The torn bolt of 0.7.0 lost its crack at 16 px and read as a plain thin bolt. Name, meaning and metadata are unchanged.
+
 ## [0.10.0] - 2026-11-17
 
 ### Added
@@ -158,7 +165,8 @@ First version, not published to npm. The first published release is 0.2.0.
   - `status-unknown`: unknown (question mark)
   - `status-queue`: queue (two cars, one behind the other)
 
-[Unreleased]: https://github.com/evicons/evicons/compare/v0.10.0...HEAD
+[Unreleased]: https://github.com/evicons/evicons/compare/v0.10.1...HEAD
+[0.10.1]: https://github.com/evicons/evicons/releases/tag/v0.10.1
 [0.10.0]: https://github.com/evicons/evicons/releases/tag/v0.10.0
 [0.9.0]: https://github.com/evicons/evicons/releases/tag/v0.9.0
 [0.8.0]: https://github.com/evicons/evicons/releases/tag/v0.8.0
