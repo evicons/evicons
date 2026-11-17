@@ -6,6 +6,18 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
+## [0.11.0] - 2026-11-17
+
+### Added
+
+- 5 icons, 90 in total:
+  - `energy-kwh` (energy): energy in kilowatt-hours, the letters kWh in the EVicons letter set (new letter h), next to `power-kw`.
+  - `battery-level` (energy): the state of charge of the vehicle battery, a battery with three bars and room for more.
+  - `scheduled-charging` (power): charging at a planned time, a calendar sheet with the small bolt; `charging-time` (the clock) stays the duration.
+  - `status-blocked` (status): the charge point cannot be reached, the bar of the no-entry sign in the status frame. OCPI `EVSE.status=BLOCKED`.
+  - `status-planned` (status): planned or under construction, three dots in the status frame. OCPI `EVSE.status=PLANNED`.
+- `@evicons/svg/ocpi.json` maps the two new status values; eight of the nine `EVSE.status` values now have an icon (`REMOVED` has none). The status colour examples in the docs gain `--status-blocked` and `--status-planned`.
+
 ## [0.10.1] - 2026-11-17
 
 ### Changed
@@ -165,7 +177,8 @@ First version, not published to npm. The first published release is 0.2.0.
   - `status-unknown`: unknown (question mark)
   - `status-queue`: queue (two cars, one behind the other)
 
-[Unreleased]: https://github.com/evicons/evicons/compare/v0.10.1...HEAD
+[Unreleased]: https://github.com/evicons/evicons/compare/v0.11.0...HEAD
+[0.11.0]: https://github.com/evicons/evicons/releases/tag/v0.11.0
 [0.10.1]: https://github.com/evicons/evicons/releases/tag/v0.10.1
 [0.10.0]: https://github.com/evicons/evicons/releases/tag/v0.10.0
 [0.9.0]: https://github.com/evicons/evicons/releases/tag/v0.9.0
