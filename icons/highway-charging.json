@@ -30,6 +30,39 @@
       "aire de repos",
       "voie rapide",
       "recharge"
+    ],
+    "it": [
+      "ricarica in autostrada",
+      "autostrada",
+      "area di servizio",
+      "area di sosta",
+      "superstrada",
+      "ricarica"
+    ],
+    "es": [
+      "recarga en autopista",
+      "autopista",
+      "autovía",
+      "área de servicio",
+      "área de descanso",
+      "recarga"
+    ],
+    "nl": [
+      "laden langs de snelweg",
+      "snelweg",
+      "autosnelweg",
+      "verzorgingsplaats",
+      "wegrestaurant",
+      "laden"
+    ],
+    "pl": [
+      "ładowanie przy autostradzie",
+      "autostrada",
+      "droga ekspresowa",
+      "mop",
+      "miejsce obsługi podróżnych",
+      "parking",
+      "ładowanie"
     ]
   },
   "since": "0.4.0",

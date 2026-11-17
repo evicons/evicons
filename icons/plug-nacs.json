@@ -35,6 +35,42 @@
       "connecteur tesla",
       "connecteur dc",
       "recharge rapide"
+    ],
+    "it": [
+      "nacs",
+      "j3400",
+      "sae j3400",
+      "north american charging standard",
+      "connettore tesla",
+      "connettore dc",
+      "ricarica rapida"
+    ],
+    "es": [
+      "nacs",
+      "j3400",
+      "sae j3400",
+      "north american charging standard",
+      "conector tesla",
+      "conector dc",
+      "carga rápida"
+    ],
+    "nl": [
+      "nacs",
+      "j3400",
+      "sae j3400",
+      "north american charging standard",
+      "tesla-stekker",
+      "dc-stekker",
+      "snelladen"
+    ],
+    "pl": [
+      "nacs",
+      "j3400",
+      "sae j3400",
+      "north american charging standard",
+      "złącze tesla",
+      "złącze dc",
+      "szybkie ładowanie"
     ]
   },
   "since": "0.4.0",

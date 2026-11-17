@@ -32,6 +32,48 @@
       "erreur",
       "point d’exclamation",
       "statut"
+    ],
+    "it": [
+      "segnaposto",
+      "marker",
+      "pin mappa",
+      "guasto",
+      "in avaria",
+      "errore",
+      "difettoso",
+      "punto esclamativo",
+      "stato"
+    ],
+    "es": [
+      "marcador",
+      "pin del mapa",
+      "averiado",
+      "avería",
+      "error",
+      "defectuoso",
+      "signo de exclamación",
+      "estado"
+    ],
+    "nl": [
+      "kaartpin",
+      "marker",
+      "defect",
+      "storing",
+      "fout",
+      "kapot",
+      "uitroepteken",
+      "status"
+    ],
+    "pl": [
+      "znacznik",
+      "pinezka",
+      "marker",
+      "awaria",
+      "uszkodzony",
+      "błąd",
+      "niesprawny",
+      "wykrzyknik",
+      "status"
     ]
   },
   "since": "0.2.0",

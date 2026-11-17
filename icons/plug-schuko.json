@@ -33,6 +33,46 @@
       "prise domestique",
       "ac",
       "prise"
+    ],
+    "it": [
+      "schuko",
+      "cee 7/3",
+      "din 49440",
+      "tipo f",
+      "presa schuko",
+      "presa domestica",
+      "ac",
+      "presa"
+    ],
+    "es": [
+      "schuko",
+      "cee 7/3",
+      "din 49440",
+      "tipo f",
+      "enchufe doméstico",
+      "ac",
+      "cargador portátil",
+      "enchufe"
+    ],
+    "nl": [
+      "schuko",
+      "cee 7/3",
+      "din 49440",
+      "type f",
+      "randaarde",
+      "stopcontact",
+      "ac",
+      "mobiele lader"
+    ],
+    "pl": [
+      "schuko",
+      "cee 7/3",
+      "din 49440",
+      "typ f",
+      "gniazdo domowe",
+      "ac",
+      "ładowarka przenośna",
+      "gniazdko"
     ]
   },
   "since": "0.2.0",

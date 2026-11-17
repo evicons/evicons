@@ -30,6 +30,42 @@
       "carte",
       "sans contact",
       "paiement"
+    ],
+    "it": [
+      "tessera di ricarica",
+      "rfid",
+      "tessera rfid",
+      "carta",
+      "contactless",
+      "tessera roaming",
+      "pagamento"
+    ],
+    "es": [
+      "tarjeta de recarga",
+      "rfid",
+      "tarjeta rfid",
+      "tarjeta",
+      "sin contacto",
+      "tarjeta de roaming",
+      "pago"
+    ],
+    "nl": [
+      "laadpas",
+      "rfid",
+      "rfid-pas",
+      "pas",
+      "contactloos",
+      "laadkaart",
+      "betalen"
+    ],
+    "pl": [
+      "karta do ładowania",
+      "rfid",
+      "karta rfid",
+      "karta",
+      "karta zbliżeniowa",
+      "karta roamingowa",
+      "płatność"
     ]
   },
   "since": "0.2.0",

@@ -42,6 +42,50 @@
       "recharge poids lourds",
       "connecteur dc",
       "camion"
+    ],
+    "it": [
+      "mcs",
+      "megawatt charging system",
+      "ricarica megawatt",
+      "sae j3271",
+      "iec 63379",
+      "ricarica camion",
+      "mezzi pesanti",
+      "connettore dc",
+      "camion"
+    ],
+    "es": [
+      "mcs",
+      "megawatt charging system",
+      "carga de megavatios",
+      "sae j3271",
+      "iec 63379",
+      "carga de camiones",
+      "vehículos pesados",
+      "conector dc",
+      "camión"
+    ],
+    "nl": [
+      "mcs",
+      "megawatt charging system",
+      "megawattladen",
+      "sae j3271",
+      "iec 63379",
+      "vrachtwagen laden",
+      "zwaar transport",
+      "dc-stekker",
+      "vrachtwagen"
+    ],
+    "pl": [
+      "mcs",
+      "megawatt charging system",
+      "ładowanie megawatowe",
+      "sae j3271",
+      "iec 63379",
+      "ładowanie ciężarówek",
+      "pojazdy ciężkie",
+      "złącze dc",
+      "ciężarówka"
     ]
   },
   "since": "0.5.0",

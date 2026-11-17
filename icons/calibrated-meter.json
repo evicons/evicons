@@ -31,6 +31,42 @@
       "compteur d'énergie",
       "facturation vérifiée",
       "conforme"
+    ],
+    "it": [
+      "contatore certificato",
+      "metrologia legale",
+      "eichrecht",
+      "contatore tarato",
+      "contatore di energia",
+      "fatturazione verificata",
+      "conforme"
+    ],
+    "es": [
+      "contador calibrado",
+      "metrología legal",
+      "eichrecht",
+      "contador certificado",
+      "contador de energía",
+      "facturación verificada",
+      "conforme"
+    ],
+    "nl": [
+      "geijkte meter",
+      "ijkwet",
+      "eichrecht",
+      "gecertificeerde meter",
+      "energiemeter",
+      "geverifieerde facturatie",
+      "conform"
+    ],
+    "pl": [
+      "licznik legalizowany",
+      "metrologia prawna",
+      "eichrecht",
+      "licznik certyfikowany",
+      "licznik energii",
+      "zweryfikowane rozliczenie",
+      "zgodny"
     ]
   },
   "since": "0.3.0",

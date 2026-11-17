@@ -27,6 +27,38 @@
       "énergie renouvelable",
       "écologique",
       "feuille"
+    ],
+    "it": [
+      "energia verde",
+      "elettricità verde",
+      "energia rinnovabile",
+      "eco",
+      "foglia",
+      "sostenibile"
+    ],
+    "es": [
+      "energía verde",
+      "electricidad verde",
+      "energía renovable",
+      "eco",
+      "hoja",
+      "sostenible"
+    ],
+    "nl": [
+      "groene stroom",
+      "groene energie",
+      "hernieuwbare energie",
+      "duurzaam",
+      "eco",
+      "blad"
+    ],
+    "pl": [
+      "zielona energia",
+      "zielony prąd",
+      "energia odnawialna",
+      "eko",
+      "liść",
+      "ekologiczny"
     ]
   },
   "since": "0.2.0",

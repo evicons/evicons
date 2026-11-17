@@ -23,6 +23,30 @@
       "réservé",
       "réservation",
       "lettre r"
+    ],
+    "it": [
+      "prenotato",
+      "riservato",
+      "prenotazione",
+      "lettera r"
+    ],
+    "es": [
+      "reservado",
+      "reserva",
+      "reservada",
+      "letra r"
+    ],
+    "nl": [
+      "gereserveerd",
+      "reservering",
+      "geboekt",
+      "letter r"
+    ],
+    "pl": [
+      "zarezerwowany",
+      "rezerwacja",
+      "zarezerwowane",
+      "litera r"
     ]
   },
   "since": "0.1.0",

@@ -27,6 +27,39 @@
       "camion",
       "poids lourd",
       "véhicule utilitaire"
+    ],
+    "it": [
+      "camion elettrico",
+      "e-truck",
+      "camion",
+      "autocarro",
+      "veicolo commerciale",
+      "mezzo pesante",
+      "veicolo merci"
+    ],
+    "es": [
+      "camión eléctrico",
+      "e-truck",
+      "camión",
+      "vehículo comercial",
+      "vehículo pesado",
+      "vehículo de mercancías"
+    ],
+    "nl": [
+      "elektrische vrachtwagen",
+      "e-truck",
+      "vrachtwagen",
+      "vrachtauto",
+      "bedrijfsvoertuig",
+      "zwaar voertuig"
+    ],
+    "pl": [
+      "ciężarówka elektryczna",
+      "e-truck",
+      "ciężarówka",
+      "samochód ciężarowy",
+      "pojazd użytkowy",
+      "pojazd ciężarowy"
     ]
   },
   "since": "0.4.0",

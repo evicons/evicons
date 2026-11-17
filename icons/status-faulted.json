@@ -29,6 +29,41 @@
       "hors d'usage",
       "point d’exclamation",
       "alerte"
+    ],
+    "it": [
+      "guasto",
+      "in avaria",
+      "errore",
+      "rotto",
+      "difettoso",
+      "punto esclamativo",
+      "allarme"
+    ],
+    "es": [
+      "averiado",
+      "avería",
+      "error",
+      "roto",
+      "defectuoso",
+      "signo de exclamación",
+      "alerta"
+    ],
+    "nl": [
+      "defect",
+      "storing",
+      "fout",
+      "kapot",
+      "uitroepteken",
+      "waarschuwing"
+    ],
+    "pl": [
+      "awaria",
+      "uszkodzony",
+      "błąd",
+      "zepsuty",
+      "niesprawny",
+      "wykrzyknik",
+      "alert"
     ]
   },
   "since": "0.1.0",

@@ -30,6 +30,40 @@
       "en cours d’utilisation",
       "horloge",
       "statut"
+    ],
+    "it": [
+      "segnaposto",
+      "marker",
+      "pin mappa",
+      "occupato",
+      "in uso",
+      "orologio",
+      "stato"
+    ],
+    "es": [
+      "marcador",
+      "pin del mapa",
+      "ocupado",
+      "en uso",
+      "reloj",
+      "estado"
+    ],
+    "nl": [
+      "kaartpin",
+      "marker",
+      "bezet",
+      "in gebruik",
+      "klok",
+      "status"
+    ],
+    "pl": [
+      "znacznik",
+      "pinezka",
+      "marker",
+      "zajęty",
+      "w użyciu",
+      "zegar",
+      "status"
     ]
   },
   "since": "0.2.0",

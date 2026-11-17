@@ -25,6 +25,41 @@
       "ve",
       "véhicule électrique",
       "ma voiture"
+    ],
+    "it": [
+      "auto elettrica",
+      "ev",
+      "bev",
+      "veicolo elettrico",
+      "la mia auto",
+      "veicolo",
+      "macchina elettrica"
+    ],
+    "es": [
+      "coche eléctrico",
+      "ve",
+      "bev",
+      "vehículo eléctrico",
+      "mi coche",
+      "vehículo",
+      "auto eléctrico"
+    ],
+    "nl": [
+      "elektrische auto",
+      "ev",
+      "bev",
+      "elektrisch voertuig",
+      "mijn auto",
+      "voertuig"
+    ],
+    "pl": [
+      "samochód elektryczny",
+      "elektryk",
+      "ev",
+      "bev",
+      "pojazd elektryczny",
+      "mój samochód",
+      "pojazd"
     ]
   },
   "since": "0.2.0",

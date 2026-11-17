@@ -29,6 +29,42 @@
       "trajet",
       "itinéraire vers la borne",
       "arrêt de recharge"
+    ],
+    "it": [
+      "percorso",
+      "navigazione",
+      "indicazioni",
+      "percorso alla colonnina",
+      "naviga",
+      "viaggio",
+      "sosta di ricarica"
+    ],
+    "es": [
+      "ruta",
+      "navegación",
+      "cómo llegar",
+      "ruta al cargador",
+      "navegar",
+      "viaje",
+      "parada de recarga"
+    ],
+    "nl": [
+      "route",
+      "navigatie",
+      "routebeschrijving",
+      "route naar laadpaal",
+      "navigeren",
+      "reis",
+      "laadstop"
+    ],
+    "pl": [
+      "trasa",
+      "nawigacja",
+      "wskazówki dojazdu",
+      "trasa do ładowarki",
+      "nawiguj",
+      "podróż",
+      "postój na ładowanie"
     ]
   },
   "since": "0.3.0",

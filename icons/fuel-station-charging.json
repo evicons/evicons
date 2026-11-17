@@ -27,6 +27,38 @@
       "station essence",
       "aire de service",
       "recharge"
+    ],
+    "it": [
+      "ricarica al distributore",
+      "distributore",
+      "stazione di servizio",
+      "benzinaio",
+      "area di servizio",
+      "pensilina",
+      "ricarica"
+    ],
+    "es": [
+      "recarga en gasolinera",
+      "gasolinera",
+      "estación de servicio",
+      "área de servicio",
+      "marquesina",
+      "recarga"
+    ],
+    "nl": [
+      "laden bij tankstation",
+      "tankstation",
+      "benzinestation",
+      "pompstation",
+      "overkapping",
+      "laden"
+    ],
+    "pl": [
+      "ładowanie na stacji paliw",
+      "stacja paliw",
+      "stacja benzynowa",
+      "wiata",
+      "ładowanie"
     ]
   },
   "since": "0.4.0",

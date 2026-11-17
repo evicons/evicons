@@ -31,6 +31,46 @@
       "temps d'attente",
       "sablier",
       "statut"
+    ],
+    "it": [
+      "segnaposto",
+      "marker",
+      "pin mappa",
+      "in coda",
+      "coda",
+      "attesa",
+      "tempo di attesa",
+      "clessidra",
+      "stato"
+    ],
+    "es": [
+      "marcador",
+      "pin del mapa",
+      "cola",
+      "en cola",
+      "espera",
+      "tiempo de espera",
+      "reloj de arena",
+      "estado"
+    ],
+    "nl": [
+      "kaartpin",
+      "marker",
+      "wachtrij",
+      "wachten",
+      "wachttijd",
+      "zandloper",
+      "status"
+    ],
+    "pl": [
+      "znacznik",
+      "pinezka",
+      "marker",
+      "kolejka",
+      "oczekiwanie",
+      "czas oczekiwania",
+      "klepsydra",
+      "status"
     ]
   },
   "since": "0.3.0",

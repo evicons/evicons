@@ -25,6 +25,38 @@
       "fiche",
       "câble",
       "recharge"
+    ],
+    "it": [
+      "spina di ricarica",
+      "spina",
+      "connettore",
+      "cavo",
+      "ricarica",
+      "ricarica auto elettrica"
+    ],
+    "es": [
+      "conector de carga",
+      "enchufe",
+      "conector",
+      "cable",
+      "recarga",
+      "recarga de coche eléctrico"
+    ],
+    "nl": [
+      "laadstekker",
+      "stekker",
+      "connector",
+      "kabel",
+      "laden",
+      "elektrisch laden"
+    ],
+    "pl": [
+      "wtyczka do ładowania",
+      "wtyczka",
+      "złącze",
+      "kabel",
+      "ładowanie",
+      "ładowanie ev"
     ]
   },
   "since": "0.2.0",

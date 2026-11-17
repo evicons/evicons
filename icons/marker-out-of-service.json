@@ -31,6 +31,44 @@
       "maintenance",
       "désactivé",
       "statut"
+    ],
+    "it": [
+      "segnaposto",
+      "marker",
+      "pin mappa",
+      "fuori servizio",
+      "non disponibile",
+      "manutenzione",
+      "disattivato",
+      "stato"
+    ],
+    "es": [
+      "marcador",
+      "pin del mapa",
+      "fuera de servicio",
+      "no disponible",
+      "mantenimiento",
+      "desactivado",
+      "estado"
+    ],
+    "nl": [
+      "kaartpin",
+      "marker",
+      "buiten gebruik",
+      "niet beschikbaar",
+      "onderhoud",
+      "uitgeschakeld",
+      "status"
+    ],
+    "pl": [
+      "znacznik",
+      "pinezka",
+      "marker",
+      "nieczynny",
+      "niedostępny",
+      "konserwacja",
+      "wyłączony",
+      "status"
     ]
   },
   "since": "0.2.0",

@@ -32,6 +32,42 @@
       "réservation",
       "lettre r",
       "statut"
+    ],
+    "it": [
+      "segnaposto",
+      "marker",
+      "pin mappa",
+      "prenotato",
+      "riservato",
+      "prenotazione",
+      "lettera r",
+      "stato"
+    ],
+    "es": [
+      "marcador",
+      "pin del mapa",
+      "reservado",
+      "reserva",
+      "letra r",
+      "estado"
+    ],
+    "nl": [
+      "kaartpin",
+      "marker",
+      "gereserveerd",
+      "reservering",
+      "geboekt",
+      "letter r",
+      "status"
+    ],
+    "pl": [
+      "znacznik",
+      "pinezka",
+      "marker",
+      "zarezerwowany",
+      "rezerwacja",
+      "litera r",
+      "status"
     ]
   },
   "since": "0.3.0",

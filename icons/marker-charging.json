@@ -31,6 +31,44 @@
       "emplacement",
       "carte",
       "éclair"
+    ],
+    "it": [
+      "segnaposto",
+      "marker",
+      "pin mappa",
+      "punto di ricarica",
+      "colonnina di ricarica",
+      "posizione",
+      "mappa",
+      "fulmine"
+    ],
+    "es": [
+      "marcador",
+      "pin del mapa",
+      "punto de recarga",
+      "estación de carga",
+      "ubicación",
+      "mapa",
+      "rayo"
+    ],
+    "nl": [
+      "kaartpin",
+      "marker",
+      "laadpunt",
+      "laadpaal",
+      "locatie",
+      "kaart",
+      "bliksem"
+    ],
+    "pl": [
+      "znacznik",
+      "pinezka",
+      "marker",
+      "punkt ładowania",
+      "stacja ładowania",
+      "lokalizacja",
+      "mapa",
+      "błyskawica"
     ]
   },
   "since": "0.2.0",

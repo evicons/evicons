@@ -26,6 +26,38 @@
       "électricité",
       "courant",
       "énergie"
+    ],
+    "it": [
+      "ricarica",
+      "fulmine",
+      "saetta",
+      "elettricità",
+      "corrente",
+      "energia"
+    ],
+    "es": [
+      "recarga",
+      "carga",
+      "rayo",
+      "electricidad",
+      "corriente",
+      "energía"
+    ],
+    "nl": [
+      "laden",
+      "bliksem",
+      "bliksemschicht",
+      "elektriciteit",
+      "stroom",
+      "energie"
+    ],
+    "pl": [
+      "ładowanie",
+      "piorun",
+      "błyskawica",
+      "elektryczność",
+      "prąd",
+      "energia"
     ]
   },
   "since": "0.2.0",

@@ -38,6 +38,46 @@
       "chine",
       "connecteur dc",
       "recharge rapide"
+    ],
+    "it": [
+      "gb/t dc",
+      "gbt dc",
+      "gb/t 20234.3",
+      "gb/t",
+      "gbt",
+      "cina",
+      "connettore dc",
+      "ricarica rapida"
+    ],
+    "es": [
+      "gb/t dc",
+      "gbt dc",
+      "gb/t 20234.3",
+      "gb/t",
+      "gbt",
+      "china",
+      "conector dc",
+      "carga rápida"
+    ],
+    "nl": [
+      "gb/t dc",
+      "gbt dc",
+      "gb/t 20234.3",
+      "gb/t",
+      "gbt",
+      "china",
+      "dc-stekker",
+      "snelladen"
+    ],
+    "pl": [
+      "gb/t dc",
+      "gbt dc",
+      "gb/t 20234.3",
+      "gb/t",
+      "gbt",
+      "chiny",
+      "złącze dc",
+      "szybkie ładowanie"
     ]
   },
   "since": "0.5.0",

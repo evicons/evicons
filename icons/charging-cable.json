@@ -27,6 +27,38 @@
       "câble",
       "fiche",
       "recharge"
+    ],
+    "it": [
+      "cavo di ricarica",
+      "cavo fisso",
+      "cavo integrato",
+      "cavo",
+      "spina",
+      "ricarica"
+    ],
+    "es": [
+      "cable de carga",
+      "cable fijo",
+      "cable integrado",
+      "cable",
+      "conector",
+      "recarga"
+    ],
+    "nl": [
+      "laadkabel",
+      "vaste kabel",
+      "vaste laadkabel",
+      "kabel",
+      "stekker",
+      "laden"
+    ],
+    "pl": [
+      "kabel do ładowania",
+      "stały kabel",
+      "przewód",
+      "kabel",
+      "wtyczka",
+      "ładowanie"
     ]
   },
   "since": "0.2.0",

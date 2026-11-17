@@ -30,6 +30,40 @@
       "historique de disponibilité",
       "temps de fonctionnement",
       "temps d'arrêt"
+    ],
+    "it": [
+      "uptime",
+      "affidabilità",
+      "stato di funzionamento",
+      "storico disponibilità",
+      "cronologia stato",
+      "tempo di inattività",
+      "disponibilità"
+    ],
+    "es": [
+      "uptime",
+      "tiempo de actividad",
+      "fiabilidad",
+      "estado operativo",
+      "historial de disponibilidad",
+      "cronología de estado",
+      "tiempo de inactividad"
+    ],
+    "nl": [
+      "uptime",
+      "betrouwbaarheid",
+      "bedrijfsstatus",
+      "beschikbaarheidshistorie",
+      "statustijdlijn",
+      "downtime"
+    ],
+    "pl": [
+      "uptime",
+      "niezawodność",
+      "stan działania",
+      "historia dostępności",
+      "oś czasu statusu",
+      "czas przestoju"
     ]
   },
   "since": "0.5.0",

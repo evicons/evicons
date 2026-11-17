@@ -27,6 +27,38 @@
       "station hpc",
       "plusieurs bornes",
       "recharge"
+    ],
+    "it": [
+      "hub di ricarica",
+      "parco di ricarica",
+      "hub hpc",
+      "area di ricarica",
+      "più colonnine",
+      "ricarica"
+    ],
+    "es": [
+      "hub de recarga",
+      "electrolinera",
+      "parque de recarga",
+      "hub hpc",
+      "varios cargadores",
+      "recarga"
+    ],
+    "nl": [
+      "laadplein",
+      "laadhub",
+      "laadpark",
+      "hpc-hub",
+      "meerdere laadpalen",
+      "laden"
+    ],
+    "pl": [
+      "hub ładowania",
+      "park ładowania",
+      "hub hpc",
+      "strefa ładowania",
+      "wiele ładowarek",
+      "ładowanie"
     ]
   },
   "since": "0.4.0",

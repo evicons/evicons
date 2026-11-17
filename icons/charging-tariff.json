@@ -27,6 +27,35 @@
       "prix",
       "prix par kwh",
       "coût"
+    ],
+    "it": [
+      "tariffa di ricarica",
+      "tariffa",
+      "prezzo",
+      "prezzo per kwh",
+      "costo"
+    ],
+    "es": [
+      "tarifa de recarga",
+      "tarifa",
+      "precio",
+      "precio por kwh",
+      "coste"
+    ],
+    "nl": [
+      "laadtarief",
+      "tarief",
+      "prijs",
+      "prijs per kwh",
+      "kosten"
+    ],
+    "pl": [
+      "taryfa ładowania",
+      "taryfa",
+      "cena",
+      "cena za kwh",
+      "koszt",
+      "stawka"
     ]
   },
   "since": "0.2.0",

@@ -24,6 +24,32 @@
       "phev",
       "hybride",
       "véhicule hybride"
+    ],
+    "it": [
+      "ibrida plug-in",
+      "phev",
+      "ibrido",
+      "veicolo ibrido",
+      "ibrida ricaricabile"
+    ],
+    "es": [
+      "híbrido enchufable",
+      "phev",
+      "híbrido",
+      "vehículo híbrido"
+    ],
+    "nl": [
+      "plug-in hybride",
+      "phev",
+      "hybride",
+      "hybride auto"
+    ],
+    "pl": [
+      "hybryda plug-in",
+      "phev",
+      "hybryda",
+      "pojazd hybrydowy",
+      "samochód hybrydowy"
     ]
   },
   "since": "0.4.0",

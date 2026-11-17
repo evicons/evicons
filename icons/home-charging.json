@@ -27,6 +27,37 @@
       "maison",
       "recharge privée",
       "recharge"
+    ],
+    "it": [
+      "ricarica domestica",
+      "ricarica a casa",
+      "casa",
+      "abitazione",
+      "ricarica privata",
+      "ricarica"
+    ],
+    "es": [
+      "recarga en casa",
+      "carga doméstica",
+      "casa",
+      "hogar",
+      "recarga privada",
+      "recarga"
+    ],
+    "nl": [
+      "thuisladen",
+      "thuis laden",
+      "thuis",
+      "huis",
+      "privé laden",
+      "laden"
+    ],
+    "pl": [
+      "ładowanie w domu",
+      "domowe ładowanie",
+      "dom",
+      "ładowanie prywatne",
+      "ładowanie"
     ]
   },
   "since": "0.2.0",

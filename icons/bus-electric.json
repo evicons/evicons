@@ -26,6 +26,39 @@
       "autobus",
       "autocar",
       "transport en commun"
+    ],
+    "it": [
+      "autobus elettrico",
+      "e-bus",
+      "autobus",
+      "pullman",
+      "trasporto pubblico",
+      "ricarica in deposito"
+    ],
+    "es": [
+      "autobús eléctrico",
+      "e-bus",
+      "autobús",
+      "autocar",
+      "transporte público",
+      "carga en cocheras"
+    ],
+    "nl": [
+      "elektrische bus",
+      "e-bus",
+      "bus",
+      "touringcar",
+      "openbaar vervoer",
+      "busdepot"
+    ],
+    "pl": [
+      "autobus elektryczny",
+      "e-bus",
+      "autobus",
+      "autokar",
+      "transport publiczny",
+      "komunikacja miejska",
+      "ładowanie w zajezdni"
     ]
   },
   "since": "0.4.0",

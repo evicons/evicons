@@ -27,6 +27,38 @@
       "session de recharge",
       "reçu",
       "relevé"
+    ],
+    "it": [
+      "registro ricariche",
+      "registro",
+      "cronologia ricariche",
+      "sessione",
+      "ricevuta",
+      "storico"
+    ],
+    "es": [
+      "registro de recargas",
+      "registro",
+      "historial de carga",
+      "sesión",
+      "recibo",
+      "justificante"
+    ],
+    "nl": [
+      "laadlogboek",
+      "logboek",
+      "laadgeschiedenis",
+      "laadsessie",
+      "bon",
+      "overzicht"
+    ],
+    "pl": [
+      "dziennik ładowania",
+      "historia ładowania",
+      "sesja",
+      "paragon",
+      "potwierdzenie",
+      "rejestr"
     ]
   },
   "since": "0.2.0",

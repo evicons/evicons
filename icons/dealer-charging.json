@@ -29,6 +29,40 @@
       "garage",
       "atelier",
       "recharge"
+    ],
+    "it": [
+      "ricarica dal concessionario",
+      "concessionario",
+      "salone",
+      "showroom",
+      "officina",
+      "ricarica"
+    ],
+    "es": [
+      "recarga en concesionario",
+      "concesionario",
+      "exposición",
+      "taller",
+      "garaje",
+      "recarga"
+    ],
+    "nl": [
+      "laden bij dealer",
+      "autodealer",
+      "dealer",
+      "showroom",
+      "garage",
+      "werkplaats",
+      "laden"
+    ],
+    "pl": [
+      "ładowanie u dealera",
+      "dealer",
+      "salon samochodowy",
+      "salon",
+      "warsztat",
+      "serwis",
+      "ładowanie"
     ]
   },
   "since": "0.4.0",

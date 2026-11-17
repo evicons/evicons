@@ -23,6 +23,33 @@
       "distance",
       "route",
       "km"
+    ],
+    "it": [
+      "autonomia",
+      "autonomia di guida",
+      "distanza",
+      "strada",
+      "km"
+    ],
+    "es": [
+      "autonomía",
+      "distancia",
+      "carretera",
+      "km"
+    ],
+    "nl": [
+      "actieradius",
+      "bereik",
+      "afstand",
+      "weg",
+      "km"
+    ],
+    "pl": [
+      "zasięg",
+      "dystans",
+      "odległość",
+      "droga",
+      "km"
     ]
   },
   "since": "0.2.0",

@@ -25,6 +25,38 @@
       "station de recharge",
       "point de charge",
       "borne électrique"
+    ],
+    "it": [
+      "colonnina di ricarica",
+      "stazione di ricarica",
+      "punto di ricarica",
+      "colonnina",
+      "caricatore",
+      "evse"
+    ],
+    "es": [
+      "punto de recarga",
+      "estación de carga",
+      "cargador",
+      "electrolinera",
+      "poste de recarga",
+      "evse"
+    ],
+    "nl": [
+      "laadpaal",
+      "laadstation",
+      "laadpunt",
+      "oplaadpunt",
+      "lader",
+      "evse"
+    ],
+    "pl": [
+      "stacja ładowania",
+      "ładowarka",
+      "punkt ładowania",
+      "słupek ładowania",
+      "evse",
+      "stacja ev"
     ]
   },
   "since": "0.1.0",

@@ -27,6 +27,38 @@
       "apportez votre câble",
       "sans câble attaché",
       "prise type 2"
+    ],
+    "it": [
+      "presa di ricarica",
+      "presa",
+      "porta il tuo cavo",
+      "senza cavo",
+      "presa tipo 2",
+      "cavo proprio"
+    ],
+    "es": [
+      "toma de carga",
+      "toma",
+      "enchufe",
+      "trae tu propio cable",
+      "sin cable",
+      "toma tipo 2"
+    ],
+    "nl": [
+      "laadcontactdoos",
+      "contactdoos",
+      "eigen kabel meenemen",
+      "zonder vaste kabel",
+      "type 2 contactdoos",
+      "aansluiting"
+    ],
+    "pl": [
+      "gniazdo ładowania",
+      "gniazdo",
+      "własny kabel",
+      "bez kabla",
+      "gniazdo typ 2",
+      "gniazdko"
     ]
   },
   "since": "0.5.0",

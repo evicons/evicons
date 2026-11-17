@@ -32,6 +32,44 @@
       "iec 62196-2",
       "connecteur ac",
       "prise type 1"
+    ],
+    "it": [
+      "tipo 1",
+      "j1772",
+      "sae j1772",
+      "iec 62196-2",
+      "yazaki",
+      "connettore ac",
+      "connettore tipo 1",
+      "presa veicolo"
+    ],
+    "es": [
+      "tipo 1",
+      "j1772",
+      "sae j1772",
+      "iec 62196-2",
+      "yazaki",
+      "conector ac",
+      "conector tipo 1"
+    ],
+    "nl": [
+      "type 1",
+      "j1772",
+      "sae j1772",
+      "iec 62196-2",
+      "yazaki",
+      "ac-stekker",
+      "stekker"
+    ],
+    "pl": [
+      "typ 1",
+      "j1772",
+      "sae j1772",
+      "iec 62196-2",
+      "yazaki",
+      "złącze ac",
+      "złącze typ 1",
+      "wtyczka"
     ]
   },
   "since": "0.3.0",

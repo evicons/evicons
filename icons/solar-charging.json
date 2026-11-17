@@ -30,6 +30,42 @@
       "pv",
       "panneau solaire",
       "soleil"
+    ],
+    "it": [
+      "ricarica solare",
+      "solare",
+      "fotovoltaico",
+      "pv",
+      "surplus fotovoltaico",
+      "pannello solare",
+      "sole"
+    ],
+    "es": [
+      "carga solar",
+      "solar",
+      "fotovoltaica",
+      "pv",
+      "excedente fotovoltaico",
+      "panel solar",
+      "sol"
+    ],
+    "nl": [
+      "zonneladen",
+      "zonne-energie",
+      "zonnepanelen",
+      "pv",
+      "pv-overschot",
+      "zonnepaneel",
+      "zon"
+    ],
+    "pl": [
+      "ładowanie solarne",
+      "ładowanie z fotowoltaiki",
+      "fotowoltaika",
+      "pv",
+      "nadwyżka z pv",
+      "panel słoneczny",
+      "słońce"
     ]
   },
   "since": "0.2.0",

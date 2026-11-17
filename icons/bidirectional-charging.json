@@ -26,6 +26,41 @@
       "v2g",
       "v2h",
       "véhicule vers réseau"
+    ],
+    "it": [
+      "ricarica bidirezionale",
+      "bidirezionale",
+      "v2g",
+      "v2h",
+      "vehicle to grid",
+      "vehicle to home"
+    ],
+    "es": [
+      "carga bidireccional",
+      "recarga bidireccional",
+      "bidireccional",
+      "v2g",
+      "v2h",
+      "vehículo a red",
+      "vehículo a hogar"
+    ],
+    "nl": [
+      "bidirectioneel laden",
+      "bidirectioneel",
+      "v2g",
+      "v2h",
+      "vehicle to grid",
+      "vehicle to home",
+      "terugleveren"
+    ],
+    "pl": [
+      "ładowanie dwukierunkowe",
+      "dwukierunkowe",
+      "v2g",
+      "v2h",
+      "vehicle to grid",
+      "pojazd do sieci",
+      "pojazd do domu"
     ]
   },
   "since": "0.2.0",

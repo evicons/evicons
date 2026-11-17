@@ -26,6 +26,34 @@
       "prêt",
       "main",
       "prise"
+    ],
+    "it": [
+      "disponibile",
+      "libero",
+      "pronto",
+      "mano",
+      "spina"
+    ],
+    "es": [
+      "disponible",
+      "libre",
+      "listo",
+      "mano",
+      "enchufe"
+    ],
+    "nl": [
+      "beschikbaar",
+      "vrij",
+      "klaar",
+      "hand",
+      "stekker"
+    ],
+    "pl": [
+      "dostępny",
+      "wolny",
+      "gotowy",
+      "ręka",
+      "wtyczka"
     ]
   },
   "since": "0.1.0",

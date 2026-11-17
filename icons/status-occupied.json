@@ -19,6 +19,30 @@
     "fr": [
       "occupé",
       "en cours d'utilisation"
+    ],
+    "it": [
+      "occupato",
+      "in uso",
+      "in carica",
+      "ricarica in corso"
+    ],
+    "es": [
+      "ocupado",
+      "en uso",
+      "cargando",
+      "en carga"
+    ],
+    "nl": [
+      "bezet",
+      "in gebruik",
+      "bezig",
+      "laden"
+    ],
+    "pl": [
+      "zajęty",
+      "w użyciu",
+      "ładowanie",
+      "trwa ładowanie"
     ]
   },
   "since": "0.1.0",

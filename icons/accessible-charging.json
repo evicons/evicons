@@ -30,6 +30,42 @@
       "place handicapé",
       "accessibilité",
       "recharge"
+    ],
+    "it": [
+      "ricarica accessibile",
+      "accessibile",
+      "sedia a rotelle",
+      "senza barriere",
+      "parcheggio disabili",
+      "accessibilità",
+      "ricarica"
+    ],
+    "es": [
+      "recarga accesible",
+      "accesible",
+      "silla de ruedas",
+      "sin barreras",
+      "plaza para discapacitados",
+      "accesibilidad",
+      "recarga"
+    ],
+    "nl": [
+      "toegankelijk laden",
+      "toegankelijk",
+      "rolstoel",
+      "drempelvrij",
+      "invalidenparkeerplaats",
+      "toegankelijkheid",
+      "laden"
+    ],
+    "pl": [
+      "dostępne ładowanie",
+      "dostępny",
+      "wózek inwalidzki",
+      "bez barier",
+      "miejsce dla niepełnosprawnych",
+      "dostępność",
+      "ładowanie"
     ]
   },
   "since": "0.4.0",

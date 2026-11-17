@@ -27,6 +27,34 @@
       "panne réseau",
       "pas de courant",
       "délestage"
+    ],
+    "it": [
+      "blackout",
+      "interruzione di corrente",
+      "mancanza di corrente",
+      "guasto alla rete",
+      "senza corrente"
+    ],
+    "es": [
+      "apagón",
+      "corte de luz",
+      "sin corriente",
+      "fallo de red",
+      "corte de suministro"
+    ],
+    "nl": [
+      "stroomstoring",
+      "stroomuitval",
+      "geen stroom",
+      "netstoring",
+      "black-out"
+    ],
+    "pl": [
+      "awaria zasilania",
+      "brak prądu",
+      "przerwa w dostawie prądu",
+      "blackout",
+      "awaria sieci"
     ]
   },
   "since": "0.5.0",

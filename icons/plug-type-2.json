@@ -37,6 +37,52 @@
       "gb/t",
       "chine",
       "gbt"
+    ],
+    "it": [
+      "tipo 2",
+      "mennekes",
+      "iec 62196-2",
+      "presa tipo 2",
+      "connettore ac",
+      "connettore",
+      "gb/t",
+      "gbt",
+      "gb/t 20234.2",
+      "cina"
+    ],
+    "es": [
+      "tipo 2",
+      "mennekes",
+      "iec 62196-2",
+      "conector tipo 2",
+      "conector ac",
+      "gb/t",
+      "gbt",
+      "gb/t 20234.2",
+      "china"
+    ],
+    "nl": [
+      "type 2",
+      "mennekes",
+      "iec 62196-2",
+      "ac-stekker",
+      "stekker",
+      "gb/t",
+      "gbt",
+      "gb/t 20234.2",
+      "china"
+    ],
+    "pl": [
+      "typ 2",
+      "mennekes",
+      "iec 62196-2",
+      "złącze typ 2",
+      "złącze ac",
+      "wtyczka",
+      "gb/t",
+      "gbt",
+      "gb/t 20234.2",
+      "chiny"
     ]
   },
   "since": "0.1.0",

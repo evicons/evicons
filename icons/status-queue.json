@@ -22,6 +22,33 @@
       "file d'attente",
       "attente",
       "temps d'attente"
+    ],
+    "it": [
+      "in coda",
+      "coda",
+      "attesa",
+      "tempo di attesa",
+      "auto in attesa"
+    ],
+    "es": [
+      "cola",
+      "en cola",
+      "espera",
+      "tiempo de espera",
+      "coches esperando"
+    ],
+    "nl": [
+      "wachtrij",
+      "wachten",
+      "wachttijd",
+      "rij",
+      "wachtende auto's"
+    ],
+    "pl": [
+      "kolejka",
+      "oczekiwanie",
+      "czas oczekiwania",
+      "samochody w kolejce"
     ]
   },
   "since": "0.1.0",

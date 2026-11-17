@@ -6,11 +6,18 @@ export const CATEGORIES = ['connector', 'station', 'power', 'vehicle', 'status',
 
 export type IconCategory = (typeof CATEGORIES)[number]
 
+/** Search tag languages: English, German and French are required, the others optional in the schema
+ * (every icon in `icons/` carries all of them; tests/tags.test.ts checks that). */
+export const REQUIRED_TAG_LANGUAGES = ['en', 'de', 'fr'] as const
+export const OPTIONAL_TAG_LANGUAGES = ['it', 'es', 'nl', 'pl'] as const
+export const TAG_LANGUAGES = [...REQUIRED_TAG_LANGUAGES, ...OPTIONAL_TAG_LANGUAGES] as const
+export type TagLanguage = (typeof TAG_LANGUAGES)[number]
+
 export type IconMeta = {
   category: IconCategory
   /** Precise meaning, e.g. to keep "broken" and "out of service" apart. */
   meaning: { en: string; de: string }
-  tags: { en: string[]; de: string[]; fr: string[] }
+  tags: { en: string[]; de: string[]; fr: string[]; it?: string[]; es?: string[]; nl?: string[]; pl?: string[] }
   since: string
   aliases: string[]
   deprecated?: { since: string; replacement?: string }
@@ -92,10 +99,10 @@ export function validateMeta(raw: unknown, name: string): string[] {
   if ('tags' in raw) {
     const tags = raw.tags
     if (!isObject(tags)) {
-      errors.push('tags: must be an object with en, de and fr')
+      errors.push('tags: must be an object with en, de and fr (and optionally it, es, nl, pl)')
     } else {
-      checkKeys(tags, 'tags.', ['en', 'de', 'fr'], [], errors)
-      for (const lang of ['en', 'de', 'fr']) {
+      checkKeys(tags, 'tags.', [...REQUIRED_TAG_LANGUAGES], [...OPTIONAL_TAG_LANGUAGES], errors)
+      for (const lang of TAG_LANGUAGES) {
         if (lang in tags) checkStringList(tags[lang], `tags.${lang}`, errors, 1)
       }
     }

@@ -28,6 +28,39 @@
       "opérateur",
       "réseau",
       "interopérabilité"
+    ],
+    "it": [
+      "roaming",
+      "fornitore",
+      "operatore",
+      "rete",
+      "interoperabilità",
+      "globale"
+    ],
+    "es": [
+      "roaming",
+      "itinerancia",
+      "proveedor",
+      "operador",
+      "red",
+      "interoperabilidad",
+      "global"
+    ],
+    "nl": [
+      "roaming",
+      "aanbieder",
+      "provider",
+      "operator",
+      "netwerk",
+      "interoperabiliteit"
+    ],
+    "pl": [
+      "roaming",
+      "dostawca",
+      "operator",
+      "sieć",
+      "interoperacyjność",
+      "globalny"
     ]
   },
   "since": "0.2.0",

@@ -31,6 +31,44 @@
       "hors ligne",
       "point d’interrogation",
       "statut"
+    ],
+    "it": [
+      "segnaposto",
+      "marker",
+      "pin mappa",
+      "sconosciuto",
+      "nessun dato",
+      "offline",
+      "punto interrogativo",
+      "stato"
+    ],
+    "es": [
+      "marcador",
+      "pin del mapa",
+      "desconocido",
+      "sin datos",
+      "sin conexión",
+      "signo de interrogación",
+      "estado"
+    ],
+    "nl": [
+      "kaartpin",
+      "marker",
+      "onbekend",
+      "geen gegevens",
+      "offline",
+      "vraagteken",
+      "status"
+    ],
+    "pl": [
+      "znacznik",
+      "pinezka",
+      "marker",
+      "nieznany",
+      "brak danych",
+      "offline",
+      "znak zapytania",
+      "status"
     ]
   },
   "since": "0.2.0",

@@ -31,6 +31,44 @@
       "recharge ac",
       "recharge normale",
       "emplacement"
+    ],
+    "it": [
+      "segnaposto",
+      "marker",
+      "pin mappa",
+      "ac",
+      "corrente alternata",
+      "ricarica ac",
+      "ricarica normale",
+      "posizione"
+    ],
+    "es": [
+      "marcador",
+      "pin del mapa",
+      "ac",
+      "corriente alterna",
+      "carga ac",
+      "carga normal",
+      "ubicación"
+    ],
+    "nl": [
+      "kaartpin",
+      "marker",
+      "ac",
+      "wisselstroom",
+      "ac laden",
+      "normaal laden",
+      "locatie"
+    ],
+    "pl": [
+      "znacznik",
+      "pinezka",
+      "marker",
+      "ac",
+      "prąd przemienny",
+      "ładowanie ac",
+      "ładowanie normalne",
+      "lokalizacja"
     ]
   },
   "since": "0.2.0",

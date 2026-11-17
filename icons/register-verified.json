@@ -29,6 +29,42 @@
       "enregistré",
       "officiel",
       "régulateur"
+    ],
+    "it": [
+      "registro ufficiale",
+      "ente regolatore",
+      "verificato",
+      "registrato",
+      "dati pubblici",
+      "registro punti di ricarica",
+      "ufficiale"
+    ],
+    "es": [
+      "registro oficial",
+      "regulador",
+      "verificado",
+      "registrado",
+      "datos oficiales",
+      "registro de puntos de recarga",
+      "oficial"
+    ],
+    "nl": [
+      "officieel register",
+      "toezichthouder",
+      "geverifieerd",
+      "geregistreerd",
+      "overheidsdata",
+      "laadpaalregister",
+      "officieel"
+    ],
+    "pl": [
+      "oficjalny rejestr",
+      "regulator",
+      "zweryfikowany",
+      "zarejestrowany",
+      "dane urzędowe",
+      "rejestr stacji ładowania",
+      "urzędowy"
     ]
   },
   "since": "0.8.0",

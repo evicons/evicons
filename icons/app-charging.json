@@ -28,6 +28,38 @@
       "téléphone",
       "mobile",
       "paiement"
+    ],
+    "it": [
+      "ricarica con app",
+      "app",
+      "smartphone",
+      "telefono",
+      "cellulare",
+      "pagamento"
+    ],
+    "es": [
+      "recarga con app",
+      "app",
+      "aplicación",
+      "smartphone",
+      "móvil",
+      "pago"
+    ],
+    "nl": [
+      "laden via app",
+      "app",
+      "smartphone",
+      "telefoon",
+      "mobiel",
+      "betalen"
+    ],
+    "pl": [
+      "ładowanie przez aplikację",
+      "aplikacja",
+      "smartfon",
+      "telefon",
+      "komórka",
+      "płatność"
     ]
   },
   "since": "0.2.0",

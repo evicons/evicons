@@ -27,6 +27,39 @@
       "recharge ad hoc",
       "paiement ad hoc",
       "scanner"
+    ],
+    "it": [
+      "codice qr",
+      "qr code",
+      "ricarica con qr code",
+      "scansiona per ricaricare",
+      "ricarica ad hoc",
+      "pagamento ad hoc",
+      "afir"
+    ],
+    "es": [
+      "código qr",
+      "recarga con código qr",
+      "escanear para cargar",
+      "carga ad hoc",
+      "pago ad hoc",
+      "afir"
+    ],
+    "nl": [
+      "qr-code",
+      "laden met qr-code",
+      "scannen om te laden",
+      "ad hoc laden",
+      "ad hoc betalen",
+      "afir"
+    ],
+    "pl": [
+      "kod qr",
+      "ładowanie kodem qr",
+      "zeskanuj i ładuj",
+      "ładowanie ad hoc",
+      "płatność ad hoc",
+      "afir"
     ]
   },
   "since": "0.4.0",

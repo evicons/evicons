@@ -28,6 +28,38 @@
       "séjour",
       "lit",
       "recharge"
+    ],
+    "it": [
+      "ricarica a destinazione",
+      "hotel",
+      "ricarica notturna",
+      "soggiorno",
+      "letto",
+      "ricarica"
+    ],
+    "es": [
+      "recarga en destino",
+      "hotel",
+      "carga nocturna",
+      "estancia",
+      "cama",
+      "recarga"
+    ],
+    "nl": [
+      "bestemmingsladen",
+      "hotel",
+      "nachtladen",
+      "verblijf",
+      "bed",
+      "laden"
+    ],
+    "pl": [
+      "ładowanie w miejscu docelowym",
+      "hotel",
+      "ładowanie nocne",
+      "nocleg",
+      "łóżko",
+      "ładowanie"
     ]
   },
   "since": "0.3.0",

@@ -23,6 +23,33 @@
       "frais de stationnement",
       "pénalité de stationnement",
       "parcmètre"
+    ],
+    "it": [
+      "penale di sosta",
+      "tariffa di occupazione",
+      "costo sosta",
+      "sosta prolungata",
+      "parchimetro"
+    ],
+    "es": [
+      "tarifa de ocupación",
+      "penalización por ocupación",
+      "tarifa de estacionamiento",
+      "tiempo excedido",
+      "parquímetro"
+    ],
+    "nl": [
+      "blokkeertarief",
+      "blokkeerkosten",
+      "parkeerkosten",
+      "parkeermeter"
+    ],
+    "pl": [
+      "opłata za postój",
+      "opłata za blokowanie",
+      "opłata parkingowa",
+      "kara za postój",
+      "parkometr"
     ]
   },
   "since": "0.4.0",

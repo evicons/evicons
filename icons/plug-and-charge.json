@@ -26,6 +26,38 @@
       "iso 15118",
       "authentification automatique",
       "brancher et recharger"
+    ],
+    "it": [
+      "plug and charge",
+      "plug & charge",
+      "iso 15118",
+      "autorizzazione automatica",
+      "certificato di contratto",
+      "collega e ricarica"
+    ],
+    "es": [
+      "plug and charge",
+      "plug & charge",
+      "iso 15118",
+      "autorización automática",
+      "certificado de contrato",
+      "enchufar y cargar"
+    ],
+    "nl": [
+      "plug and charge",
+      "plug & charge",
+      "iso 15118",
+      "automatische autorisatie",
+      "contractcertificaat",
+      "inpluggen en laden"
+    ],
+    "pl": [
+      "plug and charge",
+      "plug & charge",
+      "iso 15118",
+      "automatyczna autoryzacja",
+      "certyfikat umowy",
+      "podłącz i ładuj"
     ]
   },
   "since": "0.4.0",

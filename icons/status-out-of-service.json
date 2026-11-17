@@ -28,6 +28,42 @@
       "maintenance",
       "fermé",
       "prise barrée"
+    ],
+    "it": [
+      "fuori servizio",
+      "non disponibile",
+      "non funzionante",
+      "manutenzione",
+      "chiuso",
+      "dismesso",
+      "spina barrata"
+    ],
+    "es": [
+      "fuera de servicio",
+      "no disponible",
+      "inoperativo",
+      "mantenimiento",
+      "cerrado",
+      "desmantelado",
+      "enchufe tachado"
+    ],
+    "nl": [
+      "buiten gebruik",
+      "niet beschikbaar",
+      "buiten werking",
+      "onderhoud",
+      "gesloten",
+      "ontmanteld",
+      "doorgestreepte stekker"
+    ],
+    "pl": [
+      "nieczynny",
+      "niedostępny",
+      "wyłączony z użytku",
+      "konserwacja",
+      "zamknięty",
+      "wycofany z eksploatacji",
+      "przekreślona wtyczka"
     ]
   },
   "since": "0.1.0",

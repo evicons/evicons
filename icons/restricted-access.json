@@ -33,6 +33,43 @@
       "cadenas",
       "barrière",
       "verrouillé"
+    ],
+    "it": [
+      "accesso limitato",
+      "privato",
+      "solo clienti",
+      "accesso",
+      "lucchetto",
+      "sbarra",
+      "bloccato"
+    ],
+    "es": [
+      "acceso restringido",
+      "privado",
+      "solo clientes",
+      "acceso",
+      "candado",
+      "barrera",
+      "bloqueado"
+    ],
+    "nl": [
+      "beperkte toegang",
+      "privé",
+      "alleen klanten",
+      "toegang",
+      "slot",
+      "slagboom",
+      "hangslot",
+      "afgesloten"
+    ],
+    "pl": [
+      "ograniczony dostęp",
+      "prywatny",
+      "tylko dla klientów",
+      "dostęp",
+      "kłódka",
+      "szlaban",
+      "zablokowany"
     ]
   },
   "since": "0.5.0",

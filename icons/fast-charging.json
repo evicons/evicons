@@ -22,6 +22,34 @@
       "recharge rapide",
       "charge rapide",
       "haute puissance"
+    ],
+    "it": [
+      "ricarica rapida",
+      "ricarica veloce",
+      "ricarica ultrarapida",
+      "hpc",
+      "alta potenza"
+    ],
+    "es": [
+      "carga rápida",
+      "recarga rápida",
+      "carga ultrarrápida",
+      "hpc",
+      "alta potencia"
+    ],
+    "nl": [
+      "snelladen",
+      "snellader",
+      "ultrasnelladen",
+      "hpc",
+      "hoog vermogen"
+    ],
+    "pl": [
+      "szybkie ładowanie",
+      "ultraszybkie ładowanie",
+      "szybka ładowarka",
+      "hpc",
+      "duża moc"
     ]
   },
   "since": "0.1.0",

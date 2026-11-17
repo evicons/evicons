@@ -30,6 +30,42 @@
       "centre commercial",
       "chariot",
       "recharge"
+    ],
+    "it": [
+      "ricarica durante la spesa",
+      "spesa",
+      "supermercato",
+      "centro commerciale",
+      "negozio",
+      "carrello",
+      "ricarica"
+    ],
+    "es": [
+      "recarga mientras compras",
+      "compras",
+      "supermercado",
+      "centro comercial",
+      "comercio",
+      "carrito",
+      "recarga"
+    ],
+    "nl": [
+      "laden tijdens het winkelen",
+      "winkelen",
+      "supermarkt",
+      "winkelcentrum",
+      "winkel",
+      "winkelwagen",
+      "laden"
+    ],
+    "pl": [
+      "ładowanie podczas zakupów",
+      "zakupy",
+      "supermarket",
+      "centrum handlowe",
+      "sklep",
+      "wózek sklepowy",
+      "ładowanie"
     ]
   },
   "since": "0.4.0",

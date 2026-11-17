@@ -32,6 +32,46 @@
       "place de stationnement",
       "statut",
       "occupation"
+    ],
+    "it": [
+      "disponibilità",
+      "disponibilità ricarica",
+      "libero",
+      "occupato",
+      "stallo di ricarica",
+      "posto auto",
+      "stato",
+      "occupazione"
+    ],
+    "es": [
+      "disponibilidad",
+      "disponibilidad de carga",
+      "libre",
+      "ocupado",
+      "plaza de recarga",
+      "plaza de aparcamiento",
+      "estado",
+      "ocupación"
+    ],
+    "nl": [
+      "beschikbaarheid",
+      "laadbeschikbaarheid",
+      "vrij",
+      "bezet",
+      "laadplek",
+      "parkeerplek",
+      "status",
+      "bezetting"
+    ],
+    "pl": [
+      "dostępność",
+      "dostępność ładowania",
+      "wolne",
+      "zajęte",
+      "stanowisko ładowania",
+      "miejsce parkingowe",
+      "status",
+      "zajętość"
     ]
   },
   "since": "0.5.0",

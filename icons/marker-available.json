@@ -28,6 +28,40 @@
       "libre",
       "coche",
       "statut"
+    ],
+    "it": [
+      "segnaposto",
+      "marker",
+      "pin mappa",
+      "disponibile",
+      "libero",
+      "spunta",
+      "stato"
+    ],
+    "es": [
+      "marcador",
+      "pin del mapa",
+      "disponible",
+      "libre",
+      "marca de verificación",
+      "estado"
+    ],
+    "nl": [
+      "kaartpin",
+      "marker",
+      "beschikbaar",
+      "vrij",
+      "vinkje",
+      "status"
+    ],
+    "pl": [
+      "znacznik",
+      "pinezka",
+      "marker",
+      "dostępny",
+      "wolny",
+      "ptaszek",
+      "status"
     ]
   },
   "since": "0.2.0",

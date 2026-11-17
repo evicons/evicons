@@ -22,6 +22,31 @@
       "courant continu",
       "recharge dc",
       "recharge rapide"
+    ],
+    "it": [
+      "dc",
+      "corrente continua",
+      "ricarica dc",
+      "ricarica rapida"
+    ],
+    "es": [
+      "dc",
+      "cc",
+      "corriente continua",
+      "carga dc",
+      "carga rápida"
+    ],
+    "nl": [
+      "dc",
+      "gelijkstroom",
+      "dc laden",
+      "snelladen"
+    ],
+    "pl": [
+      "dc",
+      "prąd stały",
+      "ładowanie dc",
+      "szybkie ładowanie"
     ]
   },
   "since": "0.1.0",

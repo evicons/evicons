@@ -28,6 +28,40 @@
       "entreprise",
       "bâtiment",
       "recharge"
+    ],
+    "it": [
+      "operatore di ricarica",
+      "cpo",
+      "operatore",
+      "gestore",
+      "azienda",
+      "edificio",
+      "ricarica"
+    ],
+    "es": [
+      "operador de recarga",
+      "cpo",
+      "operador",
+      "empresa",
+      "edificio",
+      "recarga"
+    ],
+    "nl": [
+      "laadpaalexploitant",
+      "cpo",
+      "exploitant",
+      "operator",
+      "bedrijf",
+      "gebouw",
+      "laden"
+    ],
+    "pl": [
+      "operator stacji ładowania",
+      "cpo",
+      "operator",
+      "firma",
+      "budynek",
+      "ładowanie"
     ]
   },
   "since": "0.3.0",

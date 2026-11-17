@@ -28,6 +28,38 @@
       "avertissement",
       "danger",
       "défaut électrique"
+    ],
+    "it": [
+      "segnala guasto",
+      "segnala un problema",
+      "guasto",
+      "avviso",
+      "pericolo",
+      "guasto elettrico"
+    ],
+    "es": [
+      "informar de avería",
+      "reportar un problema",
+      "avería",
+      "aviso",
+      "peligro",
+      "fallo eléctrico"
+    ],
+    "nl": [
+      "storing melden",
+      "probleem melden",
+      "storing",
+      "waarschuwing",
+      "gevaar",
+      "elektrische storing"
+    ],
+    "pl": [
+      "zgłoś awarię",
+      "zgłoś problem",
+      "awaria",
+      "ostrzeżenie",
+      "niebezpieczeństwo",
+      "usterka elektryczna"
     ]
   },
   "since": "0.3.0",

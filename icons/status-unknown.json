@@ -20,6 +20,30 @@
       "inconnu",
       "statut inconnu",
       "pas de données"
+    ],
+    "it": [
+      "sconosciuto",
+      "nessun dato",
+      "stato sconosciuto",
+      "offline"
+    ],
+    "es": [
+      "desconocido",
+      "sin datos",
+      "estado desconocido",
+      "sin conexión"
+    ],
+    "nl": [
+      "onbekend",
+      "geen gegevens",
+      "status onbekend",
+      "offline"
+    ],
+    "pl": [
+      "nieznany",
+      "brak danych",
+      "status nieznany",
+      "offline"
     ]
   },
   "since": "0.1.0",

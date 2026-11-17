@@ -25,6 +25,34 @@
       "temps",
       "horloge",
       "tarif horaire"
+    ],
+    "it": [
+      "tempo di ricarica",
+      "durata ricarica",
+      "tempo",
+      "orologio",
+      "tariffa a tempo"
+    ],
+    "es": [
+      "tiempo de carga",
+      "duración de la carga",
+      "tiempo",
+      "reloj",
+      "tarifa por tiempo"
+    ],
+    "nl": [
+      "laadtijd",
+      "laadduur",
+      "tijd",
+      "klok",
+      "tijdtarief"
+    ],
+    "pl": [
+      "czas ładowania",
+      "długość ładowania",
+      "czas",
+      "zegar",
+      "taryfa czasowa"
     ]
   },
   "since": "0.3.0",

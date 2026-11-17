@@ -26,6 +26,38 @@
       "chargeur mural",
       "borne domestique",
       "recharge"
+    ],
+    "it": [
+      "wallbox",
+      "wall box",
+      "caricatore domestico",
+      "colonnina domestica",
+      "caricatore a parete",
+      "ricarica"
+    ],
+    "es": [
+      "wallbox",
+      "wall box",
+      "cargador doméstico",
+      "cargador de pared",
+      "punto de recarga doméstico",
+      "recarga"
+    ],
+    "nl": [
+      "wallbox",
+      "thuislader",
+      "laadpaal thuis",
+      "wandlader",
+      "laadstation aan de muur",
+      "laden"
+    ],
+    "pl": [
+      "wallbox",
+      "wall box",
+      "ładowarka domowa",
+      "ładowarka ścienna",
+      "naścienna stacja ładowania",
+      "ładowanie"
     ]
   },
   "since": "0.2.0",

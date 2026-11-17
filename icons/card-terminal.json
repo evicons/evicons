@@ -30,6 +30,43 @@
       "sans contact",
       "carte bancaire",
       "afir"
+    ],
+    "it": [
+      "terminale di pagamento",
+      "terminale carte",
+      "pos",
+      "ad hoc",
+      "contactless",
+      "carta di debito",
+      "carta di credito",
+      "afir"
+    ],
+    "es": [
+      "terminal de pago",
+      "datáfono",
+      "ad hoc",
+      "sin contacto",
+      "tarjeta de débito",
+      "tarjeta de crédito",
+      "afir"
+    ],
+    "nl": [
+      "betaalterminal",
+      "pinautomaat",
+      "ad hoc",
+      "contactloos",
+      "pinpas",
+      "creditcard",
+      "afir"
+    ],
+    "pl": [
+      "terminal płatniczy",
+      "terminal kartowy",
+      "ad hoc",
+      "płatność zbliżeniowa",
+      "karta debetowa",
+      "karta kredytowa",
+      "afir"
     ]
   },
   "since": "0.2.0",

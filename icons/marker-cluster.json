@@ -31,6 +31,44 @@
       "marqueur",
       "plusieurs bornes",
       "carte"
+    ],
+    "it": [
+      "segnaposto",
+      "marker",
+      "pin mappa",
+      "cluster",
+      "gruppo",
+      "numero",
+      "più colonnine",
+      "mappa"
+    ],
+    "es": [
+      "marcador",
+      "pin del mapa",
+      "clúster",
+      "grupo",
+      "número",
+      "varias estaciones",
+      "mapa"
+    ],
+    "nl": [
+      "kaartpin",
+      "marker",
+      "cluster",
+      "groep",
+      "aantal",
+      "meerdere laadpalen",
+      "kaart"
+    ],
+    "pl": [
+      "znacznik",
+      "pinezka",
+      "marker",
+      "klaster",
+      "grupa",
+      "liczba",
+      "wiele stacji",
+      "mapa"
     ]
   },
   "since": "0.5.1",

@@ -26,6 +26,35 @@
       "gratuit",
       "sans frais",
       "borne gratuite"
+    ],
+    "it": [
+      "ricarica gratuita",
+      "gratis",
+      "gratuito",
+      "senza costi",
+      "colonnina gratuita"
+    ],
+    "es": [
+      "recarga gratuita",
+      "gratis",
+      "gratuito",
+      "sin coste",
+      "punto de recarga gratuito"
+    ],
+    "nl": [
+      "gratis laden",
+      "gratis",
+      "kosteloos",
+      "geen kosten",
+      "gratis laadpaal"
+    ],
+    "pl": [
+      "darmowe ładowanie",
+      "za darmo",
+      "darmowe",
+      "bezpłatne",
+      "bezpłatne ładowanie",
+      "bez opłat"
     ]
   },
   "since": "0.4.0",

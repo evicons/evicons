@@ -31,6 +31,44 @@
       "recharge dc",
       "recharge rapide",
       "emplacement"
+    ],
+    "it": [
+      "segnaposto",
+      "marker",
+      "pin mappa",
+      "dc",
+      "corrente continua",
+      "ricarica dc",
+      "ricarica rapida",
+      "posizione"
+    ],
+    "es": [
+      "marcador",
+      "pin del mapa",
+      "dc",
+      "corriente continua",
+      "carga dc",
+      "carga rápida",
+      "ubicación"
+    ],
+    "nl": [
+      "kaartpin",
+      "marker",
+      "dc",
+      "gelijkstroom",
+      "dc laden",
+      "snelladen",
+      "locatie"
+    ],
+    "pl": [
+      "znacznik",
+      "pinezka",
+      "marker",
+      "dc",
+      "prąd stały",
+      "ładowanie dc",
+      "szybkie ładowanie",
+      "lokalizacja"
     ]
   },
   "since": "0.2.0",

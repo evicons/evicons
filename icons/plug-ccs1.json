@@ -35,6 +35,50 @@
       "iec 62196-3",
       "connecteur dc",
       "recharge rapide"
+    ],
+    "it": [
+      "ccs",
+      "ccs1",
+      "combo 1",
+      "j1772 combo",
+      "iec 62196-3",
+      "connettore dc",
+      "ricarica rapida",
+      "connettore",
+      "presa veicolo"
+    ],
+    "es": [
+      "ccs",
+      "ccs1",
+      "combo 1",
+      "j1772 combo",
+      "iec 62196-3",
+      "conector dc",
+      "carga rápida",
+      "conector",
+      "toma del vehículo"
+    ],
+    "nl": [
+      "ccs",
+      "ccs1",
+      "combo 1",
+      "j1772 combo",
+      "iec 62196-3",
+      "dc-stekker",
+      "snelladen",
+      "stekker",
+      "laadaansluiting"
+    ],
+    "pl": [
+      "ccs",
+      "ccs1",
+      "combo 1",
+      "j1772 combo",
+      "iec 62196-3",
+      "złącze dc",
+      "szybkie ładowanie",
+      "wtyczka",
+      "gniazdo pojazdu"
     ]
   },
   "since": "0.4.0",

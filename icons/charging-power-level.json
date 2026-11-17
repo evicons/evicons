@@ -30,6 +30,42 @@
       "compteur",
       "kw",
       "vitesse de recharge"
+    ],
+    "it": [
+      "potenza di ricarica",
+      "livello di potenza",
+      "indicatore",
+      "tachimetro",
+      "kw",
+      "filtro potenza",
+      "velocità di ricarica"
+    ],
+    "es": [
+      "potencia de carga",
+      "nivel de potencia",
+      "indicador",
+      "velocímetro",
+      "kw",
+      "filtro de potencia",
+      "velocidad de carga"
+    ],
+    "nl": [
+      "laadvermogen",
+      "vermogensniveau",
+      "meter",
+      "snelheidsmeter",
+      "kw",
+      "vermogensfilter",
+      "laadsnelheid"
+    ],
+    "pl": [
+      "moc ładowania",
+      "poziom mocy",
+      "wskaźnik",
+      "prędkościomierz",
+      "kw",
+      "filtr mocy",
+      "szybkość ładowania"
     ]
   },
   "since": "0.3.0",

@@ -26,6 +26,39 @@
       "batterie",
       "recharge",
       "niveau de charge"
+    ],
+    "it": [
+      "batteria in carica",
+      "batteria",
+      "ricarica",
+      "stato di carica",
+      "soc",
+      "livello di carica"
+    ],
+    "es": [
+      "batería cargando",
+      "batería",
+      "carga",
+      "estado de carga",
+      "soc",
+      "nivel de carga"
+    ],
+    "nl": [
+      "accu laadt",
+      "accu",
+      "batterij",
+      "laden",
+      "laadniveau",
+      "soc"
+    ],
+    "pl": [
+      "ładowanie baterii",
+      "bateria",
+      "akumulator",
+      "ładowanie",
+      "poziom naładowania",
+      "stan naładowania",
+      "soc"
     ]
   },
   "since": "0.2.0",

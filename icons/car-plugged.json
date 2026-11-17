@@ -25,6 +25,38 @@
       "branchée",
       "en charge",
       "câble de recharge"
+    ],
+    "it": [
+      "auto elettrica",
+      "ev",
+      "collegata",
+      "in carica",
+      "ricarica auto",
+      "cavo di ricarica"
+    ],
+    "es": [
+      "coche eléctrico",
+      "ve",
+      "enchufado",
+      "cargando",
+      "recarga del coche",
+      "cable de carga"
+    ],
+    "nl": [
+      "elektrische auto",
+      "ev",
+      "aangesloten",
+      "laden",
+      "auto laden",
+      "laadkabel"
+    ],
+    "pl": [
+      "samochód elektryczny",
+      "ev",
+      "podłączony",
+      "ładowanie",
+      "ładowanie samochodu",
+      "kabel do ładowania"
     ]
   },
   "since": "0.1.0",

@@ -27,6 +27,37 @@
       "éclairage public",
       "recharge en voirie",
       "recharge"
+    ],
+    "it": [
+      "ricarica da lampione",
+      "lampione",
+      "illuminazione pubblica",
+      "palo della luce",
+      "ricarica su strada",
+      "ricarica"
+    ],
+    "es": [
+      "recarga en farola",
+      "farola",
+      "alumbrado público",
+      "recarga en la calle",
+      "recarga en vía pública",
+      "recarga"
+    ],
+    "nl": [
+      "lantaarnpaalladen",
+      "lantaarnpaal",
+      "straatverlichting",
+      "laden aan de straat",
+      "laden"
+    ],
+    "pl": [
+      "ładowanie z latarni",
+      "latarnia",
+      "latarnia uliczna",
+      "oświetlenie uliczne",
+      "ładowanie przy ulicy",
+      "ładowanie"
     ]
   },
   "since": "0.4.0",

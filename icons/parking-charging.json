@@ -27,6 +27,38 @@
       "stationnement",
       "parking recharge",
       "lettre p"
+    ],
+    "it": [
+      "parcheggio",
+      "parcheggio con ricarica",
+      "posto auto",
+      "area di parcheggio",
+      "parcheggio auto elettriche",
+      "lettera p"
+    ],
+    "es": [
+      "aparcamiento",
+      "parking",
+      "plaza de aparcamiento",
+      "aparcamiento con recarga",
+      "aparcamiento para ve",
+      "letra p"
+    ],
+    "nl": [
+      "parkeren",
+      "parkeerplaats",
+      "parkeerplek",
+      "laadparkeerplaats",
+      "parkeerterrein",
+      "letter p"
+    ],
+    "pl": [
+      "parking",
+      "miejsce parkingowe",
+      "parking z ładowaniem",
+      "miejsce dla ev",
+      "postój",
+      "litera p"
     ]
   },
   "since": "0.2.0",

@@ -27,6 +27,38 @@
       "session active",
       "recharge",
       "en direct"
+    ],
+    "it": [
+      "sessione di ricarica",
+      "ricarica in corso",
+      "sessione attiva",
+      "ricarica attiva",
+      "ricarica",
+      "ciclo"
+    ],
+    "es": [
+      "sesión de carga",
+      "carga en curso",
+      "sesión activa",
+      "cargando",
+      "recarga",
+      "ciclo"
+    ],
+    "nl": [
+      "laadsessie",
+      "bezig met laden",
+      "actieve sessie",
+      "live sessie",
+      "laden",
+      "cyclus"
+    ],
+    "pl": [
+      "sesja ładowania",
+      "ładowanie w toku",
+      "aktywna sesja",
+      "trwa ładowanie",
+      "ładowanie",
+      "cykl"
     ]
   },
   "since": "0.3.0",

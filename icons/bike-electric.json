@@ -26,6 +26,38 @@
       "vae",
       "vélo à assistance électrique",
       "vélo cargo"
+    ],
+    "it": [
+      "bici elettrica",
+      "e-bike",
+      "bicicletta elettrica",
+      "bicicletta a pedalata assistita",
+      "pedelec",
+      "cargo bike"
+    ],
+    "es": [
+      "bicicleta eléctrica",
+      "e-bike",
+      "bici eléctrica",
+      "pedelec",
+      "bicicleta de carga",
+      "vehículo eléctrico ligero"
+    ],
+    "nl": [
+      "e-bike",
+      "elektrische fiets",
+      "fiets",
+      "pedelec",
+      "bakfiets",
+      "elektrische bakfiets"
+    ],
+    "pl": [
+      "rower elektryczny",
+      "e-bike",
+      "rower",
+      "pedelec",
+      "rower cargo",
+      "rower towarowy"
     ]
   },
   "since": "0.4.0",

@@ -27,6 +27,38 @@
       "deux-roues électrique",
       "moto",
       "scooter"
+    ],
+    "it": [
+      "moto elettrica",
+      "scooter elettrico",
+      "motorino elettrico",
+      "ciclomotore",
+      "moto",
+      "scooter"
+    ],
+    "es": [
+      "moto eléctrica",
+      "motocicleta eléctrica",
+      "scooter eléctrico",
+      "ciclomotor",
+      "moto",
+      "scooter"
+    ],
+    "nl": [
+      "elektrische motor",
+      "elektrische motorfiets",
+      "elektrische scooter",
+      "e-scooter",
+      "brommer",
+      "scooter"
+    ],
+    "pl": [
+      "motocykl elektryczny",
+      "skuter elektryczny",
+      "e-skuter",
+      "motorower",
+      "motocykl",
+      "skuter"
     ]
   },
   "since": "0.5.0",

@@ -30,6 +30,39 @@
       "connecteur dc",
       "recharge rapide",
       "prise"
+    ],
+    "it": [
+      "chademo",
+      "jevs g105",
+      "iec 62196-3",
+      "connettore dc",
+      "ricarica rapida",
+      "connettore",
+      "presa veicolo"
+    ],
+    "es": [
+      "chademo",
+      "jevs g105",
+      "iec 62196-3",
+      "conector dc",
+      "carga rápida",
+      "conector"
+    ],
+    "nl": [
+      "chademo",
+      "jevs g105",
+      "iec 62196-3",
+      "dc-stekker",
+      "snelladen",
+      "stekker"
+    ],
+    "pl": [
+      "chademo",
+      "jevs g105",
+      "iec 62196-3",
+      "złącze dc",
+      "szybkie ładowanie",
+      "wtyczka"
     ]
   },
   "since": "0.2.0",

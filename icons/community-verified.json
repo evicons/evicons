@@ -29,6 +29,38 @@
       "confirmé",
       "avis",
       "communauté"
+    ],
+    "it": [
+      "verificato dalla community",
+      "confermato dagli utenti",
+      "segnalazione",
+      "confermato",
+      "recensione",
+      "community"
+    ],
+    "es": [
+      "verificado por la comunidad",
+      "confirmado por conductores",
+      "reportado por usuarios",
+      "confirmado",
+      "reseña",
+      "comunidad"
+    ],
+    "nl": [
+      "geverifieerd door community",
+      "bevestigd door rijders",
+      "gemeld door gebruikers",
+      "bevestigd",
+      "review",
+      "community"
+    ],
+    "pl": [
+      "zweryfikowane przez społeczność",
+      "potwierdzone przez kierowców",
+      "zgłoszenie",
+      "potwierdzone",
+      "opinia",
+      "społeczność"
     ]
   },
   "since": "0.5.0",
