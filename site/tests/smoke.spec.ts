@@ -155,21 +155,22 @@ test('header shows the logo linking home', async ({ page }) => {
 
 test('imprint and privacy policy are real legal pages', async ({ page, request }) => {
   for (const [path, heading] of [
-    ['/imprint', 'Impressum'],
-    ['/privacy', 'Datenschutzerklärung'],
+    ['/imprint', 'Legal notice'],
+    ['/privacy', 'Privacy policy'],
   ]) {
     const response = await request.get(path)
     expect(response.status(), path).toBe(200)
     expect(await response.text(), path).toContain('Landolsi Digital')
     await page.goto(path)
     await expect(page.locator('h1')).toHaveText(heading)
-    await expect(page.locator('article[lang="de"]')).toBeVisible()
+    await expect(page.locator('article.legal')).toBeVisible()
+    await expect(page.locator('html')).toHaveAttribute('lang', 'en')
     await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', `https://evicons.dev${path}`)
   }
   await page.goto('/imprint')
-  await expect(page.locator('main')).toContainText('Angaben gemäß § 5 DDG')
-  await expect(page.locator('main')).toContainText('§ 19 UStG')
+  await expect(page.locator('main')).toContainText('Information according to Section 5 DDG')
+  await expect(page.locator('main')).toContainText('Section 19 UStG')
   await page.goto('/privacy')
   await expect(page.locator('main')).toContainText('Hyperknot Software Kft.')
-  await expect(page.locator('main')).toContainText('Bayerische Landesamt für Datenschutzaufsicht')
+  await expect(page.locator('main')).toContainText('Bavarian State Office for Data Protection Supervision')
 })

@@ -191,7 +191,7 @@
     margin-top: 3rem;
     font-size: 1.5rem;
   }
-  /* Impressum and Datenschutzerklärung: short sections without <section> wrappers. */
+  /* Legal notice and privacy policy: short sections without <section> wrappers. */
   .legal h2 {
     margin-top: 2.5rem;
     font-size: 1.375rem;
