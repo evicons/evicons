@@ -779,7 +779,7 @@ A connector whose `standard` has no icon gets none from the lookup; show `chargi
 
 ## Contributing
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) and the [design guide](docs/design-guide.md). Changes are listed in [CHANGELOG.md](CHANGELOG.md).
+Need an icon? Open an [icon request](https://github.com/evicons/evicons/issues/new?template=icon-request.yml); the maintainers draw new icons themselves. For bug reports and pull requests see [CONTRIBUTING.md](CONTRIBUTING.md). Changes are listed in [CHANGELOG.md](CHANGELOG.md).
 
 ## License
 

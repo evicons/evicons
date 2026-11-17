@@ -1,6 +1,6 @@
 # Contributing to EVicons
 
-Thanks for helping. EVicons is a small, focused set: icons for e-mobility and EV charging only. Before you draw anything, read the [design guide](docs/design-guide.md); it is binding for every icon.
+Thanks for helping. EVicons is a small, focused set: icons for e-mobility and EV charging only, drawn by the maintainers so that every icon follows the same [design guide](docs/design-guide.md).
 
 ## Scope
 
@@ -8,7 +8,11 @@ Thanks for helping. EVicons is a small, focused set: icons for e-mobility and EV
 - Out of scope: general UI icons (arrows, menu, search, ...); use a general icon set such as Lucide for those.
 - No brand or manufacturer logos (car makers, charge point operators). Standardised connector faces are fine.
 
-To propose a new icon, open an issue first with the name, the meaning and, for connectors, the standard, so that these can be agreed before drawing.
+## How to contribute
+
+- **New icons:** open an [icon request](https://github.com/evicons/evicons/issues/new?template=icon-request.yml) with the meaning, where you would use it and, for connectors, the standard. The maintainers draw new icons themselves, so please don't send icon files or pull requests with new drawings; they will not be merged.
+- **Problems with an icon, a package or the website:** open a [bug report](https://github.com/evicons/evicons/issues/new?template=bug-report.yml).
+- **Pull requests** are welcome for fixes to the packages, the build tools, the website and the documentation. For anything larger, open an issue first.
 
 ## Setup
 
@@ -18,9 +22,9 @@ You need Node.js 24 (see `.nvmrc`) and npm.
 npm ci
 ```
 
-## Adding an icon
+## Adding an icon (maintainers)
 
-Each icon is two files in `icons/`: the SVG and its metadata. Everything in `packages/` is generated from them.
+This is how the maintainers add an icon. Each icon is two files in `icons/`: the SVG and its metadata. Everything in `packages/` is generated from them.
 
 1. **Draw `icons/<name>.svg`** on the 24 × 24 grid, following the [design guide](docs/design-guide.md): outline only, stroke width 1.5, round caps and joins, `currentColor`, no fills, colours, transforms, ids, classes or groups. The one fill is a lightning bolt: use one of the solid bolt paths of the guide (section 2, "Lightning bolt"), moved but not scaled, with `fill="currentColor"`, and declare `solid-sign` and `sharp-corner`. The root element has exactly the attributes listed in the guide.
 2. **Write `icons/<name>.json`** with the metadata. The schema is in `tools/lib/meta.ts`:
