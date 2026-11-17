@@ -6,6 +6,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
+## [0.10.0] - 2026-11-17
+
+### Added
+
+- 1 icon: `plug-type-e` (connector): Type E socket (CEE 7/5, the French socket with an earth pin; household AC in France, Belgium, Poland and the Czech Republic), shown as the socket face seen from the front like `plug-schuko`: the same recess and contact holes, with the earth pin as a ring at the top instead of Schuko's earthing clips. OpenStreetMap `socket:typee` (more often tagged at charging stations than `socket:schuko`) and OCPI `Connector.standard=DOMESTIC_E`.
+- Search tags in Italian, Spanish, Dutch and Polish for every icon (`tags.it`, `tags.es`, `tags.nl`, `tags.pl` in the metadata and `icons.json`), next to English, German and French. The gallery on evicons.dev searches all seven languages. In the metadata schema the four new languages are optional, so existing metadata files stay valid; every EVicons icon carries all seven.
+
 ## [0.9.0] - 2026-11-17
 
 ### Added
@@ -151,7 +158,8 @@ First version, not published to npm. The first published release is 0.2.0.
   - `status-unknown`: unknown (question mark)
   - `status-queue`: queue (two cars, one behind the other)
 
-[Unreleased]: https://github.com/evicons/evicons/compare/v0.9.0...HEAD
+[Unreleased]: https://github.com/evicons/evicons/compare/v0.10.0...HEAD
+[0.10.0]: https://github.com/evicons/evicons/releases/tag/v0.10.0
 [0.9.0]: https://github.com/evicons/evicons/releases/tag/v0.9.0
 [0.8.0]: https://github.com/evicons/evicons/releases/tag/v0.8.0
 [0.7.0]: https://github.com/evicons/evicons/releases/tag/v0.7.0
