@@ -48,7 +48,7 @@ function snippets(icon: IconEntry, title: string, size: number, stroke: number, 
     {
       id: 'vue',
       label: 'Vue',
-      code: `<script setup>\nimport { ${icon.pascal} } from '@evicons/vue'\n</script>\n\n<${icon.pascal} ${vueProps.join(' ')} />`,
+      code: `<script setup>\nimport { ${icon.pascal} } from '@evicons/vue'\n</script>\n\n<template>\n  <${icon.pascal} ${vueProps.join(' ')} />\n</template>`,
       wrap: true,
     },
     { id: 'svg', label: 'SVG', code: icon.svg },

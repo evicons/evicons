@@ -43,4 +43,4 @@ The prop type is exported as `EvIconProps`, the component type as `EvIconCompone
 
 ### Server rendering and Nuxt
 
-The components render on the server, in Nuxt and with `renderToString` from `vue/server-renderer`. The id that links a `<title>` to its `<svg>` comes from Vue's `useId`, so it is unique and matches between server and client. Import the icons where you use them; there is no Nuxt module or global registration, which keeps unused icons out of the bundle.
+The components render on the server, in Nuxt and with `renderToString` from `vue/server-renderer`. The id that links a `<title>` to its `<svg>` comes from Vue's `useId`, so it is unique within the app and matches between server and client. Vue counts these ids per app: when a page mounts more than one Vue app (several `createApp` calls, or islands as in Astro), give each app its own prefix with `app.config.idPrefix`, so that the ids stay unique. Import the icons where you use them; there is no Nuxt module or global registration, which keeps unused icons out of the bundle.

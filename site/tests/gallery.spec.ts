@@ -84,7 +84,9 @@ test('SVG and Sprite tabs show the markup', async ({ page }) => {
       "import { PlugCcs2 } from '@evicons/vue'",
       '</script>',
       '',
-      '<PlugCcs2 :size="24" title="CCS Combo 2" />',
+      '<template>',
+      '  <PlugCcs2 :size="24" title="CCS Combo 2" />',
+      '</template>',
     ].join('\n'),
   )
   await panel.getByRole('tab', { name: 'SVG' }).click()

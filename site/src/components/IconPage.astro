@@ -124,7 +124,7 @@ const svgAttrs = {
 
 const install = 'npm i @evicons/react'
 const reactCode = `import { ${icon.pascal} } from '@evicons/react'\n\n<${icon.pascal} size={24} title="${title}" />`
-const vueCode = `<script setup>\nimport { ${icon.pascal} } from '@evicons/vue'\n</script>\n\n<${icon.pascal} :size="24" title="${title}" />`
+const vueCode = `<!-- npm i @evicons/vue -->\n<script setup>\nimport { ${icon.pascal} } from '@evicons/vue'\n</script>\n\n<template>\n  <${icon.pascal} :size="24" title="${title}" />\n</template>`
 const spriteCode = `<!-- ${t.spriteComment} -->\n<svg width="24" height="24" aria-hidden="true"><use href="/sprite.svg#evicon-${icon.name}" /></svg>`
 const themes = { light: 'github-light-default', dark: 'github-dark-default' } as const
 // Same comment colour fix as the Markdown code blocks (astro.config.mjs): GitHub's light comment grey fails AA.

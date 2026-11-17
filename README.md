@@ -169,7 +169,7 @@ import { PlugType2 } from '@evicons/vue'
 </template>
 ```
 
-Props: `size`, `strokeWidth`, `absoluteStrokeWidth` and `title`, with the same defaults and accessibility rules as in React. `class`, `style`, `aria-*`, `data-*` and listeners fall through to the `<svg>`; slot content is rendered after the icon's shapes. Single icons can be imported from `@evicons/vue/icons/<name>`. The components render on the server (Nuxt, `vue/server-renderer`); the `<title>` id comes from Vue's `useId`.
+Props: `size`, `strokeWidth`, `absoluteStrokeWidth` and `title`, with the same defaults and accessibility rules as in React. `class`, `style`, `aria-*`, `data-*` and listeners fall through to the `<svg>`; slot content is rendered after the icon's shapes. Single icons can be imported from `@evicons/vue/icons/<name>`. The components render on the server (Nuxt, `vue/server-renderer`); the `<title>` id comes from Vue's `useId`, which counts per app, so set `app.config.idPrefix` when a page mounts more than one Vue app.
 
 ## Usage (SVG)
 
@@ -772,7 +772,7 @@ A connector whose `standard` has no icon gets none from the lookup; show `chargi
 | | Supported |
 |---|---|
 | React | 18 and 19 (peer dependency `^18.0.0 \|\| ^19.0.0`) |
-| Vue | 3.5 or later (peer dependency `^3.5.0`); in Nuxt from 3.13, the first release with Vue 3.5 |
+| Vue | 3.5 or later (peer dependency `^3.5.0`); Nuxt 3.13.1 or later, or any Nuxt 3 with Vue 3.5 installed |
 | Server rendering | Node.js 20 or later (tested on 20 and 24); works in React Server Components, no `'use client'` needed |
 | Module format | ESM only, no CommonJS build; `require()` works on Node.js versions with `require(esm)` (20.19+, 22.12+) |
 | TypeScript | Types included |

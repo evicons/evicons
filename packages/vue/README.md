@@ -61,7 +61,7 @@ If several are given, this order applies:
 
 1. **`aria-labelledby`** (yours): kept as is.
 2. **`aria-label`**: used as the name. A `title` is still rendered as `<title>` but not referenced.
-3. **`title`**: rendered as the first child `<title>` with an id from Vue's `useId` (unique and matching between server and client) and referenced with `aria-labelledby`.
+3. **`title`**: rendered as the first child `<title>` with an id from Vue's `useId` (unique within the app and matching between server and client) and referenced with `aria-labelledby`. Vue counts these ids per app: when a page mounts more than one Vue app (several `createApp` calls, or islands as in Astro), give each app its own prefix with `app.config.idPrefix`, so that the ids stay unique.
 4. None of these: decorative (`aria-hidden="true"`).
 
 An explicit `role` or `aria-hidden` that you pass always wins over the defaults.
@@ -215,7 +215,7 @@ Use `path:first-of-type`, not `:first-child`: with `title`, the component render
 
 | | Supported |
 |---|---|
-| Vue | 3.5 or later (peer dependency `^3.5.0`); in Nuxt from 3.13, the first release with Vue 3.5 |
+| Vue | 3.5 or later (peer dependency `^3.5.0`); Nuxt 3.13.1 or later, or any Nuxt 3 with Vue 3.5 installed |
 | Server rendering | Nuxt and `vue/server-renderer`, Node.js 20 or later |
 | Module format | ESM only, no CommonJS build |
 | TypeScript | Types included |
