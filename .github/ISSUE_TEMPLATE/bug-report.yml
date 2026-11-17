@@ -1,0 +1,23 @@
+name: Bug report
+description: Something is wrong with an icon, a package or the website.
+labels: ["bug"]
+body:
+  - type: input
+    id: where
+    attributes:
+      label: Where
+      description: Icon name, package (`@evicons/react`, `@evicons/vue`, `@evicons/svg`) or page on evicons.dev.
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Version
+      placeholder: "0.9.0"
+  - type: textarea
+    id: what
+    attributes:
+      label: What happens and what you expected
+      description: Steps or a code snippet that shows the problem; a screenshot helps for drawing issues.
+    validations:
+      required: true

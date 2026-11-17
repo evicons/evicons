@@ -1,0 +1,36 @@
+name: Icon request
+description: Ask for a new EV charging icon.
+title: "Icon request: "
+labels: ["icon request"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        EVicons covers e-mobility and EV charging only. General UI icons (arrows, menu, settings, ...) and brand or manufacturer logos are out of scope.
+        Describe what you need; the maintainers draw new icons themselves so that the set stays consistent.
+  - type: input
+    id: meaning
+    attributes:
+      label: Meaning
+      description: What should the icon stand for?
+      placeholder: "Domestic socket type E (CEE 7/5)"
+    validations:
+      required: true
+  - type: textarea
+    id: use
+    attributes:
+      label: Where would you use it?
+      description: The screen or data it belongs to, for example a station popup, a map legend or a connector list.
+    validations:
+      required: true
+  - type: input
+    id: standard
+    attributes:
+      label: Standard or data value
+      description: For connectors the standard; for data the OCPI value or OpenStreetMap tag, if there is one.
+      placeholder: "IEC 60884-1 / OCPI Connector.standard=DOMESTIC_E / OSM socket:typee"
+  - type: textarea
+    id: references
+    attributes:
+      label: References
+      description: Links to drawings, photos or specifications. Please don't attach icon files.

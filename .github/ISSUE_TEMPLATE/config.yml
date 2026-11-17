@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Documentation
+    url: https://evicons.dev/docs
+    about: Install, usage in React, Vue and SVG, map markers, OpenStreetMap and OCPI.
+  - name: Icon gallery
+    url: https://evicons.dev/icons
+    about: Search all icons in English, German and French before asking for a new one.
