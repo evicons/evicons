@@ -65,10 +65,8 @@ const s = de
       markersText:
         'Pins für Ladepunkte, gefüllt mit zwei CSS-Regeln: Die Nadel bekommt deine Farbe, das Zeichen wird weiß. Bereit für MapLibre und Leaflet.',
       markersLink: 'Zur Karten-Demo',
-      marketTitle: 'Gemacht für den deutschen Lademarkt',
-      marketBy: 'Gebaut vom Team hinter',
-      marketAnd: 'und',
-      marketFor: 'für Betreiber-Apps, Ladekarten-Anbieter und die Agenturen, die sie bauen.',
+      marketTitle: 'Gemacht für den europäischen Lademarkt',
+      marketFor: 'Für Betreiber-Apps, Ladekarten-Anbieter und die Agenturen, die sie bauen.',
       startTitle: 'Fang mit einem Icon an',
       startReact: 'React- und Vue-Komponenten aus',
       startAnd: 'und',
@@ -103,10 +101,8 @@ const s = de
       markersText:
         'Pins for charge points, filled with two CSS rules: the pin takes your colour, the sign turns white. Ready for MapLibre and Leaflet.',
       markersLink: 'Open the map demo',
-      marketTitle: 'Made for the German charging market',
-      marketBy: 'Built by the team behind',
-      marketAnd: 'and',
-      marketFor: 'for operator apps, charging card providers and the agencies that build them.',
+      marketTitle: 'Made for the European charging market',
+      marketFor: 'For operator apps, charging card providers and the agencies that build them.',
       startTitle: 'Start with one icon',
       startReact: 'React and Vue components from',
       startAnd: 'and',
@@ -154,7 +150,7 @@ const statusDemo = [
 const market = de
   ? [
       {
-        title: 'Auf Deutsch durchsuchbar',
+        title: 'In drei Sprachen durchsuchbar',
         text: 'Jedes Icon ist auf Englisch, Deutsch und Französisch verschlagwortet: „Ladesäule“ findet die Ladestation, „Ladekarte“ die Ladekarte.',
       },
       {
@@ -168,7 +164,7 @@ const market = de
     ]
   : [
   {
-    title: 'Searchable in German',
+    title: 'Searchable in three languages',
     text: 'Every icon is tagged in English, German and French: “Ladesäule” finds the charging station, “Ladekarte” the charging card.',
   },
   {
@@ -308,8 +304,7 @@ const market = de
         <div>
           <h2 id="market" class="text-2xl text-balance sm:text-3xl">{s.marketTitle}</h2>
           <p class="mt-4 max-w-2xl text-pretty text-muted">
-            {s.marketBy} <a href="https://ladejetzt.de">ladejetzt.de</a> {s.marketAnd}{' '}
-            <a href="https://charge.tn">charge.tn</a>, {s.marketFor}
+            {s.marketFor}
           </p>
         </div>
         <ul class="mt-10 grid gap-8 lg:grid-cols-3 lg:gap-10">

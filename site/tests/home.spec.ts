@@ -132,14 +132,13 @@ test('three feature cards with the spec titles, connectors and map markers', asy
   expect(new Set(heights).size).toBe(1)
 })
 
-test('the market section names both sites as plain text links, body text 16 px', async ({ page }) => {
+test('the market section names no other sites, body text 16 px', async ({ page }) => {
   await page.setViewportSize({ width: 1280, height: 900 })
   await page.goto('/')
   const section = page.locator('section[aria-labelledby="market"]')
-  await expect(section.getByRole('heading', { level: 2 })).toHaveText('Made for the German charging market')
-  await expect(section).toContainText('Built by the team behind ladejetzt.de and charge.tn')
-  await expect(section.locator('a[href="https://ladejetzt.de"]')).toHaveText('ladejetzt.de')
-  await expect(section.locator('a[href="https://charge.tn"]')).toHaveText('charge.tn')
+  await expect(section.getByRole('heading', { level: 2 })).toHaveText('Made for the European charging market')
+  await expect(section).toContainText('For operator apps, charging card providers and the agencies that build them.')
+  await expect(section.locator('p a')).toHaveCount(0)
   await expect(section.locator('img')).toHaveCount(0)
   for (const size of await section.locator('p').evaluateAll((ps) => ps.map((p) => getComputedStyle(p).fontSize))) {
     expect(size).toBe('16px')
