@@ -35,8 +35,8 @@
     "it": [
       "contatore certificato",
       "metrologia legale",
-      "eichrecht",
-      "contatore tarato",
+      "contatore mid",
+      "contatore omologato",
       "contatore di energia",
       "fatturazione verificata",
       "conforme"
@@ -44,7 +44,7 @@
     "es": [
       "contador calibrado",
       "metrología legal",
-      "eichrecht",
+      "contador mid",
       "contador certificado",
       "contador de energía",
       "facturación verificada",
@@ -52,21 +52,22 @@
     ],
     "nl": [
       "geijkte meter",
-      "ijkwet",
-      "eichrecht",
+      "metrologiewet",
+      "mid-gecertificeerd",
       "gecertificeerde meter",
       "energiemeter",
       "geverifieerde facturatie",
       "conform"
     ],
     "pl": [
-      "licznik legalizowany",
+      "licznik zalegalizowany",
       "metrologia prawna",
-      "eichrecht",
+      "licznik mid",
       "licznik certyfikowany",
       "licznik energii",
       "zweryfikowane rozliczenie",
-      "zgodny"
+      "zgodny",
+      "legalizacja"
     ]
   },
   "since": "0.3.0",

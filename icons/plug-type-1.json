@@ -50,7 +50,8 @@
       "iec 62196-2",
       "yazaki",
       "conector ac",
-      "conector tipo 1"
+      "conector tipo 1",
+      "toma del vehículo"
     ],
     "nl": [
       "type 1",
@@ -59,7 +60,8 @@
       "iec 62196-2",
       "yazaki",
       "ac-stekker",
-      "stekker"
+      "stekker",
+      "laadaansluiting"
     ],
     "pl": [
       "typ 1",
@@ -69,7 +71,8 @@
       "yazaki",
       "złącze ac",
       "złącze typ 1",
-      "wtyczka"
+      "wtyczka",
+      "gniazdo pojazdu"
     ]
   },
   "since": "0.3.0",

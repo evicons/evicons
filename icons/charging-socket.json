@@ -50,15 +50,17 @@
       "eigen kabel meenemen",
       "zonder vaste kabel",
       "type 2 contactdoos",
-      "aansluiting"
+      "aansluiting",
+      "type 2-aansluiting",
+      "socket",
+      "laadpaal zonder kabel"
     ],
     "pl": [
       "gniazdo ładowania",
       "gniazdo",
       "własny kabel",
       "bez kabla",
-      "gniazdo typ 2",
-      "gniazdko"
+      "gniazdo typ 2"
     ]
   },
   "since": "0.5.0",

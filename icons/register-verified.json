@@ -59,12 +59,14 @@
     ],
     "pl": [
       "oficjalny rejestr",
-      "regulator",
+      "organ regulacyjny",
       "zweryfikowany",
       "zarejestrowany",
       "dane urzędowe",
       "rejestr stacji ładowania",
-      "urzędowy"
+      "urzędowy",
+      "urząd",
+      "eipa"
     ]
   },
   "since": "0.8.0",

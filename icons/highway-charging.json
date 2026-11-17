@@ -52,7 +52,7 @@
       "snelweg",
       "autosnelweg",
       "verzorgingsplaats",
-      "wegrestaurant",
+      "rustplaats",
       "laden"
     ],
     "pl": [
@@ -61,7 +61,6 @@
       "droga ekspresowa",
       "mop",
       "miejsce obsługi podróżnych",
-      "parking",
       "ładowanie"
     ]
   },

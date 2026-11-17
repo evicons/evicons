@@ -42,16 +42,19 @@
       "spinotto di terra",
       "presa domestica",
       "ac",
-      "presa"
+      "presa",
+      "caricatore portatile"
     ],
     "es": [
       "tipo e",
       "cee 7/5",
       "enchufe francés",
-      "clavija de tierra",
+      "toma de tierra",
       "enchufe doméstico",
       "ac",
-      "enchufe"
+      "enchufe",
+      "espiga de tierra",
+      "cargador portátil"
     ],
     "nl": [
       "type e",
@@ -60,7 +63,8 @@
       "penaarde",
       "aardpen",
       "stopcontact",
-      "ac"
+      "ac",
+      "mobiele lader"
     ],
     "pl": [
       "typ e",
@@ -69,7 +73,8 @@
       "bolec uziemiający",
       "gniazdo domowe",
       "ac",
-      "gniazdko"
+      "gniazdko",
+      "ładowarka przenośna"
     ]
   },
   "since": "0.10.0",

@@ -52,7 +52,8 @@
       "north american charging standard",
       "conector tesla",
       "conector dc",
-      "carga rápida"
+      "carga rápida",
+      "toma del vehículo"
     ],
     "nl": [
       "nacs",
@@ -61,7 +62,8 @@
       "north american charging standard",
       "tesla-stekker",
       "dc-stekker",
-      "snelladen"
+      "snelladen",
+      "laadaansluiting"
     ],
     "pl": [
       "nacs",
@@ -70,7 +72,8 @@
       "north american charging standard",
       "złącze tesla",
       "złącze dc",
-      "szybkie ładowanie"
+      "szybkie ładowanie",
+      "gniazdo pojazdu"
     ]
   },
   "since": "0.4.0",

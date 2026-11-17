@@ -57,7 +57,8 @@
       "gbt",
       "china",
       "conector dc",
-      "carga rápida"
+      "carga rápida",
+      "toma del vehículo"
     ],
     "nl": [
       "gb/t dc",
@@ -67,7 +68,8 @@
       "gbt",
       "china",
       "dc-stekker",
-      "snelladen"
+      "snelladen",
+      "laadaansluiting"
     ],
     "pl": [
       "gb/t dc",
@@ -77,7 +79,8 @@
       "gbt",
       "chiny",
       "złącze dc",
-      "szybkie ładowanie"
+      "szybkie ładowanie",
+      "gniazdo pojazdu"
     ]
   },
   "since": "0.5.0",

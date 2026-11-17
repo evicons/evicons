@@ -30,13 +30,35 @@ export function normalise(text: string): string {
     .normalize('NFD')
     .replace(/\p{Diacritic}/gu, '')
     .toLowerCase()
+    // Not a combining mark, so NFD leaves it: "ladowanie" should still find "ładowanie".
+    .replaceAll('ł', 'l')
 }
 
-/** One normalised search string per icon: name, component name, meaning (en) and the tags in every language. */
-export function haystack(icon: IconEntry): string {
-  return normalise(
-    [icon.name, icon.pascal, icon.meaning.en, ...Object.values(icon.tags).flat()].join('\n'),
-  )
+/** Normalised search text per icon: `names` (file and component name) and `text` (meaning and the tags in every language). */
+export function haystack(icon: IconEntry): { names: string; text: string } {
+  return {
+    names: normalise(`${icon.name}\n${icon.pascal}`),
+    text: normalise([icon.meaning.en, ...Object.values(icon.tags).flat()].join('\n')),
+  }
+}
+
+const escapeRegExp = (text: string) => text.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+
+/**
+ * How well an icon matches the (normalised) search terms: 0 = not at all, 1 = every term starts a word,
+ * 2 = every term is a whole word. Names match anywhere ("type2" finds PlugType2); meaning and tags match
+ * only at the start of a word, because with seven tag languages a plain substring search finds "car" in
+ * "recarga" and "app" in "mappa".
+ */
+export function searchRank(hay: { names: string; text: string }, terms: string[]): 0 | 1 | 2 {
+  let rank: 0 | 1 | 2 = 2
+  for (const term of terms) {
+    const start = `(^|[^\\p{L}\\p{N}])${escapeRegExp(term)}`
+    if (new RegExp(`${start}($|[^\\p{L}\\p{N}])`, 'u').test(hay.text)) continue
+    if (hay.names.includes(term) || new RegExp(start, 'u').test(hay.text)) rank = 1
+    else return 0
+  }
+  return rank
 }
 
 /** The markup inside the root <svg>, so React can own the root attributes (size, stroke, colour). */

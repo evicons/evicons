@@ -506,8 +506,8 @@
       "it": [
         "contatore certificato",
         "metrologia legale",
-        "eichrecht",
-        "contatore tarato",
+        "contatore mid",
+        "contatore omologato",
         "contatore di energia",
         "fatturazione verificata",
         "conforme"
@@ -515,7 +515,7 @@
       "es": [
         "contador calibrado",
         "metrología legal",
-        "eichrecht",
+        "contador mid",
         "contador certificado",
         "contador de energía",
         "facturación verificada",
@@ -523,21 +523,22 @@
       ],
       "nl": [
         "geijkte meter",
-        "ijkwet",
-        "eichrecht",
+        "metrologiewet",
+        "mid-gecertificeerd",
         "gecertificeerde meter",
         "energiemeter",
         "geverifieerde facturatie",
         "conform"
       ],
       "pl": [
-        "licznik legalizowany",
+        "licznik zalegalizowany",
         "metrologia prawna",
-        "eichrecht",
+        "licznik mid",
         "licznik certyfikowany",
         "licznik energii",
         "zweryfikowane rozliczenie",
-        "zgodny"
+        "zgodny",
+        "legalizacja"
       ]
     },
     "since": "0.3.0",
@@ -753,12 +754,13 @@
       ],
       "nl": [
         "betaalterminal",
-        "pinautomaat",
+        "pinapparaat",
         "ad hoc",
         "contactloos",
         "pinpas",
         "creditcard",
-        "afir"
+        "afir",
+        "betaalautomaat"
       ],
       "pl": [
         "terminal płatniczy",
@@ -1629,15 +1631,17 @@
         "eigen kabel meenemen",
         "zonder vaste kabel",
         "type 2 contactdoos",
-        "aansluiting"
+        "aansluiting",
+        "type 2-aansluiting",
+        "socket",
+        "laadpaal zonder kabel"
       ],
       "pl": [
         "gniazdo ładowania",
         "gniazdo",
         "własny kabel",
         "bez kabla",
-        "gniazdo typ 2",
-        "gniazdko"
+        "gniazdo typ 2"
       ]
     },
     "since": "0.5.0",
@@ -2002,7 +2006,7 @@
         "ac",
         "prąd przemienny",
         "ładowanie ac",
-        "ładowanie normalne"
+        "wolne ładowanie"
       ]
     },
     "since": "0.1.0",
@@ -2139,9 +2143,8 @@
       "es": [
         "recarga en concesionario",
         "concesionario",
-        "exposición",
+        "showroom",
         "taller",
-        "garaje",
         "recarga"
       ],
       "nl": [
@@ -2679,7 +2682,7 @@
         "snelweg",
         "autosnelweg",
         "verzorgingsplaats",
-        "wegrestaurant",
+        "rustplaats",
         "laden"
       ],
       "pl": [
@@ -2688,7 +2691,6 @@
         "droga ekspresowa",
         "mop",
         "miejsce obsługi podróżnych",
-        "parking",
         "ładowanie"
       ]
     },
@@ -3501,7 +3503,8 @@
         "niet beschikbaar",
         "onderhoud",
         "uitgeschakeld",
-        "status"
+        "status",
+        "buiten dienst"
       ],
       "pl": [
         "znacznik",
@@ -4309,7 +4312,9 @@
         "230 v",
         "industriële contactdoos",
         "ac",
-        "contactdoos"
+        "contactdoos",
+        "campingstekker",
+        "cee-stekker"
       ],
       "pl": [
         "cee",
@@ -4433,7 +4438,8 @@
         "rood",
         "16 a",
         "32 a",
-        "ac"
+        "ac",
+        "krachtstroomstekker"
       ],
       "pl": [
         "cee",
@@ -4525,7 +4531,8 @@
         "iec 62196-3",
         "conector dc",
         "carga rápida",
-        "conector"
+        "conector",
+        "toma del vehículo"
       ],
       "nl": [
         "chademo",
@@ -4533,7 +4540,8 @@
         "iec 62196-3",
         "dc-stekker",
         "snelladen",
-        "stekker"
+        "stekker",
+        "laadaansluiting"
       ],
       "pl": [
         "chademo",
@@ -4541,7 +4549,8 @@
         "iec 62196-3",
         "złącze dc",
         "szybkie ładowanie",
-        "wtyczka"
+        "wtyczka",
+        "gniazdo pojazdu"
       ]
     },
     "since": "0.2.0",
@@ -4622,7 +4631,8 @@
         "gbt",
         "china",
         "conector dc",
-        "carga rápida"
+        "carga rápida",
+        "toma del vehículo"
       ],
       "nl": [
         "gb/t dc",
@@ -4632,7 +4642,8 @@
         "gbt",
         "china",
         "dc-stekker",
-        "snelladen"
+        "snelladen",
+        "laadaansluiting"
       ],
       "pl": [
         "gb/t dc",
@@ -4642,7 +4653,8 @@
         "gbt",
         "chiny",
         "złącze dc",
-        "szybkie ładowanie"
+        "szybkie ładowanie",
+        "gniazdo pojazdu"
       ]
     },
     "since": "0.5.0",
@@ -4901,7 +4913,8 @@
         "north american charging standard",
         "conector tesla",
         "conector dc",
-        "carga rápida"
+        "carga rápida",
+        "toma del vehículo"
       ],
       "nl": [
         "nacs",
@@ -4910,7 +4923,8 @@
         "north american charging standard",
         "tesla-stekker",
         "dc-stekker",
-        "snelladen"
+        "snelladen",
+        "laadaansluiting"
       ],
       "pl": [
         "nacs",
@@ -4919,7 +4933,8 @@
         "north american charging standard",
         "złącze tesla",
         "złącze dc",
-        "szybkie ładowanie"
+        "szybkie ładowanie",
+        "gniazdo pojazdu"
       ]
     },
     "since": "0.4.0",
@@ -4988,7 +5003,8 @@
         "presa schuko",
         "presa domestica",
         "ac",
-        "presa"
+        "presa",
+        "caricatore portatile"
       ],
       "es": [
         "schuko",
@@ -5092,7 +5108,8 @@
         "iec 62196-2",
         "yazaki",
         "conector ac",
-        "conector tipo 1"
+        "conector tipo 1",
+        "toma del vehículo"
       ],
       "nl": [
         "type 1",
@@ -5101,7 +5118,8 @@
         "iec 62196-2",
         "yazaki",
         "ac-stekker",
-        "stekker"
+        "stekker",
+        "laadaansluiting"
       ],
       "pl": [
         "typ 1",
@@ -5111,7 +5129,8 @@
         "yazaki",
         "złącze ac",
         "złącze typ 1",
-        "wtyczka"
+        "wtyczka",
+        "gniazdo pojazdu"
       ]
     },
     "since": "0.3.0",
@@ -5289,16 +5308,19 @@
         "spinotto di terra",
         "presa domestica",
         "ac",
-        "presa"
+        "presa",
+        "caricatore portatile"
       ],
       "es": [
         "tipo e",
         "cee 7/5",
         "enchufe francés",
-        "clavija de tierra",
+        "toma de tierra",
         "enchufe doméstico",
         "ac",
-        "enchufe"
+        "enchufe",
+        "espiga de tierra",
+        "cargador portátil"
       ],
       "nl": [
         "type e",
@@ -5307,7 +5329,8 @@
         "penaarde",
         "aardpen",
         "stopcontact",
-        "ac"
+        "ac",
+        "mobiele lader"
       ],
       "pl": [
         "typ e",
@@ -5316,7 +5339,8 @@
         "bolec uziemiający",
         "gniazdo domowe",
         "ac",
-        "gniazdko"
+        "gniazdko",
+        "ładowarka przenośna"
       ]
     },
     "since": "0.10.0",
@@ -5613,12 +5637,14 @@
       ],
       "pl": [
         "oficjalny rejestr",
-        "regulator",
+        "organ regulacyjny",
         "zweryfikowany",
         "zarejestrowany",
         "dane urzędowe",
         "rejestr stacji ładowania",
-        "urzędowy"
+        "urzędowy",
+        "urząd",
+        "eipa"
       ]
     },
     "since": "0.8.0",
@@ -6483,7 +6509,8 @@
         "onderhoud",
         "gesloten",
         "ontmanteld",
-        "doorgestreepte stekker"
+        "doorgestreepte stekker",
+        "buiten dienst"
       ],
       "pl": [
         "nieczynny",

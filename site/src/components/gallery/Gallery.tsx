@@ -3,7 +3,7 @@ import type { Category, IconEntry } from '../../lib/icons'
 import Controls, { type Background } from './Controls'
 import IconCard from './IconCard'
 import IconPanel from './IconPanel'
-import { haystack, innerSvg, isMarker, normalise, presets, shortTitle } from './util'
+import { haystack, innerSvg, isMarker, normalise, presets, searchRank, shortTitle } from './util'
 
 type Theme = 'light' | 'dark'
 
@@ -77,10 +77,12 @@ export default function Gallery({ icons }: { icons: IconEntry[] }) {
 
   const visible = useMemo(() => {
     const terms = normalise(query).trim().split(/\s+/).filter(Boolean)
-    return index.filter(
-      (item) =>
-        (category === 'all' || item.icon.category === category) && terms.every((term) => item.text.includes(term)),
-    )
+    const ranked = index
+      .filter((item) => category === 'all' || item.icon.category === category)
+      .map((item) => ({ item, rank: searchRank(item.text, terms) }))
+      .filter(({ rank }) => rank > 0)
+    // Whole-word matches first; the sort is stable, so the gallery order holds within each group.
+    return ranked.sort((a, b) => b.rank - a.rank).map(({ item }) => item)
   }, [index, query, category])
 
   const current = selected ? byName.get(selected) : undefined

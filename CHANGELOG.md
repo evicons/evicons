@@ -11,7 +11,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 ### Added
 
 - 1 icon: `plug-type-e` (connector): Type E socket (CEE 7/5, the French socket with an earth pin; household AC in France, Belgium, Poland and the Czech Republic), shown as the socket face seen from the front like `plug-schuko`: the same recess and contact holes, with the earth pin as a ring at the top instead of Schuko's earthing clips. OpenStreetMap `socket:typee` (more often tagged at charging stations than `socket:schuko`) and OCPI `Connector.standard=DOMESTIC_E`.
-- Search tags in Italian, Spanish, Dutch and Polish for every icon (`tags.it`, `tags.es`, `tags.nl`, `tags.pl` in the metadata and `icons.json`), next to English, German and French. The gallery on evicons.dev searches all seven languages. In the metadata schema the four new languages are optional, so existing metadata files stay valid; every EVicons icon carries all seven.
+- Search tags in Italian, Spanish, Dutch and Polish for every icon (`tags.it`, `tags.es`, `tags.nl`, `tags.pl` in the metadata and `icons.json`), next to English, German and French. The gallery on evicons.dev searches all seven languages; it now matches tags at the start of a word and lists whole-word matches first, so that "car" no longer finds "recarga". In the metadata schema the four new languages are optional, so existing metadata files stay valid; every EVicons icon carries all seven.
 
 ## [0.9.0] - 2026-11-17
 

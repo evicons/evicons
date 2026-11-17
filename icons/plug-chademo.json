@@ -46,7 +46,8 @@
       "iec 62196-3",
       "conector dc",
       "carga rápida",
-      "conector"
+      "conector",
+      "toma del vehículo"
     ],
     "nl": [
       "chademo",
@@ -54,7 +55,8 @@
       "iec 62196-3",
       "dc-stekker",
       "snelladen",
-      "stekker"
+      "stekker",
+      "laadaansluiting"
     ],
     "pl": [
       "chademo",
@@ -62,7 +64,8 @@
       "iec 62196-3",
       "złącze dc",
       "szybkie ładowanie",
-      "wtyczka"
+      "wtyczka",
+      "gniazdo pojazdu"
     ]
   },
   "since": "0.2.0",
