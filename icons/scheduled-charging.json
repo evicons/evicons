@@ -1,0 +1,84 @@
+{
+  "category": "power",
+  "meaning": {
+    "en": "Scheduled charging: charging starts at a planned time, for example overnight or on an off-peak tariff",
+    "de": "Zeitgesteuertes Laden: der Ladevorgang startet zu einer geplanten Zeit, zum Beispiel nachts oder im günstigen Tarif"
+  },
+  "tags": {
+    "en": [
+      "scheduled charging",
+      "charging schedule",
+      "timer",
+      "smart charging",
+      "off-peak",
+      "calendar",
+      "departure time"
+    ],
+    "de": [
+      "zeitgesteuertes laden",
+      "ladeplan",
+      "zeitplan",
+      "timer",
+      "intelligentes laden",
+      "nachttarif",
+      "kalender",
+      "abfahrtszeit"
+    ],
+    "fr": [
+      "recharge programmée",
+      "programmation",
+      "planning de recharge",
+      "recharge intelligente",
+      "heures creuses",
+      "calendrier",
+      "heure de départ"
+    ],
+    "it": [
+      "ricarica programmata",
+      "programmazione",
+      "pianificazione ricarica",
+      "ricarica intelligente",
+      "fascia notturna",
+      "calendario",
+      "orario di partenza"
+    ],
+    "es": [
+      "carga programada",
+      "programación",
+      "horario de carga",
+      "carga inteligente",
+      "horas valle",
+      "calendario",
+      "hora de salida"
+    ],
+    "nl": [
+      "gepland laden",
+      "laadschema",
+      "timer",
+      "slim laden",
+      "daltarief",
+      "kalender",
+      "vertrektijd"
+    ],
+    "pl": [
+      "zaplanowane ładowanie",
+      "harmonogram ładowania",
+      "timer",
+      "inteligentne ładowanie",
+      "taryfa nocna",
+      "kalendarz",
+      "godzina odjazdu"
+    ]
+  },
+  "since": "0.11.0",
+  "aliases": [],
+  "exceptions": [
+    "solid-sign",
+    "sharp-corner"
+  ],
+  "provenance": {
+    "createdBy": "ai",
+    "approvedBy": "Landolsi Digital",
+    "approvedOn": "2026-11-17"
+  }
+}

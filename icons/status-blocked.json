@@ -1,0 +1,72 @@
+{
+  "category": "status",
+  "meaning": {
+    "en": "Blocked: the charge point cannot be reached, for example because a vehicle that is not charging or another barrier is in the way",
+    "de": "Blockiert: der Ladepunkt ist nicht erreichbar, zum Beispiel weil ein nicht ladendes Fahrzeug oder ein anderes Hindernis davor steht"
+  },
+  "tags": {
+    "en": [
+      "blocked",
+      "not accessible",
+      "parked in",
+      "iced",
+      "obstructed",
+      "no entry"
+    ],
+    "de": [
+      "blockiert",
+      "zugeparkt",
+      "nicht erreichbar",
+      "versperrt",
+      "falschparker",
+      "einfahrt verboten"
+    ],
+    "fr": [
+      "bloqué",
+      "inaccessible",
+      "place occupée",
+      "véhicule ventouse",
+      "obstrué",
+      "sens interdit"
+    ],
+    "it": [
+      "bloccato",
+      "non accessibile",
+      "posto occupato",
+      "ostruito",
+      "divieto di accesso"
+    ],
+    "es": [
+      "bloqueado",
+      "no accesible",
+      "plaza ocupada",
+      "obstruido",
+      "prohibido el paso"
+    ],
+    "nl": [
+      "geblokkeerd",
+      "niet bereikbaar",
+      "foutparkeerder",
+      "laadpaalklever",
+      "versperd",
+      "verboden toegang"
+    ],
+    "pl": [
+      "zablokowany",
+      "niedostępny",
+      "zastawiony",
+      "zajęte miejsce",
+      "zakaz wjazdu"
+    ]
+  },
+  "since": "0.11.0",
+  "aliases": [],
+  "ocpi": [
+    "EVSE.status=BLOCKED"
+  ],
+  "provenance": {
+    "createdBy": "ai",
+    "approvedBy": "Landolsi Digital",
+    "approvedOn": "2026-11-17"
+  }
+}

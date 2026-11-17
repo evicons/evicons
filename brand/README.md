@@ -38,6 +38,8 @@ The wordmark "evicons" uses `currentColor`; ".dev" uses the same colour at 65 % 
 | Unknown | `#0891b2` | Status demo colour |
 | Reserved | `#7c3aed` | Status demo colour |
 | Queue | `#c2410c` | Status demo colour |
+| Blocked | `#be185d` | Status demo colour |
+| Planned | `#2563eb` | Status demo colour |
 
 The status colours are suggestions for apps; the icons themselves contain no colour. Neutrals come from the Tailwind zinc scale.
 

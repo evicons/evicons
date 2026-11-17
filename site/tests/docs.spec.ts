@@ -68,7 +68,7 @@ test('code blocks follow the dark theme', async ({ page }) => {
 test('status table and filled markers render from the packages', async ({ page }) => {
   await page.goto('/docs')
   const table = page.locator('table.status-table')
-  await expect(table.locator('tbody tr')).toHaveCount(7)
+  await expect(table.locator('tbody tr')).toHaveCount(9)
   await expect(table.locator('svg.evicon-status-queue')).toHaveCount(1)
   await expect(table).toContainText('2.15:1')
   const pin = page.locator('.marker-filled svg.evicon-marker-available > path').first()

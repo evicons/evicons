@@ -1,0 +1,82 @@
+{
+  "category": "energy",
+  "meaning": {
+    "en": "Battery level: the state of charge of the vehicle battery, for example as a percentage or a charge limit",
+    "de": "Ladestand: der Ladezustand des Fahrzeugakkus, zum Beispiel in Prozent oder als Ladegrenze"
+  },
+  "tags": {
+    "en": [
+      "battery level",
+      "state of charge",
+      "soc",
+      "charge level",
+      "battery",
+      "percent",
+      "charge limit"
+    ],
+    "de": [
+      "ladestand",
+      "ladezustand",
+      "soc",
+      "akkustand",
+      "akku",
+      "batterie",
+      "prozent",
+      "ladegrenze"
+    ],
+    "fr": [
+      "niveau de batterie",
+      "état de charge",
+      "soc",
+      "niveau de charge",
+      "batterie",
+      "pourcentage",
+      "limite de charge"
+    ],
+    "it": [
+      "livello batteria",
+      "stato di carica",
+      "soc",
+      "livello di carica",
+      "batteria",
+      "percentuale",
+      "limite di carica"
+    ],
+    "es": [
+      "nivel de batería",
+      "estado de carga",
+      "soc",
+      "nivel de carga",
+      "batería",
+      "porcentaje",
+      "límite de carga"
+    ],
+    "nl": [
+      "batterijniveau",
+      "laadniveau",
+      "soc",
+      "accuniveau",
+      "accu",
+      "batterij",
+      "procent",
+      "laadlimiet"
+    ],
+    "pl": [
+      "poziom baterii",
+      "stan naładowania",
+      "soc",
+      "poziom naładowania",
+      "bateria",
+      "akumulator",
+      "procent",
+      "limit ładowania"
+    ]
+  },
+  "since": "0.11.0",
+  "aliases": [],
+  "provenance": {
+    "createdBy": "ai",
+    "approvedBy": "Landolsi Digital",
+    "approvedOn": "2026-11-17"
+  }
+}

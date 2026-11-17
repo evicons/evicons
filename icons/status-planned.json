@@ -1,0 +1,73 @@
+{
+  "category": "status",
+  "meaning": {
+    "en": "Planned: the charge point is planned or under construction and not yet in operation",
+    "de": "Geplant: der Ladepunkt ist geplant oder im Bau und noch nicht in Betrieb"
+  },
+  "tags": {
+    "en": [
+      "planned",
+      "coming soon",
+      "under construction",
+      "not yet in operation",
+      "upcoming",
+      "three dots"
+    ],
+    "de": [
+      "geplant",
+      "in planung",
+      "im bau",
+      "kommt bald",
+      "noch nicht in betrieb",
+      "drei punkte"
+    ],
+    "fr": [
+      "prévu",
+      "en projet",
+      "en construction",
+      "bientôt disponible",
+      "pas encore en service",
+      "trois points"
+    ],
+    "it": [
+      "pianificato",
+      "in progetto",
+      "in costruzione",
+      "prossimamente",
+      "non ancora attivo",
+      "tre puntini"
+    ],
+    "es": [
+      "planificado",
+      "en proyecto",
+      "en construcción",
+      "próximamente",
+      "aún no operativo",
+      "tres puntos"
+    ],
+    "nl": [
+      "gepland",
+      "in aanbouw",
+      "binnenkort",
+      "nog niet in gebruik",
+      "drie puntjes"
+    ],
+    "pl": [
+      "planowany",
+      "w budowie",
+      "wkrótce",
+      "jeszcze nieczynny",
+      "trzy kropki"
+    ]
+  },
+  "since": "0.11.0",
+  "aliases": [],
+  "ocpi": [
+    "EVSE.status=PLANNED"
+  ],
+  "provenance": {
+    "createdBy": "ai",
+    "approvedBy": "Landolsi Digital",
+    "approvedOn": "2026-11-17"
+  }
+}

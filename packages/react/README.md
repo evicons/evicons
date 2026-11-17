@@ -66,7 +66,7 @@ Because this is done by the browser and not computed from `size`, it also works 
 
 At 16 px the default stroke is drawn 1 px wide. Keep it at full weight with `absoluteStrokeWidth` and `strokeWidth={1.5}`, or with `strokeWidth={2}` when you do not use `absoluteStrokeWidth`. Next to Lucide icons (stroke 2), set `strokeWidth={2}` so both sets look equally heavy. This thickens the stroke relative to the drawing, so tight gaps such as the cut-out around the small bolt may close; check the icon at that size.
 
-Not every icon is readable at 16 px. Use these from 20 px: the connector faces (category `connector`: `plug-type-1`, `plug-type-2`, `plug-ccs1`, `plug-ccs2`, `plug-chademo`, `plug-nacs`, `plug-gbt-dc`, `plug-mcs`, `plug-schuko`, `plug-type-e`, `plug-cee-blue`, `plug-cee-red`), the letter icons (`current-ac`, `current-dc`, `power-kw`, `parking-charging`), `bike-electric`, `motorcycle-electric` and `charging-availability`. Use the map markers (`marker-*`) from 24 px.
+Not every icon is readable at 16 px. Use these from 20 px: the connector faces (category `connector`: `plug-type-1`, `plug-type-2`, `plug-ccs1`, `plug-ccs2`, `plug-chademo`, `plug-nacs`, `plug-gbt-dc`, `plug-mcs`, `plug-schuko`, `plug-type-e`, `plug-cee-blue`, `plug-cee-red`), the letter icons (`current-ac`, `current-dc`, `power-kw`, `energy-kwh`, `parking-charging`), `bike-electric`, `motorcycle-electric` and `charging-availability`. Use the map markers (`marker-*`) from 24 px.
 
 ## Accessibility
 
@@ -150,14 +150,17 @@ To combine a status with another icon, place a small status icon (half the base 
 | `fast-charging` | `FastCharging` | Fast charging: high charging power, typically DC fast or high-power charging |
 | `charging-bolt` | `ChargingBolt` | Charging or electricity in general (plain lightning bolt) |
 | `power-kw` | `PowerKw` | Power in kilowatts (kW), for example the charging power of a charge point |
+| `energy-kwh` | `EnergyKwh` | Energy in kilowatt-hours (kWh), for example the energy charged in a session or a price per kWh |
 | `solar-charging` | `SolarCharging` | Solar charging: charging with power from photovoltaics (PV surplus) |
 | `green-power` | `GreenPower` | Green power: electricity from renewable sources |
 | `battery-charging` | `BatteryCharging` | Battery charging: the vehicle battery is being charged |
+| `battery-level` | `BatteryLevel` | Battery level: the state of charge of the vehicle battery, for example as a percentage or a charge limit |
 | `bidirectional-charging` | `BidirectionalCharging` | Bidirectional charging: energy flows into and out of the vehicle (V2G, V2H) |
 | `charging-power-level` | `ChargingPowerLevel` | Charging power level: the charging power shown on a scale (kW display, power filter) |
 | `charging-session` | `ChargingSession` | Charging session in progress: the vehicle is charging right now (live session) |
 | `power-outage` | `PowerOutage` | Power outage: no grid power at the site, the charging point has no electricity |
 | `charging-time` | `ChargingTime` | Charging time: how long a charging session takes, or a time-based tariff |
+| `scheduled-charging` | `ScheduledCharging` | Scheduled charging: charging starts at a planned time, for example overnight or on an off-peak tariff |
 
 ### Vehicles
 
@@ -202,6 +205,8 @@ Status icons share a round frame; the sign inside carries the meaning.
 | `status-reserved` | `StatusReserved` | Letter R | Reserved: the charge point is reserved for a booking |
 | `status-unknown` | `StatusUnknown` | Question mark | Unknown: no current status is available for the charge point |
 | `status-queue` | `StatusQueue` | Two cars, one behind the other | Queue: cars are queuing at this station; you would have to wait |
+| `status-blocked` | `StatusBlocked` | Bar (no entry) | Blocked: the charge point cannot be reached, for example because a vehicle that is not charging or another barrier is in the way |
+| `status-planned` | `StatusPlanned` | Three dots | Planned: the charge point is planned or under construction and not yet in operation |
 
 "Faulted" (the station reports an error) and "out of service" (taken out of service by the operator) are different states; use the one your data actually reports.
 

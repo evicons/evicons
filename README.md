@@ -95,7 +95,7 @@ Because this is done by the browser and not computed from `size`, it also works 
 
 At 16 px the default stroke is drawn 1 px wide. Keep it at full weight with `absoluteStrokeWidth` and `strokeWidth={1.5}`, or with `strokeWidth={2}` when you do not use `absoluteStrokeWidth`. Next to Lucide icons (stroke 2), set `strokeWidth={2}` so both sets look equally heavy. This thickens the stroke relative to the drawing, so tight gaps such as the cut-out around the small bolt may close; check the icon at that size.
 
-Not every icon is readable at 16 px. Use these from 20 px: the connector faces (category `connector`: `plug-type-1`, `plug-type-2`, `plug-ccs1`, `plug-ccs2`, `plug-chademo`, `plug-nacs`, `plug-gbt-dc`, `plug-mcs`, `plug-schuko`, `plug-type-e`, `plug-cee-blue`, `plug-cee-red`), the letter icons (`current-ac`, `current-dc`, `power-kw`, `parking-charging`), `bike-electric`, `motorcycle-electric` and `charging-availability`. Use the map markers (`marker-*`) from 24 px.
+Not every icon is readable at 16 px. Use these from 20 px: the connector faces (category `connector`: `plug-type-1`, `plug-type-2`, `plug-ccs1`, `plug-ccs2`, `plug-chademo`, `plug-nacs`, `plug-gbt-dc`, `plug-mcs`, `plug-schuko`, `plug-type-e`, `plug-cee-blue`, `plug-cee-red`), the letter icons (`current-ac`, `current-dc`, `power-kw`, `energy-kwh`, `parking-charging`), `bike-electric`, `motorcycle-electric` and `charging-availability`. Use the map markers (`marker-*`) from 24 px.
 
 ### Accessibility
 
@@ -242,11 +242,14 @@ The same index with SVG markup and URLs, without installing anything: [evicons.d
 | `fast-charging` | `FastCharging` | Fast charging: high charging power, typically DC fast or high-power charging |
 | `charging-bolt` | `ChargingBolt` | Charging or electricity in general (plain lightning bolt) |
 | `power-kw` | `PowerKw` | Power in kilowatts (kW), for example the charging power of a charge point |
+| `energy-kwh` | `EnergyKwh` | Energy in kilowatt-hours (kWh), for example the energy charged in a session or a price per kWh |
 | `solar-charging` | `SolarCharging` | Solar charging: charging with power from photovoltaics (PV surplus) |
 | `green-power` | `GreenPower` | Green power: electricity from renewable sources |
 | `battery-charging` | `BatteryCharging` | Battery charging: the vehicle battery is being charged |
+| `battery-level` | `BatteryLevel` | Battery level: the state of charge of the vehicle battery, for example as a percentage or a charge limit |
 | `bidirectional-charging` | `BidirectionalCharging` | Bidirectional charging: energy flows into and out of the vehicle (V2G, V2H) |
 | `charging-time` | `ChargingTime` | Charging time: how long a charging session takes, or a time-based tariff |
+| `scheduled-charging` | `ScheduledCharging` | Scheduled charging: charging starts at a planned time, for example overnight or on an off-peak tariff |
 | `charging-power-level` | `ChargingPowerLevel` | Charging power level: the charging power shown on a scale (kW display, power filter) |
 | `charging-session` | `ChargingSession` | Charging session in progress: the vehicle is charging right now (live session) |
 | `power-outage` | `PowerOutage` | Power outage: no grid power at the site, the charging point has no electricity |
@@ -294,6 +297,8 @@ Status icons share a round frame; the sign inside carries the meaning.
 | `status-reserved` | `StatusReserved` | Letter R | Reserved: the charge point is reserved for a booking |
 | `status-unknown` | `StatusUnknown` | Question mark | Unknown: no current status is available for the charge point |
 | `status-queue` | `StatusQueue` | Two cars, one behind the other | Queue: cars are queuing at this station; you would have to wait |
+| `status-blocked` | `StatusBlocked` | Bar (no entry) | Blocked: the charge point cannot be reached, for example because a vehicle that is not charging or another barrier is in the way |
+| `status-planned` | `StatusPlanned` | Three dots | Planned: the charge point is planned or under construction and not yet in operation |
 
 "Faulted" (the station reports an error) and "out of service" (taken out of service by the operator) are different states; use the one your data actually reports.
 
@@ -714,9 +719,11 @@ An entry is `<Object>.<field>=<VALUE>`: the object, the field (nested classes an
 | `EVSE.parking_restrictions=MOTORCYCLES` | `motorcycle-electric` | `MotorcycleElectric` | 2.2.1 |
 | `EVSE.parking_restrictions=TENANTS` | `restricted-access` | `RestrictedAccess` | 2.3 |
 | `EVSE.status=AVAILABLE` | `status-available` | `StatusAvailable` | 2.2.1 |
+| `EVSE.status=BLOCKED` | `status-blocked` | `StatusBlocked` | 2.2.1 |
 | `EVSE.status=CHARGING` | `status-occupied` | `StatusOccupied` | 2.2.1 |
 | `EVSE.status=INOPERATIVE` | `status-out-of-service` | `StatusOutOfService` | 2.2.1 |
 | `EVSE.status=OUTOFORDER` | `status-faulted` | `StatusFaulted` | 2.2.1 |
+| `EVSE.status=PLANNED` | `status-planned` | `StatusPlanned` | 2.2.1 |
 | `EVSE.status=RESERVED` | `status-reserved` | `StatusReserved` | 2.2.1 |
 | `EVSE.status=UNKNOWN` | `status-unknown` | `StatusUnknown` | 2.2.1 |
 | `Location.energy_mix.is_green_energy=true` | `green-power` | `GreenPower` | 2.2.1 |
@@ -727,7 +734,7 @@ An entry is `<Object>.<field>=<VALUE>`: the object, the field (nested classes an
 | `Location.facilities=SUPERMARKET` | `shop-charging` | `ShopCharging` | 2.2.1 |
 | `Location.parking_type=ALONG_MOTORWAY` | `highway-charging` | `HighwayCharging` | 2.2.1 |
 
-- **Status:** the six mapped `EVSE.status` values use the `status-*` icons; on a map use the marker with the same name instead (`status-occupied` → `marker-occupied`, and so on). `OUTOFORDER` (broken) is `status-faulted`, `INOPERATIVE` (not yet active or temporarily unavailable, not broken) is `status-out-of-service`. `BLOCKED` (a car or another barrier in the way), `PLANNED` and `REMOVED` are not mapped.
+- **Status:** the eight mapped `EVSE.status` values use the `status-*` icons; on a map use the marker with the same name instead (`status-occupied` → `marker-occupied`, and so on; `status-blocked` and `status-planned` have no marker yet). `OUTOFORDER` (broken) is `status-faulted`, `INOPERATIVE` (not yet active or temporarily unavailable, not broken) is `status-out-of-service`. `BLOCKED` (a car or another barrier in the way) is `status-blocked`, `PLANNED` is `status-planned`; `REMOVED` is not mapped.
 - **Connectors:** `GBT_AC` maps to `plug-type-2` (same face as Type 2), `DOMESTIC_E` (Type E) to `plug-type-e`, `DOMESTIC_F` (Schuko) to `plug-schuko`. NACS is `SAE_J3400`, new in OCPI 2.3.0; Tesla's own `TESLA_S` and `TESLA_R` are not mapped to `plug-nacs`. Like any other connector without an icon (the other `DOMESTIC_*` and `NEMA_*` sockets, `CHAOJI`, `IEC_62196_T3A`, `IEC_62196_T3C`, the pantographs), they get no icon from the lookup; show `charging-plug` for them (see below).
 - **Payment:** the five payment terminal capabilities (`CHIP_CARD_SUPPORT`, `CONTACTLESS_CARD_SUPPORT`, `CREDIT_CARD_PAYABLE`, `DEBIT_CARD_PAYABLE`, `PED_TERMINAL`) all mean that the EVSE has a payment terminal, so they share `card-terminal`; `RFID_READER` is `charging-card`. Plug & Charge is a connector capability of OCPI 2.3.0 (`ISO_15118_2_PLUG_AND_CHARGE`, `ISO_15118_20_PLUG_AND_CHARGE`); OCPI 2.2.1 has no value for it.
 - **Energy:** `Location.energy_mix.is_green_energy=true` (100 % renewable) is `green-power`. `Location.energy_mix.energy_sources` lists the share of each source; any share of `SOLAR` would not mean charging with solar power, so no value is mapped: derive `solar-charging` yourself from `percentage` (for example ≥ 50 %).

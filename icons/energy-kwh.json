@@ -1,0 +1,75 @@
+{
+  "category": "energy",
+  "meaning": {
+    "en": "Energy in kilowatt-hours (kWh), for example the energy charged in a session or a price per kWh",
+    "de": "Energie in Kilowattstunden (kWh), zum Beispiel die geladene Energie eines Ladevorgangs oder ein Preis pro kWh"
+  },
+  "tags": {
+    "en": [
+      "kwh",
+      "kilowatt-hour",
+      "energy",
+      "energy charged",
+      "price per kwh",
+      "consumption"
+    ],
+    "de": [
+      "kwh",
+      "kilowattstunde",
+      "energie",
+      "geladene energie",
+      "preis pro kwh",
+      "verbrauch"
+    ],
+    "fr": [
+      "kwh",
+      "kilowattheure",
+      "énergie",
+      "énergie chargée",
+      "prix au kwh",
+      "consommation"
+    ],
+    "it": [
+      "kwh",
+      "chilowattora",
+      "energia",
+      "energia ricaricata",
+      "prezzo al kwh",
+      "consumo"
+    ],
+    "es": [
+      "kwh",
+      "kilovatio hora",
+      "energía",
+      "energía cargada",
+      "precio por kwh",
+      "consumo"
+    ],
+    "nl": [
+      "kwh",
+      "kilowattuur",
+      "energie",
+      "geladen energie",
+      "prijs per kwh",
+      "verbruik"
+    ],
+    "pl": [
+      "kwh",
+      "kilowatogodzina",
+      "energia",
+      "pobrana energia",
+      "cena za kwh",
+      "zużycie"
+    ]
+  },
+  "since": "0.11.0",
+  "aliases": [],
+  "exceptions": [
+    "letters"
+  ],
+  "provenance": {
+    "createdBy": "ai",
+    "approvedBy": "Landolsi Digital",
+    "approvedOn": "2026-11-17"
+  }
+}

@@ -125,14 +125,17 @@ Do not use an icon as the only carrier of information: at 16 px several connecto
 | `fast-charging` | `FastCharging` | Fast charging: high charging power, typically DC fast or high-power charging |
 | `charging-bolt` | `ChargingBolt` | Charging or electricity in general (plain lightning bolt) |
 | `power-kw` | `PowerKw` | Power in kilowatts (kW), for example the charging power of a charge point |
+| `energy-kwh` | `EnergyKwh` | Energy in kilowatt-hours (kWh), for example the energy charged in a session or a price per kWh |
 | `solar-charging` | `SolarCharging` | Solar charging: charging with power from photovoltaics (PV surplus) |
 | `green-power` | `GreenPower` | Green power: electricity from renewable sources |
 | `battery-charging` | `BatteryCharging` | Battery charging: the vehicle battery is being charged |
+| `battery-level` | `BatteryLevel` | Battery level: the state of charge of the vehicle battery, for example as a percentage or a charge limit |
 | `bidirectional-charging` | `BidirectionalCharging` | Bidirectional charging: energy flows into and out of the vehicle (V2G, V2H) |
 | `charging-power-level` | `ChargingPowerLevel` | Charging power level: the charging power shown on a scale (kW display, power filter) |
 | `charging-session` | `ChargingSession` | Charging session in progress: the vehicle is charging right now (live session) |
 | `power-outage` | `PowerOutage` | Power outage: no grid power at the site, the charging point has no electricity |
 | `charging-time` | `ChargingTime` | Charging time: how long a charging session takes, or a time-based tariff |
+| `scheduled-charging` | `ScheduledCharging` | Scheduled charging: charging starts at a planned time, for example overnight or on an off-peak tariff |
 
 ### Vehicles
 
@@ -177,6 +180,8 @@ Status icons share a round frame; the sign inside carries the meaning.
 | `status-reserved` | `StatusReserved` | Letter R | Reserved: the charge point is reserved for a booking |
 | `status-unknown` | `StatusUnknown` | Question mark | Unknown: no current status is available for the charge point |
 | `status-queue` | `StatusQueue` | Two cars, one behind the other | Queue: cars are queuing at this station; you would have to wait |
+| `status-blocked` | `StatusBlocked` | Bar (no entry) | Blocked: the charge point cannot be reached, for example because a vehicle that is not charging or another barrier is in the way |
+| `status-planned` | `StatusPlanned` | Three dots | Planned: the charge point is planned or under construction and not yet in operation |
 
 "Faulted" (the station reports an error) and "out of service" (taken out of service by the operator) are different states; use the one your data actually reports.
 
