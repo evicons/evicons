@@ -320,6 +320,8 @@ The charging marker is named `marker-charging` (`MarkerCharging`), not `marker`,
 | `marker-unknown` | `MarkerUnknown` | Question mark | Map marker: the status of the charging point is unknown |
 | `marker-reserved` | `MarkerReserved` | Letter R | Map marker: the charging point is reserved for a booking |
 | `marker-queue` | `MarkerQueue` | Hourglass | Map marker: drivers are queuing for the charging point, expect a wait |
+| `marker-blocked` | `MarkerBlocked` | Bar (no entry) | Map marker: the charging point is blocked and cannot be reached |
+| `marker-planned` | `MarkerPlanned` | Three dots | Map marker: the charging point is planned or under construction, not yet in operation |
 | `marker-cluster` | `MarkerCluster` | Empty head | Map marker for a cluster of charging points; the app draws the count in the head |
 
 ## Map markers
@@ -734,7 +736,7 @@ An entry is `<Object>.<field>=<VALUE>`: the object, the field (nested classes an
 | `Location.facilities=SUPERMARKET` | `shop-charging` | `ShopCharging` | 2.2.1 |
 | `Location.parking_type=ALONG_MOTORWAY` | `highway-charging` | `HighwayCharging` | 2.2.1 |
 
-- **Status:** the eight mapped `EVSE.status` values use the `status-*` icons; on a map use the marker with the same name instead (`status-occupied` → `marker-occupied`, and so on; `status-blocked` and `status-planned` have no marker yet). `OUTOFORDER` (broken) is `status-faulted`, `INOPERATIVE` (not yet active or temporarily unavailable, not broken) is `status-out-of-service`. `BLOCKED` (a car or another barrier in the way) is `status-blocked`, `PLANNED` is `status-planned`; `REMOVED` is not mapped.
+- **Status:** the eight mapped `EVSE.status` values use the `status-*` icons; on a map use the marker with the same name instead (`status-occupied` → `marker-occupied`, and so on). `OUTOFORDER` (broken) is `status-faulted`, `INOPERATIVE` (not yet active or temporarily unavailable, not broken) is `status-out-of-service`. `BLOCKED` (a car or another barrier in the way) is `status-blocked`, `PLANNED` is `status-planned`; `REMOVED` is not mapped.
 - **Connectors:** `GBT_AC` maps to `plug-type-2` (same face as Type 2), `DOMESTIC_E` (Type E) to `plug-type-e`, `DOMESTIC_F` (Schuko) to `plug-schuko`. NACS is `SAE_J3400`, new in OCPI 2.3.0; Tesla's own `TESLA_S` and `TESLA_R` are not mapped to `plug-nacs`. Like any other connector without an icon (the other `DOMESTIC_*` and `NEMA_*` sockets, `CHAOJI`, `IEC_62196_T3A`, `IEC_62196_T3C`, the pantographs), they get no icon from the lookup; show `charging-plug` for them (see below).
 - **Payment:** the five payment terminal capabilities (`CHIP_CARD_SUPPORT`, `CONTACTLESS_CARD_SUPPORT`, `CREDIT_CARD_PAYABLE`, `DEBIT_CARD_PAYABLE`, `PED_TERMINAL`) all mean that the EVSE has a payment terminal, so they share `card-terminal`; `RFID_READER` is `charging-card`. Plug & Charge is a connector capability of OCPI 2.3.0 (`ISO_15118_2_PLUG_AND_CHARGE`, `ISO_15118_20_PLUG_AND_CHARGE`); OCPI 2.2.1 has no value for it.
 - **Energy:** `Location.energy_mix.is_green_energy=true` (100 % renewable) is `green-power`. `Location.energy_mix.energy_sources` lists the share of each source; any share of `SOLAR` would not mean charging with solar power, so no value is mapped: derive `solar-charging` yourself from `percentage` (for example ≥ 50 %).

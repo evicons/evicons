@@ -48,6 +48,8 @@ export const iconTitles: Record<string, { en: string; de: string }> = {
   'marker-occupied': { en: 'Occupied charger map marker', de: 'Kartenmarker Ladepunkt belegt' },
   'marker-out-of-service': { en: 'Out of service charger map marker', de: 'Kartenmarker Ladepunkt außer Betrieb' },
   'marker-queue': { en: 'Queue map marker', de: 'Kartenmarker Warteschlange' },
+  'marker-blocked': { en: 'Blocked map marker', de: 'Kartenmarker blockiert' },
+  'marker-planned': { en: 'Planned map marker', de: 'Kartenmarker geplant' },
   'marker-reserved': { en: 'Reserved charger map marker', de: 'Kartenmarker Ladepunkt reserviert' },
   'marker-unknown': { en: 'Unknown status map marker', de: 'Kartenmarker Status unbekannt' },
   'motorcycle-electric': { en: 'Electric motorcycle', de: 'E-Motorrad' },

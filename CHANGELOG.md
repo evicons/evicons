@@ -6,6 +6,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
+## [0.12.0] - 2026-11-25
+
+### Added
+
+- 2 icons, 92 in total: `marker-blocked` and `marker-planned` (marker), the map pins for the two status icons of 0.11.0, with the same signs in the pin head: the no-entry bar and the three dots. Every `status-*` icon now has a marker of the same name.
+
 ## [0.11.0] - 2026-11-17
 
 ### Added
@@ -177,7 +183,8 @@ First version, not published to npm. The first published release is 0.2.0.
   - `status-unknown`: unknown (question mark)
   - `status-queue`: queue (two cars, one behind the other)
 
-[Unreleased]: https://github.com/evicons/evicons/compare/v0.11.0...HEAD
+[Unreleased]: https://github.com/evicons/evicons/compare/v0.12.0...HEAD
+[0.12.0]: https://github.com/evicons/evicons/releases/tag/v0.12.0
 [0.11.0]: https://github.com/evicons/evicons/releases/tag/v0.11.0
 [0.10.1]: https://github.com/evicons/evicons/releases/tag/v0.10.1
 [0.10.0]: https://github.com/evicons/evicons/releases/tag/v0.10.0

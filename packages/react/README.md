@@ -227,6 +227,8 @@ The charging marker is named `marker-charging` (`MarkerCharging`), not `marker`,
 | `marker-out-of-service` | `MarkerOutOfService` | Cross | Map marker: the charging point is out of service |
 | `marker-unknown` | `MarkerUnknown` | Question mark | Map marker: the status of the charging point is unknown |
 | `marker-queue` | `MarkerQueue` | Hourglass | Map marker: drivers are queuing for the charging point, expect a wait |
+| `marker-blocked` | `MarkerBlocked` | Bar (no entry) | Map marker: the charging point is blocked and cannot be reached |
+| `marker-planned` | `MarkerPlanned` | Three dots | Map marker: the charging point is planned or under construction, not yet in operation |
 | `marker-reserved` | `MarkerReserved` | Letter R | Map marker: the charging point is reserved for a booking |
 | `marker-cluster` | `MarkerCluster` | Empty head | Map marker for a cluster of charging points; the app draws the count in the head |
 

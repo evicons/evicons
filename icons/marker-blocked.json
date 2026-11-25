@@ -1,0 +1,79 @@
+{
+  "category": "marker",
+  "meaning": {
+    "en": "Map marker: the charging point is blocked and cannot be reached",
+    "de": "Kartenmarker: der Ladepunkt ist blockiert und nicht erreichbar"
+  },
+  "tags": {
+    "en": [
+      "marker",
+      "map pin",
+      "blocked",
+      "not accessible",
+      "parked in",
+      "no entry",
+      "status"
+    ],
+    "de": [
+      "marker",
+      "kartenpin",
+      "blockiert",
+      "zugeparkt",
+      "nicht erreichbar",
+      "einfahrt verboten",
+      "status"
+    ],
+    "fr": [
+      "marqueur",
+      "épingle",
+      "bloqué",
+      "inaccessible",
+      "sens interdit",
+      "statut"
+    ],
+    "it": [
+      "segnaposto",
+      "marker",
+      "pin mappa",
+      "bloccato",
+      "non accessibile",
+      "divieto di accesso",
+      "stato"
+    ],
+    "es": [
+      "marcador",
+      "pin del mapa",
+      "bloqueado",
+      "no accesible",
+      "prohibido el paso",
+      "estado"
+    ],
+    "nl": [
+      "kaartpin",
+      "marker",
+      "geblokkeerd",
+      "niet bereikbaar",
+      "foutparkeerder",
+      "status"
+    ],
+    "pl": [
+      "znacznik",
+      "pinezka",
+      "marker",
+      "zablokowany",
+      "niedostępny",
+      "zastawiony",
+      "status"
+    ]
+  },
+  "since": "0.12.0",
+  "aliases": [],
+  "exceptions": [
+    "sharp-corner"
+  ],
+  "provenance": {
+    "createdBy": "ai",
+    "approvedBy": null,
+    "approvedOn": null
+  }
+}

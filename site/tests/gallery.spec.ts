@@ -11,9 +11,9 @@ const search = (page: Page) => page.getByRole('searchbox', { name: 'Search icons
 // From `md` up the panel is a region beside the grid, below it a modal dialog (see the mobile tests).
 const panelOf = (page: Page) => page.locator('[data-icon-panel]')
 
-test('shows all 90 icons', async ({ page }) => {
+test('shows all 92 icons', async ({ page }) => {
   await open(page)
-  await expect(cards(page)).toHaveCount(90)
+  await expect(cards(page)).toHaveCount(92)
 })
 
 test('search "ccs" finds only the CCS plugs', async ({ page }) => {
@@ -28,7 +28,7 @@ test('search matches German tags', async ({ page }) => {
   await open(page)
   await search(page).fill('Stecker')
   await expect.poll(() => cards(page).count()).toBeGreaterThanOrEqual(4)
-  await expect.poll(() => cards(page).count()).toBeLessThan(90)
+  await expect.poll(() => cards(page).count()).toBeLessThan(92)
 })
 
 test('search matches Italian, Spanish, Dutch and Polish tags', async ({ page }) => {
@@ -36,7 +36,7 @@ test('search matches Italian, Spanish, Dutch and Polish tags', async ({ page }) 
   for (const term of ['colonnina di ricarica', 'punto de recarga', 'laadpaal', 'stacja ładowania']) {
     await search(page).fill(term)
     await expect(page.locator('[data-icon-card="charging-station"]'), term).toBeVisible()
-    await expect.poll(() => cards(page).count(), term).toBeLessThan(90)
+    await expect.poll(() => cards(page).count(), term).toBeLessThan(92)
   }
 })
 
@@ -55,10 +55,10 @@ test('search without a match shows the empty state', async ({ page }) => {
   await expect(cards(page)).toHaveCount(0)
 })
 
-test('Markers chip shows the 11 markers', async ({ page }) => {
+test('Markers chip shows the 13 markers', async ({ page }) => {
   await open(page)
   await page.getByRole('group', { name: 'Category' }).getByRole('button', { name: 'Markers' }).click()
-  await expect(cards(page)).toHaveCount(11)
+  await expect(cards(page)).toHaveCount(13)
 })
 
 test('clicking an icon opens the panel with the React import and updates the URL', async ({ page }) => {

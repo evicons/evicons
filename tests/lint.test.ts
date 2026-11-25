@@ -184,9 +184,9 @@ test('marker file names and category marker go together', () => {
   ])
 })
 
-test('the eleven real markers pass the marker rules', () => {
+test('the thirteen real markers pass the marker rules', () => {
   const markers = readdirSync(join(import.meta.dirname, '..', 'icons')).filter((f) => /^marker(-.*)?\.svg$/.test(f))
-  expect(markers).toHaveLength(11)
+  expect(markers).toHaveLength(13)
   const errors = lintIcons(join(import.meta.dirname, '..', 'icons'), { release: true })
   expect(errors.filter((e) => e.message.startsWith('marker:'))).toEqual([])
 })

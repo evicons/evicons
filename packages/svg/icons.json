@@ -3175,6 +3175,86 @@
     },
     "pascal": "MarkerAvailable"
   },
+  "marker-blocked": {
+    "category": "marker",
+    "meaning": {
+      "en": "Map marker: the charging point is blocked and cannot be reached",
+      "de": "Kartenmarker: der Ladepunkt ist blockiert und nicht erreichbar"
+    },
+    "tags": {
+      "en": [
+        "marker",
+        "map pin",
+        "blocked",
+        "not accessible",
+        "parked in",
+        "no entry",
+        "status"
+      ],
+      "de": [
+        "marker",
+        "kartenpin",
+        "blockiert",
+        "zugeparkt",
+        "nicht erreichbar",
+        "einfahrt verboten",
+        "status"
+      ],
+      "fr": [
+        "marqueur",
+        "épingle",
+        "bloqué",
+        "inaccessible",
+        "sens interdit",
+        "statut"
+      ],
+      "it": [
+        "segnaposto",
+        "marker",
+        "pin mappa",
+        "bloccato",
+        "non accessibile",
+        "divieto di accesso",
+        "stato"
+      ],
+      "es": [
+        "marcador",
+        "pin del mapa",
+        "bloqueado",
+        "no accesible",
+        "prohibido el paso",
+        "estado"
+      ],
+      "nl": [
+        "kaartpin",
+        "marker",
+        "geblokkeerd",
+        "niet bereikbaar",
+        "foutparkeerder",
+        "status"
+      ],
+      "pl": [
+        "znacznik",
+        "pinezka",
+        "marker",
+        "zablokowany",
+        "niedostępny",
+        "zastawiony",
+        "status"
+      ]
+    },
+    "since": "0.12.0",
+    "aliases": [],
+    "exceptions": [
+      "sharp-corner"
+    ],
+    "provenance": {
+      "createdBy": "ai",
+      "approvedBy": null,
+      "approvedOn": null
+    },
+    "pascal": "MarkerBlocked"
+  },
   "marker-charging": {
     "category": "marker",
     "meaning": {
@@ -3687,6 +3767,91 @@
       "approvedOn": "2026-11-01"
     },
     "pascal": "MarkerOutOfService"
+  },
+  "marker-planned": {
+    "category": "marker",
+    "meaning": {
+      "en": "Map marker: the charging point is planned or under construction, not yet in operation",
+      "de": "Kartenmarker: der Ladepunkt ist geplant oder im Bau, noch nicht in Betrieb"
+    },
+    "tags": {
+      "en": [
+        "marker",
+        "map pin",
+        "planned",
+        "coming soon",
+        "under construction",
+        "three dots",
+        "status"
+      ],
+      "de": [
+        "marker",
+        "kartenpin",
+        "geplant",
+        "im bau",
+        "kommt bald",
+        "drei punkte",
+        "status"
+      ],
+      "fr": [
+        "marqueur",
+        "épingle",
+        "prévu",
+        "en construction",
+        "bientôt disponible",
+        "trois points",
+        "statut"
+      ],
+      "it": [
+        "segnaposto",
+        "marker",
+        "pin mappa",
+        "pianificato",
+        "in costruzione",
+        "prossimamente",
+        "tre puntini",
+        "stato"
+      ],
+      "es": [
+        "marcador",
+        "pin del mapa",
+        "planificado",
+        "en construcción",
+        "próximamente",
+        "tres puntos",
+        "estado"
+      ],
+      "nl": [
+        "kaartpin",
+        "marker",
+        "gepland",
+        "in aanbouw",
+        "binnenkort",
+        "drie puntjes",
+        "status"
+      ],
+      "pl": [
+        "znacznik",
+        "pinezka",
+        "marker",
+        "planowany",
+        "w budowie",
+        "wkrótce",
+        "trzy kropki",
+        "status"
+      ]
+    },
+    "since": "0.12.0",
+    "aliases": [],
+    "exceptions": [
+      "sharp-corner"
+    ],
+    "provenance": {
+      "createdBy": "ai",
+      "approvedBy": null,
+      "approvedOn": null
+    },
+    "pascal": "MarkerPlanned"
   },
   "marker-queue": {
     "category": "marker",

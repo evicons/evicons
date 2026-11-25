@@ -1,0 +1,84 @@
+{
+  "category": "marker",
+  "meaning": {
+    "en": "Map marker: the charging point is planned or under construction, not yet in operation",
+    "de": "Kartenmarker: der Ladepunkt ist geplant oder im Bau, noch nicht in Betrieb"
+  },
+  "tags": {
+    "en": [
+      "marker",
+      "map pin",
+      "planned",
+      "coming soon",
+      "under construction",
+      "three dots",
+      "status"
+    ],
+    "de": [
+      "marker",
+      "kartenpin",
+      "geplant",
+      "im bau",
+      "kommt bald",
+      "drei punkte",
+      "status"
+    ],
+    "fr": [
+      "marqueur",
+      "épingle",
+      "prévu",
+      "en construction",
+      "bientôt disponible",
+      "trois points",
+      "statut"
+    ],
+    "it": [
+      "segnaposto",
+      "marker",
+      "pin mappa",
+      "pianificato",
+      "in costruzione",
+      "prossimamente",
+      "tre puntini",
+      "stato"
+    ],
+    "es": [
+      "marcador",
+      "pin del mapa",
+      "planificado",
+      "en construcción",
+      "próximamente",
+      "tres puntos",
+      "estado"
+    ],
+    "nl": [
+      "kaartpin",
+      "marker",
+      "gepland",
+      "in aanbouw",
+      "binnenkort",
+      "drie puntjes",
+      "status"
+    ],
+    "pl": [
+      "znacznik",
+      "pinezka",
+      "marker",
+      "planowany",
+      "w budowie",
+      "wkrótce",
+      "trzy kropki",
+      "status"
+    ]
+  },
+  "since": "0.12.0",
+  "aliases": [],
+  "exceptions": [
+    "sharp-corner"
+  ],
+  "provenance": {
+    "createdBy": "ai",
+    "approvedBy": null,
+    "approvedOn": null
+  }
+}

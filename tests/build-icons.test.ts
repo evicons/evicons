@@ -231,7 +231,7 @@ test('package LICENSE files are byte-identical copies of the root LICENSE', () =
 test('marker svg files are self-contained images', () => {
   const svgDir = join(ROOT, 'packages/svg/svg')
   const markers = readdirSync(svgDir).filter((f) => /^marker(-.*)?\.svg$/.test(f))
-  expect(markers).toHaveLength(11)
+  expect(markers).toHaveLength(13)
   for (const file of markers) {
     const svg = readFileSync(join(svgDir, file), 'utf8')
     expect(svg, file).toContain('xmlns="http://www.w3.org/2000/svg"')
@@ -239,6 +239,6 @@ test('marker svg files are self-contained images', () => {
     expect(svg, file).toContain('height="24"')
   }
   const icons = JSON.parse(readFileSync(join(ROOT, 'packages/svg/icons.json'), 'utf8')) as Record<string, { since: string }>
-  expect(Object.keys(icons)).toHaveLength(90)
-  for (const [name, meta] of Object.entries(icons)) expect(['0.1.0', '0.2.0', '0.3.0', '0.4.0', '0.5.0', '0.5.1', '0.6.0', '0.8.0', '0.10.0', '0.11.0'], name).toContain(meta.since)
+  expect(Object.keys(icons)).toHaveLength(92)
+  for (const [name, meta] of Object.entries(icons)) expect(['0.1.0', '0.2.0', '0.3.0', '0.4.0', '0.5.0', '0.5.1', '0.6.0', '0.8.0', '0.10.0', '0.11.0', '0.12.0'], name).toContain(meta.since)
 })
