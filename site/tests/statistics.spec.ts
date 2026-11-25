@@ -38,3 +38,24 @@ test('the gallery panel carries the same events', async ({ page }) => {
   await expect(panel.locator('[data-track="download_svg"]')).toHaveAttribute('data-icon', 'plug-ccs2')
   await expect(panel.locator('[data-track="copy_react"]')).toHaveCount(1)
 })
+
+test('the gallery reports a search term once, after a pause, with its number of results', async ({ page }) => {
+  await page.addInitScript(() => {
+    const calls: unknown[][] = []
+    Object.assign(window, { opCalls: calls, op: (...args: unknown[]) => calls.push(args) })
+  })
+  await page.goto('/icons')
+  const search = page.getByRole('searchbox', { name: 'Search icons' })
+  await search.fill('c')
+  await search.fill('ccs')
+  await page.waitForTimeout(1800)
+  await search.fill('')
+  await search.fill('ccs')
+  await search.fill('zzzz')
+  await page.waitForTimeout(1800)
+  const calls = await page.evaluate(() => (window as unknown as { opCalls: unknown[][] }).opCalls)
+  expect(calls).toEqual([
+    ['track', 'gallery_search', { term: 'ccs', results: 2 }],
+    ['track', 'gallery_search', { term: 'zzzz', results: 0 }],
+  ])
+})

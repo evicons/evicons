@@ -197,7 +197,7 @@ test('imprint and privacy policy carry the legal content and are linked from the
   await expect(main).not.toContainText('no tracking')
   await expect(main).not.toContainText('no analytics')
   await expect(page.locator('meta[name="description"]')).not.toHaveAttribute('content', /no tracking/)
-  await expect(main).toContainText('Last updated: 17 November 2026')
+  await expect(main).toContainText('Last updated: 25 November 2026')
   const footer = page.getByRole('navigation', { name: 'Footer' })
   await expect(footer.getByRole('link', { name: 'Legal notice' })).toHaveAttribute('href', '/imprint')
   await expect(footer.getByRole('link', { name: 'Privacy' })).toHaveAttribute('href', '/privacy')

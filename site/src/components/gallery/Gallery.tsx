@@ -85,6 +85,22 @@ export default function Gallery({ icons }: { icons: IconEntry[] }) {
     return ranked.sort((a, b) => b.rank - a.rank).map(({ item }) => item)
   }, [index, query, category])
 
+  // Statistics: which terms are searched and how many icons they find (0 = something is missing from the set).
+  // Sent once per term after a pause in typing, and only when the statistics script is on the page (window.op).
+  const sentSearches = useRef(new Set<string>())
+  useEffect(() => {
+    const term = normalise(query).trim().replace(/\s+/g, ' ').slice(0, 40)
+    if (term.length < 2) return
+    const results = visible.length
+    const timer = setTimeout(() => {
+      const op = (window as { op?: (...args: unknown[]) => void }).op
+      if (!op || sentSearches.current.has(term)) return
+      sentSearches.current.add(term)
+      op('track', 'gallery_search', { term, results })
+    }, 1500)
+    return () => clearTimeout(timer)
+  }, [query, visible.length])
+
   const current = selected ? byName.get(selected) : undefined
   const showFilled = category === 'marker'
 
