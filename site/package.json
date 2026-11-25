@@ -12,17 +12,17 @@
     "test": "playwright test -c playwright.config.ts"
   },
   "dependencies": {
-    "@astrojs/mdx": "8.1.2",
-    "@astrojs/react": "7.1.2",
-    "@astrojs/sitemap": "3.7.4",
+    "@astrojs/mdx": "^8.1.6",
+    "@astrojs/react": "^7.1.9",
+    "@astrojs/sitemap": "^3.7.6",
     "@evicons/react": "0.11.0",
     "@evicons/svg": "0.11.0",
     "@fontsource-variable/inter": "5.3.0",
     "@openpanel/web": "1.4.1",
-    "@tailwindcss/vite": "4.3.3",
-    "astro": "7.4.4",
-    "maplibre-gl": "6.16.0",
-    "tailwindcss": "4.3.3"
+    "@tailwindcss/vite": "^4.3.5",
+    "astro": "^7.4.13",
+    "maplibre-gl": "^6.19.0",
+    "tailwindcss": "^4.3.5"
   },
   "devDependencies": {
     "@astrojs/check": "0.9.12",
